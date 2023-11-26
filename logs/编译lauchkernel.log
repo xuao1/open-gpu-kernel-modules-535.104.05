@@ -1,0 +1,1417 @@
+[  599.652874] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221767894, arg: 140730925928800
+[  599.652881] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.652882] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 214, arg: 140730925928800
+[  599.652886] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3372238536, arg: 140179157557312
+[  599.652888] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.652889] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 200, arg: 140179157557312
+[  599.652902] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340587, arg: 140730925929136
+[  599.652903] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.652904] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925929136
+[  599.652945] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925924752
+[  599.652947] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.652948] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925924752
+[  599.652961] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292009, arg: 140730925929104
+[  599.652962] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.652963] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 41, arg: 140730925929104
+[  599.653055] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221767894, arg: 140730925930272
+[  599.653058] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.653059] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 214, arg: 140730925930272
+[  599.653061] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3372238536, arg: 140179157557312
+[  599.653063] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.653064] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 200, arg: 140179157557312
+[  599.653070] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340587, arg: 140730925930608
+[  599.653072] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.653073] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925930608
+[  599.653087] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926160
+[  599.653089] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.653090] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926160
+[  599.653100] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926160
+[  599.653102] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.653103] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926160
+[  599.653109] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925930592
+[  599.653111] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.653112] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925930592
+[  599.653667] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918656
+[  599.653670] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.653671] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918656
+[  599.653684] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925916656
+[  599.653686] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.653687] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925916656
+[  599.653693] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918464
+[  599.653695] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  599.653696] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918464
+[  601.883755] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918912
+[  601.883762] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.883764] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918912
+[  601.883786] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918896
+[  601.883788] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.883790] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918896
+[  601.883801] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918528
+[  601.883803] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.883804] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918528
+[  601.883810] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918528
+[  601.883812] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.883813] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918528
+[  601.883888] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925923040
+[  601.883890] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.883891] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925923040
+[  601.883895] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3257943767, arg: 140730925922400
+[  601.883897] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.883898] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 215, arg: 140730925922400
+[  601.884132] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925923248
+[  601.884134] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.884135] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925923248
+[  601.884805] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918912
+[  601.884806] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.884807] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918912
+[  601.884819] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918256
+[  601.884821] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.884822] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918256
+[  601.884828] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918912
+[  601.884829] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.884830] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918912
+[  601.884837] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918784
+[  601.884838] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.884839] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918784
+[  601.884845] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918528
+[  601.884846] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.884847] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918528
+[  601.884852] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918528
+[  601.884854] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.884855] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918528
+[  601.884887] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925923040
+[  601.884889] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.884890] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925923040
+[  601.884893] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925923312
+[  601.884895] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.884896] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925923312
+[  601.885347] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918880
+[  601.885349] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.885350] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918880
+[  601.885360] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918656
+[  601.885361] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.885362] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918656
+[  601.885590] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918432
+[  601.885591] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.885592] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918432
+[  601.885598] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917488
+[  601.885600] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.885600] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917488
+[  601.885762] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918000
+[  601.885765] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.885767] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918000
+[  601.885778] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917952
+[  601.885780] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.885782] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917952
+[  601.886166] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918416
+[  601.886169] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.886170] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918416
+[  601.886178] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917632
+[  601.886180] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.886181] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917632
+[  601.886191] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917632
+[  601.886192] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.886194] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917632
+[  601.886201] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917632
+[  601.886203] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.886204] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917632
+[  601.886435] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917632
+[  601.886437] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.886438] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917632
+[  601.886442] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917632
+[  601.886443] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.886444] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917632
+[  601.886622] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917440
+[  601.886624] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.886625] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917440
+[  601.886871] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917984
+[  601.886873] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.886874] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917984
+[  601.887188] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918160
+[  601.887190] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887191] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918160
+[  601.887197] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918416
+[  601.887198] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887200] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918416
+[  601.887206] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918416
+[  601.887207] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887208] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918416
+[  601.887227] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918224
+[  601.887229] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887230] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918224
+[  601.887236] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917744
+[  601.887238] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887239] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917744
+[  601.887248] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918208
+[  601.887250] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887251] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918208
+[  601.887258] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918208
+[  601.887259] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887260] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918208
+[  601.887267] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918208
+[  601.887269] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887270] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918208
+[  601.887276] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918208
+[  601.887278] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887279] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918208
+[  601.887285] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918208
+[  601.887286] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887287] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918208
+[  601.887294] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918208
+[  601.887296] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887297] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918208
+[  601.887303] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918208
+[  601.887305] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887306] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918208
+[  601.887312] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918208
+[  601.887314] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887315] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918208
+[  601.887322] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918192
+[  601.887324] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887325] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918192
+[  601.887332] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918112
+[  601.887334] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.887335] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918112
+[  601.928688] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917952
+[  601.928692] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.928693] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917952
+[  601.928708] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925908848
+[  601.928709] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.928710] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925908848
+[  601.928720] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918464
+[  601.928722] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.928723] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918464
+[  601.928731] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918032
+[  601.928733] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.928734] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918032
+[  601.928984] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925922704
+[  601.928986] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.928988] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925922704
+[  601.929000] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918016
+[  601.929001] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.929002] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918016
+[  601.929018] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925922592
+[  601.929020] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.929021] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925922592
+[  601.929068] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925922720
+[  601.929070] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.929071] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925922720
+[  601.929411] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918464
+[  601.929413] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.929414] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918464
+[  601.929620] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918368
+[  601.929622] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.929623] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918368
+[  601.929810] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925922832
+[  601.929813] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.929814] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925922832
+[  601.930287] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925922832
+[  601.930290] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.930291] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925922832
+[  601.932051] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918448
+[  601.932053] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.932055] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918448
+[  601.932295] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918240
+[  601.932297] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.932299] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918240
+[  601.932303] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918256
+[  601.932305] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.932305] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918256
+[  601.932495] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918512
+[  601.932496] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.932498] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918512
+[  601.932504] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918192
+[  601.932505] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.932506] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918192
+[  601.932728] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918912
+[  601.932730] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.932731] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918912
+[  601.932754] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925924080
+[  601.932756] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.932757] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925924080
+[  601.932765] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925924080
+[  601.932767] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.932768] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925924080
+[  601.932783] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923456
+[  601.932785] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.932786] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923456
+[  601.932964] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925917584
+[  601.932966] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  601.932967] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925917584
+[  602.153524] memmap_init_zone_device initialised 10387456 pages in 84ms
+[  602.198693] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925930048
+[  602.198699] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.198701] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925930048
+[  602.198800] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925930576
+[  602.198803] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.198804] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925930576
+[  602.198821] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926160
+[  602.198823] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.198824] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926160
+[  602.199097] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925927056
+[  602.199100] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.199101] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925927056
+[  602.199113] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925927104
+[  602.199115] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.199116] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925927104
+[  602.199132] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926256
+[  602.199134] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.199135] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926256
+[  602.199398] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926256
+[  602.199401] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.199402] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926256
+[  602.199579] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926256
+[  602.199581] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.199582] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926256
+[  602.199759] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926864
+[  602.199760] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.199761] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926864
+[  602.199938] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925927152
+[  602.199940] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.199941] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925927152
+[  602.199948] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926560
+[  602.199950] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.199951] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926560
+[  602.200241] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926256
+[  602.200242] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.200243] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926256
+[  602.200430] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926256
+[  602.200431] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.200432] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926256
+[  602.200605] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926256
+[  602.200606] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.200607] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926256
+[  602.200777] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926864
+[  602.200779] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.200780] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926864
+[  602.200950] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926560
+[  602.200952] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.200952] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926560
+[  602.211829] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3225962194, arg: 140730925927904
+[  602.211834] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.211836] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 210, arg: 140730925927904
+[  602.211852] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221767894, arg: 140730925928176
+[  602.211854] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.211855] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 214, arg: 140730925928176
+[  602.211858] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3372238536, arg: 140175921022112
+[  602.211859] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.211861] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 200, arg: 140175921022112
+[  602.211873] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340587, arg: 140730925928656
+[  602.211874] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.211875] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925928656
+[  602.211909] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925925936
+[  602.211911] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.211912] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925925936
+[  602.211923] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925925936
+[  602.211925] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.211926] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925925936
+[  602.211932] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925925936
+[  602.211933] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.211935] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925925936
+[  602.211940] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925925936
+[  602.211941] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.211942] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925925936
+[  602.211981] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925916608
+[  602.211983] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.211984] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925916608
+[  602.212151] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925929056
+[  602.212153] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.212154] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925929056
+[  602.212695] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925927024
+[  602.212699] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.212700] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925927024
+[  602.212715] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926640
+[  602.212717] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.212718] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926640
+[  602.212727] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926416
+[  602.212729] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.212730] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926416
+[  602.212735] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926416
+[  602.212737] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.212738] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926416
+[  602.212775] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925929228
+[  602.212777] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.212778] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925929228
+[  602.212781] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3257943767, arg: 140730925928656
+[  602.212783] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.212784] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 215, arg: 140730925928656
+[  602.213014] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925929424
+[  602.213015] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.213016] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925929424
+[  602.213719] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926960
+[  602.213722] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.213724] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926960
+[  602.213736] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926320
+[  602.213739] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.213741] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926320
+[  602.213748] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926064
+[  602.213751] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.213753] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926064
+[  602.213758] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926064
+[  602.213761] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.213763] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926064
+[  602.213798] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925928876
+[  602.213802] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.213804] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925928876
+[  602.213809] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925929072
+[  602.213813] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.213816] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925929072
+[  602.214274] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926544
+[  602.214278] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.214279] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926544
+[  602.219374] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926544
+[  602.219392] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.219393] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926544
+[  602.219411] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925926880
+[  602.219412] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.219413] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925926880
+[  602.219507] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923872
+[  602.219509] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.219510] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923872
+[  602.219523] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923024
+[  602.219525] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.219526] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923024
+[  602.219740] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923024
+[  602.219742] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.219743] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923024
+[  602.219917] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923024
+[  602.219919] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.219920] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923024
+[  602.220093] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923632
+[  602.220095] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.220096] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923632
+[  602.220270] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923328
+[  602.220272] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.220273] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923328
+[  602.220525] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923024
+[  602.220527] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.220528] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923024
+[  602.220717] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923024
+[  602.220718] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.220719] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923024
+[  602.220892] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923024
+[  602.220894] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.220895] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923024
+[  602.221063] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923632
+[  602.221065] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.221066] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923632
+[  602.221237] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925923328
+[  602.221239] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.221240] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925923328
+[  602.468717] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925915248
+[  602.468725] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.468727] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925915248
+[  602.468754] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925915264
+[  602.468756] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.468758] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925915264
+[  602.472709] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925915312
+[  602.472713] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.472715] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925915312
+[  602.473544] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916448
+[  602.473547] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.473548] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916448
+[  602.473718] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916176
+[  602.473722] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.473723] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916176
+[  602.473809] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916176
+[  602.473811] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.473812] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916176
+[  602.474141] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916672
+[  602.474144] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.474145] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916672
+[  602.474247] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918800
+[  602.474249] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.474250] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918800
+[  602.475861] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918784
+[  602.475864] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.475866] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918784
+[  602.476387] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915072
+[  602.476389] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.476390] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915072
+[  602.476411] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910576
+[  602.476413] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.476414] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910576
+[  602.476440] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915152
+[  602.476442] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.476442] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915152
+[  602.476550] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223864926, arg: 140730925915104
+[  602.476552] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.476553] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 94, arg: 140730925915104
+[  602.476611] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925914624
+[  602.476613] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.476614] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925914624
+[  602.501558] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910128
+[  602.501563] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.501565] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910128
+[  602.501602] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925914704
+[  602.501604] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.501605] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925914704
+[  602.504107] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.504112] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.504113] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.504144] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.504146] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.504147] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.504162] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.504164] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.504165] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.504201] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.504203] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.504204] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.505874] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.505877] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.505878] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.505891] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.505892] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.505894] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.507625] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.507627] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.507628] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.507638] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.507640] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.507641] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.508061] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.508063] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.508064] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.508072] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.508073] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.508074] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.508084] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.508086] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.508087] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.508112] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915856
+[  602.508114] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.508115] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915856
+[  602.508582] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925911360
+[  602.508584] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.508585] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925911360
+[  602.508605] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915936
+[  602.508607] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.508608] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915936
+[  602.508792] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915856
+[  602.508794] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.508795] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915856
+[  602.509293] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925911360
+[  602.509295] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.509296] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925911360
+[  602.509308] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915936
+[  602.509310] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.509311] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915936
+[  602.509502] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.509504] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.509505] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.509524] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.509525] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.509526] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.509537] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.509539] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.509540] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.509567] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.509569] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.509570] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.511214] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.511217] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.511219] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.511227] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.511229] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.511231] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.512496] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.512498] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.512499] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.512509] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.512511] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.512512] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.512904] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.512906] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.512907] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.512914] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.512916] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.512917] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.512926] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.512927] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.512928] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.512963] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.512965] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.512966] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.512985] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.512987] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.512988] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.512999] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.513001] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.513002] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.513031] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.513033] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.513034] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.514475] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.514478] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.514479] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.514488] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.514489] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.514490] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.515770] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.515772] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.515773] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.515782] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.515783] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.515784] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.516176] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.516178] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.516179] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.516186] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.516188] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.516189] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.516199] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.516201] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.516202] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.516235] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.516237] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.516238] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.516255] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.516257] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.516258] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.516269] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.516271] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.516272] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.516297] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.516299] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.516300] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.517712] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.517716] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.517717] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.517725] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.517727] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.517728] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.518999] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.519002] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.519003] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.519012] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.519014] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.519015] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.519410] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.519413] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.519414] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.519421] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.519423] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.519424] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.519433] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.519435] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.519436] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.519469] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.519471] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.519472] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.519489] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.519490] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.519491] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.519503] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.519504] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.519505] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.519530] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.519532] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.519533] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.520961] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.520963] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.520964] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.520971] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.520973] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.520974] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.522264] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.522267] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.522269] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.522277] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.522279] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.522280] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.522701] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.522703] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.522704] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.522712] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.522714] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.522715] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.522724] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.522726] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.522727] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.522760] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.522762] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.522763] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.522784] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.522786] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.522788] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.522799] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.522801] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.522802] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.522827] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.522829] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.522830] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.524284] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.524287] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.524288] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.524295] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.524297] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.524298] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.525579] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.525580] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.525581] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.525589] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.525591] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.525592] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.525993] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.525997] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.525998] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.526005] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.526007] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.526009] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.526018] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.526019] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.526020] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.526053] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.526055] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.526056] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.526073] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.526074] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.526075] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.526087] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.526089] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.526090] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.526116] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.526117] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.526118] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.527582] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.527585] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.527586] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.527593] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.527595] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.527597] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.528887] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.528889] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.528890] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.528898] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.528899] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.528900] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.529293] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.529295] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.529296] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.529303] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.529305] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.529306] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.529314] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.529316] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.529317] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.529349] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.529351] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.529352] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.529368] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.529370] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.529371] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.529381] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.529383] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.529384] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.529409] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.529411] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.529412] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.530875] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.530878] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.530879] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.530887] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.530889] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.530890] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.532181] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.532184] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.532185] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.532193] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.532195] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.532196] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.532591] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.532593] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.532594] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.532601] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.532602] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.532603] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.532612] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.532614] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.532615] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.566211] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925914848
+[  602.566216] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.566218] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925914848
+[  602.567304] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925918960
+[  602.567306] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.567308] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925918960
+[  602.567311] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292174, arg: 140730925918944
+[  602.567313] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.567315] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 206, arg: 140730925918944
+[  602.567349] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918928
+[  602.567351] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.567352] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918928
+[  602.567803] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918800
+[  602.567805] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.567806] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918800
+[  602.569288] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.569290] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.569291] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.569319] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.569320] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.569321] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.569335] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.569336] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.569337] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.569369] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.569371] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.569372] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.571643] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.571646] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.571647] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.571657] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.571659] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.571660] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.572273] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.572275] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.572276] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.572284] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.572286] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.572287] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.572320] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.572322] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.572323] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.572341] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.572343] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.572344] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.572357] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.572359] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.572360] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.572387] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.572388] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.572390] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.573821] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.573825] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.573826] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.573834] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.573836] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.573837] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.574452] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.574454] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.574455] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.574462] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.574464] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.574465] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.574495] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.574496] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.574497] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.574521] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.574523] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.574524] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.574535] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.574537] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.574538] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.574564] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.574566] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.574568] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.576024] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.576027] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.576028] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.576036] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.576038] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.576039] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.576656] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.576658] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.576659] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.576666] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.576668] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.576669] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.576698] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.576700] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.576701] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.576718] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.576719] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.576720] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.576731] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.576733] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.576734] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.576761] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.576762] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.576764] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.578213] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.578216] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.578217] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.578225] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.578226] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.578227] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.578840] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.578842] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.578843] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.578850] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.578852] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.578853] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.584990] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925914848
+[  602.584994] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.584995] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925914848
+[  602.585693] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925918960
+[  602.585698] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.585699] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925918960
+[  602.585703] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292174, arg: 140730925918944
+[  602.585705] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.585706] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 206, arg: 140730925918944
+[  602.585711] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918928
+[  602.585712] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.585713] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918928
+[  602.586111] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918800
+[  602.586114] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.586115] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918800
+[  602.587580] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.587582] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.587584] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.587602] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.587604] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.587605] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.587617] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.587619] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.587621] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.587651] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.587653] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.587654] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.589960] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.589964] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.589965] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.589975] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.589977] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.589978] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.590601] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.590603] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.590604] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.590612] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.590614] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.590615] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.590647] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.590649] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.590650] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.590668] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.590670] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.590671] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.590682] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.590684] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.590685] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.590712] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.590714] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.590715] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.592170] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.592172] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.592173] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.592183] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.592185] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.592186] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.592804] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.592806] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.592807] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.592815] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.592816] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.592817] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.592847] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.592848] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.592849] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.592866] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.592868] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.592869] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.592879] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.592880] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.592881] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.592907] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.592909] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.592910] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.594369] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.594372] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.594373] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.594382] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.594383] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.594385] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.595007] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.595009] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.595010] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.595017] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.595019] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.595020] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.595049] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.595051] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.595052] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.595068] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.595070] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.595071] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.595082] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.595084] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.595085] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.595110] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.595111] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.595112] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.596602] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.596604] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.596605] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.596613] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.596614] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.596616] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.597243] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.597245] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.597246] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.597254] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.597255] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.597256] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.606274] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925914848
+[  602.606278] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.606279] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925914848
+[  602.606981] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925918960
+[  602.606983] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.606984] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925918960
+[  602.606988] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292174, arg: 140730925918944
+[  602.606990] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.606991] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 206, arg: 140730925918944
+[  602.606996] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918928
+[  602.606998] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.606999] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918928
+[  602.607385] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918800
+[  602.607387] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.607388] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918800
+[  602.608849] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.608852] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.608853] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.608871] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.608872] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.608874] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.608885] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.608887] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.608888] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.608919] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.608921] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.608922] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.611258] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.611262] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.611263] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.611272] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.611274] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.611275] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.611894] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.611896] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.611897] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.611905] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.611906] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.611907] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.611939] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.611940] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.611942] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.611962] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.611964] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.611965] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.611979] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.611981] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.611982] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.612012] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.612014] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.612015] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.613463] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.613465] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.613466] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.613475] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.613476] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.613477] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.614090] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.614093] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.614094] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.614102] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.614104] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.614105] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.614135] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.614137] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.614138] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.614155] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.614157] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.614158] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.614169] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.614171] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.614172] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.614198] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.614200] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.614201] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.615661] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.615663] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.615664] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.615671] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.615673] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.615674] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.616285] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.616287] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.616288] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.616296] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.616298] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.616299] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.616331] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915440
+[  602.616332] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.616333] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915440
+[  602.616349] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910944
+[  602.616351] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.616352] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910944
+[  602.616363] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915520
+[  602.616364] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.616365] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915520
+[  602.616389] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925917760
+[  602.616391] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.616392] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925917760
+[  602.617846] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913744
+[  602.617850] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.617851] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913744
+[  602.617862] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918032
+[  602.617864] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.617865] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918032
+[  602.618476] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913680
+[  602.618479] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.618480] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913680
+[  602.618488] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913760
+[  602.618489] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.618490] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913760
+[  602.625645] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925914848
+[  602.625648] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.625649] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925914848
+[  602.626349] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925918960
+[  602.626351] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.626352] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925918960
+[  602.626356] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292174, arg: 140730925918944
+[  602.626358] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.626359] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 206, arg: 140730925918944
+[  602.626363] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925918928
+[  602.626365] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.626367] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925918928
+[  602.626755] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916016
+[  602.626757] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.626758] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916016
+[  602.627244] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925911520
+[  602.627246] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.627247] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925911520
+[  602.627260] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925916096
+[  602.627261] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.627262] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925916096
+[  602.627476] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913984
+[  602.627479] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.627480] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913984
+[  602.630649] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925913312
+[  602.630653] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.630654] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925913312
+[  602.630983] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916192
+[  602.630985] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.630986] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916192
+[  602.631780] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916128
+[  602.631782] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.631784] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916128
+[  602.632288] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925911632
+[  602.632290] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.632291] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925911632
+[  602.632306] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925916208
+[  602.632308] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.632309] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925916208
+[  602.632494] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915744
+[  602.632496] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.632497] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915744
+[  602.633427] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925911248
+[  602.633429] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.633430] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925911248
+[  602.633445] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915824
+[  602.633446] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.633447] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915824
+[  602.633640] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913447, arg: 140730925915680
+[  602.633643] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.633645] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 39, arg: 140730925915680
+[  602.634733] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916576
+[  602.634737] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.634738] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916576
+[  602.634802] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925915856
+[  602.634805] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.634806] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925915856
+[  602.635287] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925911360
+[  602.635289] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.635290] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925911360
+[  602.635304] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925915936
+[  602.635306] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.635307] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925915936
+[  602.635678] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913447, arg: 140730925916144
+[  602.635681] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.635682] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 39, arg: 140730925916144
+[  602.636722] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916208
+[  602.636725] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.636726] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916208
+[  602.636845] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913447, arg: 140730925916992
+[  602.636847] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.636849] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 39, arg: 140730925916992
+[  602.638073] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925914992
+[  602.638078] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.638079] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925914992
+[  602.638186] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925917056
+[  602.638189] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.638191] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925917056
+[  602.638293] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916640
+[  602.638295] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.638296] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916640
+[  602.638802] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925912144
+[  602.638805] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.638806] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925912144
+[  602.638822] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925916720
+[  602.638824] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.638825] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925916720
+[  602.646472] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913447, arg: 140730925916560
+[  602.646477] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.646479] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 39, arg: 140730925916560
+[  602.647620] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925919648
+[  602.647624] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.647625] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925919648
+[  602.650234] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916352
+[  602.650238] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.650239] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916352
+[  602.651035] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925911856
+[  602.651036] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.651038] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925911856
+[  602.651055] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913486, arg: 140730925916432
+[  602.651056] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.651057] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 78, arg: 140730925916432
+[  602.651607] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916432
+[  602.651610] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.651611] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916432
+[  602.651761] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916432
+[  602.651763] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.651765] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916432
+[  602.652917] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925914976
+[  602.652920] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.652921] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925914976
+[  602.654452] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925919312
+[  602.654457] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.654458] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925919312
+[  602.654463] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292174, arg: 140730925919296
+[  602.654464] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.654466] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 206, arg: 140730925919296
+[  602.654471] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925919280
+[  602.654473] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.654475] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925919280
+[  602.654955] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925919312
+[  602.654958] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.654959] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925919312
+[  602.654963] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292174, arg: 140730925919296
+[  602.654965] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.654966] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 206, arg: 140730925919296
+[  602.654970] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925919280
+[  602.654972] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.654973] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925919280
+[  602.655291] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925919312
+[  602.655293] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.655294] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925919312
+[  602.655297] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292174, arg: 140730925919296
+[  602.655299] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.655300] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 206, arg: 140730925919296
+[  602.655304] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925919280
+[  602.655306] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.655307] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925919280
+[  602.655619] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3221505737, arg: 140730925919312
+[  602.655621] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.655622] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 201, arg: 140730925919312
+[  602.655625] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292174, arg: 140730925919296
+[  602.655627] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.655628] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 206, arg: 140730925919296
+[  602.655632] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224389163, arg: 140730925919280
+[  602.655633] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.655634] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 43, arg: 140730925919280
+[  602.655955] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925915008
+[  602.655957] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.655958] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925915008
+[  602.656309] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925915184
+[  602.656310] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.656311] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925915184
+[  602.657238] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925915328
+[  602.657239] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.657240] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925915328
+[  602.657696] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916352
+[  602.657700] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.657701] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916352
+[  602.659140] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925915328
+[  602.659145] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.659147] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925915328
+[  602.670670] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916960
+[  602.670675] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.670676] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916960
+[  602.670721] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925912688
+[  602.670723] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.670725] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925912688
+[  602.674159] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925914848
+[  602.674165] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.674167] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925914848
+[  602.674216] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910576
+[  602.674219] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.674220] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910576
+[  602.676199] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925914848
+[  602.676203] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.676204] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925914848
+[  602.676244] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910576
+[  602.676246] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.676247] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910576
+[  602.677006] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916960
+[  602.677010] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.677011] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916960
+[  602.677066] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925912688
+[  602.677068] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.677069] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925912688
+[  602.685480] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916960
+[  602.685485] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.685487] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916960
+[  602.685543] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925912688
+[  602.685545] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.685546] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925912688
+[  602.698224] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916256
+[  602.698229] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.698231] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916256
+[  602.698288] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925911984
+[  602.698290] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.698291] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925911984
+[  602.702632] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916256
+[  602.702638] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.702639] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916256
+[  602.702681] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925911984
+[  602.702684] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.702685] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925911984
+[  602.705198] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916256
+[  602.705202] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.705203] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916256
+[  602.705252] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925911984
+[  602.705254] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.705255] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925911984
+[  602.708658] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925916960
+[  602.708663] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.708665] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925916960
+[  602.708720] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925912688
+[  602.708722] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.708724] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925912688
+[  602.719645] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925914848
+[  602.719650] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.719651] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925914848
+[  602.719694] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910576
+[  602.719696] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.719697] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910576
+[  602.721493] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925914848
+[  602.721497] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.721498] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925914848
+[  602.721558] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925910576
+[  602.721560] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.721561] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925910576
+[  602.738416] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925919696
+[  602.738421] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.738422] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925919696
+[  602.739320] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292009, arg: 140730925922208
+[  602.739324] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.739326] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 41, arg: 140730925922208
+[  602.739697] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925920416
+[  602.739700] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.739701] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925920416
+[  602.740776] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3224913447, arg: 140730925920224
+[  602.740778] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.740780] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 39, arg: 140730925920224
+[  602.785541] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922736
+[  602.785547] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.785548] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922736
+[  602.785567] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922784
+[  602.785570] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.785571] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922784
+[  602.785605] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921936
+[  602.785610] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.785614] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921936
+[  602.785920] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921936
+[  602.785923] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.785925] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921936
+[  602.786102] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921936
+[  602.786104] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.786105] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921936
+[  602.786274] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922544
+[  602.786276] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.786277] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922544
+[  602.786448] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922240
+[  602.786450] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.786451] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922240
+[  602.786732] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921936
+[  602.786733] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.786734] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921936
+[  602.786916] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921936
+[  602.786918] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.786919] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921936
+[  602.787081] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921936
+[  602.787083] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.787084] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921936
+[  602.787244] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922544
+[  602.787245] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.787246] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922544
+[  602.787408] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922240
+[  602.787409] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.787410] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922240
+[  602.790414] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922640
+[  602.790419] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.790420] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922640
+[  602.790433] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922688
+[  602.790435] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.790436] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922688
+[  602.790452] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921840
+[  602.790453] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.790454] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921840
+[  602.790629] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921840
+[  602.790630] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.790631] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921840
+[  602.790794] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921840
+[  602.790795] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.790796] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921840
+[  602.790956] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922448
+[  602.790958] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.790960] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922448
+[  602.791123] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922144
+[  602.791125] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.791125] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922144
+[  602.791344] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921840
+[  602.791346] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.791347] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921840
+[  602.791523] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921840
+[  602.791524] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.791525] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921840
+[  602.791689] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925921840
+[  602.791690] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.791691] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925921840
+[  602.791851] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922448
+[  602.791852] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.791853] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922448
+[  602.792017] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925922144
+[  602.792018] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.792019] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925922144
+[  602.807585] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925924944
+[  602.807590] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.807592] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925924944
+[  602.807842] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925920672
+[  602.807844] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.807846] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925920672
+[  602.807962] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925924944
+[  602.807965] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.807966] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925924944
+[  602.808020] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925920672
+[  602.808022] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.808023] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925920672
+[  602.808291] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925922800
+[  602.808294] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.808295] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925922800
+[  602.808350] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918528
+[  602.808352] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.808353] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918528
+[  602.830040] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925922352
+[  602.830045] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.830047] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925922352
+[  602.830097] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918080
+[  602.830099] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.830100] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918080
+[  602.911555] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925918704
+[  602.911560] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.911561] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925918704
+[  602.911634] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925914432
+[  602.911636] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.911638] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925914432
+[  602.913628] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925923152
+[  602.913633] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.913635] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925923152
+[  602.913694] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918880
+[  602.913697] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.913698] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918880
+[  602.995166] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3233302090, arg: 140730925923152
+[  602.995171] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.995173] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 74, arg: 140730925923152
+[  602.995220] xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140730925918880
+[  602.995222] xuao 2. nvidia driver nvidia_frontend_ioctl file
+[  602.995223] xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140730925918880

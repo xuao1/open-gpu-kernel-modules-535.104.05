@@ -304,7 +304,7 @@ int nvidia_frontend_ioctl(
     unsigned int cmd,
     unsigned long i_arg)
 {
-    printk(KERN_ERR "xuao 2. nvidia driver nvidia_frontend_ioctl file\n");
+    printk(KERN_ERR "xuao 2. nvidia_frontend_ioctl file\n");
     int rc = -ENODEV;
     nvidia_module_t *module = NULL;
 
