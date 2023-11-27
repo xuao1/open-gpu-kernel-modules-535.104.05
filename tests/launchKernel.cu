@@ -18,7 +18,7 @@ int main() {
     std::cout << "60 s..." << std::endl;
     sleep(60);
 
-    cudaLaunchKernel((void*)simpleKernel, grid, block, kernelArgs, 0, NULL);
+    simpleKernel<<<1, 256>>>(d_data);
 
     std::cout << "60 s..." << std::endl;
     sleep(60);
@@ -27,3 +27,4 @@ int main() {
 
     return 0;
 }
+
