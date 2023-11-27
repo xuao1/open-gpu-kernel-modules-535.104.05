@@ -20,7 +20,7 @@ int main() {
 
     cudaMemcpy(d_a, a, size, cudaMemcpyHostToDevice);
 
-    cuLaunchKernel((CUfunction)testKernel, 256, 1, 1, 32, 1, 1, 0, 0, (void**)&d_a, 0);
+    cudaLaunchKernel((void*)&testKernel, dim3(1), dim3(256), (void**)&d_a, 0, NULL);
 
     cudaMemcpy(a, d_a, size, cudaMemcpyDeviceToHost);
 
