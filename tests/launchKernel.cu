@@ -10,10 +10,14 @@ int main() {
     int *d_data;
     cudaMalloc(&d_data, sizeof(int) * 256);
 
+    void *kernelArgs[] = { &d_data };
+    dim3 grid(1);
+    dim3 block(256);
+
     std::cout << "Before launch kernel..." << std::endl;
     std::cin.get();
 
-    simpleKernel<<<1, 256>>>(d_data);
+    cudaLaunchKernel((void*)simpleKernel, grid, block, kernelArgs, 0, NULL);
 
     std::cout << "After launcher kernel..." << std::endl;
     std::cin.get();
@@ -22,3 +26,4 @@ int main() {
 
     return 0;
 }
+
