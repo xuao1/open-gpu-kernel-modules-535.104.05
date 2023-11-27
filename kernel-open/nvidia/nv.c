@@ -2260,7 +2260,7 @@ nvidia_ioctl(
             nv_ioctl_set_numa_status_t *api = arg_copy;
             rmStatus = NV_OK;
 
-            if (!NV_IS_SUSER())
+            if (!NV_IS_SUSER()) // 应该是超级用户权限检查
             {
                 status = -EACCES;
                 goto done;
