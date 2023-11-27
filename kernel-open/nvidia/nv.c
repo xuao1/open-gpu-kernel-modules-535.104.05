@@ -2202,7 +2202,7 @@ nvidia_ioctl(
 
         case NV_ESC_SYS_PARAMS:
         {
-            printk(KERN_ERR "xuao 4. NV_ESC_SYS_PARAMS in nv.c\n")
+            printk(KERN_ERR "xuao 4. NV_ESC_SYS_PARAMS in nv.c\n");
             nv_ioctl_sys_params_t *api = arg_copy;
 
             NV_CTL_DEVICE_ONLY(nv);
