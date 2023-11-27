@@ -28,7 +28,8 @@ int main() {
 
     cudaDeviceSynchronize();
     // testKernel<<<1, 256>>>(d_a);
-    cuLaunchKernel((void*)testKernel, dim3(1, 1, 1), dim3(256, 1, 1), (void**)&d_a, 0, NULL);
+    // cudaLaunchKernel((void*)testKernel, dim3(1, 1, 1), dim3(256, 1, 1), (void**)&d_a, 0, NULL);
+    cuLaunchKernel((CUfunction)testKernel, 1, 1, 1, 256, 1, 1, 0, NULL, (void**)&d_a, NULL);
     cudaDeviceSynchronize();
 
     // std::cin.get();
