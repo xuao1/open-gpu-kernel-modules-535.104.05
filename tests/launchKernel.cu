@@ -1,34 +1,24 @@
-#include <stdio.h>
-#include <cuda.h>
+#include <cuda_runtime.h>
+#include <iostream>
 
-__global__ void testKernel(int *a) {
-    int idx = threadIdx.x + blockIdx.x * blockDim.x;
-    a[idx] = a[idx] + 1;
+__global__ void simpleKernel(int *data) {
+    int idx = threadIdx.x;
+    data[idx] = idx;
 }
 
 int main() {
-    int *d_a;
-    int size = 256 * sizeof(int);
-    int *a = (int*)malloc(size);
+    int *d_data;
+    cudaMalloc(&d_data, sizeof(int) * 256);
 
-    for (int i = 0; i < 256; i++) {
-        a[i] = i;
-    }
+    std::cout << "Before launch kernel..." << std::endl;
+    std::cin.get();
 
-    cudaMalloc((void **)&d_a, size);
+    simpleKernel<<<1, 256>>>(d_data);
 
-    cudaMemcpy(d_a, a, size, cudaMemcpyHostToDevice);
+    std::cout << "After launcher kernel..." << std::endl;
+    std::cin.get();
 
-    testKernel<<<1, 256>>>(d_a);
+    cudaFree(d_data);
 
-    cudaMemcpy(a, d_a, size, cudaMemcpyDeviceToHost);
-
-    for (int i = 0; i < 10; i++) {
-        printf("%d ", a[i]);
-    }
-    printf("\n");
-
-    cudaFree(d_a);
-    free(a);
     return 0;
 }
