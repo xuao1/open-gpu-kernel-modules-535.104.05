@@ -21,11 +21,15 @@ int main() {
 
     cudaMemcpy(d_a, a, size, cudaMemcpyHostToDevice);
 
+    // std::cin.get();
     std::cout << "60s..." << std::endl;
     sleep(60);
 
+    cudaDeviceSynchronize();
     testKernel<<<1, 256>>>(d_a);
+    cudaDeviceSynchronize();
 
+    // std::cin.get();
     std::cout << "60s..." << std::endl;
     sleep(60);
 
