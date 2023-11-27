@@ -2028,7 +2028,7 @@ nvidia_ioctl(
     unsigned int cmd,
     unsigned long i_arg)
 {
-    printk(KERN_ERR "xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: %u, arg: %lu\n", _IOC_NR(cmd), i_arg);
+    printk(KERN_ERR "xuao 3. nvidia_ioctl in nv.c cmd: %u, arg: %lu\n", _IOC_NR(cmd), i_arg);
     NV_STATUS rmStatus;
     int status = 0;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_FILEP(file);
@@ -2063,6 +2063,7 @@ nvidia_ioctl(
 
     if (arg_cmd == NV_ESC_IOCTL_XFER_CMD)
     {
+        printk(KERN_ERR "xuao 4. NV_ESC_IOCTL_XFER_CMD in nv.c\n");
         if (arg_size != sizeof(nv_ioctl_xfer_t))
         {
             nv_printf(NV_DBG_ERRORS,
@@ -2110,6 +2111,7 @@ nvidia_ioctl(
     {
         case NV_ESC_QUERY_DEVICE_INTR:
         {
+            printk(KERN_ERR "xuao 4. NV_ESC_QUERY_DEVICE_INTR in nv.c\n");
             nv_ioctl_query_device_intr *query_intr = arg_copy;
 
             NV_ACTUAL_DEVICE_ONLY(nv);
@@ -2130,6 +2132,7 @@ nvidia_ioctl(
         /* pass out info about the card */
         case NV_ESC_CARD_INFO:
         {
+            printk(KERN_ERR "xuao 4. NV_ESC_CARD_INFO in nv.c\n");
             size_t num_arg_devices = arg_size / sizeof(nv_ioctl_card_info_t);
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -2140,6 +2143,7 @@ nvidia_ioctl(
 
         case NV_ESC_ATTACH_GPUS_TO_FD:
         {
+            printk(KERN_ERR "xuao 4. NV_ESC_ATTACH_GPUS_TO_FD in nv.c\n");
             size_t num_arg_gpus = arg_size / sizeof(NvU32);
             size_t i;
 
@@ -2188,6 +2192,7 @@ nvidia_ioctl(
 
         case NV_ESC_CHECK_VERSION_STR:
         {
+            printk(KERN_ERR "xuao 4. NV_ESC_CHECK_VERSION_STR in nv.c\n");
             NV_CTL_DEVICE_ONLY(nv);
 
             rmStatus = rm_perform_version_check(sp, arg_copy, arg_size);
@@ -2197,6 +2202,7 @@ nvidia_ioctl(
 
         case NV_ESC_SYS_PARAMS:
         {
+            printk(KERN_ERR "xuao 4. NV_ESC_SYS_PARAMS in nv.c\n")
             nv_ioctl_sys_params_t *api = arg_copy;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -2223,6 +2229,7 @@ nvidia_ioctl(
 
         case NV_ESC_NUMA_INFO:
         {
+            printk(KERN_ERR "xuao 4. NV_ESC_NUMA_INFO in nv.c\n");
             nv_ioctl_numa_info_t *api = arg_copy;
             rmStatus = NV_OK;
 
@@ -2257,6 +2264,7 @@ nvidia_ioctl(
 
         case NV_ESC_SET_NUMA_STATUS:
         {
+            printk(KERN_ERR "xuao 4. NV_ESC_SET_NUMA_STATUS in nv.c\n");
             nv_ioctl_set_numa_status_t *api = arg_copy;
             rmStatus = NV_OK;
 
@@ -2338,6 +2346,7 @@ unlock:
 
         case NV_ESC_EXPORT_TO_DMABUF_FD:
         {
+            printk(KERN_ERR "xuao 4. NV_ESC_EXPORT_TO_DMABUF_FD in nv.c\n");
             nv_ioctl_export_to_dma_buf_fd_t *params = arg_copy;
 
             if (arg_size != sizeof(nv_ioctl_export_to_dma_buf_fd_t))
@@ -2354,6 +2363,7 @@ unlock:
         }
 
         default:
+            printk(KERN_ERR "xuao 5. default in nv.c, will call rm_ioctl\n");
             rmStatus = rm_ioctl(sp, nv, &nvlfp->nvfp, arg_cmd, arg_copy, arg_size);
             status = ((rmStatus == NV_OK) ? 0 : -EINVAL);
             break;
@@ -5642,3 +5652,12 @@ failed:
     NV_DEV_PRINTF(NV_DBG_INFO, nv, "Cannot get EGM info\n");
     return NV_ERR_NOT_SUPPORTED;
 }
+
+
+sudo docker run -it --gpus all --privileged \
+-v /dev/nvidia0:/realdev/nvidia0 \  
+-v /dev/nvidiactl:/realdev/nvidiactl \ 
+-v /dev/fakegpu0:/dev/nvidia0 \   
+-v /dev/fakegpuctl:/dev/nvidiactl \ 
+-e GPU_MEM_LIMIT_SIZE=5000 \ 
+fakegpu

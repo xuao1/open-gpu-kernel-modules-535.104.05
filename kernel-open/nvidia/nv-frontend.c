@@ -304,7 +304,7 @@ int nvidia_frontend_ioctl(
     unsigned int cmd,
     unsigned long i_arg)
 {
-    printk(KERN_ERR "xuao 2. nvidia_frontend_ioctl file\n");
+    printk(KERN_ERR "xuao 2. nvidia_frontend_ioctl in nv-frontend.c\n");
     int rc = -ENODEV;
     nvidia_module_t *module = NULL;
 
@@ -324,7 +324,7 @@ long nvidia_frontend_unlocked_ioctl(
 )
 {
     // xuao coda here
-    printk(KERN_ERR "xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: %u, arg: %lu\n", cmd, i_arg);
+    printk(KERN_ERR "xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c\n");
     return nvidia_frontend_ioctl(NV_FILE_INODE(file), file, cmd, i_arg);
 }
 

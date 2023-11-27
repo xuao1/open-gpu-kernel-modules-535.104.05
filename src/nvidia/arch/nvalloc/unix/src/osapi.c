@@ -2546,6 +2546,8 @@ NV_STATUS NV_API_CALL rm_ioctl(
     NvU32               dataSize
 )
 {
+    // printk(KERN_ERR "xuao 6. rm_ioctl in osapi.c\n");
+    NV_PRINTF(LEVEL_ERROR, "xuao 6. rm_ioctl in osapi.c\n");
     NV_STATUS rmStatus;
     THREAD_STATE_NODE threadState;
     void *fp;
