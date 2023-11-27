@@ -5652,12 +5652,3 @@ failed:
     NV_DEV_PRINTF(NV_DBG_INFO, nv, "Cannot get EGM info\n");
     return NV_ERR_NOT_SUPPORTED;
 }
-
-
-sudo docker run -it --gpus all --privileged \
--v /dev/nvidia0:/realdev/nvidia0 \  
--v /dev/nvidiactl:/realdev/nvidiactl \ 
--v /dev/fakegpu0:/dev/nvidia0 \   
--v /dev/fakegpuctl:/dev/nvidiactl \ 
--e GPU_MEM_LIMIT_SIZE=5000 \ 
-fakegpu
