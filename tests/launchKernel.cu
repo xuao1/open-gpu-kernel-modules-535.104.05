@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <cuda.h>
+#include <cuda_runtime.h>
 #include <unistd.h>
 #include <iostream>
 
@@ -26,7 +27,8 @@ int main() {
     sleep(60);
 
     cudaDeviceSynchronize();
-    testKernel<<<1, 256>>>(d_a);
+    // testKernel<<<1, 256>>>(d_a);
+    cudaLaunchKernel((void*)testKernel, dim3(1, 1, 1), dim3(256, 1, 1), (void**)&d_a, 0, NULL);
     cudaDeviceSynchronize();
 
     // std::cin.get();
