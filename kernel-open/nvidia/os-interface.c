@@ -2252,7 +2252,6 @@ void NV_API_CALL os_nv_cap_close_fd
 
 typedef struct os_numa_gpu_mem_hotplug_notifier_s
 {
-    printk(KERN_ERR "=====================================   991\n");
     NvU64 start_pa;
     NvU64 size;
     nv_pci_info_t pci_info;
