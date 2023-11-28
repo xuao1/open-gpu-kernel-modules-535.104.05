@@ -2678,7 +2678,7 @@ nvidia_rc_timer_callback(
     struct nv_timer *nv_timer
 )
 {
-    printk(KERN_ERR "=====================================   727\n");
+    // printk(KERN_ERR "=====================================   727\n");
     nv_linux_state_t *nvl = container_of(nv_timer, nv_linux_state_t, rc_timer);
     nv_state_t *nv = NV_STATE_PTR(nvl);
     nvidia_stack_t *sp = nvl->sp[NV_DEV_STACK_TIMER];

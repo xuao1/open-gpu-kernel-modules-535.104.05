@@ -339,7 +339,7 @@ void NV_API_CALL os_release_rwlock_write(void *pRwLock)
 
 NvBool NV_API_CALL os_semaphore_may_sleep(void)
 {
-    printk(KERN_ERR "=====================================   882\n");
+    // printk(KERN_ERR "=====================================   882\n");
     return NV_MAY_SLEEP();
 }
 
@@ -519,7 +519,7 @@ void* NV_API_CALL os_mem_set(
     NvU32  length
 )
 {
-    printk(KERN_ERR "=====================================   895\n");
+    // printk(KERN_ERR "=====================================   895\n");
 #if defined(NVCPU_AARCH64)
     /*
      * TODO: Remove once memset/memcpy restructure is complete
@@ -666,7 +666,7 @@ NV_STATUS NV_API_CALL os_get_current_time(
     NvU32 *useconds
 )
 {
-    printk(KERN_ERR "=====================================   899\n");
+    // printk(KERN_ERR "=====================================   899\n");
     struct timespec64 tm;
 
     ktime_get_real_ts64(&tm);
@@ -692,7 +692,7 @@ NvU64 NV_API_CALL os_get_current_tick_hr(void)
 
 NvU64 NV_API_CALL os_get_current_tick(void)
 {
-    printk(KERN_ERR "=====================================   901\n");
+    // printk(KERN_ERR "=====================================   901\n");
 #if defined(NV_JIFFIES_TO_TIMESPEC_PRESENT)
     struct timespec ts;
     jiffies_to_timespec(jiffies, &ts);
@@ -800,7 +800,7 @@ void NV_API_CALL os_get_current_process_name(char *buf, NvU32 len)
 
 NV_STATUS NV_API_CALL os_get_current_thread(NvU64 *threadId)
 {
-    printk(KERN_ERR "=====================================   910\n");
+    // printk(KERN_ERR "=====================================   910\n");
     if (in_interrupt())
         *threadId = 0;
     else
@@ -1083,7 +1083,7 @@ NV_STATUS NV_API_CALL os_flush_user_cache(void)
 
 void NV_API_CALL os_flush_cpu_write_combine_buffer(void)
 {
-    printk(KERN_ERR "=====================================   928\n");
+    // printk(KERN_ERR "=====================================   928\n");
     WRITE_COMBINE_FLUSH();
 }
 
@@ -1247,7 +1247,7 @@ void NV_API_CALL os_dbg_breakpoint(void)
 
 NvU32 NV_API_CALL os_get_cpu_number(void)
 {
-    printk(KERN_ERR "=====================================   937\n");
+    // printk(KERN_ERR "=====================================   937\n");
     NvU32 cpu_id = get_cpu();
     put_cpu();
     return cpu_id;
@@ -1392,7 +1392,7 @@ void NV_API_CALL os_free_spinlock(void *pSpinlock)
 
 NvU64 NV_API_CALL os_acquire_spinlock(void *pSpinlock)
 {
-    printk(KERN_ERR "=====================================   946\n");
+    // printk(KERN_ERR "=====================================   946\n");
     os_spinlock_t *os_spinlock = (os_spinlock_t *)pSpinlock;
     unsigned long eflags;
 
@@ -1409,7 +1409,7 @@ NvU64 NV_API_CALL os_acquire_spinlock(void *pSpinlock)
 
 void NV_API_CALL os_release_spinlock(void *pSpinlock, NvU64 oldIrql)
 {
-    printk(KERN_ERR "=====================================   947\n");
+    // printk(KERN_ERR "=====================================   947\n");
     os_spinlock_t *os_spinlock = (os_spinlock_t *)pSpinlock;
     unsigned long eflags;
 
