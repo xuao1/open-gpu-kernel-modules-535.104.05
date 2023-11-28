@@ -53,6 +53,7 @@ subdeviceCtrlCmdNvdGetDumpSize_IMPL
     NV2080_CTRL_NVD_GET_DUMP_SIZE_PARAMS *pDumpSizeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 6. subdeviceCtrlCmdNvdGetDumpSize_IMPL in nvdctrl.c\n");
     OBJGPU       *pGpu          = GPU_RES_GET_GPU(pSubdevice);
     NvDebugDump  *pNvd          = GPU_GET_NVD(pGpu);
     NVDUMP_BUFFER nvDumpBuffer  = {0};
@@ -89,6 +90,7 @@ subdeviceCtrlCmdNvdGetDump_IMPL
     NV2080_CTRL_NVD_GET_DUMP_PARAMS *pDumpParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 6. subdeviceCtrlCmdNvdGetDump_IMPL in nvdctrl.c\n");
     OBJGPU       *pGpu          = GPU_RES_GET_GPU(pSubdevice);
     NvDebugDump  *pNvd          = GPU_GET_NVD(pGpu);
     NVDUMP_BUFFER nvDumpBuffer  = {0};
@@ -118,6 +120,7 @@ subdeviceCtrlCmdNvdGetDump_IMPL
 */
 static NvU64 createTimestampFromTimer(NvU64 timerVal)
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 6. createTimestampFromTimer in nvdctrl.c\n");
     NvU32 currTimeSec = 0;
     NvU32 currTimeUsec = 0;
     NvU64 currTimeMsec;
@@ -165,6 +168,7 @@ subdeviceCtrlCmdNvdGetNocatJournalRpt_IMPL
     NV2080_CTRL_NVD_GET_NOCAT_JOURNAL_PARAMS *pReportParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 6. subdeviceCtrlCmdNvdGetNocatJournalRpt_IMPL in nvdctrl.c\n");
     OBJSYS                     *pSys = SYS_GET_INSTANCE();
     Journal                    *pRcdb = SYS_GET_RCDB(pSys);
 
@@ -232,6 +236,7 @@ subdeviceCtrlCmdNvdSetNocatJournalData_IMPL
     NV2080_CTRL_NVD_SET_NOCAT_JOURNAL_DATA_PARAMS* pReportParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 6. subdeviceCtrlCmdNvdSetNocatJournalData_IMPL in nvdctrl.c\n");
     OBJSYS                     *pSys = SYS_GET_INSTANCE();
     Journal                    *pRcdb = SYS_GET_RCDB(pSys);
 
