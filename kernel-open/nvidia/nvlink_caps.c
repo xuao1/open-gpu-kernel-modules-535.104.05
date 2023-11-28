@@ -38,6 +38,7 @@ static nvlink_caps_t nvlink_caps = {0};
 
 int nvlink_cap_acquire(int fd, NvU32 type)
 {
+    printk(KERN_ERR "=====================================   821\n");
     int dup_fd = -1;
 
     if (fd < 0)
@@ -70,6 +71,7 @@ int nvlink_cap_acquire(int fd, NvU32 type)
 
 void nvlink_cap_release(int fd)
 {
+    printk(KERN_ERR "=====================================   822\n");
     if (fd < 0)
     {
         return;
@@ -80,6 +82,7 @@ void nvlink_cap_release(int fd)
 
 void nvlink_cap_exit(void)
 {
+    printk(KERN_ERR "=====================================   823\n");
     if (nvlink_caps.fabric_mgmt != NULL)
     {
         nv_cap_destroy_entry(nvlink_caps.fabric_mgmt);
@@ -95,6 +98,7 @@ void nvlink_cap_exit(void)
 
 int nvlink_cap_init(const char *path)
 {
+    printk(KERN_ERR "=====================================   824\n");
     if (path == NULL)
     {
         nvlink_print(NVLINK_DBG_ERRORS, "Invalid path: %s\n", path);

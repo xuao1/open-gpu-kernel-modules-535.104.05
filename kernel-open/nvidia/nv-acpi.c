@@ -75,6 +75,7 @@ static nv_acpi_t  *nvpcf_nv_acpi_object = NULL;
 
 static int nv_acpi_get_device_handle(nv_state_t *nv, acpi_handle *dev_handle)
 {
+    printk(KERN_ERR "=====================================   303\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
 #if defined(DEVICE_ACPI_HANDLE)
@@ -97,6 +98,7 @@ static int nv_acpi_notifier_call_chain_handler(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   304\n");
     struct acpi_bus_event *info = data;
 
     /*
@@ -123,6 +125,7 @@ static int nv_acpi_notifier_call_chain_handler(
 
 NV_STATUS NV_API_CALL nv_acpi_get_powersource(NvU32 *ac_plugged)
 {
+    printk(KERN_ERR "=====================================   305\n");
     unsigned long long val;
     int status = 0;
 
@@ -148,6 +151,7 @@ NV_STATUS NV_API_CALL nv_acpi_get_powersource(NvU32 *ac_plugged)
 #define ACPI_POWER_SOURCE_CHANGE_EVENT       0x80
 static void nv_acpi_powersource_hotplug_event(acpi_handle handle, u32 event_type, void *data)
 {
+    printk(KERN_ERR "=====================================   306\n");
     /*
      * This function will handle acpi events from the linux kernel, used
      * to detect notifications from Power Source device
@@ -166,6 +170,7 @@ static void nv_acpi_powersource_hotplug_event(acpi_handle handle, u32 event_type
 
 static void nv_acpi_nvpcf_event(acpi_handle handle, u32 event_type, void *data)
 {
+    printk(KERN_ERR "=====================================   307\n");
     nv_acpi_t *pNvAcpiObject = data;
 
     if (event_type == ACPI_NVPCF_EVENT_CHANGE)
@@ -189,6 +194,7 @@ static nv_acpi_t* nv_install_notifier(
     void               *notifier_data
 )
 {
+    printk(KERN_ERR "=====================================   308\n");
     nvidia_stack_t *sp = NULL;
     nv_acpi_t *pNvAcpiObject = NULL;
     NV_STATUS rmStatus = NV_ERR_GENERIC;
@@ -233,6 +239,7 @@ return_error:
 /* Tear-down and remove whatever nv_install_notifier did */
 static void nv_uninstall_notifier(nv_acpi_t *pNvAcpiObject, acpi_notify_handler handler)
 {
+    printk(KERN_ERR "=====================================   309\n");
     acpi_status status;
 
     if (pNvAcpiObject && pNvAcpiObject->notify_handler_installed)
@@ -255,6 +262,7 @@ static void nv_uninstall_notifier(nv_acpi_t *pNvAcpiObject, acpi_notify_handler 
 
 static void nv_acpi_notify_event(acpi_handle handle, u32 event_type, void *data)
 {
+    printk(KERN_ERR "=====================================   310\n");
     nv_acpi_t  *pNvAcpiObject = data;
     nv_state_t *nvl = pNvAcpiObject->notifier_data;
 
@@ -267,6 +275,7 @@ static void nv_acpi_notify_event(acpi_handle handle, u32 event_type, void *data)
 
 void nv_acpi_register_notifier(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   311\n");
     acpi_handle dev_handle  = NULL;
 
     /* Install the ACPI notifier corresponding to dGPU ACPI device. */
@@ -288,6 +297,7 @@ void nv_acpi_register_notifier(nv_linux_state_t *nvl)
 
 void nv_acpi_unregister_notifier(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   312\n");
     unregister_acpi_notifier(&nvl->acpi_nb);
     if (nvl->nv_acpi_object != NULL)
     {
@@ -304,6 +314,7 @@ void nv_acpi_unregister_notifier(nv_linux_state_t *nvl)
 
 void NV_API_CALL nv_acpi_methods_init(NvU32 *handlesPresent)
 {
+    printk(KERN_ERR "=====================================   313\n");
     if (!handlesPresent) // Caller passed us invalid pointer.
         return;
 
@@ -346,6 +357,7 @@ acpi_status nv_acpi_find_methods(
     void **dummy2
 )
 {
+    printk(KERN_ERR "=====================================   314\n");
     acpi_handle method_handle;
 
     if (!acpi_get_handle(handle, "NVIF", &method_handle))
@@ -375,6 +387,7 @@ acpi_status nv_acpi_find_methods(
 
 void NV_API_CALL nv_acpi_methods_uninit(void)
 {
+    printk(KERN_ERR "=====================================   315\n");
     nvif_handle = NULL;
     wmmx_handle = NULL;
 
@@ -404,6 +417,7 @@ static NV_STATUS nv_acpi_extract_integer(
     NvU32 *data_size
 )
 {
+    printk(KERN_ERR "=====================================   316\n");
     if (acpi_object->type != ACPI_TYPE_INTEGER)
         return NV_ERR_INVALID_ARGUMENT;
 
@@ -431,6 +445,7 @@ static NV_STATUS nv_acpi_extract_buffer(
     NvU32 *data_size
 )
 {
+    printk(KERN_ERR "=====================================   317\n");
     if (acpi_object->type != ACPI_TYPE_BUFFER)
         return NV_ERR_INVALID_ARGUMENT;
 
@@ -451,6 +466,7 @@ static NV_STATUS nv_acpi_extract_package(
     NvU32 *data_size
 )
 {
+    printk(KERN_ERR "=====================================   318\n");
     NV_STATUS status = NV_OK;
     NvU32 i, element_size = 0;
 
@@ -481,6 +497,7 @@ static NV_STATUS nv_acpi_extract_object(
     NvU32 *data_size
 )
 {
+    printk(KERN_ERR "=====================================   319\n");
     NV_STATUS status;
 
     switch (acpi_object->type)
@@ -526,6 +543,7 @@ NV_STATUS NV_API_CALL nv_acpi_method(
     NvU16 *outDataSize
 )
 {
+    printk(KERN_ERR "=====================================   320\n");
     NV_STATUS status;
 
     switch (acpi_method)
@@ -564,6 +582,7 @@ static NV_STATUS nv_acpi_nvif_method(
     NvU16 *outDataSize
 )
 {
+    printk(KERN_ERR "=====================================   321\n");
     acpi_status status;
     struct acpi_object_list input;
     struct acpi_buffer output = { ACPI_ALLOCATE_BUFFER, NULL };
@@ -674,6 +693,7 @@ NV_STATUS NV_API_CALL nv_acpi_dsm_method(
     NvU16 *pSize
 )
 {
+    printk(KERN_ERR "=====================================   322\n");
     NV_STATUS status = NV_ERR_OPERATING_SYSTEM;
     acpi_status acpi_status;
     struct acpi_object_list input;
@@ -793,6 +813,7 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
     NvBool bReadMultiBlock
 )
 {
+    printk(KERN_ERR "=====================================   323\n");
     acpi_status status;
     union acpi_object *ddc = NULL;
     NvU32 i, largestEdidSize;
@@ -910,6 +931,7 @@ NV_STATUS NV_API_CALL nv_acpi_rom_method(
     NvU32 *pOutData
 )
 {
+    printk(KERN_ERR "=====================================   324\n");
     acpi_status status;
     struct acpi_buffer output = { ACPI_ALLOCATE_BUFFER, NULL };
     union acpi_object *rom;
@@ -979,6 +1001,7 @@ NV_STATUS NV_API_CALL nv_acpi_dod_method(
     NvU32      *pSize
 )
 {
+    printk(KERN_ERR "=====================================   325\n");
     acpi_status status;
     struct acpi_buffer output = { ACPI_ALLOCATE_BUFFER, NULL };
     union acpi_object *dod;
@@ -1052,6 +1075,7 @@ static NV_STATUS  nv_acpi_wmmx_method(
     NvU16 *outDataSize
 )
 {
+    printk(KERN_ERR "=====================================   326\n");
     acpi_status status;
     struct acpi_object_list input;
     struct acpi_buffer output = { ACPI_ALLOCATE_BUFFER, NULL };
@@ -1129,6 +1153,7 @@ NvBool nv_acpi_power_resource_method_present(
     struct pci_dev *pdev
 )
 {
+    printk(KERN_ERR "=====================================   327\n");
     acpi_handle handle = NULL;
     struct acpi_buffer buf = { ACPI_ALLOCATE_BUFFER, NULL };
     union acpi_object *object_package, *object_reference;
@@ -1193,6 +1218,7 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
     const char *pMethodName
 )
 {
+    printk(KERN_ERR "=====================================   328\n");
     acpi_status status;
     struct acpi_buffer output     = { ACPI_ALLOCATE_BUFFER, NULL };
     union acpi_object *mux        = NULL;
@@ -1287,6 +1313,7 @@ static acpi_status nv_acpi_find_battery_info(
     NvBool bUseBix
 )
 {
+    printk(KERN_ERR "=====================================   329\n");
     acpi_status status = AE_OK;
     struct acpi_buffer buf = { ACPI_ALLOCATE_BUFFER, NULL };
     union acpi_object *object_package;
@@ -1352,6 +1379,7 @@ static acpi_status nv_acpi_find_battery_device(
     void **dummy2
 )
 {
+    printk(KERN_ERR "=====================================   330\n");
     acpi_handle bif_method_handle;
     acpi_handle bix_method_handle;
     acpi_status status = AE_OK;
@@ -1373,6 +1401,7 @@ static acpi_status nv_acpi_find_battery_device(
 
 NvBool NV_API_CALL nv_acpi_is_battery_present(void)
 {
+    printk(KERN_ERR "=====================================   331\n");
     NV_ACPI_WALK_NAMESPACE(ACPI_TYPE_DEVICE, ACPI_ROOT_OBJECT, ACPI_UINT32_MAX,
                            nv_acpi_find_battery_device, NULL, NULL);
 
@@ -1388,11 +1417,13 @@ NvBool NV_API_CALL nv_acpi_is_battery_present(void)
 
 void NV_API_CALL nv_acpi_methods_init(NvU32 *handlePresent)
 {
+    printk(KERN_ERR "=====================================   332\n");
     *handlePresent = 0;
 }
 
 void NV_API_CALL nv_acpi_methods_uninit(void)
 {
+    printk(KERN_ERR "=====================================   333\n");
     return;
 }
 
@@ -1407,6 +1438,7 @@ NV_STATUS NV_API_CALL nv_acpi_method(
     NvU16 *outDataSize
 )
 {
+    printk(KERN_ERR "=====================================   334\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -1423,6 +1455,7 @@ NV_STATUS NV_API_CALL nv_acpi_dsm_method(
     NvU16 *pSize
 )
 {
+    printk(KERN_ERR "=====================================   335\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -1433,6 +1466,7 @@ NV_STATUS NV_API_CALL nv_acpi_ddc_method(
     NvBool bReadMultiBlock
 )
 {
+    printk(KERN_ERR "=====================================   336\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -1442,6 +1476,7 @@ NV_STATUS NV_API_CALL nv_acpi_rom_method(
     NvU32 *pOutData
 )
 {
+    printk(KERN_ERR "=====================================   337\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -1451,6 +1486,7 @@ NV_STATUS NV_API_CALL nv_acpi_dod_method(
     NvU32      *pSize
 )
 {
+    printk(KERN_ERR "=====================================   338\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -1458,21 +1494,25 @@ NvBool nv_acpi_power_resource_method_present(
     struct pci_dev *pdev
 )
 {
+    printk(KERN_ERR "=====================================   339\n");
     return NV_FALSE;
 }
 
 NV_STATUS NV_API_CALL nv_acpi_get_powersource(NvU32 *ac_plugged)
 {
+    printk(KERN_ERR "=====================================   340\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
 void nv_acpi_register_notifier(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   341\n");
     return;
 }
 
 void nv_acpi_unregister_notifier(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   342\n");
     return;
 }
 
@@ -1483,11 +1523,13 @@ NV_STATUS NV_API_CALL nv_acpi_mux_method(
     const char *pMethodName
 )
 {
+    printk(KERN_ERR "=====================================   343\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
 NvBool NV_API_CALL nv_acpi_is_battery_present(void)
 {
+    printk(KERN_ERR "=====================================   344\n");
     return NV_FALSE;
 }
 #endif

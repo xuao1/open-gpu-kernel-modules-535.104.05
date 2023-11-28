@@ -28,22 +28,26 @@
 
 void *libspdm_sha256_new(void)
 {
+    printk(KERN_ERR "=====================================   67\n");
     return lkca_hash_new("sha256");
 }
 
 void libspdm_sha256_free(void *sha256_ctx)
 {
+    printk(KERN_ERR "=====================================   68\n");
     lkca_hash_free(sha256_ctx);
 }
 
 bool libspdm_sha256_init(void *sha256_context)
 {
+    printk(KERN_ERR "=====================================   69\n");
     return crypto_shash_init(sha256_context) == 0;
 }
 
 bool libspdm_sha256_duplicate(const void *sha256_context,
                               void *new_sha256_context)
 {
+    printk(KERN_ERR "=====================================   70\n");
     if (sha256_context == NULL || new_sha256_context == NULL) {
         return false;
     }
@@ -54,6 +58,7 @@ bool libspdm_sha256_duplicate(const void *sha256_context,
 bool libspdm_sha256_update(void *sha256_context, const void *data,
                            size_t data_size)
 {
+    printk(KERN_ERR "=====================================   71\n");
     int32_t ret;
 
     if (sha256_context == NULL) {
@@ -76,6 +81,7 @@ bool libspdm_sha256_update(void *sha256_context, const void *data,
 
 bool libspdm_sha256_final(void *sha256_context, uint8_t *hash_value)
 {
+    printk(KERN_ERR "=====================================   72\n");
     int32_t ret;
 
     if (sha256_context == NULL || hash_value == NULL) {
@@ -92,6 +98,7 @@ bool libspdm_sha256_final(void *sha256_context, uint8_t *hash_value)
 bool libspdm_sha256_hash_all(const void *data, size_t data_size,
                              uint8_t *hash_value)
 {
+    printk(KERN_ERR "=====================================   73\n");
     if (hash_value == NULL) {
         return false;
     }
@@ -107,22 +114,26 @@ bool libspdm_sha256_hash_all(const void *data, size_t data_size,
 
 void *libspdm_sha384_new(void)
 {
+    printk(KERN_ERR "=====================================   74\n");
     return lkca_hash_new("sha384");
 }
 
 void libspdm_sha384_free(void *sha384_ctx)
 {
+    printk(KERN_ERR "=====================================   75\n");
     lkca_hash_free(sha384_ctx);
 }
 
 bool libspdm_sha384_init(void *sha384_context)
 {
+    printk(KERN_ERR "=====================================   76\n");
     return crypto_shash_init(sha384_context) == 0;
 }
 
 bool libspdm_sha384_duplicate(const void *sha384_context,
                               void *new_sha384_context)
 {
+    printk(KERN_ERR "=====================================   77\n");
     if (sha384_context == NULL || new_sha384_context == NULL) {
         return false;
     }
@@ -133,6 +144,7 @@ bool libspdm_sha384_duplicate(const void *sha384_context,
 bool libspdm_sha384_update(void *sha384_context, const void *data,
                            size_t data_size)
 {
+    printk(KERN_ERR "=====================================   78\n");
     int32_t ret;
 
     if (sha384_context == NULL) {
@@ -155,6 +167,7 @@ bool libspdm_sha384_update(void *sha384_context, const void *data,
 
 bool libspdm_sha384_final(void *sha384_context, uint8_t *hash_value)
 {
+    printk(KERN_ERR "=====================================   79\n");
     int32_t ret;
 
     if (sha384_context == NULL || hash_value == NULL) {
@@ -171,6 +184,7 @@ bool libspdm_sha384_final(void *sha384_context, uint8_t *hash_value)
 bool libspdm_sha384_hash_all(const void *data, size_t data_size,
                              uint8_t *hash_value)
 {
+    printk(KERN_ERR "=====================================   80\n");
     if (hash_value == NULL) {
         return false;
     }
@@ -186,22 +200,26 @@ bool libspdm_sha384_hash_all(const void *data, size_t data_size,
 
 void *libspdm_sha512_new(void)
 {
+    printk(KERN_ERR "=====================================   81\n");
     return lkca_hash_new("sha512");
 }
 
 void libspdm_sha512_free(void *sha512_ctx)
 {
+    printk(KERN_ERR "=====================================   82\n");
     lkca_hash_free(sha512_ctx);
 }
 
 bool libspdm_sha512_init(void *sha512_context)
 {
+    printk(KERN_ERR "=====================================   83\n");
     return crypto_shash_init(sha512_context) == 0;
 }
 
 bool libspdm_sha512_duplicate(const void *sha512_context,
                               void *new_sha512_context)
 {
+    printk(KERN_ERR "=====================================   84\n");
     if (sha512_context == NULL || new_sha512_context == NULL) {
         return false;
     }
@@ -212,6 +230,7 @@ bool libspdm_sha512_duplicate(const void *sha512_context,
 bool libspdm_sha512_update(void *sha512_context, const void *data,
                            size_t data_size)
 {
+    printk(KERN_ERR "=====================================   85\n");
     int32_t ret;
 
     if (sha512_context == NULL) {
@@ -234,6 +253,7 @@ bool libspdm_sha512_update(void *sha512_context, const void *data,
 
 bool libspdm_sha512_final(void *sha512_context, uint8_t *hash_value)
 {
+    printk(KERN_ERR "=====================================   86\n");
     int32_t ret;
 
     if (sha512_context == NULL || hash_value == NULL) {
@@ -250,6 +270,7 @@ bool libspdm_sha512_final(void *sha512_context, uint8_t *hash_value)
 bool libspdm_sha512_hash_all(const void *data, size_t data_size,
                              uint8_t *hash_value)
 {
+    printk(KERN_ERR "=====================================   87\n");
     if (hash_value == NULL) {
         return false;
     }

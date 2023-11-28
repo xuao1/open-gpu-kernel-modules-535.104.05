@@ -32,11 +32,13 @@ static const nvidia_modeset_callbacks_t *nv_modeset_callbacks;
 
 static int nvidia_modeset_rm_ops_alloc_stack(nvidia_stack_t **sp)
 {
+    printk(KERN_ERR "=====================================   519\n");
     return nv_kmem_cache_alloc_stack(sp);
 }
 
 static void nvidia_modeset_rm_ops_free_stack(nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   520\n");
     if (sp != NULL)
     {
         nv_kmem_cache_free_stack(sp);
@@ -45,6 +47,7 @@ static void nvidia_modeset_rm_ops_free_stack(nvidia_stack_t *sp)
 
 static int nvidia_modeset_set_callbacks(const nvidia_modeset_callbacks_t *cb)
 {
+    printk(KERN_ERR "=====================================   521\n");
     if ((nv_modeset_callbacks != NULL && cb != NULL) ||
         (nv_modeset_callbacks == NULL && cb == NULL))
     {
@@ -57,6 +60,7 @@ static int nvidia_modeset_set_callbacks(const nvidia_modeset_callbacks_t *cb)
 
 void nvidia_modeset_suspend(NvU32 gpuId)
 {
+    printk(KERN_ERR "=====================================   522\n");
     if (nv_modeset_callbacks)
     {
         nv_modeset_callbacks->suspend(gpuId);
@@ -65,6 +69,7 @@ void nvidia_modeset_suspend(NvU32 gpuId)
 
 void nvidia_modeset_resume(NvU32 gpuId)
 {
+    printk(KERN_ERR "=====================================   523\n");
     if (nv_modeset_callbacks)
     {
         nv_modeset_callbacks->resume(gpuId);
@@ -73,6 +78,7 @@ void nvidia_modeset_resume(NvU32 gpuId)
 
 static NvU32 nvidia_modeset_enumerate_gpus(nv_gpu_info_t *gpu_info)
 {
+    printk(KERN_ERR "=====================================   524\n");
     nv_linux_state_t *nvl;
     unsigned int count;
 
@@ -114,6 +120,7 @@ static NvU32 nvidia_modeset_enumerate_gpus(nv_gpu_info_t *gpu_info)
 
 NV_STATUS nvidia_get_rm_ops(nvidia_modeset_rm_ops_t *rm_ops)
 {
+    printk(KERN_ERR "=====================================   525\n");
     const nvidia_modeset_rm_ops_t local_rm_ops = {
         .version_string = NV_VERSION_STRING,
         .system_info    = {

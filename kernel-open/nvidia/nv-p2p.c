@@ -77,6 +77,7 @@ static struct nvidia_status_mapping {
 
 static int nvidia_p2p_map_status(NV_STATUS status)
 {
+    printk(KERN_ERR "=====================================   539\n");
     int error = -EIO;
     uint8_t i;
 
@@ -97,6 +98,7 @@ static NvU32 nvidia_p2p_page_size_mappings[NVIDIA_P2P_PAGE_SIZE_COUNT] = {
 
 static NV_STATUS nvidia_p2p_map_page_size(NvU32 page_size, NvU32 *page_size_index)
 {
+    printk(KERN_ERR "=====================================   540\n");
     NvU32 i;
 
     for (i = 0; i < NVIDIA_P2P_PAGE_SIZE_COUNT; i++)
@@ -119,6 +121,7 @@ static NV_STATUS nv_p2p_insert_dma_mapping(
     struct nvidia_p2p_dma_mapping *dma_mapping
 )
 {
+    printk(KERN_ERR "=====================================   541\n");
     NV_STATUS status;
     struct nv_p2p_dma_mapping *node;
 
@@ -143,6 +146,7 @@ static struct nvidia_p2p_dma_mapping* nv_p2p_remove_dma_mapping(
     struct nvidia_p2p_dma_mapping *dma_mapping
 )
 {
+    printk(KERN_ERR "=====================================   542\n");
     struct nv_p2p_dma_mapping *cur;
     struct nvidia_p2p_dma_mapping *ret_dma_mapping = NULL;
 
@@ -168,6 +172,7 @@ static void nv_p2p_free_dma_mapping(
     struct nvidia_p2p_dma_mapping *dma_mapping
 )
 {
+    printk(KERN_ERR "=====================================   543\n");
     nv_dma_device_t peer_dma_dev = {{ 0 }};
     NvU32 page_size;
     NV_STATUS status;
@@ -206,6 +211,7 @@ static void nv_p2p_free_page_table(
     struct nvidia_p2p_page_table *page_table
 )
 {
+    printk(KERN_ERR "=====================================   544\n");
     NvU32 i;
     struct nvidia_p2p_dma_mapping *dma_mapping;
     struct nv_p2p_mem_info *mem_info = NULL;
@@ -247,6 +253,7 @@ static NV_STATUS nv_p2p_put_pages(
     struct nvidia_p2p_page_table **page_table
 )
 {
+    printk(KERN_ERR "=====================================   545\n");
     NV_STATUS status;
 
     /*
@@ -297,6 +304,7 @@ void NV_API_CALL nv_p2p_free_platform_data(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   546\n");
     if (data == NULL)
     {
         WARN_ON(data == NULL);
@@ -313,6 +321,7 @@ int nvidia_p2p_init_mapping(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   547\n");
     return -ENOTSUPP;
 }
 
@@ -320,6 +329,7 @@ EXPORT_SYMBOL(nvidia_p2p_init_mapping);
 
 int nvidia_p2p_destroy_mapping(uint64_t p2p_token)
 {
+    printk(KERN_ERR "=====================================   548\n");
     return -ENOTSUPP;
 }
 
@@ -327,6 +337,7 @@ EXPORT_SYMBOL(nvidia_p2p_destroy_mapping);
 
 static void nv_p2p_mem_info_free_callback(void *data)
 {
+    printk(KERN_ERR "=====================================   549\n");
     nv_p2p_mem_info_t *mem_info = (nv_p2p_mem_info_t*) data;
 
     mem_info->free_callback(mem_info->data);
@@ -345,6 +356,7 @@ static int nv_p2p_get_pages(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   550\n");
     NV_STATUS status;
     nvidia_stack_t *sp = NULL;
     struct nvidia_p2p_page *page;
@@ -573,6 +585,7 @@ int nvidia_p2p_get_pages(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   551\n");
     if (free_callback == NULL)
     {
         return -EINVAL;
@@ -591,6 +604,7 @@ int nvidia_p2p_get_pages_persistent(
     uint32_t flags
 )
 {
+    printk(KERN_ERR "=====================================   552\n");
     if (flags != 0)
     {
         return -EINVAL;
@@ -610,6 +624,7 @@ EXPORT_SYMBOL(nvidia_p2p_get_pages_persistent);
  */
 int nvidia_p2p_free_page_table(struct nvidia_p2p_page_table *page_table)
 {
+    printk(KERN_ERR "=====================================   553\n");
     return 0;
 }
 
@@ -622,6 +637,7 @@ int nvidia_p2p_put_pages(
     struct nvidia_p2p_page_table *page_table
 )
 {
+    printk(KERN_ERR "=====================================   554\n");
     NV_STATUS status;
     nvidia_stack_t *sp = NULL;
     int rc = 0;
@@ -653,6 +669,7 @@ int nvidia_p2p_put_pages_persistent(
     uint32_t flags
 )
 {
+    printk(KERN_ERR "=====================================   555\n");
     NvU8 uuid[NVIDIA_P2P_GPU_UUID_LEN] = {0};
     NV_STATUS status;
     nvidia_stack_t *sp = NULL;
@@ -693,6 +710,7 @@ int nvidia_p2p_dma_map_pages(
     struct nvidia_p2p_dma_mapping **dma_mapping
 )
 {
+    printk(KERN_ERR "=====================================   556\n");
     NV_STATUS status;
     nv_dma_device_t peer_dma_dev = {{ 0 }};
     nvidia_stack_t *sp = NULL;
@@ -808,6 +826,7 @@ int nvidia_p2p_dma_unmap_pages(
     struct nvidia_p2p_dma_mapping *dma_mapping
 )
 {
+    printk(KERN_ERR "=====================================   557\n");
     struct nv_p2p_mem_info *mem_info = NULL;
 
     if (peer == NULL || dma_mapping == NULL || page_table == NULL)
@@ -852,6 +871,7 @@ int nvidia_p2p_free_dma_mapping(
     struct nvidia_p2p_dma_mapping *dma_mapping
 )
 {
+    printk(KERN_ERR "=====================================   558\n");
     return 0;
 }
 
@@ -862,6 +882,7 @@ int nvidia_p2p_register_rsync_driver(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   559\n");
     if (driver == NULL)
     {
         return -EINVAL;
@@ -891,6 +912,7 @@ void nvidia_p2p_unregister_rsync_driver(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   560\n");
     if (driver == NULL)
     {
         WARN_ON(1);
@@ -922,6 +944,7 @@ int nvidia_p2p_get_rsync_registers(
     nvidia_p2p_rsync_reg_info_t **reg_info
 )
 {
+    printk(KERN_ERR "=====================================   561\n");
     nv_linux_state_t *nvl;
     nv_state_t *nv;
     NV_STATUS status;
@@ -1015,6 +1038,7 @@ void nvidia_p2p_put_rsync_registers(
     nvidia_p2p_rsync_reg_info_t *reg_info
 )
 {
+    printk(KERN_ERR "=====================================   562\n");
     NvU32 i;
     nvidia_p2p_rsync_reg_t *regs = NULL;
 

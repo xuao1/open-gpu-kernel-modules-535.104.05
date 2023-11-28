@@ -44,6 +44,7 @@ nv_check_and_exclude_gpu(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   583\n");
     char *uuid_str;
 
     uuid_str = rm_get_gpu_uuid(sp, nv);
@@ -73,6 +74,7 @@ done:
 
 static NvBool nv_treat_missing_irq_as_error(void)
 {
+    printk(KERN_ERR "=====================================   584\n");
 #if defined(NV_LINUX_PCIE_MSI_SUPPORTED)
     return (nv_get_hypervisor_type() != OS_HYPERVISOR_HYPERV);
 #else
@@ -86,6 +88,7 @@ static void nv_init_dynamic_power_management
     struct pci_dev *pci_dev
 )
 {
+    printk(KERN_ERR "=====================================   585\n");
     nv_linux_state_t *nvl = pci_get_drvdata(pci_dev);
     nv_state_t *nv = NV_STATE_PTR(nvl);
     char filename[50];
@@ -275,6 +278,7 @@ nv_init_coherent_link_info
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   586\n");
 #if defined(NV_DEVICE_PROPERTY_READ_U64_PRESENT) && \
     defined(CONFIG_ACPI_NUMA) && \
     NV_IS_EXPORT_SYMBOL_PRESENT_pxm_to_node
@@ -343,6 +347,7 @@ nv_pci_probe
     const struct pci_device_id *id_table
 )
 {
+    printk(KERN_ERR "=====================================   587\n");
     nv_state_t *nv = NULL;
     nv_linux_state_t *nvl = NULL;
     unsigned int i, j;
@@ -767,6 +772,7 @@ failed:
 static void
 nv_pci_remove(struct pci_dev *pci_dev)
 {
+    printk(KERN_ERR "=====================================   588\n");
     nv_linux_state_t *nvl = NULL;
     nv_state_t *nv;
     nvidia_stack_t *sp = NULL;
@@ -937,6 +943,7 @@ done:
 static void
 nv_pci_shutdown(struct pci_dev *pci_dev)
 {
+    printk(KERN_ERR "=====================================   589\n");
     nv_linux_state_t *nvl = pci_get_drvdata(pci_dev);
 
     if ((nvl != NULL) && nvl->is_forced_shutdown)
@@ -976,6 +983,7 @@ nv_pci_shutdown(struct pci_dev *pci_dev)
  */
 nv_linux_state_t * find_pci(NvU32 domain, NvU8 bus, NvU8 slot, NvU8 function)
 {
+    printk(KERN_ERR "=====================================   590\n");
     nv_linux_state_t *nvl = NULL;
 
     LOCK_NV_LINUX_DEVICES();
@@ -1000,6 +1008,7 @@ nv_linux_state_t * find_pci(NvU32 domain, NvU8 bus, NvU8 slot, NvU8 function)
 int nvidia_dev_get_pci_info(const NvU8 *uuid, struct pci_dev **pci_dev_out,
     NvU64 *dma_start, NvU64 *dma_limit)
 {
+    printk(KERN_ERR "=====================================   591\n");
     nv_linux_state_t *nvl;
 
     /* Takes nvl->ldata_lock */
@@ -1018,6 +1027,7 @@ int nvidia_dev_get_pci_info(const NvU8 *uuid, struct pci_dev **pci_dev_out,
 
 NvU8 nv_find_pci_capability(struct pci_dev *pci_dev, NvU8 capability)
 {
+    printk(KERN_ERR "=====================================   592\n");
     u16 status = 0;
     u8  cap_ptr = 0, cap_id = 0xff;
 
@@ -1053,6 +1063,7 @@ NvU8 nv_find_pci_capability(struct pci_dev *pci_dev, NvU8 capability)
 int
 nv_pci_count_devices(void)
 {
+    printk(KERN_ERR "=====================================   593\n");
     struct pci_dev *pci_dev;
     int count = 0;
 
@@ -1105,6 +1116,7 @@ nv_pci_error_detected(
     nv_pci_channel_state_t error
 )
 {
+    printk(KERN_ERR "=====================================   594\n");
     nv_linux_state_t *nvl = pci_get_drvdata(pci_dev);
 
     if ((nvl == NULL) || (nvl->pci_dev != pci_dev))
@@ -1125,6 +1137,7 @@ nv_pci_mmio_enabled(
     struct pci_dev *pci_dev
 )
 {
+    printk(KERN_ERR "=====================================   595\n");
     NV_STATUS         status = NV_OK;
     nv_stack_t       *sp = NULL;
     nv_linux_state_t *nvl = pci_get_drvdata(pci_dev);
@@ -1213,6 +1226,7 @@ struct pci_driver nv_pci_driver = {
 
 void nv_pci_unregister_driver(void)
 {
+    printk(KERN_ERR "=====================================   596\n");
     if (NVreg_RegisterPCIDriver == 0)
     {
         return;
@@ -1222,6 +1236,7 @@ void nv_pci_unregister_driver(void)
 
 int nv_pci_register_driver(void)
 {
+    printk(KERN_ERR "=====================================   597\n");
     if (NVreg_RegisterPCIDriver == 0)
     {
         return 0;

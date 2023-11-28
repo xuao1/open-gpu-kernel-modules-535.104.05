@@ -30,6 +30,7 @@ static inline int nv_follow_pfn(struct vm_area_struct *vma,
                                 unsigned long address,
                                 unsigned long *pfn)
 {
+    printk(KERN_ERR "=====================================   996\n");
 #if defined(NV_UNSAFE_FOLLOW_PFN_PRESENT)
     return unsafe_follow_pfn(vma, address, pfn);
 #else
@@ -56,6 +57,7 @@ static NV_STATUS get_io_ptes(struct vm_area_struct *vma,
                              NvU64 page_count,
                              NvU64 **pte_array)
 {
+    printk(KERN_ERR "=====================================   997\n");
     NvU64 i;
     unsigned long pfn;
 
@@ -106,6 +108,7 @@ static NV_STATUS get_io_pages(struct vm_area_struct *vma,
                               NvU64 page_count,
                               struct page **page_array)
 {
+    printk(KERN_ERR "=====================================   998\n");
     NV_STATUS rmStatus = NV_OK;
     NvU64 i, pinned = 0;
     unsigned long pfn;
@@ -142,6 +145,7 @@ NV_STATUS NV_API_CALL os_lookup_user_io_memory(
     void  **page_array
 )
 {
+    printk(KERN_ERR "=====================================   999\n");
     NV_STATUS rmStatus;
     struct mm_struct *mm = current->mm;
     struct vm_area_struct *vma;
@@ -218,6 +222,7 @@ NV_STATUS NV_API_CALL os_lock_user_pages(
     NvU32   flags
 )
 {
+    printk(KERN_ERR "=====================================   1000\n");
     NV_STATUS rmStatus;
     struct mm_struct *mm = current->mm;
     struct page **user_pages;
@@ -270,6 +275,7 @@ NV_STATUS NV_API_CALL os_unlock_user_pages(
     void  *page_array
 )
 {
+    printk(KERN_ERR "=====================================   1001\n");
     NvBool write = 1;
     struct page **user_pages = page_array;
     NvU32 i;

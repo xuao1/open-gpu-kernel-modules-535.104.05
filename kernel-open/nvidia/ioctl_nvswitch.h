@@ -41,6 +41,7 @@ extern "C"
 static NV_INLINE
 NvU32 nvswitch_uuid_to_string(NvUuid *uuid, char *str, NvU32 strLen)
 {
+    printk(KERN_ERR "=====================================   6\n");
     int i;
     int j = 0;
 

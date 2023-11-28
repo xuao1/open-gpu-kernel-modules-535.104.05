@@ -40,6 +40,7 @@ struct lkca_aead_ctx
 
 int libspdm_aead_prealloc(void **context, char const *alg)
 {
+    printk(KERN_ERR "=====================================   9\n");
 #ifndef USE_LKCA
     return -ENODEV;
 #else
@@ -101,6 +102,7 @@ int libspdm_aead_prealloc(void **context, char const *alg)
 
 void libspdm_aead_free(void *context)
 {
+    printk(KERN_ERR "=====================================   10\n");
 #ifdef USE_LKCA
     struct lkca_aead_ctx *ctx = context;
     crypto_free_aead(ctx->aead);
@@ -132,6 +134,7 @@ static int lkca_aead_internal(struct crypto_aead *aead,
                               size_t tag_size,
                               bool enc)
 {
+    printk(KERN_ERR "=====================================   11\n");
     DECLARE_CRYPTO_WAIT(wait);
     int rc = 0;
 
@@ -177,6 +180,7 @@ int libspdm_aead_prealloced(void *context,
                             uint8_t *data_out, size_t *data_out_size,
                             bool enc)
 {
+    printk(KERN_ERR "=====================================   12\n");
 #ifndef USE_LKCA
     return -ENODEV;
 #else
@@ -255,6 +259,7 @@ int libspdm_aead(const uint8_t *key, size_t key_size,
                  uint8_t *data_out, size_t *data_out_size,
                  bool enc, char const *alg)
 {
+    printk(KERN_ERR "=====================================   13\n");
 #ifndef USE_LKCA
     return -ENODEV;
 #else
@@ -384,6 +389,7 @@ bool libspdm_aead_aes_gcm_encrypt_prealloc(void *context,
                                   uint8_t *tag_out, size_t tag_size,
                                   uint8_t *data_out, size_t *data_out_size)
 {
+    printk(KERN_ERR "=====================================   14\n");
     int32_t ret;
 
     if (data_in_size > INT_MAX) {
@@ -430,6 +436,7 @@ bool libspdm_aead_aes_gcm_decrypt_prealloc(void *context,
                                   const uint8_t *tag, size_t tag_size,
                                   uint8_t *data_out, size_t *data_out_size)
 {
+    printk(KERN_ERR "=====================================   15\n");
     int ret;
     if (data_in_size > INT_MAX) {
         return false;

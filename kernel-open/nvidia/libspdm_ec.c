@@ -30,12 +30,14 @@ static bool lkca_ecdsa_sign(void *ec_context,
                             const uint8_t *message_hash, size_t hash_size,
                             uint8_t *signature, size_t *sig_size)
 {
+    printk(KERN_ERR "=====================================   16\n");
     return false;
 }
 
 bool libspdm_ec_set_pub_key(void *ec_context, const uint8_t *public_key,
                             size_t public_key_size)
 {
+    printk(KERN_ERR "=====================================   17\n");
     if (ec_context == NULL || public_key == NULL) {
         return false;
     }
@@ -46,6 +48,7 @@ bool libspdm_ec_set_pub_key(void *ec_context, const uint8_t *public_key,
 bool libspdm_ec_get_pub_key(void *ec_context, uint8_t *public_key,
                             size_t *public_key_size)
 {
+    printk(KERN_ERR "=====================================   18\n");
     if (ec_context == NULL || public_key_size == NULL) {
         return false;
     }
@@ -59,6 +62,7 @@ bool libspdm_ec_get_pub_key(void *ec_context, uint8_t *public_key,
 
 bool libspdm_ec_check_key(const void *ec_context)
 {
+    printk(KERN_ERR "=====================================   19\n");
     /* TBD*/
     return true;
 }
@@ -66,6 +70,7 @@ bool libspdm_ec_check_key(const void *ec_context)
 bool libspdm_ec_generate_key(void *ec_context, uint8_t *public_data,
                              size_t *public_size)
 {
+    printk(KERN_ERR "=====================================   20\n");
     if (ec_context == NULL || public_size == NULL) {
         return false;
     }
@@ -81,6 +86,7 @@ bool libspdm_ec_compute_key(void *ec_context, const uint8_t *peer_public,
                             size_t peer_public_size, uint8_t *key,
                             size_t *key_size)
 {
+    printk(KERN_ERR "=====================================   21\n");
     if (ec_context == NULL || peer_public == NULL || key_size == NULL ||
         key == NULL) {
         return false;
@@ -98,6 +104,7 @@ bool libspdm_ecdsa_sign(void *ec_context, size_t hash_nid,
                         const uint8_t *message_hash, size_t hash_size,
                         uint8_t *signature, size_t *sig_size)
 {
+    printk(KERN_ERR "=====================================   22\n");
     if (ec_context == NULL || message_hash == NULL) {
         return false;
     }
@@ -136,6 +143,7 @@ bool libspdm_ecdsa_verify(void *ec_context, size_t hash_nid,
                           const uint8_t *message_hash, size_t hash_size,
                           const uint8_t *signature, size_t sig_size)
 {
+    printk(KERN_ERR "=====================================   23\n");
     if (ec_context == NULL || message_hash == NULL || signature == NULL) {
         return false;
     }

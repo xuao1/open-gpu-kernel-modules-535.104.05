@@ -32,6 +32,7 @@
 
 static int nv_i2c_algo_master_xfer(struct i2c_adapter *adapter, struct i2c_msg msgs[], int num)
 {
+    printk(KERN_ERR "=====================================   457\n");
     nv_state_t *nv = (nv_state_t *)adapter->algo_data;
     unsigned int i = 0;
     int rc;
@@ -87,6 +88,7 @@ static int nv_i2c_algo_smbus_xfer(
     union i2c_smbus_data *data
 )
 {
+    printk(KERN_ERR "=====================================   458\n");
     nv_state_t *nv = (nv_state_t *)adapter->algo_data;
     int rc;
     NV_STATUS rmStatus = NV_OK;
@@ -191,6 +193,7 @@ static int nv_i2c_algo_smbus_xfer(
 
 static u32 nv_i2c_algo_functionality(struct i2c_adapter *adapter)
 {
+    printk(KERN_ERR "=====================================   459\n");
     nv_state_t *nv = (nv_state_t *)adapter->algo_data;
     u32 ret = I2C_FUNC_I2C;
     nvidia_stack_t *sp = NULL;
@@ -229,6 +232,7 @@ struct i2c_adapter nv_i2c_adapter_prototype = {
 
 void* NV_API_CALL nv_i2c_add_adapter(nv_state_t *nv, NvU32 port)
 {
+    printk(KERN_ERR "=====================================   460\n");
     NV_STATUS rmStatus;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     struct i2c_adapter *pI2cAdapter = NULL;
@@ -276,6 +280,7 @@ void* NV_API_CALL nv_i2c_add_adapter(nv_state_t *nv, NvU32 port)
 
 void NV_API_CALL nv_i2c_del_adapter(nv_state_t *nv, void *data)
 {
+    printk(KERN_ERR "=====================================   461\n");
     struct i2c_adapter *pI2cAdapter = (struct i2c_adapter *)data;
 
     if (pI2cAdapter)
@@ -290,10 +295,12 @@ void NV_API_CALL nv_i2c_del_adapter(nv_state_t *nv, void *data)
 
 void NV_API_CALL nv_i2c_del_adapter(nv_state_t *nv, void *data)
 {
+    printk(KERN_ERR "=====================================   462\n");
 }
 
 void* NV_API_CALL nv_i2c_add_adapter(nv_state_t *nv, NvU32 port)
 {
+    printk(KERN_ERR "=====================================   463\n");
     return NULL;
 }
 

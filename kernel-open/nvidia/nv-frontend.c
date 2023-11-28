@@ -84,6 +84,7 @@ static struct file_operations nv_frontend_fops = {
 
 static int add_device(nvidia_module_t *module, nv_linux_state_t *device, NvBool all)
 {
+    printk(KERN_ERR "=====================================   442\n");
     NvU32 i;
     int rc = -1;
 
@@ -115,6 +116,7 @@ static int add_device(nvidia_module_t *module, nv_linux_state_t *device, NvBool 
 
 static int remove_device(nvidia_module_t *module, nv_linux_state_t *device)
 {
+    printk(KERN_ERR "=====================================   443\n");
     int rc = -1;
 
     // remove this device from minor_number table
@@ -131,6 +133,7 @@ static int remove_device(nvidia_module_t *module, nv_linux_state_t *device)
 
 int nvidia_register_module(nvidia_module_t *module)
 {
+    printk(KERN_ERR "=====================================   444\n");
     int rc = 0;
     NvU32 ctrl_minor_num;
 
@@ -155,6 +158,7 @@ EXPORT_SYMBOL(nvidia_register_module);
 
 int nvidia_unregister_module(nvidia_module_t *module)
 {
+    printk(KERN_ERR "=====================================   445\n");
     int rc = 0;
     NvU32 ctrl_minor_num;
 
@@ -181,6 +185,7 @@ EXPORT_SYMBOL(nvidia_unregister_module);
 
 int nvidia_frontend_add_device(nvidia_module_t *module, nv_linux_state_t * device)
 {
+    printk(KERN_ERR "=====================================   446\n");
     int rc = -1;
     NvU32 ctrl_minor_num;
 
@@ -204,6 +209,7 @@ EXPORT_SYMBOL(nvidia_frontend_add_device);
 
 int nvidia_frontend_remove_device(nvidia_module_t *module, nv_linux_state_t * device)
 {
+    printk(KERN_ERR "=====================================   447\n");
     int rc = 0;
     NvU32 ctrl_minor_num;
 
@@ -230,6 +236,7 @@ int nvidia_frontend_open(
     struct file *file
 )
 {
+    printk(KERN_ERR "=====================================   448\n");
     int rc = -ENODEV;
     nvidia_module_t *module = NULL;
 
@@ -264,6 +271,7 @@ int nvidia_frontend_close(
     struct file *file
 )
 {
+    printk(KERN_ERR "=====================================   449\n");
     int rc = -ENODEV;
     nvidia_module_t *module = NULL;
 
@@ -287,6 +295,7 @@ unsigned int nvidia_frontend_poll(
     poll_table *wait
 )
 {
+    printk(KERN_ERR "=====================================   450\n");
     unsigned int mask = 0;
     struct inode *inode = NV_FILE_INODE(file);
     NvU32 minor_num = NV_FRONTEND_MINOR_NUMBER(inode);
@@ -304,6 +313,7 @@ int nvidia_frontend_ioctl(
     unsigned int cmd,
     unsigned long i_arg)
 {
+    printk(KERN_ERR "=====================================   451\n");
     printk(KERN_ERR, "xuao 2. nvidia driver nvidia_frontend_ioctl file\n");
     int rc = -ENODEV;
     nvidia_module_t *module = NULL;
@@ -323,6 +333,7 @@ long nvidia_frontend_unlocked_ioctl(
     unsigned long i_arg
 )
 {
+    printk(KERN_ERR "=====================================   452\n");
     // xuao coda here
     printk(KERN_ERR, "xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: %u, arg: %lu\n", cmd, i_arg);
     return nvidia_frontend_ioctl(NV_FILE_INODE(file), file, cmd, i_arg);
@@ -334,6 +345,7 @@ long nvidia_frontend_compat_ioctl(
     unsigned long i_arg
 )
 {
+    printk(KERN_ERR "=====================================   453\n");
     return nvidia_frontend_ioctl(NV_FILE_INODE(file), file, cmd, i_arg);
 }
 
@@ -342,6 +354,7 @@ int nvidia_frontend_mmap(
     struct vm_area_struct *vma
 )
 {
+    printk(KERN_ERR "=====================================   454\n");
     int rc = -ENODEV;
     struct inode *inode = NV_FILE_INODE(file);
     NvU32 minor_num = NV_FRONTEND_MINOR_NUMBER(inode);
@@ -355,6 +368,7 @@ int nvidia_frontend_mmap(
 
 static int __init nvidia_frontend_init_module(void)
 {
+    printk(KERN_ERR "=====================================   455\n");
     int status = 0;
 
     // initialise nvidia module table;
@@ -381,6 +395,7 @@ static int __init nvidia_frontend_init_module(void)
 
 static void __exit nvidia_frontend_exit_module(void)
 {
+    printk(KERN_ERR "=====================================   456\n");
     /*
      * If this is the last nvidia_module to be unregistered, cleanup and
      * unregister char dev

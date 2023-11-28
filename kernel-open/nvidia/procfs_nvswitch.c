@@ -44,6 +44,7 @@ nv_procfs_read_permissions
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   1019\n");
     // Restrict device node permissions - 0666. Used by nvidia-modprobe.
     seq_printf(s, "%s: %u\n", "DeviceFileMode", 438);
 
@@ -59,6 +60,7 @@ nv_procfs_read_device_info
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   1020\n");
     NVSWITCH_DEV *nvswitch_dev = s->private;
 
     if (!nvswitch_dev)
@@ -94,6 +96,7 @@ nvswitch_procfs_device_remove
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   1021\n");
     if (!nvswitch_dev || !nvswitch_dev->procfs_dir)
     {
         NVSWITCH_OS_ASSERT(0);
@@ -110,6 +113,7 @@ nvswitch_procfs_device_add
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   1022\n");
     struct pci_dev *pci_dev;
     struct proc_dir_entry *device_dir, *entry;
     char name[32];
@@ -150,6 +154,7 @@ nvswitch_procfs_exit
     void
 )
 {
+    printk(KERN_ERR "=====================================   1023\n");
     if (!nvswitch_procfs_dir)
     {
         return;
@@ -165,6 +170,7 @@ nvswitch_procfs_init
     void
 )
 {
+    printk(KERN_ERR "=====================================   1024\n");
     nvswitch_procfs_dir = NV_CREATE_PROC_DIR(NVSWITCH_PROCFS_DIR, NULL);
     if (!nvswitch_procfs_dir)
     {

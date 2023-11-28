@@ -34,6 +34,7 @@ void* NV_API_CALL os_map_user_space(
     void  **priv_data
 )
 {
+    printk(KERN_ERR "=====================================   1016\n");
     return (void *)(NvUPtr)start;
 }
 
@@ -43,6 +44,7 @@ void NV_API_CALL os_unmap_user_space(
     void  *priv_data
 )
 {
+    printk(KERN_ERR "=====================================   1017\n");
 }
 
 NV_STATUS NV_API_CALL os_match_mmap_offset(
@@ -51,6 +53,7 @@ NV_STATUS NV_API_CALL os_match_mmap_offset(
     NvU64 *pPageIndex
 )
 {
+    printk(KERN_ERR "=====================================   1018\n");
     nv_alloc_t *at = pAllocPrivate;
     NvU64 i;
 

@@ -26,6 +26,7 @@
 // This is non-gpl symbol and not part of LKCA so no need to stub it out
 bool libspdm_random_bytes(uint8_t *output, size_t size)
 {
+    printk(KERN_ERR "=====================================   65\n");
     get_random_bytes(output, size);
     return true;
 }
@@ -33,5 +34,6 @@ bool libspdm_random_bytes(uint8_t *output, size_t size)
 // This is specifically allowed by spdm
 bool libspdm_random_seed(const uint8_t *seed, size_t seed_size)
 {
+    printk(KERN_ERR "=====================================   66\n");
     return true;
 }

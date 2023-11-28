@@ -48,6 +48,7 @@ static inline NvBool nv_dma_is_addressable(
     NvU64 size
 )
 {
+    printk(KERN_ERR "=====================================   379\n");
     NvU64 limit = start + size - 1;
 
     return (start >= dma_dev->addressable_range.start) &&
@@ -61,6 +62,7 @@ static NV_STATUS nv_dma_map_contig(
     NvU64 *va
 )
 {
+    printk(KERN_ERR "=====================================   380\n");
 #if defined(NV_DMA_MAP_PAGE_ATTRS_PRESENT) && defined(NV_DMA_ATTR_SKIP_CPU_SYNC_PRESENT)
     *va = dma_map_page_attrs(dma_map->dev, dma_map->pages[0], 0,
                              dma_map->page_count * PAGE_SIZE,
@@ -95,6 +97,7 @@ static NV_STATUS nv_dma_map_contig(
 
 static void nv_dma_unmap_contig(nv_dma_map_t *dma_map)
 {
+    printk(KERN_ERR "=====================================   381\n");
 #if defined(NV_DMA_MAP_PAGE_ATTRS_PRESENT) && defined(NV_DMA_ATTR_SKIP_CPU_SYNC_PRESENT)
     dma_unmap_page_attrs(dma_map->dev, dma_map->mapping.contig.dma_addr,
                          dma_map->page_count * PAGE_SIZE,
@@ -114,6 +117,7 @@ static void nv_fill_scatterlist
     unsigned int page_count
 )
 {
+    printk(KERN_ERR "=====================================   382\n");
     unsigned int i;
     struct scatterlist *sg;
 #if defined(for_each_sg)
@@ -134,6 +138,7 @@ static void nv_fill_scatterlist
 
 NV_STATUS nv_create_dma_map_scatterlist(nv_dma_map_t *dma_map)
 {
+    printk(KERN_ERR "=====================================   383\n");
     /*
      * We need to split our mapping into at most 4GB - PAGE_SIZE chunks.
      * The Linux kernel stores the length (and offset) of a scatter-gather
@@ -220,6 +225,7 @@ NV_STATUS nv_create_dma_map_scatterlist(nv_dma_map_t *dma_map)
 
 NV_STATUS nv_map_dma_map_scatterlist(nv_dma_map_t *dma_map)
 {
+    printk(KERN_ERR "=====================================   384\n");
     NV_STATUS status = NV_OK;
     nv_dma_submap_t *submap;
     NvU64 i;
@@ -250,6 +256,7 @@ NV_STATUS nv_map_dma_map_scatterlist(nv_dma_map_t *dma_map)
 
 void nv_unmap_dma_map_scatterlist(nv_dma_map_t *dma_map)
 {
+    printk(KERN_ERR "=====================================   385\n");
     nv_dma_submap_t *submap;
     NvU64 i;
 
@@ -274,6 +281,7 @@ void nv_unmap_dma_map_scatterlist(nv_dma_map_t *dma_map)
 
 void nv_destroy_dma_map_scatterlist(nv_dma_map_t *dma_map)
 {
+    printk(KERN_ERR "=====================================   386\n");
     nv_dma_submap_t *submap;
     NvU64 i;
 
@@ -295,6 +303,7 @@ void nv_load_dma_map_scatterlist(
     NvU64 *va_array
 )
 {
+    printk(KERN_ERR "=====================================   387\n");
     unsigned int i, j;
     struct scatterlist *sg;
     nv_dma_submap_t *submap;
@@ -325,6 +334,7 @@ static NV_STATUS nv_dma_map_scatterlist(
     NvU64           *va_array
 )
 {
+    printk(KERN_ERR "=====================================   388\n");
     NV_STATUS status;
     NvU64 i;
 
@@ -366,6 +376,7 @@ static NV_STATUS nv_dma_map_scatterlist(
 
 static void nv_dma_unmap_scatterlist(nv_dma_map_t *dma_map)
 {
+    printk(KERN_ERR "=====================================   389\n");
     nv_unmap_dma_map_scatterlist(dma_map);
     nv_destroy_dma_map_scatterlist(dma_map);
 }
@@ -378,6 +389,7 @@ static void nv_dma_nvlink_addr_compress
     NvBool           contig
 )
 {
+    printk(KERN_ERR "=====================================   390\n");
 #if defined(NVCPU_PPC64LE)
     NvU64 addr = 0;
     NvU64 i;
@@ -418,6 +430,7 @@ static void nv_dma_nvlink_addr_decompress
     NvBool           contig
 )
 {
+    printk(KERN_ERR "=====================================   391\n");
 #if defined(NVCPU_PPC64LE)
     NvU64 i;
 
@@ -439,6 +452,7 @@ NV_STATUS NV_API_CALL nv_dma_map_sgt(
     void           **priv
 )
 {
+    printk(KERN_ERR "=====================================   392\n");
     NV_STATUS status;
     nv_dma_map_t *dma_map = NULL;
 
@@ -491,6 +505,7 @@ NV_STATUS NV_API_CALL nv_dma_unmap_sgt(
     void           **priv
 )
 {
+    printk(KERN_ERR "=====================================   393\n");
     nv_dma_map_t *dma_map;
 
     if (priv == NULL)
@@ -518,6 +533,7 @@ NV_STATUS NV_API_CALL nv_dma_map_pages(
     void           **priv
 )
 {
+    printk(KERN_ERR "=====================================   394\n");
     NV_STATUS status;
     nv_dma_map_t *dma_map = NULL;
 
@@ -589,6 +605,7 @@ NV_STATUS NV_API_CALL nv_dma_unmap_pages(
     void           **priv
 )
 {
+    printk(KERN_ERR "=====================================   395\n");
     nv_dma_map_t *dma_map;
 
     if (priv == NULL)
@@ -646,6 +663,7 @@ NV_STATUS NV_API_CALL nv_dma_map_alloc
     void           **priv
 )
 {
+    printk(KERN_ERR "=====================================   396\n");
     NV_STATUS status;
     NvU64 i;
     nv_alloc_t *at = *priv;
@@ -735,6 +753,7 @@ NV_STATUS NV_API_CALL nv_dma_unmap_alloc
     void           **priv
 )
 {
+    printk(KERN_ERR "=====================================   397\n");
     NV_STATUS status = NV_OK;
     nv_dma_map_t *dma_map;
 
@@ -773,6 +792,7 @@ static NvBool nv_dma_use_map_resource
     nv_dma_device_t *dma_dev
 )
 {
+    printk(KERN_ERR "=====================================   398\n");
 #if defined(NV_DMA_MAP_RESOURCE_PRESENT)
     const struct dma_map_ops *ops = get_dma_ops(dma_dev->dev);
 #endif
@@ -812,6 +832,7 @@ NV_STATUS NV_API_CALL nv_dma_map_peer
     NvU64           *va
 )
 {
+    printk(KERN_ERR "=====================================   399\n");
     struct pci_dev *peer_pci_dev = to_pci_dev(peer_dma_dev->dev);
     struct resource *res;
     NvU8 bar_index;
@@ -868,6 +889,7 @@ void NV_API_CALL nv_dma_unmap_peer
     NvU64            va
 )
 {
+    printk(KERN_ERR "=====================================   400\n");
     if (nv_dma_use_map_resource(dma_dev))
     {
         nv_dma_unmap_mmio(dma_dev, page_count, va);
@@ -882,6 +904,7 @@ NV_STATUS NV_API_CALL nv_dma_map_mmio
     NvU64           *va
 )
 {
+    printk(KERN_ERR "=====================================   401\n");
 #if defined(NV_DMA_MAP_RESOURCE_PRESENT)
     BUG_ON(!va);
 
@@ -923,6 +946,7 @@ void NV_API_CALL nv_dma_unmap_mmio
     NvU64            va
 )
 {
+    printk(KERN_ERR "=====================================   402\n");
 #if defined(NV_DMA_MAP_RESOURCE_PRESENT)
     nv_dma_nvlink_addr_decompress(dma_dev, &va, page_count, NV_TRUE);
 
@@ -948,6 +972,7 @@ void NV_API_CALL nv_dma_cache_invalidate
     void *priv
 )
 {
+    printk(KERN_ERR "=====================================   403\n");
 #if defined(NVCPU_AARCH64)
     nv_dma_map_t *dma_map = priv;
 
@@ -980,6 +1005,7 @@ void NV_API_CALL nv_dma_enable_nvlink
     nv_dma_device_t *dma_dev
 )
 {
+    printk(KERN_ERR "=====================================   404\n");
     dma_dev->nvlink = NV_TRUE;
 }
 
@@ -996,6 +1022,7 @@ void NV_API_CALL nv_dma_enable_nvlink
 static inline void
 nv_dma_gem_object_unreference_unlocked(struct drm_gem_object *gem)
 {
+    printk(KERN_ERR "=====================================   405\n");
 #if defined(NV_DRM_GEM_OBJECT_GET_PRESENT)
 
 #if defined(NV_DRM_GEM_OBJECT_PUT_UNLOCK_PRESENT)
@@ -1012,6 +1039,7 @@ nv_dma_gem_object_unreference_unlocked(struct drm_gem_object *gem)
 static inline void
 nv_dma_gem_object_reference(struct drm_gem_object *gem)
 {
+    printk(KERN_ERR "=====================================   406\n");
 #if defined(NV_DRM_GEM_OBJECT_GET_PRESENT)
     drm_gem_object_get(gem);
 #else
@@ -1026,6 +1054,7 @@ NV_STATUS NV_API_CALL nv_dma_import_sgt
     struct drm_gem_object *gem
 )
 {
+    printk(KERN_ERR "=====================================   407\n");
     if ((dma_dev == NULL) ||
         (sgt == NULL) ||
         (gem == NULL))
@@ -1056,6 +1085,7 @@ void NV_API_CALL nv_dma_release_sgt
     struct drm_gem_object *gem
 )
 {
+    printk(KERN_ERR "=====================================   408\n");
     if (gem == NULL)
     {
         return;
@@ -1078,6 +1108,7 @@ NV_STATUS NV_API_CALL nv_dma_import_sgt
     struct drm_gem_object *gem
 )
 {
+    printk(KERN_ERR "=====================================   409\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -1087,6 +1118,7 @@ void NV_API_CALL nv_dma_release_sgt
     struct drm_gem_object *gem
 )
 {
+    printk(KERN_ERR "=====================================   410\n");
 }
 #endif /* NV_LINUX_DMA_BUF_H_PRESENT && NV_DRM_AVAILABLE && NV_DRM_DRM_GEM_H_PRESENT */
 
@@ -1105,6 +1137,7 @@ NV_STATUS NV_API_CALL nv_dma_import_dma_buf
     nv_dma_buf_t **import_priv
 )
 {
+    printk(KERN_ERR "=====================================   411\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -1118,6 +1151,7 @@ NV_STATUS NV_API_CALL nv_dma_import_from_fd
     nv_dma_buf_t **import_priv
 )
 {
+    printk(KERN_ERR "=====================================   412\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -1127,5 +1161,6 @@ void NV_API_CALL nv_dma_release_dma_buf
     nv_dma_buf_t *import_priv
 )
 {
+    printk(KERN_ERR "=====================================   413\n");
 }
 #endif /* !IMPORT_DMABUF_FUNCTIONS_DEFINED */

@@ -27,6 +27,7 @@
 
 static inline void nv_set_contig_memory_uc(nvidia_pte_t *page_ptr, NvU32 num_pages)
 {
+    printk(KERN_ERR "=====================================   654\n");
 #if defined(NV_SET_MEMORY_UC_PRESENT)
     struct page *page = NV_GET_PAGE_STRUCT(page_ptr->phys_addr);
     unsigned long addr = (unsigned long)page_address(page);
@@ -39,6 +40,7 @@ static inline void nv_set_contig_memory_uc(nvidia_pte_t *page_ptr, NvU32 num_pag
 
 static inline void nv_set_contig_memory_wb(nvidia_pte_t *page_ptr, NvU32 num_pages)
 {
+    printk(KERN_ERR "=====================================   655\n");
 #if defined(NV_SET_MEMORY_UC_PRESENT)
     struct page *page = NV_GET_PAGE_STRUCT(page_ptr->phys_addr);
     unsigned long addr = (unsigned long)page_address(page);
@@ -51,6 +53,7 @@ static inline void nv_set_contig_memory_wb(nvidia_pte_t *page_ptr, NvU32 num_pag
 
 static inline int nv_set_memory_array_type_present(NvU32 type)
 {
+    printk(KERN_ERR "=====================================   656\n");
     switch (type)
     {
 #if defined(NV_SET_MEMORY_ARRAY_UC_PRESENT)
@@ -66,6 +69,7 @@ static inline int nv_set_memory_array_type_present(NvU32 type)
 
 static inline int nv_set_pages_array_type_present(NvU32 type)
 {
+    printk(KERN_ERR "=====================================   657\n");
     switch (type)
     {
 #if defined(NV_SET_PAGES_ARRAY_UC_PRESENT)
@@ -85,6 +89,7 @@ static inline void nv_set_memory_array_type(
     NvU32 type
 )
 {
+    printk(KERN_ERR "=====================================   658\n");
     switch (type)
     {
 #if defined(NV_SET_MEMORY_ARRAY_UC_PRESENT)
@@ -109,6 +114,7 @@ static inline void nv_set_pages_array_type(
     NvU32 type
 )
 {
+    printk(KERN_ERR "=====================================   659\n");
     switch (type)
     {
 #if defined(NV_SET_PAGES_ARRAY_UC_PRESENT)
@@ -133,6 +139,7 @@ static inline void nv_set_contig_memory_type(
     NvU32 type
 )
 {
+    printk(KERN_ERR "=====================================   660\n");
     switch (type)
     {
         case NV_MEMORY_UNCACHED:
@@ -150,6 +157,7 @@ static inline void nv_set_contig_memory_type(
 
 static inline void nv_set_memory_type(nv_alloc_t *at, NvU32 type)
 {
+    printk(KERN_ERR "=====================================   661\n");
     NvU32 i;
     NV_STATUS status = NV_OK;
 #if defined(NV_SET_MEMORY_ARRAY_UC_PRESENT)
@@ -217,6 +225,7 @@ static inline void nv_set_memory_type(nv_alloc_t *at, NvU32 type)
 
 static NvU64 nv_get_max_sysmem_address(void)
 {
+    printk(KERN_ERR "=====================================   662\n");
     NvU64 global_max_pfn = 0ULL;
     int node_id;
 
@@ -233,6 +242,7 @@ static unsigned int nv_compute_gfp_mask(
     nv_alloc_t *at
 )
 {
+    printk(KERN_ERR "=====================================   663\n");
     unsigned int gfp_mask = NV_GFP_KERNEL;
     struct device *dev = at->dev;
 
@@ -290,6 +300,7 @@ static NV_STATUS nv_alloc_coherent_pages(
     nv_alloc_t *at
 )
 {
+    printk(KERN_ERR "=====================================   664\n");
     nvidia_pte_t *page_ptr;
     NvU32 i;
     unsigned int gfp_mask;
@@ -345,6 +356,7 @@ static void nv_free_coherent_pages(
     nv_alloc_t *at
 )
 {
+    printk(KERN_ERR "=====================================   665\n");
     nvidia_pte_t *page_ptr;
     struct device *dev = at->dev;
 
@@ -366,6 +378,7 @@ NV_STATUS nv_alloc_contig_pages(
     nv_alloc_t *at
 )
 {
+    printk(KERN_ERR "=====================================   666\n");
     NV_STATUS status;
     nvidia_pte_t *page_ptr;
     NvU32 i, j;
@@ -461,6 +474,7 @@ void nv_free_contig_pages(
     nv_alloc_t *at
 )
 {
+    printk(KERN_ERR "=====================================   667\n");
     nvidia_pte_t *page_ptr;
     unsigned int i;
 
@@ -505,6 +519,7 @@ NV_STATUS nv_alloc_system_pages(
     nv_alloc_t *at
 )
 {
+    printk(KERN_ERR "=====================================   668\n");
     NV_STATUS status;
     nvidia_pte_t *page_ptr;
     NvU32 i, j;
@@ -623,6 +638,7 @@ void nv_free_system_pages(
     nv_alloc_t *at
 )
 {
+    printk(KERN_ERR "=====================================   669\n");
     nvidia_pte_t *page_ptr;
     unsigned int i;
     struct device *dev = at->dev;
@@ -669,6 +685,7 @@ NvUPtr nv_vm_map_pages(
     NvBool unencrypted
 )
 {
+    printk(KERN_ERR "=====================================   670\n");
     NvUPtr virt_addr = 0;
 
     if (!NV_MAY_SLEEP())
@@ -689,6 +706,7 @@ void nv_vm_unmap_pages(
     NvU32 count
 )
 {
+    printk(KERN_ERR "=====================================   671\n");
     if (!NV_MAY_SLEEP())
     {
         nv_printf(NV_DBG_ERRORS,

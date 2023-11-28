@@ -58,6 +58,7 @@ static unsigned long orig_pat1, orig_pat2;
 
 static inline void nv_disable_caches(unsigned long *cr4)
 {
+    printk(KERN_ERR "=====================================   563\n");
     unsigned long cr0 = read_cr0();
     write_cr0(((cr0 & (0xdfffffff)) | 0x40000000));
     wbinvd();
@@ -68,6 +69,7 @@ static inline void nv_disable_caches(unsigned long *cr4)
 
 static inline void nv_enable_caches(unsigned long cr4)
 {
+    printk(KERN_ERR "=====================================   564\n");
     unsigned long cr0 = read_cr0();
     wbinvd();
     __flush_tlb();
@@ -77,6 +79,7 @@ static inline void nv_enable_caches(unsigned long cr4)
 
 static void nv_setup_pat_entries(void *info)
 {
+    printk(KERN_ERR "=====================================   565\n");
     unsigned long pat1, pat2, cr4;
     unsigned long eflags;
 
@@ -103,6 +106,7 @@ static void nv_setup_pat_entries(void *info)
 
 static void nv_restore_pat_entries(void *info)
 {
+    printk(KERN_ERR "=====================================   566\n");
     unsigned long cr4;
     unsigned long eflags;
 
@@ -148,6 +152,7 @@ static void nv_restore_pat_entries(void *info)
 static int
 nvidia_cpu_teardown(unsigned int cpu)
 {
+    printk(KERN_ERR "=====================================   567\n");
 #if defined(NV_ENABLE_HOTPLUG_CPU)
     unsigned int this_cpu = get_cpu();
 
@@ -164,6 +169,7 @@ nvidia_cpu_teardown(unsigned int cpu)
 static int
 nvidia_cpu_online(unsigned int cpu)
 {
+    printk(KERN_ERR "=====================================   568\n");
 #if defined(NV_ENABLE_HOTPLUG_CPU)
     unsigned int this_cpu = get_cpu();
 
@@ -179,6 +185,7 @@ nvidia_cpu_online(unsigned int cpu)
 
 static int nv_enable_builtin_pat_support(void)
 {
+    printk(KERN_ERR "=====================================   569\n");
     unsigned long pat1, pat2;
 
     NV_READ_PAT_ENTRIES(orig_pat1, orig_pat2);
@@ -193,6 +200,7 @@ static int nv_enable_builtin_pat_support(void)
 
 static void nv_disable_builtin_pat_support(void)
 {
+    printk(KERN_ERR "=====================================   570\n");
     unsigned long pat1, pat2;
 
     on_each_cpu(nv_restore_pat_entries, NULL, 1);
@@ -206,6 +214,7 @@ static void nv_disable_builtin_pat_support(void)
 static int
 nvidia_cpu_callback(struct notifier_block *nfb, unsigned long action, void *hcpu)
 {
+    printk(KERN_ERR "=====================================   571\n");
 /* CPU_DOWN_FAILED was added by the following commit
  *   2004 Oct 18: 71da3667be80d30121df3972caa0bf5684228379
  *
@@ -254,6 +263,7 @@ static enum cpuhp_state nvidia_pat_online;
 static int
 nvidia_register_cpu_hotplug_notifier(void)
 {
+    printk(KERN_ERR "=====================================   572\n");
     int ret;
 /* See NOTE 1 */
 #if defined(NV_REGISTER_CPU_NOTIFIER_PRESENT) && defined(CONFIG_HOTPLUG_CPU)
@@ -317,6 +327,7 @@ nvidia_register_cpu_hotplug_notifier(void)
 static void
 nvidia_unregister_cpu_hotplug_notifier(void)
 {
+    printk(KERN_ERR "=====================================   573\n");
 /* See NOTE 1 */
 #if defined(NV_REGISTER_CPU_NOTIFIER_PRESENT) && defined(CONFIG_HOTPLUG_CPU)
     unregister_hotcpu_notifier(&nv_hotcpu_nfb);
@@ -331,23 +342,28 @@ nvidia_unregister_cpu_hotplug_notifier(void)
 
 static int nv_enable_builtin_pat_support(void)
 {
+    printk(KERN_ERR "=====================================   574\n");
     return 0;
 }
 static void nv_disable_builtin_pat_support(void)
 {
+    printk(KERN_ERR "=====================================   575\n");
 }
 static int nvidia_register_cpu_hotplug_notifier(void)
 {
+    printk(KERN_ERR "=====================================   576\n");
     return -EIO;
 }
 static void nvidia_unregister_cpu_hotplug_notifier(void)
 {
+    printk(KERN_ERR "=====================================   577\n");
 }
 
 #endif /* NV_ENABLE_BUILTIN_PAT_SUPPORT */
 
 static int nv_determine_pat_mode(void)
 {
+    printk(KERN_ERR "=====================================   578\n");
     unsigned int pat1, pat2, i;
     NvU8 PAT_WC_index;
 
@@ -406,6 +422,7 @@ static int nv_determine_pat_mode(void)
 
 int nv_enable_pat_support(void)
 {
+    printk(KERN_ERR "=====================================   579\n");
     if (nv_pat_mode != NV_PAT_MODE_DISABLED)
         return 1;
 
@@ -429,6 +446,7 @@ int nv_enable_pat_support(void)
 
 void nv_disable_pat_support(void)
 {
+    printk(KERN_ERR "=====================================   580\n");
     if (nv_pat_mode != NV_PAT_MODE_BUILTIN)
         return;
 
@@ -437,6 +455,7 @@ void nv_disable_pat_support(void)
 
 int nv_init_pat_support(nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   581\n");
     NV_STATUS status;
     NvU32 data;
     int disable_pat = 0;
@@ -469,6 +488,7 @@ int nv_init_pat_support(nvidia_stack_t *sp)
 
 void nv_teardown_pat_support(void)
 {
+    printk(KERN_ERR "=====================================   582\n");
     if (nv_pat_mode == NV_PAT_MODE_BUILTIN)
     {
         nv_disable_pat_support();

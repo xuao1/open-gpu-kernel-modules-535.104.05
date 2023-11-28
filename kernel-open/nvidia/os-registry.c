@@ -50,6 +50,7 @@
 static NV_STATUS pci_str_to_bdf(char *pci_dev_str, NvU32 *pci_domain,
     NvU32 *pci_bus, NvU32 *pci_slot, NvU32 *pci_func)
 {
+    printk(KERN_ERR "=====================================   1012\n");
     char *option_string = NULL;
     char *token, *string;
     NvU32 domain, bus, slot;
@@ -182,6 +183,7 @@ done:
  */
 NV_STATUS nv_parse_per_device_option_string(nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   1013\n");
     NV_STATUS status = NV_OK;
     char *option_string = NULL;
     char *ptr, *token;
@@ -273,6 +275,7 @@ NV_STATUS nv_parse_per_device_option_string(nvidia_stack_t *sp)
  */
 NvBool nv_is_uuid_in_gpu_exclusion_list(const char *uuid)
 {
+    printk(KERN_ERR "=====================================   1014\n");
     const char *input;
     char *list;
     char *ptr;
@@ -308,6 +311,7 @@ NvBool nv_is_uuid_in_gpu_exclusion_list(const char *uuid)
 
 NV_STATUS NV_API_CALL os_registry_init(void)
 {
+    printk(KERN_ERR "=====================================   1015\n");
     nv_parm_t *entry;
     unsigned int i;
     nvidia_stack_t *sp = NULL;

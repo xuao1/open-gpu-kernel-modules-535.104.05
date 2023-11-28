@@ -74,6 +74,7 @@ nvswitch_map_status
     NvlStatus status
 )
 {
+    printk(KERN_ERR "=====================================   127\n");
     int err = -EIO;
     NvU32 i;
     NvU32 limit = sizeof(nvswitch_status_map) / sizeof(nvswitch_status_map[0]);
@@ -262,6 +263,7 @@ nvswitch_is_device_blacklisted
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   128\n");
     NVSWITCH_DEVICE_FABRIC_STATE device_fabric_state = 0;
     NvlStatus status;
 
@@ -283,6 +285,7 @@ nvswitch_deinit_background_tasks
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   129\n");
     NV_ATOMIC_SET(nvswitch_dev->task_q_ready, 0);
 
     wake_up(&nvswitch_dev->wait_q_shutdown);
@@ -296,6 +299,7 @@ nvswitch_init_background_tasks
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   130\n");
     int rc;
 
     rc = nv_kthread_q_init(&nvswitch_dev->task_q, nvswitch_dev->sname);
@@ -330,6 +334,7 @@ init_background_task_failed:
 static NVSWITCH_DEV*
 nvswitch_find_device(int minor)
 {
+    printk(KERN_ERR "=====================================   131\n");
     struct list_head *cur;
     NVSWITCH_DEV *nvswitch_dev = NULL;
 
@@ -348,6 +353,7 @@ nvswitch_find_device(int minor)
 static int
 nvswitch_find_minor(void)
 {
+    printk(KERN_ERR "=====================================   132\n");
     struct list_head *cur;
     NVSWITCH_DEV *nvswitch_dev;
     int minor;
@@ -382,6 +388,7 @@ nvswitch_init_i2c_adapters
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   133\n");
     NvlStatus retval;
     NvU32 i, valid_ports_mask;
     struct i2c_adapter *adapter;
@@ -431,6 +438,7 @@ nvswitch_deinit_i2c_adapters
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   134\n");
     nvswitch_i2c_adapter_entry *curr;
     nvswitch_i2c_adapter_entry *next;
 
@@ -451,6 +459,7 @@ nvswitch_init_device
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   135\n");
     struct pci_dev *pci_dev = nvswitch_dev->pci_dev;
     NvlStatus retval;
     int rc;
@@ -535,6 +544,7 @@ nvswitch_post_init_device
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   136\n");
     int rc;
     NvlStatus retval;
 
@@ -559,6 +569,7 @@ nvswitch_post_init_blacklisted
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   137\n");
     nvswitch_lib_post_init_blacklist_device(nvswitch_dev->lib_device);
 }
 
@@ -568,6 +579,7 @@ nvswitch_deinit_device
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   138\n");
     nvswitch_deinit_i2c_adapters(nvswitch_dev);
 
     nvswitch_lib_disable_interrupts(nvswitch_dev->lib_device);
@@ -586,6 +598,7 @@ nvswitch_init_file_event
     nvswitch_file_private_t *private
 )
 {
+    printk(KERN_ERR "=====================================   139\n");
     init_waitqueue_head(&private->file_event.wait_q_event);
     private->file_event.event_pending = NV_FALSE;
 }
@@ -600,6 +613,7 @@ nvswitch_device_open
     struct file *file
 )
 {
+    printk(KERN_ERR "=====================================   140\n");
     NVSWITCH_DEV *nvswitch_dev;
     int rc = 0;
     nvswitch_file_private_t *private = NULL;
@@ -663,6 +677,7 @@ nvswitch_device_release
     struct file *file
 )
 {
+    printk(KERN_ERR "=====================================   141\n");
     nvswitch_file_private_t *private = NVSWITCH_GET_FILE_PRIVATE(file);
     NVSWITCH_DEV *nvswitch_dev = private->nvswitch_dev;
 
@@ -705,6 +720,7 @@ nvswitch_device_poll
     poll_table *wait
 )
 {
+    printk(KERN_ERR "=====================================   142\n");
     nvswitch_file_private_t *private = NVSWITCH_GET_FILE_PRIVATE(file);
     NVSWITCH_DEV *nvswitch_dev = private->nvswitch_dev;
     int rc = 0;
@@ -761,6 +777,7 @@ nvswitch_ioctl_state_cleanup
     IOCTL_STATE *state
 )
 {
+    printk(KERN_ERR "=====================================   143\n");
     kfree(state->kernel_params);
     state->kernel_params = NULL;
 }
@@ -777,6 +794,7 @@ nvswitch_ioctl_state_cleanup
 static int
 nvswitch_ioctl_state_start(IOCTL_STATE *state, int cmd, unsigned long user_arg)
 {
+    printk(KERN_ERR "=====================================   144\n");
     int rc;
 
     state->kernel_params = NULL;
@@ -825,6 +843,7 @@ nvswitch_ioctl_state_sync
     unsigned long user_arg
 )
 {
+    printk(KERN_ERR "=====================================   145\n");
     int rc;
 
     // Nothing to do if no buffer or write-only ioctl
@@ -854,6 +873,7 @@ nvswitch_device_ioctl
     unsigned long arg
 )
 {
+    printk(KERN_ERR "=====================================   146\n");
     nvswitch_file_private_t *private = NVSWITCH_GET_FILE_PRIVATE(file);
     NVSWITCH_DEV *nvswitch_dev = private->nvswitch_dev;
     IOCTL_STATE state = {0};
@@ -918,12 +938,14 @@ nvswitch_device_unlocked_ioctl
     unsigned long arg
 )
 {
+    printk(KERN_ERR "=====================================   147\n");
     return nvswitch_device_ioctl(NV_FILE_INODE(file), file, cmd, arg);
 }
 
 static int
 nvswitch_ctl_check_version(NVSWITCH_CHECK_VERSION_PARAMS *p)
 {
+    printk(KERN_ERR "=====================================   148\n");
     NvlStatus retval;
 
     p->is_compatible = 0;
@@ -953,6 +975,7 @@ nvswitch_ctl_check_version(NVSWITCH_CHECK_VERSION_PARAMS *p)
 static void
 nvswitch_ctl_get_devices(NVSWITCH_GET_DEVICES_PARAMS *p)
 {
+    printk(KERN_ERR "=====================================   149\n");
     int index = 0;
     NVSWITCH_DEV *nvswitch_dev;
     struct list_head *cur;
@@ -976,6 +999,7 @@ nvswitch_ctl_get_devices(NVSWITCH_GET_DEVICES_PARAMS *p)
 static void
 nvswitch_ctl_get_devices_v2(NVSWITCH_GET_DEVICES_V2_PARAMS *p)
 {
+    printk(KERN_ERR "=====================================   150\n");
     int index = 0;
     NVSWITCH_DEV *nvswitch_dev;
     struct list_head *cur;
@@ -1018,6 +1042,7 @@ nvswitch_ctl_cmd_dispatch
     unsigned int param_size
 )
 {
+    printk(KERN_ERR "=====================================   151\n");
     int rc;
 
     switch(cmd)
@@ -1064,6 +1089,7 @@ nvswitch_ctl_ioctl
     unsigned long arg
 )
 {
+    printk(KERN_ERR "=====================================   152\n");
     int rc = 0;
     IOCTL_STATE state = {0};
 
@@ -1108,6 +1134,7 @@ nvswitch_ctl_unlocked_ioctl
     unsigned long arg
 )
 {
+    printk(KERN_ERR "=====================================   153\n");
     return nvswitch_ctl_ioctl(NV_FILE_INODE(file), file, cmd, arg);
 }
 
@@ -1118,7 +1145,7 @@ nvswitch_isr_pending
     void *arg
 )
 {
-
+    printk(KERN_ERR "=====================================   154\n");
     NVSWITCH_DEV *nvswitch_dev = (NVSWITCH_DEV *)arg;
     NvlStatus retval;
 
@@ -1173,6 +1200,7 @@ nvswitch_isr_thread
     void *arg
 )
 {
+    printk(KERN_ERR "=====================================   155\n");
     NVSWITCH_DEV *nvswitch_dev = (NVSWITCH_DEV *)arg;
     NvlStatus retval;
 
@@ -1204,6 +1232,7 @@ nvswitch_task_dispatch
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   156\n");
     NvU64 nsec;
     NvU64 timeout;
     NvS64 rc;
@@ -1257,6 +1286,7 @@ nvswitch_probe
     const struct pci_device_id *id_table
 )
 {
+    printk(KERN_ERR "=====================================   157\n");
     NVSWITCH_DEV *nvswitch_dev = NULL;
     int rc = 0;
     int minor;
@@ -1418,6 +1448,7 @@ nvswitch_remove
     struct pci_dev *pci_dev
 )
 {
+    printk(KERN_ERR "=====================================   158\n");
     NVSWITCH_DEV *nvswitch_dev;
 
     mutex_lock(&nvswitch.driver_mutex);
@@ -1484,6 +1515,7 @@ nvswitch_load_bar_info
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   159\n");
     struct pci_dev *pci_dev = nvswitch_dev->pci_dev;
     nvlink_pci_info *info;
     NvU32 bar = 0;
@@ -1513,6 +1545,7 @@ _nvswitch_initialize_msix_interrupt
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   160\n");
     // Not supported (bug 3018806)
     return -EINVAL;
 }
@@ -1523,6 +1556,7 @@ _nvswitch_initialize_msi_interrupt
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   161\n");
 #ifdef CONFIG_PCI_MSI
     struct pci_dev *pci_dev = nvswitch_dev->pci_dev;
     int rc;
@@ -1542,6 +1576,7 @@ _nvswitch_initialize_msi_interrupt
 static int
 _nvswitch_get_irq_caps(NVSWITCH_DEV *nvswitch_dev, unsigned long *irq_caps)
 {
+    printk(KERN_ERR "=====================================   162\n");
     struct pci_dev *pci_dev;
 
     if (!nvswitch_dev || !irq_caps)
@@ -1567,6 +1602,7 @@ nvswitch_initialize_device_interrupt
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   163\n");
     struct pci_dev *pci_dev = nvswitch_dev->pci_dev;
     int flags = 0;
     unsigned long irq_caps = 0;
@@ -1653,6 +1689,7 @@ nvswitch_shutdown_device_interrupt
     NVSWITCH_DEV *nvswitch_dev
 )
 {
+    printk(KERN_ERR "=====================================   164\n");
     struct pci_dev *pci_dev = nvswitch_dev->pci_dev;
 
     free_irq(pci_dev->irq, nvswitch_dev);
@@ -1670,6 +1707,7 @@ nvswitch_ctl_exit
     void
 )
 {
+    printk(KERN_ERR "=====================================   165\n");
     cdev_del(&nvswitch.cdev_ctl);
 }
 
@@ -1679,6 +1717,7 @@ nvswitch_ctl_init
     int major
 )
 {
+    printk(KERN_ERR "=====================================   166\n");
     int rc = 0;
     dev_t nvswitch_ctl = MKDEV(major, NVSWITCH_CTL_MINOR);
 
@@ -1707,6 +1746,7 @@ nvswitch_init
     void
 )
 {
+    printk(KERN_ERR "=====================================   167\n");
     int rc;
 
     if (nvswitch.initialized)
@@ -1792,6 +1832,7 @@ nvswitch_exit
     void
 )
 {
+    printk(KERN_ERR "=====================================   168\n");
     if (NV_FALSE == nvswitch.initialized)
     {
         return;
@@ -1822,6 +1863,7 @@ nvswitch_os_get_platform_time
     void
 )
 {
+    printk(KERN_ERR "=====================================   169\n");
     struct timespec64 ts;
 
     ktime_get_raw_ts64(&ts);
@@ -1844,6 +1886,7 @@ nvswitch_os_get_platform_time_epoch
     void
 )
 {
+    printk(KERN_ERR "=====================================   170\n");
     struct timespec64 ts;
 
     ktime_get_real_ts64(&ts);
@@ -1858,6 +1901,7 @@ nvswitch_os_print
     ...
 )
 {
+    printk(KERN_ERR "=====================================   171\n");
     va_list arglist;
     char   *kern_level;
     char    fmt_printk[NVSWITCH_LOG_BUFFER_SIZE];
@@ -1897,6 +1941,7 @@ nvswitch_os_override_platform
     NvBool *rtlsim
 )
 {
+    printk(KERN_ERR "=====================================   172\n");
     // Never run on RTL
     *rtlsim = NV_FALSE;
 }
@@ -1910,6 +1955,7 @@ nvswitch_os_read_registery_binary
     NvU32 length
 )
 {
+    printk(KERN_ERR "=====================================   173\n");
     return -NVL_ERR_NOT_SUPPORTED;
 }
 
@@ -1919,6 +1965,7 @@ nvswitch_os_get_device_count
     void
 )
 {
+    printk(KERN_ERR "=====================================   174\n");
     return NV_ATOMIC_READ(nvswitch.count);
 }
 
@@ -1935,6 +1982,7 @@ nvswitch_os_strtouint
     unsigned int *data
 )
 {
+    printk(KERN_ERR "=====================================   175\n");
     char *p;
     unsigned long long val;
 
@@ -1987,6 +2035,7 @@ nvswitch_os_read_registry_dword
     NvU32 *data
 )
 {
+    printk(KERN_ERR "=====================================   176\n");
     char *regkey, *regkey_val_start, *regkey_val_end;
     char regkey_val[NVSWITCH_REGKEY_VALUE_LEN + 1];
     NvU32 regkey_val_len = 0;
@@ -2038,12 +2087,14 @@ nvswitch_os_read_registry_dword
 static NvBool
 _nvswitch_is_space(const char ch)
 {
+    printk(KERN_ERR "=====================================   177\n");
     return ((ch == ' ') || ((ch >= '\t') && (ch <= '\r')));
 }
 
 static char *
 _nvswitch_remove_spaces(const char *in)
 {
+    printk(KERN_ERR "=====================================   178\n");
     unsigned int len = nvswitch_os_strlen(in) + 1;
     const char *in_ptr;
     char *out, *out_ptr;
@@ -2076,6 +2127,7 @@ nvswitch_os_is_uuid_in_blacklist
     NvUuid *uuid
 )
 {
+    printk(KERN_ERR "=====================================   179\n");
     char *list;
     char *ptr;
     char *token;
@@ -2114,6 +2166,7 @@ nvswitch_os_alloc_contig_memory
     NvBool force_dma32
 )
 {
+    printk(KERN_ERR "=====================================   180\n");
     NvU32 gfp_flags;
     unsigned long nv_gfp_addr = 0;
 
@@ -2142,6 +2195,7 @@ nvswitch_os_free_contig_memory
     NvU32 size
 )
 {
+    printk(KERN_ERR "=====================================   181\n");
     NV_FREE_PAGES((unsigned long)virt_addr, get_order(size));
 }
 
@@ -2151,6 +2205,7 @@ _nvswitch_to_pci_dma_direction
     NvU32 direction
 )
 {
+    printk(KERN_ERR "=====================================   182\n");
     if (direction == NVSWITCH_DMA_DIR_TO_SYSMEM)
         return DMA_FROM_DEVICE;
     else if (direction == NVSWITCH_DMA_DIR_FROM_SYSMEM)
@@ -2169,6 +2224,7 @@ nvswitch_os_map_dma_region
     NvU32 direction
 )
 {
+    printk(KERN_ERR "=====================================   183\n");
     int dma_dir;
     struct pci_dev *pdev = (struct pci_dev *)os_handle;
 
@@ -2198,6 +2254,7 @@ nvswitch_os_unmap_dma_region
     NvU32 direction
 )
 {
+    printk(KERN_ERR "=====================================   184\n");
     int dma_dir;
     struct pci_dev *pdev = (struct pci_dev *)os_handle;
 
@@ -2218,6 +2275,7 @@ nvswitch_os_set_dma_mask
     NvU32 dma_addr_width
 )
 {
+    printk(KERN_ERR "=====================================   185\n");
     struct pci_dev *pdev = (struct pci_dev *)os_handle;
 
     if (!pdev)
@@ -2238,6 +2296,7 @@ nvswitch_os_sync_dma_region_for_cpu
     NvU32 direction
 )
 {
+    printk(KERN_ERR "=====================================   186\n");
     int dma_dir;
     struct pci_dev *pdev = (struct pci_dev *)os_handle;
 
@@ -2260,6 +2319,7 @@ nvswitch_os_sync_dma_region_for_device
     NvU32 direction
 )
 {
+    printk(KERN_ERR "=====================================   187\n");
     int dma_dir;
     struct pci_dev *pdev = (struct pci_dev *)os_handle;
 
@@ -2279,6 +2339,7 @@ _nvswitch_os_malloc
     NvLength size
 )
 {
+    printk(KERN_ERR "=====================================   188\n");
     void *ptr = NULL;
 
     if (!NV_MAY_SLEEP())
@@ -2312,6 +2373,7 @@ nvswitch_os_malloc_trace
     NvU32 line
 )
 {
+    printk(KERN_ERR "=====================================   189\n");
 #if defined(NV_MEM_LOGGER)
     void *ptr = _nvswitch_os_malloc(size);
     if (ptr)
@@ -2331,6 +2393,7 @@ _nvswitch_os_free
     void *ptr
 )
 {
+    printk(KERN_ERR "=====================================   190\n");
     if (!ptr)
         return;
 
@@ -2350,6 +2413,7 @@ nvswitch_os_free
     void *ptr
 )
 {
+    printk(KERN_ERR "=====================================   191\n");
 #if defined (NV_MEM_LOGGER)
     if (ptr == NULL)
         return;
@@ -2368,6 +2432,7 @@ nvswitch_os_strlen
     const char *str
 )
 {
+    printk(KERN_ERR "=====================================   192\n");
     return strlen(str);
 }
 
@@ -2379,6 +2444,7 @@ nvswitch_os_strncpy
     NvLength length
 )
 {
+    printk(KERN_ERR "=====================================   193\n");
     return strncpy(dest, src, length);
 }
 
@@ -2390,6 +2456,7 @@ nvswitch_os_strncmp
     NvLength length
 )
 {
+    printk(KERN_ERR "=====================================   194\n");
     return strncmp(s1, s2, length);
 }
 
@@ -2401,6 +2468,7 @@ nvswitch_os_strncat
     NvLength length
 )
 {
+    printk(KERN_ERR "=====================================   195\n");
     return strncat(s1, s2, length);
 }
 
@@ -2412,6 +2480,7 @@ nvswitch_os_memset
     NvLength size
 )
 {
+    printk(KERN_ERR "=====================================   196\n");
      return memset(dest, value, size);
 }
 
@@ -2423,6 +2492,7 @@ nvswitch_os_memcpy
     NvLength size
 )
 {
+    printk(KERN_ERR "=====================================   197\n");
     return memcpy(dest, src, size);
 }
 
@@ -2434,6 +2504,7 @@ nvswitch_os_memcmp
     NvLength size
 )
 {
+    printk(KERN_ERR "=====================================   198\n");
     return memcmp(s1, s2, size);
 }
 
@@ -2443,6 +2514,7 @@ nvswitch_os_mem_read32
     const volatile void * address
 )
 {
+    printk(KERN_ERR "=====================================   199\n");
     return (*(const volatile NvU32*)(address));
 }
 
@@ -2453,6 +2525,7 @@ nvswitch_os_mem_write32
     NvU32 data
 )
 {
+    printk(KERN_ERR "=====================================   200\n");
     (*(volatile NvU32 *)(address)) = data;
 }
 
@@ -2462,6 +2535,7 @@ nvswitch_os_mem_read64
     const volatile void * address
 )
 {
+    printk(KERN_ERR "=====================================   201\n");
     return (*(const volatile NvU64 *)(address));
 }
 
@@ -2472,6 +2546,7 @@ nvswitch_os_mem_write64
     NvU64 data
 )
 {
+    printk(KERN_ERR "=====================================   202\n");
     (*(volatile NvU64 *)(address)) = data;
 }
 
@@ -2484,6 +2559,7 @@ nvswitch_os_snprintf
     ...
 )
 {
+    printk(KERN_ERR "=====================================   203\n");
     va_list arglist;
     int chars_written;
 
@@ -2503,6 +2579,7 @@ nvswitch_os_vsnprintf
     va_list arglist
 )
 {
+    printk(KERN_ERR "=====================================   204\n");
     return vsnprintf(buf, size, fmt, arglist);
 }
 
@@ -2513,6 +2590,7 @@ nvswitch_os_assert_log
     ...
 )
 {
+    printk(KERN_ERR "=====================================   205\n");
     if (printk_ratelimit())
     {
         va_list arglist;
@@ -2536,6 +2614,7 @@ nvswitch_os_sleep
     unsigned int ms
 )
 {
+    printk(KERN_ERR "=====================================   206\n");
     NV_STATUS status;
     status = nv_sleep_ms(ms);
 
@@ -2558,6 +2637,7 @@ nvswitch_os_acquire_fabric_mgmt_cap
     NvU64 capDescriptor
 )
 {
+    printk(KERN_ERR "=====================================   207\n");
     int dup_fd = -1;
     nvswitch_file_private_t *private_data = (nvswitch_file_private_t *)osPrivate;
 
@@ -2583,6 +2663,7 @@ nvswitch_os_is_fabric_manager
     void *osPrivate
 )
 {
+    printk(KERN_ERR "=====================================   208\n");
     nvswitch_file_private_t *private_data = (nvswitch_file_private_t *)osPrivate;
 
     /* Make sure that fabric mgmt capbaility fd is valid */
@@ -2601,6 +2682,7 @@ nvswitch_os_is_admin
     void
 )
 {
+    printk(KERN_ERR "=====================================   209\n");
     return NV_IS_SUSER();
 }
 
@@ -2616,6 +2698,7 @@ nvswitch_os_get_os_version
     NvU32 *pBuildNum
 )
 {
+    printk(KERN_ERR "=====================================   210\n");
     if (pMajorVer)
         *pMajorVer = NV_KERNEL_RELEASE;
     if (pMinorVer)
@@ -2637,6 +2720,7 @@ nvswitch_os_add_client_event
     NvU32           eventId
 )
 {
+    printk(KERN_ERR "=====================================   211\n");
     return NVL_SUCCESS;
 }
 
@@ -2650,6 +2734,7 @@ nvswitch_os_remove_client_event
     void            *osPrivate
 )
 {
+    printk(KERN_ERR "=====================================   212\n");
     return NVL_SUCCESS;
 }
 
@@ -2664,6 +2749,7 @@ nvswitch_os_notify_client_event
     NvU32 eventId
 )
 {
+    printk(KERN_ERR "=====================================   213\n");
     nvswitch_file_private_t *private_data = (nvswitch_file_private_t *)osPrivate;
 
     if (private_data == NULL)
@@ -2687,6 +2773,7 @@ nvswitch_os_get_supported_register_events_params
     NvBool *os_descriptor
 )
 {
+    printk(KERN_ERR "=====================================   214\n");
     *many_events   = NV_FALSE;
     *os_descriptor = NV_FALSE;
     return NVL_SUCCESS;
@@ -2698,6 +2785,7 @@ nvswitch_os_get_pid
     NvU32 *pPid
 )
 {
+    printk(KERN_ERR "=====================================   215\n");
     if (pPid != NULL)
     {
         *pPid = task_pid_nr(current);

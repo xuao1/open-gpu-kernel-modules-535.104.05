@@ -50,6 +50,7 @@ struct ecc_ctx {
 
 void *libspdm_ec_new_by_nid(size_t nid)
 {
+    printk(KERN_ERR "=====================================   24\n");
 #ifndef USE_LKCA
     return NULL;
 #else
@@ -82,6 +83,7 @@ void *libspdm_ec_new_by_nid(size_t nid)
 
 void libspdm_ec_free(void *ec_context)
 {
+    printk(KERN_ERR "=====================================   25\n");
 #ifdef USE_LKCA
     kfree(ec_context);
 #endif
@@ -89,6 +91,7 @@ void libspdm_ec_free(void *ec_context)
 
 bool lkca_ecdsa_set_priv_key(void *context, uint8_t *key, size_t key_size)
 {
+    printk(KERN_ERR "=====================================   26\n");
 #ifndef USE_LKCA
     return false;
 #else
@@ -115,6 +118,7 @@ bool lkca_ecdsa_set_priv_key(void *context, uint8_t *key, size_t key_size)
 bool lkca_ec_set_pub_key(void *ec_context, const uint8_t *public_key,
                          size_t public_key_size)
 {
+    printk(KERN_ERR "=====================================   27\n");
 #ifndef USE_LKCA
     return false;
 #else
@@ -145,6 +149,7 @@ bool lkca_ec_set_pub_key(void *ec_context, const uint8_t *public_key,
 bool lkca_ec_get_pub_key(void *ec_context, uint8_t *public_key,
                          size_t *public_key_size)
 {
+    printk(KERN_ERR "=====================================   28\n");
 #ifndef USE_LKCA
     return false;
 #else
@@ -164,6 +169,7 @@ bool lkca_ec_get_pub_key(void *ec_context, uint8_t *public_key,
 bool lkca_ec_generate_key(void *ec_context, uint8_t *public_data,
                           size_t *public_size)
 {
+    printk(KERN_ERR "=====================================   29\n");
 #ifndef USE_LKCA
     return false;
 #else
@@ -192,6 +198,7 @@ bool lkca_ec_compute_key(void *ec_context, const uint8_t *peer_public,
                          size_t peer_public_size, uint8_t *key,
                          size_t *key_size)
 {
+    printk(KERN_ERR "=====================================   30\n");
 #ifndef USE_LKCA
     return false;
 #else
@@ -225,6 +232,7 @@ bool lkca_ecdsa_verify(void *ec_context, size_t hash_nid,
                        const uint8_t *message_hash, size_t hash_size,
                        const uint8_t *signature, size_t sig_size)
 {
+    printk(KERN_ERR "=====================================   31\n");
 #ifndef USE_LKCA
     return false;
 #else

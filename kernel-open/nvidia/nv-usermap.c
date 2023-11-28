@@ -36,6 +36,7 @@ NV_STATUS NV_API_CALL nv_add_mapping_context_to_file(
     NvU32       fd
 )
 {
+    printk(KERN_ERR "=====================================   650\n");
     NV_STATUS status = NV_OK;
     nv_alloc_mapping_context_t *nvamc = NULL;
     nv_file_private_t *nvfp = NULL;
@@ -103,6 +104,7 @@ NV_STATUS NV_API_CALL nv_alloc_user_mapping(
     void      **ppPrivate
 )
 {
+    printk(KERN_ERR "=====================================   651\n");
     nv_alloc_t *at = pAllocPrivate;
 
     if (at->flags.contig)
@@ -120,6 +122,7 @@ NV_STATUS NV_API_CALL nv_free_user_mapping(
     void       *pPrivate
 )
 {
+    printk(KERN_ERR "=====================================   652\n");
     return NV_OK;
 }
 
@@ -132,6 +135,7 @@ NV_STATUS NV_API_CALL nv_get_usermap_access_params(
     nv_usermap_access_params_t *nvuap
 )
 {
+    printk(KERN_ERR "=====================================   653\n");
     NvU64 addr = nvuap->addr;
     NvU64 size = nvuap->size;
 

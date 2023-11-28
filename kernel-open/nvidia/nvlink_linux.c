@@ -86,6 +86,7 @@ static struct proc_dir_entry *nvlink_permissions = NULL;
 
 static int nv_procfs_read_permissions(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   827\n");
     // Restrict device node permissions - 0666.
     seq_printf(s, "%s: %u\n", "DeviceFileMode", 438);
 
@@ -96,6 +97,7 @@ NV_DEFINE_SINGLE_NVLINK_PROCFS_FILE(permissions);
 
 static void nvlink_permissions_exit(void)
 {
+    printk(KERN_ERR "=====================================   828\n");
     if (!nvlink_permissions)
     {
         return;
@@ -107,6 +109,7 @@ static void nvlink_permissions_exit(void)
 
 static int nvlink_permissions_init(void)
 {
+    printk(KERN_ERR "=====================================   829\n");
     if (!nvlink_procfs_dir)
     {
         return -EACCES;
@@ -126,6 +129,7 @@ static int nvlink_permissions_init(void)
 
 static void nvlink_procfs_exit(void)
 {
+    printk(KERN_ERR "=====================================   830\n");
     nvlink_permissions_exit();
 
     if (!nvlink_procfs_dir)
@@ -139,6 +143,7 @@ static void nvlink_procfs_exit(void)
 
 static int nvlink_procfs_init(void)
 {
+    printk(KERN_ERR "=====================================   831\n");
     int rc = 0;
 
     if (!nvlink_is_procfs_available)
@@ -169,6 +174,7 @@ cleanup:
 
 static int nvlink_fops_open(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   832\n");
     int rc = 0;
     nvlink_file_private_t *private = NULL;
 
@@ -203,6 +209,7 @@ open_error:
 
 static int nvlink_fops_release(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   833\n");
     nvlink_file_private_t *private = NVLINK_GET_FILE_PRIVATE(filp);
 
     nvlink_print(NVLINK_DBG_INFO, "nvlink driver close\n");
@@ -234,6 +241,7 @@ static int nvlink_fops_ioctl(struct inode *inode,
                              unsigned int cmd,
                              unsigned long arg)
 {
+    printk(KERN_ERR "=====================================   834\n");
     nvlink_ioctrl_params ctrl_params = {0};
     int param_size = _IOC_SIZE(cmd);
     void *param_buf = NULL;
@@ -299,6 +307,7 @@ static long nvlink_fops_unlocked_ioctl(struct file *file,
                                        unsigned int cmd,
                                        unsigned long arg)
 {
+    printk(KERN_ERR "=====================================   835\n");
     return nvlink_fops_ioctl(NV_FILE_INODE(file), file, cmd, arg);
 }
 
@@ -312,6 +321,7 @@ static const struct file_operations nvlink_fops = {
 
 int __init nvlink_core_init(void)
 {
+    printk(KERN_ERR "=====================================   836\n");
     NvlStatus ret_val;
     int rc;
 
@@ -388,6 +398,7 @@ nvlink_lib_initialize_fail:
 
 void nvlink_core_exit(void)
 {
+    printk(KERN_ERR "=====================================   837\n");
     if (NV_FALSE == nvlink_drvctx.initialized)
     {
         return;
@@ -420,6 +431,7 @@ nvlink_print
     ...
 )
 {
+    printk(KERN_ERR "=====================================   838\n");
     va_list arglist;
     char    nv_string[MAX_ERROR_STRING];
     char   *sys_log_level;
@@ -455,31 +467,37 @@ nvlink_print
 
 void * nvlink_malloc(NvLength size)
 {
+    printk(KERN_ERR "=====================================   839\n");
    return kmalloc(size, GFP_KERNEL);
 }
 
 void nvlink_free(void *ptr)
 {
+    printk(KERN_ERR "=====================================   840\n");
     return kfree(ptr);
 }
 
 char * nvlink_strcpy(char *dest, const char *src)
 {
+    printk(KERN_ERR "=====================================   841\n");
     return strcpy(dest, src);
 }
 
 int nvlink_strcmp(const char *dest, const char *src)
 {
+    printk(KERN_ERR "=====================================   842\n");
     return strcmp(dest, src);
 }
 
 NvLength nvlink_strlen(const char *s)
 {
+    printk(KERN_ERR "=====================================   843\n");
     return strlen(s);
 }
 
 int nvlink_snprintf(char *dest, NvLength size, const char *fmt, ...)
 {
+    printk(KERN_ERR "=====================================   844\n");
     va_list arglist;
     int chars_written;
 
@@ -492,36 +510,43 @@ int nvlink_snprintf(char *dest, NvLength size, const char *fmt, ...)
 
 NvU32 nvlink_memRd32(const volatile void * address)
 {
+    printk(KERN_ERR "=====================================   845\n");
     return (*(const volatile NvU32*)(address));
 }
 
 void nvlink_memWr32(volatile void *address, NvU32 data)
 {
+    printk(KERN_ERR "=====================================   846\n");
     (*(volatile NvU32 *)(address)) = data;
 }
 
 NvU64 nvlink_memRd64(const volatile void * address)
 {
+    printk(KERN_ERR "=====================================   847\n");
     return (*(const volatile NvU64 *)(address));
 }
 
 void nvlink_memWr64(volatile void *address, NvU64 data)
 {
+    printk(KERN_ERR "=====================================   848\n");
     (*(volatile NvU64 *)(address)) = data;
 }
 
 void * nvlink_memset(void *dest, int value, NvLength size)
 {
+    printk(KERN_ERR "=====================================   849\n");
      return memset(dest, value, size);
 }
 
 void * nvlink_memcpy(void *dest, const void *src, NvLength size)
 {
+    printk(KERN_ERR "=====================================   850\n");
     return memcpy(dest, src, size);
 }
 
 int nvlink_memcmp(const void *s1, const void *s2, NvLength size)
 {
+    printk(KERN_ERR "=====================================   851\n");
     return memcmp(s1, s2, size);
 }
 
@@ -530,6 +555,7 @@ int nvlink_memcmp(const void *s1, const void *s2, NvLength size)
  */
 void nvlink_sleep(unsigned int ms)
 {
+    printk(KERN_ERR "=====================================   852\n");
     NV_STATUS status;
 
     status = nv_sleep_ms(ms);
@@ -548,6 +574,7 @@ void nvlink_sleep(unsigned int ms)
 
 void nvlink_assert(int cond)
 {
+    printk(KERN_ERR "=====================================   853\n");
     if ((cond) == 0x0)
     {
         if (printk_ratelimit())
@@ -562,6 +589,7 @@ void nvlink_assert(int cond)
 
 void * nvlink_allocLock(void)
 {
+    printk(KERN_ERR "=====================================   854\n");
     struct semaphore *sema;
 
     sema = nvlink_malloc(sizeof(*sema));
@@ -577,16 +605,19 @@ void * nvlink_allocLock(void)
 
 void nvlink_acquireLock(void *hLock)
 {
+    printk(KERN_ERR "=====================================   855\n");
     down(hLock);
 }
 
 void nvlink_releaseLock(void *hLock)
 {
+    printk(KERN_ERR "=====================================   856\n");
     up(hLock);
 }
 
 void nvlink_freeLock(void *hLock)
 {
+    printk(KERN_ERR "=====================================   857\n");
     if (NULL == hLock)
     {
         return;
@@ -597,11 +628,13 @@ void nvlink_freeLock(void *hLock)
 
 NvBool nvlink_isLockOwner(void *hLock)
 {
+    printk(KERN_ERR "=====================================   858\n");
     return NV_TRUE;
 }
 
 NvlStatus nvlink_acquire_fabric_mgmt_cap(void *osPrivate, NvU64 capDescriptor)
 {
+    printk(KERN_ERR "=====================================   859\n");
     int dup_fd = -1;
     nvlink_file_private_t *private_data = (nvlink_file_private_t *)osPrivate;
 
@@ -623,6 +656,7 @@ NvlStatus nvlink_acquire_fabric_mgmt_cap(void *osPrivate, NvU64 capDescriptor)
 
 int nvlink_is_fabric_manager(void *osPrivate)
 {
+    printk(KERN_ERR "=====================================   860\n");
     nvlink_file_private_t *private_data = (nvlink_file_private_t *)osPrivate;
 
     /* Make sure that fabric mgmt capbaility fd is valid */
@@ -637,5 +671,6 @@ int nvlink_is_fabric_manager(void *osPrivate)
 
 int nvlink_is_admin(void)
 {
+    printk(KERN_ERR "=====================================   861\n");
     return NV_IS_SUSER();
 }

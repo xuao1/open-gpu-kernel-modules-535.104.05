@@ -46,17 +46,20 @@ struct
 
 void nv_memdbg_init(void)
 {
+    printk(KERN_ERR "=====================================   496\n");
     NV_SPIN_LOCK_INIT(&g_nv_memdbg.lock);
     g_nv_memdbg.rb_root = RB_ROOT;
 }
 
 static nv_memdbg_node_t *nv_memdbg_node_entry(struct rb_node *rb_node)
 {
+    printk(KERN_ERR "=====================================   497\n");
     return rb_entry(rb_node, nv_memdbg_node_t, rb_node);
 }
 
 static void nv_memdbg_insert_node(nv_memdbg_node_t *new)
 {
+    printk(KERN_ERR "=====================================   498\n");
     nv_memdbg_node_t *node;
     struct rb_node **rb_node = &g_nv_memdbg.rb_root.rb_node;
     struct rb_node *rb_parent = NULL;
@@ -81,6 +84,7 @@ static void nv_memdbg_insert_node(nv_memdbg_node_t *new)
 
 static nv_memdbg_node_t *nv_memdbg_remove_node(void *addr)
 {
+    printk(KERN_ERR "=====================================   499\n");
     nv_memdbg_node_t *node = NULL;
     struct rb_node *rb_node = g_nv_memdbg.rb_root.rb_node;
 
@@ -103,6 +107,7 @@ static nv_memdbg_node_t *nv_memdbg_remove_node(void *addr)
 
 void nv_memdbg_add(void *addr, NvU64 size, const char *file, int line)
 {
+    printk(KERN_ERR "=====================================   500\n");
     nv_memdbg_node_t *node;
     unsigned long flags;
 
@@ -136,6 +141,7 @@ void nv_memdbg_add(void *addr, NvU64 size, const char *file, int line)
 
 void nv_memdbg_remove(void *addr, NvU64 size, const char *file, int line)
 {
+    printk(KERN_ERR "=====================================   501\n");
     nv_memdbg_node_t *node;
     unsigned long flags;
 
@@ -180,6 +186,7 @@ void nv_memdbg_remove(void *addr, NvU64 size, const char *file, int line)
 
 void nv_memdbg_exit(void)
 {
+    printk(KERN_ERR "=====================================   502\n");
     nv_memdbg_node_t *node;
     NvU64 leaked_bytes = 0, num_leaked_allocs = 0;
 

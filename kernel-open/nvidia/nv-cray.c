@@ -65,6 +65,7 @@ NV_STATUS nvos_forward_error_to_cray(
     va_list         ap
 )
 {
+    printk(KERN_ERR "=====================================   378\n");
     NvU32 num_info_mmrs;
     NvU64 x = 0, info_mmrs[NV_MAX_NUM_INFO_MMRS];
     int state = NV_FORMAT_STATE_ORDINARY;

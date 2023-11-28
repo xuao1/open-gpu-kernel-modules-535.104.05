@@ -25,6 +25,7 @@
 
 void *lkca_hash_new(const char* alg_name)
 {
+    printk(KERN_ERR "=====================================   88\n");
 #ifndef USE_LKCA
     return false;
 #else
@@ -53,6 +54,7 @@ void *lkca_hash_new(const char* alg_name)
 
 void lkca_hash_free(struct shash_desc *ctx)
 {
+    printk(KERN_ERR "=====================================   89\n");
 #ifndef USE_LKCA
 #else
     crypto_free_shash(ctx->tfm);
@@ -62,6 +64,7 @@ void lkca_hash_free(struct shash_desc *ctx)
 
 bool lkca_hash_duplicate(struct shash_desc *dst, struct shash_desc const *src)
 {
+    printk(KERN_ERR "=====================================   90\n");
 #ifndef USE_LKCA
         return false;
 #else
@@ -80,6 +83,7 @@ bool lkca_hash_duplicate(struct shash_desc *dst, struct shash_desc const *src)
 
 bool lkca_hmac_duplicate(struct shash_desc *dst, struct shash_desc const *src)
 {
+    printk(KERN_ERR "=====================================   91\n");
 #ifndef USE_LKCA
         return false;
 #else
@@ -101,6 +105,7 @@ bool lkca_hmac_duplicate(struct shash_desc *dst, struct shash_desc const *src)
 bool lkca_hash_all(const char* alg_name, const void *data,
                    size_t data_size, uint8_t *hash_value)
 {
+    printk(KERN_ERR "=====================================   92\n");
 #ifndef USE_LKCA
     return false;
 #else
@@ -121,6 +126,7 @@ bool lkca_hash_all(const char* alg_name, const void *data,
 
 bool lkca_hmac_set_key(struct shash_desc *desc, const uint8_t *key, size_t key_size)
 {
+    printk(KERN_ERR "=====================================   93\n");
 #ifndef USE_LKCA
     return false;
 #else
@@ -136,6 +142,7 @@ bool lkca_hmac_set_key(struct shash_desc *desc, const uint8_t *key, size_t key_s
 bool lkca_hmac_all(const char* alg_name, const uint8_t *key, size_t key_size,
                    const uint8_t *data, size_t data_size, uint8_t *hash_value)
 {
+    printk(KERN_ERR "=====================================   94\n");
 #ifndef USE_LKCA
     return false;
 #else

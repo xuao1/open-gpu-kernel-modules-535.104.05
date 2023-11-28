@@ -28,17 +28,20 @@
 
 void *libspdm_hmac_sha256_new(void)
 {
+    printk(KERN_ERR "=====================================   44\n");
     return lkca_hash_new("hmac(sha256)");
 }
 
 void libspdm_hmac_sha256_free(void *hmac_sha256_ctx)
 {
+    printk(KERN_ERR "=====================================   45\n");
     lkca_hash_free(hmac_sha256_ctx);
 }
 
 bool libspdm_hmac_sha256_set_key(void *hmac_sha256_ctx, const uint8_t *key,
                                  size_t key_size)
 {
+    printk(KERN_ERR "=====================================   46\n");
     if (hmac_sha256_ctx == NULL)
         return false;
 
@@ -48,6 +51,7 @@ bool libspdm_hmac_sha256_set_key(void *hmac_sha256_ctx, const uint8_t *key,
 bool libspdm_hmac_sha256_duplicate(const void *hmac_sha256_ctx,
                                    void *new_hmac_sha256_ctx)
 {
+    printk(KERN_ERR "=====================================   47\n");
     if (hmac_sha256_ctx == NULL || new_hmac_sha256_ctx == NULL) {
         return false;
     }
@@ -58,6 +62,7 @@ bool libspdm_hmac_sha256_duplicate(const void *hmac_sha256_ctx,
 bool libspdm_hmac_sha256_update(void *hmac_sha256_ctx, const void *data,
                                 size_t data_size)
 {
+    printk(KERN_ERR "=====================================   48\n");
     int32_t ret;
 
     if (hmac_sha256_ctx == NULL) {
@@ -80,6 +85,7 @@ bool libspdm_hmac_sha256_update(void *hmac_sha256_ctx, const void *data,
 
 bool libspdm_hmac_sha256_final(void *hmac_sha256_ctx, uint8_t *hmac_value)
 {
+    printk(KERN_ERR "=====================================   49\n");
     int32_t ret;
 
     if (hmac_sha256_ctx == NULL || hmac_value == NULL) {
@@ -98,6 +104,7 @@ bool libspdm_hmac_sha256_all(const void *data, size_t data_size,
                              const uint8_t *key, size_t key_size,
                              uint8_t *hmac_value)
 {
+    printk(KERN_ERR "=====================================   50\n");
     if (hmac_value == NULL) {
         return false;
     }
@@ -113,17 +120,20 @@ bool libspdm_hmac_sha256_all(const void *data, size_t data_size,
 
 void *libspdm_hmac_sha384_new(void)
 {
+    printk(KERN_ERR "=====================================   51\n");
     return lkca_hash_new("hmac(sha384)");
 }
 
 void libspdm_hmac_sha384_free(void *hmac_sha384_ctx)
 {
+    printk(KERN_ERR "=====================================   52\n");
     lkca_hash_free(hmac_sha384_ctx);
 }
 
 bool libspdm_hmac_sha384_set_key(void *hmac_sha384_ctx, const uint8_t *key,
                                  size_t key_size)
 {
+    printk(KERN_ERR "=====================================   53\n");
     if (hmac_sha384_ctx == NULL)
         return false;
 
@@ -133,6 +143,7 @@ bool libspdm_hmac_sha384_set_key(void *hmac_sha384_ctx, const uint8_t *key,
 bool libspdm_hmac_sha384_duplicate(const void *hmac_sha384_ctx,
                                    void *new_hmac_sha384_ctx)
 {
+    printk(KERN_ERR "=====================================   54\n");
     if (hmac_sha384_ctx == NULL || new_hmac_sha384_ctx == NULL) {
         return false;
     }
@@ -143,6 +154,7 @@ bool libspdm_hmac_sha384_duplicate(const void *hmac_sha384_ctx,
 bool libspdm_hmac_sha384_update(void *hmac_sha384_ctx, const void *data,
                                 size_t data_size)
 {
+    printk(KERN_ERR "=====================================   55\n");
     int32_t ret;
 
     if (hmac_sha384_ctx == NULL) {
@@ -165,6 +177,7 @@ bool libspdm_hmac_sha384_update(void *hmac_sha384_ctx, const void *data,
 
 bool libspdm_hmac_sha384_final(void *hmac_sha384_ctx, uint8_t *hmac_value)
 {
+    printk(KERN_ERR "=====================================   56\n");
     int32_t ret;
 
     if (hmac_sha384_ctx == NULL || hmac_value == NULL) {
@@ -183,6 +196,7 @@ bool libspdm_hmac_sha384_all(const void *data, size_t data_size,
                              const uint8_t *key, size_t key_size,
                              uint8_t *hmac_value)
 {
+    printk(KERN_ERR "=====================================   57\n");
     if (hmac_value == NULL) {
         return false;
     }
@@ -198,17 +212,20 @@ bool libspdm_hmac_sha384_all(const void *data, size_t data_size,
 
 void *libspdm_hmac_sha512_new(void)
 {
+    printk(KERN_ERR "=====================================   58\n");
     return lkca_hash_new("hmac(sha512)");
 }
 
 void libspdm_hmac_sha512_free(void *hmac_sha512_ctx)
 {
+    printk(KERN_ERR "=====================================   59\n");
     lkca_hash_free(hmac_sha512_ctx);
 }
 
 bool libspdm_hmac_sha512_set_key(void *hmac_sha512_ctx, const uint8_t *key,
                                  size_t key_size)
 {
+    printk(KERN_ERR "=====================================   60\n");
     if (hmac_sha512_ctx == NULL)
         return false;
 
@@ -218,6 +235,7 @@ bool libspdm_hmac_sha512_set_key(void *hmac_sha512_ctx, const uint8_t *key,
 bool libspdm_hmac_sha512_duplicate(const void *hmac_sha512_ctx,
                                    void *new_hmac_sha512_ctx)
 {
+    printk(KERN_ERR "=====================================   61\n");
     if (new_hmac_sha512_ctx == NULL || new_hmac_sha512_ctx == NULL) {
         return false;
     }
@@ -228,6 +246,7 @@ bool libspdm_hmac_sha512_duplicate(const void *hmac_sha512_ctx,
 bool libspdm_hmac_sha512_update(void *hmac_sha512_ctx, const void *data,
                                 size_t data_size)
 {
+    printk(KERN_ERR "=====================================   62\n");
     int32_t ret;
 
     if (hmac_sha512_ctx == NULL) {
@@ -250,6 +269,7 @@ bool libspdm_hmac_sha512_update(void *hmac_sha512_ctx, const void *data,
 
 bool libspdm_hmac_sha512_final(void *hmac_sha512_ctx, uint8_t *hmac_value)
 {
+    printk(KERN_ERR "=====================================   63\n");
     int32_t ret;
 
     if (hmac_sha512_ctx == NULL || hmac_value == NULL) {
@@ -268,6 +288,7 @@ bool libspdm_hmac_sha512_all(const void *data, size_t data_size,
                              const uint8_t *key, size_t key_size,
                              uint8_t *hmac_value)
 {
+    printk(KERN_ERR "=====================================   64\n");
     if (hmac_value == NULL) {
         return false;
     }

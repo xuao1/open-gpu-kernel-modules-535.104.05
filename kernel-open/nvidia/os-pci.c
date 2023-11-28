@@ -35,6 +35,7 @@ void* NV_API_CALL os_pci_init_handle(
     NvU16 *device
 )
 {
+    printk(KERN_ERR "=====================================   1002\n");
     struct pci_dev *dev;
     unsigned int devfn = PCI_DEVFN(slot, function);
 
@@ -57,6 +58,7 @@ NV_STATUS NV_API_CALL os_pci_read_byte(
     NvU8 *pReturnValue
 )
 {
+    printk(KERN_ERR "=====================================   1003\n");
     if (offset >= NV_PCIE_CFG_MAX_OFFSET)
     {
         *pReturnValue = 0xff;
@@ -72,6 +74,7 @@ NV_STATUS NV_API_CALL os_pci_read_word(
     NvU16 *pReturnValue
 )
 {
+    printk(KERN_ERR "=====================================   1004\n");
     if (offset >= NV_PCIE_CFG_MAX_OFFSET)
     {
         *pReturnValue = 0xffff;
@@ -87,6 +90,7 @@ NV_STATUS NV_API_CALL os_pci_read_dword(
     NvU32 *pReturnValue
 )
 {
+    printk(KERN_ERR "=====================================   1005\n");
     if (offset >= NV_PCIE_CFG_MAX_OFFSET)
     {
         *pReturnValue = 0xffffffff;
@@ -102,6 +106,7 @@ NV_STATUS NV_API_CALL os_pci_write_byte(
     NvU8 value
 )
 {
+    printk(KERN_ERR "=====================================   1006\n");
     if (offset >= NV_PCIE_CFG_MAX_OFFSET)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -115,6 +120,7 @@ NV_STATUS NV_API_CALL os_pci_write_word(
     NvU16 value
 )
 {
+    printk(KERN_ERR "=====================================   1007\n");
     if (offset >= NV_PCIE_CFG_MAX_OFFSET)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -128,6 +134,7 @@ NV_STATUS NV_API_CALL os_pci_write_dword(
     NvU32 value
 )
 {
+    printk(KERN_ERR "=====================================   1008\n");
     if (offset >= NV_PCIE_CFG_MAX_OFFSET)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -137,6 +144,7 @@ NV_STATUS NV_API_CALL os_pci_write_dword(
 
 NvBool NV_API_CALL os_pci_remove_supported(void)
 {
+    printk(KERN_ERR "=====================================   1009\n");
 #if defined NV_PCI_STOP_AND_REMOVE_BUS_DEVICE
     return NV_TRUE;
 #else
@@ -148,6 +156,7 @@ void NV_API_CALL os_pci_remove(
     void *handle
 )
 {
+    printk(KERN_ERR "=====================================   1010\n");
 #if defined(NV_PCI_STOP_AND_REMOVE_BUS_DEVICE)
     NV_PCI_STOP_AND_REMOVE_BUS_DEVICE(handle);
 #elif defined(DEBUG)
@@ -164,6 +173,7 @@ os_enable_pci_req_atomics(
     enum os_pci_req_atomics_type type
 )
 {
+    printk(KERN_ERR "=====================================   1011\n");
 #ifdef NV_PCI_ENABLE_ATOMIC_OPS_TO_ROOT_PRESENT
     int ret;
     u16 val;

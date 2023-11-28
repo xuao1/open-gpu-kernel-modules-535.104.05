@@ -247,6 +247,7 @@ void nv_detect_conf_compute_platform(
     void
 )
 {
+    printk(KERN_ERR "=====================================   673\n");
 #if defined(NV_CC_PLATFORM_PRESENT)
     os_cc_enabled = cc_platform_has(CC_ATTR_GUEST_MEM_ENCRYPT);
 
@@ -268,6 +269,7 @@ nv_alloc_t *nvos_create_alloc(
     NvU64          num_pages
 )
 {
+    printk(KERN_ERR "=====================================   674\n");
     nv_alloc_t  *at;
     NvU64        pt_size;
     unsigned int i;
@@ -332,6 +334,7 @@ int nvos_free_alloc(
     nv_alloc_t *at
 )
 {
+    printk(KERN_ERR "=====================================   675\n");
     unsigned int i;
 
     if (at == NULL)
@@ -355,6 +358,7 @@ int nvos_free_alloc(
 static void
 nv_module_resources_exit(nv_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   676\n");
     nv_kmem_cache_free_stack(sp);
 
     NV_KMEM_CACHE_DESTROY(nvidia_p2p_page_t_cache);
@@ -365,6 +369,7 @@ nv_module_resources_exit(nv_stack_t *sp)
 static int __init
 nv_module_resources_init(nv_stack_t **sp)
 {
+    printk(KERN_ERR "=====================================   677\n");
     int rc = -ENOMEM;
 
     nvidia_stack_t_cache = NV_KMEM_CACHE_CREATE(nvidia_stack_cache_name,
@@ -416,6 +421,7 @@ exit:
 static void
 nvlink_drivers_exit(void)
 {
+    printk(KERN_ERR "=====================================   678\n");
 #if NVCPU_IS_64_BITS
     nvswitch_exit();
 #endif
@@ -430,6 +436,7 @@ nvlink_drivers_exit(void)
 static int __init
 nvlink_drivers_init(void)
 {
+    printk(KERN_ERR "=====================================   679\n");
     int rc = 0;
 
     rc = nvlink_core_init();
@@ -467,6 +474,7 @@ nvlink_drivers_init(void)
 static void
 nv_module_state_exit(nv_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   680\n");
     nv_state_t *nv = NV_STATE_PTR(&nv_ctl_device);
 
     nv_teardown_pat_support();
@@ -480,6 +488,7 @@ nv_module_state_exit(nv_stack_t *sp)
 static int
 nv_module_state_init(nv_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   681\n");
     int rc;
     nv_state_t *nv = NV_STATE_PTR(&nv_ctl_device);
 
@@ -535,6 +544,7 @@ exit:
 static void __init
 nv_registry_keys_init(nv_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   682\n");
     NV_STATUS status;
     nv_state_t *nv = NV_STATE_PTR(&nv_ctl_device);
     NvU32 data;
@@ -572,6 +582,7 @@ nv_registry_keys_init(nv_stack_t *sp)
 static void __init
 nv_report_applied_patches(void)
 {
+    printk(KERN_ERR "=====================================   683\n");
     unsigned i;
 
     for (i = 0; __nv_patches[i].short_description; i++)
@@ -589,6 +600,7 @@ nv_report_applied_patches(void)
 static void
 nv_drivers_exit(void)
 {
+    printk(KERN_ERR "=====================================   684\n");
     nv_pci_unregister_driver();
 
     nvidia_unregister_module(&nv_fops);
@@ -597,6 +609,7 @@ nv_drivers_exit(void)
 static int __init
 nv_drivers_init(void)
 {
+    printk(KERN_ERR "=====================================   685\n");
     int rc;
 
     rc = nvidia_register_module(&nv_fops);
@@ -627,6 +640,7 @@ exit:
 static void
 nv_module_exit(nv_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   686\n");
     nv_module_state_exit(sp);
 
     rm_shutdown_rm(sp);
@@ -642,6 +656,7 @@ nv_module_exit(nv_stack_t *sp)
 static int __init
 nv_module_init(nv_stack_t **sp)
 {
+    printk(KERN_ERR "=====================================   687\n");
     int rc;
 
     rc = nv_module_resources_init(sp);
@@ -711,6 +726,7 @@ nv_assert_not_in_gpu_exclusion_list(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   688\n");
     char *uuid = rm_get_gpu_uuid(sp, nv);
 
     if (uuid == NULL)
@@ -734,6 +750,7 @@ nv_assert_not_in_gpu_exclusion_list(
 
 static int __init nv_caps_root_init(void)
 {
+    printk(KERN_ERR "=====================================   689\n");
     nvidia_caps_root = os_nv_cap_init("driver/" MODULE_NAME);
 
     return (nvidia_caps_root == NULL) ? -ENOENT : 0;
@@ -741,12 +758,14 @@ static int __init nv_caps_root_init(void)
 
 static void nv_caps_root_exit(void)
 {
+    printk(KERN_ERR "=====================================   690\n");
     os_nv_cap_destroy_entry(nvidia_caps_root);
     nvidia_caps_root = NULL;
 }
 
 int __init nvidia_init_module(void)
 {
+    printk(KERN_ERR "=====================================   691\n");
     int rc;
     NvU32 count;
     nvidia_stack_t *sp = NULL;
@@ -867,6 +886,7 @@ procfs_exit:
 
 void nvidia_exit_module(void)
 {
+    printk(KERN_ERR "=====================================   692\n");
     nvidia_stack_t *sp = __nv_init_sp;
 
 #if defined(NV_UVM_ENABLE)
@@ -886,6 +906,7 @@ void nvidia_exit_module(void)
 
 static void *nv_alloc_file_private(void)
 {
+    printk(KERN_ERR "=====================================   693\n");
     nv_linux_file_private_t *nvlfp;
     unsigned int i;
 
@@ -909,6 +930,7 @@ static void *nv_alloc_file_private(void)
 
 static void nv_free_file_private(nv_linux_file_private_t *nvlfp)
 {
+    printk(KERN_ERR "=====================================   694\n");
     nvidia_event_t *nvet;
 
     if (nvlfp == NULL)
@@ -933,6 +955,7 @@ static int nv_is_control_device(
     struct inode *inode
 )
 {
+    printk(KERN_ERR "=====================================   695\n");
     return (minor((inode)->i_rdev) == NV_CONTROL_DEVICE_MINOR);
 }
 
@@ -942,6 +965,7 @@ static int nv_is_control_device(
  */
 static nv_linux_state_t *find_minor(NvU32 minor)
 {
+    printk(KERN_ERR "=====================================   696\n");
     nv_linux_state_t *nvl;
 
     LOCK_NV_LINUX_DEVICES();
@@ -966,6 +990,7 @@ static nv_linux_state_t *find_minor(NvU32 minor)
  */
 static nv_linux_state_t *find_gpu_id(NvU32 gpu_id)
 {
+    printk(KERN_ERR "=====================================   697\n");
     nv_linux_state_t *nvl;
 
     LOCK_NV_LINUX_DEVICES();
@@ -992,6 +1017,7 @@ static nv_linux_state_t *find_gpu_id(NvU32 gpu_id)
  */
 nv_linux_state_t *find_uuid(const NvU8 *uuid)
 {
+    printk(KERN_ERR "=====================================   698\n");
     nv_linux_state_t *nvl = NULL;
     nv_state_t *nv;
     const NvU8 *dev_uuid;
@@ -1031,6 +1057,7 @@ out:
  */
 static nv_linux_state_t *find_uuid_candidate(const NvU8 *uuid)
 {
+    printk(KERN_ERR "=====================================   699\n");
     nv_linux_state_t *nvl = NULL;
     nv_state_t *nv;
     const NvU8 *dev_uuid;
@@ -1082,6 +1109,7 @@ out:
 
 void nv_dev_free_stacks(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   700\n");
     NvU32 i;
     for (i = 0; i < NV_DEV_STACK_COUNT; i++)
     {
@@ -1095,6 +1123,7 @@ void nv_dev_free_stacks(nv_linux_state_t *nvl)
 
 static int nv_dev_alloc_stacks(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   701\n");
     NvU32 i;
     int rc;
 
@@ -1113,6 +1142,7 @@ static int nv_dev_alloc_stacks(nv_linux_state_t *nvl)
 
 static int validate_numa_start_state(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   702\n");
     int rc = 0;
     int numa_status = nv_get_numa_status(nvl);
 
@@ -1136,6 +1166,7 @@ static int validate_numa_start_state(nv_linux_state_t *nvl)
 
 NV_STATUS NV_API_CALL nv_get_num_dpaux_instances(nv_state_t *nv, NvU32 *num_instances)
 {
+    printk(KERN_ERR "=====================================   703\n");
     *num_instances = nv->num_dpaux_instance;
     return NV_OK;
 }
@@ -1143,6 +1174,7 @@ NV_STATUS NV_API_CALL nv_get_num_dpaux_instances(nv_state_t *nv, NvU32 *num_inst
 void NV_API_CALL
 nv_schedule_uvm_isr(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   704\n");
 #if defined(NV_UVM_ENABLE)
     nv_uvm_event_interrupt(nv_get_cached_uuid(nv));
 #endif
@@ -1153,6 +1185,7 @@ nv_schedule_uvm_isr(nv_state_t *nv)
  */
 static int nv_start_device(nv_state_t *nv, nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   705\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 #if defined(NV_LINUX_PCIE_MSI_SUPPORTED)
     NvU32 msi_config = 0;
@@ -1428,6 +1461,7 @@ failed:
  */
 static int nv_open_device(nv_state_t *nv, nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   706\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     int rc;
     NV_STATUS status;
@@ -1488,6 +1522,7 @@ static void nv_init_mapping_revocation(nv_linux_state_t *nvl,
                                        nv_linux_file_private_t *nvlfp,
                                        struct inode *inode)
 {
+    printk(KERN_ERR "=====================================   707\n");
     down(&nvl->mmap_lock);
 
     /* Set up struct address_space for use with unmap_mapping_range() */
@@ -1516,6 +1551,7 @@ nvidia_open(
     struct file *file
 )
 {
+    printk(KERN_ERR "=====================================   708\n");
     nv_state_t *nv = NULL;
     nv_linux_state_t *nvl = NULL;
     int rc = 0;
@@ -1629,6 +1665,7 @@ failed:
 
 static void validate_numa_shutdown_state(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   709\n");
     int numa_status = nv_get_numa_status(nvl);
     WARN_ON((numa_status != NV_IOCTL_NUMA_STATUS_OFFLINE) &&
             (numa_status != NV_IOCTL_NUMA_STATUS_DISABLED));
@@ -1638,6 +1675,7 @@ void nv_shutdown_adapter(nvidia_stack_t *sp,
                          nv_state_t *nv,
                          nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   710\n");
 #if defined(NVCPU_PPC64LE)
     validate_numa_shutdown_state(nvl);
 #endif
@@ -1703,6 +1741,7 @@ void nv_shutdown_adapter(nvidia_stack_t *sp,
  */
 static void nv_stop_device(nv_state_t *nv, nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   711\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     static int persistence_mode_notice_logged;
 
@@ -1776,6 +1815,7 @@ static void nv_stop_device(nv_state_t *nv, nvidia_stack_t *sp)
  */
 static void nv_close_device(nv_state_t *nv, nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   712\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     if (NV_ATOMIC_READ(nvl->usage_count) == 0)
@@ -1802,6 +1842,7 @@ nvidia_close_callback(
    nv_linux_file_private_t *nvlfp
 )
 {
+    printk(KERN_ERR "=====================================   713\n");
     nv_linux_state_t *nvl = nvlfp->nvptr;
     nv_state_t *nv = NV_STATE_PTR(nvl);
     nvidia_stack_t *sp = nvlfp->sp;
@@ -1865,6 +1906,7 @@ nvidia_close_callback(
 
 static void nvidia_close_deferred(void *data)
 {
+    printk(KERN_ERR "=====================================   714\n");
     nv_linux_file_private_t *nvlfp = data;
 
     down_read(&nv_system_pm_lock);
@@ -1880,6 +1922,7 @@ nvidia_close(
     struct file *file
 )
 {
+    printk(KERN_ERR "=====================================   715\n");
     int rc;
     nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
     nv_linux_state_t *nvl = nvlfp->nvptr;
@@ -1919,6 +1962,7 @@ nvidia_poll(
     poll_table  *wait
 )
 {
+    printk(KERN_ERR "=====================================   716\n");
     unsigned int mask = 0;
     nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
     unsigned long eflags;
@@ -1951,6 +1995,7 @@ nvidia_poll(
 
 #define NV_CTL_DEVICE_ONLY(nv)                 \
 {                                              \
+    printk(KERN_ERR "=====================================   717\n");
     if (((nv)->flags & NV_FLAG_CONTROL) == 0)  \
     {                                          \
         status = -EINVAL;                      \
@@ -1960,6 +2005,7 @@ nvidia_poll(
 
 #define NV_ACTUAL_DEVICE_ONLY(nv)              \
 {                                              \
+    printk(KERN_ERR "=====================================   718\n");
     if (((nv)->flags & NV_FLAG_CONTROL) != 0)  \
     {                                          \
         status = -EINVAL;                      \
@@ -1973,6 +2019,7 @@ nvidia_poll(
  */
 static int nvidia_read_card_info(nv_ioctl_card_info_t *ci, size_t num_entries)
 {
+    printk(KERN_ERR "=====================================   719\n");
     nv_state_t *nv;
     nv_linux_state_t *nvl;
     size_t i = 0;
@@ -2028,6 +2075,7 @@ nvidia_ioctl(
     unsigned int cmd,
     unsigned long i_arg)
 {
+    printk(KERN_ERR "=====================================   720\n");
     printk(KERN_ERR, "xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: %u, arg: %lu\n", _IOC_NR(cmd), i_arg);
     NV_STATUS rmStatus;
     int status = 0;
@@ -2386,6 +2434,7 @@ nvidia_isr_msix(
     void *arg
 )
 {
+    printk(KERN_ERR "=====================================   721\n");
     irqreturn_t ret;
     nv_linux_state_t *nvl = (void *) arg;
 
@@ -2415,6 +2464,7 @@ nvidia_isr(
     void *arg
 )
 {
+    printk(KERN_ERR "=====================================   722\n");
     nv_linux_state_t *nvl = (void *) arg;
     nv_state_t *nv = NV_STATE_PTR(nvl);
     NvU32 need_to_run_bottom_half_gpu_lock_held = 0;
@@ -2531,6 +2581,7 @@ nvidia_isr_kthread_bh(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   723\n");
     return nvidia_isr_common_bh(data);
 }
 
@@ -2540,6 +2591,7 @@ nvidia_isr_msix_kthread_bh(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   724\n");
     NV_STATUS status;
     irqreturn_t ret;
     nv_state_t *nv = (nv_state_t *) data;
@@ -2565,6 +2617,7 @@ nvidia_isr_common_bh(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   725\n");
     nv_state_t *nv = (nv_state_t *) data;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     nvidia_stack_t *sp = nvl->sp[NV_DEV_STACK_ISR_BH];
@@ -2588,6 +2641,7 @@ nvidia_isr_bh_unlocked(
     void * args
 )
 {
+    printk(KERN_ERR "=====================================   726\n");
     nv_state_t *nv = (nv_state_t *) args;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     nvidia_stack_t *sp;
@@ -2626,6 +2680,7 @@ nvidia_rc_timer_callback(
     struct nv_timer *nv_timer
 )
 {
+    printk(KERN_ERR "=====================================   727\n");
     nv_linux_state_t *nvl = container_of(nv_timer, nv_linux_state_t, rc_timer);
     nv_state_t *nv = NV_STATE_PTR(nvl);
     nvidia_stack_t *sp = nvl->sp[NV_DEV_STACK_TIMER];
@@ -2657,6 +2712,7 @@ nvidia_ctl_open(
     struct file *file
 )
 {
+    printk(KERN_ERR "=====================================   728\n");
     nv_linux_state_t *nvl = &nv_ctl_device;
     nv_state_t *nv = NV_STATE_PTR(nvl);
     nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
@@ -2689,6 +2745,7 @@ nvidia_ctl_close(
     struct file *file
 )
 {
+    printk(KERN_ERR "=====================================   729\n");
     nv_alloc_t *at, *next;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_FILEP(file);
     nv_state_t *nv = NV_STATE_PTR(nvl);
@@ -2757,6 +2814,7 @@ nv_set_dma_address_size(
     NvU32       phys_addr_bits
 )
 {
+    printk(KERN_ERR "=====================================   730\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     NvU64 start_addr = nv_get_dma_start_address(nv);
     NvU64 new_mask = (((NvU64)1) << phys_addr_bits) - 1;
@@ -2788,6 +2846,7 @@ nv_map_guest_pages(nv_alloc_t *at,
                    NvU32 page_count,
                    NvU32 page_idx)
 {
+    printk(KERN_ERR "=====================================   731\n");
     struct page **pages;
     NvU32 j;
     NvUPtr virt_addr;
@@ -2823,6 +2882,7 @@ nv_alias_pages(
     void **priv_data
 )
 {
+    printk(KERN_ERR "=====================================   732\n");
     nv_alloc_t *at;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     NvU32 i=0;
@@ -2886,6 +2946,7 @@ NV_STATUS NV_API_CALL nv_register_peer_io_mem(
     void      **priv_data
 )
 {
+    printk(KERN_ERR "=====================================   733\n");
     nv_alloc_t *at;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     NvU64 i;
@@ -2929,6 +2990,7 @@ void NV_API_CALL nv_unregister_peer_io_mem(
     void       *priv_data
 )
 {
+    printk(KERN_ERR "=====================================   734\n");
     nv_alloc_t *at = priv_data;
 
     NV_PRINT_AT(NV_DBG_MEMINFO, at);
@@ -2950,6 +3012,7 @@ NV_STATUS NV_API_CALL nv_register_user_pages(
     void      **priv_data
 )
 {
+    printk(KERN_ERR "=====================================   735\n");
     nv_alloc_t *at;
     NvU64 i;
     struct page **user_pages;
@@ -3015,6 +3078,7 @@ void NV_API_CALL nv_unregister_user_pages(
     void      **priv_data
 )
 {
+    printk(KERN_ERR "=====================================   736\n");
     nv_alloc_t *at = *priv_data;
 
     nv_printf(NV_DBG_MEMINFO, "NVRM: VM: nv_unregister_user_pages: 0x%x\n", page_count);
@@ -3047,6 +3111,7 @@ NV_STATUS NV_API_CALL nv_register_phys_pages(
     void      **priv_data
 )
 {
+    printk(KERN_ERR "=====================================   737\n");
     nv_alloc_t *at;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     NvU64 i;
@@ -3092,6 +3157,7 @@ NV_STATUS NV_API_CALL nv_register_sgt(
     void       *import_priv
 )
 {
+    printk(KERN_ERR "=====================================   738\n");
     nv_alloc_t *at;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
@@ -3148,6 +3214,7 @@ void NV_API_CALL nv_unregister_sgt(
     void  *priv_data
 )
 {
+    printk(KERN_ERR "=====================================   739\n");
     nv_alloc_t *at = priv_data;
 
     nv_printf(NV_DBG_MEMINFO, "NVRM: VM: nv_unregister_sgt\n");
@@ -3171,6 +3238,7 @@ void NV_API_CALL nv_unregister_phys_pages(
     void       *priv_data
 )
 {
+    printk(KERN_ERR "=====================================   740\n");
     nv_alloc_t *at = priv_data;
     NV_PRINT_AT(NV_DBG_MEMINFO, at);
 
@@ -3182,6 +3250,7 @@ NV_STATUS NV_API_CALL nv_get_num_phys_pages(
     NvU32   *pNumPages
 )
 {
+    printk(KERN_ERR "=====================================   741\n");
     nv_alloc_t *at = pAllocPrivate;
 
     if (!pNumPages) {
@@ -3199,6 +3268,7 @@ NV_STATUS NV_API_CALL nv_get_phys_pages(
     NvU32   *pNumPages
 )
 {
+    printk(KERN_ERR "=====================================   742\n");
     nv_alloc_t *at = pAllocPrivate;
     struct page **pages = (struct page **)pPages;
     NvU32 page_count;
@@ -3228,6 +3298,7 @@ void* NV_API_CALL nv_alloc_kernel_mapping(
     void      **pPrivate
 )
 {
+    printk(KERN_ERR "=====================================   743\n");
     nv_alloc_t *at = pAllocPrivate;
     NvU32 j, page_count;
     NvUPtr virt_addr;
@@ -3305,6 +3376,7 @@ NV_STATUS NV_API_CALL nv_free_kernel_mapping(
     void       *pPrivate
 )
 {
+    printk(KERN_ERR "=====================================   744\n");
     nv_alloc_t *at = pAllocPrivate;
     NvUPtr virt_addr;
     NvU32 page_count;
@@ -3336,6 +3408,7 @@ NV_STATUS NV_API_CALL nv_alloc_pages(
     void      **priv_data
 )
 {
+    printk(KERN_ERR "=====================================   745\n");
     nv_alloc_t *at;
     NV_STATUS status = NV_ERR_NO_MEMORY;
     nv_linux_state_t *nvl = NULL;
@@ -3463,6 +3536,7 @@ NV_STATUS NV_API_CALL nv_free_pages(
     void *priv_data
 )
 {
+    printk(KERN_ERR "=====================================   746\n");
     NV_STATUS rmStatus = NV_OK;
     nv_alloc_t *at = priv_data;
 
@@ -3501,6 +3575,7 @@ NvBool nv_lock_init_locks
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   747\n");
     nv_linux_state_t *nvl;
     nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
@@ -3521,6 +3596,7 @@ void nv_lock_destroy_locks
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   748\n");
     rm_destroy_event_locks(sp, nv);
 }
 
@@ -3533,6 +3609,7 @@ void NV_API_CALL nv_post_event(
     NvBool      data_valid
 )
 {
+    printk(KERN_ERR "=====================================   749\n");
     nv_linux_file_private_t *nvlfp = nv_get_nvlfp_from_nvfp(event->nvfp);
     unsigned long eflags;
     nvidia_event_t *nvet;
@@ -3580,6 +3657,7 @@ NvBool NV_API_CALL nv_is_rm_firmware_active(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   750\n");
     if (rm_firmware_active)
     {
         // "all" here means all GPUs
@@ -3597,6 +3675,7 @@ const void* NV_API_CALL nv_get_firmware(
     NvU32 *fw_size
 )
 {
+    printk(KERN_ERR "=====================================   751\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     const struct firmware *fw;
 
@@ -3615,6 +3694,7 @@ void NV_API_CALL nv_put_firmware(
     const void *fw_handle
 )
 {
+    printk(KERN_ERR "=====================================   752\n");
     release_firmware(fw_handle);
 }
 
@@ -3624,6 +3704,7 @@ nv_file_private_t* NV_API_CALL nv_get_file_private(
     void **os_private
 )
 {
+    printk(KERN_ERR "=====================================   753\n");
     struct file *filp = NULL;
     nv_linux_file_private_t *nvlfp = NULL;
     dev_t rdev = 0;
@@ -3685,6 +3766,7 @@ void NV_API_CALL nv_put_file_private(
     void *os_private
 )
 {
+    printk(KERN_ERR "=====================================   754\n");
     struct file *filp = os_private;
     fput(filp);
 }
@@ -3695,6 +3777,7 @@ int NV_API_CALL nv_get_event(
     NvU32              *pending
 )
 {
+    printk(KERN_ERR "=====================================   755\n");
     nv_linux_file_private_t *nvlfp = nv_get_nvlfp_from_nvfp(nvfp);
     nvidia_event_t *nvet;
     unsigned long eflags;
@@ -3727,6 +3810,7 @@ int NV_API_CALL nv_start_rc_timer(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   756\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     if (nv->rc_timer_enabled)
@@ -3750,6 +3834,7 @@ int NV_API_CALL nv_stop_rc_timer(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   757\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     if (!nv->rc_timer_enabled)
@@ -3767,6 +3852,7 @@ int NV_API_CALL nv_stop_rc_timer(
 
 static void snapshot_timer_callback(struct nv_timer *timer)
 {
+    printk(KERN_ERR "=====================================   758\n");
     nv_linux_state_t *nvl = &nv_ctl_device;
     nv_state_t *nv = NV_STATE_PTR(nvl);
     unsigned long flags;
@@ -3782,6 +3868,7 @@ static void snapshot_timer_callback(struct nv_timer *timer)
 
 void NV_API_CALL nv_start_snapshot_timer(void (*snapshot_callback)(void *context))
 {
+    printk(KERN_ERR "=====================================   759\n");
     nv_linux_state_t *nvl = &nv_ctl_device;
 
     nvl->snapshot_callback = snapshot_callback;
@@ -3791,6 +3878,7 @@ void NV_API_CALL nv_start_snapshot_timer(void (*snapshot_callback)(void *context
 
 void NV_API_CALL nv_stop_snapshot_timer(void)
 {
+    printk(KERN_ERR "=====================================   760\n");
     nv_linux_state_t *nvl = &nv_ctl_device;
     NvBool timer_active;
     unsigned long flags;
@@ -3806,6 +3894,7 @@ void NV_API_CALL nv_stop_snapshot_timer(void)
 
 void NV_API_CALL nv_flush_snapshot_timer(void)
 {
+    printk(KERN_ERR "=====================================   761\n");
     nv_linux_state_t *nvl = &nv_ctl_device;
     nv_state_t *nv = NV_STATE_PTR(nvl);
     unsigned long flags;
@@ -3819,6 +3908,7 @@ void NV_API_CALL nv_flush_snapshot_timer(void)
 static int __init
 nvos_count_devices(void)
 {
+    printk(KERN_ERR "=====================================   762\n");
     int count;
 
     count = nv_pci_count_devices();
@@ -3828,6 +3918,7 @@ nvos_count_devices(void)
 
 NvBool nvos_is_chipset_io_coherent(void)
 {
+    printk(KERN_ERR "=====================================   763\n");
     if (nv_chipset_is_io_coherent == NV_TRISTATE_INDETERMINATE)
     {
         nvidia_stack_t *sp = NULL;
@@ -3854,6 +3945,7 @@ nv_power_management(
     nv_pm_action_t pm_action
 )
 {
+    printk(KERN_ERR "=====================================   764\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     int status = NV_OK;
     nvidia_stack_t *sp = NULL;
@@ -3913,6 +4005,7 @@ nv_restore_user_channels(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   765\n");
     NV_STATUS status = NV_OK;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     nv_stack_t *sp = NULL;
@@ -3953,6 +4046,7 @@ nv_preempt_user_channels(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   766\n");
     NV_STATUS status = NV_OK;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     nv_stack_t *sp = NULL;
@@ -3997,6 +4091,7 @@ nvidia_suspend(
     NvBool is_procfs_suspend
 )
 {
+    printk(KERN_ERR "=====================================   767\n");
     NV_STATUS status = NV_OK;
     struct pci_dev *pci_dev = NULL;
     nv_linux_state_t *nvl;
@@ -4075,6 +4170,7 @@ nvidia_resume(
     nv_pm_action_t pm_action
 )
 {
+    printk(KERN_ERR "=====================================   768\n");
     NV_STATUS status = NV_OK;
     struct pci_dev *pci_dev;
     nv_linux_state_t *nvl;
@@ -4125,6 +4221,7 @@ nv_resume_devices(
     nv_pm_action_depth_t pm_action_depth
 )
 {
+    printk(KERN_ERR "=====================================   769\n");
     nv_linux_state_t *nvl;
     NvBool resume_devices = NV_TRUE;
     NV_STATUS status;
@@ -4177,6 +4274,7 @@ nv_suspend_devices(
     nv_pm_action_depth_t pm_action_depth
 )
 {
+    printk(KERN_ERR "=====================================   770\n");
     nv_linux_state_t *nvl;
     NvBool resume_devices = NV_FALSE;
     NV_STATUS status = NV_OK;
@@ -4254,6 +4352,7 @@ nv_set_system_power_state(
     nv_pm_action_depth_t pm_action_depth
 )
 {
+    printk(KERN_ERR "=====================================   771\n");
     NV_STATUS status;
     nv_pm_action_t pm_action;
 
@@ -4316,6 +4415,7 @@ int nv_pmops_suspend(
     struct device *dev
 )
 {
+    printk(KERN_ERR "=====================================   772\n");
     NV_STATUS status;
 
     status = nvidia_suspend(dev, NV_PM_ACTION_STANDBY, NV_FALSE);
@@ -4326,6 +4426,7 @@ int nv_pmops_resume(
     struct device *dev
 )
 {
+    printk(KERN_ERR "=====================================   773\n");
     NV_STATUS status;
 
     status = nvidia_resume(dev, NV_PM_ACTION_RESUME);
@@ -4336,6 +4437,7 @@ int nv_pmops_freeze(
     struct device *dev
 )
 {
+    printk(KERN_ERR "=====================================   774\n");
     NV_STATUS status;
 
     status = nvidia_suspend(dev, NV_PM_ACTION_HIBERNATE, NV_FALSE);
@@ -4346,6 +4448,7 @@ int nv_pmops_thaw(
     struct device *dev
 )
 {
+    printk(KERN_ERR "=====================================   775\n");
     return 0;
 }
 
@@ -4353,6 +4456,7 @@ int nv_pmops_restore(
     struct device *dev
 )
 {
+    printk(KERN_ERR "=====================================   776\n");
     NV_STATUS status;
 
     status = nvidia_resume(dev, NV_PM_ACTION_RESUME);
@@ -4363,6 +4467,7 @@ int nv_pmops_poweroff(
     struct device *dev
 )
 {
+    printk(KERN_ERR "=====================================   777\n");
     return 0;
 }
 
@@ -4372,6 +4477,7 @@ nvidia_transition_dynamic_power(
     NvBool enter
 )
 {
+    printk(KERN_ERR "=====================================   778\n");
     struct pci_dev *pci_dev = to_pci_dev(dev);
     nv_linux_state_t *nvl = pci_get_drvdata(pci_dev);
     nv_state_t *nv = NV_STATE_PTR(nvl);
@@ -4399,6 +4505,7 @@ int nv_pmops_runtime_suspend(
     struct device *dev
 )
 {
+    printk(KERN_ERR "=====================================   779\n");
     return nvidia_transition_dynamic_power(dev, NV_TRUE);
 }
 
@@ -4406,6 +4513,7 @@ int nv_pmops_runtime_resume(
     struct device *dev
 )
 {
+    printk(KERN_ERR "=====================================   780\n");
     return nvidia_transition_dynamic_power(dev, NV_FALSE);
 }
 #endif /* defined(CONFIG_PM) */
@@ -4416,6 +4524,7 @@ nv_state_t* NV_API_CALL nv_get_adapter_state(
     NvU8  slot
 )
 {
+    printk(KERN_ERR "=====================================   781\n");
     nv_linux_state_t *nvl;
 
     LOCK_NV_LINUX_DEVICES();
@@ -4436,6 +4545,7 @@ nv_state_t* NV_API_CALL nv_get_adapter_state(
 
 nv_state_t* NV_API_CALL nv_get_ctl_state(void)
 {
+    printk(KERN_ERR "=====================================   782\n");
     return NV_STATE_PTR(&nv_ctl_device);
 }
 
@@ -4446,6 +4556,7 @@ NV_STATUS NV_API_CALL nv_log_error(
     va_list    ap
 )
 {
+    printk(KERN_ERR "=====================================   783\n");
     NV_STATUS status = NV_OK;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
@@ -4462,6 +4573,7 @@ NvU64 NV_API_CALL nv_get_dma_start_address(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   784\n");
 #if defined(NVCPU_PPC64LE)
     struct pci_dev *pci_dev;
     dma_addr_t dma_addr;
@@ -4610,6 +4722,7 @@ NV_STATUS NV_API_CALL nv_set_primary_vga_status(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   785\n");
     /* IORESOURCE_ROM_SHADOW wasn't added until 2.6.10 */
 #if defined(IORESOURCE_ROM_SHADOW)
     nv_linux_state_t *nvl;
@@ -4630,6 +4743,7 @@ NV_STATUS NV_API_CALL nv_pci_trigger_recovery(
      nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   786\n");
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
 #if defined(NV_PCI_ERROR_RECOVERY)
     nv_linux_state_t *nvl       = NV_GET_NVL_FROM_NV_STATE(nv);
@@ -4662,6 +4776,7 @@ NvBool NV_API_CALL nv_requires_dma_remap(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   787\n");
     NvBool dma_remap = NV_FALSE;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     dma_remap = !nv_dma_maps_swiotlb(nvl->dev);
@@ -4673,6 +4788,7 @@ NvBool NV_API_CALL nv_requires_dma_remap(
  */
 NvBool nvidia_get_gpuid_list(NvU32 *gpu_ids, NvU32 *gpu_count)
 {
+    printk(KERN_ERR "=====================================   788\n");
     nv_linux_state_t *nvl;
     unsigned int count;
     NvBool ret = NV_TRUE;
@@ -4722,6 +4838,7 @@ done:
  */
 int nvidia_dev_get(NvU32 gpu_id, nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   789\n");
     nv_linux_state_t *nvl;
     int rc;
 
@@ -4746,6 +4863,7 @@ int nvidia_dev_get(NvU32 gpu_id, nvidia_stack_t *sp)
  */
 void nvidia_dev_put(NvU32 gpu_id, nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   790\n");
     nv_linux_state_t *nvl;
 
     /* Takes nvl->ldata_lock */
@@ -4770,6 +4888,7 @@ void nvidia_dev_put(NvU32 gpu_id, nvidia_stack_t *sp)
  */
 int nvidia_dev_get_uuid(const NvU8 *uuid, nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   791\n");
     nv_state_t *nv = NULL;
     nv_linux_state_t *nvl = NULL;
     const NvU8 *dev_uuid;
@@ -4820,6 +4939,7 @@ out:
  */
 void nvidia_dev_put_uuid(const NvU8 *uuid, nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   792\n");
     nv_linux_state_t *nvl;
 
     /* Callers must already have called nvidia_dev_get_uuid() */
@@ -4839,6 +4959,7 @@ void nvidia_dev_put_uuid(const NvU8 *uuid, nvidia_stack_t *sp)
 int nvidia_dev_block_gc6(const NvU8 *uuid, nvidia_stack_t *sp)
 
 {
+    printk(KERN_ERR "=====================================   793\n");
     nv_linux_state_t *nvl;
 
     /* Callers must already have called nvidia_dev_get_uuid() */
@@ -4862,6 +4983,7 @@ int nvidia_dev_block_gc6(const NvU8 *uuid, nvidia_stack_t *sp)
 int nvidia_dev_unblock_gc6(const NvU8 *uuid, nvidia_stack_t *sp)
 
 {
+    printk(KERN_ERR "=====================================   794\n");
     nv_linux_state_t *nvl;
 
     /* Callers must already have called nvidia_dev_get_uuid() */
@@ -4886,6 +5008,7 @@ NV_STATUS NV_API_CALL nv_get_device_memory_config(
     NvS32 *node_id
 )
 {
+    printk(KERN_ERR "=====================================   795\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
 
@@ -4956,6 +5079,7 @@ NV_STATUS NV_API_CALL nv_get_nvlink_line_rate(
     NvU32      *linerate
 )
 {
+    printk(KERN_ERR "=====================================   796\n");
 #if defined(NV_PNV_PCI_GET_NPU_DEV_PRESENT)
 
     nv_linux_state_t *nvl;
@@ -5015,6 +5139,7 @@ NV_STATUS NV_API_CALL nv_indicate_idle(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   797\n");
 #if defined(NV_PM_RUNTIME_AVAILABLE)
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     struct device *dev = nvl->dev;
@@ -5059,6 +5184,7 @@ NV_STATUS NV_API_CALL nv_indicate_not_idle(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   798\n");
 #if defined(NV_PM_RUNTIME_AVAILABLE)
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     struct device *dev = nvl->dev;
@@ -5078,6 +5204,7 @@ void NV_API_CALL nv_idle_holdoff(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   799\n");
 #if defined(NV_PM_RUNTIME_AVAILABLE)
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     struct device *dev = nvl->dev;
@@ -5090,6 +5217,7 @@ NvBool NV_API_CALL nv_dynamic_power_available(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   800\n");
 #if defined(NV_PM_RUNTIME_AVAILABLE)
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     return nvl->sysfs_config_file != NULL;
@@ -5101,6 +5229,7 @@ NvBool NV_API_CALL nv_dynamic_power_available(
 /* caller should hold nv_linux_devices_lock using LOCK_NV_LINUX_DEVICES */
 void nv_linux_add_device_locked(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   801\n");
     if (nv_linux_devices == NULL) {
         nv_linux_devices = nvl;
     }
@@ -5115,6 +5244,7 @@ void nv_linux_add_device_locked(nv_linux_state_t *nvl)
 /* caller should hold nv_linux_devices_lock using LOCK_NV_LINUX_DEVICES */
 void nv_linux_remove_device_locked(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   802\n");
     if (nvl == nv_linux_devices) {
         nv_linux_devices = nvl->next;
     }
@@ -5128,6 +5258,7 @@ void nv_linux_remove_device_locked(nv_linux_state_t *nvl)
 
 void NV_API_CALL nv_control_soc_irqs(nv_state_t *nv, NvBool bEnable)
 {
+    printk(KERN_ERR "=====================================   803\n");
     int count;
     unsigned long flags;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
@@ -5163,6 +5294,7 @@ void NV_API_CALL nv_control_soc_irqs(nv_state_t *nv, NvBool bEnable)
 
 NvU32 NV_API_CALL nv_get_dev_minor(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   804\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     return nvl->minor_num;
@@ -5170,6 +5302,7 @@ NvU32 NV_API_CALL nv_get_dev_minor(nv_state_t *nv)
 
 NV_STATUS NV_API_CALL nv_acquire_fabric_mgmt_cap(int fd, int *duped_fd)
 {
+    printk(KERN_ERR "=====================================   805\n");
     *duped_fd = nvlink_cap_acquire(fd, NVLINK_CAP_FABRIC_MANAGEMENT);
     if (*duped_fd < 0)
     {
@@ -5187,6 +5320,7 @@ void NV_API_CALL nv_audio_dynamic_power(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   806\n");
 /*
  * The runtime power management for nvidia HDA controller can be possible
  * after commit 07f4f97d7b4b ("vga_switcheroo: Use device link for HDA
@@ -5337,6 +5471,7 @@ void NV_API_CALL nv_audio_dynamic_power(
 
 static int nv_match_dev_state(const void *data, struct file *filp, unsigned fd)
 {
+    printk(KERN_ERR "=====================================   807\n");
     nv_linux_state_t *nvl = NULL;
     dev_t rdev = 0;
 
@@ -5358,6 +5493,7 @@ static int nv_match_dev_state(const void *data, struct file *filp, unsigned fd)
 
 NvBool NV_API_CALL nv_match_gpu_os_info(nv_state_t *nv, void *os_info)
 {
+    printk(KERN_ERR "=====================================   808\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     return nv_match_dev_state(nvl, os_info, -1);
@@ -5365,6 +5501,7 @@ NvBool NV_API_CALL nv_match_gpu_os_info(nv_state_t *nv, void *os_info)
 
 NvBool NV_API_CALL nv_is_gpu_accessible(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   809\n");
     struct files_struct *files = current->files;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
@@ -5373,6 +5510,7 @@ NvBool NV_API_CALL nv_is_gpu_accessible(nv_state_t *nv)
 
 NvBool NV_API_CALL nv_platform_supports_s0ix(void)
 {
+    printk(KERN_ERR "=====================================   810\n");
 #if defined(CONFIG_ACPI)
     return (acpi_gbl_FADT.flags & ACPI_FADT_LOW_POWER_S0) != 0;
 #else
@@ -5382,6 +5520,7 @@ NvBool NV_API_CALL nv_platform_supports_s0ix(void)
 
 NvBool NV_API_CALL nv_s2idle_pm_configured(void)
 {
+    printk(KERN_ERR "=====================================   811\n");
     NvU8 buf[8];
 
 #if defined(NV_SEQ_READ_ITER_PRESENT)
@@ -5443,6 +5582,7 @@ NvBool NV_API_CALL nv_s2idle_pm_configured(void)
  */
 NvBool NV_API_CALL nv_is_chassis_notebook(void)
 {
+    printk(KERN_ERR "=====================================   812\n");
     const char *chassis_type = dmi_get_system_info(DMI_CHASSIS_TYPE);
 
     //
@@ -5457,6 +5597,7 @@ void NV_API_CALL nv_allow_runtime_suspend
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   813\n");
 #if defined(NV_PM_RUNTIME_AVAILABLE)
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     struct device    *dev = nvl->dev;
@@ -5478,6 +5619,7 @@ void NV_API_CALL nv_disallow_runtime_suspend
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   814\n");
 #if defined(NV_PM_RUNTIME_AVAILABLE)
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     struct device    *dev = nvl->dev;
@@ -5496,11 +5638,13 @@ void NV_API_CALL nv_disallow_runtime_suspend
 
 NvU32 NV_API_CALL nv_get_os_type(void)
 {
+    printk(KERN_ERR "=====================================   815\n");
     return OS_TYPE_LINUX;
 }
 
 void NV_API_CALL nv_flush_coherent_cpu_cache_range(nv_state_t *nv, NvU64 cpu_virtual, NvU64 size)
 {
+    printk(KERN_ERR "=====================================   816\n");
 #if NVCPU_IS_PPC64LE
     return nv_ibmnpu_cache_flush_range(nv, cpu_virtual, size);
 #elif NVCPU_IS_AARCH64
@@ -5528,6 +5672,7 @@ void NV_API_CALL nv_flush_coherent_cpu_cache_range(nv_state_t *nv, NvU64 cpu_vir
 
 static struct resource *nv_next_resource(struct resource *p)
 {
+    printk(KERN_ERR "=====================================   817\n");
     if (p->child != NULL)
         return p->child;
 
@@ -5548,6 +5693,7 @@ void NV_API_CALL nv_get_updated_emu_seg(
     NvU32 *end
 )
 {
+    printk(KERN_ERR "=====================================   818\n");
     struct resource *p;
 
     if (*start >= *end)
@@ -5590,6 +5736,7 @@ NV_STATUS NV_API_CALL nv_get_egm_info(
     NvS32 *egm_node_id
 )
 {
+    printk(KERN_ERR "=====================================   819\n");
 #if defined(NV_DEVICE_PROPERTY_READ_U64_PRESENT) && \
     defined(CONFIG_ACPI_NUMA) && \
     NV_IS_EXPORT_SYMBOL_PRESENT_pxm_to_node

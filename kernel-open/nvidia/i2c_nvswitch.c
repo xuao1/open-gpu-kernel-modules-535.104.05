@@ -45,6 +45,7 @@ nvswitch_i2c_algo_master_xfer
     int num
 )
 {
+    printk(KERN_ERR "=====================================   1\n");
     int rc;
     int i;
     NvU32 port;
@@ -121,6 +122,7 @@ nvswitch_i2c_algo_smbus_xfer
     union i2c_smbus_data *data
 )
 {
+    printk(KERN_ERR "=====================================   2\n");
     int rc = -EIO;
     NvU32 port;
     NvU8 cmd;
@@ -228,6 +230,7 @@ nvswitch_i2c_algo_smbus_xfer_exit:
 
 static u32 nvswitch_i2c_algo_functionality(struct i2c_adapter *adapter)
 {
+    printk(KERN_ERR "=====================================   3\n");
     return (I2C_FUNC_I2C             |
             I2C_FUNC_SMBUS_QUICK     |
             I2C_FUNC_SMBUS_BYTE      |
@@ -254,6 +257,7 @@ nvswitch_i2c_add_adapter
     NvU32 port
 )
 {
+    printk(KERN_ERR "=====================================   4\n");
     struct i2c_adapter *adapter = NULL;
     int rc = 0;
     struct pci_dev *pci_dev;
@@ -320,6 +324,7 @@ nvswitch_i2c_del_adapter
     struct i2c_adapter *adapter
 )
 {
+    printk(KERN_ERR "=====================================   5\n");
     if (adapter != NULL)
     {
         nvswitch_os_free(adapter->algo_data);
@@ -337,6 +342,7 @@ nvswitch_i2c_add_adapter
     NvU32 port
 )
 {
+    printk(KERN_ERR "=====================================   5\n");
     return NULL;
 }
 

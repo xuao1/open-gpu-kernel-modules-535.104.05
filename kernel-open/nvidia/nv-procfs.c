@@ -104,6 +104,7 @@ nv_procfs_read_gpu_info(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   600\n");
     nv_state_t *nv = s->private;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     struct pci_dev *pci_dev = nvl->pci_dev;
@@ -195,6 +196,7 @@ nv_procfs_read_power(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   601\n");
     nv_state_t *nv = s->private;
     nvidia_stack_t *sp = NULL;
     const char *vidmem_power_status;
@@ -232,6 +234,7 @@ nv_procfs_read_version(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   602\n");
     seq_printf(s, "NVRM version: %s\n", pNVRM_ID);
     seq_printf(s, "GCC version:  %s\n", NV_COMPILER);
 
@@ -245,6 +248,7 @@ nv_procfs_close_file(
     nv_procfs_private_t *nvpp
 )
 {
+    printk(KERN_ERR "=====================================   603\n");
     nvidia_stack_t *sp;
 
     if (nvpp->data != NULL)
@@ -268,6 +272,7 @@ nv_procfs_open_file(
     nv_procfs_private_t **pnvpp
 )
 {
+    printk(KERN_ERR "=====================================   604\n");
     int retval = 0;
     NV_STATUS status;
     nv_procfs_private_t *nvpp = NULL;
@@ -321,6 +326,7 @@ nv_procfs_open_registry(
     struct file  *file
 )
 {
+    printk(KERN_ERR "=====================================   605\n");
     nv_procfs_private_t *nvpp = NULL;
     int retval;
 
@@ -353,6 +359,7 @@ nv_procfs_close_registry(
     struct file  *file
 )
 {
+    printk(KERN_ERR "=====================================   606\n");
     struct seq_file *s = file->private_data;
     nv_procfs_private_t *nvpp = s->private;
     nv_state_t *nv;
@@ -426,6 +433,7 @@ nv_procfs_read_params(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   607\n");
     unsigned int i;
     nv_parm_t *entry;
 
@@ -456,6 +464,7 @@ nv_procfs_read_registry(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   608\n");
     nv_procfs_private_t *nvpp = s->private;
     nv_state_t *nv = nvpp->nv;
     nv_linux_state_t *nvl = NULL;
@@ -478,6 +487,7 @@ nv_procfs_write_file(
     loff_t *pos
 )
 {
+    printk(KERN_ERR "=====================================   609\n");
     int status = 0;
     struct seq_file *s = file->private_data;
     nv_procfs_private_t *nvpp = s->private;
@@ -535,6 +545,7 @@ nv_procfs_show_suspend_depth(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   610\n");
     seq_printf(m, "default modeset uvm\n");
     return 0;
 }
@@ -547,6 +558,7 @@ nv_procfs_write_suspend_depth(
     loff_t *pos
 )
 {
+    printk(KERN_ERR "=====================================   611\n");
     char kbuf[sizeof("modeset\n")];
     unsigned i;
 
@@ -595,6 +607,7 @@ nv_procfs_open_suspend_depth(
     struct file *file
 )
 {
+    printk(KERN_ERR "=====================================   612\n");
     return single_open(file, nv_procfs_show_suspend_depth, NULL);
 }
 
@@ -613,6 +626,7 @@ nv_procfs_show_suspend(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   613\n");
     seq_printf(m, "suspend hibernate resume\n");
     return 0;
 }
@@ -625,6 +639,7 @@ nv_procfs_write_suspend(
     loff_t *pos
 )
 {
+    printk(KERN_ERR "=====================================   614\n");
     NV_STATUS status;
     char kbuf[sizeof("hibernate\n")];
     nv_power_state_t power_state;
@@ -677,6 +692,7 @@ nv_procfs_open_suspend(
     struct file *file
 )
 {
+    printk(KERN_ERR "=====================================   615\n");
     return single_open(file, nv_procfs_show_suspend, NULL);
 }
 
@@ -702,6 +718,7 @@ exercise_error_forwarding_va(
     ...
 )
 {
+    printk(KERN_ERR "=====================================   616\n");
     va_list arguments;
 
     va_start(arguments, fmt);
@@ -715,6 +732,7 @@ nv_procfs_show_exercise_error_forwarding(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   617\n");
     return 0;
 }
 
@@ -724,6 +742,7 @@ nv_procfs_open_exercise_error_forwarding(
     struct file  *file
 )
 {
+    printk(KERN_ERR "=====================================   618\n");
     nv_procfs_private_t *nvpp = NULL;
     int retval;
 
@@ -756,6 +775,7 @@ nv_procfs_close_exercise_error_forwarding(
     struct file *file
 )
 {
+    printk(KERN_ERR "=====================================   619\n");
     struct seq_file *s = file->private_data;
     nv_procfs_private_t *nvpp = s->private;
     nv_state_t *nv = nvpp->nv;
@@ -805,6 +825,7 @@ nv_procfs_read_unbind_lock(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   620\n");
     nv_procfs_private_t *nvpp = s->private;
     nv_state_t *nv = nvpp->nv;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
@@ -829,6 +850,7 @@ nv_procfs_open_unbind_lock(
     struct file  *file
 )
 {
+    printk(KERN_ERR "=====================================   621\n");
     nv_procfs_private_t *nvpp = NULL;
     int retval;
 
@@ -861,6 +883,7 @@ nv_procfs_close_unbind_lock(
     struct file  *file
 )
 {
+    printk(KERN_ERR "=====================================   622\n");
     struct seq_file *s = file->private_data;
     nv_procfs_private_t *nvpp = s->private;
     nv_state_t *nv;
@@ -931,6 +954,7 @@ static nv_proc_ops_t nv_procfs_unbind_lock_fops = {
 static const char*
 numa_status_describe(nv_numa_status_t state)
 {
+    printk(KERN_ERR "=====================================   623\n");
     if (state < 0 || state >= NV_NUMA_STATUS_COUNT)
         return "invalid";
 
@@ -940,6 +964,7 @@ numa_status_describe(nv_numa_status_t state)
 static NvBool
 numa_is_change_allowed(nv_numa_status_t current_state, nv_numa_status_t requested)
 {
+    printk(KERN_ERR "=====================================   624\n");
     NvBool allowed = NV_TRUE;
 
     switch (requested) {
@@ -986,6 +1011,7 @@ numa_status_read(
         nv_offline_addresses_t *list
 )
 {
+    printk(KERN_ERR "=====================================   625\n");
     NV_STATUS rm_status;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
@@ -1046,6 +1072,7 @@ nv_procfs_read_offline_pages(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   626\n");
     NvU32 i;
     int retval = 0;
     NV_STATUS rm_status;
@@ -1079,6 +1106,7 @@ nv_procfs_open_offline_pages(
         struct file  *file
 )
 {
+    printk(KERN_ERR "=====================================   627\n");
     int retval;
     nv_procfs_private_t *nvpp = NULL;
 
@@ -1111,6 +1139,7 @@ nv_procfs_close_offline_pages(
         struct file  *file
 )
 {
+    printk(KERN_ERR "=====================================   628\n");
     struct seq_file *s = file->private_data;
     nv_procfs_private_t *nvpp = s->private;
 
@@ -1129,6 +1158,7 @@ nv_procfs_read_numa_status(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   629\n");
     int retval = 0;
     NV_STATUS rm_status;
     nv_ioctl_numa_info_t numa_info;
@@ -1165,6 +1195,7 @@ nv_procfs_open_numa_status(
         struct file  *file
 )
 {
+    printk(KERN_ERR "=====================================   630\n");
     int retval;
     nv_procfs_private_t *nvpp = NULL;
 
@@ -1197,6 +1228,7 @@ nv_procfs_close_numa_status(
         struct file  *file
 )
 {
+    printk(KERN_ERR "=====================================   631\n");
     int retval = 0;
     struct seq_file *s = file->private_data;
     nv_procfs_private_t *nvpp = s->private;
@@ -1296,6 +1328,7 @@ nv_procfs_read_text_file(
     void *v
 )
 {
+    printk(KERN_ERR "=====================================   632\n");
     seq_puts(s, s->private);
     return 0;
 }
@@ -1309,6 +1342,7 @@ nv_procfs_add_text_file(
     const char *text
 )
 {
+    printk(KERN_ERR "=====================================   633\n");
     NV_CREATE_PROC_FILE(filename, parent, text_file, (void *)text);
 }
 #endif
@@ -1318,6 +1352,7 @@ void nv_procfs_add_warning(
     const char *text
 )
 {
+    printk(KERN_ERR "=====================================   634\n");
 #if defined(CONFIG_PROC_FS)
     nv_procfs_add_text_file(proc_nvidia_warnings, filename, text);
 #endif
@@ -1325,6 +1360,7 @@ void nv_procfs_add_warning(
 
 int nv_procfs_init(void)
 {
+    printk(KERN_ERR "=====================================   635\n");
 #if defined(CONFIG_PROC_FS)
     NvU32 i = 0;
     char nv_dir_name[20];
@@ -1392,6 +1428,7 @@ failed:
 
 void nv_procfs_exit(void)
 {
+    printk(KERN_ERR "=====================================   636\n");
 #if defined(CONFIG_PROC_FS)
     proc_remove(proc_nvidia);
 #endif
@@ -1399,6 +1436,7 @@ void nv_procfs_exit(void)
 
 int nv_procfs_add_gpu(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   637\n");
 #if defined(CONFIG_PROC_FS)
     nv_state_t *nv;
 
@@ -1472,6 +1510,7 @@ failed:
 
 void nv_procfs_remove_gpu(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   638\n");
 #if defined(CONFIG_PROC_FS)
     proc_remove(nvl->proc_dir);
 #endif

@@ -35,29 +35,34 @@
 bool libspdm_x509_construct_certificate(const uint8_t *cert, size_t cert_size,
                                         uint8_t **single_x509_cert)
 {
+    printk(KERN_ERR "=====================================   95\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
 
 bool libspdm_x509_construct_certificate_stack(uint8_t **x509_stack, ...)
 {
+    printk(KERN_ERR "=====================================   96\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
 
 void libspdm_x509_free(void *x509_cert)
 {
+    printk(KERN_ERR "=====================================   97\n");
     LIBSPDM_ASSERT(false);
 }
 
 void libspdm_x509_stack_free(void *x509_stack)
 {
+    printk(KERN_ERR "=====================================   98\n");
     LIBSPDM_ASSERT(false);
 }
 
 static bool lkca_asn1_get_tag(uint8_t const *ptr, uint8_t const *end,
                               size_t *length, uint32_t tag)
 {
+    printk(KERN_ERR "=====================================   99\n");
     uint64_t max_len = end - ptr;
 
     // Chain must be less than 1 GB
@@ -97,6 +102,7 @@ static bool lkca_asn1_get_tag(uint8_t const *ptr, uint8_t const *end,
 bool libspdm_asn1_get_tag(uint8_t **ptr, const uint8_t *end, size_t *length,
                           uint32_t tag)
 {
+    printk(KERN_ERR "=====================================   100\n");
     return lkca_asn1_get_tag(*ptr, end, length, tag);
 }
 
@@ -104,6 +110,7 @@ bool libspdm_x509_get_subject_name(const uint8_t *cert, size_t cert_size,
                                    uint8_t *cert_subject,
                                    size_t *subject_size)
 {
+    printk(KERN_ERR "=====================================   101\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -112,6 +119,7 @@ bool libspdm_x509_get_common_name(const uint8_t *cert, size_t cert_size,
                                   char *common_name,
                                   size_t *common_name_size)
 {
+    printk(KERN_ERR "=====================================   102\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -121,6 +129,7 @@ libspdm_x509_get_organization_name(const uint8_t *cert, size_t cert_size,
                                    char *name_buffer,
                                    size_t *name_buffer_size)
 {
+    printk(KERN_ERR "=====================================   103\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -129,6 +138,7 @@ libspdm_x509_get_organization_name(const uint8_t *cert, size_t cert_size,
 bool libspdm_rsa_get_public_key_from_x509(const uint8_t *cert, size_t cert_size,
                                           void **rsa_context)
 {
+    printk(KERN_ERR "=====================================   104\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -137,6 +147,7 @@ bool libspdm_rsa_get_public_key_from_x509(const uint8_t *cert, size_t cert_size,
 bool libspdm_ec_get_public_key_from_x509(const uint8_t *cert, size_t cert_size,
                                          void **ec_context)
 {
+    printk(KERN_ERR "=====================================   105\n");
 #ifdef USE_LKCA
     bool ret = false;
     uint32_t key_size = 0;
@@ -189,6 +200,7 @@ err:
 bool libspdm_ecd_get_public_key_from_x509(const uint8_t *cert, size_t cert_size,
                                           void **ecd_context)
 {
+    printk(KERN_ERR "=====================================   106\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -196,6 +208,7 @@ bool libspdm_ecd_get_public_key_from_x509(const uint8_t *cert, size_t cert_size,
 bool libspdm_sm2_get_public_key_from_x509(const uint8_t *cert, size_t cert_size,
                                           void **sm2_context)
 {
+    printk(KERN_ERR "=====================================   107\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -203,6 +216,7 @@ bool libspdm_sm2_get_public_key_from_x509(const uint8_t *cert, size_t cert_size,
 static int lkca_x509_verify_cert(const uint8_t *cert, size_t cert_size,
                                  const uint8_t *ca_cert, size_t ca_cert_size)
 {
+    printk(KERN_ERR "=====================================   108\n");
 #ifdef USE_LKCA
     int ret;
     struct key_preparsed_payload lkca_cert;
@@ -239,12 +253,14 @@ static int lkca_x509_verify_cert(const uint8_t *cert, size_t cert_size,
 bool libspdm_x509_verify_cert(const uint8_t *cert, size_t cert_size,
                               const uint8_t *ca_cert, size_t ca_cert_size)
 {
+    printk(KERN_ERR "=====================================   109\n");
     return lkca_x509_verify_cert(cert, cert_size, ca_cert, ca_cert_size) == 0;
 }
 
 bool libspdm_x509_verify_cert_chain(const uint8_t *root_cert, size_t root_cert_length,
                                     const uint8_t *cert_chain, size_t cert_chain_length)
 {
+    printk(KERN_ERR "=====================================   110\n");
     size_t preceding_cert_len;
     const uint8_t *preceding_cert;
     size_t current_cert_len;
@@ -290,6 +306,7 @@ bool libspdm_x509_get_cert_from_cert_chain(const uint8_t *cert_chain,
                                            const int32_t cert_index, const uint8_t **cert,
                                            size_t *cert_length)
 {
+    printk(KERN_ERR "=====================================   111\n");
     size_t asn1_len;
     int32_t current_index;
     size_t current_cert_len;
@@ -340,6 +357,7 @@ bool libspdm_x509_get_cert_from_cert_chain(const uint8_t *cert_chain,
 bool libspdm_x509_get_tbs_cert(const uint8_t *cert, size_t cert_size,
                                uint8_t **tbs_cert, size_t *tbs_cert_size)
 {
+    printk(KERN_ERR "=====================================   112\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -347,6 +365,7 @@ bool libspdm_x509_get_tbs_cert(const uint8_t *cert, size_t cert_size,
 bool libspdm_x509_get_version(const uint8_t *cert, size_t cert_size,
                               size_t *version)
 {
+    printk(KERN_ERR "=====================================   113\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -355,6 +374,7 @@ bool libspdm_x509_get_serial_number(const uint8_t *cert, size_t cert_size,
                                     uint8_t *serial_number,
                                     size_t *serial_number_size)
 {
+    printk(KERN_ERR "=====================================   114\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -363,6 +383,7 @@ bool libspdm_x509_get_issuer_name(const uint8_t *cert, size_t cert_size,
                                   uint8_t *cert_issuer,
                                   size_t *issuer_size)
 {
+    printk(KERN_ERR "=====================================   115\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -372,6 +393,7 @@ libspdm_x509_get_issuer_common_name(const uint8_t *cert, size_t cert_size,
                                     char *common_name,
                                     size_t *common_name_size)
 {
+    printk(KERN_ERR "=====================================   116\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -381,6 +403,7 @@ libspdm_x509_get_issuer_orgnization_name(const uint8_t *cert, size_t cert_size,
                                          char *name_buffer,
                                          size_t *name_buffer_size)
 {
+    printk(KERN_ERR "=====================================   117\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -389,6 +412,7 @@ bool libspdm_x509_get_signature_algorithm(const uint8_t *cert,
                                           size_t cert_size, uint8_t *oid,
                                           size_t *oid_size)
 {
+    printk(KERN_ERR "=====================================   118\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -398,6 +422,7 @@ bool libspdm_x509_get_extension_data(const uint8_t *cert, size_t cert_size,
                                      uint8_t *extension_data,
                                      size_t *extension_data_size)
 {
+    printk(KERN_ERR "=====================================   119\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -406,6 +431,7 @@ bool libspdm_x509_get_validity(const uint8_t *cert, size_t cert_size,
                                uint8_t *from, size_t *from_size, uint8_t *to,
                                size_t *to_size)
 {
+    printk(KERN_ERR "=====================================   120\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -413,6 +439,7 @@ bool libspdm_x509_get_validity(const uint8_t *cert, size_t cert_size,
 bool libspdm_x509_get_key_usage(const uint8_t *cert, size_t cert_size,
                                 size_t *usage)
 {
+    printk(KERN_ERR "=====================================   121\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -421,6 +448,7 @@ bool libspdm_x509_get_extended_key_usage(const uint8_t *cert,
                                          size_t cert_size, uint8_t *usage,
                                          size_t *usage_size)
 {
+    printk(KERN_ERR "=====================================   122\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
@@ -430,18 +458,21 @@ bool libspdm_x509_get_extended_basic_constraints(const uint8_t *cert,
                                                  uint8_t *basic_constraints,
                                                  size_t *basic_constraints_size)
 {
+    printk(KERN_ERR "=====================================   123\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
 
 bool libspdm_x509_set_date_time(char const *date_time_str, void *date_time, size_t *date_time_size)
 {
+    printk(KERN_ERR "=====================================   124\n");
     LIBSPDM_ASSERT(false);
     return false;
 }
 
 int32_t libspdm_x509_compare_date_time(const void *date_time1, const void *date_time2)
 {
+    printk(KERN_ERR "=====================================   125\n");
     LIBSPDM_ASSERT(false);
     return -3;
 }
@@ -451,6 +482,7 @@ bool libspdm_gen_x509_csr(size_t hash_nid, size_t asym_nid,
                           void *context, char *subject_name,
                           size_t *csr_len, uint8_t **csr_pointer)
 {
+    printk(KERN_ERR "=====================================   126\n");
     LIBSPDM_ASSERT(false);
     return false;
 }

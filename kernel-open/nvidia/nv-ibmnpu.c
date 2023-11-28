@@ -39,6 +39,7 @@ const NvU32 P9_L1D_CACHE_DEFAULT_BLOCK_SIZE = 0x80;
 
 static NvU32 nv_ibm_get_cpu_l1d_cache_block_size(void)
 {
+    printk(KERN_ERR "=====================================   464\n");
     const __be32 *block_size_prop;
 
     /*
@@ -74,6 +75,7 @@ static NvU32 nv_ibm_get_cpu_l1d_cache_block_size(void)
  */
 static void nv_init_ibmnpu_numa_info(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   465\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     nv_npu_numa_info_t *npu_numa_info = &nvl->npu->numa_info;
     struct pci_dev *npu_dev = nvl->npu->devs[0];
@@ -164,6 +166,7 @@ invalid_numa_config:
 
 void nv_init_ibmnpu_info(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   466\n");
 #if defined(NV_PNV_PCI_GET_NPU_DEV_PRESENT)
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     struct pci_dev *npu_dev = pnv_pci_get_npu_dev(nvl->pci_dev, 0);
@@ -228,6 +231,7 @@ void nv_init_ibmnpu_info(nv_state_t *nv)
 
 void nv_destroy_ibmnpu_info(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   467\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     if (nvl->npu != NULL)
@@ -239,6 +243,7 @@ void nv_destroy_ibmnpu_info(nv_state_t *nv)
 
 int nv_init_ibmnpu_devices(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   468\n");
     NvU8 i;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
@@ -270,6 +275,7 @@ int nv_init_ibmnpu_devices(nv_state_t *nv)
 
 void nv_unregister_ibmnpu_devices(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   469\n");
     NvU8 i;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
@@ -296,6 +302,7 @@ void nv_unregister_ibmnpu_devices(nv_state_t *nv)
 NV_STATUS NV_API_CALL nv_get_ibmnpu_genreg_info(nv_state_t *nv, NvU64 *addr,
                                                 NvU64 *size, void **device)
 {
+    printk(KERN_ERR "=====================================   470\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     if (nvl->npu == NULL || nvl->npu->genregs.size == 0)
@@ -324,6 +331,7 @@ NV_STATUS NV_API_CALL nv_get_ibmnpu_genreg_info(nv_state_t *nv, NvU64 *addr,
 NV_STATUS NV_API_CALL nv_get_ibmnpu_relaxed_ordering_mode(nv_state_t *nv,
                                                           NvBool *mode)
 {
+    printk(KERN_ERR "=====================================   471\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     if (nvl->npu == NULL || nvl->npu->genregs.size == 0)
@@ -338,6 +346,7 @@ NV_STATUS NV_API_CALL nv_get_ibmnpu_relaxed_ordering_mode(nv_state_t *nv,
 
 void NV_API_CALL nv_wait_for_ibmnpu_rsync(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   472\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     if (nvl->npu == NULL || nvl->npu->genregs.size == 0)
@@ -350,6 +359,7 @@ void NV_API_CALL nv_wait_for_ibmnpu_rsync(nv_state_t *nv)
 
 int nv_get_ibmnpu_chip_id(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   473\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     if (nvl->npu == NULL)
@@ -362,6 +372,7 @@ int nv_get_ibmnpu_chip_id(nv_state_t *nv)
 
 void NV_API_CALL nv_ibmnpu_cache_flush_range(nv_state_t *nv, NvU64 cpu_virtual, NvU64 size)
 {
+    printk(KERN_ERR "=====================================   474\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     NvU64 offset, cbsize;
 
@@ -394,48 +405,58 @@ void NV_API_CALL nv_ibmnpu_cache_flush_range(nv_state_t *nv, NvU64 cpu_virtual, 
 
 void nv_init_ibmnpu_info(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   475\n");
 }
 
 void nv_destroy_ibmnpu_info(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   476\n");
 }
 
 int nv_init_ibmnpu_devices(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   477\n");
     return 0;
 }
 
 void nv_unregister_ibmnpu_devices(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   478\n");
 }
 
 NV_STATUS NV_API_CALL nv_get_ibmnpu_genreg_info(nv_state_t *nv, NvU64 *addr,
                                                 NvU64 *size, void **device)
 {
+    printk(KERN_ERR "=====================================   479\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
 NV_STATUS NV_API_CALL nv_get_ibmnpu_relaxed_ordering_mode(nv_state_t *nv,
                                                           NvBool *mode)
 {
+    printk(KERN_ERR "=====================================   480\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 
 void NV_API_CALL nv_wait_for_ibmnpu_rsync(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   481\n");
 }
 
 int nv_get_ibmnpu_chip_id(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   482\n");
     return -1;
 }
 
 void NV_API_CALL nv_ibmnpu_cache_flush_range(nv_state_t *nv, NvU64 virtual, NvU64 size)
 {
+    printk(KERN_ERR "=====================================   483\n");
 }
 
 void nv_ibmnpu_cache_flush_numa_region(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   484\n");
 }
 
 #endif

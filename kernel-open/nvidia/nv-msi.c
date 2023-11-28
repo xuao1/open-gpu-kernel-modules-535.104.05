@@ -27,6 +27,7 @@
 #if defined(NV_LINUX_PCIE_MSI_SUPPORTED)
 void NV_API_CALL nv_init_msi(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   526\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     int rc = 0;
 
@@ -66,6 +67,7 @@ void NV_API_CALL nv_init_msi(nv_state_t *nv)
 
 void NV_API_CALL nv_init_msix(nv_state_t *nv)
 {
+    printk(KERN_ERR "=====================================   527\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     int num_intr = 0;
     struct msix_entry *msix_entries;
@@ -140,6 +142,7 @@ failed:
 
 NvS32 NV_API_CALL nv_request_msix_irq(nv_linux_state_t *nvl)
 {
+    printk(KERN_ERR "=====================================   528\n");
     int i;
     int j;
     struct msix_entry *msix_entries;

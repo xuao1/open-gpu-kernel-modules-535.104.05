@@ -100,6 +100,7 @@ nv_dma_buf_free_file_private(
     nv_dma_buf_file_private_t *priv
 )
 {
+    printk(KERN_ERR "=====================================   416\n");
     if (priv == NULL)
     {
         return;
@@ -121,6 +122,7 @@ nv_dma_buf_alloc_file_private(
     NvU32 num_handles
 )
 {
+    printk(KERN_ERR "=====================================   417\n");
     nv_dma_buf_file_private_t *priv = NULL;
 
     NV_KZALLOC(priv, sizeof(nv_dma_buf_file_private_t));
@@ -152,6 +154,7 @@ nv_reset_phys_refcount(
     NvU32 handle_count
 )
 {
+    printk(KERN_ERR "=====================================   418\n");
     NvU32 i;
     for (i = 0; i < handle_count; i++)
     {
@@ -167,6 +170,7 @@ nv_dec_and_check_zero_phys_refcount(
     NvU32 handle_count
 )
 {
+    printk(KERN_ERR "=====================================   419\n");
     NvU32 i;
     NvBool is_zero = NV_FALSE;
 
@@ -190,6 +194,7 @@ nv_inc_and_check_one_phys_refcount(
     NvU32 handle_count
 )
 {
+    printk(KERN_ERR "=====================================   420\n");
     NvU32 i;
     NvBool is_one = NV_FALSE;
 
@@ -215,6 +220,7 @@ nv_dma_buf_undup_mem_handles_unlocked(
     nv_dma_buf_file_private_t *priv
 )
 {
+    printk(KERN_ERR "=====================================   421\n");
     NvU32 index, i;
 
     for (i = 0; i < num_objects; i++)
@@ -245,6 +251,7 @@ nv_dma_buf_undup_mem_handles(
     nv_dma_buf_file_private_t *priv
 )
 {
+    printk(KERN_ERR "=====================================   422\n");
     NV_STATUS status;
 
     status = rm_acquire_api_lock(sp);
@@ -274,6 +281,7 @@ nv_dma_buf_dup_mem_handles(
     nv_ioctl_export_to_dma_buf_fd_t *params
 )
 {
+    printk(KERN_ERR "=====================================   423\n");
     NV_STATUS status = NV_OK;
     NvU32 index = params->index;
     NvU32 count = 0;
@@ -366,6 +374,7 @@ nv_put_phys_addresses(
     NvU32 mapped_handle_count
 )
 {
+    printk(KERN_ERR "=====================================   424\n");
     NvU32 i;
 
     for (i = 0; i < mapped_handle_count; i++)
@@ -395,6 +404,7 @@ nv_dma_buf_put_phys_addresses (
     NvU32 handle_count
 )
 {
+    printk(KERN_ERR "=====================================   425\n");
     NV_STATUS status;
     nvidia_stack_t *sp = NULL;
     NvBool api_lock_taken = NV_FALSE;
@@ -453,6 +463,7 @@ nv_dma_buf_get_phys_addresses (
     NvU32 handle_count
 )
 {
+    printk(KERN_ERR "=====================================   426\n");
     NV_STATUS status = NV_OK;
     nvidia_stack_t *sp = NULL;
     NvBool api_lock_taken = NV_FALSE;
@@ -560,6 +571,7 @@ nv_dma_buf_unmap_pages(
     struct sg_table *sgt
 )
 {
+    printk(KERN_ERR "=====================================   427\n");
     dma_unmap_sg(dev, sgt->sgl, sgt->nents, DMA_BIDIRECTIONAL);
 }
 
@@ -569,6 +581,7 @@ nv_dma_buf_unmap_pfns(
     struct sg_table *sgt
 )
 {
+    printk(KERN_ERR "=====================================   428\n");
     nv_dma_device_t peer_dma_dev = {{ 0 }};
     struct scatterlist *sg = sgt->sgl;
     NvU32 i;
@@ -590,6 +603,7 @@ nv_dma_buf_map_pages (
     nv_dma_buf_file_private_t *priv
 )
 {
+    printk(KERN_ERR "=====================================   429\n");
     struct sg_table *sgt = NULL;
     struct scatterlist *sg;
     NvU32 nents = 0;
@@ -661,6 +675,7 @@ nv_dma_buf_map_pfns (
     nv_dma_buf_file_private_t *priv
 )
 {
+    printk(KERN_ERR "=====================================   430\n");
     NV_STATUS status;
     struct sg_table *sgt = NULL;
     struct scatterlist *sg;
@@ -771,6 +786,7 @@ nv_dma_buf_map(
     enum dma_data_direction direction
 )
 {
+    printk(KERN_ERR "=====================================   431\n");
     NV_STATUS status;
     struct sg_table *sgt = NULL;
     struct dma_buf *buf = attachment->dmabuf;
@@ -844,6 +860,7 @@ nv_dma_buf_unmap(
     enum dma_data_direction direction
 )
 {
+    printk(KERN_ERR "=====================================   432\n");
     struct dma_buf *buf = attachment->dmabuf;
     nv_dma_buf_file_private_t *priv = buf->priv;
 
@@ -879,6 +896,7 @@ nv_dma_buf_release(
     struct dma_buf *buf
 )
 {
+    printk(KERN_ERR "=====================================   433\n");
     int rc = 0;
     NvU32 i;
     nvidia_stack_t *sp = NULL;
@@ -933,6 +951,7 @@ nv_dma_buf_mmap(
     struct vm_area_struct *vma
 )
 {
+    printk(KERN_ERR "=====================================   434\n");
     // TODO: Check can_mmap flag
 
     return -ENOTSUPP;
@@ -946,6 +965,7 @@ nv_dma_buf_kmap_stub(
     unsigned long page_num
 )
 {
+    printk(KERN_ERR "=====================================   435\n");
     return NULL;
 }
 
@@ -956,6 +976,7 @@ nv_dma_buf_kunmap_stub(
     void *addr
 )
 {
+    printk(KERN_ERR "=====================================   436\n");
     return;
 }
 #endif
@@ -968,6 +989,7 @@ nv_dma_buf_kmap_atomic_stub(
     unsigned long page_num
 )
 {
+    printk(KERN_ERR "=====================================   437\n");
     return NULL;
 }
 
@@ -978,6 +1000,7 @@ nv_dma_buf_kunmap_atomic_stub(
     void *addr
 )
 {
+    printk(KERN_ERR "=====================================   438\n");
     return;
 }
 #endif
@@ -1020,6 +1043,7 @@ nv_dma_buf_create(
     nv_ioctl_export_to_dma_buf_fd_t *params
 )
 {
+    printk(KERN_ERR "=====================================   439\n");
     int rc = 0;
     NV_STATUS status;
     nvidia_stack_t *sp = NULL;
@@ -1171,6 +1195,7 @@ nv_dma_buf_reuse(
     nv_ioctl_export_to_dma_buf_fd_t *params
 )
 {
+    printk(KERN_ERR "=====================================   440\n");
     int rc = 0;
     NV_STATUS status = NV_OK;
     nvidia_stack_t *sp = NULL;
@@ -1267,6 +1292,7 @@ nv_dma_buf_export(
     nv_ioctl_export_to_dma_buf_fd_t *params
 )
 {
+    printk(KERN_ERR "=====================================   441\n");
 #if defined(CONFIG_DMA_SHARED_BUFFER)
     NV_STATUS status;
 

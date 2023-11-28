@@ -46,11 +46,13 @@ static struct semaphore g_pNvUvmEventsLock;
 
 static struct UvmOpsUvmEvents *getUvmEvents(void)
 {
+    printk(KERN_ERR "=====================================   216\n");
     return (struct UvmOpsUvmEvents *)atomic_long_read(&g_pNvUvmEvents);
 }
 
 static void setUvmEvents(struct UvmOpsUvmEvents *newEvents)
 {
+    printk(KERN_ERR "=====================================   217\n");
     atomic_long_set(&g_pNvUvmEvents, (long)newEvents);
 }
 
@@ -67,6 +69,7 @@ static atomic_t g_debugGlobalStackCount = ATOMIC_INIT(0);
 // Called at module load, not by an external client
 int nv_uvm_init(void)
 {
+    printk(KERN_ERR "=====================================   218\n");
     int rc = nv_kmem_cache_alloc_stack(&g_sp);
     if (rc != 0)
         return rc;
@@ -78,6 +81,7 @@ int nv_uvm_init(void)
 
 void nv_uvm_exit(void)
 {
+    printk(KERN_ERR "=====================================   219\n");
     // If this fires, the dependent driver never unregistered its callbacks with
     // us before going away, leaving us potentially making callbacks to garbage
     // memory.
@@ -90,6 +94,7 @@ void nv_uvm_exit(void)
 // Testing code to force use of the global stack every now and then
 static NvBool forceGlobalStack(void)
 {
+    printk(KERN_ERR "=====================================   220\n");
     // Make sure that we do not try to allocate memory in interrupt or atomic
     // context
     if (DEBUG_GLOBAL_STACK || !NV_MAY_SLEEP())
@@ -109,6 +114,7 @@ static NvBool forceGlobalStack(void)
 // allocation of resources.
 static nvidia_stack_t *nvUvmGetSafeStack(void)
 {
+    printk(KERN_ERR "=====================================   221\n");
     nvidia_stack_t *sp;
     if (forceGlobalStack() || nv_kmem_cache_alloc_stack(&sp) != 0)
     {
@@ -120,6 +126,7 @@ static nvidia_stack_t *nvUvmGetSafeStack(void)
 
 static void nvUvmFreeSafeStack(nvidia_stack_t *sp)
 {
+    printk(KERN_ERR "=====================================   222\n");
     if (sp == g_sp)
         up(&g_spLock);
     else
@@ -130,6 +137,7 @@ static NV_STATUS nvUvmDestroyFaultInfoAndStacks(nvidia_stack_t *sp,
                                                 uvmGpuDeviceHandle device,
                                                 UvmGpuFaultInfo *pFaultInfo)
 {
+    printk(KERN_ERR "=====================================   223\n");
     nv_kmem_cache_free_stack(pFaultInfo->replayable.cslCtx.nvidia_stack);
     nv_kmem_cache_free_stack(pFaultInfo->nonReplayable.isr_bh_sp);
     nv_kmem_cache_free_stack(pFaultInfo->nonReplayable.isr_sp);
@@ -141,6 +149,7 @@ static NV_STATUS nvUvmDestroyFaultInfoAndStacks(nvidia_stack_t *sp,
 
 NV_STATUS nvUvmInterfaceRegisterGpu(const NvProcessorUuid *gpuUuid, UvmGpuPlatformInfo *gpuInfo)
 {
+    printk(KERN_ERR "=====================================   224\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
     int rc;
@@ -188,6 +197,7 @@ EXPORT_SYMBOL(nvUvmInterfaceRegisterGpu);
 
 void nvUvmInterfaceUnregisterGpu(const NvProcessorUuid *gpuUuid)
 {
+    printk(KERN_ERR "=====================================   225\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     nvidia_dev_unblock_gc6(gpuUuid->uuid, sp);
     nvidia_dev_put_uuid(gpuUuid->uuid, sp);
@@ -198,6 +208,7 @@ EXPORT_SYMBOL(nvUvmInterfaceUnregisterGpu);
 NV_STATUS nvUvmInterfaceSessionCreate(uvmGpuSessionHandle *session,
                                       UvmPlatformInfo *platformInfo)
 {
+    printk(KERN_ERR "=====================================   226\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -220,6 +231,7 @@ EXPORT_SYMBOL(nvUvmInterfaceSessionCreate);
 
 NV_STATUS nvUvmInterfaceSessionDestroy(uvmGpuSessionHandle session)
 {
+    printk(KERN_ERR "=====================================   227\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     NV_STATUS status;
 
@@ -236,6 +248,7 @@ NV_STATUS nvUvmInterfaceDeviceCreate(uvmGpuSessionHandle session,
                                      uvmGpuDeviceHandle *device,
                                      NvBool bCreateSmcPartition)
 {
+    printk(KERN_ERR "=====================================   228\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -258,6 +271,7 @@ EXPORT_SYMBOL(nvUvmInterfaceDeviceCreate);
 
 void nvUvmInterfaceDeviceDestroy(uvmGpuDeviceHandle device)
 {
+    printk(KERN_ERR "=====================================   229\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
 
     rm_gpu_ops_device_destroy(sp, (gpuDeviceHandle)device);
@@ -272,6 +286,7 @@ NV_STATUS nvUvmInterfaceDupAddressSpace(uvmGpuDeviceHandle device,
                                         uvmGpuAddressSpaceHandle *vaSpace,
                                         UvmGpuAddressSpaceInfo *vaSpaceInfo)
 {
+    printk(KERN_ERR "=====================================   230\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -298,6 +313,7 @@ NV_STATUS nvUvmInterfaceAddressSpaceCreate(uvmGpuDeviceHandle device,
                                            uvmGpuAddressSpaceHandle *vaSpace,
                                            UvmGpuAddressSpaceInfo *vaSpaceInfo)
 {
+    printk(KERN_ERR "=====================================   231\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -320,6 +336,7 @@ EXPORT_SYMBOL(nvUvmInterfaceAddressSpaceCreate);
 
 void nvUvmInterfaceAddressSpaceDestroy(uvmGpuAddressSpaceHandle vaSpace)
 {
+    printk(KERN_ERR "=====================================   232\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
 
     rm_gpu_ops_address_space_destroy(
@@ -333,6 +350,7 @@ NV_STATUS nvUvmInterfaceMemoryAllocFB(uvmGpuAddressSpaceHandle vaSpace,
                     NvLength length, UvmGpuPointer * gpuPointer,
                     UvmGpuAllocInfo * allocInfo)
 {
+    printk(KERN_ERR "=====================================   233\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -355,6 +373,7 @@ NV_STATUS nvUvmInterfaceMemoryAllocSys(uvmGpuAddressSpaceHandle vaSpace,
                     NvLength length, UvmGpuPointer * gpuPointer,
                     UvmGpuAllocInfo * allocInfo)
 {
+    printk(KERN_ERR "=====================================   234\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -378,6 +397,7 @@ NV_STATUS nvUvmInterfaceGetP2PCaps(uvmGpuDeviceHandle device1,
                                    uvmGpuDeviceHandle device2,
                                    UvmGpuP2PCapsParams * p2pCapsParams)
 {
+    printk(KERN_ERR "=====================================   235\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -400,6 +420,7 @@ NV_STATUS nvUvmInterfaceGetPmaObject(uvmGpuDeviceHandle device,
                                      void **pPma,
                                      const UvmPmaStatistics **pPmaPubStats)
 {
+    printk(KERN_ERR "=====================================   236\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -421,6 +442,7 @@ NV_STATUS nvUvmInterfacePmaRegisterEvictionCallbacks(void *pPma,
                                                      uvmPmaEvictRangeCallback evictRange,
                                                      void *callbackData)
 {
+    printk(KERN_ERR "=====================================   237\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -438,6 +460,7 @@ EXPORT_SYMBOL(nvUvmInterfacePmaRegisterEvictionCallbacks);
 
 void nvUvmInterfacePmaUnregisterEvictionCallbacks(void *pPma)
 {
+    printk(KERN_ERR "=====================================   238\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
 
     rm_gpu_ops_pma_unregister_callbacks(sp, pPma);
@@ -452,6 +475,7 @@ NV_STATUS nvUvmInterfacePmaAllocPages(void *pPma,
                                       UvmPmaAllocationOptions *pPmaAllocOptions,
                                       NvU64 *pPages)
 {
+    printk(KERN_ERR "=====================================   239\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -478,6 +502,7 @@ NV_STATUS nvUvmInterfacePmaPinPages(void *pPma,
                                     NvU64 pageSize,
                                     NvU32 flags)
 {
+    printk(KERN_ERR "=====================================   240\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -498,6 +523,7 @@ NV_STATUS nvUvmInterfacePmaUnpinPages(void *pPma,
                                       NvLength pageCount,
                                       NvU64 pageSize)
 {
+    printk(KERN_ERR "=====================================   241\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -516,6 +542,7 @@ EXPORT_SYMBOL(nvUvmInterfacePmaUnpinPages);
 void nvUvmInterfaceMemoryFree(uvmGpuAddressSpaceHandle vaSpace,
                     UvmGpuPointer gpuPointer)
 {
+    printk(KERN_ERR "=====================================   242\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
 
     rm_gpu_ops_memory_free(
@@ -532,6 +559,7 @@ void nvUvmInterfacePmaFreePages(void *pPma,
                                 NvU64 pageSize,
                                 NvU32 flags)
 {
+    printk(KERN_ERR "=====================================   243\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
 
     rm_gpu_ops_pma_free_pages(sp, pPma, pPages, pageCount, pageSize, flags);
@@ -544,6 +572,7 @@ NV_STATUS nvUvmInterfaceMemoryCpuMap(uvmGpuAddressSpaceHandle vaSpace,
            UvmGpuPointer gpuPointer, NvLength length, void **cpuPtr,
            NvU64 pageSize)
 {
+    printk(KERN_ERR "=====================================   244\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -564,6 +593,7 @@ EXPORT_SYMBOL(nvUvmInterfaceMemoryCpuMap);
 void nvUvmInterfaceMemoryCpuUnMap(uvmGpuAddressSpaceHandle vaSpace,
                                   void *cpuPtr)
 {
+    printk(KERN_ERR "=====================================   245\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     rm_gpu_ops_memory_cpu_ummap(sp, (gpuAddressSpaceHandle)vaSpace, cpuPtr);
     nvUvmFreeSafeStack(sp);
@@ -574,6 +604,7 @@ NV_STATUS nvUvmInterfaceTsgAllocate(uvmGpuAddressSpaceHandle vaSpace,
                                     const UvmGpuTsgAllocParams *allocParams,
                                     uvmGpuTsgHandle *tsg)
 {
+    printk(KERN_ERR "=====================================   246\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -595,6 +626,7 @@ EXPORT_SYMBOL(nvUvmInterfaceTsgAllocate);
 
 void nvUvmInterfaceTsgDestroy(uvmGpuTsgHandle tsg)
 {
+    printk(KERN_ERR "=====================================   247\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     rm_gpu_ops_tsg_destroy(sp, (gpuTsgHandle)tsg);
     nvUvmFreeSafeStack(sp);
@@ -607,6 +639,7 @@ NV_STATUS nvUvmInterfaceChannelAllocate(const uvmGpuTsgHandle tsg,
                                         uvmGpuChannelHandle *channel,
                                         UvmGpuChannelInfo *channelInfo)
 {
+    printk(KERN_ERR "=====================================   248\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -629,6 +662,7 @@ EXPORT_SYMBOL(nvUvmInterfaceChannelAllocate);
 
 void nvUvmInterfaceChannelDestroy(uvmGpuChannelHandle channel)
 {
+    printk(KERN_ERR "=====================================   249\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     rm_gpu_ops_channel_destroy(sp, (gpuChannelHandle)channel);
     nvUvmFreeSafeStack(sp);
@@ -638,6 +672,7 @@ EXPORT_SYMBOL(nvUvmInterfaceChannelDestroy);
 NV_STATUS nvUvmInterfaceQueryCaps(uvmGpuDeviceHandle device,
                                   UvmGpuCaps * caps)
 {
+    printk(KERN_ERR "=====================================   250\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -656,6 +691,7 @@ EXPORT_SYMBOL(nvUvmInterfaceQueryCaps);
 NV_STATUS nvUvmInterfaceQueryCopyEnginesCaps(uvmGpuDeviceHandle device,
                                              UvmGpuCopyEnginesCaps *caps)
 {
+    printk(KERN_ERR "=====================================   251\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -675,6 +711,7 @@ NV_STATUS nvUvmInterfaceGetGpuInfo(const NvProcessorUuid *gpuUuid,
                                    const UvmGpuClientInfo *pGpuClientInfo,
                                    UvmGpuInfo *pGpuInfo)
 {
+    printk(KERN_ERR "=====================================   252\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -692,6 +729,7 @@ EXPORT_SYMBOL(nvUvmInterfaceGetGpuInfo);
 
 NV_STATUS nvUvmInterfaceServiceDeviceInterruptsRM(uvmGpuDeviceHandle device)
 {
+    printk(KERN_ERR "=====================================   253\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -712,6 +750,7 @@ NV_STATUS nvUvmInterfaceSetPageDirectory(uvmGpuAddressSpaceHandle vaSpace,
                                          NvU64 physAddress, unsigned numEntries,
                                          NvBool bVidMemAperture, NvU32 pasid)
 {
+    printk(KERN_ERR "=====================================   254\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -730,6 +769,7 @@ EXPORT_SYMBOL(nvUvmInterfaceSetPageDirectory);
 
 NV_STATUS nvUvmInterfaceUnsetPageDirectory(uvmGpuAddressSpaceHandle vaSpace)
 {
+    printk(KERN_ERR "=====================================   255\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     NV_STATUS status;
 
@@ -746,6 +786,7 @@ NV_STATUS nvUvmInterfaceDupAllocation(uvmGpuAddressSpaceHandle srcVaSpace,
                                       NvU64 dstVaAlignment,
                                       NvU64 *dstAddress)
 {
+    printk(KERN_ERR "=====================================   256\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -772,6 +813,7 @@ NV_STATUS nvUvmInterfaceDupMemory(uvmGpuDeviceHandle device,
                                   NvHandle *hDupMemory,
                                   UvmGpuMemoryInfo *pGpuMemoryInfo)
 {
+    printk(KERN_ERR "=====================================   257\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -796,6 +838,7 @@ EXPORT_SYMBOL(nvUvmInterfaceDupMemory);
 NV_STATUS nvUvmInterfaceFreeDupedHandle(uvmGpuDeviceHandle device,
                                         NvHandle hPhysHandle)
 {
+    printk(KERN_ERR "=====================================   258\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     NV_STATUS status;
 
@@ -811,6 +854,7 @@ EXPORT_SYMBOL(nvUvmInterfaceFreeDupedHandle);
 NV_STATUS nvUvmInterfaceGetFbInfo(uvmGpuDeviceHandle device,
                                   UvmGpuFbInfo * fbInfo)
 {
+    printk(KERN_ERR "=====================================   259\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -830,6 +874,7 @@ EXPORT_SYMBOL(nvUvmInterfaceGetFbInfo);
 NV_STATUS nvUvmInterfaceGetEccInfo(uvmGpuDeviceHandle device,
                                    UvmGpuEccInfo * eccInfo)
 {
+    printk(KERN_ERR "=====================================   260\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -848,6 +893,7 @@ EXPORT_SYMBOL(nvUvmInterfaceGetEccInfo);
 
 NV_STATUS nvUvmInterfaceOwnPageFaultIntr(uvmGpuDeviceHandle device, NvBool bOwnInterrupts)
 {
+    printk(KERN_ERR "=====================================   261\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -866,6 +912,7 @@ EXPORT_SYMBOL(nvUvmInterfaceOwnPageFaultIntr);
 NV_STATUS nvUvmInterfaceInitFaultInfo(uvmGpuDeviceHandle device,
                                       UvmGpuFaultInfo *pFaultInfo)
 {
+    printk(KERN_ERR "=====================================   262\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
     int err;
@@ -929,6 +976,7 @@ NV_STATUS nvUvmInterfaceInitAccessCntrInfo(uvmGpuDeviceHandle device,
                                            UvmGpuAccessCntrInfo *pAccessCntrInfo,
                                            NvU32 accessCntrIndex)
 {
+    printk(KERN_ERR "=====================================   263\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -951,6 +999,7 @@ NV_STATUS nvUvmInterfaceEnableAccessCntr(uvmGpuDeviceHandle device,
                                          UvmGpuAccessCntrInfo *pAccessCntrInfo,
                                          UvmGpuAccessCntrConfig *pAccessCntrConfig)
 {
+    printk(KERN_ERR "=====================================   264\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -972,6 +1021,7 @@ EXPORT_SYMBOL(nvUvmInterfaceEnableAccessCntr);
 NV_STATUS nvUvmInterfaceDestroyFaultInfo(uvmGpuDeviceHandle device,
                                          UvmGpuFaultInfo *pFaultInfo)
 {
+    printk(KERN_ERR "=====================================   265\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     NV_STATUS status;
 
@@ -986,6 +1036,7 @@ EXPORT_SYMBOL(nvUvmInterfaceDestroyFaultInfo);
 NV_STATUS nvUvmInterfaceHasPendingNonReplayableFaults(UvmGpuFaultInfo *pFaultInfo,
                                                       NvBool *hasPendingFaults)
 {
+    printk(KERN_ERR "=====================================   266\n");
     return rm_gpu_ops_has_pending_non_replayable_faults(pFaultInfo->nonReplayable.isr_sp,
                                                         pFaultInfo,
                                                         hasPendingFaults);
@@ -996,6 +1047,7 @@ NV_STATUS nvUvmInterfaceGetNonReplayableFaults(UvmGpuFaultInfo *pFaultInfo,
                                                void *pFaultBuffer,
                                                NvU32 *numFaults)
 {
+    printk(KERN_ERR "=====================================   267\n");
     return rm_gpu_ops_get_non_replayable_faults(pFaultInfo->nonReplayable.isr_bh_sp,
                                                 pFaultInfo,
                                                 pFaultBuffer,
@@ -1005,6 +1057,7 @@ EXPORT_SYMBOL(nvUvmInterfaceGetNonReplayableFaults);
 
 NV_STATUS nvUvmInterfaceFlushReplayableFaultBuffer(uvmGpuDeviceHandle device)
 {
+    printk(KERN_ERR "=====================================   268\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     NV_STATUS status;
 
@@ -1018,6 +1071,7 @@ EXPORT_SYMBOL(nvUvmInterfaceFlushReplayableFaultBuffer);
 NV_STATUS nvUvmInterfaceDestroyAccessCntrInfo(uvmGpuDeviceHandle device,
                                               UvmGpuAccessCntrInfo *pAccessCntrInfo)
 {
+    printk(KERN_ERR "=====================================   269\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     NV_STATUS status;
 
@@ -1033,6 +1087,7 @@ EXPORT_SYMBOL(nvUvmInterfaceDestroyAccessCntrInfo);
 NV_STATUS nvUvmInterfaceDisableAccessCntr(uvmGpuDeviceHandle device,
                                           UvmGpuAccessCntrInfo *pAccessCntrInfo)
 {
+    printk(KERN_ERR "=====================================   270\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     NV_STATUS status;
 
@@ -1048,6 +1103,7 @@ EXPORT_SYMBOL(nvUvmInterfaceDisableAccessCntr);
 // this function is called by the UVM driver to register the ops
 NV_STATUS nvUvmInterfaceRegisterUvmCallbacks(struct UvmOpsUvmEvents *importedUvmOps)
 {
+    printk(KERN_ERR "=====================================   271\n");
     NV_STATUS status = NV_OK;
 
     if (!importedUvmOps)
@@ -1074,6 +1130,7 @@ EXPORT_SYMBOL(nvUvmInterfaceRegisterUvmCallbacks);
 
 static void flush_top_half(void *info)
 {
+    printk(KERN_ERR "=====================================   272\n");
     // Prior top halves on this core must have completed for this callback to
     // run at all, so we're done.
     return;
@@ -1081,6 +1138,7 @@ static void flush_top_half(void *info)
 
 void nvUvmInterfaceDeRegisterUvmOps(void)
 {
+    printk(KERN_ERR "=====================================   273\n");
     // Taking the lock forces us to wait for non-interrupt callbacks to finish
     // up.
     down(&g_pNvUvmEventsLock);
@@ -1105,6 +1163,7 @@ EXPORT_SYMBOL(nvUvmInterfaceDeRegisterUvmOps);
 
 NV_STATUS nv_uvm_suspend(void)
 {
+    printk(KERN_ERR "=====================================   274\n");
     NV_STATUS status = NV_OK;
     struct UvmOpsUvmEvents *events;
 
@@ -1127,6 +1186,7 @@ NV_STATUS nv_uvm_suspend(void)
 
 NV_STATUS nv_uvm_resume(void)
 {
+    printk(KERN_ERR "=====================================   275\n");
     NV_STATUS status = NV_OK;
     struct UvmOpsUvmEvents *events;
 
@@ -1149,6 +1209,7 @@ NV_STATUS nv_uvm_resume(void)
 
 void nv_uvm_notify_start_device(const NvU8 *pUuid)
 {
+    printk(KERN_ERR "=====================================   276\n");
     NvProcessorUuid uvmUuid;
     struct UvmOpsUvmEvents *events;
 
@@ -1170,6 +1231,7 @@ void nv_uvm_notify_start_device(const NvU8 *pUuid)
 
 void nv_uvm_notify_stop_device(const NvU8 *pUuid)
 {
+    printk(KERN_ERR "=====================================   277\n");
     NvProcessorUuid uvmUuid;
     struct UvmOpsUvmEvents *events;
 
@@ -1191,6 +1253,7 @@ void nv_uvm_notify_stop_device(const NvU8 *pUuid)
 
 NV_STATUS nv_uvm_event_interrupt(const NvU8 *pUuid)
 {
+    printk(KERN_ERR "=====================================   278\n");
     //
     // This is called from interrupt context, so we can't take
     // g_pNvUvmEventsLock to prevent the callbacks from being unregistered. Even
@@ -1223,6 +1286,7 @@ NV_STATUS nvUvmInterfaceP2pObjectCreate(uvmGpuDeviceHandle device1,
                                         uvmGpuDeviceHandle device2,
                                         NvHandle *hP2pObject)
 {
+    printk(KERN_ERR "=====================================   279\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
     if (nv_kmem_cache_alloc_stack(&sp) != 0)
@@ -1243,6 +1307,7 @@ EXPORT_SYMBOL(nvUvmInterfaceP2pObjectCreate);
 void nvUvmInterfaceP2pObjectDestroy(uvmGpuSessionHandle session,
                                          NvHandle hP2pObject)
 {
+    printk(KERN_ERR "=====================================   280\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
 
     rm_gpu_ops_p2p_object_destroy(sp, (gpuSessionHandle)session, hP2pObject);
@@ -1257,6 +1322,7 @@ NV_STATUS nvUvmInterfaceGetExternalAllocPtes(uvmGpuAddressSpaceHandle vaSpace,
                                              NvU64 size,
                                              UvmGpuExternalMappingInfo *gpuExternalMappingInfo)
 {
+    printk(KERN_ERR "=====================================   281\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -1283,6 +1349,7 @@ NV_STATUS nvUvmInterfaceRetainChannel(uvmGpuAddressSpaceHandle vaSpace,
                                       void **retainedChannel,
                                       UvmGpuChannelInstanceInfo *channelInstanceInfo)
 {
+    printk(KERN_ERR "=====================================   282\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -1306,6 +1373,7 @@ EXPORT_SYMBOL(nvUvmInterfaceRetainChannel);
 NV_STATUS nvUvmInterfaceBindChannelResources(void *retainedChannel,
                                              UvmGpuChannelResourceBindParams *channelResourceBindParams)
 {
+    printk(KERN_ERR "=====================================   283\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -1325,6 +1393,7 @@ EXPORT_SYMBOL(nvUvmInterfaceBindChannelResources);
 
 void nvUvmInterfaceReleaseChannel(void *retainedChannel)
 {
+    printk(KERN_ERR "=====================================   284\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
 
     rm_gpu_ops_release_channel(sp, retainedChannel);
@@ -1335,6 +1404,7 @@ EXPORT_SYMBOL(nvUvmInterfaceReleaseChannel);
 
 void nvUvmInterfaceStopChannel(void *retainedChannel, NvBool bImmediate)
 {
+    printk(KERN_ERR "=====================================   285\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
 
     rm_gpu_ops_stop_channel(sp, retainedChannel, bImmediate);
@@ -1349,6 +1419,7 @@ NV_STATUS nvUvmInterfaceGetChannelResourcePtes(uvmGpuAddressSpaceHandle vaSpace,
                                                NvU64 size,
                                                UvmGpuExternalMappingInfo *externalMappingInfo)
 {
+    printk(KERN_ERR "=====================================   286\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -1372,6 +1443,7 @@ EXPORT_SYMBOL(nvUvmInterfaceGetChannelResourcePtes);
 NV_STATUS nvUvmInterfaceReportNonReplayableFault(uvmGpuDeviceHandle device,
                                                  const void *pFaultPacket)
 {
+    printk(KERN_ERR "=====================================   287\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     NV_STATUS status;
 
@@ -1387,6 +1459,7 @@ NV_STATUS nvUvmInterfacePagingChannelAllocate(uvmGpuDeviceHandle device,
                                               UvmGpuPagingChannelHandle *channel,
                                               UvmGpuPagingChannelInfo *channelInfo)
 {
+    printk(KERN_ERR "=====================================   288\n");
     nvidia_stack_t *sp = NULL;
     nvidia_stack_t *pushStreamSp = NULL;
     NV_STATUS status;
@@ -1419,6 +1492,7 @@ EXPORT_SYMBOL(nvUvmInterfacePagingChannelAllocate);
 
 void nvUvmInterfacePagingChannelDestroy(UvmGpuPagingChannelHandle channel)
 {
+    printk(KERN_ERR "=====================================   289\n");
     nvidia_stack_t *sp;
 
     if (channel == NULL)
@@ -1436,6 +1510,7 @@ NV_STATUS nvUvmInterfacePagingChannelsMap(uvmGpuAddressSpaceHandle srcVaSpace,
                                           uvmGpuDeviceHandle device,
                                           NvU64 *dstAddress)
 {
+    printk(KERN_ERR "=====================================   290\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -1458,6 +1533,7 @@ void nvUvmInterfacePagingChannelsUnmap(uvmGpuAddressSpaceHandle srcVaSpace,
                                        UvmGpuPointer srcAddress,
                                        uvmGpuDeviceHandle device)
 {
+    printk(KERN_ERR "=====================================   291\n");
     nvidia_stack_t *sp = nvUvmGetSafeStack();
     rm_gpu_ops_paging_channels_unmap(sp,
                                      (gpuAddressSpaceHandle)srcVaSpace,
@@ -1471,6 +1547,7 @@ NV_STATUS nvUvmInterfacePagingChannelPushStream(UvmGpuPagingChannelHandle channe
                                                 char *methodStream,
                                                 NvU32 methodStreamSize)
 {
+    printk(KERN_ERR "=====================================   292\n");
     return rm_gpu_ops_paging_channel_push_stream(channel->pushStreamSp,
                                                  (gpuPagingChannelHandle)channel,
                                                  methodStream,
@@ -1481,6 +1558,7 @@ EXPORT_SYMBOL(nvUvmInterfacePagingChannelPushStream);
 NV_STATUS nvUvmInterfaceCslInitContext(UvmCslContext *uvmCslContext,
                                        uvmGpuChannelHandle channel)
 {
+    printk(KERN_ERR "=====================================   293\n");
     nvidia_stack_t *sp = NULL;
     NV_STATUS status;
 
@@ -1510,6 +1588,7 @@ EXPORT_SYMBOL(nvUvmInterfaceCslInitContext);
 
 void nvUvmInterfaceDeinitCslContext(UvmCslContext *uvmCslContext)
 {
+    printk(KERN_ERR "=====================================   294\n");
     nvidia_stack_t *sp = uvmCslContext->nvidia_stack;
     rm_gpu_ops_ccsl_context_clear(sp, uvmCslContext->ctx);
     nvUvmFreeSafeStack(sp);
@@ -1519,6 +1598,7 @@ EXPORT_SYMBOL(nvUvmInterfaceDeinitCslContext);
 NV_STATUS nvUvmInterfaceCslRotateIv(UvmCslContext *uvmCslContext,
                                     UvmCslOperation operation)
 {
+    printk(KERN_ERR "=====================================   295\n");
     NV_STATUS status;
     nvidia_stack_t *sp = uvmCslContext->nvidia_stack;
 
@@ -1535,6 +1615,7 @@ NV_STATUS nvUvmInterfaceCslEncrypt(UvmCslContext *uvmCslContext,
                                    NvU8 *outputBuffer,
                                    NvU8 *authTagBuffer)
 {
+    printk(KERN_ERR "=====================================   296\n");
     NV_STATUS status;
     nvidia_stack_t *sp = uvmCslContext->nvidia_stack;
 
@@ -1556,6 +1637,7 @@ NV_STATUS nvUvmInterfaceCslDecrypt(UvmCslContext *uvmCslContext,
                                    NvU32 addAuthDataSize,
                                    NvU8 const *authTagBuffer)
 {
+    printk(KERN_ERR "=====================================   297\n");
     NV_STATUS status;
     nvidia_stack_t *sp = uvmCslContext->nvidia_stack;
 
@@ -1578,6 +1660,7 @@ NV_STATUS nvUvmInterfaceCslSign(UvmCslContext *uvmCslContext,
                                 NvU8 const *inputBuffer,
                                 NvU8 *authTagBuffer)
 {
+    printk(KERN_ERR "=====================================   298\n");
     NV_STATUS status;
     nvidia_stack_t *sp = uvmCslContext->nvidia_stack;
 
@@ -1591,6 +1674,7 @@ NV_STATUS nvUvmInterfaceCslQueryMessagePool(UvmCslContext *uvmCslContext,
                                             UvmCslOperation operation,
                                             NvU64 *messageNum)
 {
+    printk(KERN_ERR "=====================================   299\n");
     NV_STATUS status;
     nvidia_stack_t *sp = uvmCslContext->nvidia_stack;
 
@@ -1605,6 +1689,7 @@ NV_STATUS nvUvmInterfaceCslIncrementIv(UvmCslContext *uvmCslContext,
                                        NvU64 increment,
                                        UvmCslIv *iv)
 {
+    printk(KERN_ERR "=====================================   300\n");
     NV_STATUS status;
     nvidia_stack_t *sp = uvmCslContext->nvidia_stack;
 
@@ -1618,11 +1703,13 @@ EXPORT_SYMBOL(nvUvmInterfaceCslIncrementIv);
 
 NV_STATUS nv_uvm_suspend(void)
 {
+    printk(KERN_ERR "=====================================   301\n");
     return NV_OK;
 }
 
 NV_STATUS nv_uvm_resume(void)
 {
+    printk(KERN_ERR "=====================================   302\n");
     return NV_OK;
 }
 

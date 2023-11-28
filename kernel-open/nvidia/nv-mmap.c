@@ -66,6 +66,7 @@
 static void
 nvidia_vma_open(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   503\n");
     nv_alloc_t *at = NV_VMA_PRIVATE(vma);
 
     NV_PRINT_VMA(NV_DBG_MEMINFO, vma);
@@ -94,6 +95,7 @@ nvidia_vma_open(struct vm_area_struct *vma)
 static void
 nvidia_vma_release(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   504\n");
     nv_alloc_t *at = NV_VMA_PRIVATE(vma);
     nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(NV_VMA_FILE(vma));
     static int count = 0;
@@ -121,6 +123,7 @@ nvidia_vma_access(
     int write
 )
 {
+    printk(KERN_ERR "=====================================   505\n");
     nv_alloc_t *at = NULL;
     nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(NV_VMA_FILE(vma));
     nv_state_t *nv = NV_STATE_PTR(nvlfp->nvptr);
@@ -205,6 +208,7 @@ static vm_fault_t nvidia_fault(
     struct vm_fault *vmf
 )
 {
+    printk(KERN_ERR "=====================================   506\n");
 #if defined(NV_VM_OPS_FAULT_REMOVED_VMA_ARG)
     struct vm_area_struct *vma = vmf->vma;
 #endif
@@ -306,6 +310,7 @@ int nv_encode_caching(
     nv_memory_type_t memory_type
 )
 {
+    printk(KERN_ERR "=====================================   507\n");
     pgprot_t tmp;
 
     if (prot == NULL)
@@ -375,6 +380,7 @@ int static nvidia_mmap_peer_io(
     NvU64 pages
 )
 {
+    printk(KERN_ERR "=====================================   508\n");
     int ret;
     NvU64 start;
     NvU64 size;
@@ -396,6 +402,7 @@ int static nvidia_mmap_sysmem(
     NvU64 pages
 )
 {
+    printk(KERN_ERR "=====================================   509\n");
     NvU64 j;
     int ret = 0;
     unsigned long start = 0;
@@ -445,6 +452,7 @@ static int nvidia_mmap_numa(
     struct vm_area_struct *vma,
     const nv_alloc_mapping_context_t *mmap_context)
 {
+    printk(KERN_ERR "=====================================   510\n");
     NvU64 start, addr;
     NvU64 pages;
     NvU64 i;
@@ -480,6 +488,7 @@ int nvidia_mmap_helper(
     void *vm_priv
 )
 {
+    printk(KERN_ERR "=====================================   511\n");
     NvU32 prot = 0;
     int ret;
     const nv_alloc_mapping_context_t *mmap_context = &nvlfp->mmap_context;
@@ -691,6 +700,7 @@ int nvidia_mmap(
     struct vm_area_struct *vma
 )
 {
+    printk(KERN_ERR "=====================================   512\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_FILEP(file);
     nv_state_t *nv = NV_STATE_PTR(nvl);
     nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
@@ -720,6 +730,7 @@ nv_revoke_gpu_mappings_locked(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   513\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     nv_linux_file_private_t *nvlfp;
 
@@ -736,6 +747,7 @@ NV_STATUS NV_API_CALL nv_revoke_gpu_mappings(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   514\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     // Mapping revocation is only supported for GPU mappings.
@@ -757,6 +769,7 @@ void NV_API_CALL nv_acquire_mmap_lock(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   515\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     down(&nvl->mmap_lock);
 }
@@ -765,6 +778,7 @@ void NV_API_CALL nv_release_mmap_lock(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   516\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     up(&nvl->mmap_lock);
 }
@@ -773,6 +787,7 @@ NvBool NV_API_CALL nv_get_all_mappings_revoked_locked(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   517\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     // Caller must hold nvl->mmap_lock for all decisions based on this
@@ -784,6 +799,7 @@ void NV_API_CALL nv_set_safe_to_mmap_locked(
     NvBool safe_to_mmap
 )
 {
+    printk(KERN_ERR "=====================================   518\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     // Caller must hold nvl->mmap_lock

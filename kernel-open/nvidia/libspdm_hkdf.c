@@ -29,6 +29,7 @@ static bool lkca_hkdf_expand_only(struct crypto_shash *alg,
                                   const uint8_t *info, size_t info_size,
                                   uint8_t *out, size_t out_size)
 {
+    printk(KERN_ERR "=====================================   41\n");
 #ifndef USE_LKCA
     return false;
 #else
@@ -94,6 +95,7 @@ bool lkca_hkdf_extract_and_expand(const char *alg_name,
                                   const uint8_t *info, size_t info_size,
                                   uint8_t *out, size_t out_size)
 {
+    printk(KERN_ERR "=====================================   42\n");
 #ifndef USE_LKCA
     return false;
 #else
@@ -134,6 +136,7 @@ bool lkca_hkdf_expand(const char *alg_name,
                       const uint8_t *info, size_t info_size,
                       uint8_t *out, size_t out_size)
 {
+    printk(KERN_ERR "=====================================   43\n");
 #ifndef USE_LKCA
     return false;
 #else

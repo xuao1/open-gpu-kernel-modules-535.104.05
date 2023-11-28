@@ -30,6 +30,7 @@ void nv_init_rsync_info(
     void
 )
 {
+    printk(KERN_ERR "=====================================   642\n");
     g_rsync_info.relaxed_ordering_mode = NV_FALSE;
     g_rsync_info.usage_count = 0;
     g_rsync_info.data = NULL;
@@ -40,6 +41,7 @@ void nv_destroy_rsync_info(
     void
 )
 {
+    printk(KERN_ERR "=====================================   643\n");
     WARN_ON(g_rsync_info.data);
     WARN_ON(g_rsync_info.usage_count);
     WARN_ON(g_rsync_info.relaxed_ordering_mode);
@@ -49,6 +51,7 @@ int nv_get_rsync_info(
     void
 )
 {
+    printk(KERN_ERR "=====================================   644\n");
     int mode;
     int rc = 0;
 
@@ -81,6 +84,7 @@ void nv_put_rsync_info(
     void
 )
 {
+    printk(KERN_ERR "=====================================   645\n");
     int mode;
 
     down(&g_rsync_info.lock);
@@ -107,6 +111,7 @@ int nv_register_rsync_driver(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   646\n");
     int rc = 0;
 
     down(&g_rsync_info.lock);
@@ -141,6 +146,7 @@ void nv_unregister_rsync_driver(
     void *data
 )
 {
+    printk(KERN_ERR "=====================================   647\n");
     down(&g_rsync_info.lock);
 
     WARN_ON(g_rsync_info.usage_count != 0);
@@ -164,6 +170,7 @@ NvBool nv_get_rsync_relaxed_ordering_mode(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   648\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     /* shouldn't be called without opening a device */
@@ -182,6 +189,7 @@ void nv_wait_for_rsync(
     nv_state_t *nv
 )
 {
+    printk(KERN_ERR "=====================================   649\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
 
     /* shouldn't be called without opening a device */

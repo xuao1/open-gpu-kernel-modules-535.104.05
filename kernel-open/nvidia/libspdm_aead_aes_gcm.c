@@ -33,6 +33,7 @@ bool libspdm_aead_aes_gcm_encrypt(const uint8_t *key, size_t key_size,
                                   uint8_t *tag_out, size_t tag_size,
                                   uint8_t *data_out, size_t *data_out_size)
 {
+    printk(KERN_ERR "=====================================   7\n");
     int32_t ret;
 
     if (data_in_size > INT_MAX) {
@@ -78,6 +79,7 @@ bool libspdm_aead_aes_gcm_decrypt(const uint8_t *key, size_t key_size,
                                   const uint8_t *tag, size_t tag_size,
                                   uint8_t *data_out, size_t *data_out_size)
 {
+    printk(KERN_ERR "=====================================   8\n");
     int ret;
     if (data_in_size > INT_MAX) {
         return false;

@@ -180,6 +180,7 @@ static struct proc_dir_entry *nv_cap_procfs_dir;
 
 static int nv_procfs_read_nvlink_minors(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   353\n");
     int i, count;
     char name[NV_CAP_NAME_BUF_SIZE];
 
@@ -199,6 +200,7 @@ static int nv_procfs_read_nvlink_minors(struct seq_file *s, void *v)
 
 static int nv_procfs_read_sys_minors(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   354\n");
     int i, count;
     char name[NV_CAP_NAME_BUF_SIZE];
 
@@ -218,6 +220,7 @@ static int nv_procfs_read_sys_minors(struct seq_file *s, void *v)
 
 static int nv_procfs_read_mig_minors(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   355\n");
     int i, count, gpu;
     char name[NV_CAP_NAME_BUF_SIZE];
 
@@ -255,6 +258,7 @@ NV_DEFINE_SINGLE_PROCFS_FILE_READ_ONLY(sys_minors, nv_system_pm_lock);
 
 static void nv_cap_procfs_exit(void)
 {
+    printk(KERN_ERR "=====================================   356\n");
     if (!nv_cap_procfs_dir)
     {
         return;
@@ -268,6 +272,7 @@ static void nv_cap_procfs_exit(void)
 
 int nv_cap_procfs_init(void)
 {
+    printk(KERN_ERR "=====================================   357\n");
     static struct proc_dir_entry *file_entry;
 
     nv_cap_procfs_dir = NV_CREATE_PROC_DIR(NV_CAP_PROCFS_DIR, NULL);
@@ -307,6 +312,7 @@ cleanup:
 
 static int nv_cap_find_minor(char *path)
 {
+    printk(KERN_ERR "=====================================   358\n");
     unsigned int key = nv_cap_hash_key(path);
     nv_cap_table_entry_t *entry;
 
@@ -323,6 +329,7 @@ static int nv_cap_find_minor(char *path)
 
 static void _nv_cap_table_init(nv_cap_table_entry_t *table, int count)
 {
+    printk(KERN_ERR "=====================================   359\n");
     int i;
     unsigned int key;
     static int minor = 0;
@@ -343,6 +350,7 @@ static void _nv_cap_table_init(nv_cap_table_entry_t *table, int count)
 
 static void nv_cap_tables_init(void)
 {
+    printk(KERN_ERR "=====================================   360\n");
     BUILD_BUG_ON(offsetof(nv_cap_table_entry_t, name) != 0);
 
     nv_hash_init(g_nv_cap_hash_table);
@@ -357,6 +365,7 @@ static ssize_t nv_cap_procfs_write(struct file *file,
                                     const char __user *buffer,
                                     size_t count, loff_t *pos)
 {
+    printk(KERN_ERR "=====================================   361\n");
     nv_cap_file_private_t *private = NULL;
     unsigned long bytes_left;
     char *proc_buffer;
@@ -392,6 +401,7 @@ static ssize_t nv_cap_procfs_write(struct file *file,
 
 static int nv_cap_procfs_read(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   362\n");
     nv_cap_file_private_t *private = s->private;
 
     seq_printf(s, "%s: %d\n", "DeviceFileMinor", private->minor);
@@ -403,6 +413,7 @@ static int nv_cap_procfs_read(struct seq_file *s, void *v)
 
 static int nv_cap_procfs_open(struct inode *inode, struct file *file)
 {
+    printk(KERN_ERR "=====================================   363\n");
     nv_cap_file_private_t *private = NULL;
     int rc;
     nv_cap_t *cap = NV_PDE_DATA(inode);
@@ -437,6 +448,7 @@ static int nv_cap_procfs_open(struct inode *inode, struct file *file)
 
 static int nv_cap_procfs_release(struct inode *inode, struct file *file)
 {
+    printk(KERN_ERR "=====================================   364\n");
     struct seq_file *s = file->private_data;
     nv_cap_file_private_t *private = NULL;
     char *buffer;
@@ -490,6 +502,7 @@ static struct file_operations g_nv_cap_drv_fops;
 
 int NV_API_CALL nv_cap_validate_and_dup_fd(const nv_cap_t *cap, int fd)
 {
+    printk(KERN_ERR "=====================================   365\n");
     struct file *file;
     int dup_fd;
     struct inode *inode = NULL;
@@ -562,6 +575,7 @@ err:
 
 void NV_API_CALL nv_cap_close_fd(int fd)
 {
+    printk(KERN_ERR "=====================================   366\n");
     if (fd == -1)
     {
         return;
@@ -603,6 +617,7 @@ void NV_API_CALL nv_cap_close_fd(int fd)
 
 static nv_cap_t* nv_cap_alloc(nv_cap_t *parent_cap, const char *name)
 {
+    printk(KERN_ERR "=====================================   367\n");
     nv_cap_t *cap;
     int len;
 
@@ -648,6 +663,7 @@ static nv_cap_t* nv_cap_alloc(nv_cap_t *parent_cap, const char *name)
 
 static void nv_cap_free(nv_cap_t *cap)
 {
+    printk(KERN_ERR "=====================================   368\n");
     if (cap == NULL)
     {
         return;
@@ -661,6 +677,7 @@ static void nv_cap_free(nv_cap_t *cap)
 nv_cap_t* NV_API_CALL nv_cap_create_file_entry(nv_cap_t *parent_cap,
                                                const char *name, int mode)
 {
+    printk(KERN_ERR "=====================================   369\n");
     nv_cap_t *cap = NULL;
     int minor;
 
@@ -698,6 +715,7 @@ nv_cap_t* NV_API_CALL nv_cap_create_file_entry(nv_cap_t *parent_cap,
 nv_cap_t* NV_API_CALL nv_cap_create_dir_entry(nv_cap_t *parent_cap,
                                               const char *name, int mode)
 {
+    printk(KERN_ERR "=====================================   370\n");
     nv_cap_t *cap = NULL;
 
     cap = nv_cap_alloc(parent_cap, name);
@@ -724,6 +742,7 @@ nv_cap_t* NV_API_CALL nv_cap_create_dir_entry(nv_cap_t *parent_cap,
 
 nv_cap_t* NV_API_CALL nv_cap_init(const char *path)
 {
+    printk(KERN_ERR "=====================================   371\n");
     nv_cap_t parent_cap;
     nv_cap_t *cap;
     int mode;
@@ -755,6 +774,7 @@ nv_cap_t* NV_API_CALL nv_cap_init(const char *path)
 
 void NV_API_CALL nv_cap_destroy_entry(nv_cap_t *cap)
 {
+    printk(KERN_ERR "=====================================   372\n");
     if (WARN_ON(cap == NULL))
     {
         return;
@@ -766,16 +786,19 @@ void NV_API_CALL nv_cap_destroy_entry(nv_cap_t *cap)
 
 static int nv_cap_drv_open(struct inode *inode, struct file *file)
 {
+    printk(KERN_ERR "=====================================   373\n");
     return 0;
 }
 
 static int nv_cap_drv_release(struct inode *inode, struct file *file)
 {
+    printk(KERN_ERR "=====================================   374\n");
     return 0;
 }
 
 static struct file_operations g_nv_cap_drv_fops =
 {
+    printk(KERN_ERR "=====================================   375\n");
     .owner = THIS_MODULE,
     .open    = nv_cap_drv_open,
     .release = nv_cap_drv_release
@@ -783,6 +806,7 @@ static struct file_operations g_nv_cap_drv_fops =
 
 int NV_API_CALL nv_cap_drv_init(void)
 {
+    printk(KERN_ERR "=====================================   376\n");
     int rc;
 
     nv_cap_tables_init();
@@ -837,6 +861,7 @@ cdev_add_fail:
 
 void NV_API_CALL nv_cap_drv_exit(void)
 {
+    printk(KERN_ERR "=====================================   377\n");
     if (!g_nv_cap_drv.initialized)
     {
         return;

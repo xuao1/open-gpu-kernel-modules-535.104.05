@@ -31,6 +31,7 @@ nv_report_error_cb_t nv_error_cb_handle = NULL;
 
 int nv_register_error_cb(nv_report_error_cb_t report_error_cb)
 {
+    printk(KERN_ERR "=====================================   639\n");
     if (report_error_cb == NULL)
         return -EINVAL;
 
@@ -45,6 +46,7 @@ EXPORT_SYMBOL(nv_register_error_cb);
 
 int nv_unregister_error_cb(void)
 {
+    printk(KERN_ERR "=====================================   640\n");
     if (nv_error_cb_handle == NULL)
         return -EPERM;
 
@@ -63,6 +65,7 @@ void nv_report_error(
     va_list         ap
 )
 {
+    printk(KERN_ERR "=====================================   641\n");
     va_list ap_copy;
     char *buffer;
     int length = 0;

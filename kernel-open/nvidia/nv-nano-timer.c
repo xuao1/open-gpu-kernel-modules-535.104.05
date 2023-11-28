@@ -58,6 +58,7 @@ static void
 nvidia_nano_timer_callback(
     nv_nano_timer_t *nv_nstimer)
 {
+    printk(KERN_ERR "=====================================   530\n");
     nv_state_t *nv = NULL;
     nv_linux_state_t *nvl = nv_nstimer->nv_linux_state;
     nvidia_stack_t *sp = NULL;
@@ -85,6 +86,7 @@ nvidia_nano_timer_callback(
  */
 static nv_nano_timer_t *nv_alloc_nano_timer(void)
 {
+    printk(KERN_ERR "=====================================   531\n");
     nv_nano_timer_t *nv_nstimer;
 
     NV_KMALLOC(nv_nstimer, sizeof(nv_nano_timer_t));
@@ -102,6 +104,7 @@ static nv_nano_timer_t *nv_alloc_nano_timer(void)
 #if NV_NANO_TIMER_USE_HRTIMER
 static enum hrtimer_restart nv_nano_timer_callback_typed_data(struct hrtimer *hrtmr)
 {
+    printk(KERN_ERR "=====================================   532\n");
     struct nv_nano_timer *nv_nstimer =
         container_of(hrtmr, struct nv_nano_timer, hr_timer);
 
@@ -112,6 +115,7 @@ static enum hrtimer_restart nv_nano_timer_callback_typed_data(struct hrtimer *hr
 #else
 static inline void nv_jiffy_timer_callback_typed_data(struct timer_list *timer)
 {
+    printk(KERN_ERR "=====================================   533\n");
     struct nv_nano_timer *nv_nstimer =
         container_of(timer, struct nv_nano_timer, jiffy_timer);
 
@@ -120,6 +124,7 @@ static inline void nv_jiffy_timer_callback_typed_data(struct timer_list *timer)
 
 static inline void nv_jiffy_timer_callback_anon_data(unsigned long arg)
 {
+    printk(KERN_ERR "=====================================   534\n");
     struct nv_nano_timer *nv_nstimer = (struct nv_nano_timer *)arg;
 
     nv_nstimer->nv_nano_timer_callback(nv_nstimer);
@@ -138,6 +143,7 @@ void NV_API_CALL nv_create_nano_timer(
     void *pTmrEvent,
     nv_nano_timer_t **pnv_nstimer)
 {
+    printk(KERN_ERR "=====================================   535\n");
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_NV_STATE(nv);
     nv_nano_timer_t *nv_nstimer = nv_alloc_nano_timer();
 
@@ -181,6 +187,7 @@ void NV_API_CALL nv_start_nano_timer(
     nv_nano_timer_t *nv_nstimer,
     NvU64 time_ns)
 {
+    printk(KERN_ERR "=====================================   536\n");
 #if NV_NANO_TIMER_USE_HRTIMER
     ktime_t ktime = ktime_set(0, time_ns);
     hrtimer_start(&nv_nstimer->hr_timer, ktime, HRTIMER_MODE_REL);
@@ -210,6 +217,7 @@ void NV_API_CALL nv_cancel_nano_timer(
     nv_state_t *nv,
     nv_nano_timer_t *nv_nstimer)
 {
+    printk(KERN_ERR "=====================================   537\n");
 #if NV_NANO_TIMER_USE_HRTIMER
     hrtimer_cancel(&nv_nstimer->hr_timer);
 #else
@@ -228,6 +236,7 @@ void NV_API_CALL nv_destroy_nano_timer(
     nv_state_t *nv,
     nv_nano_timer_t *nv_nstimer)
 {
+    printk(KERN_ERR "=====================================   538\n");
     nv_cancel_nano_timer(nv, nv_nstimer);
     NV_KFREE(nv_nstimer, sizeof(nv_nano_timer_t));
 }

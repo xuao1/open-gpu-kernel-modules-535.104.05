@@ -28,6 +28,7 @@
 
 NvU64 NV_API_CALL nv_get_kern_phys_address(NvU64 address)
 {
+    printk(KERN_ERR "=====================================   672\n");
     /* direct-mapped kernel address */
     if (virt_addr_valid(address))
         return __pa(address);
