@@ -74,6 +74,7 @@
 
 static int _main_loop(void *args)
 {
+    printk(KERN_ERR "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! xuao");
     nv_kthread_q_t *q = (nv_kthread_q_t *)args;
     nv_kthread_q_item_t *q_item = NULL;
     unsigned long flags;
