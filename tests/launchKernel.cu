@@ -26,11 +26,9 @@ int main() {
     std::cout << "60s..." << std::endl;
     sleep(60);
 
-    cudaDeviceSynchronize();
     // testKernel<<<1, 256>>>(d_a);
     // cudaLaunchKernel((void*)testKernel, dim3(1, 1, 1), dim3(256, 1, 1), (void**)&d_a, 0, NULL);
     cuLaunchKernel((CUfunction)testKernel, 1, 1, 1, 256, 1, 1, 0, NULL, (void**)&d_a, NULL);
-    cudaDeviceSynchronize();
 
     // std::cin.get();
     std::cout << "60s..." << std::endl;

@@ -1,186 +1,434 @@
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891792
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891792
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305892288
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305892288
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305892176
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305892176
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891488
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891488
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891680
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891680
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305874752
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305874752
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305874752
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305874752
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891792
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891792
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305892288
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305892288
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305892176
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305892176
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292050, arg: 140737082924032
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 82, arg: 140737082924032
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891488
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891488
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891680
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891680
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305874752
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305874752
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305874752
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305874752
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891792
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891792
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305892288
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305892288
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305892176
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305892176
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891488
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891488
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891680
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891680
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305874752
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305874752
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305874752
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305874752
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891792
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891792
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305892288
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305892288
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305892176
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305892176
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292050, arg: 140737082924032
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 82, arg: 140737082924032
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891488
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891488
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891680
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891680
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305874752
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305874752
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305874752
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305874752
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223078452, arg: 140737305896112
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 52, arg: 140737305896112
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891696
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891696
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891792
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891792
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305892288
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305892288
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305892176
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305892176
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3222292050, arg: 140737082924032
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 82, arg: 140737082924032
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891488
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891488
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891680
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891680
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305874752
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305874752
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305874752
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305874752
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223078452, arg: 140737305895232
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 52, arg: 140737305895232
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305890816
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305890816
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223078452, arg: 140737305895200
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 52, arg: 140737305895200
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305890784
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305890784
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223078452, arg: 140737211521136
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 52, arg: 140737211521136
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737211516720
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737211516720
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737211516720
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737211516720
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737211516720
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737211516720
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737211516720
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737211516720
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737211516720
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737211516720
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737211516720
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737211516720
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737211516720
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737211516720
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737211516720
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737211516720
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305890944
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305890944
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305890960
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305890960
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305890960
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305890960
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305890960
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305890960
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305890960
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305890960
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305890960
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305890960
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891056
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891056
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305891056
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305891056
- xuao 1. nvidia_frontend_unlocked_ioctl in kernel-open/nvidia/nv-frontend.c cmd: 3223340586, arg: 140737305892016
- xuao 2. nvidia driver nvidia_frontend_ioctl file
- xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: 42, arg: 140737305892016
+[  434.943129] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  434.943138] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  434.943141] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891792
+[  434.943149] xuao 5. default in nv.c, will call rm_ioctl
+[  434.943155] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  434.943161] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  434.943165] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  434.945248] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  434.945256] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  434.945260] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305892288
+[  434.945266] xuao 5. default in nv.c, will call rm_ioctl
+[  434.945271] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  434.945276] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  434.945280] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.002118] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.002125] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.002129] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305892176
+[  435.002136] xuao 5. default in nv.c, will call rm_ioctl
+[  435.002141] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.002147] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.002150] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.002964] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.002968] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.002971] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891488
+[  435.002976] xuao 5. default in nv.c, will call rm_ioctl
+[  435.002980] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.002984] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.002988] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.005405] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.005412] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.005416] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891680
+[  435.005421] xuao 5. default in nv.c, will call rm_ioctl
+[  435.005426] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.005431] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.005435] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.005626] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.005630] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.005633] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+[  435.005638] xuao 5. default in nv.c, will call rm_ioctl
+[  435.005643] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.005647] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.005651] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.006103] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.006106] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.006110] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+[  435.006114] xuao 5. default in nv.c, will call rm_ioctl
+[  435.006119] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.006123] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.006126] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.014331] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.014339] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.014343] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891792
+[  435.014349] xuao 5. default in nv.c, will call rm_ioctl
+[  435.014356] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.014362] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.014366] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.016455] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.016461] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.016464] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305892288
+[  435.016470] xuao 5. default in nv.c, will call rm_ioctl
+[  435.016475] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.016480] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.016484] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.019257] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.019264] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.019267] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305892176
+[  435.019273] xuao 5. default in nv.c, will call rm_ioctl
+[  435.019279] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.019285] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.019289] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.027440] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.027447] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.027450] xuao 3. nvidia_ioctl in nv.c cmd: 82, arg: 140737082924032
+[  435.027457] xuao 5. default in nv.c, will call rm_ioctl
+[  435.027463] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.027469] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.027473] NVRM RmIoctl: xuao 8. NV_ESC_RM_GET_EVENT_DATA
+[  435.027502] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.027507] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.027511] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891488
+[  435.027517] xuao 5. default in nv.c, will call rm_ioctl
+[  435.027522] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.027527] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.027531] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.029933] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.029941] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.029944] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891680
+[  435.029950] xuao 5. default in nv.c, will call rm_ioctl
+[  435.029956] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.029961] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.029965] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.030071] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.030075] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.030079] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+[  435.030084] xuao 5. default in nv.c, will call rm_ioctl
+[  435.030088] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.030092] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.030096] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.030589] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.030592] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.030595] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+[  435.030600] xuao 5. default in nv.c, will call rm_ioctl
+[  435.030604] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.030608] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.030612] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.040658] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.040666] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.040670] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891792
+[  435.040677] xuao 5. default in nv.c, will call rm_ioctl
+[  435.040684] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.040690] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.040694] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.043130] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.043136] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.043140] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305892288
+[  435.043145] xuao 5. default in nv.c, will call rm_ioctl
+[  435.043150] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.043155] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.043158] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.045474] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.045481] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.045485] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305892176
+[  435.045491] xuao 5. default in nv.c, will call rm_ioctl
+[  435.045497] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.045503] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.045507] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.046203] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.046207] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.046210] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891488
+[  435.046216] xuao 5. default in nv.c, will call rm_ioctl
+[  435.046220] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.046224] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.046228] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.048621] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.048628] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.048631] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891680
+[  435.048637] xuao 5. default in nv.c, will call rm_ioctl
+[  435.048642] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.048647] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.048650] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.048752] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.048757] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.048761] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+[  435.048766] xuao 5. default in nv.c, will call rm_ioctl
+[  435.048771] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.048775] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.048779] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.049233] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.049237] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.049241] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+[  435.049245] xuao 5. default in nv.c, will call rm_ioctl
+[  435.049249] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.049253] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.049257] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.057572] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.057580] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.057584] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891792
+[  435.057590] xuao 5. default in nv.c, will call rm_ioctl
+[  435.057597] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.057603] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.057607] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.060027] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.060033] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.060036] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305892288
+[  435.060041] xuao 5. default in nv.c, will call rm_ioctl
+[  435.060046] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.060051] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.060055] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.062753] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.062761] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.062764] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305892176
+[  435.062770] xuao 5. default in nv.c, will call rm_ioctl
+[  435.062776] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.062782] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.062786] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.071166] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.071172] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.071176] xuao 3. nvidia_ioctl in nv.c cmd: 82, arg: 140737082924032
+[  435.071182] xuao 5. default in nv.c, will call rm_ioctl
+[  435.071188] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.071194] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.071198] NVRM RmIoctl: xuao 8. NV_ESC_RM_GET_EVENT_DATA
+[  435.071236] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.071241] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.071245] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891488
+[  435.071250] xuao 5. default in nv.c, will call rm_ioctl
+[  435.071255] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.071260] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.071263] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.073632] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.073640] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.073643] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891680
+[  435.073649] xuao 5. default in nv.c, will call rm_ioctl
+[  435.073653] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.073658] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.073662] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.073767] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.073772] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.073775] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+[  435.073780] xuao 5. default in nv.c, will call rm_ioctl
+[  435.073784] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.073789] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.073792] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.074285] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.074289] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.074292] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+[  435.074297] xuao 5. default in nv.c, will call rm_ioctl
+[  435.074301] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.074305] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.074309] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.076535] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.076543] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.076547] xuao 3. nvidia_ioctl in nv.c cmd: 52, arg: 140737305896112
+[  435.076553] xuao 5. default in nv.c, will call rm_ioctl
+[  435.076560] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.076566] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.076570] NVRM RmIoctl: xuao 8. NV_ESC_RM_DUP_OBJECT
+[  435.076659] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.076664] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.076667] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891696
+[  435.076673] xuao 5. default in nv.c, will call rm_ioctl
+[  435.076677] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.076682] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.076685] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.084341] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.084350] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.084354] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891792
+[  435.084361] xuao 5. default in nv.c, will call rm_ioctl
+[  435.084368] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.084375] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.084379] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.086864] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.086871] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.086875] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305892288
+[  435.086880] xuao 5. default in nv.c, will call rm_ioctl
+[  435.086885] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.086890] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.086894] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.089493] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.089500] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.089503] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305892176
+[  435.089509] xuao 5. default in nv.c, will call rm_ioctl
+[  435.089515] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.089520] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.089524] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.098676] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.098681] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.098684] xuao 3. nvidia_ioctl in nv.c cmd: 82, arg: 140737082924032
+[  435.098689] xuao 5. default in nv.c, will call rm_ioctl
+[  435.098693] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.098698] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.098702] NVRM RmIoctl: xuao 8. NV_ESC_RM_GET_EVENT_DATA
+[  435.099663] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.099668] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.099672] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891488
+[  435.099677] xuao 5. default in nv.c, will call rm_ioctl
+[  435.099681] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.099686] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.099690] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.102092] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.102099] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.102103] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891680
+[  435.102108] xuao 5. default in nv.c, will call rm_ioctl
+[  435.102113] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.102118] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.102122] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.102222] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.102226] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.102230] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+[  435.102235] xuao 5. default in nv.c, will call rm_ioctl
+[  435.102239] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.102244] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.102248] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.102731] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.102734] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.102737] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+[  435.102742] xuao 5. default in nv.c, will call rm_ioctl
+[  435.102746] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.102750] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.102753] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.103100] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.103104] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.103107] xuao 3. nvidia_ioctl in nv.c cmd: 52, arg: 140737305895232
+[  435.103112] xuao 5. default in nv.c, will call rm_ioctl
+[  435.103117] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.103121] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.103124] NVRM RmIoctl: xuao 8. NV_ESC_RM_DUP_OBJECT
+[  435.103170] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.103173] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.103177] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305890816
+[  435.103181] xuao 5. default in nv.c, will call rm_ioctl
+[  435.103185] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.103189] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.103193] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.103569] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.103574] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.103577] xuao 3. nvidia_ioctl in nv.c cmd: 52, arg: 140737305895200
+[  435.103582] xuao 5. default in nv.c, will call rm_ioctl
+[  435.103587] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.103591] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.103595] NVRM RmIoctl: xuao 8. NV_ESC_RM_DUP_OBJECT
+[  435.103629] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.103633] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.103636] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305890784
+[  435.103641] xuao 5. default in nv.c, will call rm_ioctl
+[  435.103645] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.103649] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.103652] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.104504] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.104516] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.104521] xuao 3. nvidia_ioctl in nv.c cmd: 52, arg: 140737211521136
+[  435.104529] xuao 5. default in nv.c, will call rm_ioctl
+[  435.104537] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.104547] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.104551] NVRM RmIoctl: xuao 8. NV_ESC_RM_DUP_OBJECT
+[  435.104654] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.104660] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.104665] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+[  435.104672] xuao 5. default in nv.c, will call rm_ioctl
+[  435.104678] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.104684] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.104688] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.104914] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.104919] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.104922] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+[  435.104927] xuao 5. default in nv.c, will call rm_ioctl
+[  435.104932] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.104937] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.104940] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.105063] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.105068] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.105071] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+[  435.105076] xuao 5. default in nv.c, will call rm_ioctl
+[  435.105081] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.105085] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.105089] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.105198] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.105203] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.105206] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+[  435.105210] xuao 5. default in nv.c, will call rm_ioctl
+[  435.105214] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.105218] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.105221] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.105332] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.105337] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.105340] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+[  435.105345] xuao 5. default in nv.c, will call rm_ioctl
+[  435.105349] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.105353] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.105357] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.105462] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.105467] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.105469] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+[  435.105474] xuao 5. default in nv.c, will call rm_ioctl
+[  435.105479] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.105483] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.105486] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.105591] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.105595] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.105598] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+[  435.105602] xuao 5. default in nv.c, will call rm_ioctl
+[  435.105607] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.105611] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.105614] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.105716] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.105721] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.105724] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+[  435.105728] xuao 5. default in nv.c, will call rm_ioctl
+[  435.105732] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.105736] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.105740] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.110987] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.110995] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.110999] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305890944
+[  435.111005] xuao 5. default in nv.c, will call rm_ioctl
+[  435.111011] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.111017] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.111022] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.111211] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.111216] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.111219] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305890960
+[  435.111224] xuao 5. default in nv.c, will call rm_ioctl
+[  435.111229] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.111234] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.111237] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.111357] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.111362] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.111365] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305890960
+[  435.111369] xuao 5. default in nv.c, will call rm_ioctl
+[  435.111373] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.111378] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.111381] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.111497] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.111502] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.111505] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305890960
+[  435.111510] xuao 5. default in nv.c, will call rm_ioctl
+[  435.111514] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.111518] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.111522] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.111641] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.111646] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.111649] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305890960
+[  435.111653] xuao 5. default in nv.c, will call rm_ioctl
+[  435.111657] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.111661] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.111664] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.111781] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.111786] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.111789] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305890960
+[  435.111793] xuao 5. default in nv.c, will call rm_ioctl
+[  435.111797] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.111802] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.111805] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.111938] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.111943] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.111945] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891056
+[  435.111950] xuao 5. default in nv.c, will call rm_ioctl
+[  435.111954] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.111959] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.111962] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.112079] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.112083] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.112086] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305891056
+[  435.112090] xuao 5. default in nv.c, will call rm_ioctl
+[  435.112094] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.112098] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.112102] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
+[  435.113627] xuao 1. nvidia_frontend_unlocked_ioctl in nv-frontend.c
+[  435.113633] xuao 2. nvidia_frontend_ioctl in nv-frontend.c
+[  435.113637] xuao 3. nvidia_ioctl in nv.c cmd: 42, arg: 140737305892016
+[  435.113642] xuao 5. default in nv.c, will call rm_ioctl
+[  435.113647] NVRM rm_ioctl: xuao 6. rm_ioctl in osapi.c
+[  435.113652] NVRM RmIoctl: xuao 7. RmIoctl in escape.c
+[  435.113655] NVRM RmIoctl: xuao 8. NV_ESC_RM_CONTROL
