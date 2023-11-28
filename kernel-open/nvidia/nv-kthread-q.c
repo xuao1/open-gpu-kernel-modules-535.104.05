@@ -100,6 +100,8 @@ static int _main_loop(void *args)
             continue;
         }
 
+        printk(KERN_ERR "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! in while(1) xuao");
+
         // Consume one item from the queue
         q_item = list_first_entry(&q->q_list_head,
                                    nv_kthread_q_item_t,
