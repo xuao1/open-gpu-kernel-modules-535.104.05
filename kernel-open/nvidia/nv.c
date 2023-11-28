@@ -1995,7 +1995,6 @@ nvidia_poll(
 
 #define NV_CTL_DEVICE_ONLY(nv)                 \
 {                                              \
-    printk(KERN_ERR "=====================================   717\n");
     if (((nv)->flags & NV_FLAG_CONTROL) == 0)  \
     {                                          \
         status = -EINVAL;                      \
@@ -2005,7 +2004,6 @@ nvidia_poll(
 
 #define NV_ACTUAL_DEVICE_ONLY(nv)              \
 {                                              \
-    printk(KERN_ERR "=====================================   718\n");
     if (((nv)->flags & NV_FLAG_CONTROL) != 0)  \
     {                                          \
         status = -EINVAL;                      \
