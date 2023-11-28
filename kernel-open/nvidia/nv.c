@@ -2667,6 +2667,7 @@ nvidia_ctl_open(
     struct file *file
 )
 {
+    printk(KERN_ERR "========================= xuao new 5. nvidia_ctl_open in nv.c\n");
     nv_linux_state_t *nvl = &nv_ctl_device;
     nv_state_t *nv = NV_STATE_PTR(nvl);
     nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);

@@ -174,7 +174,7 @@ static struct task_struct *thread_create_on_node(int (*threadfn)(void *data),
                                                  int preferred_node,
                                                  const char *q_name)
 {
-
+    printk(KERN_ERR "========================= xuao new 3. thread_create_on_node in nv-kthread-q.c\n");
     unsigned i, j;
     const static unsigned attempts = 3;
     struct task_struct *thread[3];
