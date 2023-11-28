@@ -6562,6 +6562,7 @@ NV_STATUS nvGpuOpsGetGuid(NvHandle hClient, NvHandle hDevice,
 
     getGidParams.index = 0;
     getGidParams.flags = NV2080_GPU_CMD_GPU_GET_GID_FLAGS_FORMAT_BINARY;
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 7. nvGpuOpsGetGuid in nv_gpu_ops.c\n");
     status = pRmApi->Control(pRmApi,
                              hClient, hSubDevice,
                              NV2080_CTRL_CMD_GPU_GET_GID_INFO,
