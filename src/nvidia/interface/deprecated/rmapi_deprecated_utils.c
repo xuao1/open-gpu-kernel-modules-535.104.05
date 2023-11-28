@@ -39,6 +39,7 @@ RmDeprecatedGetHandleParent
     NvHandle           *phParent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 7. RmDeprecatedGetHandleParent in rmapi_deprecated_utils.c.c\n");
     NV0000_CTRL_CLIENT_GET_HANDLE_INFO_PARAMS parentParams = {0};
     NV_STATUS                                 status;
 
@@ -184,6 +185,7 @@ RmDeprecatedConvertOs32ToOs02Flags
     NvU32 *pOs02Flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 7. RmDeprecatedConvertOs32ToOs02Flags in rmapi_deprecated_utils.c.c\n");
     NvU32 os02Flags = 0;
     NV_STATUS rmStatus = NV_OK;
 
