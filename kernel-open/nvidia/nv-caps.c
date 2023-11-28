@@ -798,7 +798,6 @@ static int nv_cap_drv_release(struct inode *inode, struct file *file)
 
 static struct file_operations g_nv_cap_drv_fops =
 {
-    printk(KERN_ERR "=====================================   375\n");
     .owner = THIS_MODULE,
     .open    = nv_cap_drv_open,
     .release = nv_cap_drv_release
