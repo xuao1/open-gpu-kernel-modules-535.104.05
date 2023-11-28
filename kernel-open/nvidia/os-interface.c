@@ -1361,7 +1361,6 @@ void NV_API_CALL os_dump_stack(void)
 
 typedef struct os_spinlock_s
 {
-    printk(KERN_ERR "=====================================   943\n");
     nv_spinlock_t      lock;
     unsigned long      eflags;
 } os_spinlock_t;
