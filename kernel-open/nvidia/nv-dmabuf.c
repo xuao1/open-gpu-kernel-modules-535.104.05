@@ -194,7 +194,7 @@ nv_inc_and_check_one_phys_refcount(
     NvU32 handle_count
 )
 {
-    // printk(KERN_ERR "=====================================   420\n");
+    printk(KERN_ERR "=====================================   420\n");
     NvU32 i;
     NvBool is_one = NV_FALSE;
 
