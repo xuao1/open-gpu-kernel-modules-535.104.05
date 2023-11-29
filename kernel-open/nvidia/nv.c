@@ -1962,34 +1962,34 @@ nvidia_poll(
     poll_table  *wait
 )
 {
-    printk(KERN_ERR "=====================================   716\n");
+    // printk(KERN_ERR "=====================================   716\n");
     unsigned int mask = 0;
-    // nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
-    // unsigned long eflags;
-    // nv_linux_state_t *nvl = NV_GET_NVL_FROM_FILEP(file);
-    // nv_state_t *nv = NV_STATE_PTR(nvl);
-    // NV_STATUS status;
+    nv_linux_file_private_t *nvlfp = NV_GET_LINUX_FILE_PRIVATE(file);
+    unsigned long eflags;
+    nv_linux_state_t *nvl = NV_GET_NVL_FROM_FILEP(file);
+    nv_state_t *nv = NV_STATE_PTR(nvl);
+    NV_STATUS status;
 
-    // status = nv_check_gpu_state(nv);
-    // if (status == NV_ERR_GPU_IS_LOST)
-    // {
-    //     NV_DEV_PRINTF(NV_DBG_INFO, nv, "GPU is lost, skipping nvidia_poll\n");
-    //     return POLLHUP;
-    // }
+    status = nv_check_gpu_state(nv);
+    if (status == NV_ERR_GPU_IS_LOST)
+    {
+        NV_DEV_PRINTF(NV_DBG_INFO, nv, "GPU is lost, skipping nvidia_poll\n");
+        return POLLHUP;
+    }
 
-    // if ((file->f_flags & O_NONBLOCK) == 0)
-    //     poll_wait(file, &nvlfp->waitqueue, wait);
+    if ((file->f_flags & O_NONBLOCK) == 0)
+        poll_wait(file, &nvlfp->waitqueue, wait);
 
-    // NV_SPIN_LOCK_IRQSAVE(&nvlfp->fp_lock, eflags);
+    NV_SPIN_LOCK_IRQSAVE(&nvlfp->fp_lock, eflags);
 
-    // if ((nvlfp->event_data_head != NULL) || nvlfp->dataless_event_pending)
-    // {
-    //     printk(KERN_ERR "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
-    //     mask = (POLLPRI | POLLIN);
-    //     nvlfp->dataless_event_pending = NV_FALSE;
-    // }
+    if ((nvlfp->event_data_head != NULL) || nvlfp->dataless_event_pending)
+    {
+        printk(KERN_ERR "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        mask = (POLLPRI | POLLIN);
+        nvlfp->dataless_event_pending = NV_FALSE;
+    }
 
-    // NV_SPIN_UNLOCK_IRQRESTORE(&nvlfp->fp_lock, eflags);
+    NV_SPIN_UNLOCK_IRQRESTORE(&nvlfp->fp_lock, eflags);
 
     return mask;
 }
