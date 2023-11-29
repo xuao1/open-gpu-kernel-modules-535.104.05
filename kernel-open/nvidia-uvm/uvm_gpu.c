@@ -64,11 +64,13 @@ static void destroy_nvlink_peers(uvm_gpu_t *gpu);
 
 static uvm_user_channel_t *get_user_channel(uvm_rb_tree_node_t *node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 396);
     return container_of(node, uvm_user_channel_t, instance_ptr.node);
 }
 
 static uvm_gpu_link_type_t get_gpu_link_type(UVM_LINK_TYPE link_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 397);
     switch (link_type) {
         case UVM_LINK_TYPE_PCIE:
             return UVM_GPU_LINK_PCIE;
@@ -89,6 +91,7 @@ static uvm_gpu_link_type_t get_gpu_link_type(UVM_LINK_TYPE link_type)
 
 static void fill_gpu_info(uvm_parent_gpu_t *parent_gpu, const UvmGpuInfo *gpu_info)
 {
+    printk(KERN_ERR "=====================================   %d\n", 398);
     char uuid_buffer[UVM_GPU_UUID_TEXT_BUFFER_LENGTH];
 
     parent_gpu->rm_info = *gpu_info;
@@ -126,6 +129,7 @@ static void fill_gpu_info(uvm_parent_gpu_t *parent_gpu, const UvmGpuInfo *gpu_in
 
 static NV_STATUS get_gpu_caps(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 399);
     NV_STATUS status;
     UvmGpuCaps gpu_caps;
 
@@ -149,6 +153,7 @@ static NV_STATUS get_gpu_caps(uvm_gpu_t *gpu)
 
 static NV_STATUS alloc_and_init_address_space(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 400);
     NV_STATUS status;
     UvmGpuAddressSpaceInfo gpu_address_space_info = {0};
 
@@ -172,6 +177,7 @@ static NV_STATUS alloc_and_init_address_space(uvm_gpu_t *gpu)
 
 static NV_STATUS get_gpu_fb_info(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 401);
     NV_STATUS status;
     UvmGpuFbInfo fb_info = {0};
 
@@ -189,6 +195,7 @@ static NV_STATUS get_gpu_fb_info(uvm_gpu_t *gpu)
 
 static NV_STATUS get_gpu_ecc_info(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 402);
     NV_STATUS status;
     UvmGpuEccInfo ecc_info = {0};
 
@@ -213,6 +220,7 @@ static NV_STATUS get_gpu_ecc_info(uvm_gpu_t *gpu)
 
 static bool gpu_supports_uvm(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 403);
     // TODO: Bug 1757136: Add Linux SLI support. Until then, explicitly disable
     //       UVM on SLI.
     return parent_gpu->rm_info.subdeviceCount == 1;
@@ -220,6 +228,7 @@ static bool gpu_supports_uvm(uvm_parent_gpu_t *parent_gpu)
 
 static bool platform_uses_canonical_form_address(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 404);
     if (NVCPU_IS_PPC64LE)
         return false;
 
@@ -228,6 +237,7 @@ static bool platform_uses_canonical_form_address(void)
 
 bool uvm_gpu_can_address(uvm_gpu_t *gpu, NvU64 addr, NvU64 size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 405);
     // Lower and upper address spaces are typically found in platforms that use
     // the canonical address form.
     NvU64 max_va_lower;
@@ -306,6 +316,7 @@ bool uvm_gpu_can_address(uvm_gpu_t *gpu, NvU64 addr, NvU64 size)
 // The internal UVM VAS does not use canonical form addresses.
 bool uvm_gpu_can_address_kernel(uvm_gpu_t *gpu, NvU64 addr, NvU64 size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 406);
     NvU64 addr_end = addr + size - 1;
     NvU64 max_gpu_va;
 
@@ -321,6 +332,7 @@ bool uvm_gpu_can_address_kernel(uvm_gpu_t *gpu, NvU64 addr, NvU64 size)
 
 NvU64 uvm_parent_gpu_canonical_address(uvm_parent_gpu_t *parent_gpu, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 407);
     NvU8 gpu_addr_shift;
     NvU8 cpu_addr_shift;
     NvU8 addr_shift;
@@ -356,6 +368,7 @@ NvU64 uvm_parent_gpu_canonical_address(uvm_parent_gpu_t *parent_gpu, NvU64 addr)
 
 static void gpu_info_print_ce_caps(uvm_gpu_t *gpu, struct seq_file *s)
 {
+    printk(KERN_ERR "=====================================   %d\n", 408);
     NvU32 i;
     UvmGpuCopyEnginesCaps *ces_caps;
     NV_STATUS status;
@@ -398,6 +411,7 @@ out:
 
 static const char *uvm_gpu_virt_type_string(UVM_VIRT_MODE virtMode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 409);
     BUILD_BUG_ON(UVM_VIRT_MODE_COUNT != 4);
 
     switch (virtMode) {
@@ -411,6 +425,7 @@ static const char *uvm_gpu_virt_type_string(UVM_VIRT_MODE virtMode)
 
 static const char *uvm_gpu_link_type_string(uvm_gpu_link_type_t link_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 410);
     BUILD_BUG_ON(UVM_GPU_LINK_MAX != 7);
 
     switch (link_type) {
@@ -427,6 +442,7 @@ static const char *uvm_gpu_link_type_string(uvm_gpu_link_type_t link_type)
 
 static void gpu_info_print_common(uvm_gpu_t *gpu, struct seq_file *s)
 {
+    printk(KERN_ERR "=====================================   %d\n", 411);
     const UvmGpuInfo *gpu_info = &gpu->parent->rm_info;
     NvU64 num_pages_in;
     NvU64 num_pages_out;
@@ -576,6 +592,7 @@ static void gpu_info_print_common(uvm_gpu_t *gpu, struct seq_file *s)
 static void
 gpu_fault_stats_print_common(uvm_parent_gpu_t *parent_gpu, struct seq_file *s)
 {
+    printk(KERN_ERR "=====================================   %d\n", 412);
     NvU64 num_pages_in;
     NvU64 num_pages_out;
 
@@ -630,6 +647,7 @@ gpu_fault_stats_print_common(uvm_parent_gpu_t *parent_gpu, struct seq_file *s)
 
 static void gpu_access_counters_print_common(uvm_parent_gpu_t *parent_gpu, struct seq_file *s)
 {
+    printk(KERN_ERR "=====================================   %d\n", 413);
     NvU64 num_pages_in;
     NvU64 num_pages_out;
 
@@ -646,11 +664,13 @@ static void gpu_access_counters_print_common(uvm_parent_gpu_t *parent_gpu, struc
 
 void uvm_gpu_print(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 414);
     gpu_info_print_common(gpu, NULL);
 }
 
 static void gpu_peer_caps_print(uvm_gpu_t **gpu_pair, struct seq_file *s)
 {
+    printk(KERN_ERR "=====================================   %d\n", 415);
     bool nvswitch_connected;
     uvm_aperture_t aperture;
     uvm_gpu_peer_t *peer_caps;
@@ -673,6 +693,7 @@ static void gpu_peer_caps_print(uvm_gpu_t **gpu_pair, struct seq_file *s)
 
 static int nv_procfs_read_gpu_info(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 416);
     uvm_gpu_t *gpu = (uvm_gpu_t *)s->private;
 
     if (!uvm_down_read_trylock(&g_uvm_global.pm.lock))
@@ -687,11 +708,13 @@ static int nv_procfs_read_gpu_info(struct seq_file *s, void *v)
 
 static int nv_procfs_read_gpu_info_entry(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 417);
     UVM_ENTRY_RET(nv_procfs_read_gpu_info(s, v));
 }
 
 static int nv_procfs_read_gpu_fault_stats(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 418);
     uvm_parent_gpu_t *parent_gpu = (uvm_parent_gpu_t *)s->private;
 
     if (!uvm_down_read_trylock(&g_uvm_global.pm.lock))
@@ -706,11 +729,13 @@ static int nv_procfs_read_gpu_fault_stats(struct seq_file *s, void *v)
 
 static int nv_procfs_read_gpu_fault_stats_entry(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 419);
     UVM_ENTRY_RET(nv_procfs_read_gpu_fault_stats(s, v));
 }
 
 static int nv_procfs_read_gpu_access_counters(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 420);
     uvm_parent_gpu_t *parent_gpu = (uvm_parent_gpu_t *)s->private;
 
     if (!uvm_down_read_trylock(&g_uvm_global.pm.lock))
@@ -725,6 +750,7 @@ static int nv_procfs_read_gpu_access_counters(struct seq_file *s, void *v)
 
 static int nv_procfs_read_gpu_access_counters_entry(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 421);
     UVM_ENTRY_RET(nv_procfs_read_gpu_access_counters(s, v));
 }
 
@@ -734,6 +760,7 @@ UVM_DEFINE_SINGLE_PROCFS_FILE(gpu_access_counters_entry);
 
 static NV_STATUS init_parent_procfs_dir(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 422);
     struct proc_dir_entry *gpu_base_dir_entry;
     char uuid_text_buffer[UVM_GPU_UUID_TEXT_BUFFER_LENGTH];
     char gpu_dir_name[sizeof(uuid_text_buffer) + 1];
@@ -757,11 +784,13 @@ static NV_STATUS init_parent_procfs_dir(uvm_parent_gpu_t *parent_gpu)
 
 static void deinit_parent_procfs_dir(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 423);
     proc_remove(parent_gpu->procfs.dir);
 }
 
 static NV_STATUS init_parent_procfs_files(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 424);
     // Fault and access counter files are debug only
     if (!uvm_procfs_is_debug_enabled())
         return NV_OK;
@@ -785,12 +814,14 @@ static NV_STATUS init_parent_procfs_files(uvm_parent_gpu_t *parent_gpu)
 
 static void deinit_parent_procfs_files(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 425);
     proc_remove(parent_gpu->procfs.access_counters_file);
     proc_remove(parent_gpu->procfs.fault_stats_file);
 }
 
 static NV_STATUS init_procfs_dirs(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 426);
     struct proc_dir_entry *gpu_base_dir_entry;
     char symlink_name[16]; // Hold a global_gpu_id_t value in decimal.
     char uuid_text_buffer[UVM_GPU_UUID_TEXT_BUFFER_LENGTH];
@@ -837,6 +868,7 @@ static NV_STATUS init_procfs_dirs(uvm_gpu_t *gpu)
 // The kernel waits on readers to finish before returning from those calls
 static void deinit_procfs_dirs(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 427);
     proc_remove(gpu->procfs.dir_peers);
     proc_remove(gpu->procfs.dir_symlink);
     proc_remove(gpu->procfs.dir);
@@ -844,6 +876,7 @@ static void deinit_procfs_dirs(uvm_gpu_t *gpu)
 
 static NV_STATUS init_procfs_files(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 428);
     gpu->procfs.info_file = NV_CREATE_PROC_FILE("info", gpu->procfs.dir, gpu_info_entry, gpu);
     if (gpu->procfs.info_file == NULL)
         return NV_ERR_OPERATING_SYSTEM;
@@ -853,11 +886,13 @@ static NV_STATUS init_procfs_files(uvm_gpu_t *gpu)
 
 static void deinit_procfs_files(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 429);
     proc_remove(gpu->procfs.info_file);
 }
 
 static void deinit_procfs_peer_cap_files(uvm_gpu_peer_t *peer_caps)
 {
+    printk(KERN_ERR "=====================================   %d\n", 430);
     proc_remove(peer_caps->procfs.peer_symlink_file[0]);
     proc_remove(peer_caps->procfs.peer_symlink_file[1]);
     proc_remove(peer_caps->procfs.peer_file[0]);
@@ -866,6 +901,7 @@ static void deinit_procfs_peer_cap_files(uvm_gpu_peer_t *peer_caps)
 
 static NV_STATUS init_semaphore_pools(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 431);
     NV_STATUS status;
     uvm_gpu_t *other_gpu;
 
@@ -896,6 +932,7 @@ static NV_STATUS init_semaphore_pools(uvm_gpu_t *gpu)
 
 static void deinit_semaphore_pools(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 432);
     uvm_gpu_t *other_gpu;
 
     for_each_global_gpu(other_gpu) {
@@ -910,6 +947,7 @@ static void deinit_semaphore_pools(uvm_gpu_t *gpu)
 
 static NV_STATUS find_unused_global_gpu_id(uvm_parent_gpu_t *parent_gpu, uvm_global_gpu_id_t *out_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 433);
     NvU32 i;
 
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
@@ -939,6 +977,7 @@ static NV_STATUS alloc_parent_gpu(const NvProcessorUuid *gpu_uuid,
                                   uvm_gpu_id_t gpu_id,
                                   uvm_parent_gpu_t **parent_gpu_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 434);
     uvm_parent_gpu_t *parent_gpu;
     NV_STATUS status;
 
@@ -971,6 +1010,7 @@ static NV_STATUS alloc_parent_gpu(const NvProcessorUuid *gpu_uuid,
 // other initialization up to the caller.
 static uvm_gpu_t *alloc_gpu(uvm_parent_gpu_t *parent_gpu, uvm_global_gpu_id_t global_gpu_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 435);
     NvU32 sub_processor_index;
     uvm_gpu_t *gpu;
 
@@ -994,6 +1034,7 @@ static uvm_gpu_t *alloc_gpu(uvm_parent_gpu_t *parent_gpu, uvm_global_gpu_id_t gl
 
 static NV_STATUS configure_address_space(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 436);
     NV_STATUS status;
     NvU32 num_entries;
     NvU64 va_size;
@@ -1040,6 +1081,7 @@ static NV_STATUS configure_address_space(uvm_gpu_t *gpu)
 
 static void deconfigure_address_space(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 437);
     if (gpu->rm_address_space_moved_to_page_tree)
         uvm_rm_locked_call_void(nvUvmInterfaceUnsetPageDirectory(gpu->rm_address_space));
 
@@ -1049,6 +1091,7 @@ static void deconfigure_address_space(uvm_gpu_t *gpu)
 
 static NV_STATUS service_interrupts(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 438);
     // Asking RM to service interrupts from top half interrupt handler would
     // very likely deadlock.
     UVM_ASSERT(!in_interrupt());
@@ -1058,6 +1101,7 @@ static NV_STATUS service_interrupts(uvm_parent_gpu_t *parent_gpu)
 
 NV_STATUS uvm_gpu_check_ecc_error(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 439);
     NV_STATUS status = uvm_gpu_check_ecc_error_no_rm(gpu);
 
     if (status == NV_OK || status != NV_WARN_MORE_PROCESSING_REQUIRED)
@@ -1087,6 +1131,7 @@ static NV_STATUS init_parent_gpu(uvm_parent_gpu_t *parent_gpu,
                                  const UvmGpuInfo *gpu_info,
                                  const UvmGpuPlatformInfo *gpu_platform_info)
 {
+    printk(KERN_ERR "=====================================   %d\n", 440);
     NV_STATUS status;
 
     status = uvm_rm_locked_call(nvUvmInterfaceDeviceCreate(g_uvm_global.rm_session_handle,
@@ -1159,6 +1204,7 @@ static NV_STATUS init_parent_gpu(uvm_parent_gpu_t *parent_gpu,
 
 static NV_STATUS init_gpu(uvm_gpu_t *gpu, const UvmGpuInfo *gpu_info)
 {
+    printk(KERN_ERR "=====================================   %d\n", 441);
     NV_STATUS status;
 
     // Presently, an RM client can only subscribe to a single partition per
@@ -1295,6 +1341,7 @@ static NV_STATUS add_gpu(const NvProcessorUuid *gpu_uuid,
                          uvm_parent_gpu_t *parent_gpu,
                          uvm_gpu_t **gpu_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 442);
     NV_STATUS status;
     bool alloc_parent = (parent_gpu == NULL);
     uvm_gpu_t *gpu = NULL;
@@ -1408,6 +1455,7 @@ static void sync_parent_gpu_trackers(uvm_parent_gpu_t *parent_gpu,
                                      bool sync_replay_tracker,
                                      bool sync_clear_faulted_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 443);
     NV_STATUS status;
 
     // Sync the replay tracker since it inherits dependencies from the VA block
@@ -1438,6 +1486,7 @@ static void sync_parent_gpu_trackers(uvm_parent_gpu_t *parent_gpu,
 // trackers contained by this GPU.
 static void remove_gpus_from_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 444);
     sync_parent_gpu_trackers(gpu->parent,
                              gpu->parent->isr.replayable_faults.handling,
                              gpu->parent->isr.non_replayable_faults.handling);
@@ -1454,6 +1503,7 @@ static void remove_gpus_from_gpu(uvm_gpu_t *gpu)
 // by the parent GPU.
 static void remove_gpu_from_parent_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 445);
     // We use *.was_handling instead of *.handling here since this function is
     // called after uvm_gpu_disable_isr(), and the *.handling flags will
     // already have been copied to *.was_handling, and then set to false.
@@ -1464,6 +1514,7 @@ static void remove_gpu_from_parent_gpu(uvm_gpu_t *gpu)
 
 static void deinit_parent_gpu(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 446);
     // All channels should have been removed before the retained count went to 0
     UVM_ASSERT(uvm_rb_tree_empty(&parent_gpu->instance_ptr_table));
     UVM_ASSERT(uvm_rb_tree_empty(&parent_gpu->tsg_table));
@@ -1498,6 +1549,7 @@ static void deinit_parent_gpu(uvm_parent_gpu_t *parent_gpu)
 
 static void deinit_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 447);
     uvm_gpu_t *other_gpu;
 
     // Remove any pointers to this GPU from other GPUs' trackers.
@@ -1555,6 +1607,7 @@ static void deinit_gpu(uvm_gpu_t *gpu)
 // Note that this is also used in most error paths in add_gpu()
 static void remove_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 448);
     NvU32 sub_processor_index;
     uvm_parent_gpu_t *parent_gpu;
     bool free_parent;
@@ -1630,6 +1683,7 @@ static void remove_gpu(uvm_gpu_t *gpu)
 // GPU's ref count drops to zero.
 static void uvm_parent_gpu_destroy(nv_kref_t *nv_kref)
 {
+    printk(KERN_ERR "=====================================   %d\n", 449);
     uvm_parent_gpu_t *parent_gpu = container_of(nv_kref, uvm_parent_gpu_t, gpu_kref);
     NvU32 sub_processor_index;
 
@@ -1646,6 +1700,7 @@ static void uvm_parent_gpu_destroy(nv_kref_t *nv_kref)
 
 void uvm_parent_gpu_kref_put(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 450);
     nv_kref_put(&parent_gpu->gpu_kref, uvm_parent_gpu_destroy);
 }
 
@@ -1653,9 +1708,11 @@ static void update_stats_gpu_fault_instance(uvm_gpu_t *gpu,
                                             const uvm_fault_buffer_entry_t *fault_entry,
                                             bool is_duplicate)
 {
+    printk(KERN_ERR "=====================================   %d\n", 451);
     if (!fault_entry->is_replayable) {
         switch (fault_entry->fault_access_type)
         {
+    printk(KERN_ERR "=====================================   %d\n", 452);
             case UVM_FAULT_ACCESS_TYPE_READ:
                 ++gpu->parent->fault_buffer_info.non_replayable.stats.num_read_faults;
                 break;
@@ -1683,6 +1740,7 @@ static void update_stats_gpu_fault_instance(uvm_gpu_t *gpu,
 
     switch (fault_entry->fault_access_type)
     {
+    printk(KERN_ERR "=====================================   %d\n", 453);
         case UVM_FAULT_ACCESS_TYPE_PREFETCH:
             ++gpu->parent->fault_buffer_info.replayable.stats.num_prefetch_faults;
             break;
@@ -1707,6 +1765,7 @@ static void update_stats_gpu_fault_instance(uvm_gpu_t *gpu,
 
 static void update_stats_fault_cb(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 454);
     uvm_gpu_t *gpu;
     const uvm_fault_buffer_entry_t *fault_entry, *fault_instance;
 
@@ -1732,6 +1791,7 @@ static void update_stats_fault_cb(uvm_perf_event_t event_id, uvm_perf_event_data
 
 static void update_stats_migration_cb(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 455);
     uvm_gpu_t *gpu_dst = NULL;
     uvm_gpu_t *gpu_src = NULL;
     NvU64 pages;
@@ -1786,6 +1846,7 @@ static void update_stats_migration_cb(uvm_perf_event_t event_id, uvm_perf_event_
 // Override the UVM driver and GPU settings from the module loader
 static void uvm_param_conf(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 456);
     // uvm_peer_copy: Valid entries are "phys" and "virt" for Ampere+ GPUs.
     // No effect in pre-Ampere GPUs
     if (strcmp(uvm_peer_copy, UVM_PARAM_PEER_COPY_VIRTUAL) == 0) {
@@ -1803,6 +1864,7 @@ static void uvm_param_conf(void)
 
 NV_STATUS uvm_gpu_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 457);
     NV_STATUS status;
 
     uvm_param_conf();
@@ -1818,6 +1880,7 @@ NV_STATUS uvm_gpu_init(void)
 
 void uvm_gpu_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 458);
     uvm_parent_gpu_t *parent_gpu;
 
     for_each_parent_gpu(parent_gpu)
@@ -1829,6 +1892,7 @@ void uvm_gpu_exit(void)
 
 NV_STATUS uvm_gpu_init_va_space(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 459);
     NV_STATUS status;
 
     if (uvm_procfs_is_debug_enabled()) {
@@ -1850,6 +1914,7 @@ NV_STATUS uvm_gpu_init_va_space(uvm_va_space_t *va_space)
 
 uvm_parent_gpu_t *uvm_parent_gpu_get_by_uuid_locked(const NvProcessorUuid *gpu_uuid)
 {
+    printk(KERN_ERR "=====================================   %d\n", 460);
     uvm_parent_gpu_t *parent_gpu;
 
     for_each_parent_gpu(parent_gpu) {
@@ -1862,6 +1927,7 @@ uvm_parent_gpu_t *uvm_parent_gpu_get_by_uuid_locked(const NvProcessorUuid *gpu_u
 
 uvm_parent_gpu_t *uvm_parent_gpu_get_by_uuid(const NvProcessorUuid *gpu_uuid)
 {
+    printk(KERN_ERR "=====================================   %d\n", 461);
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
 
     return uvm_parent_gpu_get_by_uuid_locked(gpu_uuid);
@@ -1869,6 +1935,7 @@ uvm_parent_gpu_t *uvm_parent_gpu_get_by_uuid(const NvProcessorUuid *gpu_uuid)
 
 static uvm_gpu_t *uvm_gpu_get_by_uuid_locked(const NvProcessorUuid *gpu_uuid)
 {
+    printk(KERN_ERR "=====================================   %d\n", 462);
     uvm_gpu_id_t gpu_id;
     uvm_global_gpu_id_t global_gpu_id;
     uvm_gpu_t *gpu;
@@ -1889,6 +1956,7 @@ static uvm_gpu_t *uvm_gpu_get_by_uuid_locked(const NvProcessorUuid *gpu_uuid)
 
 uvm_gpu_t *uvm_gpu_get_by_uuid(const NvProcessorUuid *gpu_uuid)
 {
+    printk(KERN_ERR "=====================================   %d\n", 463);
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
 
     return uvm_gpu_get_by_uuid_locked(gpu_uuid);
@@ -1896,6 +1964,7 @@ uvm_gpu_t *uvm_gpu_get_by_uuid(const NvProcessorUuid *gpu_uuid)
 
 uvm_gpu_t *uvm_gpu_get_by_parent_and_swizz_id_locked(uvm_parent_gpu_t *parent_gpu, NvU32 swizz_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 464);
     uvm_gpu_t *gpu;
 
     UVM_ASSERT(parent_gpu);
@@ -1910,6 +1979,7 @@ uvm_gpu_t *uvm_gpu_get_by_parent_and_swizz_id_locked(uvm_parent_gpu_t *parent_gp
 
 uvm_gpu_t *uvm_gpu_get_by_parent_and_swizz_id(uvm_parent_gpu_t *parent_gpu, NvU32 swizz_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 465);
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
 
     return uvm_gpu_get_by_parent_and_swizz_id_locked(parent_gpu, swizz_id);
@@ -1926,6 +1996,7 @@ static NV_STATUS gpu_retain_by_uuid_locked(const NvProcessorUuid *gpu_uuid,
                                            const uvm_rm_user_object_t *user_rm_device,
                                            uvm_gpu_t **gpu_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 466);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu = NULL;
     uvm_parent_gpu_t *parent_gpu;
@@ -2002,6 +2073,7 @@ NV_STATUS uvm_gpu_retain_by_uuid(const NvProcessorUuid *gpu_uuid,
                                  const uvm_rm_user_object_t *user_rm_device,
                                  uvm_gpu_t **gpu_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 467);
     NV_STATUS status;
     uvm_mutex_lock(&g_uvm_global.global_lock);
     status = gpu_retain_by_uuid_locked(gpu_uuid, user_rm_device, gpu_out);
@@ -2011,12 +2083,14 @@ NV_STATUS uvm_gpu_retain_by_uuid(const NvProcessorUuid *gpu_uuid,
 
 void uvm_gpu_retain(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 468);
     UVM_ASSERT(uvm_gpu_retained_count(gpu) > 0);
     atomic64_inc(&gpu->retained_count);
 }
 
 void uvm_gpu_release_locked(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 469);
     uvm_parent_gpu_t *parent_gpu = gpu->parent;
 
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
@@ -2033,6 +2107,7 @@ void uvm_gpu_release_locked(uvm_gpu_t *gpu)
 
 void uvm_gpu_release(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 470);
     uvm_mutex_lock(&g_uvm_global.global_lock);
     uvm_gpu_release_locked(gpu);
     uvm_mutex_unlock(&g_uvm_global.global_lock);
@@ -2044,6 +2119,7 @@ void uvm_gpu_release(uvm_gpu_t *gpu)
 // does not include diagonal elements.
 NvU32 uvm_gpu_peer_table_index(const uvm_gpu_id_t gpu_id0, const uvm_gpu_id_t gpu_id1)
 {
+    printk(KERN_ERR "=====================================   %d\n", 471);
     NvU32 square_index, triangular_index;
     NvU32 gpu_index0 = uvm_id_gpu_index(gpu_id0);
     NvU32 gpu_index1 = uvm_id_gpu_index(gpu_id1);
@@ -2069,6 +2145,7 @@ NvU32 uvm_gpu_peer_table_index(const uvm_gpu_id_t gpu_id0, const uvm_gpu_id_t gp
 
 NV_STATUS uvm_gpu_check_ecc_error_no_rm(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 472);
     // We may need to call service_interrupts() which cannot be done in the top
     // half interrupt handler so assert here as well to catch improper use as
     // early as possible.
@@ -2110,6 +2187,7 @@ static NV_STATUS get_p2p_caps(uvm_gpu_t *gpu0,
                               uvm_gpu_t *gpu1,
                               UvmGpuP2PCapsParams *p2p_caps_params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 473);
     NV_STATUS status;
     uvmGpuDeviceHandle rm_device0, rm_device1;
 
@@ -2143,6 +2221,7 @@ static NV_STATUS get_p2p_caps(uvm_gpu_t *gpu0,
 
 static NV_STATUS create_p2p_object(uvm_gpu_t *gpu0, uvm_gpu_t *gpu1, NvHandle *p2p_handle)
 {
+    printk(KERN_ERR "=====================================   %d\n", 474);
     NV_STATUS status;
     uvmGpuDeviceHandle rm_device0, rm_device1;
 
@@ -2175,6 +2254,7 @@ static void set_optimal_p2p_write_ces(const UvmGpuP2PCapsParams *p2p_caps_params
                                       uvm_gpu_t *gpu0,
                                       uvm_gpu_t *gpu1)
 {
+    printk(KERN_ERR "=====================================   %d\n", 475);
     bool sorted;
     NvU32 ce0, ce1;
 
@@ -2203,6 +2283,7 @@ static void set_optimal_p2p_write_ces(const UvmGpuP2PCapsParams *p2p_caps_params
 
 static int nv_procfs_read_gpu_peer_caps(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 476);
     if (!uvm_down_read_trylock(&g_uvm_global.pm.lock))
             return -EAGAIN;
 
@@ -2215,6 +2296,7 @@ static int nv_procfs_read_gpu_peer_caps(struct seq_file *s, void *v)
 
 static int nv_procfs_read_gpu_peer_caps_entry(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 477);
     UVM_ENTRY_RET(nv_procfs_read_gpu_peer_caps(s, v));
 }
 
@@ -2222,6 +2304,7 @@ UVM_DEFINE_SINGLE_PROCFS_FILE(gpu_peer_caps_entry);
 
 static NV_STATUS init_procfs_peer_cap_files(uvm_gpu_t *local, uvm_gpu_t *remote, size_t local_idx)
 {
+    printk(KERN_ERR "=====================================   %d\n", 478);
     // This needs to hold a gpu_id_t in decimal
     char gpu_dir_name[16];
 
@@ -2262,6 +2345,7 @@ static NV_STATUS init_peer_access(uvm_gpu_t *gpu0,
                                   const UvmGpuP2PCapsParams *p2p_caps_params,
                                   uvm_gpu_peer_t *peer_caps)
 {
+    printk(KERN_ERR "=====================================   %d\n", 479);
     NV_STATUS status;
 
     UVM_ASSERT(p2p_caps_params->p2pLink != UVM_LINK_TYPE_C2C);
@@ -2353,6 +2437,7 @@ static NV_STATUS init_peer_access(uvm_gpu_t *gpu0,
 
 static NV_STATUS enable_pcie_peer_access(uvm_gpu_t *gpu0, uvm_gpu_t *gpu1)
 {
+    printk(KERN_ERR "=====================================   %d\n", 480);
     NV_STATUS status = NV_OK;
     UvmGpuP2PCapsParams p2p_caps_params;
     uvm_gpu_peer_t *peer_caps;
@@ -2396,6 +2481,7 @@ static NV_STATUS enable_nvlink_peer_access(uvm_gpu_t *gpu0,
                                            uvm_gpu_t *gpu1,
                                            UvmGpuP2PCapsParams *p2p_caps_params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 481);
     NV_STATUS status = NV_OK;
     NvHandle p2p_handle;
     uvm_gpu_peer_t *peer_caps;
@@ -2444,6 +2530,7 @@ cleanup:
 
 static NV_STATUS discover_nvlink_peers(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 482);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *other_gpu;
 
@@ -2487,6 +2574,7 @@ cleanup:
 
 static void destroy_nvlink_peers(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 483);
     uvm_gpu_t *other_gpu;
 
     UVM_ASSERT(gpu);
@@ -2513,6 +2601,7 @@ static void destroy_nvlink_peers(uvm_gpu_t *gpu)
 
 NV_STATUS uvm_gpu_retain_pcie_peer_access(uvm_gpu_t *gpu0, uvm_gpu_t *gpu1)
 {
+    printk(KERN_ERR "=====================================   %d\n", 484);
     NV_STATUS status = NV_OK;
     uvm_gpu_peer_t *peer_caps;
 
@@ -2546,6 +2635,7 @@ NV_STATUS uvm_gpu_retain_pcie_peer_access(uvm_gpu_t *gpu0, uvm_gpu_t *gpu1)
 
 static void disable_peer_access(uvm_gpu_t *gpu0, uvm_gpu_t *gpu1)
 {
+    printk(KERN_ERR "=====================================   %d\n", 485);
     uvm_gpu_peer_t *peer_caps;
     NvHandle p2p_handle = 0;
 
@@ -2607,6 +2697,7 @@ static void disable_peer_access(uvm_gpu_t *gpu0, uvm_gpu_t *gpu1)
 
 void uvm_gpu_release_pcie_peer_access(uvm_gpu_t *gpu0, uvm_gpu_t *gpu1)
 {
+    printk(KERN_ERR "=====================================   %d\n", 486);
     uvm_gpu_peer_t *peer_caps;
     UVM_ASSERT(gpu0);
     UVM_ASSERT(gpu1);
@@ -2627,6 +2718,7 @@ void uvm_gpu_release_pcie_peer_access(uvm_gpu_t *gpu0, uvm_gpu_t *gpu1)
 
 static uvm_aperture_t uvm_gpu_peer_caps_aperture(uvm_gpu_peer_t *peer_caps, uvm_gpu_t *local_gpu, uvm_gpu_t *remote_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 487);
     size_t peer_index;
     UVM_ASSERT(peer_caps->link_type != UVM_GPU_LINK_INVALID);
 
@@ -2644,12 +2736,14 @@ static uvm_aperture_t uvm_gpu_peer_caps_aperture(uvm_gpu_peer_t *peer_caps, uvm_
 
 uvm_aperture_t uvm_gpu_peer_aperture(uvm_gpu_t *local_gpu, uvm_gpu_t *remote_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 488);
     uvm_gpu_peer_t *peer_caps = uvm_gpu_peer_caps(local_gpu, remote_gpu);
     return uvm_gpu_peer_caps_aperture(peer_caps, local_gpu, remote_gpu);
 }
 
 uvm_aperture_t uvm_gpu_page_tree_init_location(const uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 489);
     // See comment in page_tree_set_location
     if (uvm_gpu_is_virt_mode_sriov_heavy(gpu))
         return UVM_APERTURE_VID;
@@ -2662,6 +2756,7 @@ uvm_aperture_t uvm_gpu_page_tree_init_location(const uvm_gpu_t *gpu)
 
 uvm_processor_id_t uvm_gpu_get_processor_id_by_address(uvm_gpu_t *gpu, uvm_gpu_phys_address_t addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 490);
     uvm_processor_id_t id = UVM_ID_INVALID;
 
     // TODO: Bug 1899622: On P9 systems with multiple CPU sockets, SYS aperture
@@ -2703,12 +2798,14 @@ uvm_processor_id_t uvm_gpu_get_processor_id_by_address(uvm_gpu_t *gpu, uvm_gpu_p
 
 uvm_gpu_peer_t *uvm_gpu_index_peer_caps(const uvm_gpu_id_t gpu_id1, const uvm_gpu_id_t gpu_id2)
 {
+    printk(KERN_ERR "=====================================   %d\n", 491);
     NvU32 table_index = uvm_gpu_peer_table_index(gpu_id1, gpu_id2);
     return &g_uvm_global.peers[table_index];
 }
 
 static NvU64 instance_ptr_to_key(uvm_gpu_phys_address_t instance_ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 492);
     NvU64 key;
     int is_sys = (instance_ptr.aperture == UVM_APERTURE_SYS);
 
@@ -2725,6 +2822,7 @@ static NvU64 instance_ptr_to_key(uvm_gpu_phys_address_t instance_ptr)
 
 static NV_STATUS gpu_add_user_channel_subctx_info(uvm_gpu_t *gpu, uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 493);
     uvm_gpu_phys_address_t instance_ptr = user_channel->instance_ptr.addr;
     NV_STATUS status = NV_OK;
     uvm_rb_tree_node_t *channel_tree_node;
@@ -2837,6 +2935,7 @@ exit_unlock:
 
 static void gpu_remove_user_channel_subctx_info_locked(uvm_gpu_t *gpu, uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 494);
     uvm_gpu_phys_address_t instance_ptr = user_channel->instance_ptr.addr;
     uvm_va_space_t *va_space = user_channel->gpu_va_space->va_space;
 
@@ -2902,6 +3001,7 @@ static void gpu_remove_user_channel_subctx_info_locked(uvm_gpu_t *gpu, uvm_user_
 
 static void gpu_remove_user_channel_subctx_info(uvm_gpu_t *gpu, uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 495);
     uvm_spin_lock(&gpu->parent->instance_ptr_table_lock);
     gpu_remove_user_channel_subctx_info_locked(gpu, user_channel);
     uvm_spin_unlock(&gpu->parent->instance_ptr_table_lock);
@@ -2909,6 +3009,7 @@ static void gpu_remove_user_channel_subctx_info(uvm_gpu_t *gpu, uvm_user_channel
 
 static void gpu_add_user_channel_instance_ptr(uvm_gpu_t *gpu, uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 496);
     uvm_gpu_phys_address_t instance_ptr = user_channel->instance_ptr.addr;
     NvU64 instance_ptr_key = instance_ptr_to_key(instance_ptr);
     NV_STATUS status;
@@ -2933,6 +3034,7 @@ static void gpu_add_user_channel_instance_ptr(uvm_gpu_t *gpu, uvm_user_channel_t
 
 static void gpu_remove_user_channel_instance_ptr_locked(uvm_gpu_t *gpu, uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 497);
     uvm_assert_spinlock_locked(&gpu->parent->instance_ptr_table_lock);
 
     if (UVM_RB_TREE_EMPTY_NODE(&user_channel->instance_ptr.node))
@@ -2943,6 +3045,7 @@ static void gpu_remove_user_channel_instance_ptr_locked(uvm_gpu_t *gpu, uvm_user
 
 NV_STATUS uvm_gpu_add_user_channel(uvm_gpu_t *gpu, uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 498);
     uvm_va_space_t *va_space;
     uvm_gpu_va_space_t *gpu_va_space = user_channel->gpu_va_space;
     NV_STATUS status;
@@ -2964,6 +3067,7 @@ NV_STATUS uvm_gpu_add_user_channel(uvm_gpu_t *gpu, uvm_user_channel_t *user_chan
 
 static uvm_user_channel_t *instance_ptr_to_user_channel(uvm_gpu_t *gpu, uvm_gpu_phys_address_t instance_ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 499);
     NvU64 key = instance_ptr_to_key(instance_ptr);
     uvm_rb_tree_node_t *instance_node;
 
@@ -2978,6 +3082,7 @@ static uvm_user_channel_t *instance_ptr_to_user_channel(uvm_gpu_t *gpu, uvm_gpu_
 
 static uvm_va_space_t *user_channel_and_subctx_to_va_space(uvm_user_channel_t *user_channel, NvU32 subctx_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 500);
     uvm_user_channel_subctx_info_t *channel_subctx_info;
 
     UVM_ASSERT(user_channel);
@@ -3022,6 +3127,7 @@ NV_STATUS uvm_gpu_fault_entry_to_va_space(uvm_gpu_t *gpu,
                                           uvm_fault_buffer_entry_t *fault,
                                           uvm_va_space_t **out_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 501);
     uvm_user_channel_t *user_channel;
     NV_STATUS status = NV_OK;
 
@@ -3075,6 +3181,7 @@ NV_STATUS uvm_gpu_access_counter_entry_to_va_space(uvm_gpu_t *gpu,
                                                    uvm_access_counter_buffer_entry_t *entry,
                                                    uvm_va_space_t **out_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 502);
     uvm_user_channel_t *user_channel;
     NV_STATUS status = NV_OK;
 
@@ -3111,6 +3218,7 @@ exit_unlock:
 
 void uvm_gpu_remove_user_channel(uvm_gpu_t *gpu, uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 503);
     uvm_va_space_t *va_space;
     uvm_gpu_va_space_t *gpu_va_space = user_channel->gpu_va_space;
 
@@ -3128,6 +3236,7 @@ void uvm_gpu_remove_user_channel(uvm_gpu_t *gpu, uvm_user_channel_t *user_channe
 
 static NvU64 gpu_addr_to_dma_addr(uvm_parent_gpu_t *parent_gpu, NvU64 gpu_addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 504);
     NvU64 dma_addr = gpu_addr;
     UVM_ASSERT(dma_addr <= dma_addr + parent_gpu->dma_addressable_start);
 
@@ -3145,6 +3254,7 @@ static NvU64 gpu_addr_to_dma_addr(uvm_parent_gpu_t *parent_gpu, NvU64 gpu_addr)
 // subtracted from the DMA address we get from the OS.
 static NvU64 dma_addr_to_gpu_addr(uvm_parent_gpu_t *parent_gpu, NvU64 dma_addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 505);
     NvU64 gpu_addr = dma_addr - parent_gpu->dma_addressable_start;
     UVM_ASSERT(dma_addr >= gpu_addr);
 
@@ -3158,6 +3268,7 @@ static NvU64 dma_addr_to_gpu_addr(uvm_parent_gpu_t *parent_gpu, NvU64 dma_addr)
 
 void *uvm_gpu_dma_alloc_page(uvm_parent_gpu_t *parent_gpu, gfp_t gfp_flags, NvU64 *dma_address_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 506);
     NvU64 dma_addr;
     void *cpu_addr;
 
@@ -3173,6 +3284,7 @@ void *uvm_gpu_dma_alloc_page(uvm_parent_gpu_t *parent_gpu, gfp_t gfp_flags, NvU6
 
 void uvm_gpu_dma_free_page(uvm_parent_gpu_t *parent_gpu, void *va, NvU64 dma_address)
 {
+    printk(KERN_ERR "=====================================   %d\n", 507);
     dma_address = gpu_addr_to_dma_addr(parent_gpu, dma_address);
     dma_free_coherent(&parent_gpu->pci_dev->dev, PAGE_SIZE, va, dma_address);
     atomic64_sub(PAGE_SIZE, &parent_gpu->mapped_cpu_pages_size);
@@ -3180,6 +3292,7 @@ void uvm_gpu_dma_free_page(uvm_parent_gpu_t *parent_gpu, void *va, NvU64 dma_add
 
 NV_STATUS uvm_gpu_map_cpu_pages(uvm_parent_gpu_t *parent_gpu, struct page *page, size_t size, NvU64 *dma_address_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 508);
     NvU64 dma_addr;
 
     UVM_ASSERT(PAGE_ALIGNED(size));
@@ -3208,6 +3321,7 @@ NV_STATUS uvm_gpu_map_cpu_pages(uvm_parent_gpu_t *parent_gpu, struct page *page,
 
 void uvm_gpu_unmap_cpu_pages(uvm_parent_gpu_t *parent_gpu, NvU64 dma_address, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 509);
     UVM_ASSERT(PAGE_ALIGNED(size));
 
     dma_address = gpu_addr_to_dma_addr(parent_gpu, dma_address);
@@ -3241,6 +3355,7 @@ void uvm_gpu_unmap_cpu_pages(uvm_parent_gpu_t *parent_gpu, NvU64 dma_address, si
 //
 NV_STATUS uvm_api_register_gpu(UVM_REGISTER_GPU_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 510);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_rm_user_object_t user_rm_va_space = {
         .rm_control_fd = params->rmCtrlFd,
@@ -3257,6 +3372,7 @@ NV_STATUS uvm_api_register_gpu(UVM_REGISTER_GPU_PARAMS *params, struct file *fil
 
 NV_STATUS uvm_api_unregister_gpu(UVM_UNREGISTER_GPU_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 511);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     return uvm_va_space_unregister_gpu(va_space, &params->gpu_uuid);
@@ -3264,6 +3380,7 @@ NV_STATUS uvm_api_unregister_gpu(UVM_UNREGISTER_GPU_PARAMS *params, struct file 
 
 NV_STATUS uvm_api_register_gpu_va_space(UVM_REGISTER_GPU_VASPACE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 512);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_rm_user_object_t user_rm_va_space = {
         .rm_control_fd = params->rmCtrlFd,
@@ -3275,12 +3392,14 @@ NV_STATUS uvm_api_register_gpu_va_space(UVM_REGISTER_GPU_VASPACE_PARAMS *params,
 
 NV_STATUS uvm_api_unregister_gpu_va_space(UVM_UNREGISTER_GPU_VASPACE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 513);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     return uvm_va_space_unregister_gpu_va_space(va_space, &params->gpuUuid);
 }
 
 NV_STATUS uvm_api_pageable_mem_access_on_gpu(UVM_PAGEABLE_MEM_ACCESS_ON_GPU_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 514);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_gpu_t *gpu;
 
@@ -3303,6 +3422,7 @@ NV_STATUS uvm_api_pageable_mem_access_on_gpu(UVM_PAGEABLE_MEM_ACCESS_ON_GPU_PARA
 
 NV_STATUS uvm_test_set_prefetch_filtering(UVM_TEST_SET_PREFETCH_FILTERING_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 515);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_gpu_t *gpu = NULL;
     NV_STATUS status = NV_OK;
@@ -3344,6 +3464,7 @@ done:
 
 NV_STATUS uvm_test_get_gpu_time(UVM_TEST_GET_GPU_TIME_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 516);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_gpu_t *gpu = NULL;
     NV_STATUS status = NV_OK;

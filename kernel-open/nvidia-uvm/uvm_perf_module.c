@@ -29,6 +29,7 @@
 
 void uvm_perf_module_type_set_data(uvm_perf_module_data_desc_t *modules_data, void *data, uvm_perf_module_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1509);
     UVM_ASSERT(type >= 0 && type < UVM_PERF_MODULE_TYPE_COUNT);
     UVM_ASSERT(data);
     // Data can only be created once per module
@@ -39,6 +40,7 @@ void uvm_perf_module_type_set_data(uvm_perf_module_data_desc_t *modules_data, vo
 
 void uvm_perf_module_type_unset_data(uvm_perf_module_data_desc_t *modules_data, uvm_perf_module_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1510);
     UVM_ASSERT(type >= 0 && type < UVM_PERF_MODULE_TYPE_COUNT);
     // Data should have been previously set
     UVM_ASSERT(modules_data[type].data);
@@ -48,6 +50,7 @@ void uvm_perf_module_type_unset_data(uvm_perf_module_data_desc_t *modules_data, 
 
 NV_STATUS uvm_perf_module_load(uvm_perf_module_t *module, uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1511);
     NV_STATUS status;
     size_t i, j;
 
@@ -77,6 +80,7 @@ error:
 
 void uvm_perf_module_unload(uvm_perf_module_t *module, uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1512);
     uvm_perf_event_data_t event_data;
     uvm_va_range_t *va_range;
     uvm_va_block_t *block;
@@ -120,6 +124,7 @@ void uvm_perf_module_unload(uvm_perf_module_t *module, uvm_va_space_t *va_space)
 
 uvm_perf_module_t *uvm_perf_module_for_type(uvm_va_space_t *va_space, uvm_perf_module_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1513);
     uvm_assert_rwsem_locked(&va_space->lock);
 
     return va_space->perf_modules[type];
@@ -130,6 +135,7 @@ void uvm_perf_module_init(const char *name, uvm_perf_module_type_t type,
                           uvm_perf_module_event_callback_desc_t *callbacks, size_t callback_count,
                           uvm_perf_module_t *module)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1514);
     size_t i;
 
     UVM_ASSERT(callbacks);

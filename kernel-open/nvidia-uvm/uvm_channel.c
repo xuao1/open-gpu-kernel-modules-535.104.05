@@ -73,6 +73,7 @@ typedef enum
 
 bool uvm_channel_pool_uses_mutex(uvm_channel_pool_t *pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 188);
     // Work submission to proxy channels in SR-IOV heavy entails calling RM API
     // that acquires a mutex, so the proxy channel pool must use a mutex.
     if (uvm_channel_pool_is_proxy(pool))
@@ -93,6 +94,7 @@ bool uvm_channel_pool_uses_mutex(uvm_channel_pool_t *pool)
 
 static void channel_pool_lock_init(uvm_channel_pool_t *pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 189);
     uvm_lock_order_t order = UVM_LOCK_ORDER_CHANNEL;
 
     if (uvm_conf_computing_mode_enabled(pool->manager->gpu) && uvm_channel_pool_is_wlc(pool))
@@ -106,6 +108,7 @@ static void channel_pool_lock_init(uvm_channel_pool_t *pool)
 
 static void channel_pool_lock(uvm_channel_pool_t *pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 190);
     if (uvm_channel_pool_uses_mutex(pool))
         uvm_mutex_lock(&pool->mutex);
     else
@@ -114,6 +117,7 @@ static void channel_pool_lock(uvm_channel_pool_t *pool)
 
 static void channel_pool_unlock(uvm_channel_pool_t *pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 191);
     if (uvm_channel_pool_uses_mutex(pool))
         uvm_mutex_unlock(&pool->mutex);
     else
@@ -125,6 +129,7 @@ static NvU32 uvm_channel_update_progress_with_max(uvm_channel_t *channel,
                                                   NvU32 max_to_complete,
                                                   uvm_channel_update_mode_t mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 192);
     NvU32 gpu_get;
     NvU32 cpu_put;
     NvU32 completed_count = 0;
@@ -174,6 +179,7 @@ static NvU32 uvm_channel_update_progress_with_max(uvm_channel_t *channel,
 
 NvU32 uvm_channel_update_progress(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 193);
     // By default, don't complete too many entries at a time to spread the cost
     // of doing so across callers and avoid potentially holding a spin lock for
     // too long.
@@ -185,16 +191,19 @@ NvU32 uvm_channel_update_progress(uvm_channel_t *channel)
 // error is encountered. Otherwise, uvm_chanel_update_progress() should be used.
 static NvU32 channel_update_progress_all(uvm_channel_t *channel, uvm_channel_update_mode_t mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 194);
     return uvm_channel_update_progress_with_max(channel, channel->num_gpfifo_entries, mode);
 }
 
 NvU32 uvm_channel_update_progress_all(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 195);
     return channel_update_progress_all(channel, UVM_CHANNEL_UPDATE_MODE_COMPLETED);
 }
 
 NvU32 uvm_channel_manager_update_progress(uvm_channel_manager_t *channel_manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 196);
     NvU32 pending_gpfifos = 0;
     uvm_channel_pool_t *pool;
 
@@ -210,6 +219,7 @@ NvU32 uvm_channel_manager_update_progress(uvm_channel_manager_t *channel_manager
 
 static NvU32 channel_get_available_gpfifo_entries(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 197);
     NvU32 available = channel->num_gpfifo_entries;
 
     uvm_channel_pool_assert_locked(channel->pool);
@@ -233,6 +243,7 @@ static NvU32 channel_get_available_gpfifo_entries(uvm_channel_t *channel)
 
 NvU32 uvm_channel_get_available_gpfifo_entries(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 198);
     NvU32 available;
 
     channel_pool_lock(channel->pool);
@@ -244,6 +255,7 @@ NvU32 uvm_channel_get_available_gpfifo_entries(uvm_channel_t *channel)
 
 static bool try_claim_channel_locked(uvm_channel_t *channel, NvU32 num_gpfifo_entries)
 {
+    printk(KERN_ERR "=====================================   %d\n", 199);
     bool claimed = false;
 
     UVM_ASSERT(num_gpfifo_entries > 0);
@@ -261,6 +273,7 @@ static bool try_claim_channel_locked(uvm_channel_t *channel, NvU32 num_gpfifo_en
 
 static bool try_claim_channel(uvm_channel_t *channel, NvU32 num_gpfifo_entries)
 {
+    printk(KERN_ERR "=====================================   %d\n", 200);
     bool claimed;
 
     channel_pool_lock(channel->pool);
@@ -272,6 +285,7 @@ static bool try_claim_channel(uvm_channel_t *channel, NvU32 num_gpfifo_entries)
 
 static void unlock_channel_for_push(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 201);
     NvU32 index;
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
 
@@ -289,6 +303,7 @@ static void unlock_channel_for_push(uvm_channel_t *channel)
 
 static bool is_channel_locked_for_push(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 202);
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
 
     if (uvm_conf_computing_mode_enabled(gpu))
@@ -302,6 +317,7 @@ static bool is_channel_locked_for_push(uvm_channel_t *channel)
 
 static void lock_channel_for_push(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 203);
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
     NvU32 index = uvm_channel_index_in_pool(channel);
 
@@ -314,6 +330,7 @@ static void lock_channel_for_push(uvm_channel_t *channel)
 
 static bool test_claim_and_lock_channel(uvm_channel_t *channel, NvU32 num_gpfifo_entries)
 {
+    printk(KERN_ERR "=====================================   %d\n", 204);
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
     NvU32 index = uvm_channel_index_in_pool(channel);
 
@@ -332,6 +349,7 @@ static bool test_claim_and_lock_channel(uvm_channel_t *channel, NvU32 num_gpfifo
 // ends
 static NV_STATUS channel_reserve_and_lock_in_pool(uvm_channel_pool_t *pool, uvm_channel_t **channel_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 205);
     uvm_channel_t *channel;
     uvm_spin_loop_t spin;
     NvU32 index;
@@ -394,6 +412,7 @@ done:
 // Reserve a channel in the specified pool
 static NV_STATUS channel_reserve_in_pool(uvm_channel_pool_t *pool, uvm_channel_t **channel_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 206);
     uvm_channel_t *channel;
     uvm_spin_loop_t spin;
 
@@ -438,6 +457,7 @@ static NV_STATUS channel_reserve_in_pool(uvm_channel_pool_t *pool, uvm_channel_t
 
 NV_STATUS uvm_channel_reserve_type(uvm_channel_manager_t *manager, uvm_channel_type_t type, uvm_channel_t **channel_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 207);
     uvm_channel_pool_t *pool = manager->pool_to_use.default_for_type[type];
 
     UVM_ASSERT(pool != NULL);
@@ -450,6 +470,7 @@ NV_STATUS uvm_channel_reserve_gpu_to_gpu(uvm_channel_manager_t *manager,
                                          uvm_gpu_t *dst_gpu,
                                          uvm_channel_t **channel_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 208);
     const NvU32 dst_gpu_index = uvm_id_gpu_index(dst_gpu->id);
     uvm_channel_pool_t *pool = manager->pool_to_use.gpu_to_gpu[dst_gpu_index];
 
@@ -464,6 +485,7 @@ NV_STATUS uvm_channel_reserve_gpu_to_gpu(uvm_channel_manager_t *manager,
 
 NV_STATUS uvm_channel_manager_wait(uvm_channel_manager_t *manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 209);
     NV_STATUS status = NV_OK;
     uvm_spin_loop_t spin;
 
@@ -481,6 +503,7 @@ NV_STATUS uvm_channel_manager_wait(uvm_channel_manager_t *manager)
 
 static NvU32 channel_get_available_push_info_index(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 210);
     uvm_push_info_t *push_info;
 
     channel_pool_lock(channel->pool);
@@ -497,6 +520,7 @@ static NvU32 channel_get_available_push_info_index(uvm_channel_t *channel)
 
 static void channel_semaphore_gpu_encrypt_payload(uvm_push_t *push, NvU64 semaphore_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 211);
     NvU32 iv_index;
     uvm_gpu_address_t notifier_gpu_va;
     uvm_gpu_address_t auth_tag_gpu_va;
@@ -531,6 +555,7 @@ static void channel_semaphore_gpu_encrypt_payload(uvm_push_t *push, NvU64 semaph
 // is reserved at push->begin.
 static void push_reserve_csl_sign_buf(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 212);
     uvm_gpu_address_t dummy;
     NvU32 *buf;
 
@@ -542,6 +567,7 @@ static void push_reserve_csl_sign_buf(uvm_push_t *push)
 
 NV_STATUS uvm_channel_begin_push(uvm_channel_t *channel, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 213);
     NV_STATUS status;
     uvm_channel_manager_t *manager;
     uvm_gpu_t *gpu;
@@ -591,6 +617,7 @@ NV_STATUS uvm_channel_begin_push(uvm_channel_t *channel, uvm_push_t *push)
 
 static void internal_channel_submit_work(uvm_push_t *push, NvU32 push_size, NvU32 new_gpu_put)
 {
+    printk(KERN_ERR "=====================================   %d\n", 214);
     NvU64 *gpfifo_entry;
     NvU64 pushbuffer_va;
     uvm_channel_t *channel = push->channel;
@@ -624,6 +651,7 @@ static void internal_channel_submit_work(uvm_push_t *push, NvU32 push_size, NvU3
 
 static void proxy_channel_submit_work(uvm_push_t *push, NvU32 push_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 215);
     NV_STATUS status;
     uvm_channel_t *channel = push->channel;
 
@@ -650,6 +678,7 @@ static void proxy_channel_submit_work(uvm_push_t *push, NvU32 push_size)
 
 static void do_semaphore_release(uvm_push_t *push, NvU64 semaphore_va, NvU32 new_payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 216);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
     if (uvm_channel_is_ce(push->channel))
@@ -660,6 +689,7 @@ static void do_semaphore_release(uvm_push_t *push, NvU64 semaphore_va, NvU32 new
 
 static void uvm_channel_tracking_semaphore_release(uvm_push_t *push, NvU64 semaphore_va, NvU32 new_payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 217);
     // We used to skip the membar or use membar GPU for the semaphore release
     // for a few pushes, but that doesn't provide sufficient ordering guarantees
     // in some cases (e.g. ga100 with an LCE with PCEs from both HSHUBs) for the
@@ -680,6 +710,7 @@ static void uvm_channel_tracking_semaphore_release(uvm_push_t *push, NvU64 semap
 
 static uvm_channel_t *get_paired_channel(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 218);
     unsigned index;
     uvm_channel_pool_t *paired_pool;
     uvm_channel_type_t paired_channel_type;
@@ -695,6 +726,7 @@ static uvm_channel_t *get_paired_channel(uvm_channel_t *channel)
 
 static uvm_channel_t *wlc_get_paired_lcic(uvm_channel_t *wlc_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 219);
     UVM_ASSERT(wlc_channel);
     UVM_ASSERT(uvm_channel_is_wlc(wlc_channel));
 
@@ -703,6 +735,7 @@ static uvm_channel_t *wlc_get_paired_lcic(uvm_channel_t *wlc_channel)
 
 static uvm_channel_t *lcic_get_paired_wlc(uvm_channel_t *lcic_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 220);
     UVM_ASSERT(lcic_channel);
     UVM_ASSERT(uvm_channel_is_lcic(lcic_channel));
 
@@ -711,6 +744,7 @@ static uvm_channel_t *lcic_get_paired_wlc(uvm_channel_t *lcic_channel)
 
 static void internal_channel_submit_work_wlc(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 221);
     uvm_channel_t *wlc_channel = push->channel;
     uvm_channel_t *lcic_channel = wlc_get_paired_lcic(wlc_channel);
     UvmCslIv *iv_cpu_addr = lcic_channel->tracking_sem.semaphore.conf_computing.ivs;
@@ -757,6 +791,7 @@ static void internal_channel_submit_work_wlc(uvm_push_t *push)
 
 static void internal_channel_submit_work_indirect_wlc(uvm_push_t *push, NvU32 old_cpu_put, NvU32 new_gpu_put)
 {
+    printk(KERN_ERR "=====================================   %d\n", 222);
     uvm_pushbuffer_t *pushbuffer = uvm_channel_get_pushbuffer(push->channel);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
@@ -835,6 +870,7 @@ static void internal_channel_submit_work_indirect_wlc(uvm_push_t *push, NvU32 ol
 
 static void update_gpput_via_sec2(uvm_push_t *sec2_push, uvm_channel_t *channel, NvU32 new_gpu_put)
 {
+    printk(KERN_ERR "=====================================   %d\n", 223);
     uvm_gpu_t *gpu = uvm_push_get_gpu(sec2_push);
     void *gpput_auth_tag_cpu, *gpput_enc_cpu;
     uvm_gpu_address_t gpput_auth_tag_gpu, gpput_enc_gpu;
@@ -888,6 +924,7 @@ static void update_gpput_via_sec2(uvm_push_t *sec2_push, uvm_channel_t *channel,
 
 static void set_gpfifo_via_sec2(uvm_push_t *sec2_push, uvm_channel_t *channel, NvU32 put, NvU64 value)
 {
+    printk(KERN_ERR "=====================================   %d\n", 224);
     uvm_gpu_t *gpu = uvm_push_get_gpu(sec2_push);
     void *gpfifo_auth_tag_cpu, *gpfifo_enc_cpu;
     uvm_gpu_address_t gpfifo_auth_tag_gpu, gpfifo_enc_gpu;
@@ -954,6 +991,7 @@ static void set_gpfifo_via_sec2(uvm_push_t *sec2_push, uvm_channel_t *channel, N
 
 static NV_STATUS internal_channel_submit_work_indirect_sec2(uvm_push_t *push, NvU32 old_cpu_put, NvU32 new_gpu_put)
 {
+    printk(KERN_ERR "=====================================   %d\n", 225);
     uvm_pushbuffer_t *pushbuffer = uvm_channel_get_pushbuffer(push->channel);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
@@ -1042,6 +1080,7 @@ static NV_STATUS internal_channel_submit_work_indirect_sec2(uvm_push_t *push, Nv
 // See also: decrypt_push().
 static void encrypt_push(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 226);
     NvU64 push_protected_gpu_va;
     NvU64 push_unprotected_gpu_va;
     uvm_gpu_address_t auth_tag_gpu_va;
@@ -1087,6 +1126,7 @@ static void encrypt_push(uvm_push_t *push)
 
 void uvm_channel_end_push(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 227);
     uvm_channel_t *channel = push->channel;
     uvm_channel_manager_t *channel_manager = channel->pool->manager;
     uvm_pushbuffer_t *pushbuffer = channel_manager->pushbuffer;
@@ -1203,6 +1243,7 @@ void uvm_channel_end_push(uvm_push_t *push)
 
 static void submit_ctrl_gpfifo(uvm_channel_t *channel, uvm_gpfifo_entry_t *entry, NvU32 new_cpu_put)
 {
+    printk(KERN_ERR "=====================================   %d\n", 228);
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
     NvU32 cpu_put = channel->cpu_put;
     NvU64 *gpfifo_entry;
@@ -1229,6 +1270,7 @@ static NV_STATUS submit_ctrl_gpfifo_indirect(uvm_channel_t *channel,
                                              NvU32 old_cpu_put,
                                              NvU32 new_gpu_put)
 {
+    printk(KERN_ERR "=====================================   %d\n", 229);
     uvm_push_t indirect_push;
     NV_STATUS status = NV_OK;
     uvm_spin_loop_t spin;
@@ -1288,6 +1330,7 @@ static NV_STATUS submit_ctrl_gpfifo_indirect(uvm_channel_t *channel,
 // example.
 static void write_ctrl_gpfifo(uvm_channel_t *channel, NvU64 ctrl_fifo_entry_value)
 {
+    printk(KERN_ERR "=====================================   %d\n", 230);
     uvm_gpfifo_entry_t *entry;
     NvU32 cpu_put;
     NvU32 new_cpu_put;
@@ -1343,6 +1386,7 @@ static void write_ctrl_gpfifo(uvm_channel_t *channel, NvU64 ctrl_fifo_entry_valu
 
 NV_STATUS uvm_channel_write_ctrl_gpfifo(uvm_channel_t *channel, NvU64 ctrl_fifo_entry_value)
 {
+    printk(KERN_ERR "=====================================   %d\n", 231);
     NV_STATUS status;
     uvm_gpu_t *gpu = channel->pool->manager->gpu;
     uvm_push_t push;
@@ -1390,6 +1434,7 @@ NV_STATUS uvm_channel_write_ctrl_gpfifo(uvm_channel_t *channel, NvU64 ctrl_fifo_
 
 static NV_STATUS channel_reserve_and_lock(uvm_channel_t *channel, NvU32 num_gpfifo_entries)
 {
+    printk(KERN_ERR "=====================================   %d\n", 232);
     uvm_spin_loop_t spin;
     uvm_channel_pool_t *pool = channel->pool;
 
@@ -1438,6 +1483,7 @@ out:
 
 NV_STATUS uvm_channel_reserve(uvm_channel_t *channel, NvU32 num_gpfifo_entries)
 {
+    printk(KERN_ERR "=====================================   %d\n", 233);
     NV_STATUS status = NV_OK;
     uvm_spin_loop_t spin;
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
@@ -1464,6 +1510,7 @@ NV_STATUS uvm_channel_reserve(uvm_channel_t *channel, NvU32 num_gpfifo_entries)
 // This doesn't stop the entry from being reused.
 static uvm_gpfifo_entry_t *uvm_channel_get_first_pending_entry(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 234);
     uvm_gpfifo_entry_t *entry = NULL;
     NvU32 pending_count = channel_update_progress_all(channel, UVM_CHANNEL_UPDATE_MODE_COMPLETED);
 
@@ -1482,6 +1529,7 @@ static uvm_gpfifo_entry_t *uvm_channel_get_first_pending_entry(uvm_channel_t *ch
 
 NV_STATUS uvm_channel_get_status(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 235);
     uvm_gpu_t *gpu;
     NvNotification *errorNotifier;
 
@@ -1508,6 +1556,7 @@ NV_STATUS uvm_channel_get_status(uvm_channel_t *channel)
 
 uvm_gpfifo_entry_t *uvm_channel_get_fatal_entry(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 236);
     UVM_ASSERT(uvm_channel_get_status(channel) != NV_OK);
 
     return uvm_channel_get_first_pending_entry(channel);
@@ -1515,6 +1564,7 @@ uvm_gpfifo_entry_t *uvm_channel_get_fatal_entry(uvm_channel_t *channel)
 
 NV_STATUS uvm_channel_check_errors(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 237);
     uvm_gpfifo_entry_t *fatal_entry;
     NV_STATUS status = uvm_channel_get_status(channel);
 
@@ -1551,6 +1601,7 @@ NV_STATUS uvm_channel_check_errors(uvm_channel_t *channel)
 
 NV_STATUS uvm_channel_manager_check_errors(uvm_channel_manager_t *channel_manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 238);
     uvm_channel_pool_t *pool;
     NV_STATUS status = uvm_global_get_status();
 
@@ -1572,16 +1623,19 @@ NV_STATUS uvm_channel_manager_check_errors(uvm_channel_manager_t *channel_manage
 
 bool uvm_channel_is_value_completed(uvm_channel_t *channel, NvU64 value)
 {
+    printk(KERN_ERR "=====================================   %d\n", 239);
     return uvm_gpu_tracking_semaphore_is_value_completed(&channel->tracking_sem, value);
 }
 
 NvU64 uvm_channel_update_completed_value(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 240);
     return uvm_gpu_tracking_semaphore_update_completed_value(&channel->tracking_sem);
 }
 
 static NV_STATUS csl_init(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 241);
     NV_STATUS status;
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
 
@@ -1604,6 +1658,7 @@ static NV_STATUS csl_init(uvm_channel_t *channel)
 
 static void csl_destroy(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 242);
     if (!channel->csl.is_ctx_initialized)
         return;
 
@@ -1616,6 +1671,7 @@ static void csl_destroy(uvm_channel_t *channel)
 
 static void free_conf_computing_buffers(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 243);
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
 
     UVM_ASSERT(uvm_conf_computing_mode_enabled(gpu));
@@ -1646,6 +1702,7 @@ static void free_conf_computing_buffers(uvm_channel_t *channel)
 
 static NV_STATUS alloc_conf_computing_buffers_semaphore(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 244);
     uvm_gpu_semaphore_t *semaphore = &channel->tracking_sem.semaphore;
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
     NV_STATUS status;
@@ -1691,6 +1748,7 @@ static NV_STATUS alloc_conf_computing_buffers_semaphore(uvm_channel_t *channel)
 
 static NV_STATUS alloc_conf_computing_buffers_wlc(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 245);
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
     size_t aligned_wlc_push_size = UVM_ALIGN_UP(UVM_MAX_WLC_PUSH_SIZE, UVM_CONF_COMPUTING_AUTH_TAG_ALIGNMENT);
     NV_STATUS status = uvm_rm_mem_alloc_and_map_cpu(gpu,
@@ -1735,6 +1793,7 @@ static NV_STATUS alloc_conf_computing_buffers_wlc(uvm_channel_t *channel)
 
 static NV_STATUS alloc_conf_computing_buffers_lcic(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 246);
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
     const size_t notifier_size = sizeof(*channel->conf_computing.static_notifier_entry_unprotected_sysmem_cpu);
     NV_STATUS status = uvm_rm_mem_alloc_and_map_cpu(gpu,
@@ -1769,6 +1828,7 @@ static NV_STATUS alloc_conf_computing_buffers_lcic(uvm_channel_t *channel)
 
 static NV_STATUS alloc_conf_computing_buffers(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 247);
     NV_STATUS status;
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
 
@@ -1806,6 +1866,7 @@ static NV_STATUS alloc_conf_computing_buffers(uvm_channel_t *channel)
 
 static void channel_destroy(uvm_channel_pool_t *pool, uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 248);
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
 
     UVM_ASSERT(pool->num_channels > 0);
@@ -1853,6 +1914,7 @@ static void channel_destroy(uvm_channel_pool_t *pool, uvm_channel_t *channel)
 
 static unsigned channel_pool_type_num_gpfifo_entries(uvm_channel_manager_t *manager, uvm_channel_pool_type_t pool_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 249);
     switch (pool_type) {
         case UVM_CHANNEL_POOL_TYPE_CE:
         case UVM_CHANNEL_POOL_TYPE_CE_PROXY:
@@ -1884,6 +1946,7 @@ static unsigned channel_pool_type_num_gpfifo_entries(uvm_channel_manager_t *mana
 // Returns the TSG for a given channel.
 static uvmGpuTsgHandle channel_get_tsg(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 250);
     unsigned tsg_index = 0;
     uvm_channel_pool_t *pool = channel->pool;
 
@@ -1902,6 +1965,7 @@ static uvmGpuTsgHandle channel_get_tsg(uvm_channel_t *channel)
 
 static NV_STATUS internal_channel_create(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 251);
     NV_STATUS status;
     UvmGpuChannelAllocParams channel_alloc_params;
     UvmGpuChannelInfo *channel_info = &channel->channel_info;
@@ -1950,6 +2014,7 @@ static NV_STATUS internal_channel_create(uvm_channel_t *channel)
 
 static NV_STATUS proxy_channel_create(uvm_channel_t *channel, unsigned ce_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 252);
     NV_STATUS status;
     unsigned proxy_index;
     UvmGpuPagingChannelAllocParams channel_alloc_params;
@@ -1980,6 +2045,7 @@ static NV_STATUS proxy_channel_create(uvm_channel_t *channel, unsigned ce_index)
 
 static NV_STATUS channel_create(uvm_channel_pool_t *pool, uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 253);
     NV_STATUS status;
     uvm_channel_manager_t *manager = pool->manager;
     uvm_gpu_t *gpu = manager->gpu;
@@ -2066,6 +2132,7 @@ error:
 NvU64 uvm_channel_tracking_semaphore_get_gpu_va_in_channel(uvm_channel_t *semaphore_channel,
                                                            uvm_channel_t *access_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 254);
     uvm_gpu_semaphore_t *semaphore = &semaphore_channel->tracking_sem.semaphore;
     uvm_gpu_t *gpu = uvm_channel_get_gpu(access_channel);
 
@@ -2074,6 +2141,7 @@ NvU64 uvm_channel_tracking_semaphore_get_gpu_va_in_channel(uvm_channel_t *semaph
 
 static NV_STATUS channel_init(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 255);
     uvm_push_t push;
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
     NV_STATUS status;
@@ -2126,6 +2194,7 @@ static NV_STATUS channel_init(uvm_channel_t *channel)
 
 static bool channel_manager_uses_proxy_pool(uvm_channel_manager_t *manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 256);
     return uvm_gpu_is_virt_mode_sriov_heavy(manager->gpu);
 }
 
@@ -2134,6 +2203,7 @@ static bool channel_manager_uses_proxy_pool(uvm_channel_manager_t *manager)
 // TODO: Bug 1764958: Tweak this function after benchmarking real workloads.
 static unsigned channel_pool_type_num_channels(uvm_channel_pool_type_t pool_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 257);
     // TODO: Bug 3387454: The vGPU plugin implementation supports a single
     // proxy channel per GPU
     if (pool_type == UVM_CHANNEL_POOL_TYPE_CE_PROXY)
@@ -2154,6 +2224,7 @@ static unsigned channel_pool_type_num_channels(uvm_channel_pool_type_t pool_type
 // Number of TSGs to create in a pool of a given type.
 static unsigned channel_pool_type_num_tsgs(uvm_channel_pool_type_t pool_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 258);
     // For WLC and LCIC channels, we create one TSG per WLC/LCIC channel pair.
     // The TSG is stored in the WLC pool.
     if (pool_type == UVM_CHANNEL_POOL_TYPE_WLC)
@@ -2166,6 +2237,7 @@ static unsigned channel_pool_type_num_tsgs(uvm_channel_pool_type_t pool_type)
 
 static UVM_GPU_CHANNEL_ENGINE_TYPE pool_type_to_engine_type(uvm_channel_pool_type_t pool_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 259);
     if (pool_type ==  UVM_CHANNEL_POOL_TYPE_SEC2)
         return UVM_GPU_CHANNEL_ENGINE_TYPE_SEC2;
     return UVM_GPU_CHANNEL_ENGINE_TYPE_CE;
@@ -2173,6 +2245,7 @@ static UVM_GPU_CHANNEL_ENGINE_TYPE pool_type_to_engine_type(uvm_channel_pool_typ
 
 static void tsg_destroy(uvm_channel_pool_t *pool, uvmGpuTsgHandle tsg_handle)
 {
+    printk(KERN_ERR "=====================================   %d\n", 260);
     UVM_ASSERT(pool->num_tsgs > 0);
 
     uvm_rm_locked_call_void(nvUvmInterfaceTsgDestroy(tsg_handle));
@@ -2181,6 +2254,7 @@ static void tsg_destroy(uvm_channel_pool_t *pool, uvmGpuTsgHandle tsg_handle)
 
 static NV_STATUS tsg_create(uvm_channel_pool_t *pool, uvmGpuTsgHandle *tsg_handle)
 {
+    printk(KERN_ERR "=====================================   %d\n", 261);
     NV_STATUS status;
     UvmGpuTsgAllocParams tsg_alloc_params;
     uvm_gpu_t *gpu = pool->manager->gpu;
@@ -2209,6 +2283,7 @@ error:
 
 static void channel_pool_destroy(uvm_channel_pool_t *pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 262);
     UVM_ASSERT(pool->manager->num_channel_pools > 0);
 
     while (pool->num_channels > 0)
@@ -2229,6 +2304,7 @@ static NV_STATUS channel_pool_add(uvm_channel_manager_t *channel_manager,
                                   unsigned engine_index,
                                   uvm_channel_pool_t **pool_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 263);
     NV_STATUS status;
     unsigned i;
     unsigned num_channels;
@@ -2305,6 +2381,7 @@ static NV_STATUS channel_pool_add(uvm_channel_manager_t *channel_manager,
 
 static bool ce_usable_for_channel_type(uvm_channel_type_t type, const UvmGpuCopyEngineCaps *cap)
 {
+    printk(KERN_ERR "=====================================   %d\n", 264);
     if (!cap->supported || cap->grce)
         return false;
 
@@ -2325,6 +2402,7 @@ static bool ce_usable_for_channel_type(uvm_channel_type_t type, const UvmGpuCopy
 
 static unsigned ce_usage_count(NvU32 ce, const unsigned *preferred_ce)
 {
+    printk(KERN_ERR "=====================================   %d\n", 265);
     unsigned i;
     unsigned count = 0;
 
@@ -2345,6 +2423,7 @@ static int compare_ce_for_channel_type(const UvmGpuCopyEngineCaps *ce_caps,
                                        NvU32 ce_index1,
                                        NvU32 *preferred_ce)
 {
+    printk(KERN_ERR "=====================================   %d\n", 266);
     unsigned ce0_usage, ce1_usage;
     const UvmGpuCopyEngineCaps *cap0 = ce_caps + ce_index0;
     const UvmGpuCopyEngineCaps *cap1 = ce_caps + ce_index1;
@@ -2439,6 +2518,7 @@ static NV_STATUS pick_ce_for_channel_type(uvm_channel_manager_t *manager,
                                           uvm_channel_type_t type,
                                           unsigned *preferred_ce)
 {
+    printk(KERN_ERR "=====================================   %d\n", 267);
     NvU32 i;
     NvU32 best_ce = UVM_COPY_ENGINE_COUNT_MAX;
 
@@ -2472,6 +2552,7 @@ static NV_STATUS pick_ce_for_channel_type(uvm_channel_manager_t *manager,
 
 static NV_STATUS channel_manager_pick_copy_engines(uvm_channel_manager_t *manager, unsigned *preferred_ce)
 {
+    printk(KERN_ERR "=====================================   %d\n", 268);
     NV_STATUS status;
     unsigned i;
     UvmGpuCopyEnginesCaps *ces_caps;
@@ -2510,6 +2591,7 @@ out:
 // This function cannot be used to access the proxy pool in SR-IOV heavy.
 static uvm_channel_pool_t *channel_manager_ce_pool(uvm_channel_manager_t *manager, NvU32 ce)
 {
+    printk(KERN_ERR "=====================================   %d\n", 269);
     uvm_channel_pool_t *pool;
 
     UVM_ASSERT(test_bit(ce, manager->ce_mask));
@@ -2526,6 +2608,7 @@ static uvm_channel_pool_t *channel_manager_ce_pool(uvm_channel_manager_t *manage
 
 void uvm_channel_manager_set_p2p_ce(uvm_channel_manager_t *manager, uvm_gpu_t *peer, NvU32 optimal_ce)
 {
+    printk(KERN_ERR "=====================================   %d\n", 270);
     const NvU32 peer_gpu_index = uvm_id_gpu_index(peer->id);
 
     UVM_ASSERT(manager->gpu != peer);
@@ -2536,6 +2619,7 @@ void uvm_channel_manager_set_p2p_ce(uvm_channel_manager_t *manager, uvm_gpu_t *p
 
 static bool is_string_valid_location(const char *loc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 271);
     return strcmp(uvm_channel_gpfifo_loc, "sys") == 0 ||
            strcmp(uvm_channel_gpfifo_loc, "vid") == 0 ||
            strcmp(uvm_channel_gpfifo_loc, "auto") == 0;
@@ -2543,6 +2627,7 @@ static bool is_string_valid_location(const char *loc)
 
 static UVM_BUFFER_LOCATION string_to_buffer_location(const char *loc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 272);
     UVM_ASSERT(is_string_valid_location(loc));
 
     if (strcmp(loc, "sys") == 0)
@@ -2555,6 +2640,7 @@ static UVM_BUFFER_LOCATION string_to_buffer_location(const char *loc)
 
 static const char *buffer_location_to_string(UVM_BUFFER_LOCATION loc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 273);
     if (loc == UVM_BUFFER_LOCATION_SYS)
         return "sys";
     else if (loc == UVM_BUFFER_LOCATION_VID)
@@ -2568,6 +2654,7 @@ static const char *buffer_location_to_string(UVM_BUFFER_LOCATION loc)
 
 static void init_channel_manager_conf(uvm_channel_manager_t *manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 274);
     const char *gpfifo_loc_value;
     const char *gpput_loc_value;
     const char *pushbuffer_loc_value;
@@ -2715,6 +2802,7 @@ static void init_channel_manager_conf(uvm_channel_manager_t *manager)
 // pools.
 static unsigned channel_manager_get_max_pools(uvm_channel_manager_t *manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 275);
     unsigned num_channel_pools;
 
     // Create one CE channel pool per usable CE
@@ -2733,6 +2821,7 @@ static unsigned channel_manager_get_max_pools(uvm_channel_manager_t *manager)
 
 static NV_STATUS channel_manager_create_ce_pools(uvm_channel_manager_t *manager, unsigned *preferred_ce)
 {
+    printk(KERN_ERR "=====================================   %d\n", 276);
     unsigned ce;
 
     // A pool is created for each usable CE, even if it has not been selected as
@@ -2760,6 +2849,7 @@ static NV_STATUS channel_manager_create_ce_pools(uvm_channel_manager_t *manager,
 
 static NV_STATUS setup_wlc_schedule(uvm_channel_t *wlc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 277);
     uvm_gpu_t *gpu = uvm_channel_get_gpu(wlc);
     NvU64 protected_vidmem = uvm_rm_mem_get_gpu_uvm_va(wlc->conf_computing.static_pb_protected_vidmem, gpu);
     NvU64 unprotected_sysmem_gpu = uvm_rm_mem_get_gpu_uvm_va(wlc->conf_computing.static_pb_unprotected_sysmem, gpu);
@@ -2917,6 +3007,7 @@ free_gpfifo_entries:
 
 static NV_STATUS setup_lcic_schedule(uvm_channel_t *paired_wlc, uvm_channel_t *lcic)
 {
+    printk(KERN_ERR "=====================================   %d\n", 278);
     uvm_gpu_t *gpu = uvm_channel_get_gpu(lcic);
     NvU64 lcic_pb_base = uvm_rm_mem_get_gpu_uvm_va(lcic->conf_computing.static_pb_protected_vidmem, gpu);
 
@@ -3061,6 +3152,7 @@ free_gpfifo_entries:
 
 static NV_STATUS channel_manager_setup_wlc_lcic(uvm_channel_pool_t *wlc_pool, uvm_channel_pool_t *lcic_pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 279);
     NvU32 i;
 
     UVM_ASSERT(wlc_pool->manager == lcic_pool->manager);
@@ -3087,6 +3179,7 @@ static NV_STATUS channel_manager_setup_wlc_lcic(uvm_channel_pool_t *wlc_pool, uv
 
 static NV_STATUS channel_manager_create_conf_computing_pools(uvm_channel_manager_t *manager, unsigned *preferred_ce)
 {
+    printk(KERN_ERR "=====================================   %d\n", 280);
     NV_STATUS status;
     unsigned wlc_lcic_ce_index;
     uvm_channel_pool_t *sec2_pool = NULL;
@@ -3145,6 +3238,7 @@ static NV_STATUS channel_manager_create_conf_computing_pools(uvm_channel_manager
 
 static NV_STATUS channel_manager_create_pools(uvm_channel_manager_t *manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 281);
     NV_STATUS status;
     uvm_channel_type_t type;
     unsigned max_channel_pools;
@@ -3189,6 +3283,7 @@ static NV_STATUS channel_manager_create_pools(uvm_channel_manager_t *manager)
 
 NV_STATUS uvm_channel_manager_create(uvm_gpu_t *gpu, uvm_channel_manager_t **channel_manager_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 282);
     NV_STATUS status = NV_OK;
     uvm_channel_manager_t *channel_manager;
 
@@ -3225,6 +3320,7 @@ error:
 
 static void channel_manager_destroy_pools(uvm_channel_manager_t *manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 283);
     uvm_rm_mem_free(manager->gpu->conf_computing.iv_rm_mem);
     manager->gpu->conf_computing.iv_rm_mem = NULL;
     while (manager->num_channel_pools > 0)
@@ -3239,6 +3335,7 @@ static void channel_manager_destroy_pools(uvm_channel_manager_t *manager)
 // the channel is passed to RM for deallocation.
 static void channel_manager_stop_wlc(uvm_channel_manager_t *manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 284);
     uvm_channel_pool_t *wlc_pool = manager->pool_to_use.default_for_type[UVM_CHANNEL_TYPE_WLC];
     uvm_channel_pool_t *lcic_pool = manager->pool_to_use.default_for_type[UVM_CHANNEL_TYPE_LCIC];
     uvm_channel_t *channel;
@@ -3276,6 +3373,7 @@ static void channel_manager_stop_wlc(uvm_channel_manager_t *manager)
 
 void uvm_channel_manager_destroy(uvm_channel_manager_t *channel_manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 285);
     if (channel_manager == NULL)
         return;
 
@@ -3295,6 +3393,7 @@ void uvm_channel_manager_destroy(uvm_channel_manager_t *channel_manager)
 
 bool uvm_channel_is_privileged(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 286);
     if (uvm_gpu_is_virt_mode_sriov_heavy(uvm_channel_get_gpu(channel)))
         return uvm_channel_is_proxy(channel);
 
@@ -3310,6 +3409,7 @@ static uvm_channel_pool_t *channel_pool_first_from(uvm_channel_manager_t *manage
                                                    uvm_channel_pool_t *begin_pool,
                                                    NvU32 pool_type_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 287);
     uvm_channel_pool_t *curr_pool, *end_pool;
 
     UVM_ASSERT(manager->channel_pools != NULL);
@@ -3331,6 +3431,7 @@ static uvm_channel_pool_t *channel_pool_first_from(uvm_channel_manager_t *manage
 
 uvm_channel_pool_t *uvm_channel_pool_first(uvm_channel_manager_t *manager, NvU32 pool_type_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 288);
     return channel_pool_first_from(manager, manager->channel_pools, pool_type_mask);
 }
 
@@ -3338,11 +3439,13 @@ uvm_channel_pool_t *uvm_channel_pool_next(uvm_channel_manager_t *manager,
                                           uvm_channel_pool_t *pool,
                                           NvU32 pool_type_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 289);
     return channel_pool_first_from(manager, pool + 1, pool_type_mask);
 }
 
 uvm_channel_t *uvm_channel_any_of_type(uvm_channel_manager_t *manager, NvU32 pool_type_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 290);
     uvm_channel_pool_t *pool = uvm_channel_pool_first(manager, pool_type_mask);
 
     if (pool == NULL)
@@ -3355,6 +3458,7 @@ uvm_channel_t *uvm_channel_any_of_type(uvm_channel_manager_t *manager, NvU32 poo
 
 const char *uvm_channel_type_to_string(uvm_channel_type_t channel_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 291);
     BUILD_BUG_ON(UVM_CHANNEL_TYPE_COUNT != 8);
 
     switch (channel_type) {
@@ -3372,6 +3476,7 @@ const char *uvm_channel_type_to_string(uvm_channel_type_t channel_type)
 
 const char *uvm_channel_pool_type_to_string(uvm_channel_pool_type_t channel_pool_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 292);
     BUILD_BUG_ON(UVM_CHANNEL_POOL_TYPE_COUNT != 5);
 
     switch (channel_pool_type) {
@@ -3386,6 +3491,7 @@ const char *uvm_channel_pool_type_to_string(uvm_channel_pool_type_t channel_pool
 
 static const char *get_gpfifo_location_string(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 293);
     // SEC2 channels override the channel manager location for GPFIFO.
     if (uvm_channel_is_sec2(channel))
         return buffer_location_to_string(UVM_BUFFER_LOCATION_SYS);
@@ -3394,6 +3500,7 @@ static const char *get_gpfifo_location_string(uvm_channel_t *channel)
 
 static const char *get_gpput_location_string(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 294);
     // SEC2 channels override the channel manager location for GPPUT.
     if (uvm_channel_is_sec2(channel))
         return buffer_location_to_string(UVM_BUFFER_LOCATION_SYS);
@@ -3402,6 +3509,7 @@ static const char *get_gpput_location_string(uvm_channel_t *channel)
 
 static void uvm_channel_print_info(uvm_channel_t *channel, struct seq_file *s)
 {
+    printk(KERN_ERR "=====================================   %d\n", 295);
     UVM_SEQ_OR_DBG_PRINT(s, "Channel %s\n", channel->name);
 
     channel_pool_lock(channel->pool);
@@ -3421,6 +3529,7 @@ static void uvm_channel_print_info(uvm_channel_t *channel, struct seq_file *s)
 
 static void channel_print_push_acquires(uvm_push_acquire_info_t *push_acquire_info, struct seq_file *seq)
 {
+    printk(KERN_ERR "=====================================   %d\n", 296);
     NvU32 i;
     NvU32 valid_entries;
 
@@ -3455,6 +3564,7 @@ static void channel_print_push_acquires(uvm_push_acquire_info_t *push_acquire_in
 // GPFIFO entries haven't been reused yet.
 static void channel_print_pushes(uvm_channel_t *channel, NvU32 finished_pushes_count, struct seq_file *seq)
 {
+    printk(KERN_ERR "=====================================   %d\n", 297);
     NvU32 gpu_get;
     NvU32 cpu_put;
 
@@ -3510,11 +3620,13 @@ static void channel_print_pushes(uvm_channel_t *channel, NvU32 finished_pushes_c
 
 void uvm_channel_print_pending_pushes(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 298);
     channel_print_pushes(channel, 0, NULL);
 }
 
 static void channel_manager_print_pending_pushes(uvm_channel_manager_t *manager, struct seq_file *seq)
 {
+    printk(KERN_ERR "=====================================   %d\n", 299);
     uvm_channel_pool_t *pool;
 
     uvm_for_each_pool(pool, manager) {
@@ -3530,6 +3642,7 @@ static void channel_manager_print_pending_pushes(uvm_channel_manager_t *manager,
 
 static NV_STATUS manager_create_procfs_dirs(uvm_channel_manager_t *manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 300);
     uvm_gpu_t *gpu = manager->gpu;
 
     // The channel manager procfs files are debug only
@@ -3545,6 +3658,7 @@ static NV_STATUS manager_create_procfs_dirs(uvm_channel_manager_t *manager)
 
 static int nv_procfs_read_manager_pending_pushes(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 301);
     uvm_channel_manager_t *manager = (uvm_channel_manager_t *)s->private;
 
     if (!uvm_down_read_trylock(&g_uvm_global.pm.lock))
@@ -3559,6 +3673,7 @@ static int nv_procfs_read_manager_pending_pushes(struct seq_file *s, void *v)
 
 static int nv_procfs_read_manager_pending_pushes_entry(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 302);
     UVM_ENTRY_RET(nv_procfs_read_manager_pending_pushes(s, v));
 }
 
@@ -3566,6 +3681,7 @@ UVM_DEFINE_SINGLE_PROCFS_FILE(manager_pending_pushes_entry);
 
 static NV_STATUS manager_create_procfs(uvm_channel_manager_t *manager)
 {
+    printk(KERN_ERR "=====================================   %d\n", 303);
     uvm_gpu_t *gpu = manager->gpu;
 
     // The channel manager procfs files are debug only
@@ -3584,6 +3700,7 @@ static NV_STATUS manager_create_procfs(uvm_channel_manager_t *manager)
 
 static int nv_procfs_read_channel_info(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 304);
     uvm_channel_t *channel = (uvm_channel_t *)s->private;
 
     if (!uvm_down_read_trylock(&g_uvm_global.pm.lock))
@@ -3598,6 +3715,7 @@ static int nv_procfs_read_channel_info(struct seq_file *s, void *v)
 
 static int nv_procfs_read_channel_info_entry(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 305);
     UVM_ENTRY_RET(nv_procfs_read_channel_info(s, v));
 }
 
@@ -3605,6 +3723,7 @@ UVM_DEFINE_SINGLE_PROCFS_FILE(channel_info_entry);
 
 static int nv_procfs_read_channel_pushes(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 306);
     uvm_channel_t *channel = (uvm_channel_t *)s->private;
 
     if (!uvm_down_read_trylock(&g_uvm_global.pm.lock))
@@ -3620,6 +3739,7 @@ static int nv_procfs_read_channel_pushes(struct seq_file *s, void *v)
 
 static int nv_procfs_read_channel_pushes_entry(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 307);
     UVM_ENTRY_RET(nv_procfs_read_channel_pushes(s, v));
 }
 
@@ -3627,6 +3747,7 @@ UVM_DEFINE_SINGLE_PROCFS_FILE(channel_pushes_entry);
 
 static NV_STATUS channel_create_procfs(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 308);
     char dirname[16];
     uvm_channel_manager_t *manager = channel->pool->manager;
 

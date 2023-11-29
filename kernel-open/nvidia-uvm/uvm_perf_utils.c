@@ -28,12 +28,14 @@
 
 static inline size_t leaves_to_levels(size_t leaf_count)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1594);
     return ilog2(roundup_pow_of_two(leaf_count)) + 1;
 }
 
 // Helper function to compute all the nodes required to store a complete binary tree for the given number of leaves
 static inline size_t leaves_to_nodes(size_t leaf_count)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1595);
     size_t ret = 0;
     do {
         ret += leaf_count;
@@ -45,6 +47,7 @@ static inline size_t leaves_to_nodes(size_t leaf_count)
 
 NV_STATUS uvm_perf_tree_init(uvm_perf_tree_t *tree, size_t node_size, size_t leaf_count)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1596);
     NV_STATUS status;
     size_t bytes;
 
@@ -67,6 +70,7 @@ NV_STATUS uvm_perf_tree_init(uvm_perf_tree_t *tree, size_t node_size, size_t lea
 
 void uvm_perf_tree_destroy(uvm_perf_tree_t *tree)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1597);
     UVM_ASSERT(tree);
     UVM_ASSERT(tree->nodes);
 
@@ -77,6 +81,7 @@ void uvm_perf_tree_destroy(uvm_perf_tree_t *tree)
 
 void uvm_perf_tree_clear(uvm_perf_tree_t *tree, size_t node_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1598);
     UVM_ASSERT(tree);
     UVM_ASSERT(tree->nodes);
 

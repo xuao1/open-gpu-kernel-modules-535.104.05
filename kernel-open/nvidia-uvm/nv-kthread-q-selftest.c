@@ -83,6 +83,7 @@
 // This exists in order to have a function to place a breakpoint on:
 void on_nvq_assert(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1);
     (void)NULL;
 }
 
@@ -97,6 +98,7 @@ typedef struct basic_start_stop_args
 
 static void _basic_start_stop_callback(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2);
     basic_start_stop_args_t *start_stop_args = (basic_start_stop_args_t*)args;
 
     *start_stop_args->where_to_write = start_stop_args->value_to_write;
@@ -104,6 +106,7 @@ static void _basic_start_stop_callback(void *args)
 
 static int _basic_start_stop_test(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 3);
     int i, was_scheduled;
     int result = 0;
     nv_kthread_q_item_t q_item[NUM_Q_ITEMS_IN_BASIC_TEST];
@@ -184,6 +187,7 @@ typedef struct multithread_args
 
 static void _multithread_callback(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 4);
     multithread_args_t *multithread_args = (multithread_args_t*)(args);
     atomic_inc(multithread_args->test_wide_accumulator);
     atomic_inc(&multithread_args->per_thread_accumulator);
@@ -197,6 +201,7 @@ static void _multithread_callback(void *args)
 //
 static int _multithreaded_q_kthread_function(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 5);
     int i, was_scheduled;
     int result = 0;
     int per_thread_count;
@@ -251,6 +256,7 @@ done:
 
 static int _multithreaded_q_test(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 6);
     int i, j;
     int result = 0;
     struct task_struct *kthreads[NUM_TEST_KTHREADS];
@@ -316,6 +322,7 @@ typedef struct resched_args
 
 static void _reschedule_callback(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 7);
     int was_scheduled;
     resched_args_t *resched_args = (resched_args_t*)args;
 
@@ -342,6 +349,7 @@ static void _reschedule_callback(void *args)
 // callback, works.
 static int _reschedule_same_item_from_its_own_callback_test(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 8);
     int was_scheduled;
     int result = 0;
     resched_args_t resched_args;
@@ -387,12 +395,14 @@ typedef struct same_q_item_args
 
 static void _same_q_item_callback(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 9);
     same_q_item_args_t *same_q_item_args = (same_q_item_args_t*)(args);
     atomic_inc(&same_q_item_args->test_accumulator);
 }
 
 static int _same_q_item_test(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 10);
     int result, i;
     int num_scheduled = 0;
     same_q_item_args_t  same_q_item_args;
@@ -432,6 +442,7 @@ static int _same_q_item_test(void)
 // Returns true if any of the stack pages are not resident on the indicated node.
 static bool stack_mismatch(const struct task_struct *thread, int preferred_node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 11);
     unsigned num_stack_pages, i;
     char* stack = (char*) thread->stack;
 
@@ -462,6 +473,7 @@ static bool stack_mismatch(const struct task_struct *thread, int preferred_node)
 
 static void _check_cpu_affinity_callback(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 12);
     struct task_struct *thread = get_current();
     int *preferred_node = (int *) args;
     int *ret = preferred_node + 1;
@@ -478,6 +490,7 @@ static void _check_cpu_affinity_callback(void *args)
 // failures per node.
 static int _check_cpu_affinity_test(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 13);
     int result, node;
     nv_kthread_q_t local_q;
 
@@ -546,6 +559,7 @@ static int _check_cpu_affinity_test(void)
 
 int nv_kthread_q_run_self_test(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 14);
     int result;
 
     result = _basic_start_stop_test();

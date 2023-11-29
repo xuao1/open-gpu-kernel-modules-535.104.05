@@ -41,6 +41,7 @@ static struct kmem_cache *g_callback_desc_cache;
 static callback_desc_t *event_list_find_callback(uvm_perf_va_space_events_t *va_space_events,
                                                  struct list_head *callback_list, uvm_perf_event_callback_t callback)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1486);
     callback_desc_t *callback_desc;
 
     uvm_assert_rwsem_locked(&va_space_events->lock);
@@ -57,6 +58,7 @@ NV_STATUS uvm_perf_register_event_callback_locked(uvm_perf_va_space_events_t *va
                                                   uvm_perf_event_t event_id,
                                                   uvm_perf_event_callback_t callback)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1487);
     callback_desc_t *callback_desc;
     struct list_head *callback_list;
 
@@ -82,6 +84,7 @@ NV_STATUS uvm_perf_register_event_callback_locked(uvm_perf_va_space_events_t *va
 NV_STATUS uvm_perf_register_event_callback(uvm_perf_va_space_events_t *va_space_events, uvm_perf_event_t event_id,
                                            uvm_perf_event_callback_t callback)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1488);
     NV_STATUS status;
 
     uvm_down_write(&va_space_events->lock);
@@ -94,6 +97,7 @@ NV_STATUS uvm_perf_register_event_callback(uvm_perf_va_space_events_t *va_space_
 void uvm_perf_unregister_event_callback_locked(uvm_perf_va_space_events_t *va_space_events, uvm_perf_event_t event_id,
                                                uvm_perf_event_callback_t callback)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1489);
     callback_desc_t *callback_desc;
     struct list_head *callback_list;
 
@@ -116,6 +120,7 @@ void uvm_perf_unregister_event_callback_locked(uvm_perf_va_space_events_t *va_sp
 void uvm_perf_unregister_event_callback(uvm_perf_va_space_events_t *va_space_events, uvm_perf_event_t event_id,
                                         uvm_perf_event_callback_t callback)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1490);
     uvm_down_write(&va_space_events->lock);
     uvm_perf_unregister_event_callback_locked(va_space_events, event_id, callback);
     uvm_up_write(&va_space_events->lock);
@@ -124,6 +129,7 @@ void uvm_perf_unregister_event_callback(uvm_perf_va_space_events_t *va_space_eve
 void uvm_perf_event_notify(uvm_perf_va_space_events_t *va_space_events, uvm_perf_event_t event_id,
                            uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1491);
     callback_desc_t *callback_desc;
     struct list_head *callback_list;
 
@@ -146,6 +152,7 @@ bool uvm_perf_is_event_callback_registered(uvm_perf_va_space_events_t *va_space_
                                            uvm_perf_event_t event_id,
                                            uvm_perf_event_callback_t callback)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1492);
     callback_desc_t *callback_desc;
     struct list_head *callback_list;
 
@@ -159,6 +166,7 @@ bool uvm_perf_is_event_callback_registered(uvm_perf_va_space_events_t *va_space_
 
 NV_STATUS uvm_perf_init_va_space_events(uvm_va_space_t *va_space, uvm_perf_va_space_events_t *va_space_events)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1493);
     unsigned event_id;
 
     uvm_init_rwsem(&va_space_events->lock, UVM_LOCK_ORDER_VA_SPACE_EVENTS);
@@ -174,6 +182,7 @@ NV_STATUS uvm_perf_init_va_space_events(uvm_va_space_t *va_space, uvm_perf_va_sp
 
 void uvm_perf_destroy_va_space_events(uvm_perf_va_space_events_t *va_space_events)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1494);
     unsigned event_id;
 
     // If the va_space member was not set, va_space creation failed before initializing its va_space_events member. We
@@ -199,6 +208,7 @@ void uvm_perf_destroy_va_space_events(uvm_perf_va_space_events_t *va_space_event
 
 NV_STATUS uvm_perf_events_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1495);
     g_callback_desc_cache = NV_KMEM_CACHE_CREATE("uvm_perf_callback_list", callback_desc_t);
     if (!g_callback_desc_cache)
         return NV_ERR_NO_MEMORY;
@@ -208,5 +218,6 @@ NV_STATUS uvm_perf_events_init(void)
 
 void uvm_perf_events_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1496);
     kmem_cache_destroy_safe(&g_callback_desc_cache);
 }

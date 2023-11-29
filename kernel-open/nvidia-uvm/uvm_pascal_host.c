@@ -31,6 +31,7 @@
 
 void uvm_hal_pascal_host_membar_sys(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1451);
     NV_PUSH_4U(C06F, MEM_OP_A, 0,
                      MEM_OP_B, 0,
                      MEM_OP_C, HWCONST(C06F, MEM_OP_C, MEMBAR_TYPE, SYS_MEMBAR),
@@ -39,6 +40,7 @@ void uvm_hal_pascal_host_membar_sys(uvm_push_t *push)
 
 void uvm_hal_pascal_host_membar_gpu(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1452);
     NV_PUSH_4U(C06F, MEM_OP_A, 0,
                      MEM_OP_B, 0,
                      MEM_OP_C, HWCONST(C06F, MEM_OP_C, MEMBAR_TYPE, MEMBAR),
@@ -47,6 +49,7 @@ void uvm_hal_pascal_host_membar_gpu(uvm_push_t *push)
 
 void uvm_hal_pascal_host_tlb_invalidate_all(uvm_push_t *push, uvm_gpu_phys_address_t pdb, NvU32 depth, uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1453);
     NvU32 aperture_value;
     NvU32 page_table_level;
     NvU32 pdb_lo;
@@ -94,6 +97,7 @@ void uvm_hal_pascal_host_tlb_invalidate_all(uvm_push_t *push, uvm_gpu_phys_addre
 
 void uvm_hal_pascal_host_tlb_invalidate_va(uvm_push_t *push, uvm_gpu_phys_address_t pdb, NvU32 depth, NvU64 base, NvU64 size, NvU32 page_size, uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1454);
     NvU32 aperture_value;
     NvU32 page_table_level;
     NvU32 pdb_lo;
@@ -159,6 +163,7 @@ void uvm_hal_pascal_host_tlb_invalidate_va(uvm_push_t *push, uvm_gpu_phys_addres
 void uvm_hal_pascal_host_tlb_invalidate_test(uvm_push_t *push, uvm_gpu_phys_address_t pdb,
                                              UVM_TEST_INVALIDATE_TLB_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1455);
     NvU32 ack_value = 0;
     NvU32 invalidate_gpc_value = 0;
     NvU32 aperture_value = 0;
@@ -241,6 +246,7 @@ void uvm_hal_pascal_host_tlb_invalidate_test(uvm_push_t *push, uvm_gpu_phys_addr
 
 void uvm_hal_pascal_replay_faults(uvm_push_t *push, uvm_fault_replay_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1456);
     NvU32 aperture_value;
     NvU32 replay_value = 0;
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
@@ -292,8 +298,10 @@ void uvm_hal_pascal_replay_faults(uvm_push_t *push, uvm_fault_replay_type_t type
 
 static NvU32 instance_ptr_aperture_type_to_hw_value(uvm_aperture_t aperture)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1457);
     switch (aperture)
     {
+    printk(KERN_ERR "=====================================   %d\n", 1458);
         case UVM_APERTURE_SYS:
             return HWCONST(C076, FAULT_CANCEL_A, INST_APERTURE, SYS_MEM_COHERENT);
         case UVM_APERTURE_VID:
@@ -307,6 +315,7 @@ static NvU32 instance_ptr_aperture_type_to_hw_value(uvm_aperture_t aperture)
 
 void uvm_hal_pascal_host_init(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1459);
     if (uvm_channel_is_ce(push->channel))
         NV_PUSH_1U(C076, SET_OBJECT, GP100_UVM_SW);
 }
@@ -315,6 +324,7 @@ static void instance_ptr_address_to_hw_values(NvU64 instance_ptr_address,
                                               NvU32 *instance_ptr_lo,
                                               NvU32 *instance_ptr_hi)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1460);
     // instance_ptr must be 4K aligned
     UVM_ASSERT_MSG(IS_ALIGNED(instance_ptr_address, 1 << 12), "instance_ptr 0x%llx\n", instance_ptr_address);
     instance_ptr_address >>= 12;
@@ -325,6 +335,7 @@ static void instance_ptr_address_to_hw_values(NvU64 instance_ptr_address,
 
 void uvm_hal_pascal_cancel_faults_global(uvm_push_t *push, uvm_gpu_phys_address_t instance_ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1461);
     NvU32 instance_ptr_lo, instance_ptr_hi;
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
@@ -345,6 +356,7 @@ void uvm_hal_pascal_cancel_faults_targeted(uvm_push_t *push,
                                            NvU32 gpc_id,
                                            NvU32 client_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1462);
     NvU32 instance_ptr_lo, instance_ptr_hi;
 
     instance_ptr_address_to_hw_values(instance_ptr.address, &instance_ptr_lo, &instance_ptr_hi);

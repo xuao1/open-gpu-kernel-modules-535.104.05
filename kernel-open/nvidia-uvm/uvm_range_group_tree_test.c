@@ -34,6 +34,7 @@
 
 static NV_STATUS range_group_owns_ranges(uvm_range_group_t *range_group, NvU64 count)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2021);
     NvU64 i = 0;
     uvm_range_group_range_t *rgr;
     list_for_each_entry(rgr, &range_group->ranges, range_group_list_node) {
@@ -46,6 +47,7 @@ static NV_STATUS range_group_owns_ranges(uvm_range_group_t *range_group, NvU64 c
 
 static NV_STATUS range_group_tree_empty(uvm_va_space_t *va_space, uvm_range_group_t **range_groups)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2022);
     NvU64 i;
     uvm_range_group_range_t *rgr;
 
@@ -62,6 +64,7 @@ static NV_STATUS range_group_tree_empty(uvm_va_space_t *va_space, uvm_range_grou
 
 static NV_STATUS iterator_test(uvm_va_space_t *va_space, uvm_range_group_t **range_groups)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2023);
     uvm_range_group_range_iter_t iter;
     NvU64 i;
 
@@ -366,6 +369,7 @@ static NV_STATUS iterator_test(uvm_va_space_t *va_space, uvm_range_group_t **ran
 
 NV_STATUS uvm_test_range_group_tree(UVM_TEST_RANGE_GROUP_TREE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2024);
     NV_STATUS status;
     size_t i;
     uvm_range_group_t *range_groups[RANGE_GROUP_COUNT];

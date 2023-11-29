@@ -26,44 +26,52 @@
 
 void uvm_hal_maxwell_enable_replayable_faults_unsupported(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1029);
     UVM_ASSERT_MSG(false, "enable_replayable_faults is not supported on GPU: %s.\n", parent_gpu->name);
 }
 
 void uvm_hal_maxwell_disable_replayable_faults_unsupported(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1030);
     UVM_ASSERT_MSG(false, "disable_replayable_faults is not supported on GPU: %s.\n", parent_gpu->name);
 }
 
 void uvm_hal_maxwell_clear_replayable_faults_unsupported(uvm_parent_gpu_t *parent_gpu, NvU32 get)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1031);
     UVM_ASSERT_MSG(false, "clear_replayable_faults is not supported on GPU: %s.\n", parent_gpu->name);
 }
 
 NvU32 uvm_hal_maxwell_fault_buffer_read_put_unsupported(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1032);
     UVM_ASSERT_MSG(false, "fault_buffer_read_put is not supported on GPU: %s.\n", parent_gpu->name);
     return 0;
 }
 
 NvU32 uvm_hal_maxwell_fault_buffer_read_get_unsupported(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1033);
     UVM_ASSERT_MSG(false, "fault_buffer_read_get is not supported on GPU: %s.\n", parent_gpu->name);
     return 0;
 }
 
 void uvm_hal_maxwell_fault_buffer_write_get_unsupported(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1034);
     UVM_ASSERT_MSG(false, "fault_buffer_write_get is not supported on GPU: %s.\n", parent_gpu->name);
 }
 
 NvU8 uvm_hal_maxwell_fault_buffer_get_ve_id_unsupported(NvU16 mmu_engine_id, uvm_mmu_engine_type_t mmu_engine_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1035);
     UVM_ASSERT_MSG(false, "fault_buffer_get_ve_id is not supported on Maxwell GPUs.\n");
     return 0;
 }
 
 uvm_fault_type_t uvm_hal_maxwell_fault_buffer_get_fault_type_unsupported(const NvU32 *fault_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1036);
     UVM_ASSERT_MSG(false, "fault_buffer_get_fault_type is not supported.\n");
     return UVM_FAULT_TYPE_COUNT;
 }
@@ -72,23 +80,27 @@ NV_STATUS uvm_hal_maxwell_fault_buffer_parse_replayable_entry_unsupported(uvm_pa
                                                                           NvU32 index,
                                                                           uvm_fault_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1037);
     UVM_ASSERT_MSG(false, "fault_buffer_parse_entry is not supported on GPU: %s.\n", parent_gpu->name);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 bool uvm_hal_maxwell_fault_buffer_entry_is_valid_unsupported(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1038);
     UVM_ASSERT_MSG(false, "fault_buffer_entry_is_valid is not supported on GPU: %s.\n", parent_gpu->name);
     return false;
 }
 
 void uvm_hal_maxwell_fault_buffer_entry_clear_valid_unsupported(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1039);
     UVM_ASSERT_MSG(false, "fault_buffer_entry_clear_valid is not supported on GPU: %s.\n", parent_gpu->name);
 }
 
 NvU32 uvm_hal_maxwell_fault_buffer_entry_size_unsupported(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1040);
     UVM_ASSERT_MSG(false, "fault_buffer_entry_size is not supported on GPU: %s.\n", parent_gpu->name);
     return 0;
 }
@@ -97,6 +109,7 @@ void uvm_hal_maxwell_fault_buffer_parse_non_replayable_entry_unsupported(uvm_par
                                                                          void *fault_packet,
                                                                          uvm_fault_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1041);
     UVM_ASSERT_MSG(false, "fault_buffer_parse_non_replayable_entry is not supported on GPU: %s.\n", parent_gpu->name);
 }
 

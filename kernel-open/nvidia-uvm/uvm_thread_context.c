@@ -103,6 +103,7 @@ static void thread_context_non_interrupt_remove(uvm_thread_context_t *thread_con
 
 bool uvm_thread_context_wrapper_is_used(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2173);
     // The wrapper contains lock information. While uvm_record_lock_X
     // routines are a no-op outside of debug mode, unit tests do invoke their
     // internal counterparts __uvm_record_lock_X. To add coverage, lock
@@ -113,11 +114,13 @@ bool uvm_thread_context_wrapper_is_used(void)
 
 bool uvm_thread_context_global_initialized(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2174);
     return g_thread_context_table_initialized;
 }
 
 void uvm_thread_context_global_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2175);
     size_t table_index;
 
     UVM_ASSERT(!uvm_thread_context_global_initialized());
@@ -134,6 +137,7 @@ void uvm_thread_context_global_init(void)
 
 void uvm_thread_context_global_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2176);
     size_t table_index;
     uvm_thread_context_t *curr_thread_context = uvm_thread_context();
 
@@ -189,6 +193,7 @@ void uvm_thread_context_global_exit(void)
 
 static uvm_thread_context_t *thread_context_non_interrupt_tree_search(struct rb_root *root, struct task_struct *task)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2177);
     struct rb_node *node = root->rb_node;
     uintptr_t task_uintptr = (uintptr_t) task;
 
@@ -207,6 +212,7 @@ static uvm_thread_context_t *thread_context_non_interrupt_tree_search(struct rb_
 
 static bool thread_context_non_interrupt_tree_insert(struct rb_root *root, uvm_thread_context_t *new_thread_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2178);
     struct rb_node **node_ptr = &root->rb_node;
     struct rb_node *node = root->rb_node;
     struct rb_node *parent = NULL;
@@ -233,6 +239,7 @@ static bool thread_context_non_interrupt_tree_insert(struct rb_root *root, uvm_t
 
 static void thread_context_lock_interrupt_patch_acquired(uvm_thread_context_lock_t *context_lock)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2179);
     uvm_thread_context_lock_acquired_t *thread_context_lock_acquired;
 
     UVM_ASSERT(in_interrupt());
@@ -246,6 +253,7 @@ static void thread_context_lock_interrupt_patch_acquired(uvm_thread_context_lock
 
 static uvm_thread_context_lock_t *thread_context_lock_of(uvm_thread_context_t *thread_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2180);
     uvm_thread_context_wrapper_t *thread_context_wrapper;
     uvm_thread_context_lock_t *context_lock;
 
@@ -271,6 +279,7 @@ static uvm_thread_context_lock_t *thread_context_lock_of(uvm_thread_context_t *t
 
 static void thread_context_non_interrupt_init(uvm_thread_context_t *thread_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2181);
     UVM_ASSERT(!in_interrupt());
 
     thread_context->array_index = UVM_THREAD_CONTEXT_ARRAY_SIZE;
@@ -292,6 +301,7 @@ static void thread_context_non_interrupt_init(uvm_thread_context_t *thread_conte
 
 static void thread_context_non_interrupt_deinit(uvm_thread_context_t *thread_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2182);
     uvm_thread_context_lock_t *context_lock;
 
     UVM_ASSERT(!in_interrupt());
@@ -312,6 +322,7 @@ static void thread_context_non_interrupt_deinit(uvm_thread_context_t *thread_con
 // current taks may be stored at a different array index, or in the tree.
 static uvm_thread_context_table_entry_t *thread_context_non_interrupt_table_entry(size_t *array_index_hint)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2183);
     size_t table_index;
     NvU64 current_ptr = (NvU64) current;
     NvU32 hash = jhash_2words((NvU32) current_ptr, (NvU32) (current_ptr >> 32), 0);
@@ -332,6 +343,7 @@ static uvm_thread_context_table_entry_t *thread_context_non_interrupt_table_entr
 
 static uvm_thread_context_t *thread_context_non_interrupt(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2184);
     unsigned long flags;
     size_t i, array_index;
     uvm_thread_context_t *thread_context;
@@ -360,6 +372,7 @@ static uvm_thread_context_t *thread_context_non_interrupt(void)
 
 static uvm_thread_context_t *thread_context_interrupt(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2185);
     uvm_thread_context_wrapper_t *thread_context_wrapper;
 
     // As we are in interrupt anyway it would be best to just use this_cpu_ptr()
@@ -373,16 +386,19 @@ static uvm_thread_context_t *thread_context_interrupt(void)
 
 static uvm_thread_context_t *thread_context_current(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2186);
     return in_interrupt() ? thread_context_interrupt() : thread_context_non_interrupt();
 }
 
 bool uvm_thread_context_present(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2187);
     return thread_context_current() != NULL;
 }
 
 uvm_thread_context_t *uvm_thread_context(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2188);
     uvm_thread_context_t *thread_context = thread_context_current();
 
     // If this assertion fires is probably because an entry point into the
@@ -405,6 +421,7 @@ static bool thread_context_non_interrupt_add(uvm_thread_context_t *thread_contex
                                              uvm_thread_context_table_entry_t *table_entry,
                                              size_t array_index_hint)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2189);
     size_t i;
     NvU64 task;
     unsigned long flags;
@@ -486,6 +503,7 @@ static bool thread_context_non_interrupt_add(uvm_thread_context_t *thread_contex
 
 bool uvm_thread_context_add(uvm_thread_context_t *thread_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2190);
     uvm_thread_context_table_entry_t *table_entry;
     size_t array_index;
 
@@ -505,6 +523,7 @@ bool uvm_thread_context_add(uvm_thread_context_t *thread_context)
 
 bool uvm_thread_context_add_at(uvm_thread_context_t *thread_context, size_t table_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2191);
     uvm_thread_context_table_entry_t *table_entry;
 
     UVM_ASSERT(uvm_enable_builtin_tests != 0);
@@ -517,6 +536,7 @@ bool uvm_thread_context_add_at(uvm_thread_context_t *thread_context, size_t tabl
 static void thread_context_non_interrupt_remove(uvm_thread_context_t *thread_context,
                                                 uvm_thread_context_table_entry_t *table_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2192);
     NvU32 array_index;
 
     UVM_ASSERT(!in_interrupt());
@@ -564,6 +584,7 @@ static void thread_context_non_interrupt_remove(uvm_thread_context_t *thread_con
 
 void uvm_thread_context_remove(uvm_thread_context_t *thread_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2193);
     uvm_thread_context_table_entry_t *table_entry;
 
     UVM_ASSERT(thread_context != NULL);
@@ -584,6 +605,7 @@ void uvm_thread_context_remove(uvm_thread_context_t *thread_context)
 
 void uvm_thread_context_remove_at(uvm_thread_context_t *thread_context, size_t table_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2194);
     uvm_thread_context_table_entry_t *table_entry = g_thread_context_table + table_index;
 
     UVM_ASSERT(uvm_enable_builtin_tests != 0);
@@ -600,6 +622,7 @@ void uvm_thread_context_remove_at(uvm_thread_context_t *thread_context, size_t t
 //   moved
 static void thread_context_move(uvm_thread_context_t *dst, uvm_thread_context_t *src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2195);
     uvm_thread_context_lock_t *src_context_lock, *dst_context_lock;
 
     UVM_ASSERT(uvm_enable_builtin_tests != 0);
@@ -637,23 +660,27 @@ static void thread_context_move(uvm_thread_context_t *dst, uvm_thread_context_t 
 
 void uvm_thread_context_save(uvm_thread_context_t *dst)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2196);
     thread_context_non_interrupt_init(dst);
     thread_context_move(dst, uvm_thread_context());
 }
 
 void uvm_thread_context_restore(uvm_thread_context_t *src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2197);
     thread_context_move(uvm_thread_context(), src);
     thread_context_non_interrupt_deinit(src);
 }
 
 uvm_thread_context_lock_t *uvm_thread_context_lock_get(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2198);
     return thread_context_lock_of(uvm_thread_context());
 }
 
 void uvm_thread_context_lock_disable_tracking(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2199);
     uvm_thread_context_lock_t *context_lock = thread_context_lock_of(uvm_thread_context());
 
     if (context_lock == NULL)
@@ -666,6 +693,7 @@ void uvm_thread_context_lock_disable_tracking(void)
 
 void uvm_thread_context_lock_enable_tracking(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2200);
     uvm_thread_context_lock_t *context_lock = thread_context_lock_of(uvm_thread_context());
 
     if (context_lock == NULL)

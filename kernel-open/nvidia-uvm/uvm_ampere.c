@@ -29,6 +29,7 @@
 
 void uvm_hal_ampere_arch_init_properties(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 76);
     parent_gpu->tlb_batch.va_invalidate_supported = true;
 
     parent_gpu->tlb_batch.va_range_invalidate_supported = true;

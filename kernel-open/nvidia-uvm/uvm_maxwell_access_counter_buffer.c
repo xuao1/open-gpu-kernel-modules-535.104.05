@@ -26,33 +26,39 @@
 
 void uvm_hal_maxwell_enable_access_counter_notifications_unsupported(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1001);
     UVM_ASSERT_MSG(false, "enable_access_counter_notifications is not supported on GPU: %s.\n", parent_gpu->name);
 }
 
 void uvm_hal_maxwell_disable_access_counter_notifications_unsupported(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1002);
     UVM_ASSERT_MSG(false, "disable_access_counter_notifications is not supported on GPU: %s.\n", parent_gpu->name);
 }
 
 void uvm_hal_maxwell_clear_access_counter_notifications_unsupported(uvm_parent_gpu_t *parent_gpu, NvU32 get)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1003);
     UVM_ASSERT_MSG(false, "clear_access_counter_notifications is not supported on GPU: %s.\n", parent_gpu->name);
 }
 
 NvU32 uvm_hal_maxwell_access_counter_buffer_entry_size_unsupported(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1004);
     UVM_ASSERT_MSG(false, "access_counter_buffer_entry_size is not supported on GPU: %s.\n", parent_gpu->name);
     return 0;
 }
 
 bool uvm_hal_maxwell_access_counter_buffer_entry_is_valid_unsupported(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1005);
     UVM_ASSERT_MSG(false, "access_counter_buffer_entry_is_valid is not supported on GPU: %s.\n", parent_gpu->name);
     return false;
 }
 
 void uvm_hal_maxwell_access_counter_buffer_entry_clear_valid_unsupported(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1006);
     UVM_ASSERT_MSG(false, "access_counter_buffer_entry_clear_valid is not supported on GPU: %s.\n", parent_gpu->name);
 }
 
@@ -60,5 +66,6 @@ void uvm_hal_maxwell_access_counter_buffer_parse_entry_unsupported(uvm_parent_gp
                                                                    NvU32 index,
                                                                    uvm_access_counter_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1007);
     UVM_ASSERT_MSG(false, "access_counter_buffer_parse_entry is not supported on GPU: %s.\n", parent_gpu->name);
 }

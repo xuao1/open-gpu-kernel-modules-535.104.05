@@ -30,6 +30,7 @@
 
 void uvm_hal_hopper_host_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 861);
     NvU32 sem_lo;
     UVM_ASSERT(!(NvOffset_LO32(gpu_va) & ~HWSHIFTMASK(C86F, SEM_ADDR_LO, OFFSET)));
     sem_lo = READ_HWVALUE(NvOffset_LO32(gpu_va), C86F, SEM_ADDR_LO, OFFSET);
@@ -48,6 +49,7 @@ void uvm_hal_hopper_host_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32
 
 void uvm_hal_hopper_host_semaphore_acquire(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 862);
     NvU32 sem_lo;
     UVM_ASSERT(!(NvOffset_LO32(gpu_va) & ~HWSHIFTMASK(C86F, SEM_ADDR_LO, OFFSET)));
     sem_lo = READ_HWVALUE(NvOffset_LO32(gpu_va), C86F, SEM_ADDR_LO, OFFSET);
@@ -62,6 +64,7 @@ void uvm_hal_hopper_host_semaphore_acquire(uvm_push_t *push, NvU64 gpu_va, NvU32
 
 void uvm_hal_hopper_host_semaphore_timestamp(uvm_push_t *push, NvU64 gpu_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 863);
     NvU32 sem_lo;
     UVM_ASSERT(!(NvOffset_LO32(gpu_va) & ~HWSHIFTMASK(C86F, SEM_ADDR_LO, OFFSET)));
     sem_lo = READ_HWVALUE(NvOffset_LO32(gpu_va), C86F, SEM_ADDR_LO, OFFSET);
@@ -80,12 +83,14 @@ void uvm_hal_hopper_host_semaphore_timestamp(uvm_push_t *push, NvU64 gpu_va)
 
 static NvU32 fault_cancel_va_mode_to_cancel_access_type(uvm_fault_cancel_va_mode_t cancel_va_mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 864);
     // There are only two logical cases from the perspective of UVM. Accesses to
     // an invalid address, which will cancel all accesses on the page, and
     // accesses with an invalid type on a read-only page, which will cancel all
     // write/atomic accesses on the page.
     switch (cancel_va_mode)
     {
+    printk(KERN_ERR "=====================================   %d\n", 865);
         case UVM_FAULT_CANCEL_VA_MODE_ALL:
             return HWCONST(C86F, MEM_OP_C, TLB_INVALIDATE_ACCESS_TYPE, VIRT_ALL);
         case UVM_FAULT_CANCEL_VA_MODE_WRITE_AND_ATOMIC:
@@ -102,6 +107,7 @@ void uvm_hal_hopper_cancel_faults_va(uvm_push_t *push,
                                      const uvm_fault_buffer_entry_t *fault_entry,
                                      uvm_fault_cancel_va_mode_t cancel_va_mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 866);
     NvU32 aperture_value;
     NvU32 pdb_lo;
     NvU32 pdb_hi;
@@ -152,6 +158,7 @@ void uvm_hal_hopper_host_tlb_invalidate_all(uvm_push_t *push,
                                             NvU32 depth,
                                             uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 867);
     NvU32 aperture_value;
     NvU32 page_table_level;
     NvU32 pdb_lo;
@@ -207,6 +214,7 @@ void uvm_hal_hopper_host_tlb_invalidate_va(uvm_push_t *push,
                                            NvU32 page_size,
                                            uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 868);
     NvU32 aperture_value;
     NvU32 page_table_level;
     NvU32 pdb_lo;
@@ -299,6 +307,7 @@ void uvm_hal_hopper_host_tlb_invalidate_test(uvm_push_t *push,
                                              uvm_gpu_phys_address_t pdb,
                                              UVM_TEST_INVALIDATE_TLB_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 869);
     NvU32 ack_value = 0;
     NvU32 invalidate_gpc_value = 0;
     NvU32 aperture_value = 0;
@@ -384,6 +393,7 @@ void uvm_hal_hopper_host_tlb_invalidate_test(uvm_push_t *push,
 
 void uvm_hal_hopper_host_set_gpfifo_pushbuffer_segment_base(NvU64 *fifo_entry, NvU64 pushbuffer_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 870);
     UVM_ASSERT(!uvm_global_is_suspended());
     UVM_ASSERT((pushbuffer_va >> 40) == ((NvU64)(pushbuffer_va + UVM_PUSHBUFFER_SIZE) >> 40));
 
@@ -396,6 +406,7 @@ void uvm_hal_hopper_host_set_gpfifo_entry(NvU64 *fifo_entry,
                                           NvU32 pushbuffer_length,
                                           uvm_gpfifo_sync_t sync_flag)
 {
+    printk(KERN_ERR "=====================================   %d\n", 871);
     NvU64 fifo_entry_value;
     NvU64 pb_low_bits_mask = (1ull << 40) - 1;
     const NvU32 sync_value = (sync_flag == UVM_GPFIFO_SYNC_WAIT) ? HWCONST(C86F, GP_ENTRY1, SYNC, WAIT) :

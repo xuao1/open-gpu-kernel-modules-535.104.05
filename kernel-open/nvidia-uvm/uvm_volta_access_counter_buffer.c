@@ -34,6 +34,7 @@ typedef struct {
 
 void uvm_hal_volta_enable_access_counter_notifications(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2828);
     volatile NvU32 *reg;
     NvU32 mask;
 
@@ -45,6 +46,7 @@ void uvm_hal_volta_enable_access_counter_notifications(uvm_parent_gpu_t *parent_
 
 void uvm_hal_volta_disable_access_counter_notifications(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2829);
     volatile NvU32 *reg;
     NvU32 mask;
 
@@ -56,16 +58,19 @@ void uvm_hal_volta_disable_access_counter_notifications(uvm_parent_gpu_t *parent
 
 void uvm_hal_volta_clear_access_counter_notifications(uvm_parent_gpu_t *parent_gpu, NvU32 get)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2830);
     // No-op, this function is only used by pulse-based interrupt GPUs.
 }
 
 NvU32 uvm_hal_volta_access_counter_buffer_entry_size(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2831);
     return NVC365_NOTIFY_BUF_SIZE;
 }
 
 static uvm_aperture_t get_access_counter_inst_aperture(NvU32 *access_counter_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2832);
     NvU32 hw_aperture_value = READ_HWVALUE_MW(access_counter_entry, C365, NOTIFY_BUF_ENTRY, INST_APERTURE);
 
     switch (hw_aperture_value) {
@@ -82,6 +87,7 @@ static uvm_aperture_t get_access_counter_inst_aperture(NvU32 *access_counter_ent
 
 static uvm_aperture_t get_access_counter_aperture(NvU32 *access_counter_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2833);
     NvU32 hw_aperture_value = READ_HWVALUE_MW(access_counter_entry, C365, NOTIFY_BUF_ENTRY, APERTURE);
     NvU32 peer_id = READ_HWVALUE_MW(access_counter_entry, C365, NOTIFY_BUF_ENTRY, PEER_ID);
 
@@ -101,6 +107,7 @@ static uvm_aperture_t get_access_counter_aperture(NvU32 *access_counter_entry)
 
 static uvm_gpu_address_t get_address(uvm_parent_gpu_t *parent_gpu, NvU32 *access_counter_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2834);
     NvU64 address;
     bool is_virtual;
     NvU64 addr_hi = READ_HWVALUE_MW(access_counter_entry, C365, NOTIFY_BUF_ENTRY, ADDR_HI);
@@ -125,6 +132,7 @@ static uvm_gpu_address_t get_address(uvm_parent_gpu_t *parent_gpu, NvU32 *access
 
 static uvm_access_counter_type_t get_access_counter_type(NvU32 *access_counter_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2835);
     NvU32 type_value = READ_HWVALUE_MW(access_counter_entry, C365, NOTIFY_BUF_ENTRY, TYPE);
     if (type_value == NVC365_NOTIFY_BUF_ENTRY_TYPE_CPU)
         return UVM_ACCESS_COUNTER_TYPE_MOMC;
@@ -134,6 +142,7 @@ static uvm_access_counter_type_t get_access_counter_type(NvU32 *access_counter_e
 
 static NvU32 *get_access_counter_buffer_entry(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2836);
     access_counter_buffer_entry_c365_t *buffer_start;
     NvU32 *access_counter_entry;
 
@@ -147,6 +156,7 @@ static NvU32 *get_access_counter_buffer_entry(uvm_parent_gpu_t *parent_gpu, NvU3
 
 bool uvm_hal_volta_access_counter_buffer_entry_is_valid(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2837);
     NvU32 *access_counter_entry;
     bool is_valid;
 
@@ -159,6 +169,7 @@ bool uvm_hal_volta_access_counter_buffer_entry_is_valid(uvm_parent_gpu_t *parent
 
 void uvm_hal_volta_access_counter_buffer_entry_clear_valid(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2838);
     NvU32 *access_counter_entry;
 
     access_counter_entry = get_access_counter_buffer_entry(parent_gpu, index);
@@ -170,6 +181,7 @@ void uvm_hal_volta_access_counter_buffer_parse_entry(uvm_parent_gpu_t *parent_gp
                                                      NvU32 index,
                                                      uvm_access_counter_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2839);
     NvU32 *access_counter_entry;
 
     // Valid bit must be set before this function is called

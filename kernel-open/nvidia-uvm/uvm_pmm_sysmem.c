@@ -35,6 +35,7 @@ static struct kmem_cache *g_reverse_page_map_cache __read_mostly;
 
 NV_STATUS uvm_pmm_sysmem_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1743);
     g_reverse_page_map_cache = NV_KMEM_CACHE_CREATE("uvm_pmm_sysmem_page_reverse_map_t",
                                                     uvm_reverse_map_t);
     if (!g_reverse_page_map_cache)
@@ -54,11 +55,13 @@ NV_STATUS uvm_pmm_sysmem_init(void)
 
 void uvm_pmm_sysmem_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1744);
     kmem_cache_destroy_safe(&g_reverse_page_map_cache);
 }
 
 NV_STATUS uvm_pmm_sysmem_mappings_init(uvm_gpu_t *gpu, uvm_pmm_sysmem_mappings_t *sysmem_mappings)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1745);
     memset(sysmem_mappings, 0, sizeof(*sysmem_mappings));
 
     sysmem_mappings->gpu = gpu;
@@ -71,6 +74,7 @@ NV_STATUS uvm_pmm_sysmem_mappings_init(uvm_gpu_t *gpu, uvm_pmm_sysmem_mappings_t
 
 void uvm_pmm_sysmem_mappings_deinit(uvm_pmm_sysmem_mappings_t *sysmem_mappings)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1746);
     if (sysmem_mappings->gpu) {
         UVM_ASSERT_MSG(radix_tree_empty(&sysmem_mappings->reverse_map_tree),
                        "radix_tree not empty for GPU %s\n",
@@ -89,6 +93,7 @@ NV_STATUS uvm_pmm_sysmem_mappings_add_gpu_mapping(uvm_pmm_sysmem_mappings_t *sys
                                                   uvm_va_block_t *va_block,
                                                   uvm_processor_id_t owner)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1747);
     NV_STATUS status = NV_OK;
     uvm_reverse_map_t *new_reverse_map;
     NvU64 key;
@@ -147,6 +152,7 @@ static void pmm_sysmem_mappings_remove_gpu_mapping(uvm_pmm_sysmem_mappings_t *sy
                                                    NvU64 dma_addr,
                                                    bool check_mapping)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1748);
     uvm_reverse_map_t *reverse_map;
     NvU64 key;
     const NvU64 base_key = dma_addr / PAGE_SIZE;
@@ -179,11 +185,13 @@ static void pmm_sysmem_mappings_remove_gpu_mapping(uvm_pmm_sysmem_mappings_t *sy
 
 void uvm_pmm_sysmem_mappings_remove_gpu_mapping(uvm_pmm_sysmem_mappings_t *sysmem_mappings, NvU64 dma_addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1749);
     pmm_sysmem_mappings_remove_gpu_mapping(sysmem_mappings, dma_addr, true);
 }
 
 void uvm_pmm_sysmem_mappings_remove_gpu_mapping_on_eviction(uvm_pmm_sysmem_mappings_t *sysmem_mappings, NvU64 dma_addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1750);
     pmm_sysmem_mappings_remove_gpu_mapping(sysmem_mappings, dma_addr, false);
 }
 
@@ -191,6 +199,7 @@ void uvm_pmm_sysmem_mappings_reparent_gpu_mapping(uvm_pmm_sysmem_mappings_t *sys
                                                   NvU64 dma_addr,
                                                   uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1751);
     NvU64 virt_addr;
     uvm_reverse_map_t *reverse_map;
     const NvU64 base_key = dma_addr / PAGE_SIZE;
@@ -227,6 +236,7 @@ NV_STATUS uvm_pmm_sysmem_mappings_split_gpu_mappings(uvm_pmm_sysmem_mappings_t *
                                                      NvU64 dma_addr,
                                                      NvU64 new_region_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1752);
     uvm_reverse_map_t *orig_reverse_map;
     const NvU64 base_key = dma_addr / PAGE_SIZE;
     const size_t num_pages = new_region_size / PAGE_SIZE;
@@ -308,6 +318,7 @@ void uvm_pmm_sysmem_mappings_merge_gpu_mappings(uvm_pmm_sysmem_mappings_t *sysme
                                                 NvU64 dma_addr,
                                                 NvU64 new_region_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1753);
     uvm_reverse_map_t *first_reverse_map;
     uvm_page_index_t running_page_index;
     NvU64 key;
@@ -385,6 +396,7 @@ size_t uvm_pmm_sysmem_mappings_dma_to_virt(uvm_pmm_sysmem_mappings_t *sysmem_map
                                            uvm_reverse_map_t *out_mappings,
                                            size_t max_out_mappings)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1754);
     NvU64 key;
     size_t num_mappings = 0;
     const NvU64 base_key = dma_addr / PAGE_SIZE;
@@ -434,21 +446,25 @@ size_t uvm_pmm_sysmem_mappings_dma_to_virt(uvm_pmm_sysmem_mappings_t *sysmem_map
 
 uvm_chunk_sizes_mask_t uvm_cpu_chunk_get_allocation_sizes(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1755);
         return uvm_cpu_chunk_allocation_sizes & UVM_CPU_CHUNK_SIZES;
 }
 
 static void uvm_cpu_chunk_set_size(uvm_cpu_chunk_t *chunk, uvm_chunk_size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1756);
     chunk->log2_size = ilog2(size);
 }
 
 uvm_chunk_size_t uvm_cpu_chunk_get_size(uvm_cpu_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1757);
     return ((uvm_chunk_size_t)1) << chunk->log2_size;
 }
 
 static NvU32 compute_gpu_mappings_entry_index(uvm_processor_mask_t *dma_addrs_mask, uvm_gpu_id_t id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1758);
     uvm_processor_mask_t subset_mask;
 
     // Compute the array index for the given GPU ID by masking off all bits
@@ -463,6 +479,7 @@ static NvU32 compute_gpu_mappings_entry_index(uvm_processor_mask_t *dma_addrs_ma
 
 static void cpu_chunk_release(nv_kref_t *kref)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1759);
     uvm_cpu_chunk_t *chunk = container_of(kref, uvm_cpu_chunk_t, refcount);
     uvm_processor_mask_t *mapping_mask;
     uvm_processor_id_t id;
@@ -506,12 +523,14 @@ static void cpu_chunk_release(nv_kref_t *kref)
 
 static void uvm_cpu_chunk_get(uvm_cpu_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1760);
     UVM_ASSERT(chunk);
     nv_kref_get(&chunk->refcount);
 }
 
 void uvm_cpu_chunk_free(uvm_cpu_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1761);
     if (!chunk)
         return;
 
@@ -520,6 +539,7 @@ void uvm_cpu_chunk_free(uvm_cpu_chunk_t *chunk)
 
 static uvm_cpu_physical_chunk_t *get_physical_parent(uvm_cpu_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1762);
     UVM_ASSERT(chunk);
     UVM_ASSERT(chunk->page);
 
@@ -531,6 +551,7 @@ static uvm_cpu_physical_chunk_t *get_physical_parent(uvm_cpu_chunk_t *chunk)
 
 static uvm_page_index_t cpu_chunk_get_phys_index(uvm_cpu_logical_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1763);
     uvm_cpu_physical_chunk_t *phys_chunk = get_physical_parent(&chunk->common);
 
     UVM_ASSERT(phys_chunk->common.page);
@@ -539,6 +560,7 @@ static uvm_page_index_t cpu_chunk_get_phys_index(uvm_cpu_logical_chunk_t *chunk)
 
 static uvm_cpu_phys_mapping_t *chunk_phys_mapping_alloc(uvm_cpu_physical_chunk_t *chunk, uvm_gpu_id_t id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1764);
     NvU32 num_active_entries = uvm_processor_mask_get_gpu_count(&chunk->gpu_mappings.dma_addrs_mask);
     uvm_cpu_phys_mapping_t *new_entries;
     NvU32 array_index;
@@ -580,6 +602,7 @@ static uvm_cpu_phys_mapping_t *chunk_phys_mapping_alloc(uvm_cpu_physical_chunk_t
 
 static uvm_cpu_phys_mapping_t *chunk_phys_mapping_get(uvm_cpu_physical_chunk_t *chunk, uvm_gpu_id_t id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1765);
     uvm_assert_mutex_locked(&chunk->lock);
     if (uvm_processor_mask_test(&chunk->gpu_mappings.dma_addrs_mask, id)) {
         if (chunk->gpu_mappings.max_entries == 1) {
@@ -596,6 +619,7 @@ static uvm_cpu_phys_mapping_t *chunk_phys_mapping_get(uvm_cpu_physical_chunk_t *
 
 static void chunk_inc_gpu_mapping(uvm_cpu_physical_chunk_t *chunk, uvm_gpu_id_t id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1766);
     uvm_cpu_phys_mapping_t *mapping;
 
     uvm_assert_mutex_locked(&chunk->lock);
@@ -606,6 +630,7 @@ static void chunk_inc_gpu_mapping(uvm_cpu_physical_chunk_t *chunk, uvm_gpu_id_t 
 
 static void chunk_dec_gpu_mapping(uvm_cpu_physical_chunk_t *chunk, uvm_gpu_id_t id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1767);
     uvm_cpu_phys_mapping_t *mapping;
 
     uvm_assert_mutex_locked(&chunk->lock);
@@ -633,6 +658,7 @@ static void chunk_dec_gpu_mapping(uvm_cpu_physical_chunk_t *chunk, uvm_gpu_id_t 
 
 NvU64 uvm_cpu_chunk_get_gpu_phys_addr(uvm_cpu_chunk_t *chunk, uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1768);
     uvm_cpu_physical_chunk_t *phys_chunk = get_physical_parent(chunk);
     uvm_cpu_phys_mapping_t *mapping;
     uvm_page_index_t parent_offset = 0;
@@ -664,6 +690,7 @@ NvU64 uvm_cpu_chunk_get_gpu_phys_addr(uvm_cpu_chunk_t *chunk, uvm_parent_gpu_t *
 // structure could not be allocated, NV_ERR_NO_MEMORY is returned.
 static NV_STATUS cpu_chunk_map_gpu_phys(uvm_cpu_chunk_t *chunk, uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1769);
     uvm_cpu_physical_chunk_t *phys_chunk;
     uvm_cpu_logical_chunk_t *logical_chunk = NULL;
     NV_STATUS status = NV_OK;
@@ -715,6 +742,7 @@ done:
 
 void uvm_cpu_chunk_unmap_gpu_phys(uvm_cpu_chunk_t *chunk, uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1770);
     uvm_cpu_physical_chunk_t *phys_chunk;
     uvm_cpu_logical_chunk_t *logical_chunk;
 
@@ -734,6 +762,7 @@ void uvm_cpu_chunk_unmap_gpu_phys(uvm_cpu_chunk_t *chunk, uvm_parent_gpu_t *pare
 
 NV_STATUS uvm_cpu_chunk_map_gpu(uvm_cpu_chunk_t *chunk, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1771);
     NV_STATUS status;
     uvm_chunk_size_t chunk_size = uvm_cpu_chunk_get_size(chunk);
 
@@ -751,6 +780,7 @@ NV_STATUS uvm_cpu_chunk_map_gpu(uvm_cpu_chunk_t *chunk, uvm_gpu_t *gpu)
 static struct page *uvm_cpu_chunk_alloc_page(uvm_chunk_size_t alloc_size,
                                              uvm_cpu_chunk_alloc_flags_t alloc_flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1772);
     gfp_t kernel_alloc_flags;
     struct page *page;
 
@@ -782,6 +812,7 @@ static struct page *uvm_cpu_chunk_alloc_page(uvm_chunk_size_t alloc_size,
 
 static uvm_cpu_physical_chunk_t *uvm_cpu_chunk_create(uvm_chunk_size_t alloc_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1773);
     uvm_cpu_physical_chunk_t *chunk;
 
     chunk = uvm_kvmalloc_zero(sizeof(*chunk));
@@ -807,6 +838,7 @@ NV_STATUS uvm_cpu_chunk_alloc(uvm_chunk_size_t alloc_size,
                               uvm_cpu_chunk_alloc_flags_t alloc_flags,
                               uvm_cpu_chunk_t **new_chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1774);
     uvm_cpu_physical_chunk_t *chunk;
     struct page *page;
 
@@ -832,6 +864,7 @@ NV_STATUS uvm_cpu_chunk_alloc(uvm_chunk_size_t alloc_size,
 NV_STATUS uvm_cpu_chunk_alloc_hmm(struct page *page,
                                   uvm_cpu_chunk_t **new_chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1775);
     uvm_cpu_physical_chunk_t *chunk;
 
     UVM_ASSERT(new_chunk);
@@ -849,6 +882,7 @@ NV_STATUS uvm_cpu_chunk_alloc_hmm(struct page *page,
 
 NV_STATUS uvm_cpu_chunk_split(uvm_cpu_chunk_t *chunk, uvm_cpu_chunk_t **new_chunks)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1776);
     NV_STATUS status = NV_OK;
     uvm_cpu_logical_chunk_t *new_chunk;
     uvm_cpu_physical_chunk_t *phys_chunk = get_physical_parent(chunk);
@@ -932,6 +966,7 @@ error:
 
 static bool verify_merging_chunks(uvm_cpu_chunk_t **chunks, size_t num_chunks)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1777);
     uvm_cpu_logical_chunk_t *logical_chunk;
     uvm_cpu_chunk_t *first_chunk_parent;
     uvm_processor_mask_t *first_chunk_mapped_gpus;
@@ -973,6 +1008,7 @@ static bool verify_merging_chunks(uvm_cpu_chunk_t **chunks, size_t num_chunks)
 
 uvm_cpu_chunk_t *uvm_cpu_chunk_merge(uvm_cpu_chunk_t **chunks)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1778);
     uvm_cpu_chunk_t *parent;
     uvm_cpu_logical_chunk_t *logical_chunk;
     uvm_cpu_physical_chunk_t *phys_chunk;
@@ -1022,6 +1058,7 @@ uvm_cpu_chunk_t *uvm_cpu_chunk_merge(uvm_cpu_chunk_t **chunks)
 // physical chunk's dirty bitmap.
 static void check_cpu_dirty_flag(uvm_cpu_physical_chunk_t *chunk, uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1779);
     struct page *page;
 
     uvm_assert_mutex_locked(&chunk->lock);
@@ -1036,6 +1073,7 @@ static void check_cpu_dirty_flag(uvm_cpu_physical_chunk_t *chunk, uvm_page_index
 
 void uvm_cpu_chunk_mark_dirty(uvm_cpu_chunk_t *chunk, uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1780);
     uvm_cpu_physical_chunk_t *parent;
 
     UVM_ASSERT(page_index < uvm_cpu_chunk_num_pages(chunk));
@@ -1059,6 +1097,7 @@ void uvm_cpu_chunk_mark_dirty(uvm_cpu_chunk_t *chunk, uvm_page_index_t page_inde
 
 void uvm_cpu_chunk_mark_clean(uvm_cpu_chunk_t *chunk, uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1781);
     uvm_cpu_physical_chunk_t *parent;
 
     UVM_ASSERT(page_index < uvm_cpu_chunk_num_pages(chunk));
@@ -1083,6 +1122,7 @@ void uvm_cpu_chunk_mark_clean(uvm_cpu_chunk_t *chunk, uvm_page_index_t page_inde
 
 bool uvm_cpu_chunk_is_dirty(uvm_cpu_chunk_t *chunk, uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1782);
     uvm_cpu_physical_chunk_t *parent;
     bool dirty;
 

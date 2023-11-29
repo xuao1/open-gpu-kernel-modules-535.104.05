@@ -26,11 +26,13 @@
 
 static uvm_range_tree_node_t *get_range_node(struct rb_node *rb_node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2025);
     return rb_entry(rb_node, uvm_range_tree_node_t, rb_node);
 }
 
 static bool range_nodes_overlap(uvm_range_tree_node_t *a, uvm_range_tree_node_t *b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2026);
     return uvm_ranges_overlap(a->start, a->end, b->start, b->end);
 }
 
@@ -57,6 +59,7 @@ static uvm_range_tree_node_t *range_node_find(uvm_range_tree_t *tree,
                                               uvm_range_tree_node_t **parent,
                                               uvm_range_tree_node_t **next)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2027);
     struct rb_node *rb_node = tree->rb_root.rb_node;
     uvm_range_tree_node_t *node = NULL;
     uvm_range_tree_node_t *_parent = NULL;
@@ -97,6 +100,7 @@ static uvm_range_tree_node_t *range_node_find(uvm_range_tree_t *tree,
 
 void uvm_range_tree_init(uvm_range_tree_t *tree)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2028);
     memset(tree, 0, sizeof(*tree));
     tree->rb_root = RB_ROOT;
     INIT_LIST_HEAD(&tree->head);
@@ -104,6 +108,7 @@ void uvm_range_tree_init(uvm_range_tree_t *tree)
 
 NV_STATUS uvm_range_tree_add(uvm_range_tree_t *tree, uvm_range_tree_node_t *node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2029);
     uvm_range_tree_node_t *match, *parent, *prev, *next;
 
     UVM_ASSERT(node->start <= node->end);
@@ -155,6 +160,7 @@ NV_STATUS uvm_range_tree_add(uvm_range_tree_t *tree, uvm_range_tree_node_t *node
 
 void uvm_range_tree_shrink_node(uvm_range_tree_t *tree, uvm_range_tree_node_t *node, NvU64 new_start, NvU64 new_end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2030);
     UVM_ASSERT_MSG(new_start <= new_end, "new_start 0x%llx new_end 0x%llx\n", new_start, new_end);
     UVM_ASSERT_MSG(node->start <= new_start, "start 0x%llx new_start 0x%llx\n", node->start, new_start);
     UVM_ASSERT_MSG(node->end >= new_end, "end 0x%llx new_end 0x%llx\n", node->end, new_end);
@@ -170,6 +176,7 @@ void uvm_range_tree_split(uvm_range_tree_t *tree,
                           uvm_range_tree_node_t *existing,
                           uvm_range_tree_node_t *new)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2031);
     NV_STATUS status;
 
     UVM_ASSERT(new->start > existing->start);
@@ -188,6 +195,7 @@ void uvm_range_tree_split(uvm_range_tree_t *tree,
 
 uvm_range_tree_node_t *uvm_range_tree_merge_prev(uvm_range_tree_t *tree, uvm_range_tree_node_t *node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2032);
     uvm_range_tree_node_t *prev = uvm_range_tree_prev(tree, node);
     if (!prev || prev->end != node->start - 1)
         return NULL;
@@ -199,6 +207,7 @@ uvm_range_tree_node_t *uvm_range_tree_merge_prev(uvm_range_tree_t *tree, uvm_ran
 
 uvm_range_tree_node_t *uvm_range_tree_merge_next(uvm_range_tree_t *tree, uvm_range_tree_node_t *node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2033);
     uvm_range_tree_node_t *next = uvm_range_tree_next(tree, node);
     if (!next || next->start != node->end + 1)
         return NULL;
@@ -210,11 +219,13 @@ uvm_range_tree_node_t *uvm_range_tree_merge_next(uvm_range_tree_t *tree, uvm_ran
 
 uvm_range_tree_node_t *uvm_range_tree_find(uvm_range_tree_t *tree, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2034);
     return range_node_find(tree, addr, NULL, NULL);
 }
 
 uvm_range_tree_node_t *uvm_range_tree_iter_first(uvm_range_tree_t *tree, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2035);
     uvm_range_tree_node_t *node, *next;
 
     UVM_ASSERT(start <= end);
@@ -240,6 +251,7 @@ uvm_range_tree_node_t *uvm_range_tree_iter_first(uvm_range_tree_t *tree, NvU64 s
 
 NV_STATUS uvm_range_tree_find_hole(uvm_range_tree_t *tree, NvU64 addr, NvU64 *start, NvU64 *end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2036);
     uvm_range_tree_node_t *node;
 
     // Find the first node on or after addr, if any
@@ -273,6 +285,7 @@ NV_STATUS uvm_range_tree_find_hole(uvm_range_tree_t *tree, NvU64 addr, NvU64 *st
 
 NV_STATUS uvm_range_tree_find_hole_in(uvm_range_tree_t *tree, NvU64 addr, NvU64 *start, NvU64 *end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2037);
     NvU64 temp_start, temp_end;
     NV_STATUS status;
 

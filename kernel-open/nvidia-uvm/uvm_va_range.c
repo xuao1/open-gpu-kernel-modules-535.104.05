@@ -39,6 +39,7 @@ static struct kmem_cache *g_uvm_vma_wrapper_cache __read_mostly;
 
 NV_STATUS uvm_va_range_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2678);
     g_uvm_va_range_cache = NV_KMEM_CACHE_CREATE("uvm_va_range_t", uvm_va_range_t);
     if (!g_uvm_va_range_cache)
         return NV_ERR_NO_MEMORY;
@@ -52,6 +53,7 @@ NV_STATUS uvm_va_range_init(void)
 
 void uvm_va_range_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2679);
     uvm_va_block_exit();
     kmem_cache_destroy_safe(&g_uvm_va_range_cache);
     kmem_cache_destroy_safe(&g_uvm_vma_wrapper_cache);
@@ -59,6 +61,7 @@ void uvm_va_range_exit(void)
 
 static NvU64 block_calc_start(uvm_va_range_t *va_range, size_t index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2680);
     NvU64 range_start = UVM_VA_BLOCK_ALIGN_DOWN(va_range->node.start);
     NvU64 block_start = range_start + index * UVM_VA_BLOCK_SIZE;
     NvU64 start = max(va_range->node.start, block_start);
@@ -68,6 +71,7 @@ static NvU64 block_calc_start(uvm_va_range_t *va_range, size_t index)
 
 static NvU64 block_calc_end(uvm_va_range_t *va_range, size_t index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2681);
     NvU64 start = block_calc_start(va_range, index);
     NvU64 block_end = UVM_VA_BLOCK_ALIGN_UP(start + 1) - 1; // Inclusive end
     NvU64 end = min(va_range->node.end, block_end);
@@ -81,6 +85,7 @@ static NvU64 block_calc_end(uvm_va_range_t *va_range, size_t index)
 // function cannot fail.
 static void blocks_array_shrink(uvm_va_range_t *va_range, size_t new_num_blocks)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2682);
     size_t new_size = new_num_blocks * sizeof(va_range->blocks[0]);
     atomic_long_t *new_blocks;
 
@@ -111,6 +116,7 @@ static void blocks_array_shrink(uvm_va_range_t *va_range, size_t new_num_blocks)
 
 static uvm_va_range_t *uvm_va_range_alloc(uvm_va_space_t *va_space, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2683);
     uvm_va_range_t *va_range = nv_kmem_cache_zalloc(g_uvm_va_range_cache, NV_UVM_GFP_FLAGS);
     if (!va_range)
         return NULL;
@@ -135,6 +141,7 @@ static NV_STATUS uvm_va_range_alloc_reclaim(uvm_va_space_t *va_space,
                                             NvU64 end,
                                             uvm_va_range_t **out_va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2684);
     uvm_va_range_t *va_range;
     NV_STATUS status;
 
@@ -155,6 +162,7 @@ static NV_STATUS uvm_va_range_alloc_reclaim(uvm_va_space_t *va_space,
 
 static uvm_va_range_t *uvm_va_range_alloc_managed(uvm_va_space_t *va_space, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2685);
     uvm_va_range_t *va_range = NULL;
 
     va_range = uvm_va_range_alloc(va_space, start, end);
@@ -184,6 +192,7 @@ NV_STATUS uvm_va_range_create_mmap(uvm_va_space_t *va_space,
                                    uvm_vma_wrapper_t *vma_wrapper,
                                    uvm_va_range_t **out_va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2686);
     NV_STATUS status;
     struct vm_area_struct *vma = vma_wrapper->vma;
     uvm_va_range_t *va_range = NULL;
@@ -222,6 +231,7 @@ NV_STATUS uvm_va_range_create_external(uvm_va_space_t *va_space,
                                        NvU64 length,
                                        uvm_va_range_t **out_va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2687);
     NV_STATUS status;
     uvm_va_range_t *va_range = NULL;
     NvU32 i;
@@ -260,6 +270,7 @@ NV_STATUS uvm_va_range_create_channel(uvm_va_space_t *va_space,
                                       NvU64 end,
                                       uvm_va_range_t **out_va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2688);
     NV_STATUS status;
     uvm_va_range_t *va_range = NULL;
 
@@ -294,6 +305,7 @@ NV_STATUS uvm_va_range_create_sked_reflected(uvm_va_space_t *va_space,
                                              NvU64 length,
                                              uvm_va_range_t **out_va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2689);
     NV_STATUS status;
     uvm_va_range_t *va_range = NULL;
 
@@ -328,6 +340,7 @@ NV_STATUS uvm_va_range_create_semaphore_pool(uvm_va_space_t *va_space,
                                              NvU32 per_gpu_attrs_count,
                                              uvm_va_range_t **out_va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2690);
     static const uvm_mem_gpu_mapping_attrs_t default_attrs = {
             .protection = UVM_PROT_READ_WRITE_ATOMIC,
             .is_cacheable = false
@@ -414,6 +427,7 @@ error:
 
 static void uvm_va_range_destroy_managed(uvm_va_range_t *va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2691);
     uvm_va_block_t *block;
     uvm_va_block_t *block_tmp;
     uvm_perf_event_data_t event_data;
@@ -438,6 +452,7 @@ static void uvm_va_range_destroy_managed(uvm_va_range_t *va_range)
 
 static void uvm_va_range_destroy_external(uvm_va_range_t *va_range, struct list_head *deferred_free_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2692);
     uvm_gpu_t *gpu;
 
     if (uvm_processor_mask_empty(&va_range->external.mapped_gpus))
@@ -460,6 +475,7 @@ static void uvm_va_range_destroy_external(uvm_va_range_t *va_range, struct list_
 
 static void uvm_va_range_destroy_channel(uvm_va_range_t *va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2693);
     uvm_gpu_va_space_t *gpu_va_space = va_range->channel.gpu_va_space;
     uvm_membar_t membar;
 
@@ -480,6 +496,7 @@ static void uvm_va_range_destroy_channel(uvm_va_range_t *va_range)
 
 static void uvm_va_range_destroy_sked_reflected(uvm_va_range_t *va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2694);
     uvm_gpu_va_space_t *gpu_va_space = va_range->sked_reflected.gpu_va_space;
 
     if (!gpu_va_space || !va_range->sked_reflected.pt_range_vec.ranges)
@@ -495,6 +512,7 @@ static void uvm_va_range_destroy_sked_reflected(uvm_va_range_t *va_range)
 
 static void uvm_va_range_destroy_semaphore_pool(uvm_va_range_t *va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2695);
     NV_STATUS status = uvm_tracker_wait_deinit(&va_range->semaphore_pool.tracker);
     if (status != NV_OK) {
         UVM_ASSERT_MSG(status == uvm_global_get_status(),
@@ -508,6 +526,7 @@ static void uvm_va_range_destroy_semaphore_pool(uvm_va_range_t *va_range)
 
 void uvm_va_range_destroy(uvm_va_range_t *va_range, struct list_head *deferred_free_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2696);
     if (!va_range)
         return;
 
@@ -543,6 +562,7 @@ void uvm_va_range_destroy(uvm_va_range_t *va_range, struct list_head *deferred_f
 
 void uvm_va_range_zombify(uvm_va_range_t *va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2697);
     if (!va_range)
         return;
 
@@ -555,6 +575,7 @@ void uvm_va_range_zombify(uvm_va_range_t *va_range)
 
 NV_STATUS uvm_api_clean_up_zombie_resources(UVM_CLEAN_UP_ZOMBIE_RESOURCES_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2698);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_va_range_t *va_range, *va_range_next;
 
@@ -572,6 +593,7 @@ NV_STATUS uvm_api_clean_up_zombie_resources(UVM_CLEAN_UP_ZOMBIE_RESOURCES_PARAMS
 
 NV_STATUS uvm_api_validate_va_range(UVM_VALIDATE_VA_RANGE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2699);
     NV_STATUS status = NV_ERR_INVALID_ADDRESS;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_va_range_t *va_range;
@@ -591,6 +613,7 @@ static NV_STATUS va_range_add_gpu_va_space_managed(uvm_va_range_t *va_range,
                                                    uvm_gpu_va_space_t *gpu_va_space,
                                                    struct mm_struct *mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2700);
     uvm_va_space_t *va_space = va_range->va_space;
     uvm_gpu_t *gpu = gpu_va_space->gpu;
     NV_STATUS status = NV_OK;
@@ -642,6 +665,7 @@ static NV_STATUS va_range_add_gpu_va_space_managed(uvm_va_range_t *va_range,
 
 static NV_STATUS va_range_add_gpu_va_space_semaphore_pool(uvm_va_range_t *va_range, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2701);
     uvm_mem_gpu_mapping_attrs_t *attrs;
 
     UVM_ASSERT(va_range->type == UVM_VA_RANGE_TYPE_SEMAPHORE_POOL);
@@ -660,6 +684,7 @@ NV_STATUS uvm_va_range_add_gpu_va_space(uvm_va_range_t *va_range,
                                         uvm_gpu_va_space_t *gpu_va_space,
                                         struct mm_struct *mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2702);
     UVM_ASSERT(va_range->type < UVM_VA_RANGE_TYPE_MAX);
 
     if (va_range->inject_add_gpu_va_space_error) {
@@ -681,6 +706,7 @@ static void va_range_remove_gpu_va_space_managed(uvm_va_range_t *va_range,
                                                  uvm_gpu_va_space_t *gpu_va_space,
                                                  struct mm_struct *mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2703);
     uvm_va_block_t *va_block;
     uvm_va_space_t *va_space = va_range->va_space;
     bool should_enable_read_duplicate;
@@ -704,6 +730,7 @@ static void va_range_remove_gpu_va_space_external(uvm_va_range_t *va_range,
                                                   uvm_gpu_t *gpu,
                                                   struct list_head *deferred_free_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2704);
     uvm_ext_gpu_range_tree_t *range_tree;
     uvm_ext_gpu_map_t *ext_map, *ext_map_next;
 
@@ -720,6 +747,7 @@ static void va_range_remove_gpu_va_space_external(uvm_va_range_t *va_range,
 
 static void va_range_remove_gpu_va_space_semaphore_pool(uvm_va_range_t *va_range, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2705);
     UVM_ASSERT(va_range->type == UVM_VA_RANGE_TYPE_SEMAPHORE_POOL);
 
     if (uvm_conf_computing_mode_enabled(gpu) && (va_range->semaphore_pool.mem->dma_owner == gpu))
@@ -733,6 +761,7 @@ void uvm_va_range_remove_gpu_va_space(uvm_va_range_t *va_range,
                                       struct mm_struct *mm,
                                       struct list_head *deferred_free_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2706);
     switch (va_range->type) {
         case UVM_VA_RANGE_TYPE_MANAGED:
             va_range_remove_gpu_va_space_managed(va_range, gpu_va_space, mm);
@@ -760,6 +789,7 @@ void uvm_va_range_remove_gpu_va_space(uvm_va_range_t *va_range,
 
 static NV_STATUS uvm_va_range_enable_peer_managed(uvm_va_range_t *va_range, uvm_gpu_t *gpu0, uvm_gpu_t *gpu1)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2707);
     NV_STATUS status;
     uvm_va_block_t *va_block;
     bool gpu0_accessed_by = uvm_processor_mask_test(&uvm_va_range_get_policy(va_range)->accessed_by, gpu0->id);
@@ -802,6 +832,7 @@ static NV_STATUS uvm_va_range_enable_peer_managed(uvm_va_range_t *va_range, uvm_
 
 NV_STATUS uvm_va_range_enable_peer(uvm_va_range_t *va_range, uvm_gpu_t *gpu0, uvm_gpu_t *gpu1)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2708);
     switch (va_range->type) {
         case UVM_VA_RANGE_TYPE_MANAGED:
             return uvm_va_range_enable_peer_managed(va_range, gpu0, gpu1);
@@ -829,6 +860,7 @@ static void uvm_va_range_disable_peer_external(uvm_va_range_t *va_range,
                                                uvm_gpu_t *owning_gpu,
                                                struct list_head *deferred_free_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2709);
     uvm_ext_gpu_range_tree_t *range_tree;
     uvm_ext_gpu_map_t *ext_map, *ext_map_next;
 
@@ -845,6 +877,7 @@ static void uvm_va_range_disable_peer_external(uvm_va_range_t *va_range,
 
 static void uvm_va_range_disable_peer_managed(uvm_va_range_t *va_range, uvm_gpu_t *gpu0, uvm_gpu_t *gpu1)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2710);
     uvm_va_block_t *va_block;
     uvm_gpu_t *uvm_lite_gpu_to_unmap = NULL;
 
@@ -888,6 +921,7 @@ void uvm_va_range_disable_peer(uvm_va_range_t *va_range,
                                uvm_gpu_t *gpu1,
                                struct list_head *deferred_free_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2711);
 
     switch (va_range->type) {
         case UVM_VA_RANGE_TYPE_MANAGED:
@@ -916,6 +950,7 @@ void uvm_va_range_disable_peer(uvm_va_range_t *va_range,
 
 static NV_STATUS va_range_register_gpu_semaphore_pool(uvm_va_range_t *va_range, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2712);
     // TODO: Bug 1812419: pass GPU mapping attributes to uvm_mem_map_gpu_kernel
     // once that function accepts them.
     return uvm_mem_map_gpu_kernel(va_range->semaphore_pool.mem, gpu);
@@ -923,6 +958,7 @@ static NV_STATUS va_range_register_gpu_semaphore_pool(uvm_va_range_t *va_range, 
 
 NV_STATUS uvm_va_range_register_gpu(uvm_va_range_t *va_range, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2713);
     UVM_ASSERT(va_range->type < UVM_VA_RANGE_TYPE_MAX);
     uvm_assert_rwsem_locked_write(&va_range->va_space->lock);
 
@@ -934,6 +970,7 @@ NV_STATUS uvm_va_range_register_gpu(uvm_va_range_t *va_range, uvm_gpu_t *gpu)
 
 static void va_range_unregister_gpu_managed(uvm_va_range_t *va_range, uvm_gpu_t *gpu, struct mm_struct *mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2714);
     uvm_va_block_t *va_block;
 
     // Reset preferred location and accessed-by of VA ranges if needed
@@ -957,6 +994,7 @@ static void va_range_unregister_gpu_external(uvm_va_range_t *va_range,
                                              uvm_gpu_t *gpu,
                                              struct list_head *deferred_free_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2715);
     uvm_ext_gpu_map_t *ext_map, *ext_map_next;
     uvm_gpu_t *other_gpu;
 
@@ -977,6 +1015,7 @@ static void va_range_unregister_gpu_external(uvm_va_range_t *va_range,
 
 static void va_range_unregister_gpu_semaphore_pool(uvm_va_range_t *va_range, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2716);
     NV_STATUS status;
 
     // Ranges for this GPU should have been previously unmapped from the user VA
@@ -1002,6 +1041,7 @@ void uvm_va_range_unregister_gpu(uvm_va_range_t *va_range,
                                  struct mm_struct *mm,
                                  struct list_head *deferred_free_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2717);
     switch (va_range->type) {
         case UVM_VA_RANGE_TYPE_MANAGED:
             va_range_unregister_gpu_managed(va_range, gpu, mm);
@@ -1039,6 +1079,7 @@ void uvm_va_range_unregister_gpu(uvm_va_range_t *va_range,
 // If this fails it leaves existing unchanged.
 static NV_STATUS uvm_va_range_split_blocks(uvm_va_range_t *existing, uvm_va_range_t *new)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2718);
     uvm_va_block_t *old_block, *block = NULL;
     size_t existing_blocks, split_index, new_index = 0;
     NV_STATUS status;
@@ -1142,6 +1183,7 @@ NV_STATUS uvm_va_range_split(uvm_va_range_t *existing_va_range,
                              NvU64 new_end,
                              uvm_va_range_t **new_va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2719);
     uvm_va_space_t *va_space = existing_va_range->va_space;
     uvm_va_range_t *new = NULL;
     uvm_perf_event_data_t event_data;
@@ -1195,18 +1237,21 @@ error:
 
 uvm_va_range_t *uvm_va_range_find(uvm_va_space_t *va_space, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2720);
     uvm_assert_rwsem_locked(&va_space->lock);
     return uvm_va_range_container(uvm_range_tree_find(&va_space->va_range_tree, addr));
 }
 
 uvm_va_range_t *uvm_va_space_iter_first(uvm_va_space_t *va_space, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2721);
     uvm_range_tree_node_t *node = uvm_range_tree_iter_first(&va_space->va_range_tree, start, end);
     return uvm_va_range_container(node);
 }
 
 uvm_va_range_t *uvm_va_space_iter_next(uvm_va_range_t *va_range, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2722);
     uvm_range_tree_node_t *node;
 
     // Handling a NULL va_range here makes uvm_for_each_va_range_in_safe much
@@ -1220,6 +1265,7 @@ uvm_va_range_t *uvm_va_space_iter_next(uvm_va_range_t *va_range, NvU64 end)
 
 size_t uvm_va_range_num_blocks(uvm_va_range_t *va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2723);
     NvU64 start = UVM_VA_BLOCK_ALIGN_DOWN(va_range->node.start);
     NvU64 end   = UVM_VA_BLOCK_ALIGN_UP(va_range->node.end); // End is inclusive
     return (end - start) / UVM_VA_BLOCK_SIZE;
@@ -1227,6 +1273,7 @@ size_t uvm_va_range_num_blocks(uvm_va_range_t *va_range)
 
 size_t uvm_va_range_block_index(uvm_va_range_t *va_range, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2724);
     size_t addr_index, start_index, index;
 
     UVM_ASSERT(addr >= va_range->node.start);
@@ -1249,6 +1296,7 @@ size_t uvm_va_range_block_index(uvm_va_range_t *va_range, NvU64 addr)
 
 NV_STATUS uvm_va_range_block_create(uvm_va_range_t *va_range, size_t index, uvm_va_block_t **out_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2725);
     uvm_va_block_t *block, *old;
     NV_STATUS status;
 
@@ -1284,6 +1332,7 @@ NV_STATUS uvm_va_range_block_create(uvm_va_range_t *va_range, size_t index, uvm_
 
 uvm_va_block_t *uvm_va_range_block_next(uvm_va_range_t *va_range, uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2726);
     uvm_va_space_t *va_space = va_range->va_space;
     size_t i = 0;
 
@@ -1310,6 +1359,7 @@ static NV_STATUS range_unmap_mask(uvm_va_range_t *va_range,
                                   const uvm_processor_mask_t *mask,
                                   uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2727);
     uvm_va_space_t *va_space = va_range->va_space;
     uvm_va_block_context_t *block_context = uvm_va_space_block_context(va_space, NULL);
     uvm_va_block_t *block;
@@ -1339,6 +1389,7 @@ static NV_STATUS range_unmap_mask(uvm_va_range_t *va_range,
 
 static NV_STATUS range_unmap(uvm_va_range_t *va_range, uvm_processor_id_t processor, uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2728);
     uvm_processor_mask_t mask;
 
     UVM_ASSERT_MSG(va_range->type == UVM_VA_RANGE_TYPE_MANAGED, "type 0x%x\n", va_range->type);
@@ -1351,6 +1402,7 @@ static NV_STATUS range_unmap(uvm_va_range_t *va_range, uvm_processor_id_t proces
 
 static NV_STATUS range_map_uvm_lite_gpus(uvm_va_range_t *va_range, uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2729);
     NV_STATUS status = NV_OK;
     uvm_va_block_t *va_block;
     uvm_va_block_context_t *va_block_context = uvm_va_space_block_context(va_range->va_space, NULL);
@@ -1389,6 +1441,7 @@ static void calc_uvm_lite_gpus_mask(uvm_va_space_t *va_space,
                                     const uvm_processor_mask_t *accessed_by_mask,
                                     uvm_processor_mask_t *uvm_lite_gpus)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2730);
     uvm_gpu_id_t gpu_id;
 
     uvm_assert_rwsem_locked_write(&va_space->lock);
@@ -1422,6 +1475,7 @@ static void calc_uvm_lite_gpus_mask(uvm_va_space_t *va_space,
 // Update the mask of GPUs that follow the UVM-Lite behaviour
 static void range_update_uvm_lite_gpus_mask(uvm_va_range_t *va_range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2731);
     UVM_ASSERT(va_range->type == UVM_VA_RANGE_TYPE_MANAGED);
     calc_uvm_lite_gpus_mask(va_range->va_space,
                             uvm_va_range_get_policy(va_range)->preferred_location,
@@ -1434,6 +1488,7 @@ NV_STATUS uvm_va_range_set_preferred_location(uvm_va_range_t *va_range,
                                               struct mm_struct *mm,
                                               uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2732);
     NV_STATUS status;
     uvm_processor_mask_t all_uvm_lite_gpus;
     uvm_processor_mask_t new_uvm_lite_gpus;
@@ -1568,6 +1623,7 @@ NV_STATUS uvm_va_range_set_accessed_by(uvm_va_range_t *va_range,
                                        struct mm_struct *mm,
                                        uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2733);
     NV_STATUS status;
     uvm_va_block_t *va_block;
     uvm_processor_mask_t new_uvm_lite_gpus;
@@ -1618,6 +1674,7 @@ void uvm_va_range_unset_accessed_by(uvm_va_range_t *va_range,
                                     uvm_processor_id_t processor_id,
                                     uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2734);
     uvm_range_group_range_t *rgr = NULL;
 
     // Mark all range group ranges within this VA range as migrated. We do this to force
@@ -1643,6 +1700,7 @@ void uvm_va_range_unset_accessed_by(uvm_va_range_t *va_range,
 
 NV_STATUS uvm_va_range_set_read_duplication(uvm_va_range_t *va_range, struct mm_struct *mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2735);
     uvm_va_block_t *va_block;
     uvm_va_block_context_t *va_block_context;
 
@@ -1663,6 +1721,7 @@ NV_STATUS uvm_va_range_set_read_duplication(uvm_va_range_t *va_range, struct mm_
 
 NV_STATUS uvm_va_range_unset_read_duplication(uvm_va_range_t *va_range, struct mm_struct *mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2736);
     uvm_va_block_t *va_block;
     uvm_va_block_context_t *va_block_context;
     NV_STATUS status;
@@ -1684,6 +1743,7 @@ NV_STATUS uvm_va_range_unset_read_duplication(uvm_va_range_t *va_range, struct m
 
 uvm_vma_wrapper_t *uvm_vma_wrapper_alloc(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2737);
     uvm_vma_wrapper_t *vma_wrapper = nv_kmem_cache_zalloc(g_uvm_vma_wrapper_cache, NV_UVM_GFP_FLAGS);
     if (!vma_wrapper)
         return NULL;
@@ -1696,6 +1756,7 @@ uvm_vma_wrapper_t *uvm_vma_wrapper_alloc(struct vm_area_struct *vma)
 
 void uvm_vma_wrapper_destroy(uvm_vma_wrapper_t *vma_wrapper)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2738);
     if (!vma_wrapper)
         return;
 
@@ -1706,6 +1767,7 @@ void uvm_vma_wrapper_destroy(uvm_vma_wrapper_t *vma_wrapper)
 
 static NvU64 sked_reflected_pte_maker(uvm_page_table_range_vec_t *range_vec, NvU64 offset, void *caller_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2739);
     (void)caller_data;
 
     return range_vec->tree->hal->make_sked_reflected_pte();
@@ -1713,6 +1775,7 @@ static NvU64 sked_reflected_pte_maker(uvm_page_table_range_vec_t *range_vec, NvU
 
 static NV_STATUS uvm_map_sked_reflected_range(uvm_va_space_t *va_space, UVM_MAP_DYNAMIC_PARALLELISM_REGION_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2740);
     NV_STATUS status;
     uvm_va_range_t *va_range = NULL;
     uvm_gpu_t *gpu;
@@ -1786,6 +1849,7 @@ done:
 
 NV_STATUS uvm_api_map_dynamic_parallelism_region(UVM_MAP_DYNAMIC_PARALLELISM_REGION_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2741);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     // Notably the ranges created by the UvmMapDynamicParallelismRegion() API
@@ -1796,6 +1860,7 @@ NV_STATUS uvm_api_map_dynamic_parallelism_region(UVM_MAP_DYNAMIC_PARALLELISM_REG
 
 NV_STATUS uvm_api_alloc_semaphore_pool(UVM_ALLOC_SEMAPHORE_POOL_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2742);
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_va_range_t *va_range = NULL;
@@ -1849,6 +1914,7 @@ unlock:
 
 NV_STATUS uvm_test_va_range_info(UVM_TEST_VA_RANGE_INFO_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2743);
     uvm_va_space_t *va_space;
     uvm_va_range_t *va_range;
     uvm_processor_id_t processor_id;
@@ -1930,6 +1996,7 @@ out:
 
 NV_STATUS uvm_test_va_range_split(UVM_TEST_VA_RANGE_SPLIT_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2744);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_va_range_t *va_range;
     NV_STATUS status = NV_OK;
@@ -1956,6 +2023,7 @@ out:
 
 NV_STATUS uvm_test_va_range_inject_split_error(UVM_TEST_VA_RANGE_INJECT_SPLIT_ERROR_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2745);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_va_range_t *va_range;
     struct mm_struct *mm;
@@ -1998,6 +2066,7 @@ NV_STATUS uvm_test_va_range_inject_split_error(UVM_TEST_VA_RANGE_INJECT_SPLIT_ER
 NV_STATUS uvm_test_va_range_inject_add_gpu_va_space_error(UVM_TEST_VA_RANGE_INJECT_ADD_GPU_VA_SPACE_ERROR_PARAMS *params,
                                                           struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2746);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_va_range_t *va_range;
     NV_STATUS status = NV_OK;

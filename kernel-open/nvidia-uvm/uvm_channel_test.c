@@ -41,6 +41,7 @@
 // verify that all the values are correct on the CPU.
 static NV_STATUS test_ordering(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 309);
     NV_STATUS status;
     uvm_gpu_t *gpu;
     bool exclude_proxy_channel_type;
@@ -158,6 +159,7 @@ done:
 
 static NV_STATUS test_unexpected_completed_values(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 310);
     uvm_gpu_t *gpu;
 
     for_each_va_space_gpu(gpu, va_space) {
@@ -189,6 +191,7 @@ static NV_STATUS test_unexpected_completed_values(uvm_va_space_t *va_space)
 
 static NV_STATUS uvm_test_rc_for_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 311);
     uvm_push_t push;
     uvm_channel_pool_t *pool;
     uvm_gpfifo_entry_t *fatal_entry;
@@ -289,6 +292,7 @@ static NV_STATUS uvm_test_rc_for_gpu(uvm_gpu_t *gpu)
 
 static NV_STATUS test_rc(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 312);
     uvm_gpu_t *gpu;
 
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
@@ -339,6 +343,7 @@ static void snapshot_counter(uvm_push_t *push,
                              NvU32 index,
                              NvU32 counters_count)
 {
+    printk(KERN_ERR "=====================================   %d\n", 313);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     NvU64 counter_gpu_va;
     NvU64 snapshot_gpu_va;
@@ -370,6 +375,7 @@ static void snapshot_counter(uvm_push_t *push,
 
 static void set_counter(uvm_push_t *push, uvm_rm_mem_t *counter_mem, NvU32 value, NvU32 count)
 {
+    printk(KERN_ERR "=====================================   %d\n", 314);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     NvU64 counter_gpu_va;
     bool is_proxy_channel;
@@ -382,11 +388,13 @@ static void set_counter(uvm_push_t *push, uvm_rm_mem_t *counter_mem, NvU32 value
 
 static uvm_channel_type_t random_ce_channel_type(uvm_test_rng_t *rng)
 {
+    printk(KERN_ERR "=====================================   %d\n", 315);
     return (uvm_channel_type_t)uvm_test_rng_range_32(rng, 0, UVM_CHANNEL_TYPE_CE_COUNT - 1);
 }
 
 static uvm_channel_type_t random_ce_channel_type_except(uvm_test_rng_t *rng, uvm_channel_type_t exception)
 {
+    printk(KERN_ERR "=====================================   %d\n", 316);
     uvm_channel_type_t channel_type;
 
     UVM_ASSERT(exception < UVM_CHANNEL_TYPE_CE_COUNT);
@@ -403,6 +411,7 @@ static uvm_channel_type_t random_ce_channel_type_except(uvm_test_rng_t *rng, uvm
 
 static uvm_channel_type_t gpu_random_internal_ce_channel_type(uvm_gpu_t *gpu, uvm_test_rng_t *rng)
 {
+    printk(KERN_ERR "=====================================   %d\n", 317);
     if (uvm_gpu_uses_proxy_channel_pool(gpu))
         return random_ce_channel_type_except(rng, uvm_channel_proxy_channel_type());
 
@@ -411,6 +420,7 @@ static uvm_channel_type_t gpu_random_internal_ce_channel_type(uvm_gpu_t *gpu, uv
 
 static uvm_gpu_t *random_va_space_gpu(uvm_test_rng_t *rng, uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 318);
     uvm_gpu_t *gpu;
     NvU32 gpu_count = uvm_processor_mask_get_gpu_count(&va_space->registered_gpus);
     NvU32 gpu_index = uvm_test_rng_range_32(rng, 0, gpu_count - 1);
@@ -429,6 +439,7 @@ static uvm_gpu_t *random_va_space_gpu(uvm_test_rng_t *rng, uvm_va_space_t *va_sp
 
 static void test_memset_rm_mem(uvm_push_t *push, uvm_rm_mem_t *rm_mem, NvU32 value)
 {
+    printk(KERN_ERR "=====================================   %d\n", 319);
     uvm_gpu_t *gpu;
     NvU64 gpu_va;
 
@@ -455,6 +466,7 @@ static NV_STATUS stress_test_all_gpus_in_va(uvm_va_space_t *va_space,
                                             NvU32 seed,
                                             NvU32 verbose)
 {
+    printk(KERN_ERR "=====================================   %d\n", 320);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu;
     NvU32 i, j;
@@ -686,6 +698,7 @@ done:
 // enabled.
 NV_STATUS test_conf_computing_channel_selection(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 321);
     NV_STATUS status = NV_OK;
     uvm_channel_pool_t *pool;
     uvm_push_t *pushes;
@@ -748,6 +761,7 @@ error:
 
 NV_STATUS test_write_ctrl_gpfifo_noop(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 322);
     uvm_gpu_t *gpu;
 
     for_each_va_space_gpu(gpu, va_space) {
@@ -787,6 +801,7 @@ NV_STATUS test_write_ctrl_gpfifo_noop(uvm_va_space_t *va_space)
 
 NV_STATUS test_write_ctrl_gpfifo_and_pushes(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 323);
     uvm_gpu_t *gpu;
 
     for_each_va_space_gpu(gpu, va_space) {
@@ -835,6 +850,7 @@ NV_STATUS test_write_ctrl_gpfifo_and_pushes(uvm_va_space_t *va_space)
 
 NV_STATUS test_write_ctrl_gpfifo_tight(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 324);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu;
     uvm_channel_t *channel;
@@ -915,6 +931,7 @@ error:
 // pushbuffers whose VAs are greater than 1TB.
 static NV_STATUS test_channel_pushbuffer_extension_base(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 325);
     uvm_gpu_t *gpu;
     NV_STATUS status = NV_OK;
 
@@ -973,6 +990,7 @@ error:
 
 NV_STATUS uvm_test_channel_sanity(UVM_TEST_CHANNEL_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 326);
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
@@ -1029,6 +1047,7 @@ done:
 static NV_STATUS uvm_test_channel_stress_stream(uvm_va_space_t *va_space,
                                                 const UVM_TEST_CHANNEL_STRESS_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 327);
     NV_STATUS status = NV_OK;
 
     if (params->iterations == 0 || params->num_streams == 0)
@@ -1060,6 +1079,7 @@ done:
 static NV_STATUS uvm_test_channel_stress_update_channels(uvm_va_space_t *va_space,
                                                          const UVM_TEST_CHANNEL_STRESS_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 328);
     NV_STATUS status = NV_OK;
     uvm_test_rng_t rng;
     NvU32 i;
@@ -1087,6 +1107,7 @@ done:
 static NV_STATUS uvm_test_channel_noop_push(uvm_va_space_t *va_space,
                                             const UVM_TEST_CHANNEL_STRESS_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 329);
     NV_STATUS status = NV_OK;
     uvm_push_t push;
     uvm_test_rng_t rng;
@@ -1133,6 +1154,7 @@ done:
 
 NV_STATUS uvm_test_channel_stress(UVM_TEST_CHANNEL_STRESS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 330);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     switch (params->mode) {

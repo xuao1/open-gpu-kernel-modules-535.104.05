@@ -41,6 +41,7 @@ static NV_STATUS service_ats_faults(uvm_gpu_va_space_t *gpu_va_space,
                                     uvm_fault_access_type_t access_type,
                                     uvm_ats_fault_context_t *ats_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 108);
     uvm_va_space_t *va_space = gpu_va_space->va_space;
     struct mm_struct *mm = va_space->va_space_mm.mm;
     bool write = (access_type >= UVM_FAULT_ACCESS_TYPE_WRITE);
@@ -112,6 +113,7 @@ static void flush_tlb_write_faults(uvm_gpu_va_space_t *gpu_va_space,
                                    size_t size,
                                    uvm_fault_client_type_t client_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 109);
     uvm_ats_fault_invalidate_t *ats_invalidate;
 
     if (client_type == UVM_FAULT_CLIENT_TYPE_GPC)
@@ -131,6 +133,7 @@ static void ats_batch_select_residency(uvm_gpu_va_space_t *gpu_va_space,
                                        struct vm_area_struct *vma,
                                        uvm_ats_fault_context_t *ats_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 110);
     uvm_gpu_t *gpu = gpu_va_space->gpu;
     int residency = uvm_gpu_numa_node(gpu);
 
@@ -192,12 +195,14 @@ done:
 
 static void get_range_in_vma(struct vm_area_struct *vma, NvU64 base, NvU64 *start, NvU64 *end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 111);
     *start = max(vma->vm_start, (unsigned long) base);
     *end = min(vma->vm_end, (unsigned long) (base + UVM_VA_BLOCK_SIZE));
 }
 
 static uvm_page_index_t uvm_ats_cpu_page_index(NvU64 base, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 112);
     UVM_ASSERT(addr >= base);
     UVM_ASSERT(addr <= (base + UVM_VA_BLOCK_SIZE));
 
@@ -208,6 +213,7 @@ static uvm_page_index_t uvm_ats_cpu_page_index(NvU64 base, NvU64 addr)
 // [base, base + UVM_VA_BLOCK_SIZE]
 static uvm_va_block_region_t uvm_ats_region_from_start_end(NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 113);
     // base can be greater than, less than or equal to the start of a VMA.
     NvU64 base = UVM_VA_BLOCK_ALIGN_DOWN(start);
 
@@ -221,6 +227,7 @@ static uvm_va_block_region_t uvm_ats_region_from_start_end(NvU64 start, NvU64 en
 
 static uvm_va_block_region_t uvm_ats_region_from_vma(struct vm_area_struct *vma, NvU64 base)
 {
+    printk(KERN_ERR "=====================================   %d\n", 114);
     NvU64 start;
     NvU64 end;
 
@@ -233,6 +240,7 @@ static uvm_va_block_region_t uvm_ats_region_from_vma(struct vm_area_struct *vma,
 
 static bool uvm_ats_invalidate_notifier(struct mmu_interval_notifier *mni, unsigned long cur_seq)
 {
+    printk(KERN_ERR "=====================================   %d\n", 115);
     uvm_ats_fault_context_t *ats_context = container_of(mni, uvm_ats_fault_context_t, prefetch_state.notifier);
     uvm_va_space_t *va_space = ats_context->prefetch_state.va_space;
 
@@ -251,6 +259,7 @@ static bool uvm_ats_invalidate_notifier_entry(struct mmu_interval_notifier *mni,
                                               const struct mmu_notifier_range *range,
                                               unsigned long cur_seq)
 {
+    printk(KERN_ERR "=====================================   %d\n", 116);
     UVM_ENTRY_RET(uvm_ats_invalidate_notifier(mni, cur_seq));
 }
 
@@ -266,6 +275,7 @@ static NV_STATUS ats_compute_residency_mask(uvm_gpu_va_space_t *gpu_va_space,
                                             NvU64 base,
                                             uvm_ats_fault_context_t *ats_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 117);
     NV_STATUS status = NV_OK;
 
 #if UVM_ATS_PREFETCH_SUPPORTED()
@@ -364,6 +374,7 @@ static void ats_expand_fault_region(uvm_gpu_va_space_t *gpu_va_space,
                                     uvm_va_block_region_t max_prefetch_region,
                                     uvm_page_mask_t *faulted_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 118);
     uvm_page_mask_t *read_fault_mask = &ats_context->read_fault_mask;
     uvm_page_mask_t *write_fault_mask = &ats_context->write_fault_mask;
     uvm_page_mask_t *residency_mask = &ats_context->prefetch_state.residency_mask;
@@ -392,6 +403,7 @@ static NV_STATUS ats_fault_prefetch(uvm_gpu_va_space_t *gpu_va_space,
                                     NvU64 base,
                                     uvm_ats_fault_context_t *ats_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 119);
     NV_STATUS status = NV_OK;
     uvm_page_mask_t *read_fault_mask = &ats_context->read_fault_mask;
     uvm_page_mask_t *write_fault_mask = &ats_context->write_fault_mask;
@@ -434,6 +446,7 @@ NV_STATUS uvm_ats_service_faults(uvm_gpu_va_space_t *gpu_va_space,
                                  NvU64 base,
                                  uvm_ats_fault_context_t *ats_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 120);
     NV_STATUS status = NV_OK;
     uvm_va_block_region_t subregion;
     uvm_va_block_region_t region = uvm_va_block_region(0, PAGES_PER_UVM_VA_BLOCK);
@@ -529,6 +542,7 @@ NV_STATUS uvm_ats_service_faults(uvm_gpu_va_space_t *gpu_va_space,
 
 bool uvm_ats_check_in_gmmu_region(uvm_va_space_t *va_space, NvU64 address, uvm_va_range_t *next)
 {
+    printk(KERN_ERR "=====================================   %d\n", 121);
     uvm_va_range_t *prev;
     NvU64 gmmu_region_base = UVM_ALIGN_DOWN(address, UVM_GMMU_ATS_GRANULARITY);
 
@@ -553,6 +567,7 @@ NV_STATUS uvm_ats_invalidate_tlbs(uvm_gpu_va_space_t *gpu_va_space,
                                   uvm_ats_fault_invalidate_t *ats_invalidate,
                                   uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 122);
     NV_STATUS status;
     uvm_push_t push;
 

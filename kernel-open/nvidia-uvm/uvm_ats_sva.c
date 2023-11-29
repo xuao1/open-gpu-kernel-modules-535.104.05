@@ -48,6 +48,7 @@
 
 NV_STATUS uvm_ats_sva_add_gpu(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 153);
     int ret;
 
     ret = iommu_dev_enable_feature(&parent_gpu->pci_dev->dev, IOMMU_DEV_FEAT_SVA);
@@ -57,11 +58,13 @@ NV_STATUS uvm_ats_sva_add_gpu(uvm_parent_gpu_t *parent_gpu)
 
 void uvm_ats_sva_remove_gpu(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 154);
     iommu_dev_disable_feature(&parent_gpu->pci_dev->dev, IOMMU_DEV_FEAT_SVA);
 }
 
 NV_STATUS uvm_ats_sva_bind_gpu(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 155);
     NV_STATUS status = NV_OK;
     struct iommu_sva *iommu_handle;
     struct pci_dev *pci_dev = gpu_va_space->gpu->parent->pci_dev;
@@ -114,12 +117,14 @@ out:
 
 static void uvm_sva_reset_iommu_handle(nv_kref_t *nv_kref)
 {
+    printk(KERN_ERR "=====================================   %d\n", 156);
     uvm_sva_gpu_va_space_t *sva_gpu_va_space = container_of(nv_kref, uvm_sva_gpu_va_space_t, kref);
     sva_gpu_va_space->iommu_handle = NULL;
 }
 
 void uvm_ats_sva_unbind_gpu(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 157);
     uvm_sva_gpu_va_space_t *sva_gpu_va_space = &gpu_va_space->ats.sva;
 
     // ARM SMMU layer decrements the refcount for the {pci_dev, mm} pair.
@@ -132,6 +137,7 @@ void uvm_ats_sva_unbind_gpu(uvm_gpu_va_space_t *gpu_va_space)
 
 NV_STATUS uvm_ats_sva_register_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 158);
     NvU32 pasid;
     NV_STATUS status = NV_OK;
     uvm_sva_gpu_va_space_t *sva_gpu_va_space = &gpu_va_space->ats.sva;
@@ -150,6 +156,7 @@ NV_STATUS uvm_ats_sva_register_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
 
 void uvm_ats_sva_unregister_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 159);
     gpu_va_space->ats.pasid = -1U;
 }
 

@@ -101,6 +101,7 @@ module_param(uvm_perf_fault_coalesce, uint, S_IRUGO);
 // the power management resume path.
 static void fault_buffer_reinit_replayable_faults(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 617);
     uvm_replayable_fault_buffer_info_t *replayable_faults = &parent_gpu->fault_buffer_info.replayable;
 
     // Read the current get/put pointers, as this might not be the first time
@@ -121,6 +122,7 @@ static void fault_buffer_reinit_replayable_faults(uvm_parent_gpu_t *parent_gpu)
 // calling fault_buffer_deinit_replayable_faults on failure.
 static NV_STATUS fault_buffer_init_replayable_faults(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 618);
     NV_STATUS status = NV_OK;
     uvm_replayable_fault_buffer_info_t *replayable_faults = &parent_gpu->fault_buffer_info.replayable;
     uvm_fault_service_batch_context_t *batch_context = &replayable_faults->batch_service_context;
@@ -204,6 +206,7 @@ static NV_STATUS fault_buffer_init_replayable_faults(uvm_parent_gpu_t *parent_gp
 
 static void fault_buffer_deinit_replayable_faults(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 619);
     uvm_replayable_fault_buffer_info_t *replayable_faults = &parent_gpu->fault_buffer_info.replayable;
     uvm_fault_service_batch_context_t *batch_context = &replayable_faults->batch_service_context;
 
@@ -228,6 +231,7 @@ static void fault_buffer_deinit_replayable_faults(uvm_parent_gpu_t *parent_gpu)
 
 NV_STATUS uvm_gpu_fault_buffer_init(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 620);
     NV_STATUS status = NV_OK;
 
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
@@ -270,6 +274,7 @@ fail:
 // from a power management cycle.
 void uvm_gpu_fault_buffer_resume(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 621);
     UVM_ASSERT(parent_gpu->replayable_faults_supported);
 
     fault_buffer_reinit_replayable_faults(parent_gpu);
@@ -277,6 +282,7 @@ void uvm_gpu_fault_buffer_resume(uvm_parent_gpu_t *parent_gpu)
 
 void uvm_gpu_fault_buffer_deinit(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 622);
     NV_STATUS status = NV_OK;
 
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
@@ -304,6 +310,7 @@ void uvm_gpu_fault_buffer_deinit(uvm_parent_gpu_t *parent_gpu)
 // UVM still owns the replayable fault buffer.
 bool uvm_parent_gpu_replayable_fault_buffer_is_uvm_owned(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 623);
     if  (uvm_conf_computing_mode_enabled_parent(parent_gpu))
         return parent_gpu->fault_buffer_info.rm_info.replayable.bUvmOwnsHwFaultBuffer;
 
@@ -312,6 +319,7 @@ bool uvm_parent_gpu_replayable_fault_buffer_is_uvm_owned(uvm_parent_gpu_t *paren
 
 bool uvm_gpu_replayable_faults_pending(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 624);
     uvm_replayable_fault_buffer_info_t *replayable_faults = &parent_gpu->fault_buffer_info.replayable;
 
     UVM_ASSERT(parent_gpu->replayable_faults_supported);
@@ -350,6 +358,7 @@ static NV_STATUS push_cancel_on_gpu(uvm_gpu_t *gpu,
                                     NvU32 client_id,
                                     uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 625);
     NV_STATUS status;
     uvm_push_t push;
     uvm_replayable_fault_buffer_info_t *replayable_faults = &gpu->parent->fault_buffer_info.replayable;
@@ -408,11 +417,13 @@ static NV_STATUS push_cancel_on_gpu_targeted(uvm_gpu_t *gpu,
                                              NvU32 client_id,
                                              uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 626);
     return push_cancel_on_gpu(gpu, instance_ptr, false, gpc_id, client_id, tracker);
 }
 
 static NV_STATUS push_cancel_on_gpu_global(uvm_gpu_t *gpu, uvm_gpu_phys_address_t instance_ptr, uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 627);
     UVM_ASSERT(!gpu->parent->smc.enabled);
 
     return push_cancel_on_gpu(gpu, instance_ptr, true, 0, 0, tracker);
@@ -426,6 +437,7 @@ static NV_STATUS cancel_fault_precise_va(uvm_gpu_t *gpu,
                                          uvm_fault_buffer_entry_t *fault_entry,
                                          uvm_fault_cancel_va_mode_t cancel_va_mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 628);
     NV_STATUS status;
     uvm_gpu_va_space_t *gpu_va_space;
     uvm_gpu_phys_address_t pdb;
@@ -490,6 +502,7 @@ static NV_STATUS push_replay_on_gpu(uvm_gpu_t *gpu,
                                     uvm_fault_replay_type_t type,
                                     uvm_fault_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 629);
     NV_STATUS status;
     uvm_push_t push;
     uvm_replayable_fault_buffer_info_t *replayable_faults = &gpu->parent->fault_buffer_info.replayable;
@@ -531,6 +544,7 @@ static NV_STATUS push_replay_on_gpu(uvm_gpu_t *gpu,
 
 static void write_get(uvm_parent_gpu_t *parent_gpu, NvU32 get)
 {
+    printk(KERN_ERR "=====================================   %d\n", 630);
     uvm_replayable_fault_buffer_info_t *replayable_faults = &parent_gpu->fault_buffer_info.replayable;
 
     UVM_ASSERT(uvm_sem_is_locked(&parent_gpu->isr.replayable_faults.service_lock));
@@ -547,6 +561,7 @@ static void write_get(uvm_parent_gpu_t *parent_gpu, NvU32 get)
 
 static NV_STATUS hw_fault_buffer_flush_locked(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 631);
     NV_STATUS status = NV_OK;
 
     // When Confidential Computing is enabled, GSP-RM owns the HW replayable
@@ -576,6 +591,7 @@ static NV_STATUS hw_fault_buffer_flush_locked(uvm_parent_gpu_t *parent_gpu)
 
 static void fault_buffer_skip_replayable_entry(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 632);
     UVM_ASSERT(parent_gpu->fault_buffer_hal->entry_is_valid(parent_gpu, index));
 
     // Flushed faults are never decrypted, but the decryption IV associated with
@@ -592,6 +608,7 @@ static NV_STATUS fault_buffer_flush_locked(uvm_gpu_t *gpu,
                                            uvm_fault_replay_type_t fault_replay,
                                            uvm_fault_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 633);
     NvU32 get;
     NvU32 put;
     uvm_spin_loop_t spin;
@@ -639,6 +656,7 @@ static NV_STATUS fault_buffer_flush_locked(uvm_gpu_t *gpu,
 
 NV_STATUS uvm_gpu_fault_buffer_flush(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 634);
     NV_STATUS status = NV_OK;
 
     UVM_ASSERT(gpu->parent->replayable_faults_supported);
@@ -660,6 +678,7 @@ NV_STATUS uvm_gpu_fault_buffer_flush(uvm_gpu_t *gpu)
 static inline int cmp_fault_instance_ptr(const uvm_fault_buffer_entry_t *a,
                                          const uvm_fault_buffer_entry_t *b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 635);
     int result = uvm_gpu_phys_addr_cmp(a->instance_ptr, b->instance_ptr);
     // On Volta+ we need to sort by {instance_ptr + subctx_id} pair since it can
     // map to a different VA space
@@ -671,18 +690,21 @@ static inline int cmp_fault_instance_ptr(const uvm_fault_buffer_entry_t *a,
 // Compare two VA spaces
 static inline int cmp_va_space(const uvm_va_space_t *a, const uvm_va_space_t *b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 636);
     return UVM_CMP_DEFAULT(a, b);
 }
 
 // Compare two virtual addresses
 static inline int cmp_addr(NvU64 a, NvU64 b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 637);
     return UVM_CMP_DEFAULT(a, b);
 }
 
 // Compare two fault access types
 static inline int cmp_access_type(uvm_fault_access_type_t a, uvm_fault_access_type_t b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 638);
     UVM_ASSERT(a >= 0 && a < UVM_FAULT_ACCESS_TYPE_COUNT);
     UVM_ASSERT(b >= 0 && b < UVM_FAULT_ACCESS_TYPE_COUNT);
 
@@ -712,6 +734,7 @@ typedef enum
 static void fetch_fault_buffer_merge_entry(uvm_fault_buffer_entry_t *current_entry,
                                            uvm_fault_buffer_entry_t *last_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 639);
     UVM_ASSERT(last_entry->num_instances > 0);
 
     ++last_entry->num_instances;
@@ -743,6 +766,7 @@ static bool fetch_fault_buffer_try_merge_entry(uvm_fault_buffer_entry_t *current
                                                uvm_fault_utlb_info_t *current_tlb,
                                                bool is_same_instance_ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 640);
     uvm_fault_buffer_entry_t *last_tlb_entry = current_tlb->last_fault;
     uvm_fault_buffer_entry_t *last_global_entry = batch_context->last_fault;
 
@@ -804,6 +828,7 @@ static NV_STATUS fetch_fault_buffer_entries(uvm_gpu_t *gpu,
                                             uvm_fault_service_batch_context_t *batch_context,
                                             fault_fetch_mode_t fetch_mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 641);
     NvU32 get;
     NvU32 put;
     NvU32 fault_index;
@@ -944,6 +969,7 @@ done:
 // instance pointer
 static int cmp_sort_fault_entry_by_instance_ptr(const void *_a, const void *_b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 642);
     const uvm_fault_buffer_entry_t **a = (const uvm_fault_buffer_entry_t **)_a;
     const uvm_fault_buffer_entry_t **b = (const uvm_fault_buffer_entry_t **)_b;
 
@@ -954,6 +980,7 @@ static int cmp_sort_fault_entry_by_instance_ptr(const void *_a, const void *_b)
 // fault address and fault access type
 static int cmp_sort_fault_entry_by_va_space_address_access_type(const void *_a, const void *_b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 643);
     const uvm_fault_buffer_entry_t **a = (const uvm_fault_buffer_entry_t **)_a;
     const uvm_fault_buffer_entry_t **b = (const uvm_fault_buffer_entry_t **)_b;
 
@@ -979,6 +1006,7 @@ static int cmp_sort_fault_entry_by_va_space_address_access_type(const void *_a, 
 static NV_STATUS translate_instance_ptrs(uvm_gpu_t *gpu,
                                          uvm_fault_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 644);
     NvU32 i;
     NV_STATUS status;
 
@@ -1072,6 +1100,7 @@ static NV_STATUS translate_instance_ptrs(uvm_gpu_t *gpu,
 //    point) and access type
 static NV_STATUS preprocess_fault_batch(uvm_gpu_t *gpu, uvm_fault_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 645);
     NV_STATUS status;
     NvU32 i, j;
     uvm_fault_buffer_entry_t **ordered_fault_cache = batch_context->ordered_fault_cache;
@@ -1118,6 +1147,7 @@ static NV_STATUS preprocess_fault_batch(uvm_gpu_t *gpu, uvm_fault_service_batch_
 static bool check_fault_entry_duplicate(const uvm_fault_buffer_entry_t *current_entry,
                                         const uvm_fault_buffer_entry_t *previous_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 646);
     bool is_duplicate = false;
 
     if (previous_entry) {
@@ -1135,6 +1165,7 @@ static void update_batch_and_notify_fault(uvm_gpu_t *gpu,
                                           uvm_fault_buffer_entry_t *current_entry,
                                           bool is_duplicate)
 {
+    printk(KERN_ERR "=====================================   %d\n", 647);
     if (is_duplicate)
         batch_context->num_duplicate_faults += current_entry->num_instances;
     else
@@ -1152,6 +1183,7 @@ static void update_batch_and_notify_fault(uvm_gpu_t *gpu,
 static void mark_fault_invalid_prefetch(uvm_fault_service_batch_context_t *batch_context,
                                         uvm_fault_buffer_entry_t *fault_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 648);
     fault_entry->is_invalid_prefetch = true;
 
     // For block faults, the following counter might be updated more than once
@@ -1168,6 +1200,7 @@ static void mark_fault_invalid_prefetch(uvm_fault_service_batch_context_t *batch
 static void mark_fault_throttled(uvm_fault_service_batch_context_t *batch_context,
                                  uvm_fault_buffer_entry_t *fault_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 649);
     fault_entry->is_throttled = true;
     batch_context->has_throttled_faults = true;
 }
@@ -1177,6 +1210,7 @@ static void mark_fault_fatal(uvm_fault_service_batch_context_t *batch_context,
                              UvmEventFatalReason fatal_reason,
                              uvm_fault_cancel_va_mode_t cancel_va_mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 650);
     uvm_fault_utlb_info_t *utlb = &batch_context->utlbs[fault_entry->fault_source.utlb_id];
 
     fault_entry->is_fatal = true;
@@ -1191,6 +1225,7 @@ static void fault_entry_duplicate_flags(uvm_fault_service_batch_context_t *batch
                                         uvm_fault_buffer_entry_t *current_entry,
                                         const uvm_fault_buffer_entry_t *previous_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 651);
     UVM_ASSERT(previous_entry);
     UVM_ASSERT(check_fault_entry_duplicate(current_entry, previous_entry));
 
@@ -1230,6 +1265,7 @@ static uvm_fault_access_type_t check_fault_access_permissions(uvm_gpu_t *gpu,
                                                               uvm_fault_buffer_entry_t *fault_entry,
                                                               bool allow_migration)
 {
+    printk(KERN_ERR "=====================================   %d\n", 652);
     NV_STATUS perm_status;
     UvmEventFatalReason fatal_reason;
     uvm_fault_cancel_va_mode_t cancel_va_mode;
@@ -1312,6 +1348,7 @@ static NV_STATUS service_fault_batch_block_locked(uvm_gpu_t *gpu,
                                                   NvU32 first_fault_index,
                                                   NvU32 *block_faults)
 {
+    printk(KERN_ERR "=====================================   %d\n", 653);
     NV_STATUS status = NV_OK;
     NvU32 i;
     uvm_page_index_t first_page_index;
@@ -1531,6 +1568,7 @@ static NV_STATUS service_fault_batch_block(uvm_gpu_t *gpu,
                                            NvU32 first_fault_index,
                                            NvU32 *block_faults)
 {
+    printk(KERN_ERR "=====================================   %d\n", 654);
     NV_STATUS status;
     uvm_va_block_retry_t va_block_retry;
     NV_STATUS tracker_status;
@@ -1579,6 +1617,7 @@ static void service_fault_batch_fatal(uvm_gpu_t *gpu,
                                       uvm_fault_cancel_va_mode_t cancel_va_mode,
                                       NvU32 *block_faults)
 {
+    printk(KERN_ERR "=====================================   %d\n", 655);
     uvm_fault_buffer_entry_t *current_entry = batch_context->ordered_fault_cache[first_fault_index];
     const uvm_fault_buffer_entry_t *previous_entry = first_fault_index > 0 ?
                                                        batch_context->ordered_fault_cache[first_fault_index - 1] : NULL;
@@ -1602,6 +1641,7 @@ static void service_fault_batch_fatal_notify(uvm_gpu_t *gpu,
                                              uvm_fault_cancel_va_mode_t cancel_va_mode,
                                              NvU32 *block_faults)
 {
+    printk(KERN_ERR "=====================================   %d\n", 656);
     uvm_fault_buffer_entry_t *current_entry = batch_context->ordered_fault_cache[first_fault_index];
     const uvm_fault_buffer_entry_t *previous_entry = first_fault_index > 0 ?
                                                        batch_context->ordered_fault_cache[first_fault_index - 1] : NULL;
@@ -1620,6 +1660,7 @@ static NV_STATUS service_fault_batch_ats_sub_vma(uvm_gpu_va_space_t *gpu_va_spac
                                                  NvU32 fault_index_end,
                                                  NvU32 *block_faults)
 {
+    printk(KERN_ERR "=====================================   %d\n", 657);
     NvU32 i;
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu = gpu_va_space->gpu;
@@ -1696,6 +1737,7 @@ static void start_new_sub_batch(NvU64 *sub_batch_base,
                                 NvU32 fault_index,
                                 uvm_ats_fault_context_t *ats_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 658);
     uvm_page_mask_zero(&ats_context->read_fault_mask);
     uvm_page_mask_zero(&ats_context->write_fault_mask);
 
@@ -1710,6 +1752,7 @@ static NV_STATUS service_fault_batch_ats_sub(uvm_gpu_va_space_t *gpu_va_space,
                                              NvU64 outer,
                                              NvU32 *block_faults)
 {
+    printk(KERN_ERR "=====================================   %d\n", 659);
     NV_STATUS status = NV_OK;
     NvU32 i = fault_index;
     NvU32 sub_batch_fault_index;
@@ -1798,6 +1841,7 @@ static NV_STATUS service_fault_batch_ats(uvm_gpu_va_space_t *gpu_va_space,
                                          NvU64 outer,
                                          NvU32 *block_faults)
 {
+    printk(KERN_ERR "=====================================   %d\n", 660);
     NvU32 i;
     NV_STATUS status = NV_OK;
 
@@ -1851,6 +1895,7 @@ static NV_STATUS service_fault_batch_dispatch(uvm_va_space_t *va_space,
                                               NvU32 *block_faults,
                                               bool replay_per_va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 661);
     NV_STATUS status;
     uvm_va_range_t *va_range = NULL;
     uvm_va_range_t *va_range_next = NULL;
@@ -1946,6 +1991,7 @@ static NV_STATUS service_fault_batch(uvm_gpu_t *gpu,
                                      fault_service_mode_t service_mode,
                                      uvm_fault_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 662);
     NV_STATUS status = NV_OK;
     NvU32 i;
     uvm_va_space_t *va_space = NULL;
@@ -2084,6 +2130,7 @@ fail:
 // Tells if the given fault entry is the first one in its uTLB
 static bool is_first_fault_in_utlb(uvm_fault_service_batch_context_t *batch_context, NvU32 fault_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 663);
     NvU32 i;
     NvU32 utlb_id = batch_context->fault_cache[fault_index].fault_source.utlb_id;
 
@@ -2106,6 +2153,7 @@ static void faults_for_page_in_utlb(uvm_fault_service_batch_context_t *batch_con
                                     NvU32 *fatal_faults,
                                     NvU32 *non_fatal_faults)
 {
+    printk(KERN_ERR "=====================================   %d\n", 664);
     NvU32 i;
 
     *fatal_faults = 0;
@@ -2134,6 +2182,7 @@ static bool no_fatal_pages_in_utlb(uvm_fault_service_batch_context_t *batch_cont
                                    NvU32 start_index,
                                    NvU32 utlb_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 665);
     NvU32 i;
 
     // Fault filtering is not allowed in the TLB-based fault cancel path
@@ -2164,6 +2213,7 @@ static bool no_fatal_pages_in_utlb(uvm_fault_service_batch_context_t *batch_cont
 
 static void record_fatal_fault_helper(uvm_gpu_t *gpu, uvm_fault_buffer_entry_t *entry, UvmEventFatalReason reason)
 {
+    printk(KERN_ERR "=====================================   %d\n", 666);
     uvm_va_space_t *va_space;
 
     va_space = entry->va_space;
@@ -2190,6 +2240,7 @@ static void record_fatal_fault_helper(uvm_gpu_t *gpu, uvm_fault_buffer_entry_t *
 // - Sort by uTLB id
 static NV_STATUS try_to_cancel_utlbs(uvm_gpu_t *gpu, uvm_fault_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 667);
     NvU32 i;
 
     // Fault filtering is not allowed in the TLB-based fault cancel path
@@ -2238,6 +2289,7 @@ static NV_STATUS try_to_cancel_utlbs(uvm_gpu_t *gpu, uvm_fault_service_batch_con
 static NvU32 find_fatal_fault_in_utlb(uvm_fault_service_batch_context_t *batch_context,
                                       NvU32 utlb_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 668);
     NvU32 i;
 
     // Fault filtering is not allowed in the TLB-based fault cancel path
@@ -2255,6 +2307,7 @@ static NvU32 find_fatal_fault_in_utlb(uvm_fault_service_batch_context_t *batch_c
 static NvU32 is_fatal_fault_in_buffer(uvm_fault_service_batch_context_t *batch_context,
                                       uvm_fault_buffer_entry_t *fault)
 {
+    printk(KERN_ERR "=====================================   %d\n", 669);
     NvU32 i;
 
     // Fault filtering is not allowed in the TLB-based fault cancel path
@@ -2295,6 +2348,7 @@ static NV_STATUS cancel_faults_precise_va(uvm_gpu_t *gpu,
                                           fault_cancel_mode_t cancel_mode,
                                           UvmEventFatalReason reason)
 {
+    printk(KERN_ERR "=====================================   %d\n", 670);
     NV_STATUS status = NV_OK;
     NV_STATUS fault_status;
     uvm_va_space_t *va_space = NULL;
@@ -2381,6 +2435,7 @@ static void cancel_fault_batch_tlb(uvm_gpu_t *gpu,
                                    uvm_fault_service_batch_context_t *batch_context,
                                    UvmEventFatalReason reason)
 {
+    printk(KERN_ERR "=====================================   %d\n", 671);
     NvU32 i;
 
     for (i = 0; i < batch_context->num_coalesced_faults; ++i) {
@@ -2410,6 +2465,7 @@ static void cancel_fault_batch(uvm_gpu_t *gpu,
                                uvm_fault_service_batch_context_t *batch_context,
                                UvmEventFatalReason reason)
 {
+    printk(KERN_ERR "=====================================   %d\n", 672);
     if (gpu->parent->fault_cancel_va_supported) {
         cancel_faults_precise_va(gpu, batch_context, FAULT_CANCEL_MODE_ALL, reason);
         return;
@@ -2444,6 +2500,7 @@ static void cancel_fault_batch(uvm_gpu_t *gpu,
 // therefore, will not show up again)
 static NV_STATUS cancel_faults_precise_tlb(uvm_gpu_t *gpu, uvm_fault_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 673);
     NV_STATUS status;
     NV_STATUS tracker_status;
     uvm_replayable_fault_buffer_info_t *replayable_faults = &gpu->parent->fault_buffer_info.replayable;
@@ -2581,6 +2638,7 @@ static NV_STATUS cancel_faults_precise_tlb(uvm_gpu_t *gpu, uvm_fault_service_bat
 
 static NV_STATUS cancel_faults_precise(uvm_gpu_t *gpu, uvm_fault_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 674);
     UVM_ASSERT(batch_context->has_fatal_faults);
     if (gpu->parent->fault_cancel_va_supported) {
         return cancel_faults_precise_va(gpu,
@@ -2594,6 +2652,7 @@ static NV_STATUS cancel_faults_precise(uvm_gpu_t *gpu, uvm_fault_service_batch_c
 
 static void enable_disable_prefetch_faults(uvm_parent_gpu_t *parent_gpu, uvm_fault_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 675);
     if (!parent_gpu->prefetch_fault_supported)
         return;
 
@@ -2622,6 +2681,7 @@ static void enable_disable_prefetch_faults(uvm_parent_gpu_t *parent_gpu, uvm_fau
 
 void uvm_gpu_service_replayable_faults(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 676);
     NvU32 num_replays = 0;
     NvU32 num_batches = 0;
     NvU32 num_throttled = 0;
@@ -2741,6 +2801,7 @@ void uvm_gpu_service_replayable_faults(uvm_gpu_t *gpu)
 
 void uvm_gpu_enable_prefetch_faults(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 677);
     UVM_ASSERT(parent_gpu->isr.replayable_faults.handling);
     UVM_ASSERT(parent_gpu->prefetch_fault_supported);
 
@@ -2752,6 +2813,7 @@ void uvm_gpu_enable_prefetch_faults(uvm_parent_gpu_t *parent_gpu)
 
 void uvm_gpu_disable_prefetch_faults(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 678);
     UVM_ASSERT(parent_gpu->isr.replayable_faults.handling);
     UVM_ASSERT(parent_gpu->prefetch_fault_supported);
 
@@ -2764,6 +2826,7 @@ void uvm_gpu_disable_prefetch_faults(uvm_parent_gpu_t *parent_gpu)
 
 const char *uvm_perf_fault_replay_policy_string(uvm_perf_fault_replay_policy_t replay_policy)
 {
+    printk(KERN_ERR "=====================================   %d\n", 679);
     BUILD_BUG_ON(UVM_PERF_FAULT_REPLAY_POLICY_MAX != 4);
 
     switch (replay_policy) {
@@ -2778,6 +2841,7 @@ const char *uvm_perf_fault_replay_policy_string(uvm_perf_fault_replay_policy_t r
 NV_STATUS uvm_test_get_prefetch_faults_reenable_lapse(UVM_TEST_GET_PREFETCH_FAULTS_REENABLE_LAPSE_PARAMS *params,
                                                       struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 680);
     params->reenable_lapse = uvm_perf_reenable_prefetch_faults_lapse_msec;
 
     return NV_OK;
@@ -2786,6 +2850,7 @@ NV_STATUS uvm_test_get_prefetch_faults_reenable_lapse(UVM_TEST_GET_PREFETCH_FAUL
 NV_STATUS uvm_test_set_prefetch_faults_reenable_lapse(UVM_TEST_SET_PREFETCH_FAULTS_REENABLE_LAPSE_PARAMS *params,
                                                       struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 681);
     uvm_perf_reenable_prefetch_faults_lapse_msec = params->reenable_lapse;
 
     return NV_OK;
@@ -2793,6 +2858,7 @@ NV_STATUS uvm_test_set_prefetch_faults_reenable_lapse(UVM_TEST_SET_PREFETCH_FAUL
 
 NV_STATUS uvm_test_drain_replayable_faults(UVM_TEST_DRAIN_REPLAYABLE_FAULTS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 682);
     uvm_gpu_t *gpu;
     NV_STATUS status = NV_OK;
     uvm_spin_loop_t spin;

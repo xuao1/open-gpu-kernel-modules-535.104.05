@@ -190,21 +190,25 @@ static NV_STATUS tools_update_status(uvm_va_space_t *va_space);
 
 static uvm_tools_event_tracker_t *tools_event_tracker(struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2214);
     return (uvm_tools_event_tracker_t *)atomic_long_read((atomic_long_t *)&filp->private_data);
 }
 
 static bool tracker_is_queue(uvm_tools_event_tracker_t *event_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2215);
     return event_tracker != NULL && event_tracker->is_queue;
 }
 
 static bool tracker_is_counter(uvm_tools_event_tracker_t *event_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2216);
     return event_tracker != NULL && !event_tracker->is_queue;
 }
 
 static uvm_va_space_t *tools_event_tracker_va_space(uvm_tools_event_tracker_t *event_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2217);
     uvm_va_space_t *va_space;
     UVM_ASSERT(event_tracker->uvm_file);
     va_space = uvm_va_space_get(event_tracker->uvm_file);
@@ -213,6 +217,7 @@ static uvm_va_space_t *tools_event_tracker_va_space(uvm_tools_event_tracker_t *e
 
 static void uvm_put_user_pages_dirty(struct page **pages, NvU64 page_count)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2218);
     NvU64 i;
 
     for (i = 0; i < page_count; i++) {
@@ -223,6 +228,7 @@ static void uvm_put_user_pages_dirty(struct page **pages, NvU64 page_count)
 
 static void unmap_user_pages(struct page **pages, void *addr, NvU64 size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2219);
     size = DIV_ROUND_UP(size, PAGE_SIZE);
     vunmap((NvU8 *)addr);
     uvm_put_user_pages_dirty(pages, size);
@@ -232,6 +238,7 @@ static void unmap_user_pages(struct page **pages, void *addr, NvU64 size)
 // This must be called with the mmap_lock held in read mode or better.
 static NV_STATUS check_vmas(struct mm_struct *mm, NvU64 start_va, NvU64 size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2220);
     struct vm_area_struct *vma;
     NvU64 addr = start_va;
     NvU64 region_end = start_va + size;
@@ -251,6 +258,7 @@ static NV_STATUS check_vmas(struct mm_struct *mm, NvU64 start_va, NvU64 size)
 // Sets *addr to kernel mapping and *pages to the array of struct pages that contain the memory.
 static NV_STATUS map_user_pages(NvU64 user_va, NvU64 size, void **addr, struct page ***pages)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2221);
     NV_STATUS status = NV_OK;
     long ret = 0;
     long num_pages;
@@ -328,6 +336,7 @@ static void insert_event_tracker(uvm_va_space_t *va_space,
                                  struct list_head *lists,
                                  NvU64 *inserted_lists)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2222);
     NvU32 i;
     NvU64 insertable_lists = list_mask & ~*subscribed_mask;
 
@@ -351,6 +360,7 @@ static void remove_event_tracker(uvm_va_space_t *va_space,
                                  NvU64 list_mask,
                                  NvU64 *subscribed_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2223);
     NvU32 i;
     NvU64 removable_lists = list_mask & *subscribed_mask;
 
@@ -370,6 +380,7 @@ static void remove_event_tracker(uvm_va_space_t *va_space,
 
 static bool queue_needs_wakeup(uvm_tools_queue_t *queue, uvm_tools_queue_snapshot_t *sn)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2224);
     NvU32 queue_mask = queue->queue_buffer_count - 1;
 
     uvm_assert_spinlock_locked(&queue->lock);
@@ -378,6 +389,7 @@ static bool queue_needs_wakeup(uvm_tools_queue_t *queue, uvm_tools_queue_snapsho
 
 static void destroy_event_tracker(uvm_tools_event_tracker_t *event_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2225);
     if (event_tracker->uvm_file != NULL) {
         NV_STATUS status;
         uvm_va_space_t *va_space = tools_event_tracker_va_space(event_tracker);
@@ -438,6 +450,7 @@ static void destroy_event_tracker(uvm_tools_event_tracker_t *event_tracker)
 
 static void enqueue_event(const UvmEventEntry *entry, uvm_tools_queue_t *queue)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2226);
     UvmToolsEventControlData *ctrl = queue->control;
     uvm_tools_queue_snapshot_t sn;
     NvU32 queue_size = queue->queue_buffer_count;
@@ -487,6 +500,7 @@ unlock:
 
 static void uvm_tools_record_event(uvm_va_space_t *va_space, const UvmEventEntry *entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2227);
     NvU8 eventType = entry->eventData.eventType;
     uvm_tools_queue_t *queue;
 
@@ -500,6 +514,7 @@ static void uvm_tools_record_event(uvm_va_space_t *va_space, const UvmEventEntry
 
 static void uvm_tools_broadcast_event(const UvmEventEntry *entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2228);
     uvm_va_space_t *va_space;
 
     uvm_down_read(&g_tools_va_space_list_lock);
@@ -513,6 +528,7 @@ static void uvm_tools_broadcast_event(const UvmEventEntry *entry)
 
 static bool counter_matches_processor(UvmCounterName counter, const NvProcessorUuid *processor)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2229);
     // For compatibility with older counters, CPU faults for memory with a preferred location are reported
     // for their preferred location as well as for the CPU device itself.
     // This check prevents double counting in the aggregate count.
@@ -526,6 +542,7 @@ static void uvm_tools_inc_counter(uvm_va_space_t *va_space,
                                   NvU64 amount,
                                   const NvProcessorUuid *processor)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2230);
     UVM_ASSERT((NvU32)counter < UVM_TOTAL_COUNTERS);
     uvm_assert_rwsem_locked(&va_space->tools.lock);
 
@@ -551,6 +568,7 @@ static void uvm_tools_inc_counter(uvm_va_space_t *va_space,
 
 static bool tools_is_counter_enabled(uvm_va_space_t *va_space, UvmCounterName counter)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2231);
     uvm_assert_rwsem_locked(&va_space->tools.lock);
 
     UVM_ASSERT(counter < UVM_TOTAL_COUNTERS);
@@ -559,6 +577,7 @@ static bool tools_is_counter_enabled(uvm_va_space_t *va_space, UvmCounterName co
 
 static bool tools_is_event_enabled(uvm_va_space_t *va_space, UvmEventType event)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2232);
     uvm_assert_rwsem_locked(&va_space->tools.lock);
 
     UVM_ASSERT(event < UvmEventNumTypesAll);
@@ -567,6 +586,7 @@ static bool tools_is_event_enabled(uvm_va_space_t *va_space, UvmEventType event)
 
 static bool tools_is_event_enabled_in_any_va_space(UvmEventType event)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2233);
     bool ret = false;
 
     uvm_down_read(&g_tools_va_space_list_lock);
@@ -578,6 +598,7 @@ static bool tools_is_event_enabled_in_any_va_space(UvmEventType event)
 
 static bool tools_are_enabled(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2234);
     NvU32 i;
 
     uvm_assert_rwsem_locked(&va_space->tools.lock);
@@ -595,6 +616,7 @@ static bool tools_are_enabled(uvm_va_space_t *va_space)
 
 static bool tools_is_fault_callback_needed(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2235);
     return tools_is_event_enabled(va_space, UvmEventTypeCpuFault) ||
            tools_is_event_enabled(va_space, UvmEventTypeGpuFault) ||
            tools_is_counter_enabled(va_space, UvmCounterNameCpuPageFaultCount) ||
@@ -603,6 +625,7 @@ static bool tools_is_fault_callback_needed(uvm_va_space_t *va_space)
 
 static bool tools_is_migration_callback_needed(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2236);
     return tools_is_event_enabled(va_space, UvmEventTypeMigration) ||
            tools_is_event_enabled(va_space, UvmEventTypeReadDuplicate) ||
            tools_is_counter_enabled(va_space, UvmCounterNameBytesXferDtH) ||
@@ -611,17 +634,20 @@ static bool tools_is_migration_callback_needed(uvm_va_space_t *va_space)
 
 static int uvm_tools_open(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2237);
     filp->private_data = NULL;
     return -nv_status_to_errno(uvm_global_get_status());
 }
 
 static int uvm_tools_open_entry(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2238);
     UVM_ENTRY_RET(uvm_tools_open(inode, filp));
 }
 
 static int uvm_tools_release(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2239);
     uvm_tools_event_tracker_t *event_tracker = tools_event_tracker(filp);
     if (event_tracker != NULL) {
         destroy_event_tracker(event_tracker);
@@ -632,11 +658,13 @@ static int uvm_tools_release(struct inode *inode, struct file *filp)
 
 static int uvm_tools_release_entry(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2240);
     UVM_ENTRY_RET(uvm_tools_release(inode, filp));
 }
 
 static long uvm_tools_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2241);
     switch (cmd) {
         UVM_ROUTE_CMD_STACK_NO_INIT_CHECK(UVM_TOOLS_INIT_EVENT_TRACKER,         uvm_api_tools_init_event_tracker);
         UVM_ROUTE_CMD_STACK_NO_INIT_CHECK(UVM_TOOLS_SET_NOTIFICATION_THRESHOLD, uvm_api_tools_set_notification_threshold);
@@ -653,11 +681,13 @@ static long uvm_tools_unlocked_ioctl(struct file *filp, unsigned int cmd, unsign
 
 static long uvm_tools_unlocked_ioctl_entry(struct file *filp, unsigned int cmd, unsigned long arg)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2242);
     UVM_ENTRY_RET(uvm_tools_unlocked_ioctl(filp, cmd, arg));
 }
 
 static unsigned uvm_tools_poll(struct file *filp, poll_table *wait)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2243);
     int flags = 0;
     uvm_tools_queue_snapshot_t sn;
     uvm_tools_event_tracker_t *event_tracker;
@@ -688,6 +718,7 @@ static unsigned uvm_tools_poll(struct file *filp, poll_table *wait)
 
 static unsigned uvm_tools_poll_entry(struct file *filp, poll_table *wait)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2244);
     UVM_ENTRY_RET(uvm_tools_poll(filp, wait));
 }
 
@@ -742,6 +773,7 @@ static void record_gpu_fault_instance(uvm_gpu_t *gpu,
                                       NvU64 batch_id,
                                       NvU64 timestamp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2245);
     UvmEventEntry entry;
     UvmEventGpuFaultInfo *info = &entry.eventData.gpuFault;
     memset(&entry, 0, sizeof(entry));
@@ -766,6 +798,7 @@ static void record_gpu_fault_instance(uvm_gpu_t *gpu,
 
 static void uvm_tools_record_fault(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2246);
     uvm_va_space_t *va_space = event_data->fault.space;
 
     UVM_ASSERT(event_id == UVM_PERF_EVENT_FAULT);
@@ -840,6 +873,7 @@ static void uvm_tools_record_fault(uvm_perf_event_t event_id, uvm_perf_event_dat
 
 static void add_pending_event_for_channel(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2247);
     uvm_assert_spinlock_locked(&g_tools_channel_list_lock);
 
     if (channel->tools.pending_event_count++ == 0)
@@ -848,6 +882,7 @@ static void add_pending_event_for_channel(uvm_channel_t *channel)
 
 static void remove_pending_event_for_channel(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2248);
     uvm_assert_spinlock_locked(&g_tools_channel_list_lock);
     UVM_ASSERT(channel->tools.pending_event_count > 0);
     if (--channel->tools.pending_event_count == 0)
@@ -857,6 +892,7 @@ static void remove_pending_event_for_channel(uvm_channel_t *channel)
 
 static void record_migration_events(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2249);
     block_migration_data_t *block_mig = (block_migration_data_t *)args;
     migration_data_t *mig;
     migration_data_t *next;
@@ -898,11 +934,13 @@ static void record_migration_events(void *args)
 
 static void record_migration_events_entry(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2250);
     UVM_ENTRY_VOID(record_migration_events(args));
 }
 
 static void on_block_migration_complete(void *ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2251);
     migration_data_t *mig;
     block_migration_data_t *block_mig = (block_migration_data_t *)ptr;
 
@@ -930,6 +968,7 @@ static void record_replay_event_helper(uvm_gpu_id_t gpu_id,
                                        NvU64 timestamp,
                                        NvU64 timestamp_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2252);
     UvmEventEntry entry;
 
     memset(&entry, 0, sizeof(entry));
@@ -945,6 +984,7 @@ static void record_replay_event_helper(uvm_gpu_id_t gpu_id,
 
 static void record_replay_events(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2253);
     replay_data_t *replay = (replay_data_t *)args;
 
     record_replay_event_helper(replay->gpu_id,
@@ -958,11 +998,13 @@ static void record_replay_events(void *args)
 
 static void record_replay_events_entry(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2254);
     UVM_ENTRY_VOID(record_replay_events(args));
 }
 
 static void on_replay_complete(void *ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2255);
     replay_data_t *replay = (replay_data_t *)ptr;
     replay->timestamp_gpu = *replay->timestamp_gpu_addr;
 
@@ -992,6 +1034,7 @@ static UvmEventMigrationCause g_make_resident_to_tools_migration_cause[UVM_MAKE_
 // finished
 static void uvm_tools_record_migration(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2256);
     uvm_va_block_t *va_block = event_data->migration.block;
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
 
@@ -1052,6 +1095,7 @@ void uvm_tools_broadcast_replay(uvm_gpu_t *gpu,
                                 NvU32 batch_id,
                                 uvm_fault_client_type_t client_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2257);
     uvm_push_info_t *push_info = uvm_push_info_from_push(push);
     replay_data_t *replay;
 
@@ -1086,6 +1130,7 @@ void uvm_tools_broadcast_replay_sync(uvm_gpu_t *gpu,
                                      NvU32 batch_id,
                                      uvm_fault_client_type_t client_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2258);
     UVM_ASSERT(!gpu->parent->has_clear_faulted_channel_method);
 
     if (!tools_is_event_enabled_in_any_va_space(UvmEventTypeGpuFaultReplay))
@@ -1102,6 +1147,7 @@ void uvm_tools_broadcast_access_counter(uvm_gpu_t *gpu,
                                         const uvm_access_counter_buffer_entry_t *buffer_entry,
                                         bool on_managed)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2259);
     UvmEventEntry entry;
     UvmEventTestAccessCounterInfo *info = &entry.testEventData.accessCounter;
 
@@ -1139,6 +1185,7 @@ void uvm_tools_broadcast_access_counter(uvm_gpu_t *gpu,
 
 void uvm_tools_test_hmm_split_invalidate(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2260);
     UvmEventEntry entry;
 
     if (!va_space->tools.enabled)
@@ -1161,6 +1208,7 @@ void uvm_tools_record_block_migration_begin(uvm_va_block_t *va_block,
                                             NvU64 start,
                                             uvm_make_resident_cause_t cause)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2261);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     uvm_range_group_range_t *range;
 
@@ -1222,6 +1270,7 @@ void uvm_tools_record_read_duplicate(uvm_va_block_t *va_block,
                                      uvm_va_block_region_t region,
                                      const uvm_page_mask_t *page_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2262);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
 
     if (!va_space->tools.enabled)
@@ -1261,6 +1310,7 @@ void uvm_tools_record_read_duplicate_invalidate(uvm_va_block_t *va_block,
                                                 uvm_va_block_region_t region,
                                                 const uvm_page_mask_t *page_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2263);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
 
     if (!va_space->tools.enabled)
@@ -1290,6 +1340,7 @@ void uvm_tools_record_read_duplicate_invalidate(uvm_va_block_t *va_block,
 
 static void tools_schedule_completed_events(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2264);
     uvm_channel_t *channel;
     uvm_channel_t *next_channel;
     NvU64 channel_count = 0;
@@ -1332,6 +1383,7 @@ void uvm_tools_record_cpu_fatal_fault(uvm_va_space_t *va_space,
                                       bool is_write,
                                       UvmEventFatalReason reason)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2265);
     uvm_assert_rwsem_locked(&va_space->lock);
 
     if (!va_space->tools.enabled)
@@ -1361,6 +1413,7 @@ void uvm_tools_record_gpu_fatal_fault(uvm_gpu_id_t gpu_id,
                                       const uvm_fault_buffer_entry_t *buffer_entry,
                                       UvmEventFatalReason reason)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2266);
     uvm_assert_rwsem_locked(&va_space->lock);
 
     if (!va_space->tools.enabled)
@@ -1390,6 +1443,7 @@ void uvm_tools_record_thrashing(uvm_va_space_t *va_space,
                                 size_t region_size,
                                 const uvm_processor_mask_t *processors)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2267);
     UVM_ASSERT(address);
     UVM_ASSERT(PAGE_ALIGNED(address));
     UVM_ASSERT(region_size > 0);
@@ -1418,6 +1472,7 @@ void uvm_tools_record_thrashing(uvm_va_space_t *va_space,
 
 void uvm_tools_record_throttling_start(uvm_va_space_t *va_space, NvU64 address, uvm_processor_id_t processor)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2268);
     UVM_ASSERT(address);
     UVM_ASSERT(PAGE_ALIGNED(address));
     UVM_ASSERT(UVM_ID_IS_VALID(processor));
@@ -1445,6 +1500,7 @@ void uvm_tools_record_throttling_start(uvm_va_space_t *va_space, NvU64 address, 
 
 void uvm_tools_record_throttling_end(uvm_va_space_t *va_space, NvU64 address, uvm_processor_id_t processor)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2269);
     UVM_ASSERT(address);
     UVM_ASSERT(PAGE_ALIGNED(address));
     UVM_ASSERT(UVM_ID_IS_VALID(processor));
@@ -1472,6 +1528,7 @@ void uvm_tools_record_throttling_end(uvm_va_space_t *va_space, NvU64 address, uv
 
 static void record_map_remote_events(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2270);
     block_map_remote_data_t *block_map_remote = (block_map_remote_data_t *)args;
     map_remote_data_t *map_remote, *next;
     UvmEventEntry entry;
@@ -1504,11 +1561,13 @@ static void record_map_remote_events(void *args)
 
 static void record_map_remote_events_entry(void *args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2271);
     UVM_ENTRY_VOID(record_map_remote_events(args));
 }
 
 static void on_map_remote_complete(void *ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2272);
     block_map_remote_data_t *block_map_remote = (block_map_remote_data_t *)ptr;
     map_remote_data_t *map_remote;
 
@@ -1533,6 +1592,7 @@ void uvm_tools_record_map_remote(uvm_va_block_t *va_block,
                                  size_t region_size,
                                  UvmEventMapRemoteCause cause)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2273);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
 
     UVM_ASSERT(UVM_ID_IS_VALID(processor));
@@ -1615,6 +1675,7 @@ done:
 
 NV_STATUS uvm_api_tools_init_event_tracker(UVM_TOOLS_INIT_EVENT_TRACKER_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2274);
     NV_STATUS status = NV_OK;
     uvm_tools_event_tracker_t *event_tracker;
 
@@ -1705,6 +1766,7 @@ fail:
 
 NV_STATUS uvm_api_tools_set_notification_threshold(UVM_TOOLS_SET_NOTIFICATION_THRESHOLD_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2275);
     UvmToolsEventControlData *ctrl;
     uvm_tools_queue_snapshot_t sn;
     uvm_tools_event_tracker_t *event_tracker = tools_event_tracker(filp);
@@ -1730,6 +1792,7 @@ NV_STATUS uvm_api_tools_set_notification_threshold(UVM_TOOLS_SET_NOTIFICATION_TH
 
 static NV_STATUS tools_update_perf_events_callbacks(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2276);
     NV_STATUS status;
 
     uvm_assert_rwsem_locked_write(&va_space->perf_events.lock);
@@ -1776,6 +1839,7 @@ static NV_STATUS tools_update_perf_events_callbacks(uvm_va_space_t *va_space)
 
 static NV_STATUS tools_update_status(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2277);
     NV_STATUS status;
     bool should_be_enabled;
     uvm_assert_rwsem_locked_write(&g_tools_va_space_list_lock);
@@ -1803,6 +1867,7 @@ static NV_STATUS tools_update_status(uvm_va_space_t *va_space)
 
 static bool mask_contains_invalid_events(NvU64 event_flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2278);
     const unsigned long *event_mask = (const unsigned long *)&event_flags;
     DECLARE_BITMAP(helper_mask, EVENT_FLAGS_BITS);
     DECLARE_BITMAP(valid_events_mask, EVENT_FLAGS_BITS);
@@ -1840,6 +1905,7 @@ static bool mask_contains_invalid_events(NvU64 event_flags)
 
 NV_STATUS uvm_api_tools_event_queue_enable_events(UVM_TOOLS_EVENT_QUEUE_ENABLE_EVENTS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2279);
     uvm_va_space_t *va_space;
     uvm_tools_event_tracker_t *event_tracker = tools_event_tracker(filp);
     NV_STATUS status = NV_OK;
@@ -1885,6 +1951,7 @@ NV_STATUS uvm_api_tools_event_queue_enable_events(UVM_TOOLS_EVENT_QUEUE_ENABLE_E
 
 NV_STATUS uvm_api_tools_event_queue_disable_events(UVM_TOOLS_EVENT_QUEUE_DISABLE_EVENTS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2280);
     NV_STATUS status;
     uvm_va_space_t *va_space;
     uvm_tools_event_tracker_t *event_tracker = tools_event_tracker(filp);
@@ -1915,6 +1982,7 @@ NV_STATUS uvm_api_tools_event_queue_disable_events(UVM_TOOLS_EVENT_QUEUE_DISABLE
 
 NV_STATUS uvm_api_tools_enable_counters(UVM_TOOLS_ENABLE_COUNTERS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2281);
     uvm_va_space_t *va_space;
     uvm_tools_event_tracker_t *event_tracker = tools_event_tracker(filp);
     NV_STATUS status = NV_OK;
@@ -1956,6 +2024,7 @@ NV_STATUS uvm_api_tools_enable_counters(UVM_TOOLS_ENABLE_COUNTERS_PARAMS *params
 
 NV_STATUS uvm_api_tools_disable_counters(UVM_TOOLS_DISABLE_COUNTERS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2282);
     NV_STATUS status;
     uvm_va_space_t *va_space;
     uvm_tools_event_tracker_t *event_tracker = tools_event_tracker(filp);
@@ -1992,6 +2061,7 @@ static NV_STATUS tools_access_va_block(uvm_va_block_t *va_block,
                                        bool is_write,
                                        uvm_mem_t *stage_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2283);
     if (is_write) {
         return UVM_VA_BLOCK_LOCK_RETRY(va_block,
                                        NULL,
@@ -2012,6 +2082,7 @@ static NV_STATUS tools_access_process_memory(uvm_va_space_t *va_space,
                                              NvU64 *bytes,
                                              bool is_write)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2284);
     NV_STATUS status;
     uvm_mem_t *stage_mem = NULL;
     void *stage_addr;
@@ -2174,6 +2245,7 @@ exit:
 
 NV_STATUS uvm_api_tools_read_process_memory(UVM_TOOLS_READ_PROCESS_MEMORY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2285);
     return tools_access_process_memory(uvm_va_space_get(filp),
                                        params->targetVa,
                                        params->size,
@@ -2184,6 +2256,7 @@ NV_STATUS uvm_api_tools_read_process_memory(UVM_TOOLS_READ_PROCESS_MEMORY_PARAMS
 
 NV_STATUS uvm_api_tools_write_process_memory(UVM_TOOLS_WRITE_PROCESS_MEMORY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2286);
     return tools_access_process_memory(uvm_va_space_get(filp),
                                        params->targetVa,
                                        params->size,
@@ -2194,6 +2267,7 @@ NV_STATUS uvm_api_tools_write_process_memory(UVM_TOOLS_WRITE_PROCESS_MEMORY_PARA
 
 NV_STATUS uvm_test_inject_tools_event(UVM_TEST_INJECT_TOOLS_EVENT_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2287);
     NvU32 i;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
@@ -2209,6 +2283,7 @@ NV_STATUS uvm_test_inject_tools_event(UVM_TEST_INJECT_TOOLS_EVENT_PARAMS *params
 
 NV_STATUS uvm_test_increment_tools_counter(UVM_TEST_INCREMENT_TOOLS_COUNTER_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2288);
     NvU32 i;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
@@ -2225,6 +2300,7 @@ NV_STATUS uvm_test_increment_tools_counter(UVM_TEST_INCREMENT_TOOLS_COUNTER_PARA
 
 NV_STATUS uvm_api_tools_get_processor_uuid_table(UVM_TOOLS_GET_PROCESSOR_UUID_TABLE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2289);
     NvProcessorUuid *uuids;
     NvU64 remaining;
     uvm_gpu_t *gpu;
@@ -2256,6 +2332,7 @@ NV_STATUS uvm_api_tools_get_processor_uuid_table(UVM_TOOLS_GET_PROCESSOR_UUID_TA
 
 void uvm_tools_flush_events(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2290);
     tools_schedule_completed_events();
 
     nv_kthread_q_flush(&g_tools_queue);
@@ -2263,12 +2340,14 @@ void uvm_tools_flush_events(void)
 
 NV_STATUS uvm_api_tools_flush_events(UVM_TOOLS_FLUSH_EVENTS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2291);
     uvm_tools_flush_events();
     return NV_OK;
 }
 
 NV_STATUS uvm_test_tools_flush_replay_events(UVM_TEST_TOOLS_FLUSH_REPLAY_EVENTS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2292);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu = NULL;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
@@ -2308,6 +2387,7 @@ static const struct file_operations uvm_tools_fops =
 
 static void _uvm_tools_destroy_cache_all(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2293);
     // The pointers are initialized to NULL,
     // it's safe to call destroy on all of them.
     kmem_cache_destroy_safe(&g_tools_event_tracker_cache);
@@ -2320,6 +2400,7 @@ static void _uvm_tools_destroy_cache_all(void)
 
 int uvm_tools_init(dev_t uvm_base_dev)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2294);
     dev_t uvm_tools_dev = MKDEV(MAJOR(uvm_base_dev), NVIDIA_UVM_TOOLS_MINOR_NUMBER);
     int ret = -ENOMEM; // This will be updated later if allocations succeed
 
@@ -2381,6 +2462,7 @@ err_cache_destroy:
 
 void uvm_tools_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2295);
     unsigned i;
     cdev_del(&g_uvm_tools_cdev);
 

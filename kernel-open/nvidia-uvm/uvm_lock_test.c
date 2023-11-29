@@ -31,34 +31,40 @@
 
 static bool fake_lock(uvm_lock_order_t lock_order, uvm_lock_flags_t flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 939);
     // Just use the lock_order as the void * handle for the lock
     return __uvm_record_lock((void*)(long)lock_order, lock_order, flags);
 }
 
 static bool fake_unlock_common(uvm_lock_order_t lock_order, uvm_lock_flags_t flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 940);
     // Just use the lock_order as the void * handle for the lock
     return __uvm_record_unlock((void*)(long)lock_order, lock_order, flags);
 }
 
 static bool fake_unlock(uvm_lock_order_t lock_order, uvm_lock_flags_t flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 941);
     return fake_unlock_common(lock_order, flags);
 }
 
 static bool fake_unlock_out_of_order(uvm_lock_order_t lock_order, uvm_lock_flags_t flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 942);
     return fake_unlock_common(lock_order, flags | UVM_LOCK_FLAGS_OUT_OF_ORDER);
 }
 
 static bool fake_downgrade(uvm_lock_order_t lock_order)
 {
+    printk(KERN_ERR "=====================================   %d\n", 943);
     // Just use the lock_order as the void * handle for the lock
     return __uvm_record_downgrade((void*)(long)lock_order, lock_order);
 }
 
 static bool fake_check_locked(uvm_lock_order_t lock_order, uvm_lock_flags_t flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 944);
     return __uvm_check_locked((void*)(long)lock_order, lock_order, flags);
 }
 
@@ -68,6 +74,7 @@ static bool fake_check_locked(uvm_lock_order_t lock_order, uvm_lock_flags_t flag
 //       test to enable the checks until we figure out something better.
 static bool skip_lock(uvm_lock_order_t lock_order, uvm_lock_flags_t flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 945);
     uvm_lock_flags_t mode_flags = (flags & UVM_LOCK_FLAGS_MODE_MASK);
 
     if (lock_order == UVM_LOCK_ORDER_RM_GPUS)
@@ -78,6 +85,7 @@ static bool skip_lock(uvm_lock_order_t lock_order, uvm_lock_flags_t flags)
 
 static NV_STATUS test_all_locks_from(uvm_lock_order_t from_lock_order)
 {
+    printk(KERN_ERR "=====================================   %d\n", 946);
     NvU32 exclusive;
     uvm_lock_flags_t flags;
     NvU32 out_of_order;
@@ -149,6 +157,7 @@ static NV_STATUS test_all_locks_from(uvm_lock_order_t from_lock_order)
 
 static NV_STATUS test_all_locks(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 947);
     TEST_CHECK_RET(test_all_locks_from(UVM_LOCK_ORDER_FIRST) == NV_OK);
 
     TEST_CHECK_RET(__uvm_thread_check_all_unlocked());
@@ -158,6 +167,7 @@ static NV_STATUS test_all_locks(void)
 
 static NV_STATUS test_locking_first_as_shared_then_test_higher_order_locks(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 948);
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_SHARED));
     TEST_CHECK_RET(test_all_locks_from(UVM_LOCK_ORDER_FIRST + 1) == NV_OK);
     TEST_CHECK_RET(fake_unlock(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_SHARED));
@@ -169,6 +179,7 @@ static NV_STATUS test_locking_first_as_shared_then_test_higher_order_locks(void)
 
 static NV_STATUS test_locking_second_as_exclusive_then_test_higher_order_locks(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 949);
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
     TEST_CHECK_RET(test_all_locks_from(UVM_LOCK_ORDER_SECOND + 1) == NV_OK);
     TEST_CHECK_RET(fake_unlock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
@@ -180,6 +191,7 @@ static NV_STATUS test_locking_second_as_exclusive_then_test_higher_order_locks(v
 
 static NV_STATUS test_unlocking_without_locking(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 950);
     // Unlocking a lock w/o locking any lock at all
     TEST_CHECK_RET(!fake_unlock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
 
@@ -190,6 +202,7 @@ static NV_STATUS test_unlocking_without_locking(void)
 
 static NV_STATUS test_unlocking_different_lock_order_than_locked(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 951);
     // Unlocking a different lock than locked
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
     TEST_CHECK_RET(!fake_unlock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
@@ -205,6 +218,7 @@ static NV_STATUS test_unlocking_different_lock_order_than_locked(void)
 
 static NV_STATUS test_unlocking_different_lock_instance_than_locked(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 952);
     // Unlocking a different instance of a lock than locked
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
     TEST_CHECK_RET(!__uvm_record_unlock(NULL, UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
@@ -216,6 +230,7 @@ static NV_STATUS test_unlocking_different_lock_instance_than_locked(void)
 
 static NV_STATUS test_unlocking_with_different_mode_than_locked(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 953);
     // Unlocking with different mode
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
     TEST_CHECK_RET(!fake_unlock(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_SHARED));
@@ -229,6 +244,7 @@ static NV_STATUS test_unlocking_with_different_mode_than_locked(void)
 
 static NV_STATUS test_unlocking_in_different_order_than_locked(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 954);
     // Unlocking in different order than locked
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
@@ -251,6 +267,7 @@ static NV_STATUS test_unlocking_in_different_order_than_locked(void)
 
 static NV_STATUS test_locking_out_of_order(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 955);
     // Locking in wrong order
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
     TEST_CHECK_RET(!fake_lock(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
@@ -264,6 +281,7 @@ static NV_STATUS test_locking_out_of_order(void)
 
 static NV_STATUS test_locking_same_order_twice(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 956);
     // Locking the same order twice (lock tracking doesn't support this case although
     // it's not necessarily incorrect)
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
@@ -278,6 +296,7 @@ static NV_STATUS test_locking_same_order_twice(void)
 
 static NV_STATUS test_checking_locked_when_no_locks_held(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 957);
     // Nothing locked
     TEST_CHECK_RET(!fake_check_locked(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_SHARED));
     TEST_CHECK_RET(!fake_check_locked(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
@@ -290,6 +309,7 @@ static NV_STATUS test_checking_locked_when_no_locks_held(void)
 
 static NV_STATUS test_checking_exclusive_when_locked_as_shared(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 958);
     // Expecting exclusive while locked as shared
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_SHARED));
     TEST_CHECK_RET(!fake_check_locked(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
@@ -302,6 +322,7 @@ static NV_STATUS test_checking_exclusive_when_locked_as_shared(void)
 
 static NV_STATUS test_checking_shared_when_locked_as_exclusive(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 959);
     // Expecting shared while locked as exclusive
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
     TEST_CHECK_RET(!fake_check_locked(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_SHARED));
@@ -314,6 +335,7 @@ static NV_STATUS test_checking_shared_when_locked_as_exclusive(void)
 
 static NV_STATUS test_checking_locked_when_different_instance_held(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 960);
     // Wrong instance of a lock held
     TEST_CHECK_RET(__uvm_record_lock(NULL, UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
     TEST_CHECK_RET(!fake_check_locked(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
@@ -326,6 +348,7 @@ static NV_STATUS test_checking_locked_when_different_instance_held(void)
 
 static NV_STATUS test_checking_all_unlocked_when_lock_held(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 961);
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_SHARED));
     TEST_CHECK_RET(!__uvm_thread_check_all_unlocked());
     TEST_CHECK_RET(fake_unlock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_SHARED));
@@ -337,6 +360,7 @@ static NV_STATUS test_checking_all_unlocked_when_lock_held(void)
 
 static NV_STATUS test_downgrading(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 962);
     // Lock downgrade
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
     TEST_CHECK_RET(fake_check_locked(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
@@ -358,6 +382,7 @@ static NV_STATUS test_downgrading(void)
 
 static NV_STATUS test_downgrading_without_locking(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 963);
     // Downgrading a lock w/o locking any lock at all
     TEST_CHECK_RET(!fake_downgrade(UVM_LOCK_ORDER_FIRST));
 
@@ -368,6 +393,7 @@ static NV_STATUS test_downgrading_without_locking(void)
 
 static NV_STATUS test_downgrading_when_different_instance_held(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 964);
     // Wrong instance of lock to downgrade
     TEST_CHECK_RET(__uvm_record_lock(NULL, UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
     TEST_CHECK_RET(!fake_downgrade(UVM_LOCK_ORDER_FIRST));
@@ -380,6 +406,7 @@ static NV_STATUS test_downgrading_when_different_instance_held(void)
 
 static NV_STATUS test_downgrading_when_locked_as_shared(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 965);
     // Downgrading a lock that was acquired as shared
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_SHARED));
     TEST_CHECK_RET(!fake_downgrade(UVM_LOCK_ORDER_FIRST));
@@ -392,6 +419,7 @@ static NV_STATUS test_downgrading_when_locked_as_shared(void)
 
 static NV_STATUS test_try_locking_out_of_order(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 966);
     // Try-locking in wrong order
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_SECOND, UVM_LOCK_FLAGS_MODE_EXCLUSIVE));
     TEST_CHECK_RET(fake_lock(UVM_LOCK_ORDER_FIRST, UVM_LOCK_FLAGS_MODE_EXCLUSIVE | UVM_LOCK_FLAGS_TRYLOCK));
@@ -412,6 +440,7 @@ static NV_STATUS test_try_locking_out_of_order(void)
 
 static NV_STATUS run_all_lock_tests(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 967);
     // The test needs all locks to be released initially
     TEST_CHECK_RET(__uvm_thread_check_all_unlocked());
 
@@ -441,6 +470,7 @@ static NV_STATUS run_all_lock_tests(void)
 
 NV_STATUS uvm_test_lock_sanity(UVM_TEST_LOCK_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 968);
     NV_STATUS status;
     uvm_thread_context_wrapper_t thread_context_wrapper_backup;
 

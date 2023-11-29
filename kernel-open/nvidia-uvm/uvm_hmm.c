@@ -110,6 +110,7 @@ typedef struct
 
 bool uvm_hmm_is_enabled_system_wide(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 747);
     if (uvm_disable_hmm)
         return false;
 
@@ -128,6 +129,7 @@ bool uvm_hmm_is_enabled_system_wide(void)
 
 bool uvm_hmm_is_enabled(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 748);
     return uvm_hmm_is_enabled_system_wide() &&
            uvm_va_space_mm_enabled(va_space) &&
            !(va_space->initialization_flags & UVM_INIT_FLAGS_DISABLE_HMM);
@@ -135,6 +137,7 @@ bool uvm_hmm_is_enabled(uvm_va_space_t *va_space)
 
 static uvm_va_block_t *hmm_va_block_from_node(uvm_range_tree_node_t *node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 749);
     if (!node)
         return NULL;
     return container_of(node, uvm_va_block_t, hmm.node);
@@ -142,6 +145,7 @@ static uvm_va_block_t *hmm_va_block_from_node(uvm_range_tree_node_t *node)
 
 void uvm_hmm_va_space_initialize(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 750);
     uvm_hmm_va_space_t *hmm_va_space = &va_space->hmm;
 
     if (!uvm_hmm_is_enabled(va_space))
@@ -155,6 +159,7 @@ void uvm_hmm_va_space_initialize(uvm_va_space_t *va_space)
 
 void uvm_hmm_va_space_destroy(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 751);
     uvm_hmm_va_space_t *hmm_va_space = &va_space->hmm;
     uvm_range_tree_node_t *node, *next;
     uvm_va_block_t *va_block;
@@ -177,6 +182,7 @@ static void hmm_va_block_unregister_gpu(uvm_va_block_t *va_block,
                                         uvm_gpu_t *gpu,
                                         struct mm_struct *mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 752);
     uvm_va_policy_node_t *node;
 
     uvm_mutex_lock(&va_block->lock);
@@ -197,6 +203,7 @@ static void hmm_va_block_unregister_gpu(uvm_va_block_t *va_block,
 
 void uvm_hmm_unregister_gpu(uvm_va_space_t *va_space, uvm_gpu_t *gpu, struct mm_struct *mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 753);
     uvm_range_tree_node_t *node;
     uvm_va_block_t *va_block;
 
@@ -218,6 +225,7 @@ static void hmm_va_block_remove_gpu_va_space(uvm_va_block_t *va_block,
                                              uvm_gpu_va_space_t *gpu_va_space,
                                              uvm_va_block_context_t *va_block_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 754);
     uvm_mutex_lock(&va_block->lock);
 
     uvm_va_block_remove_gpu_va_space(va_block, gpu_va_space, va_block_context);
@@ -232,6 +240,7 @@ void uvm_hmm_remove_gpu_va_space(uvm_va_space_t *va_space,
                                  uvm_gpu_va_space_t *gpu_va_space,
                                  struct mm_struct *mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 755);
     uvm_va_block_context_t *va_block_context;
     uvm_range_tree_node_t *node, *next;
     uvm_va_block_t *va_block;
@@ -256,6 +265,7 @@ static bool hmm_invalidate(uvm_va_block_t *va_block,
                            const struct mmu_notifier_range *range,
                            unsigned long cur_seq)
 {
+    printk(KERN_ERR "=====================================   %d\n", 756);
     uvm_thread_context_t *uvm_context = uvm_thread_context();
     struct mmu_interval_notifier *mni = &va_block->hmm.notifier;
     struct mm_struct *mm = mni->mm;
@@ -360,6 +370,7 @@ static bool uvm_hmm_invalidate_entry(struct mmu_interval_notifier *mni,
                                      const struct mmu_notifier_range *range,
                                      unsigned long cur_seq)
 {
+    printk(KERN_ERR "=====================================   %d\n", 757);
     uvm_va_block_t *va_block = container_of(mni, uvm_va_block_t, hmm.notifier);
 
     UVM_ENTRY_RET(hmm_invalidate(va_block, range, cur_seq));
@@ -374,6 +385,7 @@ NV_STATUS uvm_hmm_va_block_find(uvm_va_space_t *va_space,
                                 NvU64 addr,
                                 uvm_va_block_t **va_block_ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 758);
     uvm_range_tree_node_t *node;
 
     if (!uvm_hmm_is_enabled(va_space))
@@ -395,6 +407,7 @@ NV_STATUS uvm_hmm_va_block_find(uvm_va_space_t *va_space,
 
 static int migrate_vma_setup_locked(struct migrate_vma *args, uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 759);
     uvm_thread_context_t *uvm_context = uvm_thread_context();
     int ret;
 
@@ -413,6 +426,7 @@ static bool uvm_hmm_vma_is_valid(struct vm_area_struct *vma,
                                  unsigned long addr,
                                  bool allow_unreadable_vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 760);
     // UVM doesn't support userfaultfd. hmm_range_fault() doesn't support
     // VM_IO or VM_PFNMAP VMAs. It also doesn't support VMAs without VM_READ
     // but we allow those VMAs to have policy set on them.
@@ -431,6 +445,7 @@ static void hmm_va_block_init(uvm_va_block_t *va_block,
                               NvU64 start,
                               NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 761);
     va_block->hmm.va_space = va_space;
     va_block->hmm.node.start = start;
     va_block->hmm.node.end = end;
@@ -444,6 +459,7 @@ static NV_STATUS hmm_va_block_find_create(uvm_va_space_t *va_space,
                                           struct vm_area_struct **vma_out,
                                           uvm_va_block_t **va_block_ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 762);
     struct mm_struct *mm;
     struct vm_area_struct *va_block_vma;
     uvm_va_block_t *va_block;
@@ -531,11 +547,13 @@ NV_STATUS uvm_hmm_va_block_find_create(uvm_va_space_t *va_space,
                                        struct vm_area_struct **vma,
                                        uvm_va_block_t **va_block_ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 763);
     return hmm_va_block_find_create(va_space, addr, false, vma, va_block_ptr);
 }
 
 NV_STATUS uvm_hmm_find_vma(struct mm_struct *mm, struct vm_area_struct **vma_out, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 764);
     if (!mm)
         return NV_ERR_INVALID_ADDRESS;
 
@@ -552,6 +570,7 @@ bool uvm_hmm_check_context_vma_is_valid(uvm_va_block_t *va_block,
                                         struct vm_area_struct *vma,
                                         uvm_va_block_region_t region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 765);
     uvm_assert_mutex_locked(&va_block->lock);
 
     if (uvm_va_block_is_hmm(va_block)) {
@@ -567,12 +586,14 @@ bool uvm_hmm_check_context_vma_is_valid(uvm_va_block_t *va_block,
 
 void uvm_hmm_service_context_init(uvm_service_block_context_t *service_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 766);
     // TODO: Bug 4050579: Remove this when swap cached pages can be migrated.
     service_context->block_context.hmm.swap_cached = false;
 }
 
 NV_STATUS uvm_hmm_migrate_begin(uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 767);
     if (uvm_mutex_trylock(&va_block->hmm.migrate_lock))
         return NV_OK;
 
@@ -581,11 +602,13 @@ NV_STATUS uvm_hmm_migrate_begin(uvm_va_block_t *va_block)
 
 void uvm_hmm_migrate_begin_wait(uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 768);
     uvm_mutex_lock(&va_block->hmm.migrate_lock);
 }
 
 void uvm_hmm_migrate_finish(uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 769);
     uvm_mutex_unlock(&va_block->hmm.migrate_lock);
 }
 
@@ -599,6 +622,7 @@ static NV_STATUS hmm_migrate_range(uvm_va_block_t *va_block,
                                    uvm_migrate_mode_t mode,
                                    uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 770);
     uvm_va_block_region_t region;
     uvm_va_policy_node_t *node;
     const uvm_va_policy_t *policy;
@@ -633,6 +657,7 @@ static NV_STATUS hmm_migrate_range(uvm_va_block_t *va_block,
 
 void uvm_hmm_evict_va_blocks(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 771);
     // We can't use uvm_va_space_mm_retain(), because the va_space_mm
     // should already be dead by now.
     struct mm_struct *mm = va_space->va_space_mm.mm;
@@ -674,6 +699,7 @@ void uvm_hmm_evict_va_blocks(uvm_va_space_t *va_space)
 
 NV_STATUS uvm_hmm_test_va_block_inject_split_error(uvm_va_space_t *va_space, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 772);
     uvm_va_block_test_t *block_test;
     uvm_va_block_t *va_block;
     NV_STATUS status;
@@ -701,6 +727,7 @@ static bool hmm_split_invalidate(struct mmu_interval_notifier *mni,
                                  const struct mmu_notifier_range *range,
                                  unsigned long cur_seq)
 {
+    printk(KERN_ERR "=====================================   %d\n", 773);
     hmm_split_invalidate_data_t *split_data = container_of(mni, hmm_split_invalidate_data_t, notifier);
 
     uvm_tools_test_hmm_split_invalidate(split_data->existing_block->hmm.va_space);
@@ -713,6 +740,7 @@ static bool hmm_split_invalidate_entry(struct mmu_interval_notifier *mni,
                                        const struct mmu_notifier_range *range,
                                        unsigned long cur_seq)
 {
+    printk(KERN_ERR "=====================================   %d\n", 774);
     UVM_ENTRY_RET(hmm_split_invalidate(mni, range, cur_seq));
 }
 
@@ -735,6 +763,7 @@ static NV_STATUS hmm_split_block(uvm_va_block_t *va_block,
                                  NvU64 new_end,
                                  uvm_va_block_t **new_block_ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 775);
     uvm_va_space_t *va_space = va_block->hmm.va_space;
     struct mm_struct *mm = va_space->va_space_mm.mm;
     hmm_split_invalidate_data_t split_data;
@@ -836,6 +865,7 @@ static NV_STATUS split_block_if_needed(uvm_va_block_t *va_block,
                                        NvU64 end,
                                        uvm_va_block_t **out_va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 776);
     uvm_va_block_context_t *va_block_context;
     uvm_va_space_t *va_space;
     struct mm_struct *mm;
@@ -917,6 +947,7 @@ NV_STATUS uvm_hmm_va_block_reclaim(uvm_va_space_t *va_space,
                                    NvU64 start,
                                    NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 777);
     uvm_range_tree_node_t *node, *next;
     uvm_va_block_t *va_block;
     NV_STATUS status;
@@ -956,6 +987,7 @@ NV_STATUS uvm_hmm_va_block_reclaim(uvm_va_space_t *va_space,
 
 void uvm_hmm_va_block_split_tree(uvm_va_block_t *existing_va_block, uvm_va_block_t *new_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 778);
     uvm_va_space_t *va_space = existing_va_block->hmm.va_space;
 
     UVM_ASSERT(uvm_va_block_is_hmm(existing_va_block));
@@ -971,6 +1003,7 @@ NV_STATUS uvm_hmm_split_as_needed(uvm_va_space_t *va_space,
                                   uvm_va_policy_is_split_needed_t split_needed_cb,
                                   void *data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 779);
     uvm_va_block_t *va_block;
     uvm_va_policy_node_t *node;
     NV_STATUS status;
@@ -1008,6 +1041,7 @@ static NV_STATUS hmm_set_preferred_location_locked(uvm_va_block_t *va_block,
                                                    NvU64 end,
                                                    uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 780);
     uvm_processor_mask_t set_accessed_by_processors;
     const uvm_va_policy_t *old_policy;
     uvm_va_policy_node_t *node;
@@ -1070,6 +1104,7 @@ NV_STATUS uvm_hmm_set_preferred_location(uvm_va_space_t *va_space,
                                          NvU64 last_address,
                                          uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 781);
     uvm_va_block_context_t *va_block_context;
     uvm_va_block_t *va_block;
     NvU64 addr;
@@ -1122,6 +1157,7 @@ static NV_STATUS hmm_set_accessed_by_start_end_locked(uvm_va_block_t *va_block,
                                                       NvU64 end,
                                                       uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 782);
     uvm_va_space_t *va_space = va_block->hmm.va_space;
     uvm_va_policy_node_t *node;
     uvm_va_block_region_t region;
@@ -1156,6 +1192,7 @@ NV_STATUS uvm_hmm_set_accessed_by(uvm_va_space_t *va_space,
                                   NvU64 last_address,
                                   uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 783);
     uvm_va_block_context_t *va_block_context;
     uvm_va_block_t *va_block;
     NvU64 addr;
@@ -1215,6 +1252,7 @@ void uvm_hmm_block_add_eviction_mappings(uvm_va_space_t *va_space,
                                          uvm_va_block_t *va_block,
                                          uvm_va_block_context_t *block_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 784);
     uvm_tracker_t local_tracker = UVM_TRACKER_INIT();
     uvm_va_policy_node_t *node;
     uvm_va_block_region_t region;
@@ -1293,6 +1331,7 @@ const uvm_va_policy_t *uvm_hmm_find_policy_end(uvm_va_block_t *va_block,
                                                unsigned long addr,
                                                NvU64 *endp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 785);
     const uvm_va_policy_node_t *node;
     const uvm_va_policy_t *policy;
     NvU64 end = va_block->end;
@@ -1324,6 +1363,7 @@ NV_STATUS uvm_hmm_find_policy_vma_and_outer(uvm_va_block_t *va_block,
                                             const uvm_va_policy_t **policy,
                                             uvm_page_index_t *outerp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 786);
     unsigned long addr;
     NvU64 end;
     uvm_page_index_t outer;
@@ -1355,6 +1395,7 @@ NV_STATUS uvm_hmm_find_policy_vma_and_outer(uvm_va_block_t *va_block,
 static NV_STATUS hmm_clear_thrashing_policy(uvm_va_block_t *va_block,
                                             uvm_va_block_context_t *block_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 787);
     const uvm_va_policy_t *policy;
     uvm_va_policy_node_t *node;
     uvm_va_block_region_t region;
@@ -1384,6 +1425,7 @@ static NV_STATUS hmm_clear_thrashing_policy(uvm_va_block_t *va_block,
 
 NV_STATUS uvm_hmm_clear_thrashing_policy(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 788);
     uvm_va_block_context_t *block_context = uvm_va_space_block_context(va_space, NULL);
     uvm_range_tree_node_t *node, *next;
     uvm_va_block_t *va_block;
@@ -1410,6 +1452,7 @@ uvm_va_block_region_t uvm_hmm_get_prefetch_region(uvm_va_block_t *va_block,
                                                   const uvm_va_policy_t *policy,
                                                   NvU64 address)
 {
+    printk(KERN_ERR "=====================================   %d\n", 789);
     NvU64 start, end;
 
     UVM_ASSERT(uvm_va_block_is_hmm(va_block));
@@ -1441,6 +1484,7 @@ uvm_prot_t uvm_hmm_compute_logical_prot(uvm_va_block_t *va_block,
                                         struct vm_area_struct *vma,
                                         NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 790);
     UVM_ASSERT(uvm_va_block_is_hmm(va_block));
     uvm_assert_mmap_lock_locked(va_block->hmm.va_space->va_space_mm.mm);
     UVM_ASSERT(vma && addr >= vma->vm_start && addr < vma->vm_end);
@@ -1457,6 +1501,7 @@ static NV_STATUS hmm_va_block_cpu_page_populate(uvm_va_block_t *va_block,
                                                 uvm_page_index_t page_index,
                                                 struct page *page)
 {
+    printk(KERN_ERR "=====================================   %d\n", 791);
     uvm_cpu_chunk_t *chunk;
     NV_STATUS status;
 
@@ -1488,6 +1533,7 @@ static NV_STATUS hmm_va_block_cpu_page_populate(uvm_va_block_t *va_block,
 static void hmm_va_block_cpu_page_unpopulate(uvm_va_block_t *va_block,
                                              uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 792);
     uvm_cpu_chunk_t *chunk = uvm_cpu_chunk_get_chunk_for_page(va_block, page_index);
 
     UVM_ASSERT(uvm_va_block_is_hmm(va_block));
@@ -1507,6 +1553,7 @@ static bool hmm_va_block_cpu_page_is_same(uvm_va_block_t *va_block,
                                           uvm_page_index_t page_index,
                                           struct page *page)
 {
+    printk(KERN_ERR "=====================================   %d\n", 793);
     struct page *old_page = uvm_cpu_chunk_get_cpu_page(va_block, page_index);
 
     UVM_ASSERT(uvm_cpu_chunk_is_hmm(uvm_cpu_chunk_get_chunk_for_page(va_block, page_index)));
@@ -1522,6 +1569,7 @@ static void clear_service_context_masks(uvm_service_block_context_t *service_con
                                         uvm_processor_id_t new_residency,
                                         uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 794);
     uvm_page_mask_clear(&service_context->block_context.caller_page_mask, page_index);
 
     uvm_page_mask_clear(&service_context->per_processor_masks[uvm_id_value(new_residency)].new_residency,
@@ -1548,6 +1596,7 @@ static void cpu_mapping_set(uvm_va_block_t *va_block,
                             bool is_write,
                             uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 795);
     uvm_processor_mask_set(&va_block->mapped, UVM_ID_CPU);
     uvm_page_mask_set(&va_block->maybe_mapped_pages, page_index);
     uvm_page_mask_set(&va_block->cpu.pte_bits[UVM_PTE_BITS_CPU_READ], page_index);
@@ -1559,6 +1608,7 @@ static void cpu_mapping_set(uvm_va_block_t *va_block,
 
 static void cpu_mapping_clear(uvm_va_block_t *va_block, uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 796);
     uvm_page_mask_clear(&va_block->cpu.pte_bits[UVM_PTE_BITS_CPU_WRITE], page_index);
     uvm_page_mask_clear(&va_block->cpu.pte_bits[UVM_PTE_BITS_CPU_READ], page_index);
     if (uvm_page_mask_empty(&va_block->cpu.pte_bits[UVM_PTE_BITS_CPU_READ]))
@@ -1569,6 +1619,7 @@ static void gpu_chunk_remove(uvm_va_block_t *va_block,
                              uvm_page_index_t page_index,
                              struct page *page)
 {
+    printk(KERN_ERR "=====================================   %d\n", 797);
     uvm_va_block_gpu_state_t *gpu_state;
     uvm_gpu_chunk_t *gpu_chunk;
     uvm_gpu_id_t id;
@@ -1595,6 +1646,7 @@ static NV_STATUS gpu_chunk_add(uvm_va_block_t *va_block,
                                uvm_page_index_t page_index,
                                struct page *page)
 {
+    printk(KERN_ERR "=====================================   %d\n", 798);
     uvm_va_block_gpu_state_t *gpu_state;
     uvm_gpu_chunk_t *gpu_chunk;
     uvm_gpu_id_t id;
@@ -1667,6 +1719,7 @@ static NV_STATUS sync_page_and_chunk_state(uvm_va_block_t *va_block,
                                            const uvm_page_mask_t *migrated_pages,
                                            const uvm_page_mask_t *same_devmem_page_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 799);
     uvm_page_index_t page_index;
     NV_STATUS status;
 
@@ -1712,6 +1765,7 @@ static void clean_up_non_migrating_page(uvm_va_block_t *va_block,
                                         unsigned long *dst_pfns,
                                         uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 800);
     struct page *dst_page = migrate_pfn_to_page(dst_pfns[page_index]);
 
     if (!dst_page)
@@ -1739,6 +1793,7 @@ static void clean_up_non_migrating_pages(uvm_va_block_t *va_block,
                                          uvm_va_block_region_t region,
                                          uvm_page_mask_t *page_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 801);
     uvm_page_index_t page_index;
     NV_STATUS status;
 
@@ -1760,6 +1815,7 @@ static void lock_block_cpu_page(uvm_va_block_t *va_block,
                                 unsigned long *dst_pfns,
                                 uvm_page_mask_t *same_devmem_page_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 802);
     uvm_cpu_chunk_t *chunk = uvm_cpu_chunk_get_chunk_for_page(va_block, page_index);
     uvm_va_block_region_t chunk_region;
     struct page *dst_page;
@@ -1810,6 +1866,7 @@ static void hmm_mark_gpu_chunk_referenced(uvm_va_block_t *va_block,
                                           uvm_gpu_t *gpu,
                                           uvm_gpu_chunk_t *gpu_chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 803);
     // Tell PMM to expect a callback from Linux to free the page since the
     // device private struct page reference count will determine when the
     // GPU chunk is free.
@@ -1825,6 +1882,7 @@ static void fill_dst_pfn(uvm_va_block_t *va_block,
                          uvm_page_index_t page_index,
                          uvm_page_mask_t *same_devmem_page_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 804);
     unsigned long src_pfn = src_pfns[page_index];
     uvm_gpu_chunk_t *gpu_chunk;
     unsigned long pfn;
@@ -1864,6 +1922,7 @@ static void fill_dst_pfns(uvm_va_block_t *va_block,
                           uvm_page_mask_t *same_devmem_page_mask,
                           uvm_processor_id_t dest_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 805);
     uvm_gpu_t *gpu = uvm_va_space_get_gpu(va_block->hmm.va_space, dest_id);
     uvm_page_index_t page_index;
 
@@ -1892,6 +1951,7 @@ static NV_STATUS alloc_and_copy_to_cpu(uvm_va_block_t *va_block,
                                        uvm_processor_id_t processor_id,
                                        uvm_service_block_context_t *service_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 806);
     uvm_page_index_t page_index;
     NV_STATUS status = NV_OK;
 
@@ -1998,6 +2058,7 @@ static NV_STATUS alloc_and_copy_to_cpu(uvm_va_block_t *va_block,
 
 static NV_STATUS uvm_hmm_devmem_fault_alloc_and_copy(uvm_hmm_devmem_fault_context_t *devmem_fault_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 807);
     uvm_processor_id_t processor_id;
     uvm_service_block_context_t *service_context;
     uvm_va_block_retry_t *va_block_retry;
@@ -2040,6 +2101,7 @@ static NV_STATUS uvm_hmm_devmem_fault_alloc_and_copy(uvm_hmm_devmem_fault_contex
 
 static NV_STATUS uvm_hmm_devmem_fault_finalize_and_map(uvm_hmm_devmem_fault_context_t *devmem_fault_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 808);
     uvm_processor_id_t processor_id;
     uvm_service_block_context_t *service_context;
     uvm_perf_prefetch_hint_t *prefetch_hint;
@@ -2099,6 +2161,7 @@ static NV_STATUS populate_region(uvm_va_block_t *va_block,
                                  uvm_va_block_region_t region,
                                  uvm_page_mask_t *populated_page_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 809);
     uvm_page_index_t page_index;
     NV_STATUS status;
 
@@ -2176,6 +2239,7 @@ static NV_STATUS populate_region(uvm_va_block_t *va_block,
 
 static void hmm_range_fault_begin(uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 810);
     uvm_thread_context_t *uvm_context = uvm_thread_context();
 
     uvm_assert_mutex_locked(&va_block->lock);
@@ -2184,6 +2248,7 @@ static void hmm_range_fault_begin(uvm_va_block_t *va_block)
 
 static bool hmm_range_fault_retry(uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 811);
     uvm_thread_context_t *uvm_context = uvm_thread_context();
 
     uvm_assert_mutex_locked(&va_block->lock);
@@ -2199,6 +2264,7 @@ static NV_STATUS hmm_make_resident_cpu(uvm_va_block_t *va_block,
                                        NvU8 *access_type,
                                        uvm_page_mask_t *populated_page_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 812);
     uvm_page_index_t page_index;
     int ret;
     struct hmm_range range = {
@@ -2249,6 +2315,7 @@ static NV_STATUS hmm_make_resident_cpu(uvm_va_block_t *va_block,
 static void hmm_release_atomic_pages(uvm_va_block_t *va_block,
                                      uvm_service_block_context_t *service_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 813);
     uvm_va_block_region_t region = service_context->region;
     uvm_page_index_t page_index;
 
@@ -2268,6 +2335,7 @@ static NV_STATUS hmm_block_atomic_fault_locked(uvm_processor_id_t processor_id,
                                                uvm_va_block_retry_t *va_block_retry,
                                                uvm_service_block_context_t *service_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 814);
     uvm_va_block_region_t region = service_context->region;
     struct page **pages = service_context->block_context.hmm.pages;
     int npages;
@@ -2388,6 +2456,7 @@ done:
 
 static bool is_atomic_fault(NvU8 *access_type, uvm_va_block_region_t region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 815);
     uvm_page_index_t page_index;
 
     for_each_va_block_page_in_region(page_index, region) {
@@ -2400,6 +2469,7 @@ static bool is_atomic_fault(NvU8 *access_type, uvm_va_block_region_t region)
 
 static bool is_gpu_resident(uvm_va_block_t *va_block, uvm_va_block_region_t region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 816);
     uvm_processor_id_t gpu_id;
 
     for_each_gpu_id_in_mask(gpu_id, &va_block->resident) {
@@ -2418,6 +2488,7 @@ static NV_STATUS hmm_block_cpu_fault_locked(uvm_processor_id_t processor_id,
                                             uvm_va_block_retry_t *va_block_retry,
                                             uvm_service_block_context_t *service_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 817);
     uvm_va_block_region_t region = service_context->region;
     struct migrate_vma *args = &service_context->block_context.hmm.migrate_vma_args;
     NV_STATUS status;
@@ -2531,6 +2602,7 @@ static NV_STATUS dmamap_src_sysmem_pages(uvm_va_block_t *va_block,
                                          uvm_processor_id_t dest_id,
                                          uvm_service_block_context_t *service_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 818);
     uvm_page_index_t page_index;
     NV_STATUS status = NV_OK;
 
@@ -2630,6 +2702,7 @@ static NV_STATUS dmamap_src_sysmem_pages(uvm_va_block_t *va_block,
 static NV_STATUS uvm_hmm_gpu_fault_alloc_and_copy(struct vm_area_struct *vma,
                                                   uvm_hmm_gpu_fault_event_t *uvm_hmm_gpu_fault_event)
 {
+    printk(KERN_ERR "=====================================   %d\n", 819);
     uvm_processor_id_t processor_id;
     uvm_processor_id_t new_residency;
     uvm_va_block_t *va_block;
@@ -2691,6 +2764,7 @@ static NV_STATUS uvm_hmm_gpu_fault_alloc_and_copy(struct vm_area_struct *vma,
 
 static NV_STATUS uvm_hmm_gpu_fault_finalize_and_map(uvm_hmm_gpu_fault_event_t *uvm_hmm_gpu_fault_event)
 {
+    printk(KERN_ERR "=====================================   %d\n", 820);
     uvm_processor_id_t processor_id;
     uvm_processor_id_t new_residency;
     uvm_va_block_t *va_block;
@@ -2752,6 +2826,7 @@ NV_STATUS uvm_hmm_va_block_service_locked(uvm_processor_id_t processor_id,
                                           uvm_va_block_retry_t *va_block_retry,
                                           uvm_service_block_context_t *service_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 821);
     struct mm_struct *mm = service_context->block_context.mm;
     struct vm_area_struct *vma = service_context->block_context.hmm.vma;
     uvm_va_block_region_t region = service_context->region;
@@ -2839,6 +2914,7 @@ NV_STATUS uvm_hmm_va_block_service_locked(uvm_processor_id_t processor_id,
 static NV_STATUS uvm_hmm_migrate_alloc_and_copy(struct vm_area_struct *vma,
                                                 uvm_hmm_migrate_event_t *uvm_hmm_migrate_event)
 {
+    printk(KERN_ERR "=====================================   %d\n", 822);
     uvm_va_block_t *va_block;
     uvm_va_block_retry_t *va_block_retry;
     uvm_va_block_context_t *va_block_context;
@@ -2915,6 +2991,7 @@ static NV_STATUS uvm_hmm_migrate_alloc_and_copy(struct vm_area_struct *vma,
 
 static NV_STATUS uvm_hmm_migrate_finalize(uvm_hmm_migrate_event_t *uvm_hmm_migrate_event)
 {
+    printk(KERN_ERR "=====================================   %d\n", 823);
     uvm_va_block_t *va_block;
     uvm_va_block_retry_t *va_block_retry;
     uvm_va_block_context_t *va_block_context;
@@ -2966,6 +3043,7 @@ static bool is_resident(uvm_va_block_t *va_block,
                         uvm_processor_id_t dest_id,
                         uvm_va_block_region_t region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 824);
     if (!uvm_processor_mask_test(&va_block->resident, dest_id))
         return false;
 
@@ -2982,6 +3060,7 @@ NV_STATUS uvm_hmm_va_block_migrate_locked(uvm_va_block_t *va_block,
                                           uvm_va_block_region_t region,
                                           uvm_make_resident_cause_t cause)
 {
+    printk(KERN_ERR "=====================================   %d\n", 825);
     uvm_hmm_migrate_event_t uvm_hmm_migrate_event;
     struct vm_area_struct *vma = va_block_context->hmm.vma;
     NvU64 start;
@@ -3098,6 +3177,7 @@ NV_STATUS uvm_hmm_migrate_ranges(uvm_va_space_t *va_space,
                                  uvm_migrate_mode_t mode,
                                  uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 826);
     struct mm_struct *mm;
     uvm_va_block_t *va_block;
     uvm_va_block_retry_t va_block_retry;
@@ -3149,6 +3229,7 @@ NV_STATUS uvm_hmm_va_block_evict_chunk_prep(uvm_va_block_t *va_block,
                                             uvm_gpu_chunk_t *gpu_chunk,
                                             uvm_va_block_region_t chunk_region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 827);
     uvm_thread_context_t *uvm_context = uvm_thread_context();
     unsigned long *src_pfns = va_block_context->hmm.src_pfns;
     uvm_gpu_t *gpu = uvm_gpu_chunk_get_gpu(gpu_chunk);
@@ -3178,6 +3259,7 @@ static NV_STATUS hmm_va_block_evict_chunks(uvm_va_block_t *va_block,
                                            uvm_make_resident_cause_t cause,
                                            bool *out_accessed_by_set)
 {
+    printk(KERN_ERR "=====================================   %d\n", 828);
     NvU64 start = uvm_va_block_region_start(va_block, region);
     NvU64 end = uvm_va_block_region_end(va_block, region);
     unsigned long *src_pfns = va_block_context->hmm.src_pfns;
@@ -3264,6 +3346,7 @@ NV_STATUS uvm_hmm_va_block_evict_chunks(uvm_va_block_t *va_block,
                                         uvm_va_block_region_t region,
                                         bool *out_accessed_by_set)
 {
+    printk(KERN_ERR "=====================================   %d\n", 829);
     return hmm_va_block_evict_chunks(va_block,
                                      va_block_context,
                                      pages_to_evict,
@@ -3278,6 +3361,7 @@ NV_STATUS uvm_hmm_va_block_evict_pages_from_gpu(uvm_va_block_t *va_block,
                                                 const uvm_page_mask_t *pages_to_evict,
                                                 uvm_va_block_region_t region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 830);
     unsigned long *src_pfns = va_block_context->hmm.src_pfns;
     uvm_va_block_gpu_state_t *gpu_state;
     uvm_page_index_t page_index;
@@ -3316,6 +3400,7 @@ NV_STATUS uvm_hmm_va_block_evict_pages_from_gpu(uvm_va_block_t *va_block,
 
 NV_STATUS uvm_hmm_pmm_gpu_evict_pfn(unsigned long pfn)
 {
+    printk(KERN_ERR "=====================================   %d\n", 831);
     unsigned long src_pfn = 0;
     unsigned long dst_pfn = 0;
     struct page *dst_page;
@@ -3369,6 +3454,7 @@ NV_STATUS uvm_hmm_va_block_range_bounds(uvm_va_space_t *va_space,
                                         NvU64 *endp,
                                         UVM_TEST_VA_RESIDENCY_INFO_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 832);
     struct vm_area_struct *vma;
     NvU64 start;
     NvU64 end;
@@ -3419,6 +3505,7 @@ NV_STATUS uvm_hmm_va_block_update_residency_info(uvm_va_block_t *va_block,
                                                  NvU64 lookup_address,
                                                  bool populate)
 {
+    printk(KERN_ERR "=====================================   %d\n", 833);
     uvm_va_space_t *va_space = va_block->hmm.va_space;
     struct vm_area_struct *vma;
     struct hmm_range range;
@@ -3489,6 +3576,7 @@ NV_STATUS uvm_hmm_va_block_update_residency_info(uvm_va_block_t *va_block,
 
 NV_STATUS uvm_test_split_invalidate_delay(UVM_TEST_SPLIT_INVALIDATE_DELAY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 834);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     atomic64_set(&va_space->test.split_invalidate_delay_us, params->delay_us);
@@ -3500,6 +3588,7 @@ NV_STATUS uvm_hmm_va_range_info(uvm_va_space_t *va_space,
                                 struct mm_struct *mm,
                                 UVM_TEST_VA_RANGE_INFO_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 835);
     uvm_range_tree_node_t *tree_node;
     const uvm_va_policy_node_t *node;
     struct vm_area_struct *vma;
@@ -3580,6 +3669,7 @@ NV_STATUS uvm_hmm_va_range_info(uvm_va_space_t *va_space,
 bool uvm_hmm_must_use_sysmem(uvm_va_block_t *va_block,
                              uvm_va_block_context_t *va_block_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 836);
     struct vm_area_struct *vma = va_block_context->hmm.vma;
 
     uvm_assert_mutex_locked(&va_block->lock);

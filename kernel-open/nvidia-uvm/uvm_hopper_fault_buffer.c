@@ -29,6 +29,7 @@
 #define MAX_SUBCONTEXTS 64
 NvU8 uvm_hal_hopper_fault_buffer_get_ve_id(NvU16 mmu_engine_id, uvm_mmu_engine_type_t mmu_engine_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 860);
     // Only graphics engines can generate MMU faults from different subcontexts
     if (mmu_engine_type == UVM_MMU_ENGINE_TYPE_GRAPHICS) {
         NvU16 ve_id = mmu_engine_id - NV_PFAULT_MMU_ENG_ID_GRAPHICS;

@@ -33,16 +33,19 @@ static int test_data;
 
 static void callback_inc_1(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1497);
     ++test_data;
 }
 
 static void callback_inc_2(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1498);
     test_data += 2;
 }
 
 static NV_STATUS test_events(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1499);
     NV_STATUS status;
     uvm_perf_event_data_t event_data;
 
@@ -84,6 +87,7 @@ done:
 
 NV_STATUS uvm_test_perf_events_sanity(UVM_TEST_PERF_EVENTS_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1500);
     NV_STATUS status;
     uvm_va_space_t *va_space;
 

@@ -121,6 +121,7 @@ static uvm_perf_module_t g_module_access_counters;
 // destruction.
 static va_space_access_counters_info_t *va_space_access_counters_info_get_or_null(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 517);
     return uvm_perf_module_type_data(va_space->perf_modules_data, UVM_PERF_MODULE_TYPE_ACCESS_COUNTERS);
 }
 
@@ -128,6 +129,7 @@ static va_space_access_counters_info_t *va_space_access_counters_info_get_or_nul
 // that the information has been previously created.
 static va_space_access_counters_info_t *va_space_access_counters_info_get(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 518);
     va_space_access_counters_info_t *va_space_access_counters = va_space_access_counters_info_get_or_null(va_space);
     UVM_ASSERT(va_space_access_counters);
 
@@ -141,6 +143,7 @@ static va_space_access_counters_info_t *va_space_access_counters_info_get(uvm_va
 // - Users can override this policy by specifying on/off
 static bool is_migration_enabled(uvm_access_counter_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 519);
     int val;
     if (type == UVM_ACCESS_COUNTER_TYPE_MIMC) {
         val = uvm_perf_access_counter_mimc_migration_enable;
@@ -167,6 +170,7 @@ static bool is_migration_enabled(uvm_access_counter_type_t type)
 // VA space lock needs to be held in write mode
 static va_space_access_counters_info_t *va_space_access_counters_info_create(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 520);
     va_space_access_counters_info_t *va_space_access_counters;
     uvm_assert_rwsem_locked_write(&va_space->lock);
 
@@ -194,6 +198,7 @@ static va_space_access_counters_info_t *va_space_access_counters_info_create(uvm
 // VA space lock needs to be in write mode
 static void va_space_access_counters_info_destroy(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 521);
     va_space_access_counters_info_t *va_space_access_counters = va_space_access_counters_info_get_or_null(va_space);
     uvm_assert_rwsem_locked_write(&va_space->lock);
 
@@ -205,6 +210,7 @@ static void va_space_access_counters_info_destroy(uvm_va_space_t *va_space)
 
 static NV_STATUS config_granularity_to_bytes(UVM_ACCESS_COUNTER_GRANULARITY granularity, NvU64 *bytes)
 {
+    printk(KERN_ERR "=====================================   %d\n", 522);
     switch (granularity) {
         case UVM_ACCESS_COUNTER_GRANULARITY_64K:
             *bytes = 64 * 1024ULL;
@@ -229,6 +235,7 @@ static NV_STATUS config_granularity_to_bytes(UVM_ACCESS_COUNTER_GRANULARITY gran
 static NV_STATUS access_counter_clear_targeted(uvm_gpu_t *gpu,
                                                const uvm_access_counter_buffer_entry_t *entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 523);
     NV_STATUS status;
     uvm_push_t push;
     uvm_access_counter_buffer_info_t *access_counters = &gpu->parent->access_counter_buffer_info;
@@ -268,6 +275,7 @@ static NV_STATUS access_counter_clear_targeted(uvm_gpu_t *gpu,
 // Clear all access counters and add the operation to the per-GPU clear tracker
 static NV_STATUS access_counter_clear_all(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 524);
     NV_STATUS status;
     uvm_push_t push;
     uvm_access_counter_buffer_info_t *access_counters = &gpu->parent->access_counter_buffer_info;
@@ -295,12 +303,14 @@ static NV_STATUS access_counter_clear_all(uvm_gpu_t *gpu)
 static const uvm_gpu_access_counter_type_config_t *
 get_config_for_type(const uvm_access_counter_buffer_info_t *access_counters, uvm_access_counter_type_t counter_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 525);
     return counter_type == UVM_ACCESS_COUNTER_TYPE_MIMC? &(access_counters)->current_config.mimc :
                                                          &(access_counters)->current_config.momc;
 }
 
 bool uvm_gpu_access_counters_pending(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 526);
     UVM_ASSERT(parent_gpu->access_counters_supported);
 
     // Fast path 1: we left some notifications unserviced in the buffer in the last pass
@@ -328,6 +338,7 @@ static void init_access_counter_types_config(const UvmGpuAccessCntrConfig *confi
                                              uvm_access_counter_type_t counter_type,
                                              uvm_gpu_access_counter_type_config_t *counter_type_config)
 {
+    printk(KERN_ERR "=====================================   %d\n", 527);
     NV_STATUS status;
     NvU64 tracking_size = 0;
     UVM_ACCESS_COUNTER_GRANULARITY granularity = counter_type == UVM_ACCESS_COUNTER_TYPE_MIMC? config->mimcGranularity:
@@ -360,6 +371,7 @@ static void init_access_counter_types_config(const UvmGpuAccessCntrConfig *confi
 
 NV_STATUS uvm_gpu_init_access_counters(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 528);
     NV_STATUS status = NV_OK;
     uvm_access_counter_buffer_info_t *access_counters = &parent_gpu->access_counter_buffer_info;
     uvm_access_counter_service_batch_context_t *batch_context = &access_counters->batch_service_context;
@@ -488,6 +500,7 @@ fail:
 
 void uvm_gpu_deinit_access_counters(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 529);
     uvm_access_counter_buffer_info_t *access_counters = &parent_gpu->access_counter_buffer_info;
     uvm_access_counter_service_batch_context_t *batch_context = &access_counters->batch_service_context;
 
@@ -514,6 +527,7 @@ void uvm_gpu_deinit_access_counters(uvm_parent_gpu_t *parent_gpu)
 
 bool uvm_gpu_access_counters_required(const uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 530);
     if (!parent_gpu->access_counters_supported)
         return false;
 
@@ -528,6 +542,7 @@ bool uvm_gpu_access_counters_required(const uvm_parent_gpu_t *parent_gpu)
 // uvm_gpu_t struct.
 static NV_STATUS access_counters_take_ownership(uvm_gpu_t *gpu, UvmGpuAccessCntrConfig *config)
 {
+    printk(KERN_ERR "=====================================   %d\n", 531);
     NV_STATUS status, disable_status;
     uvm_access_counter_buffer_info_t *access_counters = &gpu->parent->access_counter_buffer_info;
 
@@ -576,6 +591,7 @@ error:
 // handling refcount may not be 0
 static void access_counters_yield_ownership(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 532);
     NV_STATUS status;
     uvm_access_counter_buffer_info_t *access_counters = &gpu->parent->access_counter_buffer_info;
 
@@ -596,6 +612,7 @@ static void access_counters_yield_ownership(uvm_gpu_t *gpu)
 // reference, enable the HW feature.
 static NV_STATUS gpu_access_counters_enable(uvm_gpu_t *gpu, UvmGpuAccessCntrConfig *config)
 {
+    printk(KERN_ERR "=====================================   %d\n", 533);
     UVM_ASSERT(uvm_sem_is_locked(&gpu->parent->isr.access_counters.service_lock));
     UVM_ASSERT(gpu->parent->access_counters_supported);
     UVM_ASSERT(gpu->parent->access_counter_buffer_info.rm_info.accessCntrBufferHandle);
@@ -618,6 +635,7 @@ static NV_STATUS gpu_access_counters_enable(uvm_gpu_t *gpu, UvmGpuAccessCntrConf
 // reference, disable the HW feature.
 static void gpu_access_counters_disable(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 534);
     UVM_ASSERT(uvm_sem_is_locked(&gpu->parent->isr.access_counters.service_lock));
     UVM_ASSERT(gpu->parent->access_counters_supported);
     UVM_ASSERT(gpu->parent->isr.access_counters.handling_ref_count > 0);
@@ -629,6 +647,7 @@ static void gpu_access_counters_disable(uvm_gpu_t *gpu)
 // Invoked during registration of the GPU in the VA space
 NV_STATUS uvm_gpu_access_counters_enable(uvm_gpu_t *gpu, uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 535);
     NV_STATUS status;
 
     UVM_ASSERT(gpu->parent->access_counters_supported);
@@ -665,6 +684,7 @@ NV_STATUS uvm_gpu_access_counters_enable(uvm_gpu_t *gpu, uvm_va_space_t *va_spac
 
 void uvm_gpu_access_counters_disable(uvm_gpu_t *gpu, uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 536);
     UVM_ASSERT(gpu->parent->access_counters_supported);
 
     uvm_gpu_access_counters_isr_lock(gpu->parent);
@@ -683,6 +703,7 @@ void uvm_gpu_access_counters_disable(uvm_gpu_t *gpu, uvm_va_space_t *va_space)
 
 static void write_get(uvm_parent_gpu_t *parent_gpu, NvU32 get)
 {
+    printk(KERN_ERR "=====================================   %d\n", 537);
     uvm_access_counter_buffer_info_t *access_counters = &parent_gpu->access_counter_buffer_info;
 
     UVM_ASSERT(uvm_sem_is_locked(&parent_gpu->isr.access_counters.service_lock));
@@ -699,6 +720,7 @@ static void write_get(uvm_parent_gpu_t *parent_gpu, NvU32 get)
 
 static void access_counter_buffer_flush_locked(uvm_gpu_t *gpu, uvm_gpu_buffer_flush_mode_t flush_mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 538);
     NvU32 get;
     NvU32 put;
     uvm_spin_loop_t spin;
@@ -730,6 +752,7 @@ static void access_counter_buffer_flush_locked(uvm_gpu_t *gpu, uvm_gpu_buffer_fl
 
 void uvm_gpu_access_counter_buffer_flush(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 539);
     UVM_ASSERT(gpu->parent->access_counters_supported);
 
     // Disables access counter interrupts and notification servicing
@@ -744,6 +767,7 @@ void uvm_gpu_access_counter_buffer_flush(uvm_gpu_t *gpu)
 static inline int cmp_access_counter_instance_ptr(const uvm_access_counter_buffer_entry_t *a,
                                                   const uvm_access_counter_buffer_entry_t *b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 540);
     int result;
 
     result = uvm_gpu_phys_addr_cmp(a->virtual_info.instance_ptr, b->virtual_info.instance_ptr);
@@ -758,6 +782,7 @@ static inline int cmp_access_counter_instance_ptr(const uvm_access_counter_buffe
 // entries that sorts by instance pointer
 static int cmp_sort_virt_notifications_by_instance_ptr(const void *_a, const void *_b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 541);
     const uvm_access_counter_buffer_entry_t *a = *(const uvm_access_counter_buffer_entry_t **)_a;
     const uvm_access_counter_buffer_entry_t *b = *(const uvm_access_counter_buffer_entry_t **)_b;
 
@@ -771,6 +796,7 @@ static int cmp_sort_virt_notifications_by_instance_ptr(const void *_a, const voi
 // entries that sorts by physical address' aperture
 static int cmp_sort_phys_notifications_by_processor_id(const void *_a, const void *_b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 542);
     const uvm_access_counter_buffer_entry_t *a = *(const uvm_access_counter_buffer_entry_t **)_a;
     const uvm_access_counter_buffer_entry_t *b = *(const uvm_access_counter_buffer_entry_t **)_b;
 
@@ -795,6 +821,7 @@ static NvU32 fetch_access_counter_buffer_entries(uvm_gpu_t *gpu,
                                                  uvm_access_counter_service_batch_context_t *batch_context,
                                                  notification_fetch_mode_t fetch_mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 543);
     NvU32 get;
     NvU32 put;
     NvU32 notification_index;
@@ -899,6 +926,7 @@ done:
 static void translate_virt_notifications_instance_ptrs(uvm_gpu_t *gpu,
                                                        uvm_access_counter_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 544);
     NvU32 i;
     NV_STATUS status;
 
@@ -928,6 +956,7 @@ static void translate_virt_notifications_instance_ptrs(uvm_gpu_t *gpu,
 static void preprocess_virt_notifications(uvm_gpu_t *gpu,
                                           uvm_access_counter_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 545);
     if (!batch_context->virt.is_single_instance_ptr) {
         // Sort by instance_ptr
         sort(batch_context->virt.notifications,
@@ -945,6 +974,7 @@ static void preprocess_virt_notifications(uvm_gpu_t *gpu,
 // processor.
 static void preprocess_phys_notifications(uvm_access_counter_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 546);
     if (!batch_context->phys.is_single_aperture) {
         // Sort by instance_ptr
         sort(batch_context->phys.notifications,
@@ -961,6 +991,7 @@ static NV_STATUS service_va_block_locked(uvm_processor_id_t processor,
                                          uvm_service_block_context_t *service_context,
                                          uvm_page_mask_t *accessed_pages)
 {
+    printk(KERN_ERR "=====================================   %d\n", 547);
     NV_STATUS status = NV_OK;
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     uvm_range_group_range_iter_t iter;
@@ -1132,6 +1163,7 @@ static void reverse_mappings_to_va_block_page_mask(uvm_va_block_t *va_block,
                                                    size_t num_reverse_mappings,
                                                    uvm_page_mask_t *page_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 548);
     NvU32 index;
 
     UVM_ASSERT(page_mask);
@@ -1165,6 +1197,7 @@ static NV_STATUS service_phys_single_va_block(uvm_gpu_t *gpu,
                                               size_t num_reverse_mappings,
                                               unsigned *out_flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 549);
     size_t index;
     uvm_va_block_t *va_block = reverse_mappings[0].va_block;
     uvm_va_space_t *va_space = NULL;
@@ -1253,6 +1286,7 @@ static NV_STATUS service_phys_va_blocks(uvm_gpu_t *gpu,
                                         size_t num_reverse_mappings,
                                         unsigned *out_flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 550);
     NV_STATUS status = NV_OK;
     size_t index;
 
@@ -1291,6 +1325,7 @@ static NV_STATUS service_phys_va_blocks(uvm_gpu_t *gpu,
 
 static bool are_reverse_mappings_on_single_block(const uvm_reverse_map_t *reverse_mappings, size_t num_reverse_mappings)
 {
+    printk(KERN_ERR "=====================================   %d\n", 551);
     size_t index;
     uvm_va_block_t *prev_va_block = NULL;
 
@@ -1320,6 +1355,7 @@ static NV_STATUS service_phys_notification_translation(uvm_gpu_t *gpu,
                                                        size_t *num_reverse_mappings,
                                                        unsigned *out_flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 552);
     NV_STATUS status;
     NvU32 region_start, region_end;
 
@@ -1378,6 +1414,7 @@ static NV_STATUS service_phys_notification(uvm_gpu_t *gpu,
                                            const uvm_access_counter_buffer_entry_t *current_entry,
                                            unsigned *out_flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 553);
     NvU64 address;
     NvU64 translation_index;
     uvm_access_counter_buffer_info_t *access_counters = &gpu->parent->access_counter_buffer_info;
@@ -1453,6 +1490,7 @@ static NV_STATUS service_phys_notification(uvm_gpu_t *gpu,
 static NV_STATUS service_phys_notifications(uvm_gpu_t *gpu,
                                             uvm_access_counter_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 554);
     NvU32 i;
     preprocess_phys_notifications(batch_context);
 
@@ -1480,12 +1518,14 @@ static NV_STATUS service_phys_notifications(uvm_gpu_t *gpu,
 
 static int cmp_sort_gpu_phys_addr(const void *_a, const void *_b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 555);
     return uvm_gpu_phys_addr_cmp(*(uvm_gpu_phys_address_t*)_a,
                                  *(uvm_gpu_phys_address_t*)_b);
 }
 
 static bool gpu_phys_same_region(uvm_gpu_phys_address_t a, uvm_gpu_phys_address_t b, NvU64 granularity)
 {
+    printk(KERN_ERR "=====================================   %d\n", 556);
     if (a.aperture != b.aperture)
         return false;
 
@@ -1499,6 +1539,7 @@ static bool phys_address_in_accessed_sub_region(uvm_gpu_phys_address_t address,
                                                 NvU64 sub_region_size,
                                                 NvU32 accessed_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 557);
     const unsigned accessed_index = (address.address % region_size) / sub_region_size;
 
     // accessed_mask is only filled for tracking granularities larger than 64K
@@ -1514,6 +1555,7 @@ static NV_STATUS service_virt_notification(uvm_gpu_t *gpu,
                                            const uvm_access_counter_buffer_entry_t *current_entry,
                                            unsigned *out_flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 558);
     NV_STATUS status = NV_OK;
     NvU64 notification_size;
     NvU64 address;
@@ -1632,6 +1674,7 @@ static NV_STATUS service_virt_notification(uvm_gpu_t *gpu,
 static NV_STATUS service_virt_notifications(uvm_gpu_t *gpu,
                                             uvm_access_counter_service_batch_context_t *batch_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 559);
     NvU32 i;
     NV_STATUS status = NV_OK;
     preprocess_virt_notifications(gpu, batch_context);
@@ -1665,6 +1708,7 @@ static NV_STATUS service_virt_notifications(uvm_gpu_t *gpu,
 
 void uvm_gpu_service_access_counters(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 560);
     NV_STATUS status = NV_OK;
     uvm_access_counter_service_batch_context_t *batch_context = &gpu->parent->access_counter_buffer_info.batch_service_context;
 
@@ -1703,6 +1747,7 @@ static const NvU32 g_uvm_access_counters_threshold_max = (1 << 15) - 1;
 static NV_STATUS access_counters_config_from_test_params(const UVM_TEST_RECONFIGURE_ACCESS_COUNTERS_PARAMS *params,
                                                          UvmGpuAccessCntrConfig *config)
 {
+    printk(KERN_ERR "=====================================   %d\n", 561);
     NvU64 tracking_size;
     memset(config, 0, sizeof(*config));
 
@@ -1731,6 +1776,7 @@ static NV_STATUS access_counters_config_from_test_params(const UVM_TEST_RECONFIG
 
 bool uvm_va_space_has_access_counter_migrations(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 562);
     va_space_access_counters_info_t *va_space_access_counters = va_space_access_counters_info_get(va_space);
 
     return atomic_read(&va_space_access_counters->params.enable_mimc_migrations);
@@ -1738,6 +1784,7 @@ bool uvm_va_space_has_access_counter_migrations(uvm_va_space_t *va_space)
 
 NV_STATUS uvm_perf_access_counters_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 563);
     uvm_perf_module_init("perf_access_counters",
                          UVM_PERF_MODULE_TYPE_ACCESS_COUNTERS,
                          g_callbacks_access_counters,
@@ -1749,10 +1796,12 @@ NV_STATUS uvm_perf_access_counters_init(void)
 
 void uvm_perf_access_counters_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 564);
 }
 
 NV_STATUS uvm_perf_access_counters_load(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 565);
     va_space_access_counters_info_t *va_space_access_counters;
     NV_STATUS status;
 
@@ -1769,6 +1818,7 @@ NV_STATUS uvm_perf_access_counters_load(uvm_va_space_t *va_space)
 
 void uvm_perf_access_counters_unload(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 566);
     uvm_perf_module_unload(&g_module_access_counters, va_space);
 
     va_space_access_counters_info_destroy(va_space);
@@ -1777,6 +1827,7 @@ void uvm_perf_access_counters_unload(uvm_va_space_t *va_space)
 NV_STATUS uvm_test_access_counters_enabled_by_default(UVM_TEST_ACCESS_COUNTERS_ENABLED_BY_DEFAULT_PARAMS *params,
                                                       struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 567);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_gpu_t *gpu = NULL;
 
@@ -1793,6 +1844,7 @@ NV_STATUS uvm_test_access_counters_enabled_by_default(UVM_TEST_ACCESS_COUNTERS_E
 
 NV_STATUS uvm_test_reconfigure_access_counters(UVM_TEST_RECONFIGURE_ACCESS_COUNTERS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 568);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu = NULL;
     UvmGpuAccessCntrConfig config = {0};
@@ -1906,6 +1958,7 @@ exit_release_gpu:
 
 NV_STATUS uvm_test_reset_access_counters(UVM_TEST_RESET_ACCESS_COUNTERS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 569);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu = NULL;
     uvm_access_counter_buffer_info_t *access_counters;
@@ -1967,6 +2020,7 @@ exit_release_gpu:
 
 void uvm_gpu_access_counters_set_ignore(uvm_gpu_t *gpu, bool do_ignore)
 {
+    printk(KERN_ERR "=====================================   %d\n", 570);
     bool change_intr_state = false;
 
     if (!gpu->parent->access_counters_supported)
@@ -2005,6 +2059,7 @@ void uvm_gpu_access_counters_set_ignore(uvm_gpu_t *gpu, bool do_ignore)
 
 NV_STATUS uvm_test_set_ignore_access_counters(UVM_TEST_SET_IGNORE_ACCESS_COUNTERS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 571);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu = NULL;

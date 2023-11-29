@@ -28,6 +28,7 @@
 
 void uvm_hal_turing_host_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2340);
     NvU32 sem_lo;
     UVM_ASSERT(!(NvOffset_LO32(gpu_va) & ~HWSHIFTMASK(C46F, SEM_ADDR_LO, OFFSET)));
     sem_lo = READ_HWVALUE(NvOffset_LO32(gpu_va), C46F, SEM_ADDR_LO, OFFSET);
@@ -46,6 +47,7 @@ void uvm_hal_turing_host_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32
 
 void uvm_hal_turing_host_semaphore_acquire(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2341);
     NvU32 sem_lo;
     UVM_ASSERT(!(NvOffset_LO32(gpu_va) & ~HWSHIFTMASK(C46F, SEM_ADDR_LO, OFFSET)));
     sem_lo = READ_HWVALUE(NvOffset_LO32(gpu_va), C46F, SEM_ADDR_LO, OFFSET);
@@ -62,6 +64,7 @@ void uvm_hal_turing_host_clear_faulted_channel_method(uvm_push_t *push,
                                                       uvm_user_channel_t *user_channel,
                                                       const uvm_fault_buffer_entry_t *fault)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2342);
     NvU32 clear_type_value = 0;
 
     UVM_ASSERT(user_channel->gpu->parent->has_clear_faulted_channel_method);
@@ -88,6 +91,7 @@ void uvm_hal_turing_host_set_gpfifo_entry(NvU64 *fifo_entry,
                                           NvU32 pushbuffer_length,
                                           uvm_gpfifo_sync_t sync_flag)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2343);
     NvU64 fifo_entry_value;
     const NvU32 sync_value = (sync_flag == UVM_GPFIFO_SYNC_WAIT) ? HWCONST(C46F, GP_ENTRY1, SYNC, WAIT) :
                                                                    HWCONST(C46F, GP_ENTRY1, SYNC, PROCEED);

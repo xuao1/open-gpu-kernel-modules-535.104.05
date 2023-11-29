@@ -28,16 +28,19 @@
 
 void uvm_hal_maxwell_sec2_init_noop(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1093);
 }
 
 void uvm_hal_maxwell_sec2_semaphore_release_unsupported(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1094);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     UVM_ASSERT_MSG(false, "SEC2 semaphore_release is not supported on GPU: %s.\n", uvm_gpu_name(gpu));
 }
 
 void uvm_hal_maxwell_sec2_semaphore_timestamp_unsupported(uvm_push_t *push, NvU64 gpu_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1095);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     UVM_ASSERT_MSG(false, "SEC2 semaphore_timestamp is not supported on GPU: %s.\n", uvm_gpu_name(gpu));
 }
@@ -48,6 +51,7 @@ void uvm_hal_maxwell_sec2_decrypt_unsupported(uvm_push_t *push,
                                               NvU32 size,
                                               NvU64 auth_tag_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1096);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     UVM_ASSERT_MSG(false, "SEC2 decrypt is not supported on GPU: %s.\n", uvm_gpu_name(gpu));
 }

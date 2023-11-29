@@ -44,6 +44,7 @@ typedef struct test_sem_mem_t {
 
 static NV_STATUS test_semaphore_alloc_uvm_rm_mem(uvm_gpu_t *gpu, const size_t size, test_sem_mem *mem_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2132);
     NV_STATUS status;
     uvm_rm_mem_t *mem = NULL;
     NvU64 gpu_va;
@@ -67,6 +68,7 @@ error:
 
 static NV_STATUS test_semaphore_alloc_sem(uvm_gpu_t *gpu, const size_t size, test_sem_mem *mem_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2133);
     NV_STATUS status = NV_OK;
     uvm_mem_t *mem = NULL;
     NvU64 gpu_va;
@@ -104,6 +106,7 @@ error:
 
 static void test_semaphore_free_sem(uvm_gpu_t *gpu, test_sem_mem *mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2134);
     if (mem->gpu_va >= gpu->parent->uvm_mem_va_base)
         uvm_mem_free(mem->uvm_mem);
     else
@@ -114,6 +117,7 @@ static void test_semaphore_free_sem(uvm_gpu_t *gpu, test_sem_mem *mem)
 // uvm_host_test.c, except that this one uses sec2_hal->semaphore_release();
 static NV_STATUS test_semaphore_release(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2135);
     NV_STATUS status;
     test_sem_mem mem = { 0 };
     uvm_push_t push;
@@ -156,6 +160,7 @@ done:
 // uvm_ce_test.c, except that this one uses sec2_hal->semaphore_timestamp();
 static NV_STATUS test_semaphore_timestamp(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2136);
     NV_STATUS status;
     test_sem_mem mem = { 0 };
     uvm_push_t push;
@@ -219,6 +224,7 @@ typedef enum
 
 static bool mem_match(uvm_mem_t *mem1, uvm_mem_t *mem2)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2137);
     void *mem1_addr;
     void *mem2_addr;
 
@@ -234,6 +240,7 @@ static bool mem_match(uvm_mem_t *mem1, uvm_mem_t *mem2)
 
 static NV_STATUS ce_memset_gpu(uvm_gpu_t *gpu, uvm_mem_t *mem, size_t size, NvU32 val)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2138);
     uvm_push_t push;
 
     TEST_NV_CHECK_RET(uvm_push_begin(gpu->channel_manager,
@@ -250,6 +257,7 @@ static NV_STATUS ce_memset_gpu(uvm_gpu_t *gpu, uvm_mem_t *mem, size_t size, NvU3
 
 static void write_range_cpu(uvm_mem_t *mem, size_t size, NvU64 base_val)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2139);
     char *start, *end;
 
     UVM_ASSERT(uvm_mem_is_sysmem(mem));
@@ -263,6 +271,7 @@ static void write_range_cpu(uvm_mem_t *mem, size_t size, NvU64 base_val)
 
 static NV_STATUS alloc_and_init_mem(uvm_gpu_t *gpu, uvm_mem_t **mem, size_t size, mem_alloc_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2140);
     NV_STATUS status = NV_OK;
 
     UVM_ASSERT(mem);
@@ -301,6 +310,7 @@ static void cpu_encrypt(uvm_channel_t *channel,
                         size_t size,
                         size_t copy_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2141);
     size_t i;
     void *src_plain = uvm_mem_get_cpu_addr_kernel(src_mem);
     void *dst_cipher = uvm_mem_get_cpu_addr_kernel(dst_mem);
@@ -325,6 +335,7 @@ static NV_STATUS cpu_decrypt(uvm_channel_t *channel,
                              size_t size,
                              size_t copy_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2142);
     size_t i;
     void *src_cipher = uvm_mem_get_cpu_addr_kernel(src_mem);
     void *dst_plain = uvm_mem_get_cpu_addr_kernel(dst_mem);
@@ -359,6 +370,7 @@ static void gpu_encrypt(uvm_push_t *push,
                         size_t size,
                         size_t copy_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2143);
     size_t i;
     size_t num_iterations = size / copy_size;
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
@@ -389,6 +401,7 @@ static void gpu_decrypt(uvm_push_t *push,
                         size_t size,
                         size_t copy_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2144);
     size_t i;
     size_t num_iterations = size / copy_size;
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
@@ -416,6 +429,7 @@ static void gpu_decrypt(uvm_push_t *push,
 // uvm_ce_test.c have successfully passed.
 static NV_STATUS test_cpu_to_gpu_roundtrip(uvm_gpu_t *gpu, size_t copy_size, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2145);
     NV_STATUS status = NV_OK;
     uvm_mem_t *src_plain = NULL;
     uvm_mem_t *src_cipher = NULL;
@@ -486,6 +500,7 @@ out:
 
 static NV_STATUS test_encryption_decryption(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2146);
     size_t copy_sizes[] = { 4, 16, 512, 2 * UVM_SIZE_1KB, 4 * UVM_SIZE_1KB, 64 * UVM_SIZE_1KB, 2 * UVM_SIZE_1MB };
     int i;
 
@@ -511,6 +526,7 @@ static NV_STATUS test_encryption_decryption(uvm_gpu_t *gpu)
 
 static NV_STATUS test_sec2(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2147);
     uvm_gpu_t *gpu;
 
     for_each_va_space_gpu(gpu, va_space) {
@@ -526,6 +542,7 @@ static NV_STATUS test_sec2(uvm_va_space_t *va_space)
 
 NV_STATUS uvm_test_sec2_sanity(UVM_TEST_SEC2_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2148);
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
@@ -543,6 +560,7 @@ done:
 
 NV_STATUS uvm_test_sec2_cpu_gpu_roundtrip(UVM_TEST_SEC2_CPU_GPU_ROUNDTRIP_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2149);
     NV_STATUS status = NV_OK;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_gpu_t *gpu;

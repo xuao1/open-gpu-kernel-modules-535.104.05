@@ -29,6 +29,7 @@
 
 bool uvm_hal_ampere_ce_method_is_valid_c6b5(uvm_push_t *push, NvU32 method_address, NvU32 method_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 77);
     if (!uvm_channel_is_proxy(push->channel))
         return true;
 
@@ -57,6 +58,7 @@ bool uvm_hal_ampere_ce_method_is_valid_c6b5(uvm_push_t *push, NvU32 method_addre
 
 static NvU32 ce_aperture(uvm_aperture_t aperture)
 {
+    printk(KERN_ERR "=====================================   %d\n", 78);
     BUILD_BUG_ON(HWCONST(C6B5, SET_SRC_PHYS_MODE, TARGET, LOCAL_FB) !=
                  HWCONST(C6B5, SET_DST_PHYS_MODE, TARGET, LOCAL_FB));
     BUILD_BUG_ON(HWCONST(C6B5, SET_SRC_PHYS_MODE, TARGET, COHERENT_SYSMEM) !=
@@ -81,6 +83,7 @@ static NvU32 ce_aperture(uvm_aperture_t aperture)
 // flags
 NvU32 uvm_hal_ampere_ce_phys_mode(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_address_t src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 79);
     NvU32 launch_dma_src_dst_type = 0;
 
     if (src.is_virtual)
@@ -109,11 +112,13 @@ NvU32 uvm_hal_ampere_ce_phys_mode(uvm_push_t *push, uvm_gpu_address_t dst, uvm_g
 
 NvU32 uvm_hal_ampere_ce_plc_mode_c7b5(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 80);
     return HWCONST(C7B5, LAUNCH_DMA, DISABLE_PLC, TRUE);
 }
 
 bool uvm_hal_ampere_ce_memcopy_is_valid_c6b5(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_address_t src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 81);
     NvU64 push_begin_gpu_va;
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
@@ -180,6 +185,7 @@ bool uvm_hal_ampere_ce_memcopy_is_valid_c6b5(uvm_push_t *push, uvm_gpu_address_t
 // irrespective of the virtualization mode.
 void uvm_hal_ampere_ce_memcopy_patch_src_c6b5(uvm_push_t *push, uvm_gpu_address_t *src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 82);
     uvm_pushbuffer_t *pushbuffer;
 
     if (!uvm_channel_is_proxy(push->channel))
@@ -194,6 +200,7 @@ bool uvm_hal_ampere_ce_memset_is_valid_c6b5(uvm_push_t *push,
                                             size_t num_elements,
                                             size_t element_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 83);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
     if (!uvm_gpu_is_virt_mode_sriov_heavy(gpu))

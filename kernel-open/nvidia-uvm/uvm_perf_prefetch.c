@@ -67,6 +67,7 @@ void uvm_perf_prefetch_bitmap_tree_iter_init(const uvm_perf_prefetch_bitmap_tree
                                              uvm_page_index_t page_index,
                                              uvm_perf_prefetch_bitmap_tree_iter_t *iter)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1522);
     UVM_ASSERT(bitmap_tree->level_count > 0);
     UVM_ASSERT_MSG(page_index < bitmap_tree->leaf_count,
                    "%zd vs %zd",
@@ -80,6 +81,7 @@ void uvm_perf_prefetch_bitmap_tree_iter_init(const uvm_perf_prefetch_bitmap_tree
 uvm_va_block_region_t uvm_perf_prefetch_bitmap_tree_iter_get_range(const uvm_perf_prefetch_bitmap_tree_t *bitmap_tree,
                                                                    const uvm_perf_prefetch_bitmap_tree_iter_t *iter)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1523);
     NvU16 range_leaves = uvm_perf_tree_iter_leaf_range(bitmap_tree, iter);
     NvU16 range_start = uvm_perf_tree_iter_leaf_range_start(bitmap_tree, iter);
     uvm_va_block_region_t subregion = uvm_va_block_region(range_start, range_start + range_leaves);
@@ -93,6 +95,7 @@ uvm_va_block_region_t uvm_perf_prefetch_bitmap_tree_iter_get_range(const uvm_per
 NvU16 uvm_perf_prefetch_bitmap_tree_iter_get_count(const uvm_perf_prefetch_bitmap_tree_t *bitmap_tree,
                                                    const uvm_perf_prefetch_bitmap_tree_iter_t *iter)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1524);
     uvm_va_block_region_t subregion = uvm_perf_prefetch_bitmap_tree_iter_get_range(bitmap_tree, iter);
 
     return uvm_page_mask_region_weight(&bitmap_tree->pages, subregion);
@@ -102,6 +105,7 @@ static uvm_va_block_region_t compute_prefetch_region(uvm_page_index_t page_index
                                                      uvm_perf_prefetch_bitmap_tree_t *bitmap_tree,
                                                      uvm_va_block_region_t max_prefetch_region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1525);
     NvU16 counter;
     uvm_perf_prefetch_bitmap_tree_iter_t iter;
     uvm_va_block_region_t prefetch_region = uvm_va_block_region(0, 0);
@@ -150,6 +154,7 @@ static void grow_fault_granularity_if_no_thrashing(uvm_perf_prefetch_bitmap_tree
                                                    const uvm_page_mask_t *faulted_pages,
                                                    const uvm_page_mask_t *thrashing_pages)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1526);
     if (!uvm_page_mask_region_empty(faulted_pages, region) &&
         (!thrashing_pages || uvm_page_mask_region_empty(thrashing_pages, region))) {
         UVM_ASSERT(region.first >= first);
@@ -167,6 +172,7 @@ static void grow_fault_granularity(uvm_perf_prefetch_bitmap_tree_t *bitmap_tree,
                                    const uvm_page_mask_t *faulted_pages,
                                    const uvm_page_mask_t *thrashing_pages)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1527);
     uvm_page_index_t pages_per_big_page = big_page_size / PAGE_SIZE;
     uvm_page_index_t page_index;
 
@@ -223,6 +229,7 @@ static void init_bitmap_tree_from_region(uvm_perf_prefetch_bitmap_tree_t *bitmap
                                          const uvm_page_mask_t *resident_mask,
                                          const uvm_page_mask_t *faulted_pages)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1528);
     if (resident_mask)
         uvm_page_mask_or(&bitmap_tree->pages, resident_mask, faulted_pages);
     else
@@ -301,6 +308,7 @@ static void compute_prefetch_mask(uvm_va_block_region_t faulted_region,
                                   const uvm_page_mask_t *faulted_pages,
                                   uvm_page_mask_t *out_prefetch_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1529);
     uvm_page_index_t page_index;
 
     uvm_page_mask_zero(out_prefetch_mask);
@@ -331,6 +339,7 @@ static NvU32 uvm_perf_prefetch_prenotify_fault_migrations(uvm_va_block_t *va_blo
                                                           uvm_page_mask_t *prefetch_pages,
                                                           uvm_perf_prefetch_bitmap_tree_t *bitmap_tree)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1530);
     const uvm_page_mask_t *resident_mask = NULL;
     const uvm_va_policy_t *policy = uvm_va_policy_get_region(va_block, faulted_region);
     uvm_va_block_region_t max_prefetch_region;
@@ -413,6 +422,7 @@ static NvU32 uvm_perf_prefetch_prenotify_fault_migrations(uvm_va_block_t *va_blo
 
 bool uvm_perf_prefetch_enabled(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1531);
     if (!g_uvm_perf_prefetch_enable)
         return false;
 
@@ -429,6 +439,7 @@ void uvm_perf_prefetch_compute_ats(uvm_va_space_t *va_space,
                                    uvm_perf_prefetch_bitmap_tree_t *bitmap_tree,
                                    uvm_page_mask_t *out_prefetch_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1532);
     UVM_ASSERT(faulted_pages);
     UVM_ASSERT(bitmap_tree);
     UVM_ASSERT(out_prefetch_mask);
@@ -451,6 +462,7 @@ void uvm_perf_prefetch_get_hint_va_block(uvm_va_block_t *va_block,
                                          uvm_perf_prefetch_bitmap_tree_t *bitmap_tree,
                                          uvm_perf_prefetch_hint_t *out_hint)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1533);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     uvm_page_mask_t *prefetch_pages = &out_hint->prefetch_pages_mask;
     NvU32 pending_prefetch_pages;
@@ -502,6 +514,7 @@ void uvm_perf_prefetch_get_hint_va_block(uvm_va_block_t *va_block,
 
 NV_STATUS uvm_perf_prefetch_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1534);
     g_uvm_perf_prefetch_enable = uvm_perf_prefetch_enable != 0;
 
     if (!g_uvm_perf_prefetch_enable)
@@ -533,6 +546,7 @@ NV_STATUS uvm_perf_prefetch_init(void)
 
 NV_STATUS uvm_test_set_page_prefetch_policy(UVM_TEST_SET_PAGE_PREFETCH_POLICY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1535);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     if (params->policy >= UVM_TEST_PAGE_PREFETCH_POLICY_MAX)

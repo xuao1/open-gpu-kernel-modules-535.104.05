@@ -36,26 +36,31 @@
 
 static UvmGpuConfComputeMode uvm_conf_computing_get_mode(const uvm_parent_gpu_t *parent)
 {
+    printk(KERN_ERR "=====================================   %d\n", 343);
     return parent->rm_info.gpuConfComputeCaps.mode;
 }
 
 bool uvm_conf_computing_mode_enabled_parent(const uvm_parent_gpu_t *parent)
 {
+    printk(KERN_ERR "=====================================   %d\n", 344);
     return uvm_conf_computing_get_mode(parent) != UVM_GPU_CONF_COMPUTE_MODE_NONE;
 }
 
 bool uvm_conf_computing_mode_enabled(const uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 345);
     return uvm_conf_computing_mode_enabled_parent(gpu->parent);
 }
 
 bool uvm_conf_computing_mode_is_hcc(const uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 346);
     return uvm_conf_computing_get_mode(gpu->parent) == UVM_GPU_CONF_COMPUTE_MODE_HCC;
 }
 
 void uvm_conf_computing_check_parent_gpu(const uvm_parent_gpu_t *parent)
 {
+    printk(KERN_ERR "=====================================   %d\n", 347);
     uvm_gpu_t *first_gpu;
 
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
@@ -79,6 +84,7 @@ void uvm_conf_computing_check_parent_gpu(const uvm_parent_gpu_t *parent)
 static void dma_buffer_destroy_locked(uvm_conf_computing_dma_buffer_pool_t *dma_buffer_pool,
                                       uvm_conf_computing_dma_buffer_t *dma_buffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 348);
     uvm_assert_mutex_locked(&dma_buffer_pool->lock);
 
     list_del(&dma_buffer->node);
@@ -91,6 +97,7 @@ static void dma_buffer_destroy_locked(uvm_conf_computing_dma_buffer_pool_t *dma_
 
 static uvm_gpu_t *dma_buffer_pool_to_gpu(uvm_conf_computing_dma_buffer_pool_t *dma_buffer_pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 349);
     return container_of(dma_buffer_pool, uvm_gpu_t, conf_computing.dma_buffer_pool);
 }
 
@@ -98,6 +105,7 @@ static uvm_gpu_t *dma_buffer_pool_to_gpu(uvm_conf_computing_dma_buffer_pool_t *d
 static NV_STATUS dma_buffer_create(uvm_conf_computing_dma_buffer_pool_t *dma_buffer_pool,
                                    uvm_conf_computing_dma_buffer_t **dma_buffer_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 350);
     uvm_gpu_t *dma_owner;
     uvm_conf_computing_dma_buffer_t *dma_buffer;
     uvm_mem_t *alloc = NULL;
@@ -143,6 +151,7 @@ err:
 
 void uvm_conf_computing_dma_buffer_pool_sync(uvm_conf_computing_dma_buffer_pool_t *dma_buffer_pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 351);
     uvm_conf_computing_dma_buffer_t *dma_buffer;
 
     if (dma_buffer_pool->num_dma_buffers == 0)
@@ -156,6 +165,7 @@ void uvm_conf_computing_dma_buffer_pool_sync(uvm_conf_computing_dma_buffer_pool_
 
 static void conf_computing_dma_buffer_pool_deinit(uvm_conf_computing_dma_buffer_pool_t *dma_buffer_pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 352);
     uvm_conf_computing_dma_buffer_t *dma_buffer;
     uvm_conf_computing_dma_buffer_t *next_buff;
 
@@ -180,12 +190,14 @@ static void conf_computing_dma_buffer_pool_deinit(uvm_conf_computing_dma_buffer_
 static void dma_buffer_pool_add(uvm_conf_computing_dma_buffer_pool_t *dma_buffer_pool,
                                uvm_conf_computing_dma_buffer_t *dma_buffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 353);
     uvm_assert_mutex_locked(&dma_buffer_pool->lock);
     list_add_tail(&dma_buffer->node, &dma_buffer_pool->free_dma_buffers);
 }
 
 static NV_STATUS conf_computing_dma_buffer_pool_init(uvm_conf_computing_dma_buffer_pool_t *dma_buffer_pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 354);
     size_t i;
     uvm_gpu_t *gpu;
     size_t num_dma_buffers = 32;
@@ -221,6 +233,7 @@ static NV_STATUS conf_computing_dma_buffer_pool_init(uvm_conf_computing_dma_buff
 
 static NV_STATUS dma_buffer_pool_expand_locked(uvm_conf_computing_dma_buffer_pool_t *dma_buffer_pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 355);
     size_t i;
     uvm_gpu_t *gpu;
     size_t nb_to_alloc;
@@ -251,6 +264,7 @@ NV_STATUS uvm_conf_computing_dma_buffer_alloc(uvm_conf_computing_dma_buffer_pool
                                               uvm_conf_computing_dma_buffer_t **dma_buffer_out,
                                               uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 356);
     uvm_conf_computing_dma_buffer_t *dma_buffer = NULL;
     NV_STATUS status;
 
@@ -300,6 +314,7 @@ void uvm_conf_computing_dma_buffer_free(uvm_conf_computing_dma_buffer_pool_t *dm
                                         uvm_conf_computing_dma_buffer_t *dma_buffer,
                                         uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 357);
 
     NV_STATUS status;
 
@@ -323,11 +338,13 @@ void uvm_conf_computing_dma_buffer_free(uvm_conf_computing_dma_buffer_pool_t *dm
 
 static void dummy_iv_mem_deinit(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 358);
     uvm_mem_free(gpu->conf_computing.iv_mem);
 }
 
 static NV_STATUS dummy_iv_mem_init(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 359);
     NV_STATUS status;
 
     if (!uvm_conf_computing_mode_is_hcc(gpu))
@@ -350,6 +367,7 @@ error:
 
 NV_STATUS uvm_conf_computing_gpu_init(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 360);
     NV_STATUS status;
 
     if (!uvm_conf_computing_mode_enabled(gpu))
@@ -372,12 +390,14 @@ error:
 
 void uvm_conf_computing_gpu_deinit(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 361);
     dummy_iv_mem_deinit(gpu);
     conf_computing_dma_buffer_pool_deinit(&gpu->conf_computing.dma_buffer_pool);
 }
 
 void uvm_conf_computing_log_gpu_encryption(uvm_channel_t *channel, UvmCslIv *iv)
 {
+    printk(KERN_ERR "=====================================   %d\n", 362);
     NV_STATUS status;
 
     uvm_mutex_lock(&channel->csl.ctx_lock);
@@ -392,6 +412,7 @@ void uvm_conf_computing_log_gpu_encryption(uvm_channel_t *channel, UvmCslIv *iv)
 
 void uvm_conf_computing_acquire_encryption_iv(uvm_channel_t *channel, UvmCslIv *iv)
 {
+    printk(KERN_ERR "=====================================   %d\n", 363);
     NV_STATUS status;
 
     uvm_mutex_lock(&channel->csl.ctx_lock);
@@ -411,6 +432,7 @@ void uvm_conf_computing_cpu_encrypt(uvm_channel_t *channel,
                                     size_t size,
                                     void *auth_tag_buffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 364);
     NV_STATUS status;
 
     UVM_ASSERT(size);
@@ -436,6 +458,7 @@ NV_STATUS uvm_conf_computing_cpu_decrypt(uvm_channel_t *channel,
                                          size_t size,
                                          const void *auth_tag_buffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 365);
     NV_STATUS status;
 
     uvm_mutex_lock(&channel->csl.ctx_lock);
@@ -458,6 +481,7 @@ NV_STATUS uvm_conf_computing_fault_decrypt(uvm_parent_gpu_t *parent_gpu,
                                            const void *auth_tag_buffer,
                                            NvU8 valid)
 {
+    printk(KERN_ERR "=====================================   %d\n", 366);
     NV_STATUS status;
 
     // There is no dedicated lock for the CSL context associated with replayable
@@ -485,6 +509,7 @@ NV_STATUS uvm_conf_computing_fault_decrypt(uvm_parent_gpu_t *parent_gpu,
 
 void uvm_conf_computing_fault_increment_decrypt_iv(uvm_parent_gpu_t *parent_gpu, NvU64 increment)
 {
+    printk(KERN_ERR "=====================================   %d\n", 367);
     NV_STATUS status;
 
     // See comment in uvm_conf_computing_fault_decrypt

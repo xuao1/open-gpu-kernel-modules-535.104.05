@@ -40,6 +40,7 @@
 
 static NvU32 get_push_begin_size(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1948);
     // SEC2 channels allocate CSL signature buffer at the beginning.
     if (uvm_channel_is_sec2(channel))
         return UVM_CONF_COMPUTING_SIGN_BUF_MAX_SIZE + UVM_METHOD_SIZE;
@@ -50,6 +51,7 @@ static NvU32 get_push_begin_size(uvm_channel_t *channel)
 // This is the storage required by a semaphore release.
 static NvU32 get_push_end_min_size(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1949);
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
 
     if (uvm_conf_computing_mode_enabled(gpu)) {
@@ -102,6 +104,7 @@ static NvU32 get_push_end_min_size(uvm_channel_t *channel)
 
 static NvU32 get_push_end_max_size(uvm_channel_t *channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1950);
     // WLC pushes are always padded to UVM_MAX_WLC_PUSH_SIZE
     if (uvm_channel_is_wlc(channel))
         return UVM_MAX_WLC_PUSH_SIZE;
@@ -120,6 +123,7 @@ static NvU32 get_push_end_max_size(uvm_channel_t *channel)
 
 static NV_STATUS test_push_end_size(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1951);
     uvm_gpu_t *gpu;
 
     for_each_va_space_gpu(gpu, va_space) {
@@ -185,6 +189,7 @@ typedef enum {
 
 static NV_STATUS test_push_inline_data_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1952);
     static const size_t test_sizes[] = { 1, 2, 3, 4, 8, 31, 32, 1023, 1024, 1025, UVM_PUSH_INLINE_DATA_MAX_SIZE };
     NV_STATUS status;
     int i, j;
@@ -281,6 +286,7 @@ done:
 
 static NV_STATUS test_push_inline_data(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1953);
     uvm_gpu_t *gpu;
 
     for_each_va_space_gpu(gpu, va_space) {
@@ -296,6 +302,7 @@ static NV_STATUS test_push_inline_data(uvm_va_space_t *va_space)
 // as if multiple threads tried doing so, it could easily deadlock.
 static NV_STATUS test_concurrent_pushes(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1954);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu;
     uvm_push_t *pushes;
@@ -353,22 +360,26 @@ done:
 
 static void add_to_counter(void* ptr, int value)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1955);
     atomic_t *atomic = (atomic_t*) ptr;
     atomic_add(value, atomic);
 }
 
 static void add_one_to_counter(void* ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1956);
     add_to_counter(ptr, 1);
 }
 
 static void add_two_to_counter(void* ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1957);
     add_to_counter(ptr, 2);
 }
 
 static NV_STATUS test_push_interleaving_on_gpu(uvm_gpu_t* gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1958);
     NV_STATUS status;
     uvm_channel_t *channel;
     uvm_push_t push;
@@ -511,6 +522,7 @@ done:
 // multiple threads tried doing so, it could easily deadlock.
 static NV_STATUS test_push_interleaving(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1959);
     NV_STATUS status;
     uvm_gpu_t *gpu;
 
@@ -535,6 +547,7 @@ static NV_STATUS test_push_exactly_max_push(uvm_gpu_t *gpu,
                                             uvm_gpu_semaphore_t *sema_to_acquire,
                                             NvU32 value)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1960);
     NV_STATUS status;
     NvU64 semaphore_gpu_va;
     NvU32 push_end_size;
@@ -564,6 +577,7 @@ static NV_STATUS test_push_exactly_max_push(uvm_gpu_t *gpu,
 
 static NvU32 test_count_idle_chunks(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1961);
     NvU32 i;
     NvU32 count = 0;
     for (i = 0; i < UVM_PUSHBUFFER_CHUNKS; ++i)
@@ -573,6 +587,7 @@ static NvU32 test_count_idle_chunks(uvm_pushbuffer_t *pushbuffer)
 
 static NvU32 test_count_available_chunks(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1962);
     NvU32 i;
     NvU32 count = 0;
     for (i = 0; i < UVM_PUSHBUFFER_CHUNKS; ++i)
@@ -587,6 +602,7 @@ static NvU32 test_count_available_chunks(uvm_pushbuffer_t *pushbuffer)
 // complete one by one.
 static NV_STATUS test_max_pushes_on_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1963);
     NV_STATUS status;
 
     uvm_tracker_t tracker;
@@ -674,6 +690,7 @@ done:
 // a different chunk in the pushbuffer.
 static NV_STATUS test_idle_chunks_on_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1964);
     NV_STATUS status;
 
     uvm_gpu_semaphore_t sema;
@@ -747,6 +764,7 @@ done:
 
 static NV_STATUS test_pushbuffer(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1965);
     uvm_gpu_t *gpu;
 
     for_each_va_space_gpu(gpu, va_space) {
@@ -764,6 +782,7 @@ typedef struct
 
 static void timestamp_on_complete(void *void_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1966);
     timestamp_test_t *data = (timestamp_test_t *)void_data;
 
     if (uvm_global_get_status() != NV_OK) {
@@ -778,6 +797,7 @@ static void timestamp_on_complete(void *void_data)
 
 static NV_STATUS test_timestamp_on_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1967);
     NV_STATUS status;
     uvm_push_t push;
     timestamp_test_t test_data = {0};
@@ -809,6 +829,7 @@ static NV_STATUS test_timestamp_on_gpu(uvm_gpu_t *gpu)
 
 static NV_STATUS test_timestamp(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1968);
     uvm_gpu_t *gpu;
 
     for_each_va_space_gpu(gpu, va_space)
@@ -819,6 +840,7 @@ static NV_STATUS test_timestamp(uvm_va_space_t *va_space)
 
 static NV_STATUS sync_memcopy(uvm_channel_type_t type, uvm_mem_t *dst, uvm_mem_t *src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1969);
     uvm_push_t push;
     uvm_gpu_address_t dst_va;
     uvm_gpu_address_t src_va;
@@ -861,6 +883,7 @@ static NV_STATUS sync_memcopy(uvm_channel_type_t type, uvm_mem_t *dst, uvm_mem_t
 
 static bool can_do_peer_copies(uvm_va_space_t *va_space, uvm_gpu_t *gpu_a, uvm_gpu_t *gpu_b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1970);
     if (gpu_a == gpu_b || !uvm_processor_mask_test(&va_space->can_copy_from[uvm_id_value(gpu_a->id)], gpu_b->id))
         return false;
 
@@ -877,6 +900,7 @@ static bool can_do_peer_copies(uvm_va_space_t *va_space, uvm_gpu_t *gpu_a, uvm_g
 // permutation of GPU peers.
 static NV_STATUS test_push_gpu_to_gpu(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1971);
     NvU32 i;
     NV_STATUS status;
     uvm_gpu_t *gpu, *gpu_a, *gpu_b;
@@ -975,6 +999,7 @@ static NV_STATUS test_push_gpu_to_gpu(uvm_va_space_t *va_space)
 
 NV_STATUS uvm_test_push_sanity(UVM_TEST_PUSH_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1972);
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 

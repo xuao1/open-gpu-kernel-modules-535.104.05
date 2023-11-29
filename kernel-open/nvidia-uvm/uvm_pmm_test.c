@@ -100,6 +100,7 @@ typedef enum
 // It is duplicated because we do not want to expose it as an API.
 static uvm_pmm_gpu_memory_type_t pmm_squash_memory_type(uvm_parent_gpu_t *parent_gpu, uvm_pmm_gpu_memory_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1807);
     if (uvm_conf_computing_mode_enabled_parent(parent_gpu))
         return type;
 
@@ -127,6 +128,7 @@ static NV_STATUS check_chunks(uvm_pmm_gpu_t *pmm,
                               uvm_chunk_size_t chunk_size,
                               uvm_pmm_gpu_memory_type_t mem_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1808);
     uvm_gpu_t *gpu = uvm_pmm_to_gpu(pmm);
     size_t i;
 
@@ -145,6 +147,7 @@ static NV_STATUS check_chunks(uvm_pmm_gpu_t *pmm,
 
 static NV_STATUS check_alloc_tracker(uvm_pmm_gpu_t *pmm, uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1809);
     uvm_gpu_t *gpu = uvm_pmm_to_gpu(pmm);
     uvm_tracker_entry_t *tracker_entry;
 
@@ -167,6 +170,7 @@ static NV_STATUS chunk_alloc_check_common(uvm_pmm_gpu_t *pmm,
                                           uvm_tracker_t *local_tracker,
                                           uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1810);
     NV_STATUS status;
     NV_STATUS check_status;
 
@@ -198,6 +202,7 @@ static NV_STATUS chunk_alloc_check(uvm_pmm_gpu_t *pmm,
                                    uvm_gpu_chunk_t **chunks,
                                    uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1811);
     uvm_gpu_t *gpu = uvm_pmm_to_gpu(pmm);
     NV_STATUS status;
     uvm_tracker_t local_tracker = UVM_TRACKER_INIT();
@@ -223,6 +228,7 @@ static NV_STATUS chunk_alloc_user_check(uvm_pmm_gpu_t *pmm,
                                         uvm_gpu_chunk_t **chunks,
                                         uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1812);
     NV_STATUS status;
     uvm_tracker_t local_tracker = UVM_TRACKER_INIT();
 
@@ -235,6 +241,7 @@ static NV_STATUS chunk_alloc_user_check(uvm_pmm_gpu_t *pmm,
 
 static NV_STATUS check_leak(uvm_gpu_t *gpu, uvm_chunk_size_t chunk_size, uvm_pmm_gpu_memory_type_t type, NvS64 limit, NvU64 *chunks)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1813);
     NV_STATUS status = NV_OK;
     pmm_leak_bucket_t *bucket, *next;
     LIST_HEAD(allocations);
@@ -286,6 +293,7 @@ cleanup:
 // Tracker is an in/out dependency
 static NV_STATUS do_memset_4(uvm_gpu_t *gpu, uvm_gpu_address_t dst, NvU32 val, size_t size, uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1814);
     NV_STATUS status;
     uvm_push_t push;
 
@@ -316,6 +324,7 @@ static NV_STATUS gpu_mem_check(uvm_gpu_t *gpu,
                                NvU32 expected,
                                uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1815);
     NV_STATUS status;
     uvm_push_t push;
     uvm_gpu_address_t verif_gpu_addr;
@@ -366,6 +375,7 @@ static NV_STATUS gpu_mem_check(uvm_gpu_t *gpu,
 
 static uvm_gpu_address_t chunk_copy_addr(uvm_gpu_t *gpu, uvm_gpu_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1816);
     return uvm_gpu_address_copy(gpu, uvm_gpu_phys_address(UVM_APERTURE_VID, chunk->address));
 }
 
@@ -376,6 +386,7 @@ static NV_STATUS init_test_chunk(uvm_va_space_t *va_space,
                                  uvm_chunk_size_t size,
                                  NvU32 pattern)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1817);
     uvm_gpu_t *gpu = uvm_pmm_to_gpu(pmm);
     NV_STATUS status = NV_OK;
     uvm_push_t push;
@@ -430,6 +441,7 @@ chunk_free:
 
 static NV_STATUS destroy_test_chunk(uvm_pmm_gpu_t *pmm, test_chunk_t *test_chunk, uvm_mem_t *verif_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1818);
     uvm_gpu_t *gpu = uvm_pmm_to_gpu(pmm);
     NV_STATUS status;
     uvm_gpu_chunk_t *chunk = test_chunk->chunk;
@@ -447,6 +459,7 @@ static NV_STATUS destroy_test_chunk(uvm_pmm_gpu_t *pmm, test_chunk_t *test_chunk
 
 static bool basic_test_should_free(basic_test_state_t *test_state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1819);
     if (test_state->free_pattern == BASIC_TEST_FREE_PATTERN_IMMEDIATE)
         return true;
 
@@ -456,6 +469,7 @@ static bool basic_test_should_free(basic_test_state_t *test_state)
 
 static NV_STATUS basic_test_alloc(basic_test_state_t *test_state, uvm_chunk_size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1820);
     test_chunk_t *test_chunk;
     NvU32 pattern;
     NV_STATUS status = NV_OK;
@@ -488,6 +502,7 @@ static NV_STATUS basic_test_alloc(basic_test_state_t *test_state, uvm_chunk_size
 
 static NV_STATUS basic_test_free_all(basic_test_state_t *test_state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1821);
     test_chunk_t *test_chunk;
     NV_STATUS temp_status, status = NV_OK;
 
@@ -511,6 +526,7 @@ static NV_STATUS basic_test_free_all(basic_test_state_t *test_state)
 // a little extra.
 static size_t basic_test_num_allocations(uvm_chunk_size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1822);
     return (UVM_CHUNK_SIZE_MAX / size) + 1;
 }
 
@@ -521,6 +537,7 @@ static size_t basic_test_num_allocations(uvm_chunk_size_t size)
 static NV_STATUS basic_test(uvm_va_space_t *va_space, uvm_gpu_t *gpu,
                             UvmTestPmmSanityMode mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1823);
     uvm_chunk_size_t size;
     uvm_chunk_sizes_mask_t chunk_sizes;
     basic_test_state_t test_state;
@@ -617,6 +634,7 @@ static NV_STATUS get_subchunks_test(uvm_pmm_gpu_t *pmm,
                                     uvm_gpu_chunk_t **expected_children,
                                     size_t num_children)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1824);
     uvm_gpu_chunk_t **subchunks = NULL;
     NV_STATUS status = NV_OK;
     size_t count, start_index, size = num_children * sizeof(subchunks[0]);
@@ -660,6 +678,7 @@ static NV_STATUS split_test_single(uvm_pmm_gpu_t *pmm,
                                    split_test_mode_t mode,
                                    uvm_mem_t *verif_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1825);
     uvm_pmm_gpu_memory_type_t parent_type = parent->chunk->type;
     uvm_chunk_size_t parent_size = uvm_gpu_chunk_get_size(parent->chunk);
     NvU64 parent_addr = parent->chunk->address;
@@ -772,6 +791,7 @@ error:
 // size, and verifies that the data in the chunk remains intact.
 static NV_STATUS split_test(uvm_va_space_t *va_space, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1826);
     uvm_pmm_gpu_memory_type_t type;
     uvm_chunk_size_t parent_size, child_size;
     NvU32 pattern;
@@ -828,6 +848,7 @@ out:
 
 NV_STATUS uvm_test_pmm_query(UVM_TEST_PMM_QUERY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1827);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu;
@@ -852,6 +873,7 @@ NV_STATUS uvm_test_pmm_query(UVM_TEST_PMM_QUERY_PARAMS *params, struct file *fil
 
 NV_STATUS uvm_test_pmm_sanity(UVM_TEST_PMM_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1828);
     NV_STATUS status = NV_OK;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_gpu_t *gpu;
@@ -880,6 +902,7 @@ out:
 
 NV_STATUS uvm_test_pmm_check_leak(UVM_TEST_PMM_CHECK_LEAK_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1829);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu;
@@ -912,6 +935,7 @@ NV_STATUS __test_pmm_async_alloc_type(uvm_va_space_t *va_space,
                                       uvm_pmm_gpu_memory_type_t mem_type,
                                       size_t work_iterations)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1830);
     NV_STATUS status;
     NV_STATUS tracker_status = NV_OK;
     uvm_gpu_chunk_t **chunks;
@@ -1017,6 +1041,7 @@ out:
 
 NV_STATUS uvm_test_pmm_async_alloc(UVM_TEST_PMM_ASYNC_ALLOC_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1831);
     NV_STATUS status = NV_OK;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_gpu_t *gpu;
@@ -1052,6 +1077,7 @@ static uvm_reverse_map_t g_reverse_map_entries[PAGES_PER_UVM_VA_BLOCK * 4];
 
 static NV_STATUS test_pmm_reverse_map_single(uvm_gpu_t *gpu, uvm_va_space_t *va_space, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1832);
     NV_STATUS status = NV_OK;
     NvU32 num_translations;
     uvm_va_block_t *va_block;
@@ -1091,6 +1117,7 @@ static NV_STATUS test_pmm_reverse_map_single(uvm_gpu_t *gpu, uvm_va_space_t *va_
 
 static NV_STATUS test_pmm_reverse_map_many_blocks(uvm_gpu_t *gpu, uvm_va_space_t *va_space, NvU64 addr, NvU64 size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1833);
     uvm_va_range_t *va_range;
     uvm_va_block_t *va_block = NULL;
     NvU32 num_blocks;
@@ -1175,6 +1202,7 @@ static NV_STATUS test_pmm_reverse_map_many_blocks(uvm_gpu_t *gpu, uvm_va_space_t
 
 NV_STATUS uvm_test_pmm_reverse_map(UVM_TEST_PMM_REVERSE_MAP_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1834);
     NV_STATUS status;
     uvm_gpu_t *gpu;
     uvm_va_space_t *va_space;
@@ -1206,6 +1234,7 @@ exit_unlock:
 
 static NV_STATUS test_indirect_peers(uvm_gpu_t *owning_gpu, uvm_gpu_t *accessing_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1835);
     uvm_pmm_gpu_t *pmm = &owning_gpu->pmm;
     size_t chunk_size = uvm_chunk_find_first_size(pmm->chunk_sizes[UVM_PMM_GPU_MEMORY_TYPE_USER]);
     uvm_gpu_chunk_t *parent_chunk = NULL;
@@ -1294,6 +1323,7 @@ out:
 
 NV_STATUS uvm_test_pmm_indirect_peers(UVM_TEST_PMM_INDIRECT_PEERS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1836);
     NV_STATUS status = NV_OK;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_gpu_t *owning_gpu, *accessing_gpu;
@@ -1320,6 +1350,7 @@ out:
 
 static NV_STATUS test_chunk_with_elevated_page(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1837);
     uvm_pmm_gpu_t *pmm = &gpu->pmm;
     size_t chunk_size = uvm_chunk_find_first_size(pmm->chunk_sizes[UVM_PMM_GPU_MEMORY_TYPE_USER]);
     uvm_gpu_chunk_t *parent_chunk = NULL, *parent_root = NULL;
@@ -1405,6 +1436,7 @@ out:
 
 NV_STATUS uvm_test_pmm_chunk_with_elevated_page(UVM_TEST_PMM_CHUNK_WITH_ELEVATED_PAGE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1838);
     NV_STATUS status = NV_OK;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_gpu_t *gpu;

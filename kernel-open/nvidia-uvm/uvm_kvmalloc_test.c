@@ -37,6 +37,7 @@ typedef enum
 
 static NV_STATUS check_alloc(void *p, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 921);
     if (size == 0) {
         TEST_CHECK_RET(p == ZERO_SIZE_PTR);
         TEST_CHECK_RET(uvm_kvsize(p) == 0);
@@ -61,6 +62,7 @@ static NV_STATUS check_alloc(void *p, size_t size)
 
 static NV_STATUS test_uvm_kvmalloc(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 922);
     static const size_t sizes[] = {0, UVM_KMALLOC_THRESHOLD, UVM_KMALLOC_THRESHOLD + 1};
     uint8_t *p;
     uint8_t expected;
@@ -121,6 +123,7 @@ static NV_STATUS test_uvm_kvmalloc(void)
 
 static NV_STATUS test_uvm_kvrealloc(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 923);
     size_t i, j, k, old_size, new_size;
     uint8_t *old_p, *new_p;
     uint8_t expected = (uint8_t)current->pid;
@@ -177,6 +180,7 @@ static NV_STATUS test_uvm_kvrealloc(void)
 
 NV_STATUS uvm_test_kvmalloc(UVM_TEST_KVMALLOC_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 924);
     NV_STATUS status = test_uvm_kvmalloc();
     if (status != NV_OK)
         return status;

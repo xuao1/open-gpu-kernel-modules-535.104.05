@@ -30,6 +30,7 @@
 
 void uvm_hal_volta_host_write_gpu_put(uvm_channel_t *channel, NvU32 gpu_put)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2870);
     // We need to add a BAR1 read if GPPut is located in sysmem. This
     // guarantees that any in-flight BAR1 writes from the CPU will have reached
     // the GPU by the time the GPU reads the updated GPPut. Read the provided
@@ -46,12 +47,14 @@ void uvm_hal_volta_host_write_gpu_put(uvm_channel_t *channel, NvU32 gpu_put)
 
 static NvU32 fault_cancel_va_mode_to_cancel_access_type(uvm_fault_cancel_va_mode_t cancel_va_mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2871);
     // There are only two logical cases from the perspective of UVM. Accesses to
     // an invalid address, which will cancel all accesses on the page, and
     // accesses with an invalid type on a read-only page, which will cancel all
     // write/atomic accesses on the page.
     switch (cancel_va_mode)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2872);
         case UVM_FAULT_CANCEL_VA_MODE_ALL:
             return HWCONST(C36F, MEM_OP_C, TLB_INVALIDATE_ACCESS_TYPE, VIRT_ALL);
         case UVM_FAULT_CANCEL_VA_MODE_WRITE_AND_ATOMIC:
@@ -68,6 +71,7 @@ void uvm_hal_volta_cancel_faults_va(uvm_push_t *push,
                                     const uvm_fault_buffer_entry_t *fault_entry,
                                     uvm_fault_cancel_va_mode_t cancel_va_mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2873);
     NvU32 aperture_value;
     NvU32 pdb_lo;
     NvU32 pdb_hi;
@@ -117,6 +121,7 @@ void uvm_hal_volta_host_clear_faulted_channel_method(uvm_push_t *push,
                                                      uvm_user_channel_t *user_channel,
                                                      const uvm_fault_buffer_entry_t *fault)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2874);
     NvU32 clear_type_value = 0;
 
     UVM_ASSERT(user_channel->gpu->parent->has_clear_faulted_channel_method);
@@ -138,6 +143,7 @@ void uvm_hal_volta_host_clear_faulted_channel_method(uvm_push_t *push,
 
 void uvm_hal_volta_access_counter_clear_all(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2875);
     NV_PUSH_4U(C36F, MEM_OP_A, 0,
                      MEM_OP_B, 0,
                      MEM_OP_C, 0,
@@ -147,6 +153,7 @@ void uvm_hal_volta_access_counter_clear_all(uvm_push_t *push)
 
 static NvU32 get_access_counter_type_value(uvm_access_counter_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2876);
     if (type == UVM_ACCESS_COUNTER_TYPE_MIMC)
         return NVC36F_MEM_OP_D_ACCESS_COUNTER_CLR_TYPE_MIMC;
     else if (type == UVM_ACCESS_COUNTER_TYPE_MOMC)
@@ -159,6 +166,7 @@ static NvU32 get_access_counter_type_value(uvm_access_counter_type_t type)
 
 static NvU32 get_access_counter_targeted_type_value(uvm_access_counter_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2877);
     if (type == UVM_ACCESS_COUNTER_TYPE_MIMC)
         return NVC36F_MEM_OP_D_ACCESS_COUNTER_CLR_TARGETED_TYPE_MIMC;
     else if (type == UVM_ACCESS_COUNTER_TYPE_MOMC)
@@ -171,6 +179,7 @@ static NvU32 get_access_counter_targeted_type_value(uvm_access_counter_type_t ty
 
 void uvm_hal_volta_access_counter_clear_type(uvm_push_t *push, uvm_access_counter_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2878);
     NvU32 type_value = get_access_counter_type_value(type);
 
     NV_PUSH_4U(C36F, MEM_OP_A, 0,
@@ -183,6 +192,7 @@ void uvm_hal_volta_access_counter_clear_type(uvm_push_t *push, uvm_access_counte
 void uvm_hal_volta_access_counter_clear_targeted(uvm_push_t *push,
                                                  const uvm_access_counter_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2879);
     NvU32 targeted_type_value = get_access_counter_targeted_type_value(buffer_entry->counter_type);
 
     NV_PUSH_4U(C36F, MEM_OP_A, 0,
@@ -202,6 +212,7 @@ void uvm_hal_volta_host_tlb_invalidate_va(uvm_push_t *push,
                                           NvU32 page_size,
                                           uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2880);
     NvU32 aperture_value;
     NvU32 page_table_level;
     NvU32 pdb_lo;
@@ -291,6 +302,7 @@ void uvm_hal_volta_host_tlb_invalidate_va(uvm_push_t *push,
 
 void uvm_hal_volta_replay_faults(uvm_push_t *push, uvm_fault_replay_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2881);
     NvU32 replay_value = 0;
     const NvU32 va_lo = 0;
     const NvU32 va_hi = 0;
@@ -323,6 +335,7 @@ void uvm_hal_volta_replay_faults(uvm_push_t *push, uvm_fault_replay_type_t type)
 
 void uvm_hal_volta_host_semaphore_timestamp(uvm_push_t *push, NvU64 gpu_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2882);
     NvU32 sem_lo;
     UVM_ASSERT(!(NvOffset_LO32(gpu_va) & ~HWSHIFTMASK(C36F, SEM_ADDR_LO, OFFSET)));
     sem_lo = READ_HWVALUE(NvOffset_LO32(gpu_va), C36F, SEM_ADDR_LO, OFFSET);

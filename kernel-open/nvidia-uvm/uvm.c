@@ -46,11 +46,13 @@ static const struct file_operations uvm_fops;
 
 bool uvm_file_is_nvidia_uvm(struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 28);
     return (filp != NULL) && (filp->f_op == &uvm_fops);
 }
 
 uvm_fd_type_t uvm_fd_type(struct file *filp, void **ptr_val)
 {
+    printk(KERN_ERR "=====================================   %d\n", 29);
     unsigned long uptr;
     uvm_fd_type_t type;
     void *ptr;
@@ -90,6 +92,7 @@ uvm_fd_type_t uvm_fd_type(struct file *filp, void **ptr_val)
 
 void *uvm_fd_get_type(struct file *filp, uvm_fd_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 30);
     void *ptr;
 
     UVM_ASSERT(uvm_file_is_nvidia_uvm(filp));
@@ -102,6 +105,7 @@ void *uvm_fd_get_type(struct file *filp, uvm_fd_type_t type)
 
 static NV_STATUS uvm_api_mm_initialize(UVM_MM_INITIALIZE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 31);
     uvm_va_space_t *va_space;
     uvm_va_space_mm_t *va_space_mm;
     struct file *uvm_file;
@@ -193,6 +197,7 @@ err:
 // lock will need to be taken.
 static int uvm_open(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 32);
     struct address_space *mapping;
     NV_STATUS status = uvm_global_get_status();
 
@@ -234,11 +239,13 @@ static int uvm_open(struct inode *inode, struct file *filp)
 
 static int uvm_open_entry(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 33);
    UVM_ENTRY_RET(uvm_open(inode, filp));
 }
 
 static void uvm_release_deferred(void *data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 34);
     uvm_va_space_t *va_space = data;
 
     // Since this function is only scheduled to run when uvm_release() fails
@@ -255,6 +262,7 @@ static void uvm_release_deferred(void *data)
 
 static void uvm_mm_release(struct file *filp, struct file *uvm_file)
 {
+    printk(KERN_ERR "=====================================   %d\n", 35);
     uvm_va_space_t *va_space = uvm_va_space_get(uvm_file);
     uvm_va_space_mm_t *va_space_mm = &va_space->va_space_mm;
     struct mm_struct *mm = va_space_mm->mm;
@@ -272,6 +280,7 @@ static void uvm_mm_release(struct file *filp, struct file *uvm_file)
 
 static int uvm_release(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 36);
     void *ptr;
     uvm_va_space_t *va_space;
     uvm_fd_type_t fd_type;
@@ -320,11 +329,13 @@ static int uvm_release(struct inode *inode, struct file *filp)
 
 static int uvm_release_entry(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 37);
    UVM_ENTRY_RET(uvm_release(inode, filp));
 }
 
 static void uvm_destroy_vma_managed(struct vm_area_struct *vma, bool make_zombie)
 {
+    printk(KERN_ERR "=====================================   %d\n", 38);
     uvm_va_range_t *va_range, *va_range_next;
     NvU64 size = 0;
 
@@ -351,6 +362,7 @@ static void uvm_destroy_vma_managed(struct vm_area_struct *vma, bool make_zombie
 
 static void uvm_destroy_vma_semaphore_pool(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 39);
     uvm_va_space_t *va_space;
     uvm_va_range_t *va_range;
 
@@ -370,17 +382,20 @@ static void uvm_destroy_vma_semaphore_pool(struct vm_area_struct *vma)
 // so we force it to fail instead.
 static vm_fault_t uvm_vm_fault_sigbus(struct vm_area_struct *vma, struct vm_fault *vmf)
 {
+    printk(KERN_ERR "=====================================   %d\n", 40);
     UVM_DBG_PRINT_RL("Fault to address 0x%lx in disabled vma\n", nv_page_fault_va(vmf));
     return VM_FAULT_SIGBUS;
 }
 
 static vm_fault_t uvm_vm_fault_sigbus_entry(struct vm_area_struct *vma, struct vm_fault *vmf)
 {
+    printk(KERN_ERR "=====================================   %d\n", 41);
     UVM_ENTRY_RET(uvm_vm_fault_sigbus(vma, vmf));
 }
 
 static vm_fault_t uvm_vm_fault_sigbus_wrapper(struct vm_fault *vmf)
 {
+    printk(KERN_ERR "=====================================   %d\n", 42);
 #if defined(NV_VM_OPS_FAULT_REMOVED_VMA_ARG)
     return uvm_vm_fault_sigbus(vmf->vma, vmf);
 #else
@@ -390,6 +405,7 @@ static vm_fault_t uvm_vm_fault_sigbus_wrapper(struct vm_fault *vmf)
 
 static vm_fault_t uvm_vm_fault_sigbus_wrapper_entry(struct vm_fault *vmf)
 {
+    printk(KERN_ERR "=====================================   %d\n", 43);
     UVM_ENTRY_RET(uvm_vm_fault_sigbus_wrapper(vmf));
 }
 
@@ -404,6 +420,7 @@ static struct vm_operations_struct uvm_vm_ops_disabled =
 
 static void uvm_disable_vma(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 44);
     // In the case of fork, the kernel has already copied the old PTEs over to
     // the child process, so an access in the child might succeed instead of
     // causing a fault. To force a fault we'll unmap it directly here.
@@ -443,6 +460,7 @@ static void uvm_disable_vma(struct vm_area_struct *vma)
 static void uvm_vm_open_failure(struct vm_area_struct *original,
                                 struct vm_area_struct *new)
 {
+    printk(KERN_ERR "=====================================   %d\n", 45);
     uvm_va_space_t *va_space = uvm_va_space_get(new->vm_file);
     static const bool make_zombie = false;
 
@@ -477,6 +495,7 @@ static void uvm_vm_open_failure(struct vm_area_struct *original,
 // will never increase in size, only shrink/split.
 static void uvm_vm_open_managed(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 46);
     uvm_va_space_t *va_space = uvm_va_space_get(vma->vm_file);
     uvm_va_range_t *va_range;
     struct vm_area_struct *original;
@@ -565,11 +584,13 @@ out:
 
 static void uvm_vm_open_managed_entry(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 47);
    UVM_ENTRY_VOID(uvm_vm_open_managed(vma));
 }
 
 static void uvm_vm_close_managed(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 48);
     uvm_va_space_t *va_space = uvm_va_space_get(vma->vm_file);
     uvm_processor_id_t gpu_id;
     bool make_zombie = false;
@@ -620,11 +641,13 @@ static void uvm_vm_close_managed(struct vm_area_struct *vma)
 
 static void uvm_vm_close_managed_entry(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 49);
     UVM_ENTRY_VOID(uvm_vm_close_managed(vma));
 }
 
 static vm_fault_t uvm_vm_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
 {
+    printk(KERN_ERR "=====================================   %d\n", 50);
     uvm_va_space_t *va_space = uvm_va_space_get(vma->vm_file);
 
     return uvm_va_space_cpu_fault_managed(va_space, vma, vmf);
@@ -632,11 +655,13 @@ static vm_fault_t uvm_vm_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
 
 static vm_fault_t uvm_vm_fault_entry(struct vm_area_struct *vma, struct vm_fault *vmf)
 {
+    printk(KERN_ERR "=====================================   %d\n", 51);
     UVM_ENTRY_RET(uvm_vm_fault(vma, vmf));
 }
 
 static vm_fault_t uvm_vm_fault_wrapper(struct vm_fault *vmf)
 {
+    printk(KERN_ERR "=====================================   %d\n", 52);
 #if defined(NV_VM_OPS_FAULT_REMOVED_VMA_ARG)
     return uvm_vm_fault(vmf->vma, vmf);
 #else
@@ -646,6 +671,7 @@ static vm_fault_t uvm_vm_fault_wrapper(struct vm_fault *vmf)
 
 static vm_fault_t uvm_vm_fault_wrapper_entry(struct vm_fault *vmf)
 {
+    printk(KERN_ERR "=====================================   %d\n", 53);
     UVM_ENTRY_RET(uvm_vm_fault_wrapper(vmf));
 }
 
@@ -667,6 +693,7 @@ static struct vm_operations_struct uvm_vm_ops_managed =
 // freeing the allocation, and destroying the va_range are handled by UVM_FREE.
 static void uvm_vm_open_semaphore_pool(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 54);
     struct vm_area_struct *origin_vma = (struct vm_area_struct *)vma->vm_private_data;
     uvm_va_space_t *va_space = uvm_va_space_get(origin_vma->vm_file);
     uvm_va_range_t *va_range;
@@ -719,6 +746,7 @@ static void uvm_vm_open_semaphore_pool(struct vm_area_struct *vma)
 
 static void uvm_vm_open_semaphore_pool_entry(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 55);
    UVM_ENTRY_VOID(uvm_vm_open_semaphore_pool(vma));
 }
 
@@ -726,6 +754,7 @@ static void uvm_vm_open_semaphore_pool_entry(struct vm_area_struct *vma)
 // freeing the allocation, and destroying the va_range are handled by UVM_FREE.
 static void uvm_vm_close_semaphore_pool(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 56);
     uvm_va_space_t *va_space = uvm_va_space_get(vma->vm_file);
 
     if (current->mm != NULL)
@@ -743,6 +772,7 @@ static void uvm_vm_close_semaphore_pool(struct vm_area_struct *vma)
 
 static void uvm_vm_close_semaphore_pool_entry(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 57);
    UVM_ENTRY_VOID(uvm_vm_close_semaphore_pool(vma));
 }
 
@@ -760,6 +790,7 @@ static struct vm_operations_struct uvm_vm_ops_semaphore_pool =
 
 static int uvm_mmap(struct file *filp, struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 58);
     uvm_va_space_t *va_space;
     uvm_va_range_t *va_range;
     NV_STATUS status = uvm_global_get_status();
@@ -888,6 +919,7 @@ out:
 
 bool uvm_vma_is_managed(struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 59);
     return vma->vm_ops == &uvm_vm_ops_disabled ||
            vma->vm_ops == &uvm_vm_ops_managed ||
            vma->vm_ops == &uvm_vm_ops_semaphore_pool;
@@ -895,11 +927,13 @@ bool uvm_vma_is_managed(struct vm_area_struct *vma)
 
 static int uvm_mmap_entry(struct file *filp, struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "=====================================   %d\n", 60);
    UVM_ENTRY_RET(uvm_mmap(filp, vma));
 }
 
 static NV_STATUS uvm_api_initialize(UVM_INITIALIZE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 61);
     uvm_va_space_t *va_space;
     NV_STATUS status;
     uvm_fd_type_t old_fd_type;
@@ -954,6 +988,7 @@ static NV_STATUS uvm_api_initialize(UVM_INITIALIZE_PARAMS *params, struct file *
 
 static NV_STATUS uvm_api_pageable_mem_access(UVM_PAGEABLE_MEM_ACCESS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 62);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     params->pageableMemAccess = uvm_va_space_pageable_mem_access_supported(va_space) ? NV_TRUE : NV_FALSE;
     return NV_OK;
@@ -961,8 +996,10 @@ static NV_STATUS uvm_api_pageable_mem_access(UVM_PAGEABLE_MEM_ACCESS_PARAMS *par
 
 static long uvm_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
+    printk(KERN_ERR "=====================================   %d\n", 63);
     switch (cmd)
     {
+    printk(KERN_ERR "=====================================   %d\n", 64);
         case UVM_DEINITIALIZE:
             return 0;
 
@@ -1016,6 +1053,7 @@ static long uvm_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
 static long uvm_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
+    printk(KERN_ERR "=====================================   %d\n", 65);
     long ret;
 
     if (!uvm_down_read_trylock(&g_uvm_global.pm.lock))
@@ -1032,6 +1070,7 @@ static long uvm_unlocked_ioctl(struct file *filp, unsigned int cmd, unsigned lon
 
 static long uvm_unlocked_ioctl_entry(struct file *filp, unsigned int cmd, unsigned long arg)
 {
+    printk(KERN_ERR "=====================================   %d\n", 66);
    UVM_ENTRY_RET(uvm_unlocked_ioctl(filp, cmd, arg));
 }
 
@@ -1049,6 +1088,7 @@ static const struct file_operations uvm_fops =
 
 NV_STATUS uvm_test_register_unload_state_buffer(UVM_TEST_REGISTER_UNLOAD_STATE_BUFFER_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 67);
     long ret;
     struct page *page;
     NV_STATUS status = NV_OK;
@@ -1087,6 +1127,7 @@ error:
 
 static void uvm_test_unload_state_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 68);
     if (g_uvm_global.unload_state.ptr) {
         kunmap(g_uvm_global.unload_state.page);
         NV_UNPIN_USER_PAGE(g_uvm_global.unload_state.page);
@@ -1095,6 +1136,7 @@ static void uvm_test_unload_state_exit(void)
 
 static int uvm_chardev_create(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 69);
     dev_t uvm_dev;
 
     int ret = alloc_chrdev_region(&g_uvm_base_dev,
@@ -1120,12 +1162,14 @@ static int uvm_chardev_create(void)
 
 static void uvm_chardev_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 70);
     cdev_del(&g_uvm_cdev);
     unregister_chrdev_region(g_uvm_base_dev, NVIDIA_UVM_NUM_MINOR_DEVICES);
 }
 
 static int uvm_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 71);
     bool initialized_globals = false;
     bool added_device = false;
     int ret;
@@ -1181,11 +1225,13 @@ error:
 
 static int __init uvm_init_entry(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 72);
    UVM_ENTRY_RET(uvm_init());
 }
 
 static void uvm_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 73);
     uvm_tools_exit();
     uvm_chardev_exit();
 
@@ -1198,6 +1244,7 @@ static void uvm_exit(void)
 
 static void __exit uvm_exit_entry(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 74);
    UVM_ENTRY_VOID(uvm_exit());
 }
 

@@ -99,6 +99,7 @@ typedef struct
 
 static rtt_range_t rtt_node_get_range(uvm_range_tree_node_t *node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2038);
     rtt_range_t range = {node->start, node->end};
     return range;
 }
@@ -107,22 +108,26 @@ static rtt_range_t rtt_node_get_range(uvm_range_tree_node_t *node)
 // means that the range is 2^64.
 static NvU64 rtt_get_range_size(rtt_range_t *range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2039);
     return range->end - range->start + 1;
 }
 
 static bool rtt_ranges_overlap(rtt_range_t *a, rtt_range_t *b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2040);
     return uvm_ranges_overlap(a->start, a->end, b->start, b->end);
 }
 
 static bool rtt_range_overlaps_node(uvm_range_tree_node_t *node, rtt_range_t *range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2041);
     rtt_range_t temp = rtt_node_get_range(node);
     return rtt_ranges_overlap(&temp, range);
 }
 
 static void rtt_state_destroy(rtt_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2042);
     size_t i;
 
     if (!state)
@@ -137,6 +142,7 @@ static void rtt_state_destroy(rtt_state_t *state)
 
 static rtt_state_t *rtt_state_create(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2043);
     rtt_state_t *state = uvm_kvmalloc_zero(sizeof(*state));
     if (!state)
         return NULL;
@@ -154,6 +160,7 @@ static rtt_state_t *rtt_state_create(void)
 
 static uvm_range_tree_node_t *rtt_alloc_node(rtt_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2044);
     uvm_range_tree_node_t *node;
     uvm_range_tree_node_t **new_nodes;
     size_t new_max;
@@ -189,6 +196,7 @@ error:
 
 static NV_STATUS rtt_range_add(rtt_state_t *state, rtt_range_t *range, uvm_range_tree_node_t **new_node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2045);
     NV_STATUS status;
     uvm_range_tree_node_t *node;
 
@@ -229,6 +237,7 @@ error:
 
 static NV_STATUS rtt_index_remove(rtt_state_t *state, size_t index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2046);
     uvm_range_tree_node_t *node;
     NvU64 size;
 
@@ -250,6 +259,7 @@ static NV_STATUS rtt_index_remove(rtt_state_t *state, size_t index)
 
 static NV_STATUS rtt_node_shrink(rtt_state_t *state, uvm_range_tree_node_t *node, NvU64 new_start, NvU64 new_end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2047);
     NvU64 old_size;
     NvU64 new_size;
 
@@ -272,6 +282,7 @@ static NV_STATUS rtt_node_split(rtt_state_t *state,
                                 NvU64 new_end,
                                 uvm_range_tree_node_t **new_node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2048);
     NV_STATUS status;
     uvm_range_tree_node_t *new;
 
@@ -305,6 +316,7 @@ error:
 
 static NV_STATUS rtt_check_between(rtt_state_t *state, uvm_range_tree_node_t *lower, uvm_range_tree_node_t *upper)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2049);
     bool hole_exists = true;
     NvU64 hole_start = 0, hole_end = ULLONG_MAX;
     NvU64 test_start, test_end;
@@ -387,6 +399,7 @@ static NV_STATUS rtt_check_between(rtt_state_t *state, uvm_range_tree_node_t *lo
 
 static NV_STATUS rtt_check_node(rtt_state_t *state, uvm_range_tree_node_t *node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2050);
     uvm_range_tree_node_t *temp, *prev, *next;
     NvU64 start, mid, end;
     NvU64 hole_start = 0, hole_end = ULLONG_MAX;
@@ -453,6 +466,7 @@ static NV_STATUS rtt_check_node(rtt_state_t *state, uvm_range_tree_node_t *node)
 
 static NV_STATUS rtt_check_iterator_all(rtt_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2051);
     uvm_range_tree_node_t *node, *next, *prev = NULL, *expected = NULL;
     size_t iter_count = 0;
 
@@ -519,6 +533,7 @@ static NV_STATUS rtt_check_iterator_all(rtt_state_t *state)
 //
 static NV_STATUS rtt_range_add_check(rtt_state_t *state, rtt_range_t *range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2052);
     NV_STATUS status;
     uvm_range_tree_node_t *node = NULL;
     size_t i;
@@ -570,6 +585,7 @@ static NV_STATUS rtt_range_add_check(rtt_state_t *state, rtt_range_t *range)
 // Returns NV_ERR_INVALID_STATE on sanity check failure, NV_OK otherwise.
 static NV_STATUS rtt_index_remove_check(rtt_state_t *state, size_t index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2053);
     uvm_range_tree_node_t *node, *prev, *next;
     NvU64 start, end;
     NvU64 hole_start, hole_end;
@@ -636,6 +652,7 @@ static NV_STATUS rtt_index_remove_check(rtt_state_t *state, size_t index)
 // Returns NV_ERR_INVALID_STATE on sanity check failure, NV_OK otherwise.
 static NV_STATUS rtt_node_shrink_check(rtt_state_t *state, uvm_range_tree_node_t *node, NvU64 new_start, NvU64 new_end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2054);
     uvm_range_tree_node_t *prev, *next;
     NV_STATUS status;
     NvU64 old_start = node->start;
@@ -670,6 +687,7 @@ static NV_STATUS rtt_node_shrink_check(rtt_state_t *state, uvm_range_tree_node_t
 
 static NV_STATUS rtt_remove_all_check(rtt_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2055);
     NV_STATUS status;
 
     status = rtt_check_iterator_all(state);
@@ -686,6 +704,7 @@ static NV_STATUS rtt_remove_all_check(rtt_state_t *state)
 
 static NV_STATUS rtt_node_split_check(rtt_state_t *state, uvm_range_tree_node_t *node, NvU64 new_end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2056);
     uvm_range_tree_node_t *prev, *next, *new = NULL;
     NV_STATUS status;
 
@@ -719,6 +738,7 @@ static NV_STATUS rtt_node_split_check(rtt_state_t *state, uvm_range_tree_node_t 
 // the removed node. It's simpler to just handle all that in the same function.
 static NV_STATUS rtt_index_merge_check_prev(rtt_state_t *state, size_t index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2057);
     uvm_range_tree_node_t *node, *prev, *returned, *expected = NULL;
     size_t i = 0; // Shut up compiler
     NV_STATUS status;
@@ -777,6 +797,7 @@ static NV_STATUS rtt_index_merge_check_prev(rtt_state_t *state, size_t index)
 
 static NV_STATUS rtt_index_merge_check_next(rtt_state_t *state, size_t index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2058);
     uvm_range_tree_node_t *node, *next, *returned, *expected = NULL;
     size_t i = 0; // Shut up compiler
     NV_STATUS status;
@@ -839,6 +860,7 @@ static NV_STATUS rtt_index_merge_check_next(rtt_state_t *state, size_t index)
 // Returns the index of the node containing addr, or state->count if none.
 static size_t rtt_node_find(rtt_state_t *state, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2059);
     size_t i;
     for (i = 0; i < state->count; i++) {
         if (state->nodes[i]->start <= addr && addr <= state->nodes[i]->end)
@@ -849,12 +871,14 @@ static size_t rtt_node_find(rtt_state_t *state, NvU64 addr)
 
 static NV_STATUS rtt_range_add_check_val(rtt_state_t *state, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2060);
     rtt_range_t range = {start, end};
     return rtt_range_add_check(state, &range);
 }
 
 static NV_STATUS rtt_index_remove_check_val(rtt_state_t *state, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2061);
     size_t index = rtt_node_find(state, addr);
     if (index == state->count)
         return NV_ERR_INVALID_STATE;
@@ -863,6 +887,7 @@ static NV_STATUS rtt_index_remove_check_val(rtt_state_t *state, NvU64 addr)
 
 static NV_STATUS rtt_node_shrink_check_val(rtt_state_t *state, NvU64 new_start, NvU64 new_end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2062);
     size_t index = rtt_node_find(state, new_start);
     if (index == state->count)
         return NV_ERR_INVALID_STATE;
@@ -871,6 +896,7 @@ static NV_STATUS rtt_node_shrink_check_val(rtt_state_t *state, NvU64 new_start, 
 
 static NV_STATUS rtt_node_split_check_val(rtt_state_t *state, NvU64 new_end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2063);
     size_t index = rtt_node_find(state, new_end);
     if (index == state->count || new_end == state->nodes[index]->end)
         return NV_ERR_INVALID_STATE;
@@ -879,6 +905,7 @@ static NV_STATUS rtt_node_split_check_val(rtt_state_t *state, NvU64 new_end)
 
 static NV_STATUS rtt_index_merge_check_prev_val(rtt_state_t *state, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2064);
     size_t index = rtt_node_find(state, addr);
     if (index == state->count)
         return NV_ERR_INVALID_STATE;
@@ -887,6 +914,7 @@ static NV_STATUS rtt_index_merge_check_prev_val(rtt_state_t *state, NvU64 addr)
 
 static NV_STATUS rtt_index_merge_check_next_val(rtt_state_t *state, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2065);
     size_t index = rtt_node_find(state, addr);
     if (index == state->count)
         return NV_ERR_INVALID_STATE;
@@ -895,6 +923,7 @@ static NV_STATUS rtt_index_merge_check_next_val(rtt_state_t *state, NvU64 addr)
 
 static NV_STATUS rtt_directed(rtt_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2066);
     uvm_range_tree_node_t *node, *next;
 
     // Empty tree
@@ -999,6 +1028,7 @@ static NV_STATUS rtt_directed(rtt_state_t *state)
 
 NV_STATUS uvm_test_range_tree_directed(UVM_TEST_RANGE_TREE_DIRECTED_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2067);
     rtt_state_t *state;
     NV_STATUS status;
 
@@ -1016,6 +1046,7 @@ NV_STATUS uvm_test_range_tree_directed(UVM_TEST_RANGE_TREE_DIRECTED_PARAMS *para
 // size == 0 means size == 2^64.
 static void rtt_rand_place(uvm_test_rng_t *rng, NvU64 size, rtt_range_t *bounds, rtt_range_t *out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2068);
     UVM_ASSERT(bounds->start <= bounds->end);
 
     if (size == 0) {
@@ -1039,6 +1070,7 @@ static void rtt_rand_place(uvm_test_rng_t *rng, NvU64 size, rtt_range_t *bounds,
 // logarithmic distribution for a good mix of large and small ranges.
 static void rtt_get_rand_range(uvm_test_rng_t *rng, NvU64 max_end, rtt_range_t *out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2069);
     rtt_range_t bounds = {0, max_end};
     NvU64 size;
 
@@ -1055,6 +1087,7 @@ static void rtt_get_rand_range_covering(uvm_test_rng_t *rng,
                                         rtt_range_t *cover,
                                         rtt_range_t *out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2070);
     NvU64 size;
     rtt_range_t bounds;
 
@@ -1098,6 +1131,7 @@ static void rtt_get_rand_range_covering(uvm_test_rng_t *rng,
 // returns NV_ERR_BUSY_RETRY.
 static NV_STATUS rtt_batch_add(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2071);
     size_t size = 0, ranges_to_add, max_ranges;
     NvU32 collisions = 0;
     NV_STATUS status = NV_OK;
@@ -1167,6 +1201,7 @@ static NV_STATUS rtt_batch_add(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_PA
 // [1, params->max_batch_count].
 static NV_STATUS rtt_batch_remove(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2072);
     size_t index, max_ranges, ranges_to_remove;
     NV_STATUS status;
 
@@ -1197,6 +1232,7 @@ static NV_STATUS rtt_batch_remove(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM
 // params->max_attempts threshold.
 static NV_STATUS rtt_rand_shrink(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2073);
     uvm_range_tree_node_t *node = NULL;
     NvU64 old_start;
     NvU64 old_end;
@@ -1254,6 +1290,7 @@ static NV_STATUS rtt_rand_shrink(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_
 // is returned.
 static NV_STATUS rtt_rand_split(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2074);
     uvm_range_tree_node_t *node = NULL;
     rtt_range_t old_range;
     size_t index;
@@ -1313,6 +1350,7 @@ static NV_STATUS rtt_rand_split(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_P
 // is returned.
 static NV_STATUS rtt_rand_merge(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2075);
     uvm_range_tree_node_t *node;
     size_t index;
     NvU32 i;
@@ -1370,6 +1408,7 @@ static NV_STATUS rtt_rand_merge(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_P
 // that adding the range fails.
 static NV_STATUS rtt_rand_collision_check(rtt_state_t *state, NvU64 max_end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2076);
     size_t index;
     rtt_range_t cover, check;
 
@@ -1391,6 +1430,7 @@ static NV_STATUS rtt_rand_collision_check(rtt_state_t *state, NvU64 max_end)
 // in that range in order.
 static NV_STATUS rtt_rand_iterator_check(rtt_state_t *state, NvU64 max_end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2077);
     uvm_range_tree_node_t *node;
     uvm_range_tree_node_t *prev = NULL, *first = NULL, *last = NULL, *next = NULL;
     size_t i, target_count = 0, iter_count = 0;
@@ -1511,6 +1551,7 @@ static NV_STATUS rtt_rand_iterator_check(rtt_state_t *state, NvU64 max_end)
 
 static rtt_op_t rtt_get_rand_op(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2078);
     NvU32 r_group, r_sub;
 
     // The possible options depend on the current number of nodes in the tree:
@@ -1594,6 +1635,7 @@ static rtt_op_t rtt_get_rand_op(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_P
 // complexity of this test immensely, so instead we're doing best-effort.
 static NV_STATUS rtt_random(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2079);
     rtt_op_t op;
     NvU64 i;
     NvU32 j;
@@ -1696,6 +1738,7 @@ static NV_STATUS rtt_random(rtt_state_t *state, UVM_TEST_RANGE_TREE_RANDOM_PARAM
 
 NV_STATUS uvm_test_range_tree_random(UVM_TEST_RANGE_TREE_RANDOM_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2080);
     rtt_state_t *state;
     NV_STATUS status;
 

@@ -46,6 +46,7 @@
 
 static NvU32 entries_per_index_maxwell(NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1069);
     UVM_ASSERT(depth < 2);
     if (depth == 0)
         return 2;
@@ -54,6 +55,7 @@ static NvU32 entries_per_index_maxwell(NvU32 depth)
 
 static NvLength entry_offset_maxwell(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1070);
     UVM_ASSERT(depth < 2);
     if (page_size == UVM_PAGE_SIZE_4K && depth == 0)
         return MMU_SMALL;
@@ -62,6 +64,7 @@ static NvLength entry_offset_maxwell(NvU32 depth, NvU32 page_size)
 
 static NvU64 big_half_pde_maxwell(uvm_mmu_page_table_alloc_t *phys_alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1071);
     NvU64 pde_bits = 0;
     if (phys_alloc != NULL) {
        NvU64 address = phys_alloc->addr.address >> NV_MMU_PDE_ADDRESS_SHIFT;
@@ -85,6 +88,7 @@ static NvU64 big_half_pde_maxwell(uvm_mmu_page_table_alloc_t *phys_alloc)
 
 static NvU64 small_half_pde_maxwell(uvm_mmu_page_table_alloc_t *phys_alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1072);
     NvU64 pde_bits = 0;
     if (phys_alloc != NULL) {
         NvU64 address = phys_alloc->addr.address >> NV_MMU_PDE_ADDRESS_SHIFT;
@@ -108,6 +112,7 @@ static NvU64 small_half_pde_maxwell(uvm_mmu_page_table_alloc_t *phys_alloc)
 
 static void make_pde_maxwell(void *entry, uvm_mmu_page_table_alloc_t **phys_allocs, NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1073);
     NvU64 pde_bits = 0;
     UVM_ASSERT(depth == 0);
     pde_bits |= HWCONST64(_MMU, PDE, SIZE, FULL);
@@ -118,12 +123,14 @@ static void make_pde_maxwell(void *entry, uvm_mmu_page_table_alloc_t **phys_allo
 
 static NvLength entry_size_maxwell(NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1074);
     UVM_ASSERT(depth < 2);
     return 8;
 }
 
 static NvU32 index_bits_maxwell_64(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1075);
     UVM_ASSERT(depth < 2);
     UVM_ASSERT(page_size == UVM_PAGE_SIZE_4K ||
                page_size == UVM_PAGE_SIZE_64K ||
@@ -142,6 +149,7 @@ static NvU32 index_bits_maxwell_64(NvU32 depth, NvU32 page_size)
 
 static NvU32 index_bits_maxwell_128(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1076);
     UVM_ASSERT(depth < 2);
     UVM_ASSERT(page_size == UVM_PAGE_SIZE_4K ||
                page_size == UVM_PAGE_SIZE_128K ||
@@ -160,36 +168,43 @@ static NvU32 index_bits_maxwell_128(NvU32 depth, NvU32 page_size)
 
 static NvU32 num_va_bits_maxwell(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1077);
     return 40;
 }
 
 static NvLength allocation_size_maxwell_64(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1078);
     return entry_size_maxwell(depth) << index_bits_maxwell_64(depth, page_size);
 }
 
 static NvLength allocation_size_maxwell_128(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1079);
     return entry_size_maxwell(depth) << index_bits_maxwell_128(depth, page_size);
 }
 
 static NvU32 page_table_depth_maxwell(NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1080);
     return 1;
 }
 
 static NvU32 page_sizes_maxwell_128(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1081);
     return UVM_PAGE_SIZE_128K | UVM_PAGE_SIZE_4K;
 }
 
 static NvU32 page_sizes_maxwell_64(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1082);
     return UVM_PAGE_SIZE_64K | UVM_PAGE_SIZE_4K;
 }
 
 static NvU64 unmapped_pte_maxwell(NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1083);
     // Setting the privilege bit on an otherwise-zeroed big PTE causes the
     // corresponding 4k PTEs to be ignored. This allows the invalidation of a
     // mixed PDE range to be much faster.
@@ -205,6 +220,7 @@ static NvU64 unmapped_pte_maxwell(NvU32 page_size)
 
 static NvU64 make_pte_maxwell(uvm_aperture_t aperture, NvU64 address, uvm_prot_t prot, NvU64 flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1084);
     NvU64 pte_bits = 0;
     NvU8 aperture_bits = 0;
 
@@ -281,6 +297,7 @@ static NvU64 make_pte_maxwell(uvm_aperture_t aperture, NvU64 address, uvm_prot_t
 
 static NvU64 make_sked_reflected_pte_maxwell(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1085);
     NvU64 pte_bits = 0;
 
     pte_bits |= HWCONST64(_MMU, PTE, VALID, TRUE);
@@ -291,6 +308,7 @@ static NvU64 make_sked_reflected_pte_maxwell(void)
 
 static NvU64 poisoned_pte_maxwell(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1086);
     // An invalid PTE is also fatal on Maxwell, but a PRIV violation will
     // immediately identify bad PTE usage.
 
@@ -310,6 +328,7 @@ static NvU64 poisoned_pte_maxwell(void)
 // Sparse mappings are not supported.
 static NvU64 make_sparse_pte_maxwell_unsupported(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1087);
     UVM_ASSERT_MSG(0, "Sparse mappings unsupported on pre-Pascal GPUs\n");
     return poisoned_pte_maxwell();
 }
@@ -352,6 +371,7 @@ static uvm_mmu_mode_hal_t maxwell_128_mmu_mode_hal =
 
 uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_maxwell(NvU32 big_page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1088);
     UVM_ASSERT(big_page_size == UVM_PAGE_SIZE_64K || big_page_size == UVM_PAGE_SIZE_128K);
     if (big_page_size == UVM_PAGE_SIZE_64K)
         return &maxwell_64_mmu_mode_hal;
@@ -361,22 +381,26 @@ uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_maxwell(NvU32 big_page_size)
 
 void uvm_hal_maxwell_mmu_enable_prefetch_faults_unsupported(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1089);
     UVM_ASSERT_MSG(false, "mmu enable_prefetch_faults called on Maxwell GPU\n");
 }
 
 void uvm_hal_maxwell_mmu_disable_prefetch_faults_unsupported(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1090);
     UVM_ASSERT_MSG(false, "mmu disable_prefetch_faults called on Maxwell GPU\n");
 }
 
 uvm_mmu_engine_type_t uvm_hal_maxwell_mmu_engine_id_to_type_unsupported(NvU16 mmu_engine_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1091);
     UVM_ASSERT(0);
     return UVM_MMU_ENGINE_TYPE_COUNT;
 }
 
 NvU16 uvm_hal_maxwell_mmu_client_id_to_utlb_id_unsupported(NvU16 client_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1092);
     UVM_ASSERT(0);
     return 0;
 }

@@ -28,6 +28,7 @@
 
 static void clear_replayable_faults_interrupt(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2337);
     volatile NvU32 *reg;
     NvU32 mask;
 
@@ -39,6 +40,7 @@ static void clear_replayable_faults_interrupt(uvm_parent_gpu_t *parent_gpu)
 
 void uvm_hal_turing_clear_replayable_faults(uvm_parent_gpu_t *parent_gpu, NvU32 get)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2338);
     clear_replayable_faults_interrupt(parent_gpu);
 
     wmb();
@@ -50,6 +52,7 @@ void uvm_hal_turing_clear_replayable_faults(uvm_parent_gpu_t *parent_gpu, NvU32 
 
 void uvm_hal_turing_disable_replayable_faults(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2339);
     volatile NvU32 *reg;
     NvU32 mask;
 

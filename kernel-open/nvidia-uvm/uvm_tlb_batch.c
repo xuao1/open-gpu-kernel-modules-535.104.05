@@ -26,12 +26,14 @@
 
 void uvm_tlb_batch_begin(uvm_page_tree_t *tree, uvm_tlb_batch_t *batch)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2206);
     memset(batch, 0, sizeof(*batch));
     batch->tree = tree;
 }
 
 static NvU32 smallest_page_size(NvU32 page_sizes)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2207);
     UVM_ASSERT(page_sizes != 0);
 
     return 1u << __ffs(page_sizes);
@@ -39,6 +41,7 @@ static NvU32 smallest_page_size(NvU32 page_sizes)
 
 static NvU32 biggest_page_size(NvU32 page_sizes)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2208);
     UVM_ASSERT(page_sizes != 0);
 
     return 1u << __fls(page_sizes);
@@ -46,6 +49,7 @@ static NvU32 biggest_page_size(NvU32 page_sizes)
 
 static void tlb_batch_flush_invalidate_per_va(uvm_tlb_batch_t *batch, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2209);
     uvm_page_tree_t *tree = batch->tree;
     uvm_gpu_phys_address_t pdb_addr = uvm_page_tree_pdb(tree)->addr;
     uvm_membar_t membar = UVM_MEMBAR_NONE;
@@ -79,6 +83,7 @@ static void tlb_batch_flush_invalidate_per_va(uvm_tlb_batch_t *batch, uvm_push_t
 
 static void tlb_batch_flush_invalidate_all(uvm_tlb_batch_t *batch, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2210);
     uvm_page_tree_t *tree = batch->tree;
     uvm_gpu_t *gpu = tree->gpu;
     NvU32 page_table_depth = tree->hal->page_table_depth(batch->biggest_page_size);
@@ -88,6 +93,7 @@ static void tlb_batch_flush_invalidate_all(uvm_tlb_batch_t *batch, uvm_push_t *p
 
 static bool tlb_batch_should_invalidate_all(uvm_tlb_batch_t *batch)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2211);
     if (!batch->tree->gpu->parent->tlb_batch.va_invalidate_supported)
         return true;
 
@@ -102,6 +108,7 @@ static bool tlb_batch_should_invalidate_all(uvm_tlb_batch_t *batch)
 
 void uvm_tlb_batch_end(uvm_tlb_batch_t *batch, uvm_push_t *push, uvm_membar_t tlb_membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2212);
     if (batch->count == 0)
         return;
 
@@ -115,6 +122,7 @@ void uvm_tlb_batch_end(uvm_tlb_batch_t *batch, uvm_push_t *push, uvm_membar_t tl
 
 void uvm_tlb_batch_invalidate(uvm_tlb_batch_t *batch, NvU64 start, NvU64 size, NvU32 page_sizes, uvm_membar_t tlb_membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2213);
     uvm_tlb_batch_range_t *new_entry;
 
     batch->membar = uvm_membar_max(tlb_membar, batch->membar);

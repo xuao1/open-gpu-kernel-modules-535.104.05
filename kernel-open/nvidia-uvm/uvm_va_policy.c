@@ -36,12 +36,14 @@ const uvm_va_policy_t uvm_va_policy_default = {
 
 bool uvm_va_policy_is_read_duplicate(const uvm_va_policy_t *policy, uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2654);
     return policy->read_duplication == UVM_READ_DUPLICATION_ENABLED &&
            uvm_va_space_can_read_duplicate(va_space, NULL);
 }
 
 const uvm_va_policy_t *uvm_va_policy_get(uvm_va_block_t *va_block, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2655);
     uvm_assert_mutex_locked(&va_block->lock);
 
     if (uvm_va_block_is_hmm(va_block)) {
@@ -64,6 +66,7 @@ static bool uvm_hmm_va_block_assert_policy_is_valid(uvm_va_block_t *va_block,
                                                     const uvm_va_policy_t *policy,
                                                     uvm_va_block_region_t region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2656);
     const uvm_va_policy_node_t *node;
 
     if (uvm_va_policy_is_default(policy)) {
@@ -85,6 +88,7 @@ static bool uvm_hmm_va_block_assert_policy_is_valid(uvm_va_block_t *va_block,
 
 const uvm_va_policy_t *uvm_va_policy_get_region(uvm_va_block_t *va_block, uvm_va_block_region_t region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2657);
     uvm_assert_mutex_locked(&va_block->lock);
 
     if (uvm_va_block_is_hmm(va_block)) {
@@ -106,11 +110,13 @@ static struct kmem_cache *g_uvm_va_policy_node_cache __read_mostly;
 
 static uvm_va_policy_node_t *uvm_va_policy_node_container(uvm_range_tree_node_t *tree_node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2658);
     return container_of(tree_node, uvm_va_policy_node_t, node);
 }
 
 NV_STATUS uvm_va_policy_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2659);
     g_uvm_va_policy_node_cache = NV_KMEM_CACHE_CREATE("uvm_va_policy_node_t", uvm_va_policy_node_t);
     if (!g_uvm_va_policy_node_cache)
         return NV_ERR_NO_MEMORY;
@@ -120,11 +126,13 @@ NV_STATUS uvm_va_policy_init(void)
 
 void uvm_va_policy_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2660);
     kmem_cache_destroy_safe(&g_uvm_va_policy_node_cache);
 }
 
 static uvm_va_policy_node_t *uvm_va_policy_node_alloc(NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2661);
     uvm_va_policy_node_t *node;
 
     UVM_ASSERT(PAGE_ALIGNED(start));
@@ -142,11 +150,13 @@ static uvm_va_policy_node_t *uvm_va_policy_node_alloc(NvU64 start, NvU64 end)
 
 static void uvm_va_policy_node_free(uvm_va_policy_node_t *node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2662);
     kmem_cache_free(g_uvm_va_policy_node_cache, node);
 }
 
 static uvm_va_policy_node_t *uvm_va_policy_node_create(uvm_va_block_t *va_block, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2663);
     uvm_va_policy_node_t *node;
     NV_STATUS status;
 
@@ -169,6 +179,7 @@ static uvm_va_policy_node_t *uvm_va_policy_node_create(uvm_va_block_t *va_block,
 
 uvm_va_policy_node_t *uvm_va_policy_node_find(uvm_va_block_t *va_block, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2664);
     uvm_range_tree_node_t *tree_node;
 
     UVM_ASSERT(uvm_va_block_is_hmm(va_block));
@@ -183,6 +194,7 @@ uvm_va_policy_node_t *uvm_va_policy_node_find(uvm_va_block_t *va_block, NvU64 ad
 
 uvm_va_policy_node_t *uvm_va_policy_node_iter_first(uvm_va_block_t *va_block, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2665);
     uvm_range_tree_node_t *tree_node;
 
     UVM_ASSERT(uvm_va_block_is_hmm(va_block));
@@ -199,6 +211,7 @@ uvm_va_policy_node_t *uvm_va_policy_node_iter_next(uvm_va_block_t *va_block,
                                                    uvm_va_policy_node_t *node,
                                                    NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2666);
     uvm_range_tree_node_t *tree_node;
 
     if (!node)
@@ -217,6 +230,7 @@ const uvm_va_policy_t *uvm_va_policy_iter_first(uvm_va_block_t *va_block,
                                                 uvm_va_policy_node_t **out_node,
                                                 uvm_va_block_region_t *out_region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2667);
     uvm_range_tree_node_t *tree_node;
     uvm_va_policy_node_t *node;
     const uvm_va_policy_t *policy;
@@ -263,6 +277,7 @@ const uvm_va_policy_t *uvm_va_policy_iter_next(uvm_va_block_t *va_block,
                                                uvm_va_policy_node_t **inout_node,
                                                uvm_va_block_region_t *inout_region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2668);
     uvm_va_policy_node_t *node = *inout_node;
     uvm_va_policy_node_t *next;
     uvm_va_block_region_t region;
@@ -312,6 +327,7 @@ NV_STATUS uvm_va_policy_node_split(uvm_va_block_t *va_block,
                                    NvU64 new_end,
                                    uvm_va_policy_node_t **new_ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2669);
     uvm_va_policy_node_t *new;
 
     UVM_ASSERT(uvm_va_block_is_hmm(va_block));
@@ -337,6 +353,7 @@ NV_STATUS uvm_va_policy_node_split(uvm_va_block_t *va_block,
 void uvm_va_policy_node_split_move(uvm_va_block_t *old_va_block,
                                    uvm_va_block_t *new_va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2670);
     uvm_va_policy_node_t *node, *next;
     NV_STATUS status;
 
@@ -357,6 +374,7 @@ void uvm_va_policy_node_split_move(uvm_va_block_t *old_va_block,
 
 void uvm_va_policy_clear(uvm_va_block_t *va_block, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2671);
     uvm_va_policy_node_t *node, *new;
     uvm_range_tree_node_t *tree_node;
     NV_STATUS status;
@@ -402,6 +420,7 @@ static void uvm_va_policy_node_set(uvm_va_policy_node_t *node,
                                    uvm_processor_id_t processor_id,
                                    uvm_read_duplication_policy_t new_policy)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2672);
     switch (which) {
         case UVM_VA_POLICY_PREFERRED_LOCATION:
             UVM_ASSERT(!UVM_ID_IS_INVALID(processor_id));
@@ -431,6 +450,7 @@ static void uvm_va_policy_node_clear(uvm_va_block_t *va_block,
                                      uvm_processor_id_t processor_id,
                                      uvm_read_duplication_policy_t new_policy)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2673);
     switch (which) {
         case UVM_VA_POLICY_PREFERRED_LOCATION:
             UVM_ASSERT(UVM_ID_IS_INVALID(processor_id));
@@ -465,6 +485,7 @@ static uvm_va_policy_node_t *create_node_and_set(uvm_va_block_t *va_block,
                                                  uvm_processor_id_t processor_id,
                                                  uvm_read_duplication_policy_t new_policy)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2674);
     uvm_va_policy_node_t *node;
 
     // Create a new node for the missing range.
@@ -485,6 +506,7 @@ static bool va_policy_node_split_needed(uvm_va_policy_node_t *node,
                                         uvm_processor_id_t processor_id,
                                         uvm_read_duplication_policy_t new_policy)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2675);
     // If the node doesn't extend beyond the range being set, it doesn't need
     // to be split.
     if (node->node.start >= start && node->node.end <= end)
@@ -518,6 +540,7 @@ NV_STATUS uvm_va_policy_set_range(uvm_va_block_t *va_block,
                                   uvm_processor_id_t processor_id,
                                   uvm_read_duplication_policy_t new_policy)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2676);
     uvm_va_policy_node_t *node, *next, *new;
     NvU64 addr;
     NvU64 node_start;
@@ -606,6 +629,7 @@ const uvm_va_policy_t *uvm_va_policy_set_preferred_location(uvm_va_block_t *va_b
                                                             uvm_processor_id_t processor_id,
                                                             const uvm_va_policy_t *old_policy)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2677);
     NvU64 start = uvm_va_block_region_start(va_block, region);
     NvU64 end = uvm_va_block_region_end(va_block, region);
     uvm_va_policy_node_t *node;

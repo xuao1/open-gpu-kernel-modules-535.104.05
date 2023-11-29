@@ -29,6 +29,7 @@
 
 static NV_STATUS set_and_test(uvm_gpu_tracking_semaphore_t *tracking_sem, NvU64 new_value)
 {
+    printk(KERN_ERR "=====================================   %d\n", 714);
     uvm_gpu_semaphore_set_payload(&tracking_sem->semaphore, (NvU32)new_value);
     TEST_CHECK_RET(uvm_gpu_tracking_semaphore_update_completed_value(tracking_sem) == new_value);
     TEST_CHECK_RET(uvm_gpu_tracking_semaphore_is_value_completed(tracking_sem, new_value));
@@ -41,6 +42,7 @@ static NV_STATUS set_and_test(uvm_gpu_tracking_semaphore_t *tracking_sem, NvU64 
 
 static NV_STATUS add_and_test(uvm_gpu_tracking_semaphore_t *tracking_sem, NvU32 increment_by)
 {
+    printk(KERN_ERR "=====================================   %d\n", 715);
     NvU64 new_value;
     NvU64 completed = uvm_gpu_tracking_semaphore_update_completed_value(tracking_sem);
     new_value = completed + increment_by;
@@ -65,6 +67,7 @@ static NV_STATUS add_and_test(uvm_gpu_tracking_semaphore_t *tracking_sem, NvU32 
 // detection.
 static void manual_set(uvm_gpu_tracking_semaphore_t *tracking_sem, NvU64 value)
 {
+    printk(KERN_ERR "=====================================   %d\n", 716);
     uvm_gpu_semaphore_set_payload(&tracking_sem->semaphore, (NvU32)value);
     atomic64_set(&tracking_sem->completed_value, value);
     tracking_sem->queued_value = value;
@@ -73,6 +76,7 @@ static void manual_set(uvm_gpu_tracking_semaphore_t *tracking_sem, NvU64 value)
 // Set the starting value and payload and expect a global error
 static NV_STATUS set_and_expect_error(uvm_gpu_tracking_semaphore_t *tracking_sem, NvU64 starting_value, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 717);
     manual_set(tracking_sem, starting_value);
     uvm_gpu_semaphore_set_payload(&tracking_sem->semaphore, payload);
 
@@ -85,6 +89,7 @@ static NV_STATUS set_and_expect_error(uvm_gpu_tracking_semaphore_t *tracking_sem
 
 static NV_STATUS test_invalid_jumps(uvm_gpu_tracking_semaphore_t *tracking_sem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 718);
     int i;
     for (i = 0; i < 10; ++i) {
         NvU64 base = (1ULL<<32) * i;
@@ -100,6 +105,7 @@ static NV_STATUS test_invalid_jumps(uvm_gpu_tracking_semaphore_t *tracking_sem)
 
 static NV_STATUS test_tracking(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 719);
     NV_STATUS status;
     uvm_gpu_tracking_semaphore_t tracking_sem;
     int i;
@@ -151,6 +157,7 @@ done:
 
 static NV_STATUS test_alloc(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 720);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu;
     uvm_gpu_semaphore_t *semaphores;
@@ -207,6 +214,7 @@ done:
 
 NV_STATUS uvm_test_gpu_semaphore_sanity(UVM_TEST_GPU_SEMAPHORE_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 721);
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 

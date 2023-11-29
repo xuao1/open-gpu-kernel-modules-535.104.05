@@ -48,6 +48,7 @@ static struct proc_dir_entry *uvm_proc_cpu;
 
 NV_STATUS uvm_procfs_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1871);
     if (!uvm_procfs_is_enabled())
         return NV_OK;
 
@@ -68,16 +69,19 @@ NV_STATUS uvm_procfs_init(void)
 
 void uvm_procfs_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1872);
     proc_remove(uvm_proc_dir);
 }
 
 struct proc_dir_entry *uvm_procfs_get_gpu_base_dir(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1873);
     return uvm_proc_gpus;
 }
 
 struct proc_dir_entry *uvm_procfs_get_cpu_base_dir(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1874);
     return uvm_proc_cpu;
 }
 

@@ -61,6 +61,7 @@ static NvU64 g_uvm_perf_migrate_cpu_preunmap_size __read_mostly;
 
 static bool is_migration_single_block(uvm_va_range_t *first_va_range, NvU64 base, NvU64 length)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1193);
     NvU64 end = base + length - 1;
 
     if (end > first_va_range->node.end)
@@ -75,6 +76,7 @@ static NV_STATUS block_migrate_map_mapped_pages(uvm_va_block_t *va_block,
                                                 uvm_va_block_region_t region,
                                                 uvm_processor_id_t dest_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1194);
     uvm_prot_t prot;
     uvm_page_index_t page_index;
     NV_STATUS status = NV_OK;
@@ -219,6 +221,7 @@ NV_STATUS uvm_va_block_migrate_locked(uvm_va_block_t *va_block,
                                       uvm_migrate_mode_t mode,
                                       uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1195);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     NV_STATUS status, tracker_status = NV_OK;
 
@@ -347,6 +350,7 @@ static bool migration_should_do_cpu_preunmap(uvm_va_space_t *va_space,
 static bool va_range_should_do_cpu_preunmap(const uvm_va_policy_t *policy,
                                             uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1196);
     return !uvm_va_policy_is_read_duplicate(policy, va_space);
 }
 
@@ -362,6 +366,7 @@ static bool va_block_should_do_cpu_preunmap(uvm_va_block_t *va_block,
                                             uvm_processor_id_t dest_id,
                                             NvU32 *num_unmap_pages)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1197);
     const uvm_page_mask_t *mapped_pages_cpu;
     NvU32 num_cpu_unchanged_pages = 0;
     uvm_va_block_region_t region;
@@ -405,6 +410,7 @@ static void preunmap_multi_block(uvm_va_range_t *va_range,
                                  NvU64 end,
                                  uvm_processor_id_t dest_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1198);
     size_t i;
     const size_t first_block_index = uvm_va_range_block_index(va_range, start);
     const size_t last_block_index = uvm_va_range_block_index(va_range, end);
@@ -444,6 +450,7 @@ static NV_STATUS uvm_va_range_migrate_multi_block(uvm_va_range_t *va_range,
                                                   uvm_migrate_mode_t mode,
                                                   uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1199);
     size_t i;
     const size_t first_block_index = uvm_va_range_block_index(va_range, start);
     const size_t last_block_index = uvm_va_range_block_index(va_range, end);
@@ -493,6 +500,7 @@ static NV_STATUS uvm_va_range_migrate(uvm_va_range_t *va_range,
                                       bool should_do_cpu_preunmap,
                                       uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1200);
     NvU64 preunmap_range_start = start;
     uvm_va_policy_t *policy = uvm_va_range_get_policy(va_range);
 
@@ -544,6 +552,7 @@ static NV_STATUS uvm_migrate_ranges(uvm_va_space_t *va_space,
                                     bool should_do_cpu_preunmap,
                                     uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1201);
     uvm_va_range_t *va_range, *va_range_last;
     NvU64 end = base + length - 1;
     NV_STATUS status = NV_OK;
@@ -631,6 +640,7 @@ static NV_STATUS uvm_migrate(uvm_va_space_t *va_space,
                              uvm_va_range_t *first_va_range,
                              uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1202);
     NV_STATUS status = NV_OK;
     uvm_va_block_context_t *va_block_context;
     bool do_mappings;
@@ -721,6 +731,7 @@ static NV_STATUS semaphore_release_from_gpu(uvm_gpu_t *gpu,
                                             NvU32 semaphore_payload,
                                             uvm_tracker_t *release_after_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1203);
     NV_STATUS status;
     uvm_push_t push;
     uvm_channel_type_t channel_type;
@@ -770,6 +781,7 @@ static NV_STATUS semaphore_release_from_gpu(uvm_gpu_t *gpu,
 
 static void semaphore_release_from_cpu(uvm_mem_t *semaphore_mem, NvU64 semaphore_user_addr, NvU32 semaphore_payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1204);
     char *semaphore_cpu_va;
     NvU64 semaphore_offset;
 
@@ -797,6 +809,7 @@ static NV_STATUS semaphore_release(NvU64 semaphore_address,
                                    uvm_gpu_t *dest_gpu,
                                    uvm_tracker_t *tracker_ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1205);
     uvm_gpu_t *gpu;
     uvm_gpu_t *gpu_owner = semaphore_pool->owner;
 
@@ -833,6 +846,7 @@ static NV_STATUS semaphore_release(NvU64 semaphore_address,
 
 NV_STATUS uvm_migrate_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1206);
     NV_STATUS status = uvm_migrate_pageable_init();
     if (status != NV_OK)
         return status;
@@ -859,11 +873,13 @@ NV_STATUS uvm_migrate_init(void)
 
 void uvm_migrate_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1207);
     uvm_migrate_pageable_exit();
 }
 
 NV_STATUS uvm_api_migrate(UVM_MIGRATE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1208);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_tracker_t tracker = UVM_TRACKER_INIT();
     uvm_tracker_t *tracker_ptr = NULL;
@@ -1037,6 +1053,7 @@ done:
 
 NV_STATUS uvm_api_migrate_range_group(UVM_MIGRATE_RANGE_GROUP_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1209);
     NV_STATUS status = NV_OK;
     NV_STATUS tracker_status = NV_OK;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);

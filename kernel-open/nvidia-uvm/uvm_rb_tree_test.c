@@ -55,6 +55,7 @@ typedef struct
 
 static rbtt_state_t *rbtt_state_create(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2086);
     rbtt_state_t *state = uvm_kvmalloc_zero(sizeof(*state));
 
     if (!state)
@@ -67,6 +68,7 @@ static rbtt_state_t *rbtt_state_create(void)
 
 static void rbtt_state_destroy(rbtt_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2087);
     rbtt_tree_node_t *node, *next;
 
     list_for_each_entry_safe(node, next, &state->nodes, list) {
@@ -79,6 +81,7 @@ static void rbtt_state_destroy(rbtt_state_t *state)
 
 static NV_STATUS rbtt_check_tree(rbtt_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2088);
     uvm_rb_tree_node_t *tree_node = NULL;
     uvm_rb_tree_node_t *next;
     rbtt_tree_node_t *node;
@@ -143,6 +146,7 @@ static NV_STATUS rbtt_check_tree(rbtt_state_t *state)
 
 static rbtt_tree_node_t *rbtt_node_alloc(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2089);
     rbtt_tree_node_t *node = uvm_kvmalloc_zero(sizeof(*node));
 
     if (!node)
@@ -154,6 +158,7 @@ static rbtt_tree_node_t *rbtt_node_alloc(void)
 
 static NV_STATUS rbtt_add_node(rbtt_state_t *state, NvU64 key)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2090);
     rbtt_tree_node_t *node = rbtt_node_alloc();
     NV_STATUS status;
 
@@ -178,6 +183,7 @@ static NV_STATUS rbtt_add_node(rbtt_state_t *state, NvU64 key)
 // All validation checks should be done by the caller.
 static void rbtt_tree_remove_node(rbtt_state_t *state, rbtt_tree_node_t *node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2091);
     uvm_rb_tree_remove(&state->tree, &node->node);
     list_del(&node->list);
     uvm_kvfree(node);
@@ -187,6 +193,7 @@ static void rbtt_tree_remove_node(rbtt_state_t *state, rbtt_tree_node_t *node)
 
 static NV_STATUS rbtt_tree_remove_by_key(rbtt_state_t *state, NvU64 key)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2092);
     uvm_rb_tree_node_t *tree_node;
     rbtt_tree_node_t *node;
     bool exists;
@@ -215,6 +222,7 @@ static NV_STATUS rbtt_tree_remove_by_key(rbtt_state_t *state, NvU64 key)
 
 static NV_STATUS rbtt_tree_remove_all(rbtt_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2093);
     rbtt_tree_node_t *node, *next;
 
     list_for_each_entry_safe(node, next, &state->nodes, list)
@@ -225,6 +233,7 @@ static NV_STATUS rbtt_tree_remove_all(rbtt_state_t *state)
 
 static NV_STATUS rbtt_test_directed(rbtt_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2094);
     TEST_CHECK_RET(uvm_rb_tree_empty(&state->tree));
     TEST_CHECK_RET(uvm_rb_tree_find(&state->tree, 0) == NULL);
     TEST_CHECK_RET(uvm_rb_tree_find(&state->tree, ULLONG_MAX) == NULL);
@@ -262,6 +271,7 @@ static NV_STATUS rbtt_test_directed(rbtt_state_t *state)
 
 NV_STATUS uvm_test_rb_tree_directed(UVM_TEST_RB_TREE_DIRECTED_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2095);
     rbtt_state_t *state = rbtt_state_create();
     NV_STATUS status;
 
@@ -275,6 +285,7 @@ NV_STATUS uvm_test_rb_tree_directed(UVM_TEST_RB_TREE_DIRECTED_PARAMS *params, st
 
 static bool rbtt_test_random_should_fail(rbtt_state_t *state, NvU64 key)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2096);
     rbtt_tree_node_t *node;
     bool should_fail = NV_FALSE;
 
@@ -290,6 +301,7 @@ static bool rbtt_test_random_should_fail(rbtt_state_t *state, NvU64 key)
 
 static rbtt_tree_node_t *rbtt_test_get_random_node(rbtt_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2097);
     rbtt_tree_node_t *node;
     size_t index;
 
@@ -307,6 +319,7 @@ static rbtt_tree_node_t *rbtt_test_get_random_node(rbtt_state_t *state)
 
 static rbtt_test_op_t rbtt_test_get_random_op(rbtt_state_t *state, size_t limit)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2098);
     // The algorithm is designed to grow the tree until it reaches the
     // limit, then shrink it until it is empty, while still randomizing
     // the operations.
@@ -330,6 +343,7 @@ static rbtt_test_op_t rbtt_test_get_random_op(rbtt_state_t *state, size_t limit)
 
 static NV_STATUS rbtt_test_random(rbtt_state_t *state, UVM_TEST_RB_TREE_RANDOM_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2099);
     rbtt_tree_node_t *node;
     rbtt_test_op_t op;
     NvU64 i;
@@ -370,6 +384,7 @@ static NV_STATUS rbtt_test_random(rbtt_state_t *state, UVM_TEST_RB_TREE_RANDOM_P
 
 NV_STATUS uvm_test_rb_tree_random(UVM_TEST_RB_TREE_RANDOM_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2100);
     rbtt_state_t *state = rbtt_state_create();
     NV_STATUS status;
 

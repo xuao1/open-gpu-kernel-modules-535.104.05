@@ -28,6 +28,7 @@
 
 static NV_STATUS test_saturating_counter_basic(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1599);
     NvU8 counter8;
     NvU16 counter16;
     NvU32 counter32;
@@ -107,6 +108,7 @@ struct region
 
 static NV_STATUS test_saturating_counter_bitfields(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1600);
     struct region r;
 
     memset(&r, 0, sizeof(r));
@@ -123,6 +125,7 @@ static NV_STATUS test_saturating_counter_bitfields(void)
 
 static NV_STATUS test_saturating_counter(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1601);
     NV_STATUS status;
 
     status = test_saturating_counter_basic();
@@ -136,6 +139,7 @@ fail:
 
 static NV_STATUS test_tree_pow2(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1602);
     NV_STATUS status;
     uvm_perf_tree_t my_int_tree;
     uvm_perf_tree_iter_t iter;
@@ -269,6 +273,7 @@ fail:
 
 static NV_STATUS test_tree_non_pow2(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1603);
     NV_STATUS status;
     uvm_perf_tree_t my_int_tree;
     uvm_perf_tree_iter_t iter;
@@ -399,6 +404,7 @@ fail:
 
 static NV_STATUS test_branch_traversal(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1604);
     NV_STATUS status;
     uvm_perf_tree_t my_int_tree;
     uvm_perf_tree_iter_t iter;
@@ -522,6 +528,7 @@ fail:
 
 static NV_STATUS test_tree_traversal(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1605);
     NV_STATUS status;
     uvm_perf_tree_t my_int_tree;
     uvm_perf_tree_iter_t iter;
@@ -681,6 +688,7 @@ fail:
 
 static NV_STATUS test_bitmap_tree_traversal(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1606);
     int value;
     uvm_perf_prefetch_bitmap_tree_t tree;
     uvm_perf_prefetch_bitmap_tree_iter_t iter;
@@ -716,6 +724,7 @@ static NV_STATUS test_bitmap_tree_traversal(void)
 
 static NV_STATUS test_trees(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1607);
     NV_STATUS status;
 
     status = test_tree_pow2();
@@ -738,6 +747,7 @@ fail:
 
 NV_STATUS uvm_test_perf_utils_sanity(UVM_TEST_PERF_UTILS_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1608);
     NV_STATUS status;
 
     status = test_saturating_counter();

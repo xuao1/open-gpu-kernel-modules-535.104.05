@@ -28,26 +28,31 @@
 
 int nv_atomic_xchg(atomic_t *val, int new)
 {
+    printk(KERN_ERR "=====================================   %d\n", 368);
     return atomic_xchg(val, new);
 }
 
 int nv_atomic_cmpxchg(atomic_t *val, int old, int new)
 {
+    printk(KERN_ERR "=====================================   %d\n", 369);
     return atomic_cmpxchg(val, old, new);
 }
 
 long nv_atomic_long_cmpxchg(atomic_long_t *val, long old, long new)
 {
+    printk(KERN_ERR "=====================================   %d\n", 370);
     return atomic_long_cmpxchg(val, old, new);
 }
 
 unsigned long nv_copy_from_user(void *to, const void __user *from, unsigned long n)
 {
+    printk(KERN_ERR "=====================================   %d\n", 371);
     return copy_from_user(to, from, n);
 }
 
 unsigned long nv_copy_to_user(void __user *to, const void *from, unsigned long n)
 {
+    printk(KERN_ERR "=====================================   %d\n", 372);
     return copy_to_user(to, from, n);
 }
 
