@@ -1984,7 +1984,7 @@ nvidia_poll(
 
     if ((nvlfp->event_data_head != NULL) || nvlfp->dataless_event_pending)
     {
-        printk(KERN_ERR "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
+        // printk(KERN_ERR "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n");
         mask = (POLLPRI | POLLIN);
         nvlfp->dataless_event_pending = NV_FALSE;
     }
