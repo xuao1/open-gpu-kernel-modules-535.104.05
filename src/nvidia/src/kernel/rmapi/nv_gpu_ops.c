@@ -461,6 +461,8 @@ typedef struct nvGpuOpsLockSet
 
 static void _nvGpuOpsLocksRelease(nvGpuOpsLockSet *acquiredLocks)
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 2. _nvGpuOpsLocksRelease in nv_gpu_ops.c\n");
+    // printk(KERN_ERR "========================= xuao new 2. _nvGpuOpsLocksRelease in nv_gpu_ops.c\n");
     OBJSYS *pSys;
     pSys = SYS_GET_INSTANCE();
 
@@ -497,6 +499,7 @@ static NV_STATUS _nvGpuOpsLocksAcquire(NvU32 rmApiLockFlags,
                                        NvU32 deviceInstance2,
                                        nvGpuOpsLockSet *acquiredLocks)
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 2. _nvGpuOpsLocksAcquire in nv_gpu_ops.c\n");
     NV_STATUS status;
     OBJSYS  *pSys;
     GPU_MASK gpuMaskRequested;
@@ -613,11 +616,13 @@ static NV_STATUS _nvGpuOpsLocksAcquireAll(NvU32 rmApiLockFlags,
                                           NvHandle hClient, RsClient **ppClient,
                                           nvGpuOpsLockSet *acquiredLocks)
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 2. _nvGpuOpsLocksAcquireAll in nv_gpu_ops.c\n");
     return _nvGpuOpsLocksAcquire(rmApiLockFlags, hClient, ppClient, 3, 0, 0, acquiredLocks);
 }
 
 static NV_STATUS nvGpuOpsCreateClient(RM_API *pRmApi, NvHandle *hClient)
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 2. nvGpuOpsCreateClient in nv_gpu_ops.c\n");
     NV_STATUS status;
     RS_SHARE_POLICY sharePolicy;
 
@@ -647,6 +652,7 @@ static NV_STATUS nvGpuOpsCreateClient(RM_API *pRmApi, NvHandle *hClient)
 
 NV_STATUS nvGpuOpsCreateSession(struct gpuSession **session)
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 2. nvGpuOpsCreateSession in nv_gpu_ops.c\n");
     struct gpuSession *gpuSession = NULL;
     NV_STATUS status;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
@@ -1540,6 +1546,7 @@ static UVM_LINK_TYPE rmControlToUvmNvlinkVersion(NvU32 nvlinkVersion)
 
 static NV_STATUS queryFbInfo(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 2. queryFbInfo in nv_gpu_ops.c\n");
     NV_STATUS nvStatus = NV_OK;
     NV2080_CTRL_FB_GET_INFO_PARAMS fbInfoParams;
     NV2080_CTRL_CMD_FB_GET_FB_REGION_INFO_PARAMS *fbRegionInfoParams;
@@ -1977,6 +1984,7 @@ NV_STATUS nvGpuOpsAddressSpaceCreate(struct gpuDevice *device,
                                      struct gpuAddressSpace **vaSpace,
                                      UvmGpuAddressSpaceInfo *vaSpaceInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 2. nvGpuOpsAddressSpaceCreate in nv_gpu_ops.c\n");
     NV_STATUS status;
     struct gpuAddressSpace *gpuVaSpace = NULL;
     OBJGPU *pGpu = NULL;
@@ -6554,6 +6562,7 @@ NV_STATUS nvGpuOpsGetGuid(NvHandle hClient, NvHandle hDevice,
 
     getGidParams.index = 0;
     getGidParams.flags = NV2080_GPU_CMD_GPU_GET_GID_FLAGS_FORMAT_BINARY;
+    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 7. nvGpuOpsGetGuid in nv_gpu_ops.c\n");
     status = pRmApi->Control(pRmApi,
                              hClient, hSubDevice,
                              NV2080_CTRL_CMD_GPU_GET_GID_INFO,

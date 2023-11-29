@@ -74,6 +74,7 @@
 
 static int _main_loop(void *args)
 {
+    printk(KERN_ERR "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! xuao");
     nv_kthread_q_t *q = (nv_kthread_q_t *)args;
     nv_kthread_q_item_t *q_item = NULL;
     unsigned long flags;
@@ -98,6 +99,8 @@ static int _main_loop(void *args)
             NVQ_WARN("_main_loop: Empty queue: q: 0x%p\n", q);
             continue;
         }
+
+        printk(KERN_ERR "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! in while(1) xuao");
 
         // Consume one item from the queue
         q_item = list_first_entry(&q->q_list_head,
@@ -174,7 +177,7 @@ static struct task_struct *thread_create_on_node(int (*threadfn)(void *data),
                                                  int preferred_node,
                                                  const char *q_name)
 {
-
+    printk(KERN_ERR "========================= xuao new 3. thread_create_on_node in nv-kthread-q.c\n");
     unsigned i, j;
     const static unsigned attempts = 3;
     struct task_struct *thread[3];

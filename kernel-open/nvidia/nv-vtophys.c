@@ -28,6 +28,7 @@
 
 NvU64 NV_API_CALL nv_get_kern_phys_address(NvU64 address)
 {
+    printk(KERN_ERR "========================= xuao new 4. nv_get_kern_phys_address in nv_vtophys.c\n");
     /* direct-mapped kernel address */
     if (virt_addr_valid(address))
         return __pa(address);

@@ -4107,6 +4107,7 @@ static void FreeSubDevice(NVDevEvoPtr pDevEvo, NVSubDeviceEvoPtr pSubDevice)
 
 static NVSubDeviceEvoPtr AllocSubDevice(NVDevEvoPtr pDevEvo, const NvU32 sd)
 {
+    // NV_PRINTF(LEVEL_ERROR, "========================= xuao new 8. AllocSubDevice in nvkms-rm.c\n");
     NV2080_ALLOC_PARAMETERS subdevAllocParams = { 0 };
     NV2080_CTRL_GPU_GET_ID_PARAMS getIdParams = { 0 };
     NV2080_CTRL_GPU_GET_GID_INFO_PARAMS *pGidParams = NULL;
