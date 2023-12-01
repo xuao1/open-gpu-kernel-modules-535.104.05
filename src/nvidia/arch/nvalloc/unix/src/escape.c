@@ -294,7 +294,7 @@ NV_STATUS RmIoctl(
     NvU32        dataSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 6: src\\asm: RmIoctl in escape.c cmd = %u\n", _IOC_NR(cmd));
+    NV_PRINTF(LEVEL_ERROR, "ioctl 6: src\\asm: RmIoctl in escape.c cmd = %u\n", cmd);
     NV_STATUS            rmStatus = NV_ERR_GENERIC;
     API_SECURITY_INFO    secInfo = { };
 
