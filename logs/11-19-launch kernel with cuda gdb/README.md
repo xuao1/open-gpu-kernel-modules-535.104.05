@@ -9,3 +9,5 @@
 6-8 是 Matrix 的前几次运行（此时需要多次 continue 才能执行完，保存的是一次运行的多次 continue）
 
 之后减小了 Matrix 的 block num，此时可以一次 continue 就执行完，多次运行，保存为 9-11
+
+再次运行 testKernel，和 1-5 比较，查看不同时间运行，log 是不是一致。保存为 12-14
