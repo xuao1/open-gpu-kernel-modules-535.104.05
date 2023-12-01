@@ -294,7 +294,7 @@ NV_STATUS RmIoctl(
     NvU32        dataSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 6: src\\asm: RmIoctl in escape.c cmd = %u\n", cmd);
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 6: src: RmIoctl in escape.c cmd = %u\n", cmd);
     NV_STATUS            rmStatus = NV_ERR_GENERIC;
     API_SECURITY_INFO    secInfo = { };
 
@@ -989,7 +989,7 @@ NV_STATUS RmIoctl(
 
         default:
         {
-            NV_PRINTF(LEVEL_ERROR, "ioctl 8: src\\asm: RmIoctl in escape.c cmd == default\n");
+            // NV_PRINTF(LEVEL_ERROR, "ioctl 8: src\\asm: RmIoctl in escape.c cmd == default\n");
             NV_PRINTF(LEVEL_ERROR, "unknown NVRM ioctl command: 0x%x\n", cmd);
             goto done;
         }
