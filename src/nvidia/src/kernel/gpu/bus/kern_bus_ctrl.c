@@ -158,7 +158,6 @@ deviceCtrlCmdHostGetCapsV2_IMPL
     NV0080_CTRL_HOST_GET_CAPS_V2_PARAMS *pHostCapsParamsV2
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "========================= xuao new 1. deviceCtrlCmdHostGetCapsV2_IMPL in kern_bus_ctrl.c\n");
     OBJGPU     *pGpu        = GPU_RES_GET_GPU(pDevice);
     NvU8       *pHostCaps   = pHostCapsParamsV2->capsTbl;
     NV_STATUS   rmStatus    = NV_OK;

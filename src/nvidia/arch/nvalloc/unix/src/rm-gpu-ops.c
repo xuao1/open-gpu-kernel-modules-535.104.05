@@ -32,7 +32,6 @@ NV_STATUS NV_API_CALL rm_gpu_ops_create_session(
     nvidia_stack_t *sp,
     struct gpuSession **session)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
@@ -44,7 +43,6 @@ NV_STATUS NV_API_CALL rm_gpu_ops_create_session(
 NV_STATUS  NV_API_CALL  rm_gpu_ops_destroy_session (
     nvidia_stack_t *sp, gpuSessionHandle session)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
@@ -61,7 +59,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_device_create (
     nvgpuDeviceHandle_t *device,
     NvBool bCreateSmcPartition)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
@@ -74,7 +71,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_device_destroy (
     nvidia_stack_t *sp,
     gpuDeviceHandle device)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
@@ -91,7 +87,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_address_space_create (
     gpuAddressSpaceHandle *vaSpace,
     gpuAddressSpaceInfo *vaSpaceInfo)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
@@ -109,7 +104,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_dup_address_space(
     gpuAddressSpaceHandle *dupedVaspace,
     gpuAddressSpaceInfo *vaSpaceInfo)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
@@ -122,7 +116,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_dup_address_space(
 NV_STATUS NV_API_CALL rm_gpu_ops_address_space_destroy(nvidia_stack_t *sp,
     gpuAddressSpaceHandle vaspace)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
     nvGpuOpsAddressSpaceDestroy(vaspace);
@@ -134,7 +127,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_memory_alloc_fb(
     nvidia_stack_t *sp, gpuAddressSpaceHandle vaspace,
     NvLength size, NvU64 *gpuOffset, gpuAllocInfo *allocInfo)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
@@ -148,7 +140,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_get_p2p_caps(nvidia_stack_t *sp,
                                                 gpuDeviceHandle device2,
                                                 getP2PCapsParams *pP2pCapsParams)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
@@ -161,7 +152,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_memory_alloc_sys(
     nvidia_stack_t *sp, gpuAddressSpaceHandle vaspace,
     NvLength size, NvU64 *gpuOffset, gpuAllocInfo *allocInfo)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
@@ -177,7 +167,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_pma_register_callbacks(
     pmaEvictRangeCb_t evictRange,
     void *callbackData)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     THREAD_STATE_NODE threadState;
     NV_STATUS rmStatus;
     void *fp;
@@ -196,7 +185,6 @@ void  NV_API_CALL  rm_gpu_ops_pma_unregister_callbacks(
     nvidia_stack_t *sp,
     void *pPma)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     THREAD_STATE_NODE threadState;
     void *fp;
 
@@ -215,7 +203,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_get_pma_object(
     void **pPma,
     const nvgpuPmaStatistics_t *pPmaPubStats)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
@@ -231,7 +218,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_pma_alloc_pages(
     nvgpuPmaAllocationOptions_t pPmaAllocOptions,
     NvU64 *pPages)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
@@ -245,7 +231,6 @@ NV_STATUS  NV_API_CALL  rm_gpu_ops_pma_pin_pages(
     nvidia_stack_t *sp, void *pPma,
     NvU64 *pPages, NvLength pageCount, NvU64 pageSize, NvU32 flags)
 {
-    NV_PRINTF(LEVEL_ERROR, "+++++++++++++++++++++++++ xuao new 1\n");
     NV_STATUS rmStatus;
     void *fp;
     NV_ENTER_RM_RUNTIME(sp,fp);
