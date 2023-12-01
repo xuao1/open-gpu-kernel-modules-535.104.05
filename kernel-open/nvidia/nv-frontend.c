@@ -304,6 +304,7 @@ int nvidia_frontend_ioctl(
     unsigned int cmd,
     unsigned long i_arg)
 {
+    printk(KERN_ERR "ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: %u, arg: %lu\n", _IOC_NR(cmd), i_arg);
     int rc = -ENODEV;
     nvidia_module_t *module = NULL;
 

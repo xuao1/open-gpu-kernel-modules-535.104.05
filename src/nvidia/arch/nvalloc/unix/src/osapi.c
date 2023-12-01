@@ -2546,6 +2546,7 @@ NV_STATUS NV_API_CALL rm_ioctl(
     NvU32               dataSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 5: src\\asm: rm_ioctl in osapi.c Command = %u\n", _IOC_NR(Command));
     NV_STATUS rmStatus;
     THREAD_STATE_NODE threadState;
     void *fp;
