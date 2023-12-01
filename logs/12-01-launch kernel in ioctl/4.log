@@ -1,62 +1,62 @@
-[  289.982577] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  289.985004] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.050248] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.051082] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.053508] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.053620] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.054079] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.067934] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.069942] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.072972] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.081353] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_GET_EVENT_DATA
-[  290.081400] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.083767] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.083874] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.084375] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.143157] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.145181] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.147620] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.148333] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.150689] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.150820] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.151278] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.165527] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.167558] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.170380] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.178797] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_GET_EVENT_DATA
-[  290.178834] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.181185] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.181289] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.181794] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.185105] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
-[  290.185172] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.198630] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.200713] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.212859] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_GET_EVENT_DATA
-[  290.212906] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.213832] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.216238] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.216346] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.216767] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.217124] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
-[  290.217172] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.217550] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
-[  290.217587] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.218459] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
-[  290.218551] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.218812] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.219013] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.219191] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.219360] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.219525] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.219694] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.219861] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.230054] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.230268] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.230413] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.230551] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.230686] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.230849] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.231008] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.231148] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
-[  290.232929] NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_GET_EVENT_DATA
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_GET_EVENT_DATA
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_GET_EVENT_DATA
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
