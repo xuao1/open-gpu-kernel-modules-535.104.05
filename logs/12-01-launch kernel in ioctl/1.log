@@ -1,0 +1,372 @@
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891792
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891792
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305892288
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305892288
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305892176
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305892176
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891488
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891488
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891680
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891680
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305874752
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305874752
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891792
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891792
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305892288
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305892288
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305892176
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305892176
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 82, arg: 140737082924032
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 82, arg: 140737082924032
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 82
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 82
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_GET_EVENT_DATA
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891488
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891488
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891680
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891680
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305874752
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305874752
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891792
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891792
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305892288
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305892288
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305892176
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305892176
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891488
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891488
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891680
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891680
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305874752
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305874752
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891792
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891792
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305892288
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305892288
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305892176
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305892176
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 82, arg: 140737082924032
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 82, arg: 140737082924032
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 82
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 82
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_GET_EVENT_DATA
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891488
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891488
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891680
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891680
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305874752
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305874752
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305874752
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 52, arg: 140737305896112
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 52, arg: 140737305896112
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 52
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 52
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891696
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891696
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891792
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891792
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305892288
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305892288
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 82, arg: 140737082924032
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 82, arg: 140737082924032
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 82
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 82
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_GET_EVENT_DATA
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305892240
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305892240
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891552
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891552
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891744
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891744
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305874816
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305874816
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305874816
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305874816
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 52, arg: 140737305895296
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 52, arg: 140737305895296
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 52
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 52
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305890880
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305890880
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 52, arg: 140737305895264
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 52, arg: 140737305895264
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 52
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 52
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305890848
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305890848
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 52, arg: 140737211521136
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 52, arg: 140737211521136
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 52
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 52
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737211516720
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737211516720
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737211516720
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737211516720
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737211516720
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737211516720
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737211516720
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737211516720
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737211516720
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305890944
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305890944
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305890960
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305890960
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305890960
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305890960
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305890960
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305890960
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305890960
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305890960
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305890960
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305890960
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891056
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891056
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305891056
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305891056
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ ioctl 1: kernel-open: nvidia_frontend_ioctl in nv-frontend.c cmd: 42, arg: 140737305892016
+ ioctl 2: kernel-open: nvidia_ioctl in nv.c cmd: 42, arg: 140737305892016
+ ioctl 4: kernel-open: nvidia_ioctl in nv.c arg_cmd == default
+ NVRM rm_ioctl: ioctl 5: src\asm: rm_ioctl in osapi.c Command = 42
+ NVRM RmIoctl: ioctl 6: src\asm: RmIoctl in escape.c cmd = 42
+ NVRM RmIoctl: ioctl 7: src\asm: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
