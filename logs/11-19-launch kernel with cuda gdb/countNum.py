@@ -16,3 +16,5 @@ with open(filename, "r") as file:
 print("Numbers found in the log and their counts:")
 for num, count in sorted(number_counts.items()):
     print(f"Number: {num}, Count: {count}")
+# 输出 count 的总数
+print(f"Total count of numbers: {sum(number_counts.values())}")
