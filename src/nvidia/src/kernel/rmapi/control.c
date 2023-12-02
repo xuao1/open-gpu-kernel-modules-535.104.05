@@ -389,7 +389,7 @@ static NvBool _rmapiRmControlCanBeBypassLock(NvU32 cmd)
 static NV_STATUS
 _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams, NvU32 paramsSize, NvU32 flags, RM_API *pRmApi, API_SECURITY_INFO *pSecInfo)
 {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 16: src: _rmapiRmControl in control.c\n");
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 16: src: _rmapiRmControl in control.c\n");
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     RmCtrlParams rmCtrlParams;
     RS_CONTROL_COOKIE rmCtrlExecuteCookie = {0};
@@ -608,7 +608,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
     else
     {
         // yes
-        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c else 600\n");
+        // NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c else 600\n");
         //
         // Normal rmctrl request.
         //
@@ -653,7 +653,8 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
         lockInfo.flags |= RM_LOCK_FLAGS_RM_SEMA;
         rmStatus = serverControl(&g_resServ, &rmCtrlParams);
         rmapiEpilogue(pRmApi, &rmApiContext);
-        NV_PRINTF(LEVEL_ERROR, "ioctl 16: src: _rmapiRmControl in control.c line before done\n");
+        // yes
+        // NV_PRINTF(LEVEL_ERROR, "ioctl 16: src: _rmapiRmControl in control.c line before done\n");
     }
 done:
 
@@ -996,7 +997,7 @@ rmapiControlWithSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 14: src: rmapiControlWithSecInfo in control.c\n");
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 14: src: rmapiControlWithSecInfo in control.c\n");
     NV_STATUS status;
 
     NV_PRINTF(LEVEL_INFO,
