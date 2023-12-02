@@ -999,7 +999,7 @@ rmapiControlWithSecInfo
         NV_PRINTF(LEVEL_INFO,
                   "Nv04Control: control failed; status: %s (0x%08x)\n",
                   nvstatusToString(status), status);
-        // NV_PRINTF(LEVEL_INFO,
+        NV_PRINTF(LEVEL_INFO,
                   "Nv04Control:  hClient:0x%x hObject:0x%x cmd:0x%x params:" NvP64_fmt " paramSize:0x%x flags:0x%x\n",
                   hClient, hObject, cmd, pParams, paramsSize, flags);
     }
