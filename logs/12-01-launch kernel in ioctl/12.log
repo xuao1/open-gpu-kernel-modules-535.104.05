@@ -1,0 +1,330 @@
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM rmapiControlWithSecInfo: ioctl 14: src: rmapiControlWithSecInfo in control.c
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c
+ NVRM _rmapiRmControl: ioctl 17: src: _rmapiRmControl in control.c else 600
+ NVRM _rmapiRmControl: ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK
+ NVRM _rmapiRmControl: ioctl 16: src: _rmapiRmControl in control.c line before done
