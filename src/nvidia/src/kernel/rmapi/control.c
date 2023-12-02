@@ -618,6 +618,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
             NV_PRINTF(LEVEL_ERROR, "ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK\n");
             if (rmapiControlIsCacheable(ctrlFlags, ctrlAccessRight, NV_FALSE))
             {
+                // no
                 NV_PRINTF(LEVEL_ERROR, "ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK rmapiControlIsCacheable(ctrlFlags, ctrlAccessRight, NV_FALSE)\n");
                 rmCtrlParams.pCookie->apiCopyFlags |= RMCTRL_API_COPY_FLAGS_FORCE_SKIP_COPYOUT_ON_ERROR;
 
@@ -652,6 +653,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
         lockInfo.flags |= RM_LOCK_FLAGS_RM_SEMA;
         rmStatus = serverControl(&g_resServ, &rmCtrlParams);
         rmapiEpilogue(pRmApi, &rmApiContext);
+        NV_PRINTF(LEVEL_ERROR, "ioctl 16: src: _rmapiRmControl in control.c line before done\n");
     }
 done:
 
