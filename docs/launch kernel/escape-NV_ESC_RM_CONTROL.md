@@ -4,7 +4,7 @@ escape.c 中 cmd 进入的宏，testkernel 的 launch kernel 时共执行了 62 
 
 ## 0 执行路径
 
-![image-20231202205944474](..\..\img\ioctl-NV_ESC_RM_CONTROL.png)
+![image-20231202205944474](../../img/ioctl-NV_ESC_RM_CONTROL.png)
 
 ## 1 escape.c
 
