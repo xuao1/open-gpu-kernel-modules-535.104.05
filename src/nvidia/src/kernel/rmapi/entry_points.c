@@ -503,11 +503,11 @@ static void _nv04ControlWithSecInfo
     NvBool             bInternalCall
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 10: src: _nv04ControlWithSecInfo in entry_points.c\n");
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 10: src: _nv04ControlWithSecInfo in entry_points.c\n");
     RmDeprecatedControlHandler pDeprecatedHandler = RmDeprecatedGetControlHandler(pArgs);
     if (pDeprecatedHandler != NULL)
     {
-        NV_PRINTF(LEVEL_ERROR, "ioctl 11: src: _nv04ControlWithSecInfo in entry_points.c pDeprecatedHandler != NULL\n");
+        // NV_PRINTF(LEVEL_ERROR, "ioctl 11: src: _nv04ControlWithSecInfo in entry_points.c pDeprecatedHandler != NULL\n");
         DEPRECATED_CONTEXT_EXT ctxGraveyard;
         rmapiInitDeprecatedContext(&ctxGraveyard, &secInfo, NV_FALSE, NV_FALSE);
         pArgs->status = pDeprecatedHandler(&secInfo, &ctxGraveyard.parent, pArgs);
@@ -515,7 +515,7 @@ static void _nv04ControlWithSecInfo
     else
     {
         RMAPI_TYPE rmapiType = (bInternalCall ? RMAPI_MODS_LOCK_BYPASS : RMAPI_EXTERNAL);
-        NV_PRINTF(LEVEL_ERROR, "ioctl 11: src: _nv04ControlWithSecInfo in entry_points.c else rmapiType = %d\n", rmapiType);
+        // NV_PRINTF(LEVEL_ERROR, "ioctl 11: src: _nv04ControlWithSecInfo in entry_points.c else rmapiType = %d\n", rmapiType);
         RM_API *pRmApi = rmapiGetInterface(bInternalCall ? RMAPI_MODS_LOCK_BYPASS : RMAPI_EXTERNAL);
 
         pArgs->status = pRmApi->ControlWithSecInfo(pRmApi, pArgs->hClient, pArgs->hObject, pArgs->cmd,

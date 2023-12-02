@@ -967,6 +967,7 @@ rmapiControlWithSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 14: src: rmapiControlWithSecInfo in control.c\n");
     NV_STATUS status;
 
     NV_PRINTF(LEVEL_INFO,
@@ -977,10 +978,12 @@ rmapiControlWithSecInfo
 
     if (status == NV_OK)
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 15: src: rmapiControlWithSecInfo in control.c status == NV_OK\n");
         NV_PRINTF(LEVEL_INFO, "Nv04Control: control complete\n");
     }
     else
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 15: src: rmapiControlWithSecInfo in control.c status != NV_OK\n");
         NV_PRINTF(LEVEL_INFO,
                   "Nv04Control: control failed; status: %s (0x%08x)\n",
                   nvstatusToString(status), status);
@@ -1048,17 +1051,17 @@ rmapiControlWithSecInfoTls
     API_SECURITY_INFO *pSecInfo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 12: src: rmapiControlWithSecInfoTls in control.c\n");
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 12: src: rmapiControlWithSecInfoTls in control.c\n");
     NV_STATUS           status;
     THREAD_STATE_NODE   threadState;
 
     if (!portMemExSafeForNonPagedAlloc())
     {
-        NV_PRINTF(LEVEL_ERROR, "ioctl 13: src: rmapiControlWithSecInfoTls in control.c !portMemExSafeForNonPagedAlloc()\n");
+        // NV_PRINTF(LEVEL_ERROR, "ioctl 13: src: rmapiControlWithSecInfoTls in control.c !portMemExSafeForNonPagedAlloc()\n");
         return _rmapiControlWithSecInfoTlsIRQL(pRmApi, hClient, hObject, cmd, pParams, paramsSize, flags, pSecInfo);
     }
 
-    NV_PRINTF(LEVEL_ERROR, "ioctl 13: src: rmapiControlWithSecInfoTls in control.c After if\n");
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 13: src: rmapiControlWithSecInfoTls in control.c After if\n");
     //
     // SMP synchronization for Nv04Control is handled lower in the
     // call sequence to accommodate the various operation-specific
