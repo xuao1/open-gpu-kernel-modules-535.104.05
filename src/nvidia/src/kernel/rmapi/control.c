@@ -1048,14 +1048,17 @@ rmapiControlWithSecInfoTls
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 12: src: rmapiControlWithSecInfoTls in control.c\n");
     NV_STATUS           status;
     THREAD_STATE_NODE   threadState;
 
     if (!portMemExSafeForNonPagedAlloc())
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 13: src: rmapiControlWithSecInfoTls in control.c !portMemExSafeForNonPagedAlloc()\n");
         return _rmapiControlWithSecInfoTlsIRQL(pRmApi, hClient, hObject, cmd, pParams, paramsSize, flags, pSecInfo);
     }
 
+    NV_PRINTF(LEVEL_ERROR, "ioctl 13: src: rmapiControlWithSecInfoTls in control.c After if\n");
     //
     // SMP synchronization for Nv04Control is handled lower in the
     // call sequence to accommodate the various operation-specific
