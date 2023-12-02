@@ -389,6 +389,7 @@ static NvBool _rmapiRmControlCanBeBypassLock(NvU32 cmd)
 static NV_STATUS
 _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams, NvU32 paramsSize, NvU32 flags, RM_API *pRmApi, API_SECURITY_INFO *pSecInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 16: src: _rmapiRmControl in control.c\n");
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     RmCtrlParams rmCtrlParams;
     RS_CONTROL_COOKIE rmCtrlExecuteCookie = {0};
@@ -410,6 +411,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
         (FLD_TEST_DRF_NUM(XXXX, _CTRL_CMD, _CATEGORY, 0x00, cmd) &&
          FLD_TEST_DRF_NUM(XXXX, _CTRL_CMD, _INDEX,    0x00, cmd)))
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c ((cmd == NVXXXX_CTRL_CMD_NULL) || (FLD_TEST_DRF_NUM(XXXX, _CTRL_CMD, _CATEGORY, 0x00, cmd) && FLD_TEST_DRF_NUM(XXXX, _CTRL_CMD, _INDEX,    0x00, cmd)))\n");
         return NV_OK;
     }
 
@@ -432,6 +434,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
     // NVOS54_FLAGS_IRQL_RAISED cmds are only allowed to be called in raised irq level.
     if (bIsRaisedIrqlCmd)
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c bIsRaisedIrqlCmd\n");
         // Check that we support this control call at raised IRQL
         if (!_rmapiRmControlCanBeRaisedIrql(cmd))
         {
@@ -452,6 +455,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
 
     if (bIsLockBypassCmd)
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c bIsLockBypassCmd\n");
         flags |= NVOS54_FLAGS_LOCK_BYPASS;
 
         if (!bInternalRequest)
@@ -470,6 +474,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
     // Potential race condition if run lockless?
     if (serverutilGetClientUnderLock(hClient) == NULL)
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c serverutilGetClientUnderLock(hClient) == NULL\n");
         rmStatus = NV_ERR_INVALID_CLIENT;
         goto done;
     }
@@ -479,6 +484,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
     // clients
     if ((bIsRaisedIrqlCmd || bIsLockBypassCmd) && !bInternalRequest)
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c ((bIsRaisedIrqlCmd || bIsLockBypassCmd) && !bInternalRequest)\n");
         if (pSecInfo->privLevel < RS_PRIV_LEVEL_KERNEL)
         {
             rmStatus = NV_ERR_INVALID_CLIENT;
@@ -490,6 +496,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
     if (((paramsSize != 0) && (pUserParams == (NvP64) 0))   ||
         ((paramsSize == 0) && (pUserParams != (NvP64) 0)))
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c (((paramsSize != 0) && (pUserParams == (NvP64) 0)) || ((paramsSize == 0) && (pUserParams != (NvP64) 0)))\n");
         NV_PRINTF(LEVEL_WARNING, "bad params: ptr " NvP64_fmt " size: 0x%x\n",
                   pUserParams, paramsSize);
         rmStatus = NV_ERR_INVALID_ARGUMENT;
@@ -514,6 +521,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
 
     if (pRmApi->bApiLockInternal)
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c (pRmApi->bApiLockInternal)\n");
         lockInfo.state |= RM_LOCK_STATES_API_LOCK_ACQUIRED;
         lockInfo.flags |= RM_LOCK_FLAGS_NO_API_LOCK;
     }
@@ -521,6 +529,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
     getCtrlInfoStatus = rmapiutilGetControlInfo(cmd, &ctrlFlags, &ctrlAccessRight);
     if (getCtrlInfoStatus == NV_OK)
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c getCtrlInfoStatus == NV_OK\n");
         //
         // The output of CACHEABLE RMCTRL do not depend on the input.
         // Skip param copy and clear the buffer in case the uninitialized
@@ -539,6 +548,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
     //
     if (bIsLockBypassCmd)
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c bIsLockBypassCmd 2\n");
         lockInfo.state |= RM_LOCK_STATES_API_LOCK_ACQUIRED;
         lockInfo.flags |= RM_LOCK_FLAGS_NO_API_LOCK |
                           RM_LOCK_FLAGS_NO_GPUS_LOCK |
@@ -551,6 +561,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
     }
     else if (bIsRaisedIrqlCmd)
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c bIsRaisedIrqlCmd 2\n");
         //
         // Raised IRQL rmctrl request.
         //
@@ -586,6 +597,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
     }
     else
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 17: src: _rmapiRmControl in control.c else 600\n");
         //
         // Normal rmctrl request.
         //
@@ -978,16 +990,16 @@ rmapiControlWithSecInfo
 
     if (status == NV_OK)
     {
-        NV_PRINTF(LEVEL_ERROR, "ioctl 15: src: rmapiControlWithSecInfo in control.c status == NV_OK\n");
+        // NV_PRINTF(LEVEL_ERROR, "ioctl 15: src: rmapiControlWithSecInfo in control.c status == NV_OK\n");
         NV_PRINTF(LEVEL_INFO, "Nv04Control: control complete\n");
     }
     else
     {
-        NV_PRINTF(LEVEL_ERROR, "ioctl 15: src: rmapiControlWithSecInfo in control.c status != NV_OK\n");
+        // NV_PRINTF(LEVEL_ERROR, "ioctl 15: src: rmapiControlWithSecInfo in control.c status != NV_OK\n");
         NV_PRINTF(LEVEL_INFO,
                   "Nv04Control: control failed; status: %s (0x%08x)\n",
                   nvstatusToString(status), status);
-        NV_PRINTF(LEVEL_INFO,
+        // NV_PRINTF(LEVEL_INFO,
                   "Nv04Control:  hClient:0x%x hObject:0x%x cmd:0x%x params:" NvP64_fmt " paramSize:0x%x flags:0x%x\n",
                   hClient, hObject, cmd, pParams, paramsSize, flags);
     }
