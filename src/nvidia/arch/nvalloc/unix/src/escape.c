@@ -830,9 +830,9 @@ NV_STATUS RmIoctl(
                 secInfo.gpuOsInfo = priv;
             }
 
-            NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c Before Nv04ControlWithSecInfo\n");
+            // NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c Before Nv04ControlWithSecInfo\n");
             Nv04ControlWithSecInfo(pApi, secInfo);
-            NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c Finish Nv04ControlWithSecInfo\n");
+            // NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c Finish Nv04ControlWithSecInfo\n");
 
             if ((pApi->status != NV_OK) && (priv != NULL))
             {
