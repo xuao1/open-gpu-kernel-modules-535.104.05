@@ -85,6 +85,7 @@ const struct NVOC_CLASS_DEF __nvoc_class_def_GpuResource =
 };
 
 static NV_STATUS __nvoc_thunk_GpuResource_resControl(struct RsResource *pGpuResource, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl\n");
     return gpuresControl((struct GpuResource *)(((unsigned char *)pGpuResource) - __nvoc_rtti_GpuResource_RsResource.offset), pCallContext, pParams);
 }
 

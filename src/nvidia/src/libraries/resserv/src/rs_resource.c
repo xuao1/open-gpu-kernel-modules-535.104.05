@@ -156,6 +156,7 @@ resControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pRsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL\n");
     RsServer *pServer = pCallContext->pServer;
     const struct NVOC_EXPORTED_METHOD_DEF   *pEntry;
     NV_STATUS status;

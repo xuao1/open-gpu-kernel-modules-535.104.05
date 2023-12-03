@@ -89,6 +89,7 @@ static NV_STATUS __nvoc_thunk_Memory_resIsDuplicate(struct RsResource *pMemory, 
 }
 
 static NV_STATUS __nvoc_thunk_Memory_resControl(struct RsResource *pMemory, CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 21: src: __resControl__ in g_mem_nvoc.c __nvoc_thunk_Memory_resControl\n");
     return memControl((struct Memory *)(((unsigned char *)pMemory) - __nvoc_rtti_Memory_RsResource.offset), pCallContext, pParams);
 }
 
