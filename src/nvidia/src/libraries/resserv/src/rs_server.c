@@ -1350,7 +1350,7 @@ serverControl
     resservSwapTlsCallContext(&pOldContext, &callContext);
     NV_PRINTF(LEVEL_ERROR, "ioctl 19: src: serverControl in re_server.c Before resControl\n");
     status = resControl(pResourceRef->pResource, &callContext, pParams);
-    // NV_PRINTF(LEVEL_ERROR, "ioctl 19: src: serverControl in re_server.c After resControl\n");
+    NV_PRINTF(LEVEL_ERROR, "ioctl 19: src: serverControl in re_server.c After resControl\n");
     resservRestoreTlsCallContext(pOldContext);
 
 done:
