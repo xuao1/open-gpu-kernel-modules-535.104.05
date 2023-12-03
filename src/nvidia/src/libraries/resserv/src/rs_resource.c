@@ -197,11 +197,13 @@ resControl_IMPL
 
     if (status == NV_WARN_NOTHING_TO_DO)
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO\n");
         // Call handled by the prologue.
         status = NV_OK;
     }
     else
     {
+        NV_PRINTF(LEVEL_ERROR, "ioctl 23: src: resControl_IMPL in re_resource.c else\n");
         // Check the size of paramSize while it is non-zero.
         // Zero size means the exported method only have one param (pResource)
         if (pEntry->paramSize == 0)
@@ -218,6 +220,7 @@ resControl_IMPL
     }
 
     resControl_Epilogue(pResource, pCallContext, pRsParams);
+    NV_PRINTF(LEVEL_ERROR, "ioctl 23: src: resControl_IMPL in re_resource.c line before done\n");
 
 done:
     resControlSerialization_Epilogue(pResource, pCallContext, pRsParams);

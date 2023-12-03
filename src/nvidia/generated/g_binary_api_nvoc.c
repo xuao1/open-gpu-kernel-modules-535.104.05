@@ -94,7 +94,7 @@ const struct NVOC_CLASS_DEF __nvoc_class_def_BinaryApi =
 };
 
 static NV_STATUS __nvoc_thunk_BinaryApi_gpuresControl(struct GpuResource *pResource, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 22: src: __gpuresControl__ in g_binary_api_nvoc.c __nvoc_thunk_BinaryApi_gpuresControl\n");
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 22: src: __gpuresControl__ in g_binary_api_nvoc.c __nvoc_thunk_BinaryApi_gpuresControl\n");
     return binapiControl((struct BinaryApi *)(((unsigned char *)pResource) - __nvoc_rtti_BinaryApi_GpuResource.offset), pCallContext, pParams);
 }
 

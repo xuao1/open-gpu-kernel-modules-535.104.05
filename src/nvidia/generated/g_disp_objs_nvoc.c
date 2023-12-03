@@ -103,7 +103,7 @@ const struct NVOC_CLASS_DEF __nvoc_class_def_DisplayApi =
 };
 
 static NV_STATUS __nvoc_thunk_DisplayApi_resControl(struct RsResource *pDisplayApi, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 21: src: __resControl__ in g_disp_objs_nvoc.c __nvoc_thunk_DisplayApi_resControl\n");
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 21: src: __resControl__ in g_disp_objs_nvoc.c __nvoc_thunk_DisplayApi_resControl\n");
     return dispapiControl((struct DisplayApi *)(((unsigned char *)pDisplayApi) - __nvoc_rtti_DisplayApi_RsResource.offset), pCallContext, pParams);
 }
 

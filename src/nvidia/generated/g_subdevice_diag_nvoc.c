@@ -112,7 +112,7 @@ const struct NVOC_CLASS_DEF __nvoc_class_def_DiagApi =
 };
 
 static NV_STATUS __nvoc_thunk_DiagApi_gpuresControl(struct GpuResource *pDiagApi, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 22: src: __gpuresControl__ in g_subdevice_diag_nvoc.c __nvoc_thunk_DiagApi_gpuresControl\n");
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 22: src: __gpuresControl__ in g_subdevice_diag_nvoc.c __nvoc_thunk_DiagApi_gpuresControl\n");
     return diagapiControl((struct DiagApi *)(((unsigned char *)pDiagApi) - __nvoc_rtti_DiagApi_GpuResource.offset), pCallContext, pParams);
 }
 

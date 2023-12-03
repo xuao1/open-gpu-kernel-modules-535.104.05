@@ -98,7 +98,7 @@ static NvBool __nvoc_thunk_KernelChannelGroupApi_resCanCopy(struct RsResource *p
 }
 
 static NV_STATUS __nvoc_thunk_KernelChannelGroupApi_gpuresControl(struct GpuResource *pKernelChannelGroupApi, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 22: src: __gpuresControl__ in g_kernel_channel_group_api_nvoc.c __nvoc_thunk_KernelChannelGroupApi_gpuresControl\n");
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 22: src: __gpuresControl__ in g_kernel_channel_group_api_nvoc.c __nvoc_thunk_KernelChannelGroupApi_gpuresControl\n");
     return kchangrpapiControl((struct KernelChannelGroupApi *)(((unsigned char *)pKernelChannelGroupApi) - __nvoc_rtti_KernelChannelGroupApi_GpuResource.offset), pCallContext, pParams);
 }
 

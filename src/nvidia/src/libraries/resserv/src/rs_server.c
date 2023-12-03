@@ -1255,7 +1255,7 @@ serverControl
     RS_RES_CONTROL_PARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 19: src: serverControl in re_server.c\n");
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 19: src: serverControl in re_server.c\n");
     NV_STATUS           status;
     RsClient           *pClient;
     RsResourceRef      *pResourceRef = NULL;
@@ -1348,7 +1348,7 @@ serverControl
     pLockInfo->pContextRef = pResourceRef->pParentRef;
 
     resservSwapTlsCallContext(&pOldContext, &callContext);
-    NV_PRINTF(LEVEL_ERROR, "ioctl 19: src: serverControl in re_server.c Before resControl\n");
+    // NV_PRINTF(LEVEL_ERROR, "ioctl 19: src: serverControl in re_server.c Before resControl\n");
     status = resControl(pResourceRef->pResource, &callContext, pParams);
     NV_PRINTF(LEVEL_ERROR, "ioctl 19: src: serverControl in re_server.c After resControl\n");
     resservRestoreTlsCallContext(pOldContext);
