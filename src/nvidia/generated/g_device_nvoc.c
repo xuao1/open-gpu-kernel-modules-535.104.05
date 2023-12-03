@@ -94,6 +94,7 @@ const struct NVOC_CLASS_DEF __nvoc_class_def_Device =
 };
 
 static NV_STATUS __nvoc_thunk_Device_gpuresControl(struct GpuResource *pResource, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 22: src: __gpuresControl__ in g_device_nvoc.c __nvoc_thunk_Device_gpuresControl\n");
     return deviceControl((struct Device *)(((unsigned char *)pResource) - __nvoc_rtti_Device_GpuResource.offset), pCallContext, pParams);
 }
 

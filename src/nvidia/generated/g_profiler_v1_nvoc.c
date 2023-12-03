@@ -94,6 +94,7 @@ const struct NVOC_CLASS_DEF __nvoc_class_def_Profiler =
 };
 
 static NV_STATUS __nvoc_thunk_Profiler_gpuresControl(struct GpuResource *pProfiler, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 22: src: __gpuresControl__ in g_profiler_v1_nvoc.c __nvoc_thunk_Profiler_gpuresControl\n");
     return profilerControl((struct Profiler *)(((unsigned char *)pProfiler) - __nvoc_rtti_Profiler_GpuResource.offset), pCallContext, pParams);
 }
 
