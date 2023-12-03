@@ -615,7 +615,7 @@ _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams
 
         if (getCtrlInfoStatus == NV_OK)
         {
-            NV_PRINTF(LEVEL_ERROR, "ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK\n");
+            // NV_PRINTF(LEVEL_ERROR, "ioctl 18: src: _rmapiRmControl in control.c else 600 getCtrlInfoStatus == NV_OK\n");
             if (rmapiControlIsCacheable(ctrlFlags, ctrlAccessRight, NV_FALSE))
             {
                 // no

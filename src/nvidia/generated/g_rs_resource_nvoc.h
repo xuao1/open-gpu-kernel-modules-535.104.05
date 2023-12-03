@@ -341,6 +341,7 @@ static inline NV_STATUS resControlLookup_DISPATCH(struct RsResource *pResource, 
 NV_STATUS resControl_IMPL(struct RsResource *pResource, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams);
 
 static inline NV_STATUS resControl_DISPATCH(struct RsResource *pResource, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH\n");
     return pResource->__resControl__(pResource, pCallContext, pParams);
 }
 
