@@ -651,7 +651,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_DUP_OBJECT:
         {
-            NV_PRINTF(LEVEL_ERROR, "NV_ESC_RM_DUP_OBJECT 1, NV_ESC_RM_DUP_OBJECT in escape.c\n");
             NVOS55_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -714,7 +713,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_GET_EVENT_DATA:
         {
-            NV_PRINTF(LEVEL_ERROR, "NV_ESC_RM_GET_EVENT_DATA 1, NV_ESC_RM_GET_EVENT_DATA in escape.c\n");
             NVOS41_PARAMETERS *pApi = data;
 
             if (dataSize != sizeof(NVOS41_PARAMETERS))
