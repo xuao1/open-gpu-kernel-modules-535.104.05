@@ -156,7 +156,6 @@ resControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pRsParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL\n");
     RsServer *pServer = pCallContext->pServer;
     const struct NVOC_EXPORTED_METHOD_DEF   *pEntry;
     NV_STATUS status;
@@ -197,36 +196,27 @@ resControl_IMPL
 
     if (status == NV_WARN_NOTHING_TO_DO)
     {
-        NV_PRINTF(LEVEL_ERROR, "ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO\n");
         // Call handled by the prologue.
         status = NV_OK;
     }
     else
     {
-        NV_PRINTF(LEVEL_ERROR, "ioctl 23: src: resControl_IMPL in re_resource.c else\n");
         // Check the size of paramSize while it is non-zero.
         // Zero size means the exported method only have one param (pResource)
         if (pEntry->paramSize == 0)
         {
-            NV_PRINTF(LEVEL_ERROR, "ioctl 24: src: resControl_IMPL in re_resource.c else pEntry->paramSize == 0\n");
             CONTROL_EXPORT_FNPTR_NO_PARAMS pFunc = ((CONTROL_EXPORT_FNPTR_NO_PARAMS) pEntry->pFunc);
-            // 输出 pFunc
-            NV_PRINTF(LEVEL_ERROR, "ioctl 24: src: resControl_IMPL in re_resource.c else pEntry->paramSize == 0 pFunc = %u\n", pFunc);
-            NV_PRINTF(LEVEL_ERROR, "ioctl 24: src: resControl_IMPL in re_resource.c else pEntry->paramSize == 0 methodId = %u\n", pEntry->methodId);
             status = pFunc(pDynamicObj);
         }
         else
         {
-            NV_PRINTF(LEVEL_ERROR, "ioctl 24: src: resControl_IMPL in re_resource.c else else\n");
             CONTROL_EXPORT_FNPTR pFunc = ((CONTROL_EXPORT_FNPTR) pEntry->pFunc);
-            NV_PRINTF(LEVEL_ERROR, "ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = %u\n", pFunc);
-            NV_PRINTF(LEVEL_ERROR, "ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = %u\n", pEntry->methodId);
+
             status = pFunc(pDynamicObj, pRsParams->pParams);
         }
     }
 
     resControl_Epilogue(pResource, pCallContext, pRsParams);
-    NV_PRINTF(LEVEL_ERROR, "ioctl 23: src: resControl_IMPL in re_resource.c line before done\n");
 
 done:
     resControlSerialization_Epilogue(pResource, pCallContext, pRsParams);

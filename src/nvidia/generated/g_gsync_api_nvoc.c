@@ -103,7 +103,6 @@ const struct NVOC_CLASS_DEF __nvoc_class_def_GSyncApi =
 };
 
 static NV_STATUS __nvoc_thunk_GSyncApi_resControl(struct RsResource *pGsyncApi, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
-    // NV_PRINTF(LEVEL_ERROR, "ioctl 21: src: __resControl__ in g_gsync_api_nvoc.c __nvoc_thunk_GSyncApi_resControl\n");
     return gsyncapiControl((struct GSyncApi *)(((unsigned char *)pGsyncApi) - __nvoc_rtti_GSyncApi_RsResource.offset), pCallContext, pParams);
 }
 

@@ -294,7 +294,6 @@ NV_STATUS RmIoctl(
     NvU32        dataSize
 )
 {
-    // NV_PRINTF(LEVEL_ERROR, "ioctl 6: src: RmIoctl in escape.c cmd = %u\n", cmd);
     NV_STATUS            rmStatus = NV_ERR_GENERIC;
     API_SECURITY_INFO    secInfo = { };
 
@@ -310,7 +309,6 @@ NV_STATUS RmIoctl(
     {
         case NV_ESC_RM_ALLOC_MEMORY:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_ALLOC_MEMORY\n");
             nv_ioctl_nvos02_parameters_with_fd *pApi;
             NVOS02_PARAMETERS *pParms;
 
@@ -362,7 +360,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_ALLOC_OBJECT:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_ALLOC_OBJECT\n");
             NVOS05_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -379,7 +376,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_ALLOC:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_ALLOC\n");
             NVOS21_PARAMETERS *pApi = data;
             NVOS64_PARAMETERS *pApiAccess = data;
             NvBool bAccessApi = (dataSize == sizeof(NVOS64_PARAMETERS));
@@ -431,7 +427,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_FREE:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_FREE\n");
             NVOS00_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -455,7 +450,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_VID_HEAP_CONTROL:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_VID_HEAP_CONTROL\n");
             NVOS32_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -476,7 +470,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_I2C_ACCESS:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_I2C_ACCESS\n");
             NVOS_I2C_ACCESS_PARAMS *pApi = data;
 
             NV_ACTUAL_DEVICE_ONLY(nv);
@@ -493,7 +486,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_IDLE_CHANNELS:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_IDLE_CHANNELS\n");
             NVOS30_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -510,7 +502,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_MAP_MEMORY:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_MAP_MEMORY\n");
             nv_ioctl_nvos33_parameters_with_fd *pApi;
             NVOS33_PARAMETERS *pParms;
 
@@ -554,7 +545,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_UNMAP_MEMORY:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_UNMAP_MEMORY\n");
             NVOS34_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -571,7 +561,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_ACCESS_REGISTRY:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_ACCESS_REGISTRY\n");
             NVOS38_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -598,7 +587,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_ALLOC_CONTEXT_DMA2:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_ALLOC_CONTEXT_DMA2\n");
             NVOS39_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -615,7 +603,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_BIND_CONTEXT_DMA:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_BIND_CONTEXT_DMA\n");
             NVOS49_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -632,7 +619,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_MAP_MEMORY_DMA:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_MAP_MEMORY_DMA\n");
             NVOS46_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -649,7 +635,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_UNMAP_MEMORY_DMA:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_UNMAP_MEMORY_DMA\n");
             NVOS47_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -666,7 +651,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_DUP_OBJECT:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_DUP_OBJECT\n");
             NVOS55_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -683,7 +667,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_SHARE:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_SHARE\n");
             NVOS57_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -700,7 +683,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_ALLOC_OS_EVENT:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_ALLOC_OS_EVENT\n");
             nv_ioctl_alloc_os_event_t *pApi = data;
 
             if (dataSize != sizeof(nv_ioctl_alloc_os_event_t))
@@ -717,7 +699,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_FREE_OS_EVENT:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_FREE_OS_EVENT\n");
             nv_ioctl_free_os_event_t *pApi = data;
 
             if (dataSize != sizeof(nv_ioctl_free_os_event_t))
@@ -732,7 +713,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_GET_EVENT_DATA:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_GET_EVENT_DATA\n");
             NVOS41_PARAMETERS *pApi = data;
 
             if (dataSize != sizeof(NVOS41_PARAMETERS))
@@ -749,7 +729,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_STATUS_CODE:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_STATUS_CODE\n");
             nv_state_t *pNv;
             nv_ioctl_status_code_t *pApi = data;
 
@@ -778,7 +757,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_CONTROL:
         {
-            NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL\n");
             NVOS54_PARAMETERS *pApi = data;
             void *priv = NULL;
             nv_file_private_t *dev_nvfp = NULL;
@@ -788,25 +766,21 @@ NV_STATUS RmIoctl(
 
             if (dataSize != sizeof(NVOS54_PARAMETERS))
             {
-                NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c dataSize != sizeof(NVOS54_PARAMETERS)\n");
                 rmStatus = NV_ERR_INVALID_ARGUMENT;
                 goto done;
             }
 
             if (RmIsDeviceRefNeeded(pApi))
             {
-                NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c RmIsDeviceRefNeeded(pApi) == true\n");
                 rmStatus = RmGetDeviceFd(pApi, &fd);
                 if (rmStatus != NV_OK)
                 {
-                    NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c RmIsDeviceRefNeeded(pApi) == true && rmStatus != NV_OK\n");
                     goto done;
                 }
 
                 dev_nvfp = nv_get_file_private(fd, NV_FALSE, &priv);
                 if (dev_nvfp == NULL)
                 {
-                    NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c RmIsDeviceRefNeeded(pApi) == true && dev_nvfp == NULL\n");
                     rmStatus = NV_ERR_INVALID_DEVICE;
                     goto done;
                 }
@@ -816,11 +790,9 @@ NV_STATUS RmIoctl(
                                                  NVFP_TYPE_REFCOUNTED,
                                                  NVFP_TYPE_NONE))
                 {
-                    NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c RmIsDeviceRefNeeded(pApi) == true && !portAtomicCompareAndSwapU32\n");
                     // Is this already refcounted...
                     if (dev_nvfp->register_or_refcount != NVFP_TYPE_REFCOUNTED)
                     {
-                        NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c RmIsDeviceRefNeeded(pApi) == true && !portAtomicCompareAndSwapU32 && dev_nvfp->register_or_refcount != NVFP_TYPE_REFCOUNTED\n");
                         nv_put_file_private(priv);
                         rmStatus = NV_ERR_IN_USE;
                         goto done;
@@ -830,13 +802,10 @@ NV_STATUS RmIoctl(
                 secInfo.gpuOsInfo = priv;
             }
 
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c Before Nv04ControlWithSecInfo\n");
             Nv04ControlWithSecInfo(pApi, secInfo);
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c Finish Nv04ControlWithSecInfo\n");
 
             if ((pApi->status != NV_OK) && (priv != NULL))
             {
-                NV_PRINTF(LEVEL_ERROR, "ioctl 9: src: RmIoctl in escape.c (pApi->status != NV_OK) && (priv != NULL)\n");
                 //
                 // No need to reset `register_or_refcount` as it might be set
                 // for previous successful calls. We let it clear with FD close.
@@ -851,7 +820,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_UPDATE_DEVICE_MAPPING_INFO:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_UPDATE_DEVICE_MAPPING_INFO\n");
             NVOS56_PARAMETERS *pApi = data;
             void *pOldCpuAddress;
             void *pNewCpuAddress;
@@ -877,7 +845,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_NVLOG_CTRL:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_NVLOG_CTRL\n");
             NV_NVLOG_CTRL_PARAMS *pParams = data;
 
             NV_CTL_DEVICE_ONLY(nv);
@@ -912,7 +879,6 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_REGISTER_FD:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_REGISTER_FD\n");
             nv_ioctl_register_fd_t *params = data;
             void *priv = NULL;
             nv_file_private_t *ctl_nvfp;
@@ -998,7 +964,6 @@ NV_STATUS RmIoctl(
 
         default:
         {
-            // NV_PRINTF(LEVEL_ERROR, "ioctl 8: src: RmIoctl in escape.c cmd == default\n");
             NV_PRINTF(LEVEL_ERROR, "unknown NVRM ioctl command: 0x%x\n", cmd);
             goto done;
         }

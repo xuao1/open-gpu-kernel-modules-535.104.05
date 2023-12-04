@@ -1255,7 +1255,6 @@ serverControl
     RS_RES_CONTROL_PARAMS *pParams
 )
 {
-    // NV_PRINTF(LEVEL_ERROR, "ioctl 19: src: serverControl in re_server.c\n");
     NV_STATUS           status;
     RsClient           *pClient;
     RsResourceRef      *pResourceRef = NULL;
@@ -1274,7 +1273,6 @@ serverControl
 
     if (pServer->bUnlockedParamCopy)
     {
-        // NV_PRINTF(LEVEL_ERROR, "ioctl 20: src: serverControl in re_server.c pServer->bUnlockedParamCopy\n");
         status = serverControlApiCopyIn(pServer, pParams, pParams->pCookie);
         if (status != NV_OK)
             goto done;
@@ -1318,7 +1316,6 @@ serverControl
 
     if (pResourceRef->pSession != NULL)
     {
-        // NV_PRINTF(LEVEL_ERROR, "ioctl 20: src: serverControl in re_server.c pResourceRef->pSession != NULL\n");
         if (!pResourceRef->pSession->bValid)
         {
             status = NV_ERR_RESOURCE_LOST;
@@ -1348,9 +1345,7 @@ serverControl
     pLockInfo->pContextRef = pResourceRef->pParentRef;
 
     resservSwapTlsCallContext(&pOldContext, &callContext);
-    // NV_PRINTF(LEVEL_ERROR, "ioctl 19: src: serverControl in re_server.c Before resControl\n");
     status = resControl(pResourceRef->pResource, &callContext, pParams);
-    NV_PRINTF(LEVEL_ERROR, "ioctl 19: src: serverControl in re_server.c After resControl\n");
     resservRestoreTlsCallContext(pOldContext);
 
 done:

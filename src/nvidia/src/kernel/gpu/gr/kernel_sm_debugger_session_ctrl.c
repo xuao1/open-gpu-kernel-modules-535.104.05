@@ -507,8 +507,6 @@ _nv83deCtrlCmdDebugAccessMemory
     GrdbgMemoryAccessType accessType
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 26: src: pFunc in kernel_sm_debugger_session_ctrl.c _nv83deCtrlCmdDebugAccessMemory\n");
-    return NV_OK;
     RsResourceRef *pResourceRef;
     MEMORY_DESCRIPTOR *pMemDesc;
     NvU64 totalLength;
@@ -648,7 +646,6 @@ _nv83deCtrlCmdDebugAccessMemory
 
     // Another fence to ensure our own new accesses are complete
     osFlushCpuWriteCombineBuffer();
-    NV_PRINTF(LEVEL_ERROR, "ioctl 26: src: pFunc in kernel_sm_debugger_session_ctrl.c _nv83deCtrlCmdDebugAccessMemory line before cleanup_mapping\n");
 
 cleanup_mapping:
     // Unmap memory.
@@ -667,7 +664,6 @@ ksmdbgssnCtrlCmdDebugReadMemory_IMPL
     NV83DE_CTRL_DEBUG_READ_MEMORY_PARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 25: src: pFunc in kernel_sm_debugger_session_ctrl.c ksmdbgssnCtrlCmdDebugReadMemory_IMPL\n");
     return _nv83deCtrlCmdDebugAccessMemory(GPU_RES_GET_GPU(pKernelSMDebuggerSession),
                                            pKernelSMDebuggerSession,
                                            RES_GET_CLIENT_HANDLE(pKernelSMDebuggerSession),
@@ -685,7 +681,6 @@ ksmdbgssnCtrlCmdDebugWriteMemory_IMPL
     NV83DE_CTRL_DEBUG_WRITE_MEMORY_PARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "ioctl 25: src: pFunc in kernel_sm_debugger_session_ctrl.c ksmdbgssnCtrlCmdDebugWriteMemory_IMPL\n");
     return _nv83deCtrlCmdDebugAccessMemory(GPU_RES_GET_GPU(pKernelSMDebuggerSession),
                                            pKernelSMDebuggerSession,
                                            RES_GET_CLIENT_HANDLE(pKernelSMDebuggerSession),

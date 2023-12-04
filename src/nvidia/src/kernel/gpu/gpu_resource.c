@@ -381,7 +381,6 @@ gpuresControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
-    // NV_PRINTF(LEVEL_ERROR, "ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL\n");
     gpuresControlSetup(pParams, pGpuResource);
 
     return resControl_IMPL(staticCast(pGpuResource, RsResource),

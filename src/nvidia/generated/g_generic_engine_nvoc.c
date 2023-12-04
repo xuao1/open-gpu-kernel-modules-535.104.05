@@ -102,7 +102,6 @@ static NV_STATUS __nvoc_thunk_GenericEngineApi_gpuresGetMapAddrSpace(struct GpuR
 }
 
 static NV_STATUS __nvoc_thunk_GenericEngineApi_gpuresControl(struct GpuResource *pGenericEngineApi, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
-    // NV_PRINTF(LEVEL_ERROR, "ioctl 22: src: __gpuresControl__ in g_generic_engine_nvoc.c __nvoc_thunk_GenericEngineApi_gpuresControl\n");
     return genapiControl((struct GenericEngineApi *)(((unsigned char *)pGenericEngineApi) - __nvoc_rtti_GenericEngineApi_GpuResource.offset), pCallContext, pParams);
 }
 

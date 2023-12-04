@@ -186,7 +186,6 @@ NV_STATUS __nvoc_objCreate_GpuResource(GpuResource**, Dynamic*, NvU32, struct CA
 NV_STATUS gpuresControl_IMPL(struct GpuResource *pGpuResource, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams);
 
 static inline NV_STATUS gpuresControl_DISPATCH(struct GpuResource *pGpuResource, struct CALL_CONTEXT *pCallContext, struct RS_RES_CONTROL_PARAMS_INTERNAL *pParams) {
-    // NV_PRINTF(LEVEL_ERROR, "ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH\n");
     return pGpuResource->__gpuresControl__(pGpuResource, pCallContext, pParams);
 }
 
