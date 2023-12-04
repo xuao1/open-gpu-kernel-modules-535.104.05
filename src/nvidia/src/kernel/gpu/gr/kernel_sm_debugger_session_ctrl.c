@@ -664,6 +664,7 @@ ksmdbgssnCtrlCmdDebugReadMemory_IMPL
     NV83DE_CTRL_DEBUG_READ_MEMORY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 25: src: pFunc in kernel_sm_debugger_session_ctrl.c ksmdbgssnCtrlCmdDebugReadMemory_IMPL\n");
     return _nv83deCtrlCmdDebugAccessMemory(GPU_RES_GET_GPU(pKernelSMDebuggerSession),
                                            pKernelSMDebuggerSession,
                                            RES_GET_CLIENT_HANDLE(pKernelSMDebuggerSession),
@@ -681,6 +682,7 @@ ksmdbgssnCtrlCmdDebugWriteMemory_IMPL
     NV83DE_CTRL_DEBUG_WRITE_MEMORY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 25: src: pFunc in kernel_sm_debugger_session_ctrl.c ksmdbgssnCtrlCmdDebugWriteMemory_IMPL\n");
     return _nv83deCtrlCmdDebugAccessMemory(GPU_RES_GET_GPU(pKernelSMDebuggerSession),
                                            pKernelSMDebuggerSession,
                                            RES_GET_CLIENT_HANDLE(pKernelSMDebuggerSession),
