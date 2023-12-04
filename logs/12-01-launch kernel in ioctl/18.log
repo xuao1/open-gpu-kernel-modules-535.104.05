@@ -1,0 +1,380 @@
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c status == NV_WARN_NOTHING_TO_DO
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853456
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365077
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = 3237853552
+ NVRM resControl_IMPL: ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = 2212365078
+ NVRM resControl_IMPL: ioctl 23: src: resControl_IMPL in re_resource.c line before done
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl

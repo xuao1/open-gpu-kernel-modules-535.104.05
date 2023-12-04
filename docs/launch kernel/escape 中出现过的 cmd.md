@@ -19,3 +19,7 @@
 **根本没进入各种 if**
 
 所以只需要分析 `Nv04ControlWithSecInfo(pApi, secInfo);`
+
+**通过追踪调用和日志分析，这个宏大概率是调试用的。**
+
+## NV_ESC_RM_GET_EVENT_DATA	3

@@ -25,3 +25,9 @@
 16：分析 `resControl_IMPL` 内部执行
 
 17：分析 `resControl_IMPL`  else 的内部执行，以及尝试输出 pFunc
+
+18：分析 `resControl_IMPL`  else 的内部执行，以及尝试输出 pFunc 和 methodId
+
+19：根据 18 的 methodId，在可能的 pFunc 函数入口添加 log
+
+20：在 `_nv83deCtrlCmdDebugAccessMemory` 函数加 log

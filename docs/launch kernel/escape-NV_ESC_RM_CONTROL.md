@@ -263,12 +263,54 @@ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_
 
 执行的 pFunc 并不完全相同，包括：
 
-+ -1053730448：15 次
++ 3237853552：15 次
 + -1053730544：20 次
 
 **综上，55 次调用，在这里分成了三组：**
 
 + 「Call handled by the prologue.」，共 20 次
-+ pFunc = -1053730448：15 次
-+ pFunc = -1053730544：20 次
++ pFunc = 3237853552，method = 2212365078（16 进制为 83DE0316）：15 次
++ pFunc = 3237853456，method = 2212365077（16 进制为 83DE0315）：20 次
 
+直接全局搜索 `pFunc` 目前看起来不现实，因为对这个变量的赋值有很多初，所以通过查看在本函数中，什么时候对 `pEntry` 赋值。
+
+阅读源码发现，可以通过 `pEntry->methodId` 来查找。
+
+#### methodId = 2212365078
+
+```c
+/*pFunc=*/      (void (*)(void)) ksmdbgssnCtrlCmdDebugWriteMemory_IMPL
+```
+
+#### methodId = 2212365077
+
+```c
+/*pFunc=*/      (void (*)(void)) ksmdbgssnCtrlCmdDebugReadMemory_IMPL
+```
+
+## 12 ksmdbgssnCtrlCmdDebugWriteMemory_IMPL 和 ksmdbgssnCtrlCmdDebugReadMemory_IMPL
+
+> ~~单纯看这个名字，突然有种不好的预感~~
+
+都是只有一行，调用了 `_nv83deCtrlCmdDebugAccessMemory`
+
+区别就是传的最后一个参数不同，分别为：
+
++ GRDBG_MEM_ACCESS_TYPE_WRITE
++ GRDBG_MEM_ACCESS_TYPE_READ
+
+## 13 _nv83deCtrlCmdDebugAccessMemory
+
+执行对与 GPU 关联的指定内存对象的读取或写入操作，通常用于调试目的
+
+对于读取操作，它将数据从显存复制到提供的缓冲区。对于写入操作，它将数据从缓冲区复制到显存。
+
+通过 log 可以看到，都能执行到最后。
+
+#### 验证和 launch kernel 是否有直接关联
+
+上来就 return NV_OK，然后直接运行一个代码，不在 cuda-gdb 内。结果是没有问题。
+
+使用 cuda-gdb，打断点会失效，run 虽然会停在断点处，但是 continue 会直接执行结束
+
+分析直接运行的 log，没有上述的两个 methodId，所以只很可能是调试用的。 
