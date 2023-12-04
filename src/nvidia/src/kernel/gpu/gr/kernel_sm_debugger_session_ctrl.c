@@ -507,6 +507,7 @@ _nv83deCtrlCmdDebugAccessMemory
     GrdbgMemoryAccessType accessType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "ioctl 26: src: pFunc in kernel_sm_debugger_session_ctrl.c _nv83deCtrlCmdDebugAccessMemory\n");
     RsResourceRef *pResourceRef;
     MEMORY_DESCRIPTOR *pMemDesc;
     NvU64 totalLength;
@@ -646,6 +647,7 @@ _nv83deCtrlCmdDebugAccessMemory
 
     // Another fence to ensure our own new accesses are complete
     osFlushCpuWriteCombineBuffer();
+    NV_PRINTF(LEVEL_ERROR, "ioctl 26: src: pFunc in kernel_sm_debugger_session_ctrl.c _nv83deCtrlCmdDebugAccessMemory line before cleanup_mapping\n");
 
 cleanup_mapping:
     // Unmap memory.
