@@ -31,3 +31,18 @@
 19：根据 18 的 methodId，在可能的 pFunc 函数入口添加 log
 
 20：在 `_nv83deCtrlCmdDebugAccessMemory` 函数加 log
+
+21：不使用 cuda-gdb 的 log
+
+22：初始运行 `NV_ESC_RM_GET_EVENT_DATA` 和 `NV_ESC_RM_DUP_OBJECT` 的 log
+
+23：不使用 cuda-gdb 的 log
+
+24-31：不使用 cuda-gdb，运行两个代码，区别是有没有 launch kernel
+
+32-39：不使用 cuda-gdb，在 kernel-open/nvidia 的每个函数增加 log，运行两个代码，区别是有没有 launch kernel
+
+40-41：不使用 cuda-gdb，在 kernel-open/nvidia-uvm 的每个函数增加 log，运行两个代码，区别是有没有 launch kernel
+
+42-43：不使用 cuda-gdb，在 kernel-open/nvidia-uvm 的每个函数增加 log，运行两个代码，区别是有没有 memcopy
+
