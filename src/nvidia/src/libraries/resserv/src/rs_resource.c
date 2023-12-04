@@ -212,6 +212,7 @@ resControl_IMPL
             CONTROL_EXPORT_FNPTR_NO_PARAMS pFunc = ((CONTROL_EXPORT_FNPTR_NO_PARAMS) pEntry->pFunc);
             // 输出 pFunc
             NV_PRINTF(LEVEL_ERROR, "ioctl 24: src: resControl_IMPL in re_resource.c else pEntry->paramSize == 0 pFunc = %u\n", pFunc);
+            NV_PRINTF(LEVEL_ERROR, "ioctl 24: src: resControl_IMPL in re_resource.c else pEntry->paramSize == 0 methodId = %u\n", pEntry->methodId);
             status = pFunc(pDynamicObj);
         }
         else
@@ -219,6 +220,7 @@ resControl_IMPL
             NV_PRINTF(LEVEL_ERROR, "ioctl 24: src: resControl_IMPL in re_resource.c else else\n");
             CONTROL_EXPORT_FNPTR pFunc = ((CONTROL_EXPORT_FNPTR) pEntry->pFunc);
             NV_PRINTF(LEVEL_ERROR, "ioctl 24: src: resControl_IMPL in re_resource.c else else pFunc = %u\n", pFunc);
+            NV_PRINTF(LEVEL_ERROR, "ioctl 24: src: resControl_IMPL in re_resource.c else else methodId = %u\n", pEntry->methodId);
             status = pFunc(pDynamicObj, pRsParams->pParams);
         }
     }
