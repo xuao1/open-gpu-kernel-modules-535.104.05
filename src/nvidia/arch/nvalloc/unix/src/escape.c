@@ -651,6 +651,7 @@ NV_STATUS RmIoctl(
 
         case NV_ESC_RM_DUP_OBJECT:
         {
+            NV_PRINTF(LEVEL_ERROR, "NV_ESC_RM_DUP_OBJECT 1, NV_ESC_RM_DUP_OBJECT in escape.c\n");
             NVOS55_PARAMETERS *pApi = data;
 
             NV_CTL_DEVICE_ONLY(nv);
