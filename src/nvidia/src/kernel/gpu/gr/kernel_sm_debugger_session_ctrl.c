@@ -508,6 +508,7 @@ _nv83deCtrlCmdDebugAccessMemory
 )
 {
     NV_PRINTF(LEVEL_ERROR, "ioctl 26: src: pFunc in kernel_sm_debugger_session_ctrl.c _nv83deCtrlCmdDebugAccessMemory\n");
+    return NV_OK;
     RsResourceRef *pResourceRef;
     MEMORY_DESCRIPTOR *pMemDesc;
     NvU64 totalLength;
