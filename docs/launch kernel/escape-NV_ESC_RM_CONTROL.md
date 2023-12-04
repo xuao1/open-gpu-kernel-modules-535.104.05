@@ -141,7 +141,7 @@ status = _rmapiRmControl(hClient, hObject, cmd, pParams, paramsSize, flags, pRmA
 
 位于 re_server.c
 
-#### 执行逻辑：
+执行逻辑：
 
 验证锁信息（pLockInfo）并设置各种本地变量。
 
@@ -162,3 +162,113 @@ status = _rmapiRmControl(hClient, hObject, cmd, pParams, paramsSize, flags, pRmA
 综上，关键的是 `resControl`
 
 根据 log，55 次执行过程均一致，都顺利执行到 `resControl`
+
+#### 跳转的目标函数分析
+
+因为跳转到的函数实际是一个函数指针，所以并不能直接由 ctrl+click 确定。
+
+但是这个函数指针总会有赋值的时候，所以定位名称「pResource」，实际是这个结构体变量的 `pResource->__resControl__`
+
+直接在所有文件里搜索 `__resControl__`，找到了以下几个：
+
++ `&__nvoc_thunk_DisplayApi_resControl`
++ `&__nvoc_thunk_GpuResource_resControl`
++ `&__nvoc_thunk_GSyncApi_resControl`
++ `&__nvoc_thunk_Memory_resControl`
++ `&resControl_IMPL`
+
+打 log，运行，结果为：
+
+```log
+NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+```
+
+可以看到，是先进入 `__nvoc_thunk_GpuResource_resControl`，然后进入 `resControl_IMPL`
+
+> 感觉有点奇怪，明明只调用了一次 `__resControl__`
+>
+> 后面又打 log 分析了一次，应该是调用的 `__nvoc_thunk_GpuResource_resControl`，后面这个，需要再分析才能确定是：
+>
+> + `__nvoc_thunk_GpuResource_resControl` 后续执行调用的
+> + ~~其他函数调用的，和 ioctl 无关~~
+
+## 8 __nvoc_thunk_GpuResource_resControl
+
+只有一行，调用了 `gpuresControl`
+
+## 9 gpuresControl
+
+到这里，遇到了和 `__resControl__` 一样的问题。
+
+关键是 `pGpuResource->__gpuresControl__`，那么，搜索 `__gpuresControl__`
+
++ `&__nvoc_thunk_BinaryApi_gpuresControl`
++ `&__nvoc_thunk_Device_gpuresControl`
++ `&__nvoc_thunk_GenericEngineApi_gpuresControl`
++ `&gpuresControl_IMPL`：这里会调用 `resControl_IMPL`
++ `&__nvoc_thunk_KernelChannelGroupApi_gpuresControl`
++ `&__nvoc_thunk_Profiler_gpuresControl`
++ `&__nvoc_thunk_DiagApi_gpuresControl`
+
+目前看起来，只调用了 `gpuresControl_IMPL`
+
+## 10 gpuresControl_IMPL
+
+调用了两个函数：
+
++ `gpuresControlSetup(pParams, pGpuResource);`
++ `resControl_IMPL(staticCast(pGpuResource, RsResource), pCallContext, pParams);`
+
+### 10.1 gpuresControlSetup
+
+实际是 `gpuresControlSetup_IMPL`
+
+调用了宏 `GPU_RES_SET_THREAD_BC_STATE(pGpuResource);`，这个宏实际是 `PORT_UNREFERENCED_VARIABLE`，然后，实际是 `((void)sizeof(&(x)))`
+
+所以看起来这个函数只是做了几个设置
+
+## 11 resControl_IMPL
+
+位于 `re_source.c`
+
+所以现在，55 次这个宏的核心逻辑都按完全相同的路径，执行到了这个函数
+
+#### 执行逻辑：
+
+在 Nvidia 驱动程序的服务器上下文中执行特定资源上的控制命令。
+
+它处理了命令执行的各个阶段，包括查找、过滤、序列化和执行实际的控制命令
+
+1. 首先执行控制命令的查找（resControlLookup），以找到导出方法表中相应的条目（pEntry）
+
+2. 初始化执行cookie，并对控制命令进行过滤和序言操作
+
+3. 根据 pEntry 中的类别 ID 将资源转换为动态对象类型
+
+4. 根据参数的大小（paramSize），该函数调用适当的函数指针（pFunc）来执行控制命令
+5. 在执行命令后，该函数执行资源控制和序列化的尾声操作
+6. 调用 serverControl_Epilogue 来完成 server 端处理控制命令的工作
+
+#### 日志分析
+
+在这里，55 次执行有了不同：均能执行到 line before done
+
+是在上面「执行逻辑」的 4 中，有两条路径：
+
++ 一是「Call handled by the prologue.」，共 20 次
++ 二是使用 pFunc 执行，共 35 次
+
+继续分析第二条路经，其内部仍有两个分支，区别是参数个数，在此处，全部为有参数，所以均为 else。
+
+执行的 pFunc 并不完全相同，包括：
+
++ -1053730448：15 次
++ -1053730544：20 次
+
+**综上，55 次调用，在这里分成了三组：**
+
++ 「Call handled by the prologue.」，共 20 次
++ pFunc = -1053730448：15 次
++ pFunc = -1053730544：20 次
+

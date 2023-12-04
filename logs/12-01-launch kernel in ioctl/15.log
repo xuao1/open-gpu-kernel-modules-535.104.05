@@ -1,0 +1,496 @@
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ 
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl
+ NVRM RmIoctl: ioctl 7: src: RmIoctl in escape.c cmd == NV_ESC_RM_CONTROL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c Before resControl
+ NVRM resControl_DISPATCH: ioctl 20.5: src: __resControl__ in g_rs_resource_nvoc.c resControl_DISPATCH
+ NVRM __nvoc_thunk_GpuResource_resControl: ioctl 21: src: __resControl__ in g_gpu_resource_nvoc.c __nvoc_thunk_GpuResource_resControl
+ NVRM gpuresControl_DISPATCH: ioctl 21.5: src: __gpuresControl__ in g_gpu_resource_nvoc.c gpuresControl_DISPATCH
+ NVRM gpuresControl_IMPL: ioctl 22: src: __gpuresControl__ in gpu_resource.c gpuresControl_IMPL
+ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_IMPL
+ NVRM serverControl: ioctl 19: src: serverControl in re_server.c After resControl

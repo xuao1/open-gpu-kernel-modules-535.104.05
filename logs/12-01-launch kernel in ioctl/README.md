@@ -17,3 +17,11 @@
 12：分析 control 中的函数 `_rmapiRmControl` 能否执行到最后
 
 13：分析 re_server.c 中的函数 `serverControl`
+
+14：分析哪些 `__resControl__` 被调用了
+
+15：分析哪些 `__gpuresControl__`  被调用了
+
+16：分析 `resControl_IMPL` 内部执行
+
+17：分析 `resControl_IMPL`  else 的内部执行，以及尝试输出 pFunc

@@ -6,3 +6,9 @@
    3. 追踪宏 `NV_ESC_RM_GET_EVENT_DATA`
    5. 追踪宏 `NV_ESC_RM_DUP_OBJECT`
 4. 追踪 event 相关的函数
+
+
+
+周日：
+
+1. 之前卡在了 re_server.c，找不到后面调用的函数，可以将所有有可能的函数位置均打上 log，看进入哪个
