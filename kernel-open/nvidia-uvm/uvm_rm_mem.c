@@ -30,11 +30,13 @@
 
 bool uvm_rm_mem_mapped_on_gpu(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2101);
     return uvm_global_processor_mask_test(&rm_mem->mapped_on, gpu->global_id);
 }
 
 bool uvm_rm_mem_mapped_on_gpu_proxy(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2102);
     if (rm_mem->proxy_vas == NULL)
         return false;
 
@@ -49,28 +51,33 @@ bool uvm_rm_mem_mapped_on_gpu_proxy(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 
 bool uvm_rm_mem_mapped_on_cpu(uvm_rm_mem_t *rm_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2103);
     return uvm_global_processor_mask_test(&rm_mem->mapped_on, UVM_GLOBAL_ID_CPU);
 }
 
 static void rm_mem_set_gpu_va(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu, NvU64 va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2104);
     rm_mem->vas[uvm_global_id_value(gpu->global_id)] = va;
     uvm_global_processor_mask_set(&rm_mem->mapped_on, gpu->global_id);
 }
 
 static void rm_mem_set_gpu_proxy_va(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu, NvU64 va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2105);
     rm_mem->proxy_vas[uvm_global_id_value(gpu->global_id)] = va;
 }
 
 static void rm_mem_set_cpu_va(uvm_rm_mem_t *rm_mem, void *va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2106);
     rm_mem->vas[UVM_GLOBAL_ID_CPU_VALUE] = (uintptr_t) va;
     uvm_global_processor_mask_set(&rm_mem->mapped_on, UVM_GLOBAL_ID_CPU);
 }
 
 static void rm_mem_clear_gpu_va(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2107);
     UVM_ASSERT(!uvm_rm_mem_mapped_on_gpu_proxy(rm_mem, gpu));
 
     uvm_global_processor_mask_clear(&rm_mem->mapped_on, gpu->global_id);
@@ -79,17 +86,20 @@ static void rm_mem_clear_gpu_va(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 
 static void rm_mem_clear_gpu_proxy_va(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2108);
     rm_mem->proxy_vas[uvm_global_id_value(gpu->global_id)] = 0;
 }
 
 static void rm_mem_clear_cpu_va(uvm_rm_mem_t *rm_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2109);
     uvm_global_processor_mask_clear(&rm_mem->mapped_on, UVM_GLOBAL_ID_CPU);
     rm_mem->vas[UVM_GLOBAL_ID_CPU_VALUE] = 0;
 }
 
 NvU64 uvm_rm_mem_get_gpu_uvm_va(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2110);
     UVM_ASSERT_MSG(uvm_rm_mem_mapped_on_gpu(rm_mem, gpu), "GPU %s\n", uvm_gpu_name(gpu));
 
     return rm_mem->vas[uvm_global_id_value(gpu->global_id)];
@@ -97,6 +107,7 @@ NvU64 uvm_rm_mem_get_gpu_uvm_va(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 
 NvU64 uvm_rm_mem_get_gpu_proxy_va(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2111);
     UVM_ASSERT(uvm_rm_mem_mapped_on_gpu_proxy(rm_mem, gpu));
 
     return rm_mem->proxy_vas[uvm_global_id_value(gpu->global_id)];
@@ -104,6 +115,7 @@ NvU64 uvm_rm_mem_get_gpu_proxy_va(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 
 uvm_gpu_address_t uvm_rm_mem_get_gpu_va(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu, bool is_proxy_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2112);
     uvm_gpu_address_t gpu_va = {0};
 
     gpu_va.aperture = UVM_APERTURE_MAX;
@@ -121,6 +133,7 @@ uvm_gpu_address_t uvm_rm_mem_get_gpu_va(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu, bo
 
 void *uvm_rm_mem_get_cpu_va(uvm_rm_mem_t *rm_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2113);
     UVM_ASSERT(uvm_rm_mem_mapped_on_cpu(rm_mem));
 
     return (void *)(uintptr_t)rm_mem->vas[UVM_GLOBAL_ID_CPU_VALUE];
@@ -128,6 +141,7 @@ void *uvm_rm_mem_get_cpu_va(uvm_rm_mem_t *rm_mem)
 
 static NV_STATUS rm_mem_map_gpu_proxy(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2114);
     NV_STATUS status;
     uvm_gpu_t *gpu_owner;
     NvU64 gpu_owner_va;
@@ -171,6 +185,7 @@ static NV_STATUS rm_mem_map_gpu_proxy(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 
 static void rm_mem_unmap_gpu_proxy(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2115);
     uvm_gpu_t *gpu_owner;
     NvU64 gpu_owner_va;
 
@@ -195,6 +210,7 @@ NV_STATUS uvm_rm_mem_alloc(uvm_gpu_t *gpu,
                            NvU64 gpu_alignment,
                            uvm_rm_mem_t **rm_mem_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2116);
     NV_STATUS status = NV_OK;
     uvm_rm_mem_t *rm_mem;
     UvmGpuAllocInfo alloc_info = { 0 };
@@ -245,6 +261,7 @@ error:
 
 NV_STATUS uvm_rm_mem_map_cpu(uvm_rm_mem_t *rm_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2117);
     NV_STATUS status;
     uvm_gpu_t *gpu;
     NvU64 gpu_va;
@@ -277,6 +294,7 @@ NV_STATUS uvm_rm_mem_map_cpu(uvm_rm_mem_t *rm_mem)
 
 void uvm_rm_mem_unmap_cpu(uvm_rm_mem_t *rm_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2118);
     UVM_ASSERT(rm_mem);
 
     if (!uvm_rm_mem_mapped_on_cpu(rm_mem))
@@ -290,6 +308,7 @@ void uvm_rm_mem_unmap_cpu(uvm_rm_mem_t *rm_mem)
 
 NV_STATUS uvm_rm_mem_map_gpu(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu, NvU64 gpu_alignment)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2119);
     NV_STATUS status;
     uvm_gpu_t *gpu_owner;
     NvU64 gpu_owner_va;
@@ -330,6 +349,7 @@ NV_STATUS uvm_rm_mem_map_gpu(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu, NvU64 gpu_ali
 // uvm_rm_mem_unmap_gpu
 static void rm_mem_unmap_gpu(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2120);
     NvU64 va;
 
     if (!uvm_rm_mem_mapped_on_gpu(rm_mem, gpu))
@@ -345,6 +365,7 @@ static void rm_mem_unmap_gpu(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 
 void uvm_rm_mem_unmap_gpu(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2121);
     UVM_ASSERT(rm_mem);
     UVM_ASSERT(gpu);
 
@@ -357,6 +378,7 @@ void uvm_rm_mem_unmap_gpu(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu)
 
 void uvm_rm_mem_free(uvm_rm_mem_t *rm_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2122);
     uvm_global_gpu_id_t gpu_id;
     uvm_gpu_t *gpu_owner;
 
@@ -396,6 +418,7 @@ NV_STATUS uvm_rm_mem_alloc_and_map_cpu(uvm_gpu_t *gpu,
                                        NvU64 gpu_alignment,
                                        uvm_rm_mem_t **rm_mem_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2123);
     uvm_rm_mem_t *rm_mem;
     NV_STATUS status;
 
@@ -418,6 +441,7 @@ error:
 
 NV_STATUS uvm_rm_mem_map_all_gpus(uvm_rm_mem_t *rm_mem, NvU64 gpu_alignment)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2124);
     uvm_gpu_t *gpu;
 
     UVM_ASSERT(rm_mem);
@@ -436,6 +460,7 @@ NV_STATUS uvm_rm_mem_alloc_and_map_all(uvm_gpu_t *gpu,
                                        NvU64 gpu_alignment,
                                        uvm_rm_mem_t **rm_mem_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2125);
     uvm_rm_mem_t *rm_mem;
     NV_STATUS status;
 

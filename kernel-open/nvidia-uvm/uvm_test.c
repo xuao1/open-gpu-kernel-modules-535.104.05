@@ -39,6 +39,7 @@
 
 static NV_STATUS uvm_test_get_gpu_ref_count(UVM_TEST_GET_GPU_REF_COUNT_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2150);
     NvU64 retained_count = 0;
     uvm_parent_gpu_t *parent_gpu;
     uvm_gpu_t *gpu = NULL;
@@ -60,6 +61,7 @@ static NV_STATUS uvm_test_get_gpu_ref_count(UVM_TEST_GET_GPU_REF_COUNT_PARAMS *p
 
 static NV_STATUS uvm_test_peer_ref_count(UVM_TEST_PEER_REF_COUNT_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2151);
     NvU64 registered_ref_count = 0;
     uvm_gpu_t *gpu0 = NULL;
     uvm_gpu_t *gpu1 = NULL;
@@ -88,6 +90,7 @@ static NV_STATUS uvm_test_peer_ref_count(UVM_TEST_PEER_REF_COUNT_PARAMS *params,
 static NV_STATUS uvm_test_make_channel_stops_immediate(UVM_TEST_MAKE_CHANNEL_STOPS_IMMEDIATE_PARAMS *params,
                                                        struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2152);
     uvm_va_space_get(filp)->user_channel_stops_are_immediate = NV_TRUE;
 
     return NV_OK;
@@ -95,6 +98,7 @@ static NV_STATUS uvm_test_make_channel_stops_immediate(UVM_TEST_MAKE_CHANNEL_STO
 
 static NV_STATUS uvm_test_nv_kthread_q(UVM_TEST_NV_KTHREAD_Q_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2153);
     // The nv-kthread-q system returns 0 or -1, because it is not actually
     // part of UVM. UVM needs to run this test, because otherwise, the
     // nv-kthread-q code would not get adequate test coverage. That's because
@@ -109,6 +113,7 @@ static NV_STATUS uvm_test_nv_kthread_q(UVM_TEST_NV_KTHREAD_Q_PARAMS *params, str
 static NV_STATUS uvm_test_numa_get_closest_cpu_node_to_gpu(UVM_TEST_NUMA_GET_CLOSEST_CPU_NODE_TO_GPU_PARAMS *params,
                                                            struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2154);
     uvm_gpu_t *gpu;
     NV_STATUS status;
     uvm_rm_user_object_t user_rm_va_space = {
@@ -130,6 +135,7 @@ static NV_STATUS uvm_test_numa_get_closest_cpu_node_to_gpu(UVM_TEST_NUMA_GET_CLO
 // to avoid overrunning the kernel's node to cpumask map.
 static NV_STATUS uvm_test_verify_bh_affinity(uvm_intr_handler_t *isr, int node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2155);
     UVM_ASSERT(node != NUMA_NO_NODE);
 
     // If the bottom half has been executed but its cpus_used_mask is empty
@@ -146,6 +152,7 @@ static NV_STATUS uvm_test_verify_bh_affinity(uvm_intr_handler_t *isr, int node)
 
 static NV_STATUS uvm_test_numa_check_affinity(UVM_TEST_NUMA_CHECK_AFFINITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2156);
     uvm_gpu_t *gpu;
     NV_STATUS status;
     uvm_rm_user_object_t user_rm_va_space = {
@@ -199,6 +206,7 @@ release:
 static NV_STATUS uvm_test_get_kernel_virtual_address(UVM_TEST_GET_KERNEL_VIRTUAL_ADDRESS_PARAMS *params,
                                                      struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2157);
     params->addr = (NvU64)uvm_va_space_get(filp);
 
     return NV_OK;
@@ -207,6 +215,7 @@ static NV_STATUS uvm_test_get_kernel_virtual_address(UVM_TEST_GET_KERNEL_VIRTUAL
 static NV_STATUS uvm_test_get_user_space_end_address(UVM_TEST_GET_USER_SPACE_END_ADDRESS_PARAMS *params,
                                                      struct file *flip)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2158);
     params->user_space_end_address = TASK_SIZE;
 
     return NV_OK;
@@ -215,11 +224,13 @@ static NV_STATUS uvm_test_get_user_space_end_address(UVM_TEST_GET_USER_SPACE_END
 static NV_STATUS uvm_test_cgroup_accounting_supported(UVM_TEST_CGROUP_ACCOUNTING_SUPPORTED_PARAMS *params,
                                                       struct file *flip)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2159);
     return UVM_CGROUP_ACCOUNTING_SUPPORTED() ? NV_OK : NV_ERR_NOT_SUPPORTED;
 }
 
 long uvm_test_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2160);
     // Disable all test entry points if the module parameter wasn't provided.
     // These should not be enabled in a production environment.
     if (!uvm_enable_builtin_tests) {
@@ -229,6 +240,7 @@ long uvm_test_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
     switch (cmd)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2161);
         UVM_ROUTE_CMD_STACK_INIT_CHECK(UVM_TEST_GET_GPU_REF_COUNT,            uvm_test_get_gpu_ref_count);
         UVM_ROUTE_CMD_STACK_INIT_CHECK(UVM_TEST_RNG_SANITY,                   uvm_test_rng_sanity);
         UVM_ROUTE_CMD_STACK_INIT_CHECK(UVM_TEST_RANGE_TREE_DIRECTED,          uvm_test_range_tree_directed);

@@ -38,6 +38,7 @@ typedef struct {
 
 NvU32 uvm_hal_volta_fault_buffer_read_put(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2851);
     NvU32 put = UVM_GPU_READ_ONCE(*parent_gpu->fault_buffer_info.rm_info.replayable.pFaultBufferPut);
     NvU32 index = READ_HWVALUE(put, _PFB_PRI_MMU, FAULT_BUFFER_PUT, PTR);
     UVM_ASSERT(READ_HWVALUE(put, _PFB_PRI_MMU, FAULT_BUFFER_PUT, GETPTR_CORRUPTED) ==
@@ -48,6 +49,7 @@ NvU32 uvm_hal_volta_fault_buffer_read_put(uvm_parent_gpu_t *parent_gpu)
 
 NvU32 uvm_hal_volta_fault_buffer_read_get(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2852);
     NvU32 get = UVM_GPU_READ_ONCE(*parent_gpu->fault_buffer_info.rm_info.replayable.pFaultBufferGet);
     UVM_ASSERT(get < parent_gpu->fault_buffer_info.replayable.max_faults);
 
@@ -56,6 +58,7 @@ NvU32 uvm_hal_volta_fault_buffer_read_get(uvm_parent_gpu_t *parent_gpu)
 
 void uvm_hal_volta_fault_buffer_write_get(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2853);
     NvU32 get = HWVALUE(_PFB_PRI_MMU, FAULT_BUFFER_GET, PTR, index);
 
     UVM_ASSERT(index < parent_gpu->fault_buffer_info.replayable.max_faults);
@@ -90,6 +93,7 @@ void uvm_hal_volta_fault_buffer_write_get(uvm_parent_gpu_t *parent_gpu, NvU32 in
 #define MAX_SUBCONTEXTS 64
 NvU8 uvm_hal_volta_fault_buffer_get_ve_id(NvU16 mmu_engine_id, uvm_mmu_engine_type_t mmu_engine_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2854);
     // Only graphics engines can generate MMU faults from different subcontexts
     if (mmu_engine_type == UVM_MMU_ENGINE_TYPE_GRAPHICS) {
         NvU16 ve_id = mmu_engine_id - NV_PFAULT_MMU_ENG_ID_GRAPHICS;
@@ -104,10 +108,12 @@ NvU8 uvm_hal_volta_fault_buffer_get_ve_id(NvU16 mmu_engine_id, uvm_mmu_engine_ty
 
 static uvm_fault_access_type_t get_fault_access_type(const NvU32 *fault_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2855);
     NvU32 hw_access_type_value = READ_HWVALUE_MW(fault_entry, C369, BUF_ENTRY, ACCESS_TYPE);
 
     switch (hw_access_type_value)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2856);
         case NV_PFAULT_ACCESS_TYPE_PHYS_READ:
         case NV_PFAULT_ACCESS_TYPE_VIRT_READ:
             return UVM_FAULT_ACCESS_TYPE_READ;
@@ -131,10 +137,12 @@ static uvm_fault_access_type_t get_fault_access_type(const NvU32 *fault_entry)
 
 static bool is_fault_address_virtual(const NvU32 *fault_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2857);
     NvU32 hw_access_type_value = READ_HWVALUE_MW(fault_entry, C369, BUF_ENTRY, ACCESS_TYPE);
 
     switch (hw_access_type_value)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2858);
         case NV_PFAULT_ACCESS_TYPE_PHYS_READ:
         case NV_PFAULT_ACCESS_TYPE_PHYS_WRITE:
         case NV_PFAULT_ACCESS_TYPE_PHYS_ATOMIC:
@@ -155,10 +163,12 @@ static bool is_fault_address_virtual(const NvU32 *fault_entry)
 
 uvm_fault_type_t uvm_hal_volta_fault_buffer_get_fault_type(const NvU32 *fault_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2859);
     NvU32 hw_fault_type_value = READ_HWVALUE_MW(fault_entry, C369, BUF_ENTRY, FAULT_TYPE);
 
     switch (hw_fault_type_value)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2860);
         case NV_PFAULT_FAULT_TYPE_PDE:
             return UVM_FAULT_TYPE_INVALID_PDE;
         case NV_PFAULT_FAULT_TYPE_PTE:
@@ -201,10 +211,12 @@ uvm_fault_type_t uvm_hal_volta_fault_buffer_get_fault_type(const NvU32 *fault_en
 
 static uvm_fault_client_type_t get_fault_client_type(const NvU32 *fault_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2861);
     NvU32 hw_client_type_value = READ_HWVALUE_MW(fault_entry, C369, BUF_ENTRY, MMU_CLIENT_TYPE);
 
     switch (hw_client_type_value)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2862);
         case NV_PFAULT_MMU_CLIENT_TYPE_GPC:
             return UVM_FAULT_CLIENT_TYPE_GPC;
         case NV_PFAULT_MMU_CLIENT_TYPE_HUB:
@@ -218,10 +230,12 @@ static uvm_fault_client_type_t get_fault_client_type(const NvU32 *fault_entry)
 
 static uvm_aperture_t get_fault_inst_aperture(const NvU32 *fault_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2863);
     NvU32 hw_aperture_value = READ_HWVALUE_MW(fault_entry, C369, BUF_ENTRY, INST_APERTURE);
 
     switch (hw_aperture_value)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2864);
         case NVC369_BUF_ENTRY_INST_APERTURE_VID_MEM:
             return UVM_APERTURE_VID;
         case NVC369_BUF_ENTRY_INST_APERTURE_SYS_MEM_COHERENT:
@@ -236,6 +250,7 @@ static uvm_aperture_t get_fault_inst_aperture(const NvU32 *fault_entry)
 
 static NvU32 *get_fault_buffer_entry(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2865);
     fault_buffer_entry_c369_t *buffer_start;
     NvU32 *fault_entry;
 
@@ -250,6 +265,7 @@ static NvU32 *get_fault_buffer_entry(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 // See uvm_pascal_fault_buffer.c::get_fault_buffer_entry_metadata
 static UvmFaultMetadataPacket *get_fault_buffer_entry_metadata(uvm_parent_gpu_t *parent_gpu, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2866);
     UvmFaultMetadataPacket *fault_entry_metadata;
 
     UVM_ASSERT(index < parent_gpu->fault_buffer_info.replayable.max_faults);
@@ -265,6 +281,7 @@ static void parse_fault_entry_common(uvm_parent_gpu_t *parent_gpu,
                                      NvU32 *fault_entry,
                                      uvm_fault_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2867);
     NvU64 addr_hi, addr_lo;
     NvU64 timestamp_hi, timestamp_lo;
     bool replayable_fault_enabled;
@@ -342,6 +359,7 @@ NV_STATUS uvm_hal_volta_fault_buffer_parse_replayable_entry(uvm_parent_gpu_t *pa
                                                             NvU32 index,
                                                             uvm_fault_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2868);
     fault_buffer_entry_c369_t entry;
     NvU32 *fault_entry;
 
@@ -385,6 +403,7 @@ void uvm_hal_volta_fault_buffer_parse_non_replayable_entry(uvm_parent_gpu_t *par
                                                            void *fault_packet,
                                                            uvm_fault_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2869);
     parse_fault_entry_common(parent_gpu, fault_packet, buffer_entry);
 
     // No need to clear the valid bit since the fault buffer for non-replayable

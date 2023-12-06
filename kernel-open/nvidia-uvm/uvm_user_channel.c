@@ -42,6 +42,7 @@
 // Sort channel resources from highest to lowest alignments
 static int resource_align_high_cmp(const void *a, const void *b)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2349);
     const UvmGpuChannelResourceInfo *resource_a = a;
     const UvmGpuChannelResourceInfo *resource_b = b;
 
@@ -54,6 +55,7 @@ static int resource_align_high_cmp(const void *a, const void *b)
 
 static NV_STATUS get_rm_channel_resources(uvm_user_channel_t *user_channel, UvmGpuChannelInstanceInfo *channel_info)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2350);
     UvmGpuChannelResourceInfo *resources = NULL;
     NvU32 i, num_resources = user_channel->num_resources;
 
@@ -96,6 +98,7 @@ static NV_STATUS uvm_user_channel_create(uvm_va_space_t *va_space,
                                          NvU64 base,
                                          NvU64 length)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2351);
     UvmGpuChannelInstanceInfo *channel_info = NULL;
     uvm_user_channel_t *user_channel = NULL;
     NV_STATUS status = NV_OK;
@@ -215,6 +218,7 @@ error:
 
 static uvm_user_channel_t *find_user_channel(uvm_va_space_t *va_space, uvm_rm_user_object_t *user_rm_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2352);
     uvm_user_channel_t *user_channel;
     uvm_gpu_va_space_t *gpu_va_space;
 
@@ -239,6 +243,7 @@ static uvm_user_channel_t *find_user_channel(uvm_va_space_t *va_space, uvm_rm_us
 // 3) new_user_channel's TSG matches existing mappings
 static uvm_va_range_t *find_va_range(uvm_user_channel_t *new_user_channel, NvP64 rm_descriptor)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2353);
     uvm_gpu_va_space_t *gpu_va_space = new_user_channel->gpu_va_space;
     uvm_va_range_t *range;
 
@@ -263,6 +268,7 @@ static uvm_va_range_t *find_va_range(uvm_user_channel_t *new_user_channel, NvP64
 // [base, end]. base must not be 0. If no such region exists, 0 is returned.
 static NvU64 find_va_in_range(uvm_va_space_t *va_space, NvU64 base, NvU64 end, NvU64 size, NvU64 alignment)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2354);
     NvU64 curr_start = base, curr_end;
     uvm_va_range_t *va_range;
 
@@ -300,6 +306,7 @@ static NV_STATUS create_va_range(struct mm_struct *mm,
                                  NvU64 end,
                                  NvU32 resource_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2355);
     uvm_gpu_va_space_t *gpu_va_space = user_channel->gpu_va_space;
     UvmGpuChannelResourceInfo *resource = &user_channel->resources[resource_index];
     UvmGpuMemoryInfo *mem_info = &resource->resourceInfo;
@@ -374,6 +381,7 @@ error:
 
 static void destroy_va_ranges(uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2356);
     size_t i;
 
     if (!user_channel || !user_channel->va_ranges)
@@ -412,6 +420,7 @@ static NV_STATUS create_va_ranges(struct mm_struct *mm,
                                   NvU64 base,
                                   NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2357);
     NvU32 i;
     NV_STATUS status;
 
@@ -436,6 +445,7 @@ error:
 // can in turn tell the HW where they are.
 static NV_STATUS bind_channel_resources(uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2358);
     UvmGpuChannelResourceBindParams *resource_va_list = NULL;
     NV_STATUS status = NV_OK;
     NvU32 i;
@@ -483,6 +493,7 @@ out:
 // mappings fail.
 static NV_STATUS uvm_user_channel_map_resources(uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2359);
     uvm_tracker_t tracker = UVM_TRACKER_INIT();
     NvU32 i;
     NV_STATUS status = NV_OK, tracker_status;
@@ -533,6 +544,7 @@ static NV_STATUS uvm_register_channel_under_write(struct mm_struct *mm,
                                                   NvU64 base,
                                                   NvU64 length)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2360);
     uvm_gpu_va_space_t *gpu_va_space = user_channel->gpu_va_space;
     uvm_va_space_t *va_space = gpu_va_space->va_space;
     NV_STATUS status;
@@ -591,6 +603,7 @@ static NV_STATUS uvm_register_channel(uvm_va_space_t *va_space,
                                       NvU64 base,
                                       NvU64 length)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2361);
     NV_STATUS status;
     uvm_gpu_t *gpu;
     struct mm_struct *mm;
@@ -728,6 +741,7 @@ error_under_read:
 
 NV_STATUS uvm_api_register_channel(UVM_REGISTER_CHANNEL_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2362);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_rm_user_object_t user_rm_channel =
     {
@@ -740,6 +754,7 @@ NV_STATUS uvm_api_register_channel(UVM_REGISTER_CHANNEL_PARAMS *params, struct f
 
 static void free_user_channel(nv_kref_t *nv_kref)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2363);
     uvm_user_channel_t *user_channel = container_of(nv_kref, uvm_user_channel_t, kref);
     UVM_ASSERT(!user_channel->gpu_va_space);
     UVM_ASSERT(!user_channel->va_ranges);
@@ -749,12 +764,14 @@ static void free_user_channel(nv_kref_t *nv_kref)
 
 void uvm_user_channel_release(uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2364);
     if (user_channel)
         nv_kref_put(&user_channel->kref, free_user_channel);
 }
 
 void uvm_user_channel_stop(uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2365);
     uvm_va_space_t *va_space = user_channel->gpu_va_space->va_space;
 
     if (!user_channel->rm_retained_channel)
@@ -785,6 +802,7 @@ void uvm_user_channel_stop(uvm_user_channel_t *user_channel)
 
 void uvm_user_channel_detach(uvm_user_channel_t *user_channel, struct list_head *deferred_free_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2366);
     uvm_va_space_t *va_space;
     uvm_gpu_va_space_t *gpu_va_space;
 
@@ -828,6 +846,7 @@ void uvm_user_channel_detach(uvm_user_channel_t *user_channel, struct list_head 
 
 void uvm_user_channel_destroy_detached(uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2367);
     // Check that this channel was already detached
     UVM_ASSERT(user_channel->gpu_va_space == NULL);
 
@@ -852,6 +871,7 @@ void uvm_user_channel_destroy_detached(uvm_user_channel_t *user_channel)
 
 static NV_STATUS uvm_unregister_channel(uvm_va_space_t *va_space, uvm_rm_user_object_t *user_rm_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2368);
     uvm_gpu_t *gpu = NULL;
     uvm_user_channel_t *user_channel = NULL;
     NV_STATUS status = NV_OK;
@@ -904,6 +924,7 @@ static NV_STATUS uvm_unregister_channel(uvm_va_space_t *va_space, uvm_rm_user_ob
 
 NV_STATUS uvm_api_unregister_channel(UVM_UNREGISTER_CHANNEL_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2369);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_rm_user_object_t user_rm_channel =
     {
@@ -918,6 +939,7 @@ static NV_STATUS uvm_test_check_channel_va_space_get_info(uvm_va_space_t *va_spa
                                                           UVM_TEST_CHECK_CHANNEL_VA_SPACE_PARAMS *params,
                                                           UvmGpuChannelInstanceInfo *channel_info)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2370);
     uvm_gpu_t *gpu;
     uvm_gpu_va_space_t *gpu_va_space;
     void *rm_retained_channel;
@@ -955,6 +977,7 @@ out:
 
 NV_STATUS uvm_test_check_channel_va_space(UVM_TEST_CHECK_CHANNEL_VA_SPACE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2371);
     struct file *va_space_filp = NULL;
     uvm_va_space_t *va_space = NULL;
     uvm_va_space_t *channel_va_space;

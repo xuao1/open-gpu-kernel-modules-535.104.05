@@ -29,6 +29,7 @@
 
 static NvU64 timed_udelay(NvU64 delay_us)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2201);
     NvU64 start = NV_GETTIME();
 
     udelay(delay_us);
@@ -38,6 +39,7 @@ static NvU64 timed_udelay(NvU64 delay_us)
 
 static NvU64 timed_udelay_entry(NvU64 delay_us)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2202);
     UVM_ENTRY_RET(timed_udelay(delay_us));
 }
 
@@ -45,6 +47,7 @@ static NvU64 timed_udelay_entry(NvU64 delay_us)
 // adding and removing a thread context.
 NV_STATUS uvm_test_thread_context_perf(UVM_TEST_THREAD_CONTEXT_PERF_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2203);
     NvU64 start;
     NvU32 i;
     uvm_thread_context_t *thread_context;
@@ -88,11 +91,13 @@ NV_STATUS uvm_test_thread_context_perf(UVM_TEST_THREAD_CONTEXT_PERF_PARAMS *para
 
 static uvm_thread_context_t *inner_thread_context(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2204);
     UVM_ENTRY_RET(uvm_thread_context());
 }
 
 NV_STATUS uvm_test_thread_context_sanity(UVM_TEST_THREAD_CONTEXT_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2205);
     NvU32 i;
     uvm_thread_context_t *thread_context, *nested_thread_context;
     uvm_thread_context_wrapper_t thread_context_wrapper_backup;

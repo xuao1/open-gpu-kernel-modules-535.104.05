@@ -31,6 +31,7 @@
 
 static NV_STATUS try_peer_access_remote_gpu_memory(uvm_gpu_t *local_gpu, uvm_gpu_t *peer_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1484);
     NV_STATUS status = NV_OK;
     uvm_mem_t *vidmem = NULL;
     uvm_mem_t *sysmem = NULL;
@@ -128,6 +129,7 @@ cleanup:
 
 NV_STATUS uvm_test_peer_identity_mappings(UVM_TEST_PEER_IDENTITY_MAPPINGS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1485);
     NV_STATUS status;
     uvm_gpu_t *gpu_a;
     uvm_gpu_t *gpu_b;

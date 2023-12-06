@@ -31,6 +31,7 @@
 
 static NV_STATUS assert_tracker_is_completed(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2326);
     TEST_NV_CHECK_RET(uvm_tracker_query(tracker));
     TEST_CHECK_RET(uvm_tracker_is_completed(tracker));
     TEST_NV_CHECK_RET(uvm_tracker_wait(tracker));
@@ -44,6 +45,7 @@ static NV_STATUS assert_tracker_is_completed(uvm_tracker_t *tracker)
 
 static NV_STATUS assert_tracker_is_not_completed(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2327);
     uvm_tracker_remove_completed(tracker);
     TEST_CHECK_RET(uvm_tracker_query(tracker) == NV_WARN_MORE_PROCESSING_REQUIRED);
     TEST_CHECK_RET(!uvm_tracker_is_completed(tracker));
@@ -58,6 +60,7 @@ static NV_STATUS assert_tracker_is_not_completed(uvm_tracker_t *tracker)
 // are completed as expected.
 static NV_STATUS test_tracker_completion(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2328);
     uvm_gpu_t *gpu;
     uvm_tracker_t tracker;
     uvm_gpu_semaphore_t sema;
@@ -148,6 +151,7 @@ done:
 
 static NV_STATUS test_tracker_basic(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2329);
     uvm_gpu_t *gpu;
     uvm_channel_t *channel;
     uvm_tracker_t tracker;
@@ -257,6 +261,7 @@ done:
 
 static NV_STATUS test_tracker_overwrite(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2330);
     uvm_gpu_t *gpu;
     uvm_channel_t *channel;
     uvm_tracker_t tracker, dup_tracker;
@@ -350,6 +355,7 @@ done:
 
 static NV_STATUS test_tracker_add_tracker(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2331);
     uvm_gpu_t *gpu;
     uvm_channel_t *channel;
     uvm_tracker_t tracker, dup_tracker;
@@ -434,6 +440,7 @@ done:
 
 NV_STATUS uvm_test_tracker_sanity(UVM_TEST_TRACKER_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2332);
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 

@@ -119,6 +119,7 @@
 // calling uvm_gpu_fault_buffer_deinit_non_replayable_faults on failure.
 NV_STATUS uvm_gpu_fault_buffer_init_non_replayable_faults(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 600);
     uvm_non_replayable_fault_buffer_info_t *non_replayable_faults = &parent_gpu->fault_buffer_info.non_replayable;
 
     UVM_ASSERT(parent_gpu->non_replayable_faults_supported);
@@ -147,6 +148,7 @@ NV_STATUS uvm_gpu_fault_buffer_init_non_replayable_faults(uvm_parent_gpu_t *pare
 
 void uvm_gpu_fault_buffer_deinit_non_replayable_faults(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 601);
     uvm_non_replayable_fault_buffer_info_t *non_replayable_faults = &parent_gpu->fault_buffer_info.non_replayable;
 
     if (non_replayable_faults->fault_cache) {
@@ -165,6 +167,7 @@ void uvm_gpu_fault_buffer_deinit_non_replayable_faults(uvm_parent_gpu_t *parent_
 
 bool uvm_gpu_non_replayable_faults_pending(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 602);
     NV_STATUS status;
     NvBool has_pending_faults;
 
@@ -179,6 +182,7 @@ bool uvm_gpu_non_replayable_faults_pending(uvm_parent_gpu_t *parent_gpu)
 
 static NV_STATUS fetch_non_replayable_fault_buffer_entries(uvm_parent_gpu_t *parent_gpu, NvU32 *cached_faults)
 {
+    printk(KERN_ERR "=====================================   %d\n", 603);
     NV_STATUS status;
     NvU32 i;
     NvU32 entry_size = parent_gpu->fault_buffer_hal->entry_size(parent_gpu);
@@ -240,6 +244,7 @@ static NV_STATUS fetch_non_replayable_fault_buffer_entries(uvm_parent_gpu_t *par
 // the clearing on its behalf, using a SW method.
 static bool use_clear_faulted_channel_sw_method(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 604);
     if (uvm_gpu_is_virt_mode_sriov(gpu)) {
         UVM_ASSERT(gpu->parent->has_clear_faulted_channel_sw_method);
         return true;
@@ -254,6 +259,7 @@ static NV_STATUS clear_faulted_method_on_gpu(uvm_gpu_t *gpu,
                                              NvU32 batch_id,
                                              uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 605);
     NV_STATUS status;
     uvm_push_t push;
     uvm_non_replayable_fault_buffer_info_t *non_replayable_faults = &gpu->parent->fault_buffer_info.non_replayable;
@@ -301,6 +307,7 @@ static NV_STATUS clear_faulted_register_on_gpu(uvm_gpu_t *gpu,
                                                NvU32 batch_id,
                                                uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 606);
     NV_STATUS status;
 
     UVM_ASSERT(!gpu->parent->has_clear_faulted_channel_method);
@@ -324,6 +331,7 @@ static NV_STATUS clear_faulted_on_gpu(uvm_gpu_t *gpu,
                                       NvU32 batch_id,
                                       uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 607);
     if (gpu->parent->has_clear_faulted_channel_method || use_clear_faulted_channel_sw_method(gpu))
         return clear_faulted_method_on_gpu(gpu, user_channel, fault_entry, batch_id, tracker);
 
@@ -336,6 +344,7 @@ static NV_STATUS service_managed_fault_in_block_locked(uvm_gpu_t *gpu,
                                                        uvm_fault_buffer_entry_t *fault_entry,
                                                        uvm_service_block_context_t *service_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 608);
     NV_STATUS status = NV_OK;
     uvm_page_index_t page_index;
     uvm_perf_thrashing_hint_t thrashing_hint;
@@ -433,6 +442,7 @@ static NV_STATUS service_managed_fault_in_block(uvm_gpu_t *gpu,
                                                 uvm_va_block_t *va_block,
                                                 uvm_fault_buffer_entry_t *fault_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 609);
     NV_STATUS status, tracker_status;
     uvm_va_block_retry_t va_block_retry;
     uvm_service_block_context_t *service_context = &gpu->parent->fault_buffer_info.non_replayable.block_service_context;
@@ -469,6 +479,7 @@ static NV_STATUS service_managed_fault_in_block(uvm_gpu_t *gpu,
 // sequence.
 static void kill_channel_delayed(void *_user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 610);
     uvm_user_channel_t *user_channel = (uvm_user_channel_t *)_user_channel;
     uvm_va_space_t *va_space = user_channel->kill_channel.va_space;
 
@@ -487,6 +498,7 @@ static void kill_channel_delayed(void *_user_channel)
 
 static void kill_channel_delayed_entry(void *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 611);
     UVM_ENTRY_VOID(kill_channel_delayed(user_channel));
 }
 
@@ -494,6 +506,7 @@ static void schedule_kill_channel(uvm_gpu_t *gpu,
                                   uvm_fault_buffer_entry_t *fault_entry,
                                   uvm_user_channel_t *user_channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 612);
     uvm_va_space_t *va_space = fault_entry->va_space;
     uvm_non_replayable_fault_buffer_info_t *non_replayable_faults = &gpu->parent->fault_buffer_info.non_replayable;
     void *packet = (char *)non_replayable_faults->shadow_buffer_copy +
@@ -527,6 +540,7 @@ static void schedule_kill_channel(uvm_gpu_t *gpu,
 
 static void service_fault_fatal(uvm_fault_buffer_entry_t *fault_entry, NV_STATUS status)
 {
+    printk(KERN_ERR "=====================================   %d\n", 613);
     UVM_ASSERT(fault_entry->fault_access_type != UVM_FAULT_ACCESS_TYPE_PREFETCH);
 
     fault_entry->is_fatal = true;
@@ -538,6 +552,7 @@ static NV_STATUS service_non_managed_fault(uvm_gpu_va_space_t *gpu_va_space,
                                            uvm_fault_buffer_entry_t *fault_entry,
                                            NV_STATUS lookup_status)
 {
+    printk(KERN_ERR "=====================================   %d\n", 614);
     uvm_gpu_t *gpu = gpu_va_space->gpu;
     uvm_non_replayable_fault_buffer_info_t *non_replayable_faults = &gpu->parent->fault_buffer_info.non_replayable;
     uvm_ats_fault_invalidate_t *ats_invalidate = &non_replayable_faults->ats_invalidate;
@@ -621,6 +636,7 @@ static NV_STATUS service_non_managed_fault(uvm_gpu_va_space_t *gpu_va_space,
 
 static NV_STATUS service_fault(uvm_gpu_t *gpu, uvm_fault_buffer_entry_t *fault_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 615);
     NV_STATUS status;
     uvm_user_channel_t *user_channel;
     uvm_va_block_t *va_block;
@@ -725,6 +741,7 @@ exit_no_channel:
 
 void uvm_gpu_service_non_replayable_fault_buffer(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 616);
     NvU32 cached_faults;
 
     // If this handler is modified to handle fewer than all of the outstanding

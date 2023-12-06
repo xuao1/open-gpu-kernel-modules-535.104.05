@@ -42,6 +42,7 @@ typedef struct test_sem_mem_t {
 
 static NV_STATUS test_semaphore_alloc_uvm_rm_mem(uvm_gpu_t *gpu, const size_t size, test_sem_mem *mem_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 898);
     NV_STATUS status;
     uvm_rm_mem_t *mem = NULL;
     NvU64 gpu_va;
@@ -65,6 +66,7 @@ error:
 
 static NV_STATUS test_semaphore_alloc_sem(uvm_gpu_t *gpu, const size_t size, test_sem_mem *mem_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 899);
     NV_STATUS status = NV_OK;
     uvm_mem_t *mem = NULL;
     NvU64 gpu_va;
@@ -101,6 +103,7 @@ error:
 
 static void test_semaphore_free_sem(uvm_gpu_t *gpu, test_sem_mem *mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 900);
     if (mem->gpu_va >= gpu->parent->uvm_mem_va_base)
         uvm_mem_free(mem->uvm_mem);
     else
@@ -111,6 +114,7 @@ static void test_semaphore_free_sem(uvm_gpu_t *gpu, test_sem_mem *mem)
 // except that this one uses host_hal->semaphore_release();
 static NV_STATUS test_semaphore_release(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 901);
     NV_STATUS status;
     test_sem_mem mem = { 0 };
     uvm_push_t push;
@@ -151,6 +155,7 @@ done:
 
 static NV_STATUS test_semaphore_acquire(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 902);
     NV_STATUS status;
     test_sem_mem mem = { 0 };
     uvm_push_t push;
@@ -219,6 +224,7 @@ done:
 // uvm_ce_test.c, except that this one uses host_hal->semaphore_timestamp();
 static NV_STATUS test_semaphore_timestamp(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 903);
     NV_STATUS status;
     test_sem_mem mem = { 0 };
     uvm_push_t push;
@@ -270,6 +276,7 @@ done:
 
 static NV_STATUS test_host(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 904);
     uvm_gpu_t *gpu;
 
     for_each_va_space_gpu(gpu, va_space) {
@@ -283,6 +290,7 @@ static NV_STATUS test_host(uvm_va_space_t *va_space)
 
 NV_STATUS uvm_test_host_sanity(UVM_TEST_HOST_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 905);
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 

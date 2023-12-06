@@ -26,6 +26,7 @@
 
 NV_STATUS uvm_range_allocator_init(NvU64 size, uvm_range_allocator_t *range_allocator)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1973);
     NV_STATUS status;
     uvm_range_tree_node_t *node;
 
@@ -51,6 +52,7 @@ NV_STATUS uvm_range_allocator_init(NvU64 size, uvm_range_allocator_t *range_allo
 
 void uvm_range_allocator_deinit(uvm_range_allocator_t *range_allocator)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1974);
     uvm_range_tree_node_t *node;
 
     node = uvm_range_tree_iter_first(&range_allocator->range_tree, 0, range_allocator->size - 1);
@@ -66,6 +68,7 @@ void uvm_range_allocator_deinit(uvm_range_allocator_t *range_allocator)
 
 NV_STATUS uvm_range_allocator_alloc(uvm_range_allocator_t *range_allocator, NvU64 size, NvU64 alignment, uvm_range_allocation_t *range_alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1975);
     uvm_range_tree_node_t *node;
     bool found = false;
 
@@ -139,6 +142,7 @@ NV_STATUS uvm_range_allocator_alloc(uvm_range_allocator_t *range_allocator, NvU6
 
 void uvm_range_allocator_free(uvm_range_allocator_t *range_allocator, uvm_range_allocation_t *range_alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1976);
     NV_STATUS status;
     uvm_range_tree_node_t *adjacent_node;
 

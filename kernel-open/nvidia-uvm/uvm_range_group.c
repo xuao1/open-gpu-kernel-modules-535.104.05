@@ -36,6 +36,7 @@ static struct kmem_cache *g_uvm_range_group_range_cache __read_mostly;
 
 NV_STATUS uvm_range_group_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1988);
     g_uvm_range_group_cache = NV_KMEM_CACHE_CREATE("uvm_range_group_t", uvm_range_group_t);
     if (!g_uvm_range_group_cache)
         return NV_ERR_NO_MEMORY;
@@ -49,6 +50,7 @@ NV_STATUS uvm_range_group_init(void)
 
 void uvm_range_group_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1989);
     kmem_cache_destroy_safe(&g_uvm_range_group_cache);
     kmem_cache_destroy_safe(&g_uvm_range_group_range_cache);
 }
@@ -57,6 +59,7 @@ static uvm_range_group_range_t *range_group_range_create(uvm_range_group_t *rang
                                                          NvU64 start,
                                                          NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1990);
     uvm_range_group_range_t *rgr = nv_kmem_cache_zalloc(g_uvm_range_group_range_cache, NV_UVM_GFP_FLAGS);
     if (rgr == NULL)
         return NULL;
@@ -74,6 +77,7 @@ static uvm_range_group_range_t *range_group_range_create(uvm_range_group_t *rang
 
 static void uvm_range_group_range_destroy(uvm_range_group_range_t *rgr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1991);
     if (rgr == NULL)
         return;
 
@@ -87,6 +91,7 @@ static void uvm_range_group_range_destroy(uvm_range_group_range_t *rgr)
 
 NV_STATUS uvm_api_create_range_group(UVM_CREATE_RANGE_GROUP_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1992);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_range_group_t *range_group = NULL;
     NV_STATUS status = NV_OK;
@@ -123,6 +128,7 @@ done:
 
 static void uvm_range_group_destroy(uvm_va_space_t *va_space, uvm_range_group_t *range_group)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1993);
     uvm_range_group_range_t *rgr, *tmp;
 
     list_for_each_entry_safe(rgr, tmp, &range_group->ranges, range_group_list_node) {
@@ -139,6 +145,7 @@ static void uvm_range_group_destroy(uvm_va_space_t *va_space, uvm_range_group_t 
 
 NV_STATUS uvm_api_destroy_range_group(UVM_DESTROY_RANGE_GROUP_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1994);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_range_group_t *range_group = NULL;
     NV_STATUS status = NV_OK;
@@ -160,6 +167,7 @@ done:
 
 void uvm_range_group_radix_tree_destroy(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1995);
     uvm_range_group_t *range_group = NULL;
     struct radix_tree_root *root = &va_space->range_groups;
     NvU64 index = 1;
@@ -179,6 +187,7 @@ static NV_STATUS uvm_range_group_va_range_migrate_block_locked(uvm_va_range_t *v
                                                                uvm_va_block_region_t region,
                                                                uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1996);
     NV_STATUS status;
     NV_STATUS tracker_status;
     uvm_gpu_id_t gpu_id;
@@ -251,6 +260,7 @@ NV_STATUS uvm_range_group_va_range_migrate(uvm_va_range_t *va_range,
                                            NvU64 end,
                                            uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1997);
     uvm_va_block_t *va_block = NULL;
     size_t i = 0;
     NV_STATUS status = NV_OK;
@@ -294,6 +304,7 @@ NV_STATUS uvm_range_group_va_range_migrate(uvm_va_range_t *va_range,
 
 NV_STATUS uvm_api_set_range_group(UVM_SET_RANGE_GROUP_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1998);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_range_group_t *range_group = NULL;
     uvm_va_range_t *va_range, *va_range_last;
@@ -375,6 +386,7 @@ done:
 static NV_STATUS uvm_range_group_prevent_migration(uvm_range_group_t *range_group,
                                                    uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1999);
     uvm_range_group_range_t *rgr = NULL;
     uvm_va_range_t *va_range;
     uvm_processor_id_t preferred_location;
@@ -467,6 +479,7 @@ static NV_STATUS uvm_range_groups_set_migration_policy(uvm_va_space_t *va_space,
                                                        NvU64 num_group_ids,
                                                        bool allow_migration)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2000);
     NV_STATUS status = NV_OK;
     NvU64 i;
     uvm_range_group_t *range_groups[UVM_MAX_RANGE_GROUPS_PER_IOCTL_CALL];
@@ -524,6 +537,7 @@ static NV_STATUS uvm_range_groups_set_migration_policy(uvm_va_space_t *va_space,
 
 static uvm_range_group_range_t *range_group_range_container(uvm_range_tree_node_t *node)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2001);
     if (node == NULL)
         return NULL;
     return container_of(node, uvm_range_group_range_t, node);
@@ -531,18 +545,21 @@ static uvm_range_group_range_t *range_group_range_container(uvm_range_tree_node_
 
 static uvm_range_group_range_t *range_group_range_prev(uvm_va_space_t *va_space, uvm_range_group_range_t *range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2002);
     uvm_range_tree_node_t *node = uvm_range_tree_prev(&va_space->range_group_ranges, &range->node);
     return range_group_range_container(node);
 }
 
 static uvm_range_group_range_t *range_group_range_next(uvm_va_space_t *va_space, uvm_range_group_range_t *range)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2003);
     uvm_range_tree_node_t *node = uvm_range_tree_next(&va_space->range_group_ranges, &range->node);
     return range_group_range_container(node);
 }
 
 NV_STATUS uvm_range_group_assign_range(uvm_va_space_t *va_space, uvm_range_group_t *range_group, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2004);
     NV_STATUS status;
     uvm_range_group_range_t *rgr;
     uvm_range_group_range_t *temp;
@@ -643,12 +660,14 @@ NV_STATUS uvm_range_group_assign_range(uvm_va_space_t *va_space, uvm_range_group
 
 bool uvm_range_group_address_migratable(uvm_va_space_t *va_space, NvU64 address)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2005);
     uvm_range_group_range_t *rgr = uvm_range_group_range_find(va_space, address);
     return rgr == NULL || uvm_range_group_migratable(rgr->range_group);
 }
 
 bool uvm_range_group_any_migratable(uvm_va_space_t *va_space, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2006);
     uvm_range_group_range_iter_t iter;
     uvm_range_group_for_all_ranges_in(&iter, va_space, start, end) {
         if (iter.migratable)
@@ -660,6 +679,7 @@ bool uvm_range_group_any_migratable(uvm_va_space_t *va_space, NvU64 start, NvU64
 
 bool uvm_range_group_all_migratable(uvm_va_space_t *va_space, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2007);
     uvm_range_group_range_t *rgr;
     uvm_range_group_for_each_range_in(rgr, va_space, start, end) {
         if (!uvm_range_group_migratable(rgr->range_group))
@@ -671,6 +691,7 @@ bool uvm_range_group_all_migratable(uvm_va_space_t *va_space, NvU64 start, NvU64
 
 uvm_range_group_range_t *uvm_range_group_range_find(uvm_va_space_t *va_space, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2008);
     uvm_range_tree_node_t *node;
     uvm_assert_rwsem_locked(&va_space->lock);
 
@@ -680,6 +701,7 @@ uvm_range_group_range_t *uvm_range_group_range_find(uvm_va_space_t *va_space, Nv
 
 uvm_range_group_range_t *uvm_range_group_range_iter_first(uvm_va_space_t *va_space, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2009);
     uvm_range_tree_node_t *node = uvm_range_tree_iter_first(&va_space->range_group_ranges, start, end);
     return range_group_range_container(node);
 }
@@ -688,12 +710,14 @@ uvm_range_group_range_t *uvm_range_group_range_iter_next(uvm_va_space_t *va_spac
                                                          uvm_range_group_range_t *range,
                                                          NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2010);
     uvm_range_tree_node_t *node = uvm_range_tree_iter_next(&va_space->range_group_ranges, &range->node, end);
     return range_group_range_container(node);
 }
 
 static void range_group_range_iter_advance(uvm_range_group_range_iter_t *iter, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2011);
     if (iter->node == NULL) {
         iter->end = end;
     }
@@ -713,6 +737,7 @@ void uvm_range_group_range_iter_all_first(uvm_va_space_t *va_space,
                                           NvU64 end,
                                           uvm_range_group_range_iter_t *iter)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2012);
     iter->valid = true;
     iter->start = start;
     iter->node = uvm_range_group_range_iter_first(va_space, start, end);
@@ -724,6 +749,7 @@ bool uvm_range_group_range_iter_all_next(uvm_va_space_t *va_space,
                                          uvm_range_group_range_iter_t *iter,
                                          NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2013);
     iter->valid = iter->end < end;
     if (!iter->valid)
         return false;
@@ -741,6 +767,7 @@ void uvm_range_group_range_migratability_iter_first(uvm_va_space_t *va_space,
                                                     NvU64 end,
                                                     uvm_range_group_range_iter_t *iter)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2014);
     uvm_range_group_range_iter_t next;
 
     uvm_range_group_range_iter_all_first(va_space, start, end, iter);
@@ -756,6 +783,7 @@ void uvm_range_group_range_migratability_iter_next(uvm_va_space_t *va_space,
                                                    uvm_range_group_range_iter_t *iter,
                                                    NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2015);
     uvm_range_group_range_iter_t next;
     NvU64 start;
 
@@ -774,6 +802,7 @@ void uvm_range_group_migratable_page_mask(uvm_va_block_t *va_block,
                                           uvm_va_block_region_t region,
                                           uvm_page_mask_t *mask_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2016);
     uvm_range_group_range_iter_t iter;
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
 
@@ -790,6 +819,7 @@ void uvm_range_group_migratable_page_mask(uvm_va_block_t *va_block,
 
 NV_STATUS uvm_api_prevent_migration_range_groups(UVM_PREVENT_MIGRATION_RANGE_GROUPS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2017);
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
@@ -802,6 +832,7 @@ NV_STATUS uvm_api_prevent_migration_range_groups(UVM_PREVENT_MIGRATION_RANGE_GRO
 
 NV_STATUS uvm_api_allow_migration_range_groups(UVM_ALLOW_MIGRATION_RANGE_GROUPS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2018);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     return uvm_range_groups_set_migration_policy(va_space, params->rangeGroupIds, params->numGroupIds, true);
@@ -809,6 +840,7 @@ NV_STATUS uvm_api_allow_migration_range_groups(UVM_ALLOW_MIGRATION_RANGE_GROUPS_
 
 NV_STATUS uvm_test_range_group_range_info(UVM_TEST_RANGE_GROUP_RANGE_INFO_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2019);
     uvm_range_group_range_t *rgr;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
@@ -850,6 +882,7 @@ NV_STATUS uvm_test_range_group_range_info(UVM_TEST_RANGE_GROUP_RANGE_INFO_PARAMS
 
 NV_STATUS uvm_test_range_group_range_count(UVM_TEST_RANGE_GROUP_RANGE_COUNT_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2020);
     uvm_range_group_range_t *rgr;
     uvm_range_group_t *range_group;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);

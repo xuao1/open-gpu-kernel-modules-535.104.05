@@ -560,6 +560,7 @@ static uvm_hal_class_ops_t sec2_table[] =
 
 static inline uvm_hal_class_ops_t *ops_find_by_id(uvm_hal_class_ops_t *table, NvU32 row_count, NvU32 id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 722);
     NvLength i;
 
     // go through array and match on class.
@@ -575,6 +576,7 @@ static inline uvm_hal_class_ops_t *ops_find_by_id(uvm_hal_class_ops_t *table, Nv
 // general way.
 static inline bool op_is_null(uvm_hal_class_ops_t *row, NvLength op_idx, NvLength op_offset)
 {
+    printk(KERN_ERR "=====================================   %d\n", 723);
     void *temp = NULL;
     return memcmp(&temp, (char *)row + op_offset + sizeof(void *) * op_idx, sizeof(void *)) == 0;
 }
@@ -582,6 +584,7 @@ static inline bool op_is_null(uvm_hal_class_ops_t *row, NvLength op_idx, NvLengt
 // use memcpy to copy function pointers in a well defined, general way.
 static inline void op_copy(uvm_hal_class_ops_t *dst, uvm_hal_class_ops_t *src, NvLength op_idx, NvLength op_offset)
 {
+    printk(KERN_ERR "=====================================   %d\n", 724);
     void *m_dst = (char *)dst + op_offset + sizeof(void *) * op_idx;
     void *m_src = (char *)src + op_offset + sizeof(void *) * op_idx;
     memcpy(m_dst, m_src, sizeof(void *));
@@ -592,6 +595,7 @@ static inline NV_STATUS ops_init_from_parent(uvm_hal_class_ops_t *table,
                                              NvLength op_count,
                                              NvLength op_offset)
 {
+    printk(KERN_ERR "=====================================   %d\n", 725);
     NvLength i;
 
     for (i = 0; i < row_count; i++) {
@@ -623,6 +627,7 @@ static inline NV_STATUS ops_init_from_parent(uvm_hal_class_ops_t *table,
 
 NV_STATUS uvm_hal_init_table(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 726);
     NV_STATUS status;
 
     status = ops_init_from_parent(ce_table, ARRAY_SIZE(ce_table), CE_OP_COUNT, offsetof(uvm_hal_class_ops_t, u.ce_ops));
@@ -675,6 +680,7 @@ NV_STATUS uvm_hal_init_table(void)
 
 NV_STATUS uvm_hal_init_gpu(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 727);
     const UvmGpuInfo *gpu_info = &parent_gpu->rm_info;
     uvm_hal_class_ops_t *class_ops;
 
@@ -733,6 +739,7 @@ NV_STATUS uvm_hal_init_gpu(uvm_parent_gpu_t *parent_gpu)
 
 static void hal_override_properties(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 728);
     // Access counters are currently not supported in vGPU.
     //
     // TODO: Bug 200692962: Add support for access counters in vGPU
@@ -745,6 +752,7 @@ static void hal_override_properties(uvm_parent_gpu_t *parent_gpu)
 
 void uvm_hal_init_properties(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 729);
     parent_gpu->arch_hal->init_properties(parent_gpu);
 
     hal_override_properties(parent_gpu);
@@ -752,6 +760,7 @@ void uvm_hal_init_properties(uvm_parent_gpu_t *parent_gpu)
 
 void uvm_hal_tlb_invalidate_membar(uvm_push_t *push, uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 730);
     uvm_gpu_t *gpu;
     NvU32 i;
 
@@ -768,6 +777,7 @@ void uvm_hal_tlb_invalidate_membar(uvm_push_t *push, uvm_membar_t membar)
 
 bool uvm_hal_membar_before_semaphore(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 731);
     uvm_membar_t membar = uvm_push_get_and_reset_membar_flag(push);
 
     if (membar == UVM_MEMBAR_NONE) {
@@ -789,6 +799,7 @@ bool uvm_hal_membar_before_semaphore(uvm_push_t *push)
 
 uvm_membar_t uvm_hal_downgrade_membar_type(uvm_gpu_t *gpu, bool is_local_vidmem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 732);
     // If the mapped memory was local, and we're not using a coherence protocol,
     // we only need a GPU-local membar. This is because all accesses to this
     // memory, including those from other processors like the CPU or peer GPUs,
@@ -806,6 +817,7 @@ uvm_membar_t uvm_hal_downgrade_membar_type(uvm_gpu_t *gpu, bool is_local_vidmem)
 
 const char *uvm_aperture_string(uvm_aperture_t aperture)
 {
+    printk(KERN_ERR "=====================================   %d\n", 733);
     BUILD_BUG_ON(UVM_APERTURE_MAX != 12);
 
     switch (aperture) {
@@ -827,6 +839,7 @@ const char *uvm_aperture_string(uvm_aperture_t aperture)
 
 const char *uvm_prot_string(uvm_prot_t prot)
 {
+    printk(KERN_ERR "=====================================   %d\n", 734);
     BUILD_BUG_ON(UVM_PROT_MAX != 4);
 
     switch (prot) {
@@ -840,6 +853,7 @@ const char *uvm_prot_string(uvm_prot_t prot)
 
 const char *uvm_membar_string(uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 735);
     switch (membar) {
         UVM_ENUM_STRING_CASE(UVM_MEMBAR_SYS);
         UVM_ENUM_STRING_CASE(UVM_MEMBAR_GPU);
@@ -851,6 +865,7 @@ const char *uvm_membar_string(uvm_membar_t membar)
 
 const char *uvm_fault_access_type_string(uvm_fault_access_type_t fault_access_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 736);
     BUILD_BUG_ON(UVM_FAULT_ACCESS_TYPE_COUNT != 5);
 
     switch (fault_access_type) {
@@ -865,6 +880,7 @@ const char *uvm_fault_access_type_string(uvm_fault_access_type_t fault_access_ty
 
 const char *uvm_fault_type_string(uvm_fault_type_t fault_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 737);
     BUILD_BUG_ON(UVM_FAULT_TYPE_COUNT != 16);
 
     switch (fault_type) {
@@ -890,6 +906,7 @@ const char *uvm_fault_type_string(uvm_fault_type_t fault_type)
 
 const char *uvm_fault_client_type_string(uvm_fault_client_type_t fault_client_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 738);
     BUILD_BUG_ON(UVM_FAULT_CLIENT_TYPE_COUNT != 2);
 
     switch (fault_client_type) {
@@ -901,6 +918,7 @@ const char *uvm_fault_client_type_string(uvm_fault_client_type_t fault_client_ty
 
 const char *uvm_mmu_engine_type_string(uvm_mmu_engine_type_t mmu_engine_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 739);
     BUILD_BUG_ON(UVM_MMU_ENGINE_TYPE_COUNT != 3);
 
     switch (mmu_engine_type) {
@@ -913,6 +931,7 @@ const char *uvm_mmu_engine_type_string(uvm_mmu_engine_type_t mmu_engine_type)
 
 void uvm_hal_print_fault_entry(const uvm_fault_buffer_entry_t *entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 740);
     UVM_DBG_PRINT("fault_address:                    0x%llx\n", entry->fault_address);
     UVM_DBG_PRINT("    fault_instance_ptr:           {0x%llx:%s}\n", entry->instance_ptr.address,
                                                                      uvm_aperture_string(entry->instance_ptr.aperture));
@@ -932,6 +951,7 @@ void uvm_hal_print_fault_entry(const uvm_fault_buffer_entry_t *entry)
 
 const char *uvm_access_counter_type_string(uvm_access_counter_type_t access_counter_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 741);
     BUILD_BUG_ON(UVM_ACCESS_COUNTER_TYPE_MAX != 2);
 
     switch (access_counter_type) {
@@ -943,6 +963,7 @@ const char *uvm_access_counter_type_string(uvm_access_counter_type_t access_coun
 
 void uvm_hal_print_access_counter_buffer_entry(const uvm_access_counter_buffer_entry_t *entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 742);
     if (!entry->address.is_virtual) {
         UVM_DBG_PRINT("physical address: {0x%llx:%s}\n", entry->address.address,
                                                          uvm_aperture_string(entry->address.aperture));
@@ -966,19 +987,23 @@ void uvm_hal_print_access_counter_buffer_entry(const uvm_access_counter_buffer_e
 
 bool uvm_hal_method_is_valid_stub(uvm_push_t *push, NvU32 method_address, NvU32 method_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 743);
     return true;
 }
 
 bool uvm_hal_ce_memcopy_is_valid_stub(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_address_t src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 744);
     return true;
 }
 
 void uvm_hal_ce_memcopy_patch_src_stub(uvm_push_t *push, uvm_gpu_address_t *src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 745);
 }
 
 bool uvm_hal_ce_memset_is_valid_stub(uvm_push_t *push, uvm_gpu_address_t dst, size_t num_elements, size_t element_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 746);
     return true;
 }

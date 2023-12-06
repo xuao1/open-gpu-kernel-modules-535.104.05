@@ -31,6 +31,7 @@
 
 static NV_STATUS test_chunk_index_range(NvU64 start, NvU64 size, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2651);
     size_t chunk_index, last_chunk_index = 0;
     uvm_chunk_size_t chunk_size, test_chunk_size;
     NvU64 addr, next_addr, outer_addr;
@@ -78,6 +79,7 @@ static NV_STATUS test_chunk_index_range(NvU64 start, NvU64 size, uvm_gpu_t *gpu)
 
 static NV_STATUS test_chunk_index(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2652);
     // Fake a random address aligned to a block boundary
     const NvU64 start = 17 * UVM_VA_BLOCK_SIZE;
     uvm_va_block_region_t region;
@@ -97,6 +99,7 @@ static NV_STATUS test_chunk_index(uvm_gpu_t *gpu)
 
 NV_STATUS uvm_test_va_block(UVM_TEST_VA_BLOCK_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2653);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_gpu_t *gpu;
     NV_STATUS status = NV_OK;

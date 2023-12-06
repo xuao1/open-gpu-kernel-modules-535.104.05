@@ -48,6 +48,7 @@ static NV_STATUS migrate_vma_page_copy_address(struct page *page,
                                                migrate_vma_state_t *state,
                                                uvm_gpu_address_t *gpu_addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1210);
     uvm_va_space_t *va_space = state->uvm_migrate_args->va_space;
     uvm_gpu_t *owning_gpu = UVM_ID_IS_CPU(resident_id)? NULL: uvm_va_space_get_gpu(va_space, resident_id);
     const bool can_copy_from = uvm_processor_mask_test(&va_space->can_copy_from[uvm_id_value(copying_gpu->id)],
@@ -103,6 +104,7 @@ static NV_STATUS migrate_vma_zero_begin_push(uvm_va_space_t *va_space,
                                              unsigned long outer,
                                              uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1211);
     uvm_channel_type_t channel_type;
 
     if (UVM_ID_IS_CPU(dst_id)) {
@@ -131,6 +133,7 @@ static NV_STATUS migrate_vma_copy_begin_push(uvm_va_space_t *va_space,
                                              unsigned long outer,
                                              uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1212);
     uvm_channel_type_t channel_type;
     uvm_gpu_t *gpu;
 
@@ -194,6 +197,7 @@ static NV_STATUS migrate_vma_copy_begin_push(uvm_va_space_t *va_space,
 
 static void migrate_vma_compute_masks(struct vm_area_struct *vma, const unsigned long *src, migrate_vma_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1213);
     unsigned long i;
     const bool is_rw = vma->vm_flags & VM_WRITE;
     uvm_migrate_args_t *uvm_migrate_args = state->uvm_migrate_args;
@@ -296,6 +300,7 @@ static void migrate_vma_compute_masks(struct vm_area_struct *vma, const unsigned
 
 static struct page *migrate_vma_alloc_page(migrate_vma_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1214);
     struct page *dst_page;
     uvm_migrate_args_t *uvm_migrate_args = state->uvm_migrate_args;
     uvm_va_space_t *va_space = uvm_migrate_args->va_space;
@@ -328,6 +333,7 @@ static NV_STATUS migrate_vma_populate_anon_pages(struct vm_area_struct *vma,
                                                  unsigned long outer,
                                                  migrate_vma_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1215);
     NV_STATUS status = NV_OK;
     uvm_migrate_args_t *uvm_migrate_args = state->uvm_migrate_args;
     uvm_processor_id_t dst_id = uvm_migrate_args->dst_id;
@@ -413,6 +419,7 @@ static NV_STATUS migrate_vma_copy_pages_from(struct vm_area_struct *vma,
                                              uvm_processor_id_t src_id,
                                              migrate_vma_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1216);
     NV_STATUS status = NV_OK;
     uvm_push_t push;
     unsigned long i;
@@ -496,6 +503,7 @@ static NV_STATUS migrate_vma_copy_pages(struct vm_area_struct *vma,
                                         unsigned long outer,
                                         migrate_vma_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1217);
     uvm_processor_id_t src_id;
 
     for_each_id_in_mask(src_id, &state->src_processors) {
@@ -509,6 +517,7 @@ static NV_STATUS migrate_vma_copy_pages(struct vm_area_struct *vma,
 
 void migrate_vma_cleanup_pages(unsigned long *dst, unsigned long npages)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1218);
     unsigned long i;
 
     for (i = 0; i < npages; i++) {
@@ -525,6 +534,7 @@ void migrate_vma_cleanup_pages(unsigned long *dst, unsigned long npages)
 
 void uvm_migrate_vma_alloc_and_copy(struct migrate_vma *args, migrate_vma_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1219);
     struct vm_area_struct *vma = args->vma;
     unsigned long start = args->start;
     unsigned long outer = args->end;
@@ -560,6 +570,7 @@ void uvm_migrate_vma_alloc_and_copy_helper(struct vm_area_struct *vma,
                                 unsigned long end,
                                 void *private)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1220);
     struct migrate_vma args =
     {
         .vma = vma,
@@ -574,6 +585,7 @@ void uvm_migrate_vma_alloc_and_copy_helper(struct vm_area_struct *vma,
 
 void uvm_migrate_vma_finalize_and_map(struct migrate_vma *args, migrate_vma_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1221);
     unsigned long i;
 
     for (i = 0; i < state->num_pages; i++) {
@@ -649,6 +661,7 @@ void uvm_migrate_vma_finalize_and_map_helper(struct vm_area_struct *vma,
                                              unsigned long end,
                                              void *private)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1222);
     struct migrate_vma args =
     {
         .vma = vma,
@@ -663,6 +676,7 @@ void uvm_migrate_vma_finalize_and_map_helper(struct vm_area_struct *vma,
 
 static NV_STATUS nv_migrate_vma(struct migrate_vma *args, migrate_vma_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1223);
     int ret;
 
 #if defined(CONFIG_MIGRATE_VMA_HELPER)
@@ -729,6 +743,7 @@ static NV_STATUS migrate_pageable_vma_populate_mask(struct vm_area_struct *vma,
                                                     const unsigned long *mask,
                                                     migrate_vma_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1224);
     const unsigned long num_pages = (outer - start) / PAGE_SIZE;
     unsigned long subregion_first = find_first_bit(mask, num_pages);
     uvm_migrate_args_t *uvm_migrate_args = state->uvm_migrate_args;
@@ -758,6 +773,7 @@ static NV_STATUS migrate_pageable_vma_migrate_mask(struct vm_area_struct *vma,
                                                    const unsigned long *mask,
                                                    migrate_vma_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1225);
     NV_STATUS status;
     const unsigned long num_pages = (outer - start) / PAGE_SIZE;
     unsigned long subregion_first = find_first_bit(mask, num_pages);
@@ -796,6 +812,7 @@ static NV_STATUS migrate_pageable_vma_region(struct vm_area_struct *vma,
                                              migrate_vma_state_t *state,
                                              unsigned long *next_addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1226);
     NV_STATUS status;
     const unsigned long num_pages = (outer - start) / PAGE_SIZE;
     struct mm_struct *mm = vma->vm_mm;
@@ -868,6 +885,7 @@ static NV_STATUS migrate_pageable_vma(struct vm_area_struct *vma,
                                       migrate_vma_state_t *state,
                                       unsigned long *next_addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1227);
     NV_STATUS status = NV_OK;
     struct mm_struct *mm = vma->vm_mm;
     uvm_migrate_args_t *uvm_migrate_args = state->uvm_migrate_args;
@@ -916,6 +934,7 @@ static NV_STATUS migrate_pageable_vma(struct vm_area_struct *vma,
 
 static NV_STATUS migrate_pageable(migrate_vma_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1228);
     uvm_migrate_args_t *uvm_migrate_args = state->uvm_migrate_args;
     uvm_va_space_t *va_space = uvm_migrate_args->va_space;
     const unsigned long length = uvm_migrate_args->length;
@@ -997,6 +1016,7 @@ static NV_STATUS migrate_pageable(migrate_vma_state_t *state)
 
 NV_STATUS uvm_migrate_pageable(uvm_migrate_args_t *uvm_migrate_args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1229);
     migrate_vma_state_t *state = NULL;
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_migrate_args->va_space;
@@ -1039,6 +1059,7 @@ NV_STATUS uvm_migrate_pageable(uvm_migrate_args_t *uvm_migrate_args)
 
 NV_STATUS uvm_migrate_pageable_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1230);
     g_uvm_migrate_vma_state_cache = NV_KMEM_CACHE_CREATE("migrate_vma_state_t", migrate_vma_state_t);
     if (!g_uvm_migrate_vma_state_cache)
         return NV_ERR_NO_MEMORY;
@@ -1048,6 +1069,7 @@ NV_STATUS uvm_migrate_pageable_init(void)
 
 void uvm_migrate_pageable_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1231);
     kmem_cache_destroy_safe(&g_uvm_migrate_vma_state_cache);
 }
 #endif

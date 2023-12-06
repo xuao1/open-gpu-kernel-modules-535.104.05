@@ -37,6 +37,7 @@
 #if UVM_CGROUP_ACCOUNTING_SUPPORTED()
 void uvm_memcg_context_start(uvm_memcg_context_t *context, struct mm_struct *mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 925);
     memset(context, 0, sizeof(*context));
     if (!mm)
         return;
@@ -47,6 +48,7 @@ void uvm_memcg_context_start(uvm_memcg_context_t *context, struct mm_struct *mm)
 
 void uvm_memcg_context_end(uvm_memcg_context_t *context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 926);
     if (!context->new_memcg)
         return;
 

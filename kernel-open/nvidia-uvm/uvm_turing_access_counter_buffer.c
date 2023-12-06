@@ -28,6 +28,7 @@
 
 static void clear_access_counter_notifications_interrupt(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2334);
     volatile NvU32 *reg;
     NvU32 mask;
 
@@ -39,6 +40,7 @@ static void clear_access_counter_notifications_interrupt(uvm_parent_gpu_t *paren
 
 void uvm_hal_turing_disable_access_counter_notifications(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2335);
     volatile NvU32 *reg;
     NvU32 mask;
 
@@ -55,6 +57,7 @@ void uvm_hal_turing_disable_access_counter_notifications(uvm_parent_gpu_t *paren
 
 void uvm_hal_turing_clear_access_counter_notifications(uvm_parent_gpu_t *parent_gpu, NvU32 get)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2336);
     clear_access_counter_notifications_interrupt(parent_gpu);
 
     wmb();

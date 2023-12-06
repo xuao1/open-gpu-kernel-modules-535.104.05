@@ -29,6 +29,7 @@
 
 static NV_STATUS map_cpu(uvm_rm_mem_t *rm_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2126);
     void *cpu_va;
 
     // Map
@@ -62,6 +63,7 @@ static NV_STATUS map_cpu(uvm_rm_mem_t *rm_mem)
 
 static NV_STATUS check_alignment(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu, NvU64 alignment)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2127);
     // Alignment requirements only apply to mappings in the UVM-owned VA space
     if (alignment != 0) {
         NvU64 gpu_uvm_va = uvm_rm_mem_get_gpu_uvm_va(rm_mem, gpu);
@@ -74,6 +76,7 @@ static NV_STATUS check_alignment(uvm_rm_mem_t *rm_mem, uvm_gpu_t *gpu, NvU64 ali
 
 static NV_STATUS map_gpu_owner(uvm_rm_mem_t *rm_mem, NvU64 alignment)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2128);
     uvm_gpu_t *gpu = rm_mem->gpu_owner;
     NvU64 gpu_uvm_va;
     NvU64 gpu_proxy_va = 0;
@@ -125,6 +128,7 @@ static NV_STATUS map_gpu_owner(uvm_rm_mem_t *rm_mem, NvU64 alignment)
 
 static NV_STATUS map_other_gpus(uvm_rm_mem_t *rm_mem, uvm_va_space_t *va_space, NvU64 alignment)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2129);
     uvm_gpu_t *gpu_owner = rm_mem->gpu_owner;
     uvm_gpu_t *gpu;
 
@@ -166,6 +170,7 @@ static NV_STATUS map_other_gpus(uvm_rm_mem_t *rm_mem, uvm_va_space_t *va_space, 
 
 static NV_STATUS test_all_gpus_in_va(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2130);
     uvm_gpu_t *gpu;
     uvm_rm_mem_t *rm_mem = NULL;
     NV_STATUS status = NV_OK;
@@ -229,6 +234,7 @@ error:
 
 NV_STATUS uvm_test_rm_mem_sanity(UVM_TEST_RM_MEM_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2131);
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 

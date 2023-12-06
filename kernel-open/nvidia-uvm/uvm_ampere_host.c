@@ -31,6 +31,7 @@
 
 bool uvm_hal_ampere_host_method_is_valid(uvm_push_t *push, NvU32 method_address, NvU32 method_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 84);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
     if (!uvm_gpu_is_virt_mode_sriov_heavy(gpu))
@@ -84,6 +85,7 @@ bool uvm_hal_ampere_host_method_is_valid(uvm_push_t *push, NvU32 method_address,
 
 bool uvm_hal_ampere_host_sw_method_is_valid(uvm_push_t *push, NvU32 method_address, NvU32 method_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 85);
     if (!uvm_channel_is_proxy(push->channel))
         return true;
 
@@ -104,6 +106,7 @@ bool uvm_hal_ampere_host_sw_method_is_valid(uvm_push_t *push, NvU32 method_addre
 void uvm_hal_ampere_host_clear_faulted_channel_register(uvm_user_channel_t *user_channel,
                                                         const uvm_fault_buffer_entry_t *fault)
 {
+    printk(KERN_ERR "=====================================   %d\n", 86);
     uvm_spin_loop_t spin;
     NvU32 channel_faulted_mask = 0;
     NvU32 clear_type_value = 0;
@@ -144,6 +147,7 @@ void uvm_hal_ampere_host_clear_faulted_channel_register(uvm_user_channel_t *user
 
 static NvU32 instance_ptr_aperture_type_to_hw_value(uvm_aperture_t aperture)
 {
+    printk(KERN_ERR "=====================================   %d\n", 87);
     switch (aperture) {
         case UVM_APERTURE_SYS:
             return HWCONST(C076, CLEAR_FAULTED_A, INST_APERTURE, SYS_MEM_COHERENT);
@@ -160,6 +164,7 @@ static void instance_ptr_address_to_hw_values(NvU64 instance_ptr_address,
                                               NvU32 *instance_ptr_lo,
                                               NvU32 *instance_ptr_hi)
 {
+    printk(KERN_ERR "=====================================   %d\n", 88);
     // instance_ptr must be 4K aligned
     UVM_ASSERT_MSG(IS_ALIGNED(instance_ptr_address, 1 << 12), "instance_ptr 0x%llx\n", instance_ptr_address);
     instance_ptr_address >>= 12;
@@ -170,6 +175,7 @@ static void instance_ptr_address_to_hw_values(NvU64 instance_ptr_address,
 
 static NvU32 mmu_engine_type_to_hw_value(uvm_mmu_engine_type_t mmu_engine_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 89);
     switch (mmu_engine_type) {
         case UVM_MMU_ENGINE_TYPE_HOST:
             return HWCONST(C076, CLEAR_FAULTED_A, TYPE, PBDMA_FAULTED);
@@ -187,6 +193,7 @@ void uvm_hal_ampere_host_clear_faulted_channel_sw_method(uvm_push_t *push,
                                                          uvm_user_channel_t *user_channel,
                                                          const uvm_fault_buffer_entry_t *fault)
 {
+    printk(KERN_ERR "=====================================   %d\n", 90);
     NvU32 clear_type_value;
     NvU32 aperture_type_value;
     NvU32 instance_ptr_lo, instance_ptr_hi;
@@ -211,6 +218,7 @@ void uvm_hal_ampere_host_tlb_invalidate_all(uvm_push_t *push,
                                             NvU32 depth,
                                             uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 91);
     NvU32 aperture_value;
     NvU32 page_table_level;
     NvU32 pdb_lo;
@@ -267,6 +275,7 @@ void uvm_hal_ampere_host_tlb_invalidate_va(uvm_push_t *push,
                                            NvU32 page_size,
                                            uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 92);
     NvU32 aperture_value;
     NvU32 page_table_level;
     NvU32 pdb_lo;
@@ -360,6 +369,7 @@ void uvm_hal_ampere_host_tlb_invalidate_test(uvm_push_t *push,
                                              uvm_gpu_phys_address_t pdb,
                                              UVM_TEST_INVALIDATE_TLB_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 93);
     NvU32 ack_value = 0;
     NvU32 invalidate_gpc_value = 0;
     NvU32 aperture_value = 0;

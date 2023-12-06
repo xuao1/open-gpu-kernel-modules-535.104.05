@@ -33,6 +33,7 @@
 // Verify that no range is currently allocated from the allocator
 static NV_STATUS test_check_range_allocator_empty(uvm_range_allocator_t *range_allocator)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1977);
     uvm_range_tree_node_t *node;
     node = uvm_range_tree_find(&range_allocator->range_tree, 0);
     TEST_CHECK_RET(node != NULL);
@@ -45,11 +46,13 @@ static NV_STATUS test_check_range_allocator_empty(uvm_range_allocator_t *range_a
 
 static NvU64 range_alloc_size(uvm_range_allocation_t *alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1978);
     return uvm_range_tree_node_size(alloc->node);
 }
 
 static NV_STATUS test_alloc_range(uvm_range_allocator_t *range_allocator, NvU64 size, NvU64 alignment, uvm_range_allocation_t *alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1979);
     NV_STATUS status;
     NvU64 node_start;
     NvU64 node_end;
@@ -71,6 +74,7 @@ static NV_STATUS test_alloc_range(uvm_range_allocator_t *range_allocator, NvU64 
 
 static NvU64 test_free_range(uvm_range_allocator_t *range_allocator, uvm_range_allocation_t *alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1980);
     NvU64 size = range_alloc_size(alloc);
 
     uvm_range_allocator_free(range_allocator, alloc);
@@ -84,6 +88,7 @@ static NvU64 test_free_range(uvm_range_allocator_t *range_allocator, uvm_range_a
 // Check that a specific range is free in the allocator
 static NV_STATUS test_check_free_range(uvm_range_allocator_t *range_allocator, NvU64 start, NvU64 size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1981);
     uvm_range_tree_node_t *node = uvm_range_tree_find(&range_allocator->range_tree, start);
     TEST_CHECK_RET(node != NULL);
     TEST_CHECK_RET(node->start == start);
@@ -96,6 +101,7 @@ static NV_STATUS test_check_free_range(uvm_range_allocator_t *range_allocator, N
 // asserts.
 static NV_STATUS basic_test(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1982);
     NV_STATUS status;
     uvm_range_allocator_t range_allocator;
     uvm_range_allocation_t *range_allocs;
@@ -214,6 +220,7 @@ typedef struct
 
 static NV_STATUS random_test_alloc_range(random_test_state_t *state, NvU64 size, NvU64 alignment)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1983);
     NV_STATUS status;
     uvm_range_allocation_t *range_alloc;
 
@@ -239,6 +246,7 @@ static NV_STATUS random_test_alloc_range(random_test_state_t *state, NvU64 size,
 
 static NvU64 random_test_free_range(random_test_state_t *state, NvU32 index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1984);
     uvm_range_allocation_t *alloc = &state->range_allocs[index];
     NvU32 size = range_alloc_size(alloc);
 
@@ -258,6 +266,7 @@ static NvU64 random_test_free_range(random_test_state_t *state, NvU32 index)
 
 static NV_STATUS random_test_free_random_range(random_test_state_t *state)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1985);
     NvU32 index;
     NvU64 freed_size;
     NV_STATUS status;
@@ -289,6 +298,7 @@ static NV_STATUS random_test_free_random_range(random_test_state_t *state)
 // asserts.
 static NV_STATUS random_test(NvU32 iters, NvU32 seed, bool verbose)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1986);
     NV_STATUS status;
     random_test_state_t state;
     int i;
@@ -344,6 +354,7 @@ static NV_STATUS random_test(NvU32 iters, NvU32 seed, bool verbose)
 
 NV_STATUS uvm_test_range_allocator_sanity(UVM_TEST_RANGE_ALLOCATOR_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1987);
     TEST_CHECK_RET(basic_test() == NV_OK);
     TEST_CHECK_RET(random_test(params->iters, params->seed, params->verbose > 0) == NV_OK);
 

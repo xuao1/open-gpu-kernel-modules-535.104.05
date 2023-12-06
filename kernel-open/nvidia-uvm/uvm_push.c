@@ -42,6 +42,7 @@ MODULE_PARM_DESC(uvm_debug_enable_push_acquire_info, "Enable push acquire inform
 
 static uvm_push_acquire_info_t *push_acquire_info_from_push(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1887);
     uvm_channel_t *channel = push->channel;
 
     UVM_ASSERT(channel != NULL);
@@ -61,6 +62,7 @@ static void push_acquire_tracker_entry(uvm_push_t *push,
                                        uvm_tracker_entry_t *tracker_entry,
                                        uvm_push_acquire_info_t *push_acquire_info)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1888);
     uvm_channel_t *entry_channel;
     uvm_channel_t *channel;
     NvU64 semaphore_va;
@@ -106,6 +108,7 @@ static void push_acquire_tracker_entry(uvm_push_t *push,
 
 void uvm_push_acquire_tracker(uvm_push_t *push, uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1889);
     uvm_tracker_entry_t *entry;
     uvm_push_acquire_info_t *push_acquire_info;
 
@@ -127,6 +130,7 @@ static NV_STATUS push_reserve_channel(uvm_channel_manager_t *manager,
                                       uvm_gpu_t *dst_gpu,
                                       uvm_channel_t **channel)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1890);
     NV_STATUS status;
 
     // Pick a channel and reserve a GPFIFO entry
@@ -145,6 +149,7 @@ static NV_STATUS push_reserve_channel(uvm_channel_manager_t *manager,
 
 static void push_set_description(uvm_push_t *push, const char *format, va_list args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1891);
     uvm_push_info_t *push_info;
 
     UVM_ASSERT(uvm_push_info_is_tracking_descriptions());
@@ -155,6 +160,7 @@ static void push_set_description(uvm_push_t *push, const char *format, va_list a
 
 void uvm_push_set_description(uvm_push_t *push, const char *format, ...)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1892);
     va_list va;
 
     if (!uvm_push_info_is_tracking_descriptions())
@@ -173,6 +179,7 @@ static void push_fill_info(uvm_push_t *push,
                            const char *format,
                            va_list args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1893);
     uvm_push_acquire_info_t *push_acquire_info;
     uvm_push_info_t *push_info = uvm_push_info_from_push(push);
 
@@ -197,6 +204,7 @@ static NV_STATUS push_begin_acquire_with_info(uvm_channel_t *channel,
                                               const char *format,
                                               va_list args)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1894);
     NV_STATUS status;
 
     memset(push, 0, sizeof(*push));
@@ -225,6 +233,7 @@ NV_STATUS __uvm_push_begin_acquire_with_info(uvm_channel_manager_t *manager,
                                              int line,
                                              const char *format, ...)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1895);
     va_list args;
     NV_STATUS status;
     uvm_channel_t *channel;
@@ -256,6 +265,7 @@ NV_STATUS __uvm_push_begin_acquire_on_channel_with_info(uvm_channel_t *channel,
                                                         int line,
                                                         const char *format, ...)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1896);
     va_list args;
     NV_STATUS status;
 
@@ -279,6 +289,7 @@ NV_STATUS __uvm_push_begin_acquire_on_reserved_channel_with_info(uvm_channel_t *
                                                                  int line,
                                                                  const char *format, ...)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1897);
     va_list args;
     NV_STATUS status;
 
@@ -291,16 +302,19 @@ NV_STATUS __uvm_push_begin_acquire_on_reserved_channel_with_info(uvm_channel_t *
 
 bool uvm_push_info_is_tracking_descriptions(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1898);
     return uvm_debug_enable_push_desc != 0;
 }
 
 bool uvm_push_info_is_tracking_acquires(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1899);
     return uvm_debug_enable_push_acquire_info != 0;
 }
 
 void uvm_push_end(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1900);
     uvm_push_flag_t flag;
     uvm_channel_end_push(push);
 
@@ -312,6 +326,7 @@ void uvm_push_end(uvm_push_t *push)
 
 NV_STATUS uvm_push_wait(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1901);
     uvm_tracker_entry_t entry;
     uvm_push_get_tracker_entry(push, &entry);
 
@@ -320,6 +335,7 @@ NV_STATUS uvm_push_wait(uvm_push_t *push)
 
 NV_STATUS uvm_push_end_and_wait(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1902);
     uvm_push_end(push);
 
     return uvm_push_wait(push);
@@ -327,6 +343,7 @@ NV_STATUS uvm_push_end_and_wait(uvm_push_t *push)
 
 NV_STATUS uvm_push_begin_fake(uvm_gpu_t *gpu, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1903);
     memset(push, 0, sizeof(*push));
     push->begin = (NvU32 *)uvm_kvmalloc(UVM_MAX_PUSH_SIZE);
     if (!push->begin)
@@ -340,12 +357,14 @@ NV_STATUS uvm_push_begin_fake(uvm_gpu_t *gpu, uvm_push_t *push)
 
 void uvm_push_end_fake(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1904);
     uvm_kvfree(push->begin);
     push->begin = NULL;
 }
 
 void *uvm_push_inline_data_get(uvm_push_inline_data_t *data, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1905);
     void *buffer = data->next_data;
 
     UVM_ASSERT(!uvm_global_is_suspended());
@@ -364,6 +383,7 @@ void *uvm_push_inline_data_get(uvm_push_inline_data_t *data, size_t size)
 
 void *uvm_push_inline_data_get_aligned(uvm_push_inline_data_t *data, size_t size, size_t alignment)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1906);
     NvU64 next_ptr = (NvU64)(uintptr_t)data->next_data;
     size_t offset = 0;
     char *buffer;
@@ -379,6 +399,7 @@ void *uvm_push_inline_data_get_aligned(uvm_push_inline_data_t *data, size_t size
 
 uvm_gpu_address_t uvm_push_inline_data_end(uvm_push_inline_data_t *data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1907);
     NvU64 inline_data_address;
     uvm_push_t *push = data->push;
     uvm_channel_t *channel = push->channel;
@@ -412,6 +433,7 @@ void *uvm_push_get_single_inline_buffer(uvm_push_t *push,
                                         size_t alignment,
                                         uvm_gpu_address_t *gpu_address)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1908);
     uvm_push_inline_data_t data;
     void *buffer;
 
@@ -428,6 +450,7 @@ void *uvm_push_get_single_inline_buffer(uvm_push_t *push,
 
 NvU64 *uvm_push_timestamp(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1909);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     const size_t timestamp_size = 16;
     NvU64 *timestamp;
@@ -448,6 +471,7 @@ NvU64 *uvm_push_timestamp(uvm_push_t *push)
 
 bool uvm_push_method_is_valid(uvm_push_t *push, NvU8 subch, NvU32 method_address, NvU32 method_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1910);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
     if (subch == UVM_SUBCHANNEL_CE)

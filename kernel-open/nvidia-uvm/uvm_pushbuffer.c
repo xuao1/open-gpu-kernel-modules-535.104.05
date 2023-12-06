@@ -39,6 +39,7 @@ static void uvm_pushbuffer_print_common(uvm_pushbuffer_t *pushbuffer, struct seq
 
 static int nv_procfs_read_pushbuffer_info(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1911);
     uvm_pushbuffer_t *pushbuffer = (uvm_pushbuffer_t *)s->private;
 
     if (!uvm_down_read_trylock(&g_uvm_global.pm.lock))
@@ -53,6 +54,7 @@ static int nv_procfs_read_pushbuffer_info(struct seq_file *s, void *v)
 
 static int nv_procfs_read_pushbuffer_info_entry(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1912);
     UVM_ENTRY_RET(nv_procfs_read_pushbuffer_info(s, v));
 }
 
@@ -60,6 +62,7 @@ UVM_DEFINE_SINGLE_PROCFS_FILE(pushbuffer_info_entry);
 
 static NV_STATUS create_procfs(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1913);
     uvm_gpu_t *gpu = pushbuffer->channel_manager->gpu;
 
     // The pushbuffer info file is for debug only
@@ -78,6 +81,7 @@ static NV_STATUS create_procfs(uvm_pushbuffer_t *pushbuffer)
 
 NV_STATUS uvm_pushbuffer_create(uvm_channel_manager_t *channel_manager, uvm_pushbuffer_t **pushbuffer_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1914);
     NV_STATUS status;
     int i;
     uvm_gpu_t *gpu = channel_manager->gpu;
@@ -175,6 +179,7 @@ error:
 
 static uvm_pushbuffer_chunk_t *get_chunk_in_mask(uvm_pushbuffer_t *pushbuffer, unsigned long *mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1915);
     NvU32 index = find_first_bit(mask, UVM_PUSHBUFFER_CHUNKS);
 
     uvm_assert_spinlock_locked(&pushbuffer->lock);
@@ -187,16 +192,19 @@ static uvm_pushbuffer_chunk_t *get_chunk_in_mask(uvm_pushbuffer_t *pushbuffer, u
 
 static uvm_pushbuffer_chunk_t *get_available_chunk(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1916);
     return get_chunk_in_mask(pushbuffer, pushbuffer->available_chunks);
 }
 
 static uvm_pushbuffer_chunk_t *get_idle_chunk(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1917);
     return get_chunk_in_mask(pushbuffer, pushbuffer->idle_chunks);
 }
 
 static NvU32 chunk_get_index(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1918);
     NvU32 index = chunk - pushbuffer->chunks;
     UVM_ASSERT(index < UVM_PUSHBUFFER_CHUNKS);
     return index;
@@ -204,11 +212,13 @@ static NvU32 chunk_get_index(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_
 
 static NvU32 chunk_get_offset(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1919);
     return chunk_get_index(pushbuffer, chunk) * UVM_PUSHBUFFER_CHUNK_SIZE;
 }
 
 static void set_chunk(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_t *chunk, unsigned long *mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1920);
     NvU32 index = chunk_get_index(pushbuffer, chunk);
 
     uvm_assert_spinlock_locked(&pushbuffer->lock);
@@ -218,6 +228,7 @@ static void set_chunk(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_t *chun
 
 static void clear_chunk(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_t *chunk, unsigned long *mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1921);
     NvU32 index = chunk_get_index(pushbuffer, chunk);
 
     uvm_assert_spinlock_locked(&pushbuffer->lock);
@@ -227,6 +238,7 @@ static void clear_chunk(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_t *ch
 
 static uvm_pushbuffer_chunk_t *pick_chunk(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1922);
     uvm_pushbuffer_chunk_t *chunk = get_idle_chunk(pushbuffer);
 
     uvm_assert_spinlock_locked(&pushbuffer->lock);
@@ -239,6 +251,7 @@ static uvm_pushbuffer_chunk_t *pick_chunk(uvm_pushbuffer_t *pushbuffer)
 
 static bool try_claim_chunk(uvm_pushbuffer_t *pushbuffer, uvm_push_t *push, uvm_pushbuffer_chunk_t **chunk_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1923);
     uvm_pushbuffer_chunk_t *chunk;
 
     uvm_spin_lock(&pushbuffer->lock);
@@ -260,6 +273,7 @@ done:
 
 static char *get_base_cpu_va(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1924);
     // Confidential Computing pushes are assembled in protected sysmem
     // and safely (through encrypt/decrypt) moved to protected vidmem.
     // Or signed and moved to unprotected sysmem.
@@ -275,6 +289,7 @@ static char *get_base_cpu_va(uvm_pushbuffer_t *pushbuffer)
 
 static NvU32 *chunk_get_next_push_start_addr(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1925);
     char *push_start = get_base_cpu_va(pushbuffer);
     push_start += chunk_get_offset(pushbuffer, chunk);
     push_start += chunk->next_push_start;
@@ -286,6 +301,7 @@ static NvU32 *chunk_get_next_push_start_addr(uvm_pushbuffer_t *pushbuffer, uvm_p
 
 static NV_STATUS claim_chunk(uvm_pushbuffer_t *pushbuffer, uvm_push_t *push, uvm_pushbuffer_chunk_t **chunk_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1926);
     NV_STATUS status = NV_OK;
     uvm_channel_manager_t *channel_manager = pushbuffer->channel_manager;
     uvm_spin_loop_t spin;
@@ -307,6 +323,7 @@ static NV_STATUS claim_chunk(uvm_pushbuffer_t *pushbuffer, uvm_push_t *push, uvm
 
 NV_STATUS uvm_pushbuffer_begin_push(uvm_pushbuffer_t *pushbuffer, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1927);
     uvm_pushbuffer_chunk_t *chunk;
     NV_STATUS status;
 
@@ -342,17 +359,20 @@ NV_STATUS uvm_pushbuffer_begin_push(uvm_pushbuffer_t *pushbuffer, uvm_push_t *pu
 
 static uvm_gpfifo_entry_t *chunk_get_first_gpfifo(uvm_pushbuffer_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1928);
     return list_first_entry_or_null(&chunk->pending_gpfifos, uvm_gpfifo_entry_t, pending_list_node);
 }
 
 static uvm_gpfifo_entry_t *chunk_get_last_gpfifo(uvm_pushbuffer_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1929);
     return list_last_entry_or_null(&chunk->pending_gpfifos, uvm_gpfifo_entry_t, pending_list_node);
 }
 
 // Get the cpu put within the chunk (in range [0, UVM_PUSHBUFFER_CHUNK_SIZE])
 static NvU32 chunk_get_cpu_put(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1930);
     uvm_gpfifo_entry_t *gpfifo = chunk_get_last_gpfifo(chunk);
 
     uvm_assert_spinlock_locked(&pushbuffer->lock);
@@ -366,6 +386,7 @@ static NvU32 chunk_get_cpu_put(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chun
 // Get the gpu get within the chunk (in range [0, UVM_PUSHBUFFER_CHUNK_SIZE))
 static NvU32 chunk_get_gpu_get(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1931);
     uvm_gpfifo_entry_t *gpfifo = chunk_get_first_gpfifo(chunk);
 
     uvm_assert_spinlock_locked(&pushbuffer->lock);
@@ -378,6 +399,7 @@ static NvU32 chunk_get_gpu_get(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chun
 
 static void update_chunk(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1932);
     NvU32 gpu_get = chunk_get_gpu_get(pushbuffer, chunk);
     NvU32 cpu_put = chunk_get_cpu_put(pushbuffer, chunk);
 
@@ -425,6 +447,7 @@ static void update_chunk(uvm_pushbuffer_t *pushbuffer, uvm_pushbuffer_chunk_t *c
 
 void uvm_pushbuffer_destroy(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1933);
     if (pushbuffer == NULL)
         return;
 
@@ -438,12 +461,14 @@ void uvm_pushbuffer_destroy(uvm_pushbuffer_t *pushbuffer)
 
 static uvm_pushbuffer_chunk_t *offset_to_chunk(uvm_pushbuffer_t *pushbuffer, NvU32 offset)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1934);
     UVM_ASSERT(offset < UVM_PUSHBUFFER_SIZE);
     return &pushbuffer->chunks[offset / UVM_PUSHBUFFER_CHUNK_SIZE];
 }
 
 static uvm_pushbuffer_chunk_t *gpfifo_to_chunk(uvm_pushbuffer_t *pushbuffer, uvm_gpfifo_entry_t *gpfifo)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1935);
     uvm_pushbuffer_chunk_t *chunk = offset_to_chunk(pushbuffer, gpfifo->pushbuffer_offset);
     UVM_ASSERT(offset_to_chunk(pushbuffer, gpfifo->pushbuffer_offset + gpfifo->pushbuffer_size - 1) == chunk);
     return chunk;
@@ -451,6 +476,7 @@ static uvm_pushbuffer_chunk_t *gpfifo_to_chunk(uvm_pushbuffer_t *pushbuffer, uvm
 
 static void decrypt_push(uvm_channel_t *channel, uvm_gpfifo_entry_t *gpfifo)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1936);
     NV_STATUS status;
     NvU32 auth_tag_offset;
     void *auth_tag_cpu_va;
@@ -496,6 +522,7 @@ static void decrypt_push(uvm_channel_t *channel, uvm_gpfifo_entry_t *gpfifo)
 
 void uvm_pushbuffer_mark_completed(uvm_channel_t *channel, uvm_gpfifo_entry_t *gpfifo)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1937);
     uvm_pushbuffer_chunk_t *chunk;
     bool need_to_update_chunk = false;
     uvm_push_info_t *push_info = gpfifo->push_info;
@@ -531,6 +558,7 @@ void uvm_pushbuffer_mark_completed(uvm_channel_t *channel, uvm_gpfifo_entry_t *g
 
 NvU32 uvm_pushbuffer_get_offset_for_push(uvm_pushbuffer_t *pushbuffer, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1938);
     NvU32 offset;
 
     if (uvm_channel_is_wlc(push->channel)) {
@@ -550,6 +578,7 @@ NvU32 uvm_pushbuffer_get_offset_for_push(uvm_pushbuffer_t *pushbuffer, uvm_push_
 
 NvU64 uvm_pushbuffer_get_gpu_va_for_push(uvm_pushbuffer_t *pushbuffer, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1939);
     NvU64 pushbuffer_base;
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     bool is_proxy_channel = uvm_channel_is_proxy(push->channel);
@@ -571,6 +600,7 @@ NvU64 uvm_pushbuffer_get_gpu_va_for_push(uvm_pushbuffer_t *pushbuffer, uvm_push_
 
 void *uvm_pushbuffer_get_unprotected_cpu_va_for_push(uvm_pushbuffer_t *pushbuffer, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1940);
     char *pushbuffer_base;
 
     if (uvm_channel_is_wlc(push->channel)) {
@@ -586,6 +616,7 @@ void *uvm_pushbuffer_get_unprotected_cpu_va_for_push(uvm_pushbuffer_t *pushbuffe
 
 NvU64 uvm_pushbuffer_get_unprotected_gpu_va_for_push(uvm_pushbuffer_t *pushbuffer, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1941);
     NvU64 pushbuffer_base;
 
     if (uvm_channel_is_wlc(push->channel)) {
@@ -602,6 +633,7 @@ NvU64 uvm_pushbuffer_get_unprotected_gpu_va_for_push(uvm_pushbuffer_t *pushbuffe
 
 void uvm_pushbuffer_end_push(uvm_pushbuffer_t *pushbuffer, uvm_push_t *push, uvm_gpfifo_entry_t *gpfifo)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1942);
     uvm_pushbuffer_chunk_t *chunk;
 
     if (uvm_channel_is_wlc(push->channel)) {
@@ -635,6 +667,7 @@ void uvm_pushbuffer_end_push(uvm_pushbuffer_t *pushbuffer, uvm_push_t *push, uvm
 
 bool uvm_pushbuffer_has_space(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1943);
     bool has_space;
 
     uvm_spin_lock(&pushbuffer->lock);
@@ -648,6 +681,7 @@ bool uvm_pushbuffer_has_space(uvm_pushbuffer_t *pushbuffer)
 
 void uvm_pushbuffer_print_common(uvm_pushbuffer_t *pushbuffer, struct seq_file *s)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1944);
     NvU32 i;
 
     UVM_SEQ_OR_DBG_PRINT(s, "Pushbuffer for GPU %s\n", uvm_gpu_name(pushbuffer->channel_manager->gpu));
@@ -672,16 +706,19 @@ void uvm_pushbuffer_print_common(uvm_pushbuffer_t *pushbuffer, struct seq_file *
 
 void uvm_pushbuffer_print(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1945);
     return uvm_pushbuffer_print_common(pushbuffer, NULL);
 }
 
 NvU64 uvm_pushbuffer_get_gpu_va_base(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1946);
     return uvm_rm_mem_get_gpu_uvm_va(pushbuffer->memory, pushbuffer->channel_manager->gpu);
 }
 
 NvU64 uvm_pushbuffer_get_sec2_gpu_va_base(uvm_pushbuffer_t *pushbuffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1947);
     UVM_ASSERT(uvm_conf_computing_mode_enabled(pushbuffer->channel_manager->gpu));
 
     return uvm_rm_mem_get_gpu_uvm_va(pushbuffer->memory_unprotected_sysmem, pushbuffer->channel_manager->gpu);

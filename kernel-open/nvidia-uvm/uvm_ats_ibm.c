@@ -87,6 +87,7 @@ typedef struct
 // Get the index of the input npu pointer within UVM's global npus array
 static size_t uvm_ibm_npu_index(uvm_ibm_npu_t *npu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 123);
     size_t npu_index = npu - &g_uvm_global.npus[0];
     UVM_ASSERT(npu_index < ARRAY_SIZE(g_uvm_global.npus));
     return npu_index;
@@ -96,6 +97,7 @@ static size_t uvm_ibm_npu_index(uvm_ibm_npu_t *npu)
 // is found. Returns NULL if no slots are available.
 static uvm_ibm_npu_t *uvm_ibm_npu_find(int pci_domain)
 {
+    printk(KERN_ERR "=====================================   %d\n", 124);
     size_t i;
     uvm_ibm_npu_t *npu, *first_free = NULL;
 
@@ -117,6 +119,7 @@ static uvm_ibm_npu_t *uvm_ibm_npu_find(int pci_domain)
 
 static void uvm_ibm_npu_destroy(uvm_ibm_npu_t *npu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 125);
     size_t i;
 
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
@@ -133,6 +136,7 @@ static void uvm_ibm_npu_destroy(uvm_ibm_npu_t *npu)
 
 static NV_STATUS uvm_ibm_npu_init(uvm_ibm_npu_t *npu, struct pci_dev *npu_dev)
 {
+    printk(KERN_ERR "=====================================   %d\n", 126);
     struct pci_controller *hose;
     size_t i, reg_count, reg_size = sizeof(npu->atsd_regs.io_addrs[0]);
     int ret;
@@ -182,6 +186,7 @@ static NV_STATUS uvm_ibm_npu_init(uvm_ibm_npu_t *npu, struct pci_dev *npu_dev)
 
 NV_STATUS uvm_ats_ibm_add_gpu(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 127);
     struct pci_dev *npu_dev = pnv_pci_get_npu_dev(parent_gpu->pci_dev, 0);
     uvm_ibm_npu_t *npu;
     NV_STATUS status;
@@ -219,6 +224,7 @@ NV_STATUS uvm_ats_ibm_add_gpu(uvm_parent_gpu_t *parent_gpu)
 
 void uvm_ats_ibm_remove_gpu(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 128);
     uvm_ibm_npu_t *npu = parent_gpu->npu;
     uvm_parent_gpu_t *other_parent_gpu;
     NvU32 num_membars_new = 0;
@@ -251,6 +257,7 @@ void uvm_ats_ibm_remove_gpu(uvm_parent_gpu_t *parent_gpu)
 
 void uvm_ats_ibm_init_va_space(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 129);
     uvm_ibm_va_space_t *ibm_va_space;
 
     UVM_ASSERT(va_space);
@@ -262,11 +269,13 @@ void uvm_ats_ibm_init_va_space(uvm_va_space_t *va_space)
 #if UVM_ATS_IBM_SUPPORTED_IN_KERNEL()
 static void npu_release_dummy(struct npu_context *npu_context, void *va_mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 130);
     // See the comment on the call to pnv_npu2_init_context()
 }
 
 static NV_STATUS uvm_ats_ibm_register_gpu_va_space_kernel(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 131);
     uvm_va_space_t *va_space = gpu_va_space->va_space;
     uvm_ibm_gpu_va_space_t *ibm_gpu_va_space = &gpu_va_space->ats.ibm;
     struct npu_context *npu_context;
@@ -314,6 +323,7 @@ static NV_STATUS uvm_ats_ibm_register_gpu_va_space_kernel(uvm_gpu_va_space_t *gp
 
 static void uvm_ats_ibm_unregister_gpu_va_space_kernel(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 132);
     uvm_gpu_va_space_state_t state;
     uvm_va_space_t *va_space = gpu_va_space->va_space;
     uvm_ibm_va_space_t *ibm_va_space;
@@ -348,6 +358,7 @@ static void uvm_ats_ibm_unregister_gpu_va_space_kernel(uvm_gpu_va_space_t *gpu_v
 
 static void uvm_ats_ibm_register_gpu_va_space_driver(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 133);
     uvm_va_space_t *va_space = gpu_va_space->va_space;
     uvm_ibm_gpu_va_space_t *ibm_gpu_va_space = &gpu_va_space->ats.ibm;
     uvm_gpu_t *gpu = gpu_va_space->gpu;
@@ -390,6 +401,7 @@ static void uvm_ats_ibm_register_gpu_va_space_driver(uvm_gpu_va_space_t *gpu_va_
 
 static void uvm_ats_ibm_unregister_gpu_va_space_driver(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 134);
     uvm_va_space_t *va_space = gpu_va_space->va_space;
     uvm_gpu_t *gpu = gpu_va_space->gpu;
     size_t npu_index = uvm_ibm_npu_index(gpu->parent->npu);
@@ -450,6 +462,7 @@ static void uvm_ats_ibm_unregister_gpu_va_space_driver(uvm_gpu_va_space_t *gpu_v
 
 static mm_context_id_t va_space_pasid(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 135);
     struct mm_struct *mm = va_space->va_space_mm.mm;
     UVM_ASSERT(mm);
     return mm->context.id;
@@ -457,6 +470,7 @@ static mm_context_id_t va_space_pasid(uvm_va_space_t *va_space)
 
 NV_STATUS uvm_ats_ibm_register_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 136);
     uvm_va_space_t *va_space = gpu_va_space->va_space;
     NV_STATUS status = NV_OK;
 
@@ -478,6 +492,7 @@ NV_STATUS uvm_ats_ibm_register_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
 
 void uvm_ats_ibm_unregister_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 137);
 #if UVM_ATS_IBM_SUPPORTED_IN_KERNEL()
     uvm_ats_ibm_unregister_gpu_va_space_kernel(gpu_va_space);
 #else
@@ -493,6 +508,7 @@ void uvm_ats_ibm_unregister_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
 // will busy wait until a register set is free.
 static NvU8 atsd_reg_acquire(uvm_ibm_npu_t *npu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 138);
     uvm_spin_loop_t spin;
     size_t i;
     bool first = true;
@@ -521,6 +537,7 @@ static NvU8 atsd_reg_acquire(uvm_ibm_npu_t *npu)
 
 static void atsd_reg_release(uvm_ibm_npu_t *npu, NvU8 reg)
 {
+    printk(KERN_ERR "=====================================   %d\n", 139);
     UVM_ASSERT(reg < npu->atsd_regs.count);
     UVM_ASSERT(test_bit(reg, npu->atsd_regs.locks));
     clear_bit_unlock(reg, npu->atsd_regs.locks);
@@ -528,6 +545,7 @@ static void atsd_reg_release(uvm_ibm_npu_t *npu, NvU8 reg)
 
 static __be64 atsd_reg_read(uvm_ibm_npu_t *npu, NvU8 reg, size_t offset)
 {
+    printk(KERN_ERR "=====================================   %d\n", 140);
     __be64 __iomem *io_addr = npu->atsd_regs.io_addrs[reg] + offset;
     UVM_ASSERT(reg < npu->atsd_regs.count);
     return __raw_readq(io_addr);
@@ -535,6 +553,7 @@ static __be64 atsd_reg_read(uvm_ibm_npu_t *npu, NvU8 reg, size_t offset)
 
 static void atsd_reg_write(uvm_ibm_npu_t *npu, NvU8 reg, size_t offset, NvU64 val)
 {
+    printk(KERN_ERR "=====================================   %d\n", 141);
     __be64 __iomem *io_addr = npu->atsd_regs.io_addrs[reg] + offset;
     UVM_ASSERT(reg < npu->atsd_regs.count);
     __raw_writeq_be(val, io_addr);
@@ -543,6 +562,7 @@ static void atsd_reg_write(uvm_ibm_npu_t *npu, NvU8 reg, size_t offset, NvU64 va
 // Acquire a set of registers in each NPU which is active in va_space
 static void atsd_regs_acquire(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs)
 {
+    printk(KERN_ERR "=====================================   %d\n", 142);
     size_t i;
     for_each_npu_index_in_va_space(i, va_space)
         regs->ids[i] = atsd_reg_acquire(&g_uvm_global.npus[i]);
@@ -550,6 +570,7 @@ static void atsd_regs_acquire(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs)
 
 static void atsd_regs_release(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs)
 {
+    printk(KERN_ERR "=====================================   %d\n", 143);
     size_t i;
     for_each_npu_index_in_va_space(i, va_space)
         atsd_reg_release(&g_uvm_global.npus[i], regs->ids[i]);
@@ -559,6 +580,7 @@ static void atsd_regs_release(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs)
 // register offset.
 static void atsd_regs_write(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs, size_t offset, NvU64 val)
 {
+    printk(KERN_ERR "=====================================   %d\n", 144);
     size_t i;
     for_each_npu_index_in_va_space(i, va_space)
         atsd_reg_write(&g_uvm_global.npus[i], regs->ids[i], offset, val);
@@ -568,6 +590,7 @@ static void atsd_regs_write(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs, siz
 // registers to finish.
 static void atsd_regs_wait(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs)
 {
+    printk(KERN_ERR "=====================================   %d\n", 145);
     uvm_spin_loop_t spin;
     size_t i;
     for_each_npu_index_in_va_space(i, va_space) {
@@ -583,6 +606,7 @@ static void atsd_regs_wait(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs)
 // psize of MMU_PAGE_COUNT means to invalidate the entire address space.
 static NvU64 atsd_get_launch_val(mm_context_id_t pasid, int psize)
 {
+    printk(KERN_ERR "=====================================   %d\n", 146);
     NvU64 val = 0;
 
     val |= PPC_BIT(NPU_ATSD_REG_LAUNCH_PASID_ENABLE);
@@ -608,6 +632,7 @@ static NvU64 atsd_get_launch_val(mm_context_id_t pasid, int psize)
 // starting address to use for the ATSD. end is inclusive.
 static int atsd_calc_size(NvU64 *start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 147);
     // ATSDs have high latency, so we prefer to over-invalidate rather than
     // issue multiple precise invalidates. Supported sizes are only 64K, 2M, and
     // 1G.
@@ -633,6 +658,7 @@ static int atsd_calc_size(NvU64 *start, NvU64 end)
 // Issue an ATSD to all NPUs and wait for completion
 static void atsd_launch_wait(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs, NvU64 val)
 {
+    printk(KERN_ERR "=====================================   %d\n", 148);
     atsd_regs_write(va_space, regs, NPU_ATSD_REG_LAUNCH, val);
     atsd_regs_wait(va_space, regs);
 }
@@ -640,6 +666,7 @@ static void atsd_launch_wait(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs, Nv
 // Issue and wait for the required membars following an invalidate
 static void atsd_issue_membars(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs)
 {
+    printk(KERN_ERR "=====================================   %d\n", 149);
     size_t i;
     NvU32 num_membars = 0;
 
@@ -660,6 +687,7 @@ static void atsd_issue_membars(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs)
 
 static void uvm_ats_ibm_invalidate_all(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs)
 {
+    printk(KERN_ERR "=====================================   %d\n", 150);
     NvU64 val = atsd_get_launch_val(va_space_pasid(va_space), MMU_PAGE_COUNT);
     atsd_launch_wait(va_space, regs, val);
     atsd_issue_membars(va_space, regs);
@@ -667,6 +695,7 @@ static void uvm_ats_ibm_invalidate_all(uvm_va_space_t *va_space, uvm_atsd_regs_t
 
 static void uvm_ats_ibm_invalidate_range(uvm_va_space_t *va_space, uvm_atsd_regs_t *regs, NvU64 start, int psize)
 {
+    printk(KERN_ERR "=====================================   %d\n", 151);
     NvU64 val = atsd_get_launch_val(va_space_pasid(va_space), psize);
 
     // Barriers are expensive, so write all address registers first then do a
@@ -681,6 +710,7 @@ static void uvm_ats_ibm_invalidate_range(uvm_va_space_t *va_space, uvm_atsd_regs
 
 void uvm_ats_ibm_invalidate(uvm_va_space_t *va_space, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 152);
 #if UVM_ATS_IBM_SUPPORTED_IN_DRIVER()
     unsigned long irq_flags;
     uvm_atsd_regs_t regs;

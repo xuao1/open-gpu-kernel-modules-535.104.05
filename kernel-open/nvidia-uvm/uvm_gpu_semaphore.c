@@ -72,16 +72,19 @@ struct uvm_gpu_semaphore_pool_page_struct
 
 static bool gpu_semaphore_pool_is_secure(uvm_gpu_semaphore_pool_t *pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 683);
     return uvm_conf_computing_mode_enabled(pool->gpu) && (pool->aperture == UVM_APERTURE_VID);
 }
 
 static bool gpu_semaphore_is_secure(uvm_gpu_semaphore_t *semaphore)
 {
+    printk(KERN_ERR "=====================================   %d\n", 684);
     return gpu_semaphore_pool_is_secure(semaphore->page->pool);
 }
 
 static NvU32 get_index(uvm_gpu_semaphore_t *semaphore)
 {
+    printk(KERN_ERR "=====================================   %d\n", 685);
     NvU32 offset;
     NvU32 index;
 
@@ -126,17 +129,20 @@ static NvU32 get_index(uvm_gpu_semaphore_t *semaphore)
 // OR them in.
 static NvU32 make_canary(NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 686);
     NvU32 prev_quadrant = payload - (1 << 30);
     return (prev_quadrant & UVM_SEMAPHORE_CANARY_MASK) | UVM_SEMAPHORE_CANARY_BASE;
 }
 
 static bool is_canary(NvU32 val)
 {
+    printk(KERN_ERR "=====================================   %d\n", 687);
     return (val & ~UVM_SEMAPHORE_CANARY_MASK) == UVM_SEMAPHORE_CANARY_BASE;
 }
 
 static bool semaphore_uses_canary(uvm_gpu_semaphore_pool_t *pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 688);
     // A pool allocated in the CPR of vidmem cannot be read/written from the
     // CPU.
     return !gpu_semaphore_pool_is_secure(pool) && UVM_IS_DEBUG();
@@ -147,6 +153,7 @@ static bool semaphore_uses_canary(uvm_gpu_semaphore_pool_t *pool)
 // pool?
 static bool gpu_can_access_semaphore_pool(uvm_gpu_t *gpu, uvm_rm_mem_t *rm_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 689);
     return ((uvm_rm_mem_get_gpu_uvm_va(rm_mem, gpu) + rm_mem->size - 1) < gpu->parent->max_host_va);
 }
 
@@ -156,6 +163,7 @@ static NV_STATUS pool_alloc_secure_page(uvm_gpu_semaphore_pool_t *pool,
                                         uvm_gpu_semaphore_pool_page_t *pool_page,
                                         uvm_rm_mem_type_t memory_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 690);
     NV_STATUS status;
 
     UVM_ASSERT(gpu_semaphore_pool_is_secure(pool));
@@ -173,6 +181,7 @@ static NV_STATUS pool_alloc_secure_page(uvm_gpu_semaphore_pool_t *pool,
 
 static NV_STATUS pool_alloc_page(uvm_gpu_semaphore_pool_t *pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 691);
     NV_STATUS status;
     uvm_gpu_semaphore_pool_page_t *pool_page;
     NvU32 *payloads;
@@ -231,6 +240,7 @@ error:
 
 static void pool_free_page(uvm_gpu_semaphore_pool_page_t *page)
 {
+    printk(KERN_ERR "=====================================   %d\n", 692);
     uvm_gpu_semaphore_pool_t *pool;
 
     UVM_ASSERT(page);
@@ -259,6 +269,7 @@ static void pool_free_page(uvm_gpu_semaphore_pool_page_t *page)
 
 NV_STATUS uvm_gpu_semaphore_alloc(uvm_gpu_semaphore_pool_t *pool, uvm_gpu_semaphore_t *semaphore)
 {
+    printk(KERN_ERR "=====================================   %d\n", 693);
     NV_STATUS status = NV_OK;
     uvm_gpu_semaphore_pool_page_t *page;
 
@@ -309,6 +320,7 @@ done:
 
 void uvm_gpu_semaphore_free(uvm_gpu_semaphore_t *semaphore)
 {
+    printk(KERN_ERR "=====================================   %d\n", 694);
     uvm_gpu_semaphore_pool_page_t *page;
     uvm_gpu_semaphore_pool_t *pool;
     NvU32 index;
@@ -343,6 +355,7 @@ void uvm_gpu_semaphore_free(uvm_gpu_semaphore_t *semaphore)
 
 NV_STATUS uvm_gpu_semaphore_pool_create(uvm_gpu_t *gpu, uvm_gpu_semaphore_pool_t **pool_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 695);
     uvm_gpu_semaphore_pool_t *pool;
     pool = uvm_kvmalloc_zero(sizeof(*pool));
 
@@ -364,6 +377,7 @@ NV_STATUS uvm_gpu_semaphore_pool_create(uvm_gpu_t *gpu, uvm_gpu_semaphore_pool_t
 
 NV_STATUS uvm_gpu_semaphore_secure_pool_create(uvm_gpu_t *gpu, uvm_gpu_semaphore_pool_t **pool_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 696);
     NV_STATUS status;
 
     UVM_ASSERT(uvm_conf_computing_mode_enabled(gpu));
@@ -377,6 +391,7 @@ NV_STATUS uvm_gpu_semaphore_secure_pool_create(uvm_gpu_t *gpu, uvm_gpu_semaphore
 
 void uvm_gpu_semaphore_pool_destroy(uvm_gpu_semaphore_pool_t *pool)
 {
+    printk(KERN_ERR "=====================================   %d\n", 697);
     uvm_gpu_semaphore_pool_page_t *page;
     uvm_gpu_semaphore_pool_page_t *next_page;
 
@@ -402,6 +417,7 @@ void uvm_gpu_semaphore_pool_destroy(uvm_gpu_semaphore_pool_t *pool)
 
 NV_STATUS uvm_gpu_semaphore_pool_map_gpu(uvm_gpu_semaphore_pool_t *pool, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 698);
     NV_STATUS status = NV_OK;
     uvm_gpu_semaphore_pool_page_t *page;
 
@@ -424,6 +440,7 @@ done:
 
 void uvm_gpu_semaphore_pool_unmap_gpu(uvm_gpu_semaphore_pool_t *pool, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 699);
     uvm_gpu_semaphore_pool_page_t *page;
 
     UVM_ASSERT(pool);
@@ -439,16 +456,19 @@ void uvm_gpu_semaphore_pool_unmap_gpu(uvm_gpu_semaphore_pool_t *pool, uvm_gpu_t 
 
 NvU64 uvm_gpu_semaphore_get_gpu_uvm_va(uvm_gpu_semaphore_t *semaphore, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 700);
     return uvm_gpu_semaphore_get_gpu_va(semaphore, gpu, false);
 }
 
 NvU64 uvm_gpu_semaphore_get_gpu_proxy_va(uvm_gpu_semaphore_t *semaphore, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 701);
     return uvm_gpu_semaphore_get_gpu_va(semaphore, gpu, true);
 }
 
 NvU64 uvm_gpu_semaphore_get_gpu_va(uvm_gpu_semaphore_t *semaphore, uvm_gpu_t *gpu, bool is_proxy_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 702);
     NvU32 index = get_index(semaphore);
     NvU64 base_va = uvm_rm_mem_get_gpu_va(semaphore->page->memory, gpu, is_proxy_va_space).address;
 
@@ -457,6 +477,7 @@ NvU64 uvm_gpu_semaphore_get_gpu_va(uvm_gpu_semaphore_t *semaphore, uvm_gpu_t *gp
 
 NvU32 uvm_gpu_semaphore_get_payload(uvm_gpu_semaphore_t *semaphore)
 {
+    printk(KERN_ERR "=====================================   %d\n", 703);
     if (gpu_semaphore_is_secure(semaphore))
         return UVM_GPU_READ_ONCE(semaphore->conf_computing.cached_payload);
 
@@ -465,6 +486,7 @@ NvU32 uvm_gpu_semaphore_get_payload(uvm_gpu_semaphore_t *semaphore)
 
 void uvm_gpu_semaphore_set_payload(uvm_gpu_semaphore_t *semaphore, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 704);
     // Provide a guarantee that all memory accesses prior to setting the payload
     // won't be moved past it.
     // Use a big hammer mb() as set_payload() is not used in any performance path
@@ -487,6 +509,7 @@ void uvm_gpu_semaphore_set_payload(uvm_gpu_semaphore_t *semaphore, NvU32 payload
 // trackers after their owning GPUs have been destroyed.
 static bool tracking_semaphore_check_gpu(uvm_gpu_tracking_semaphore_t *tracking_sem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 705);
     uvm_gpu_t *gpu = tracking_sem->semaphore.page->pool->gpu;
     uvm_gpu_t *table_gpu;
 
@@ -509,6 +532,7 @@ static bool tracking_semaphore_check_gpu(uvm_gpu_tracking_semaphore_t *tracking_
 
 bool tracking_semaphore_uses_mutex(uvm_gpu_tracking_semaphore_t *tracking_semaphore)
 {
+    printk(KERN_ERR "=====================================   %d\n", 706);
     uvm_gpu_t *gpu = tracking_semaphore->semaphore.page->pool->gpu;
 
     UVM_ASSERT(tracking_semaphore_check_gpu(tracking_semaphore));
@@ -521,6 +545,7 @@ bool tracking_semaphore_uses_mutex(uvm_gpu_tracking_semaphore_t *tracking_semaph
 
 NV_STATUS uvm_gpu_tracking_semaphore_alloc(uvm_gpu_semaphore_pool_t *pool, uvm_gpu_tracking_semaphore_t *tracking_sem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 707);
     NV_STATUS status;
     uvm_lock_order_t order = UVM_LOCK_ORDER_LEAF;
 
@@ -548,11 +573,13 @@ NV_STATUS uvm_gpu_tracking_semaphore_alloc(uvm_gpu_semaphore_pool_t *pool, uvm_g
 
 void uvm_gpu_tracking_semaphore_free(uvm_gpu_tracking_semaphore_t *tracking_sem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 708);
     uvm_gpu_semaphore_free(&tracking_sem->semaphore);
 }
 
 static bool should_skip_secure_semaphore_update(NvU32 last_observed_notifier, NvU32 gpu_notifier)
 {
+    printk(KERN_ERR "=====================================   %d\n", 709);
     // No new value, or the GPU is currently writing the new encrypted material
     // and no change in value would still result in corrupted data.
     return (last_observed_notifier == gpu_notifier) || (gpu_notifier % 2);
@@ -560,6 +587,7 @@ static bool should_skip_secure_semaphore_update(NvU32 last_observed_notifier, Nv
 
 static void uvm_gpu_semaphore_encrypted_payload_update(uvm_channel_t *channel, uvm_gpu_semaphore_t *semaphore)
 {
+    printk(KERN_ERR "=====================================   %d\n", 710);
     UvmCslIv local_iv;
     NvU32 local_payload;
     NvU32 new_sem_value;
@@ -645,6 +673,7 @@ error:
 
 static NvU64 update_completed_value_locked(uvm_gpu_tracking_semaphore_t *tracking_semaphore)
 {
+    printk(KERN_ERR "=====================================   %d\n", 711);
     NvU64 old_value = atomic64_read(&tracking_semaphore->completed_value);
     // The semaphore value is the bottom 32 bits of completed_value
     NvU32 old_sem_value = (NvU32)old_value;
@@ -741,6 +770,7 @@ static NvU64 update_completed_value_locked(uvm_gpu_tracking_semaphore_t *trackin
 
 NvU64 uvm_gpu_tracking_semaphore_update_completed_value(uvm_gpu_tracking_semaphore_t *tracking_semaphore)
 {
+    printk(KERN_ERR "=====================================   %d\n", 712);
     NvU64 completed;
 
     // Check that the GPU which owns the semaphore is still present
@@ -763,6 +793,7 @@ NvU64 uvm_gpu_tracking_semaphore_update_completed_value(uvm_gpu_tracking_semapho
 
 bool uvm_gpu_tracking_semaphore_is_value_completed(uvm_gpu_tracking_semaphore_t *tracking_sem, NvU64 value)
 {
+    printk(KERN_ERR "=====================================   %d\n", 713);
     NvU64 completed = atomic64_read(&tracking_sem->completed_value);
 
     // Check that the GPU which owns the semaphore is still present

@@ -47,6 +47,7 @@
 
 static NvU32 entries_per_index_pascal(NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1463);
     UVM_ASSERT(depth < 5);
     if (depth == 3)
         return 2;
@@ -55,6 +56,7 @@ static NvU32 entries_per_index_pascal(NvU32 depth)
 
 static NvLength entry_offset_pascal(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1464);
     UVM_ASSERT(depth < 5);
     if (page_size == UVM_PAGE_SIZE_4K && depth == 3)
         return MMU_SMALL;
@@ -63,6 +65,7 @@ static NvLength entry_offset_pascal(NvU32 depth, NvU32 page_size)
 
 static NvU64 single_pde_pascal(uvm_mmu_page_table_alloc_t *phys_alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1465);
     NvU64 pde_bits = 0;
 
     if (phys_alloc != NULL) {
@@ -90,6 +93,7 @@ static NvU64 single_pde_pascal(uvm_mmu_page_table_alloc_t *phys_alloc)
 
 static NvU64 big_half_pde_pascal(uvm_mmu_page_table_alloc_t *phys_alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1466);
     NvU64 pde_bits = 0;
 
     if (phys_alloc != NULL) {
@@ -116,6 +120,7 @@ static NvU64 big_half_pde_pascal(uvm_mmu_page_table_alloc_t *phys_alloc)
 
 static NvU64 small_half_pde_pascal(uvm_mmu_page_table_alloc_t *phys_alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1467);
     NvU64 pde_bits = 0;
 
     if (phys_alloc != NULL) {
@@ -142,6 +147,7 @@ static NvU64 small_half_pde_pascal(uvm_mmu_page_table_alloc_t *phys_alloc)
 
 static void make_pde_pascal(void *entry, uvm_mmu_page_table_alloc_t **phys_allocs, NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1468);
     NvU32 entry_count = entries_per_index_pascal(depth);
     NvU64 *entry_bits = (NvU64 *)entry;
 
@@ -162,6 +168,7 @@ static void make_pde_pascal(void *entry, uvm_mmu_page_table_alloc_t **phys_alloc
 
 static NvLength entry_size_pascal(NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1469);
     UVM_ASSERT(depth < 5);
     if (depth == 3)
         return 16;
@@ -171,6 +178,7 @@ static NvLength entry_size_pascal(NvU32 depth)
 
 static NvU32 index_bits_pascal(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1470);
     static const NvU32 bit_widths[] = {2, 9, 9, 8};
     // some code paths keep on querying this until they get a 0, meaning only the page offset remains.
     UVM_ASSERT(depth < 5);
@@ -192,11 +200,13 @@ static NvU32 index_bits_pascal(NvU32 depth, NvU32 page_size)
 
 static NvU32 num_va_bits_pascal(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1471);
     return 49;
 }
 
 static NvLength allocation_size_pascal(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1472);
     UVM_ASSERT(depth < 5);
     if (depth == 4 && page_size == UVM_PAGE_SIZE_64K)
         return 256;
@@ -206,6 +216,7 @@ static NvLength allocation_size_pascal(NvU32 depth, NvU32 page_size)
 
 static NvU32 page_table_depth_pascal(NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1473);
     if (page_size == UVM_PAGE_SIZE_2M)
         return 3;
     else
@@ -214,11 +225,13 @@ static NvU32 page_table_depth_pascal(NvU32 page_size)
 
 static NvU32 page_sizes_pascal(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1474);
     return UVM_PAGE_SIZE_2M | UVM_PAGE_SIZE_64K | UVM_PAGE_SIZE_4K;
 }
 
 static NvU64 unmapped_pte_pascal(NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1475);
     // Setting the privilege bit on an otherwise-zeroed big PTE causes the
     // corresponding 4k PTEs to be ignored. This allows the invalidation of a
     // mixed PDE range to be much faster.
@@ -234,6 +247,7 @@ static NvU64 unmapped_pte_pascal(NvU32 page_size)
 
 static NvU64 make_pte_pascal(uvm_aperture_t aperture, NvU64 address, uvm_prot_t prot, NvU64 flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1476);
     NvU8 aperture_bits = 0;
     NvU64 pte_bits = 0;
 
@@ -304,6 +318,7 @@ static NvU64 make_pte_pascal(uvm_aperture_t aperture, NvU64 address, uvm_prot_t 
 
 static NvU64 make_sked_reflected_pte_pascal(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1477);
     NvU64 pte_bits = 0;
 
     pte_bits |= HWCONST64(_MMU_VER2, PTE, VALID, TRUE);
@@ -314,12 +329,14 @@ static NvU64 make_sked_reflected_pte_pascal(void)
 
 static NvU64 make_sparse_pte_pascal(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1478);
     return HWCONST64(_MMU_VER2, PTE, VALID, FALSE) |
            HWCONST64(_MMU_VER2, PTE, VOL,   TRUE);
 }
 
 static NvU64 poisoned_pte_pascal(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1479);
     // An invalid PTE won't be fatal from faultable units like SM, which is the
     // most likely source of bad PTE accesses.
 
@@ -355,6 +372,7 @@ static uvm_mmu_mode_hal_t pascal_mmu_mode_hal =
 
 uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_pascal(NvU32 big_page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1480);
     UVM_ASSERT(big_page_size == UVM_PAGE_SIZE_64K || big_page_size == UVM_PAGE_SIZE_128K);
 
     // TODO: Bug 1789555: RM should reject the creation of GPU VA spaces with
@@ -367,6 +385,7 @@ uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_pascal(NvU32 big_page_size)
 
 void uvm_hal_pascal_mmu_enable_prefetch_faults(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1481);
     volatile NvU32 *prefetch_control;
     NvU32 prefetch_control_value;
 
@@ -379,6 +398,7 @@ void uvm_hal_pascal_mmu_enable_prefetch_faults(uvm_parent_gpu_t *parent_gpu)
 
 void uvm_hal_pascal_mmu_disable_prefetch_faults(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1482);
     volatile NvU32 *prefetch_control;
     NvU32 prefetch_control_value;
 
@@ -391,6 +411,7 @@ void uvm_hal_pascal_mmu_disable_prefetch_faults(uvm_parent_gpu_t *parent_gpu)
 
 NvU16 uvm_hal_pascal_mmu_client_id_to_utlb_id(NvU16 client_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1483);
     switch (client_id) {
         case NV_PFAULT_CLIENT_GPC_RAST:
         case NV_PFAULT_CLIENT_GPC_GCC:

@@ -26,11 +26,13 @@
 
 static bool uvm_gpu_phys_address_eq(uvm_gpu_phys_address_t pa1, uvm_gpu_phys_address_t pa2)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1875);
     return pa1.address == pa2.address && pa1.aperture == pa2.aperture;
 }
 
 void uvm_pte_batch_begin(uvm_push_t *push, uvm_pte_batch_t *batch)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1876);
     memset(batch, 0, sizeof(*batch));
 
     batch->membar = UVM_MEMBAR_GPU;
@@ -39,6 +41,7 @@ void uvm_pte_batch_begin(uvm_push_t *push, uvm_pte_batch_t *batch)
 
 static void uvm_pte_batch_flush_ptes_inline(uvm_pte_batch_t *batch)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1877);
     uvm_gpu_address_t inline_data_addr;
     uvm_gpu_t *gpu = uvm_push_get_gpu(batch->push);
     size_t ptes_size = batch->pte_count * batch->pte_entry_size;
@@ -61,6 +64,7 @@ static void uvm_pte_batch_flush_ptes_inline(uvm_pte_batch_t *batch)
 
 static void uvm_pte_batch_flush_ptes_memset(uvm_pte_batch_t *batch)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1878);
     uvm_gpu_t *gpu = uvm_push_get_gpu(batch->push);
     uvm_gpu_address_t addr = uvm_mmu_gpu_address(gpu, batch->pte_first_address);
     NvU32 i;
@@ -78,6 +82,7 @@ static void uvm_pte_batch_flush_ptes_memset(uvm_pte_batch_t *batch)
 
 static void uvm_pte_batch_flush_ptes(uvm_pte_batch_t *batch)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1879);
     if (batch->pte_count == 0)
         return;
 
@@ -91,6 +96,7 @@ static void uvm_pte_batch_flush_ptes(uvm_pte_batch_t *batch)
 
 static void uvm_pte_batch_write_consecutive_inline(uvm_pte_batch_t *batch, NvU64 pte_bits)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1880);
     size_t extra_size = batch->pte_entry_size - sizeof(pte_bits);
 
     UVM_ASSERT(extra_size < batch->pte_entry_size);
@@ -106,6 +112,7 @@ static void uvm_pte_batch_write_consecutive_inline(uvm_pte_batch_t *batch, NvU64
 
 static void uvm_pte_batch_write_consecutive(uvm_pte_batch_t *batch, NvU64 pte_bits)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1881);
     if (batch->inlining) {
         uvm_pte_batch_write_consecutive_inline(batch, pte_bits);
     }
@@ -118,6 +125,7 @@ static void uvm_pte_batch_write_consecutive(uvm_pte_batch_t *batch, NvU64 pte_bi
 
 static void pte_batch_begin_inline(uvm_pte_batch_t *batch)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1882);
     NvU32 i;
 
     UVM_ASSERT(!batch->inlining);
@@ -131,6 +139,7 @@ static void pte_batch_begin_inline(uvm_pte_batch_t *batch)
 
 void uvm_pte_batch_write_ptes(uvm_pte_batch_t *batch, uvm_gpu_phys_address_t first_pte, NvU64 *pte_bits, NvU32 entry_size, NvU32 entry_count)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1883);
     NvU32 max_entries = UVM_PUSH_INLINE_DATA_MAX_SIZE / entry_size;
 
     // Updating PTEs in sysmem requires a sysmembar after writing them and
@@ -159,6 +168,7 @@ void uvm_pte_batch_write_ptes(uvm_pte_batch_t *batch, uvm_gpu_phys_address_t fir
 
 void uvm_pte_batch_write_pte(uvm_pte_batch_t *batch, uvm_gpu_phys_address_t pte, NvU64 pte_bits, NvU32 pte_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1884);
     uvm_gpu_phys_address_t consecutive_pte_address = batch->pte_first_address;
     bool needs_flush = false;
     consecutive_pte_address.address += batch->pte_count * pte_size;
@@ -193,6 +203,7 @@ void uvm_pte_batch_write_pte(uvm_pte_batch_t *batch, uvm_gpu_phys_address_t pte,
 
 void uvm_pte_batch_clear_ptes(uvm_pte_batch_t *batch, uvm_gpu_phys_address_t first_pte, NvU64 empty_pte_bits, NvU32 entry_size, NvU32 entry_count)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1885);
     uvm_gpu_t *gpu = uvm_push_get_gpu(batch->push);
 
     // TODO: Bug 1767241: Allow small clears to batch
@@ -211,6 +222,7 @@ void uvm_pte_batch_clear_ptes(uvm_pte_batch_t *batch, uvm_gpu_phys_address_t fir
 
 void uvm_pte_batch_end(uvm_pte_batch_t *batch)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1886);
     uvm_pte_batch_flush_ptes(batch);
     uvm_hal_wfi_membar(batch->push, batch->membar);
 }

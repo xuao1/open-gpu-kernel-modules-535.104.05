@@ -41,6 +41,7 @@ static uvm_perf_module_t module2;
 // Convenience function that obtains the data for the given module, and allocates it if it does not exist yet
 static void *get_or_alloc_data(uvm_perf_module_data_desc_t *modules_data, uvm_perf_module_t *module, size_t type_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1515);
    void *data_ret;
 
    data_ret = uvm_perf_module_type_data(modules_data, module->type);
@@ -55,6 +56,7 @@ static void *get_or_alloc_data(uvm_perf_module_data_desc_t *modules_data, uvm_pe
 // Block destruction callback for module1
 static void module1_destroy(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1516);
     uvm_va_block_t *va_block;
     void *data;
 
@@ -79,6 +81,7 @@ static void module1_destroy(uvm_perf_event_t event_id, uvm_perf_event_data_t *ev
 // Page fault callback for module1
 static void module1_fault(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1517);
     module1_data_type_t *data;
     uvm_va_block_t *va_block;
 
@@ -94,6 +97,7 @@ static void module1_fault(uvm_perf_event_t event_id, uvm_perf_event_data_t *even
 // Block destruction callback for module2
 static void module2_destroy(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1518);
     void *data;
     uvm_va_block_t *va_block;
 
@@ -117,6 +121,7 @@ static void module2_destroy(uvm_perf_event_t event_id, uvm_perf_event_data_t *ev
 // Page fault callback for module2
 static void module2_fault(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1519);
     module2_data_type_t *data;
     uvm_va_block_t *va_block;
 
@@ -147,6 +152,7 @@ static void module2_fault(uvm_perf_event_t event_id, uvm_perf_event_data_t *even
 // 12) Checks that data allocated by module2 has been freed
 static NV_STATUS test_module_replace(uvm_va_space_t *va_space, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1520);
     NV_STATUS status;
     uvm_perf_event_data_t event_data;
     void *module1_data;
@@ -271,6 +277,7 @@ fail_space_write_invalid_state:
 
 NV_STATUS uvm_test_perf_module_sanity(UVM_TEST_PERF_MODULE_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1521);
     NV_STATUS status;
     uvm_va_space_t *va_space;
 

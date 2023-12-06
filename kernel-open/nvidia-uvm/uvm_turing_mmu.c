@@ -34,6 +34,7 @@
 // no longer exists.
 static NvU64 make_pte_turing(uvm_aperture_t aperture, NvU64 address, uvm_prot_t prot, NvU64 flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2344);
     NvU8 aperture_bits = 0;
     NvU64 pte_bits = 0;
 
@@ -110,6 +111,7 @@ static NvU64 make_pte_turing(uvm_aperture_t aperture, NvU64 address, uvm_prot_t 
 
 static NvU64 make_sked_reflected_pte_turing(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2345);
     NvU64 pte_bits = 0;
 
     pte_bits |= HWCONST64(_MMU_VER2, PTE, VALID, TRUE);
@@ -120,6 +122,7 @@ static NvU64 make_sked_reflected_pte_turing(void)
 
 static NvU64 poisoned_pte_turing(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2346);
     // An invalid PTE won't be fatal from faultable units like SM, which is the
     // most likely source of bad PTE accesses.
 
@@ -140,6 +143,7 @@ static uvm_mmu_mode_hal_t turing_mmu_mode_hal;
 
 uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_turing(NvU32 big_page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2347);
     static bool initialized = false;
 
     UVM_ASSERT(big_page_size == UVM_PAGE_SIZE_64K || big_page_size == UVM_PAGE_SIZE_128K);
@@ -170,6 +174,7 @@ uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_turing(NvU32 big_page_size)
 
 uvm_mmu_engine_type_t uvm_hal_turing_mmu_engine_id_to_type(NvU16 mmu_engine_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2348);
     if (mmu_engine_id >= NV_PFAULT_MMU_ENG_ID_HOST0 && mmu_engine_id <= NV_PFAULT_MMU_ENG_ID_HOST14)
         return UVM_MMU_ENGINE_TYPE_HOST;
 

@@ -32,6 +32,7 @@
 
 static bool uvm_is_valid_vma_range(struct mm_struct *mm, NvU64 start, NvU64 length)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1839);
     const NvU64 end = start + length;
     struct vm_area_struct *vma;
 
@@ -52,6 +53,7 @@ static bool uvm_is_valid_vma_range(struct mm_struct *mm, NvU64 start, NvU64 leng
 
 uvm_api_range_type_t uvm_api_range_type_check(uvm_va_space_t *va_space, struct mm_struct *mm, NvU64 base, NvU64 length)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1840);
     uvm_va_range_t *va_range, *va_range_last;
     const NvU64 last_address = base + length - 1;
 
@@ -99,6 +101,7 @@ static NV_STATUS split_as_needed(uvm_va_space_t *va_space,
                                  uvm_va_policy_is_split_needed_t split_needed_cb,
                                  void *data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1841);
     uvm_va_range_t *va_range;
 
     UVM_ASSERT(PAGE_ALIGNED(addr));
@@ -132,6 +135,7 @@ static NV_STATUS split_span_as_needed(uvm_va_space_t *va_space,
                                       uvm_va_policy_is_split_needed_t split_needed_cb,
                                       void *data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1842);
     NV_STATUS status;
 
     uvm_assert_rwsem_locked_write(&va_space->lock);
@@ -145,6 +149,7 @@ static NV_STATUS split_span_as_needed(uvm_va_space_t *va_space,
 
 static bool preferred_location_is_split_needed(const uvm_va_policy_t *policy, void *data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1843);
     uvm_processor_id_t processor_id;
 
     UVM_ASSERT(data);
@@ -157,6 +162,7 @@ static NV_STATUS preferred_location_unmap_remote_pages(uvm_va_block_t *va_block,
                                                        uvm_va_block_context_t *va_block_context,
                                                        uvm_va_block_region_t region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1844);
     NV_STATUS status = NV_OK;
     NV_STATUS tracker_status;
     uvm_tracker_t local_tracker = UVM_TRACKER_INIT();
@@ -206,6 +212,7 @@ NV_STATUS uvm_va_block_set_preferred_location_locked(uvm_va_block_t *va_block,
                                                      uvm_va_block_context_t *va_block_context,
                                                      uvm_va_block_region_t region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1845);
     uvm_assert_mutex_locked(&va_block->lock);
 
     if (!uvm_va_block_is_hmm(va_block))
@@ -222,6 +229,7 @@ static NV_STATUS preferred_location_set(uvm_va_space_t *va_space,
                                         uvm_va_range_t **first_va_range_to_migrate,
                                         uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1846);
     uvm_va_range_t *va_range, *va_range_last;
     const NvU64 last_address = base + length - 1;
     bool preferred_location_is_faultable_gpu = false;
@@ -287,6 +295,7 @@ static NV_STATUS preferred_location_set(uvm_va_space_t *va_space,
 
 NV_STATUS uvm_api_set_preferred_location(const UVM_SET_PREFERRED_LOCATION_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1847);
     NV_STATUS status = NV_OK;
     NV_STATUS tracker_status;
     uvm_tracker_t local_tracker = UVM_TRACKER_INIT();
@@ -394,6 +403,7 @@ done:
 
 NV_STATUS uvm_api_unset_preferred_location(const UVM_UNSET_PREFERRED_LOCATION_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1848);
     NV_STATUS status;
     NV_STATUS tracker_status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
@@ -444,6 +454,7 @@ NV_STATUS uvm_va_block_set_accessed_by_locked(uvm_va_block_t *va_block,
                                               uvm_va_block_region_t region,
                                               uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1849);
     NV_STATUS status;
     NV_STATUS tracker_status;
 
@@ -465,6 +476,7 @@ NV_STATUS uvm_va_block_set_accessed_by(uvm_va_block_t *va_block,
                                        uvm_va_block_context_t *va_block_context,
                                        uvm_processor_id_t processor_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1850);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     uvm_va_block_region_t region = uvm_va_block_region_from_block(va_block);
     NV_STATUS status;
@@ -502,6 +514,7 @@ typedef struct
 
 static bool accessed_by_is_split_needed(const uvm_va_policy_t *policy, void *data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1851);
     accessed_by_split_params_t *params = (accessed_by_split_params_t*)data;
 
     UVM_ASSERT(params);
@@ -515,6 +528,7 @@ static NV_STATUS accessed_by_set(uvm_va_space_t *va_space,
                                  const NvProcessorUuid *processor_uuid,
                                  bool set_bit)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1852);
     uvm_processor_id_t processor_id = UVM_ID_INVALID;
     struct mm_struct *mm;
     const NvU64 last_address = base + length - 1;
@@ -616,6 +630,7 @@ done:
 
 NV_STATUS uvm_api_set_accessed_by(const UVM_SET_ACCESSED_BY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1853);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     return accessed_by_set(va_space, params->requestedBase, params->length, &params->accessedByUuid, true);
@@ -623,6 +638,7 @@ NV_STATUS uvm_api_set_accessed_by(const UVM_SET_ACCESSED_BY_PARAMS *params, stru
 
 NV_STATUS uvm_api_unset_accessed_by(const UVM_UNSET_ACCESSED_BY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1854);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     return accessed_by_set(va_space, params->requestedBase, params->length, &params->accessedByUuid, false);
@@ -632,6 +648,7 @@ static NV_STATUS va_block_set_read_duplication_locked(uvm_va_block_t *va_block,
                                                       uvm_va_block_retry_t *va_block_retry,
                                                       uvm_va_block_context_t *va_block_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1855);
     uvm_processor_id_t src_id;
 
     uvm_assert_mutex_locked(&va_block->lock);
@@ -660,6 +677,7 @@ static NV_STATUS va_block_set_read_duplication_locked(uvm_va_block_t *va_block,
 NV_STATUS uvm_va_block_set_read_duplication(uvm_va_block_t *va_block,
                                             uvm_va_block_context_t *va_block_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1856);
     NV_STATUS status;
     uvm_va_block_retry_t va_block_retry;
 
@@ -679,6 +697,7 @@ static NV_STATUS va_block_unset_read_duplication_locked(uvm_va_block_t *va_block
                                                         uvm_va_block_context_t *va_block_context,
                                                         uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1857);
     NV_STATUS status;
     uvm_processor_id_t processor_id;
     uvm_va_block_region_t block_region = uvm_va_block_region_from_block(va_block);
@@ -760,6 +779,7 @@ static NV_STATUS va_block_unset_read_duplication_locked(uvm_va_block_t *va_block
 NV_STATUS uvm_va_block_unset_read_duplication(uvm_va_block_t *va_block,
                                               uvm_va_block_context_t *va_block_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1858);
     uvm_va_block_retry_t va_block_retry;
     NV_STATUS status = NV_OK;
     uvm_tracker_t local_tracker = UVM_TRACKER_INIT();
@@ -782,6 +802,7 @@ NV_STATUS uvm_va_block_unset_read_duplication(uvm_va_block_t *va_block,
 
 static bool read_duplication_is_split_needed(const uvm_va_policy_t *policy, void *data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1859);
     uvm_read_duplication_policy_t new_policy;
 
     UVM_ASSERT(data);
@@ -792,6 +813,7 @@ static bool read_duplication_is_split_needed(const uvm_va_policy_t *policy, void
 
 static NV_STATUS read_duplication_set(uvm_va_space_t *va_space, NvU64 base, NvU64 length, bool enable)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1860);
     struct mm_struct *mm;
     const NvU64 last_address = base + length - 1;
     NV_STATUS status;
@@ -872,6 +894,7 @@ done:
 
 NV_STATUS uvm_api_enable_read_duplication(const UVM_ENABLE_READ_DUPLICATION_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1861);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     return read_duplication_set(va_space, params->requestedBase, params->length, true);
@@ -879,6 +902,7 @@ NV_STATUS uvm_api_enable_read_duplication(const UVM_ENABLE_READ_DUPLICATION_PARA
 
 NV_STATUS uvm_api_disable_read_duplication(const UVM_DISABLE_READ_DUPLICATION_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1862);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     return read_duplication_set(va_space, params->requestedBase, params->length, false);
@@ -886,6 +910,7 @@ NV_STATUS uvm_api_disable_read_duplication(const UVM_DISABLE_READ_DUPLICATION_PA
 
 static NV_STATUS system_wide_atomics_set(uvm_va_space_t *va_space, const NvProcessorUuid *gpu_uuid, bool enable)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1863);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu;
     bool already_enabled;
@@ -971,6 +996,7 @@ done:
 
 NV_STATUS uvm_api_enable_system_wide_atomics(UVM_ENABLE_SYSTEM_WIDE_ATOMICS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1864);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     return system_wide_atomics_set(va_space, &params->gpu_uuid, true);
@@ -978,6 +1004,7 @@ NV_STATUS uvm_api_enable_system_wide_atomics(UVM_ENABLE_SYSTEM_WIDE_ATOMICS_PARA
 
 NV_STATUS uvm_api_disable_system_wide_atomics(UVM_DISABLE_SYSTEM_WIDE_ATOMICS_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1865);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 
     return system_wide_atomics_set(va_space, &params->gpu_uuid, false);

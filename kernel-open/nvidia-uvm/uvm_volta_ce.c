@@ -28,6 +28,7 @@
 // Return the flush type and the flush enablement.
 static NvU32 volta_get_flush_value(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2840);
     NvU32 flush_value;
     uvm_membar_t membar = uvm_push_get_and_reset_membar_flag(push);
 
@@ -49,6 +50,7 @@ static NvU32 volta_get_flush_value(uvm_push_t *push)
 
 void uvm_hal_volta_ce_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2841);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     NvU32 launch_dma_plc_mode;
 
@@ -66,6 +68,7 @@ void uvm_hal_volta_ce_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 pa
 
 void uvm_hal_volta_ce_semaphore_reduction_inc(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2842);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     NvU32 launch_dma_plc_mode;
 
@@ -86,6 +89,7 @@ void uvm_hal_volta_ce_semaphore_reduction_inc(uvm_push_t *push, NvU64 gpu_va, Nv
 
 void uvm_hal_volta_ce_semaphore_timestamp(uvm_push_t *push, NvU64 gpu_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2843);
     uvm_gpu_t *gpu;
     NvU32 launch_dma_plc_mode;
 
@@ -104,6 +108,7 @@ void uvm_hal_volta_ce_semaphore_timestamp(uvm_push_t *push, NvU64 gpu_va)
 
 void uvm_hal_volta_ce_memcopy(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_address_t src, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2844);
     // If >4GB copies ever become an important use case, this function should
     // use multi-line transfers so we don't have to iterate (bug 1766588).
     static const size_t max_single_copy_size = 0xFFFFFFFF;
@@ -161,6 +166,7 @@ void uvm_hal_volta_ce_memcopy(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_a
 
 static NvU32 ce_aperture(uvm_aperture_t aperture)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2845);
     BUILD_BUG_ON(HWCONST(C3B5, SET_SRC_PHYS_MODE, TARGET, LOCAL_FB) !=
                  HWCONST(C3B5, SET_DST_PHYS_MODE, TARGET, LOCAL_FB));
     BUILD_BUG_ON(HWCONST(C3B5, SET_SRC_PHYS_MODE, TARGET, COHERENT_SYSMEM) !=
@@ -176,6 +182,7 @@ static NvU32 ce_aperture(uvm_aperture_t aperture)
 
 static NvU32 volta_memset_push_phys_mode(uvm_push_t *push, uvm_gpu_address_t dst)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2846);
     if (dst.is_virtual)
         return HWCONST(C3B5, LAUNCH_DMA, DST_TYPE, VIRTUAL);
 
@@ -185,6 +192,7 @@ static NvU32 volta_memset_push_phys_mode(uvm_push_t *push, uvm_gpu_address_t dst
 
 static void memset_common(uvm_push_t *push, uvm_gpu_address_t dst, size_t size, size_t memset_element_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2847);
     // If >4GB memsets ever become an important use case, this function should
     // use multi-line transfers so we don't have to iterate (bug 1766588).
     static const size_t max_single_memset_size = 0xFFFFFFFF;
@@ -237,6 +245,7 @@ static void memset_common(uvm_push_t *push, uvm_gpu_address_t dst, size_t size, 
 
 void uvm_hal_volta_ce_memset_1(uvm_push_t *push, uvm_gpu_address_t dst, NvU8 value, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2848);
     NV_PUSH_2U(C3B5, SET_REMAP_CONST_B,    (NvU32)value,
                      SET_REMAP_COMPONENTS,
        HWCONST(C3B5, SET_REMAP_COMPONENTS, DST_X,               CONST_B) |
@@ -248,6 +257,7 @@ void uvm_hal_volta_ce_memset_1(uvm_push_t *push, uvm_gpu_address_t dst, NvU8 val
 
 void uvm_hal_volta_ce_memset_4(uvm_push_t *push, uvm_gpu_address_t dst, NvU32 value, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2849);
     UVM_ASSERT_MSG(size % 4 == 0, "size: %zd\n", size);
 
     size /= 4;
@@ -263,6 +273,7 @@ void uvm_hal_volta_ce_memset_4(uvm_push_t *push, uvm_gpu_address_t dst, NvU32 va
 
 void uvm_hal_volta_ce_memset_8(uvm_push_t *push, uvm_gpu_address_t dst, NvU64 value, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2850);
     UVM_ASSERT_MSG(size % 8 == 0, "size: %zd\n", size);
 
     size /= 8;

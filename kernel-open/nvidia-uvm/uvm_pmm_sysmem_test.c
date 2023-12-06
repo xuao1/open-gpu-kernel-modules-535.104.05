@@ -53,6 +53,7 @@ static NV_STATUS check_reverse_map_block_page(uvm_va_block_t *va_block,
                                               NvU64 base_dma_addr,
                                               const uvm_page_mask_t *page_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1783);
     uvm_page_index_t page_index;
 
     for_each_va_block_page(page_index, va_block) {
@@ -90,6 +91,7 @@ static NV_STATUS check_reverse_map_block_batch(uvm_va_block_t *va_block,
                                                NvU64 base_dma_addr,
                                                const uvm_page_mask_t *page_mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1784);
     size_t num_translations;
     size_t num_pages;
     size_t reverse_map_index;
@@ -133,6 +135,7 @@ static NV_STATUS check_reverse_map_two_blocks_batch(NvU64 base_dma_addr,
                                                     uvm_va_block_t *va_block0,
                                                     uvm_va_block_t *va_block1)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1785);
     size_t num_pages;
     size_t num_translations;
     size_t reverse_map_index;
@@ -182,6 +185,7 @@ static NV_STATUS test_pmm_sysmem_reverse_map_single(uvm_va_block_t *va_block,
                                                     uvm_chunk_size_t split_size,
                                                     bool merge)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1786);
     NV_STATUS status = NV_OK;
     uvm_va_block_region_t subregion;
 
@@ -266,6 +270,7 @@ static uvm_page_mask_t g_page_mask;
 
 static NV_STATUS test_pmm_sysmem_reverse_map_single_whole(uvm_va_space_t *va_space, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1787);
     NV_STATUS status;
     uvm_va_block_t *va_block;
     const bool merge_array[] = {false, true};
@@ -299,6 +304,7 @@ static NV_STATUS test_pmm_sysmem_reverse_map_single_whole(uvm_va_space_t *va_spa
 
 static NV_STATUS test_pmm_sysmem_reverse_map_single_pattern(uvm_va_space_t *va_space, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1788);
     NV_STATUS status;
     uvm_va_block_t *va_block;
     uvm_page_index_t page_index;
@@ -321,6 +327,7 @@ static NV_STATUS test_pmm_sysmem_reverse_map_single_pattern(uvm_va_space_t *va_s
 // with size UVM_VA_BLOCK_SIZE / 4.
 static NV_STATUS test_pmm_sysmem_reverse_map_many_blocks(uvm_va_space_t *va_space, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1789);
     NV_STATUS status;
     uvm_va_block_t *va_block0;
     uvm_va_block_t *va_block1;
@@ -389,6 +396,7 @@ error:
 // and merges them back to verify that the logic is working.
 static NV_STATUS test_pmm_sysmem_reverse_map_merge(uvm_va_space_t *va_space, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1790);
     NV_STATUS status = NV_OK;
     uvm_va_block_t *va_block;
     const unsigned chunks_64k_pos[] =
@@ -483,6 +491,7 @@ static NV_STATUS test_pmm_sysmem_reverse_map_merge(uvm_va_space_t *va_space, NvU
 
 static NV_STATUS test_pmm_sysmem_reverse_map_remove_on_eviction(uvm_va_space_t *va_space, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1791);
     uvm_va_block_t *va_block;
     NV_STATUS status = uvm_va_block_find(va_space, addr, &va_block);
 
@@ -514,6 +523,7 @@ static NV_STATUS test_pmm_sysmem_reverse_map_remove_on_eviction(uvm_va_space_t *
 
 static NV_STATUS test_pmm_sysmem_reverse_map(uvm_va_space_t *va_space, NvU64 addr1, NvU64 addr2)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1792);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu;
 
@@ -557,6 +567,7 @@ static NV_STATUS test_pmm_sysmem_reverse_map(uvm_va_space_t *va_space, NvU64 add
 
 NV_STATUS uvm_test_pmm_sysmem(UVM_TEST_PMM_SYSMEM_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1793);
     NV_STATUS status;
     uvm_va_space_t *va_space;
 
@@ -583,6 +594,7 @@ NV_STATUS uvm_test_pmm_sysmem(UVM_TEST_PMM_SYSMEM_PARAMS *params, struct file *f
 
 static NV_STATUS cpu_chunk_map_on_cpu(uvm_cpu_chunk_t *chunk, void **cpu_addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1794);
     struct page **pages;
     uvm_chunk_size_t chunk_size = uvm_cpu_chunk_get_size(chunk);
     size_t num_pages = uvm_cpu_chunk_num_pages(chunk);
@@ -617,6 +629,7 @@ static NV_STATUS cpu_chunk_map_on_cpu(uvm_cpu_chunk_t *chunk, void **cpu_addr)
 
 static NV_STATUS test_cpu_chunk_mapping_access(uvm_cpu_chunk_t *chunk, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1795);
     NvU64 dma_addr;
     uvm_gpu_address_t gpu_addr;
     uvm_push_t push;
@@ -666,6 +679,7 @@ static NV_STATUS test_cpu_chunk_alloc(uvm_chunk_size_t size,
                                       uvm_cpu_chunk_alloc_flags_t flags,
                                       uvm_cpu_chunk_t **out_chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1796);
     uvm_cpu_chunk_t *chunk;
     NV_STATUS status = NV_OK;
     size_t i;
@@ -714,6 +728,7 @@ static NV_STATUS test_cpu_chunk_mapping_basic_verify(uvm_gpu_t *gpu,
                                                      uvm_cpu_chunk_alloc_flags_t flags,
                                                      uvm_chunk_size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1797);
     uvm_cpu_chunk_t *chunk;
     uvm_cpu_physical_chunk_t *phys_chunk;
     NvU64 dma_addr;
@@ -754,6 +769,7 @@ done:
 
 static NV_STATUS test_cpu_chunk_mapping_basic(uvm_gpu_t *gpu, uvm_cpu_chunk_alloc_flags_t flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1798);
     uvm_chunk_sizes_mask_t chunk_sizes = uvm_cpu_chunk_get_allocation_sizes();
     uvm_chunk_size_t size;
 
@@ -765,6 +781,7 @@ static NV_STATUS test_cpu_chunk_mapping_basic(uvm_gpu_t *gpu, uvm_cpu_chunk_allo
 
 static NV_STATUS test_cpu_chunk_mapping_array(uvm_gpu_t *gpu1, uvm_gpu_t *gpu2, uvm_gpu_t *gpu3)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1799);
     NV_STATUS status = NV_OK;
     uvm_cpu_chunk_t *chunk;
     uvm_cpu_physical_chunk_t *phys_chunk;
@@ -802,6 +819,7 @@ done:
 
 static NV_STATUS do_test_cpu_chunk_split_and_merge(uvm_cpu_chunk_t *chunk, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1800);
     NV_STATUS status = NV_OK;
     uvm_chunk_size_t size = uvm_cpu_chunk_get_size(chunk);
     uvm_chunk_sizes_mask_t alloc_sizes = uvm_cpu_chunk_get_allocation_sizes();
@@ -903,6 +921,7 @@ done_free:
 
 static NV_STATUS test_cpu_chunk_split_and_merge(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1801);
     uvm_chunk_sizes_mask_t alloc_sizes = uvm_cpu_chunk_get_allocation_sizes();
     uvm_chunk_size_t size;
 
@@ -924,6 +943,7 @@ static NV_STATUS test_cpu_chunk_split_and_merge(uvm_gpu_t *gpu)
 
 static NV_STATUS test_cpu_chunk_dirty_split(uvm_cpu_chunk_t *chunk)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1802);
     uvm_chunk_size_t size = uvm_cpu_chunk_get_size(chunk);
     uvm_chunk_size_t split_size;
     uvm_chunk_sizes_mask_t alloc_sizes = uvm_cpu_chunk_get_allocation_sizes();
@@ -983,6 +1003,7 @@ done_free:
 
 static NV_STATUS test_cpu_chunk_dirty(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1803);
     NV_STATUS status = NV_OK;
     uvm_cpu_chunk_t *chunk;
     uvm_chunk_size_t size;
@@ -1069,6 +1090,7 @@ done:
 
 NV_STATUS do_test_cpu_chunk_free(uvm_cpu_chunk_t *chunk, uvm_va_space_t *va_space, uvm_processor_mask_t *test_gpus)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1804);
     NV_STATUS status = NV_OK;
     uvm_cpu_chunk_t **split_chunks;
     uvm_chunk_sizes_mask_t alloc_sizes = uvm_cpu_chunk_get_allocation_sizes();
@@ -1165,6 +1187,7 @@ done_free:
 
 NV_STATUS test_cpu_chunk_free(uvm_va_space_t *va_space, uvm_processor_mask_t *test_gpus)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1805);
     uvm_cpu_chunk_t *chunk;
     uvm_chunk_sizes_mask_t alloc_sizes = uvm_cpu_chunk_get_allocation_sizes();
     size_t size = uvm_chunk_find_next_size(alloc_sizes, PAGE_SIZE);
@@ -1179,6 +1202,7 @@ NV_STATUS test_cpu_chunk_free(uvm_va_space_t *va_space, uvm_processor_mask_t *te
 
 NV_STATUS uvm_test_cpu_chunk_api(UVM_TEST_CPU_CHUNK_API_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1806);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     uvm_processor_mask_t test_gpus;
     uvm_gpu_t *gpu;

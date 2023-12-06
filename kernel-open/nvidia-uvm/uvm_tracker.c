@@ -32,11 +32,13 @@
 
 static bool tracker_is_using_static_entries(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2296);
     return tracker->max_size == ARRAY_SIZE(tracker->static_entries);
 }
 
 static void free_entries(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2297);
     if (tracker_is_using_static_entries(tracker))
         return;
     uvm_kvfree(tracker->dynamic_entries);
@@ -44,6 +46,7 @@ static void free_entries(uvm_tracker_t *tracker)
 
 uvm_tracker_entry_t *uvm_tracker_get_entries(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2298);
     if (tracker_is_using_static_entries(tracker)) {
         return tracker->static_entries;
     }
@@ -55,6 +58,7 @@ uvm_tracker_entry_t *uvm_tracker_get_entries(uvm_tracker_t *tracker)
 
 static uvm_tracker_entry_t *get_new_entry(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2299);
     NV_STATUS status = uvm_tracker_reserve(tracker, 1);
     if (status != NV_OK)
         return NULL;
@@ -65,6 +69,7 @@ static uvm_tracker_entry_t *get_new_entry(uvm_tracker_t *tracker)
 
 NV_STATUS uvm_tracker_init_from(uvm_tracker_t *dst, uvm_tracker_t *src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2300);
     NV_STATUS status;
     uvm_tracker_init(dst);
     status = uvm_tracker_overwrite(dst, src);
@@ -77,12 +82,14 @@ NV_STATUS uvm_tracker_init_from(uvm_tracker_t *dst, uvm_tracker_t *src)
 
 void uvm_tracker_deinit(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2301);
     free_entries(tracker);
     memset(tracker, 0, sizeof(*tracker));
 }
 
 NV_STATUS uvm_tracker_overwrite(uvm_tracker_t *dst, uvm_tracker_t *src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2302);
     NV_STATUS status;
 
     uvm_tracker_clear(dst);
@@ -101,6 +108,7 @@ NV_STATUS uvm_tracker_overwrite(uvm_tracker_t *dst, uvm_tracker_t *src)
 
 NV_STATUS uvm_tracker_reserve(uvm_tracker_t *tracker, NvU32 min_free_entries)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2303);
     if (tracker->size + min_free_entries > tracker->max_size) {
         // Special case the first resize to jump from 1 all the way to 8.
         // This is based on a guess that if a tracker needs more than 1
@@ -127,6 +135,7 @@ NV_STATUS uvm_tracker_reserve(uvm_tracker_t *tracker, NvU32 min_free_entries)
 
 NV_STATUS uvm_tracker_add_push(uvm_tracker_t *tracker, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2304);
     uvm_tracker_entry_t entry;
 
     uvm_push_get_tracker_entry(push, &entry);
@@ -136,6 +145,7 @@ NV_STATUS uvm_tracker_add_push(uvm_tracker_t *tracker, uvm_push_t *push)
 
 NV_STATUS uvm_tracker_add_entry(uvm_tracker_t *tracker, uvm_tracker_entry_t *new_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2305);
     uvm_tracker_entry_t *tracker_entry;
 
     for_each_tracker_entry(tracker_entry, tracker) {
@@ -156,6 +166,7 @@ NV_STATUS uvm_tracker_add_entry(uvm_tracker_t *tracker, uvm_tracker_entry_t *new
 
 void uvm_tracker_overwrite_with_entry(uvm_tracker_t *tracker, uvm_tracker_entry_t *entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2306);
     NV_STATUS status;
 
     uvm_tracker_clear(tracker);
@@ -168,6 +179,7 @@ void uvm_tracker_overwrite_with_entry(uvm_tracker_t *tracker, uvm_tracker_entry_
 
 void uvm_tracker_overwrite_with_push(uvm_tracker_t *tracker, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2307);
     uvm_tracker_entry_t entry;
 
     uvm_push_get_tracker_entry(push, &entry);
@@ -177,6 +189,7 @@ void uvm_tracker_overwrite_with_push(uvm_tracker_t *tracker, uvm_push_t *push)
 
 static NV_STATUS reserve_for_entries_from_tracker(uvm_tracker_t *dst, uvm_tracker_t *src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2308);
     NvU32 needed_free_entries = 0;
     uvm_tracker_entry_t *src_entry, *dst_entry;
 
@@ -197,6 +210,7 @@ static NV_STATUS reserve_for_entries_from_tracker(uvm_tracker_t *dst, uvm_tracke
 
 NV_STATUS uvm_tracker_add_tracker(uvm_tracker_t *dst, uvm_tracker_t *src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2309);
     NV_STATUS status;
     uvm_tracker_entry_t *src_entry;
 
@@ -223,6 +237,7 @@ NV_STATUS uvm_tracker_add_tracker(uvm_tracker_t *dst, uvm_tracker_t *src)
 
 NV_STATUS uvm_tracker_overwrite_safe(uvm_tracker_t *dst, uvm_tracker_t *src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2310);
     NV_STATUS status = uvm_tracker_overwrite(dst, src);
     if (status == NV_ERR_NO_MEMORY) {
         UVM_DBG_PRINT_RL("Failed to overwrite tracker, waiting\n");
@@ -233,6 +248,7 @@ NV_STATUS uvm_tracker_overwrite_safe(uvm_tracker_t *dst, uvm_tracker_t *src)
 
 NV_STATUS uvm_tracker_add_push_safe(uvm_tracker_t *tracker, uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2311);
     NV_STATUS status = uvm_tracker_add_push(tracker, push);
     if (status == NV_ERR_NO_MEMORY) {
         UVM_DBG_PRINT_RL("Failed to add push to tracker, waiting\n");
@@ -243,6 +259,7 @@ NV_STATUS uvm_tracker_add_push_safe(uvm_tracker_t *tracker, uvm_push_t *push)
 
 NV_STATUS uvm_tracker_add_entry_safe(uvm_tracker_t *tracker, uvm_tracker_entry_t *new_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2312);
     NV_STATUS status = uvm_tracker_add_entry(tracker, new_entry);
     if (status == NV_ERR_NO_MEMORY) {
         UVM_DBG_PRINT_RL("Failed to add entry to tracker, waiting\n");
@@ -253,6 +270,7 @@ NV_STATUS uvm_tracker_add_entry_safe(uvm_tracker_t *tracker, uvm_tracker_entry_t
 
 NV_STATUS uvm_tracker_add_tracker_safe(uvm_tracker_t *dst, uvm_tracker_t *src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2313);
     NV_STATUS status = uvm_tracker_add_tracker(dst, src);
     if (status == NV_ERR_NO_MEMORY) {
         UVM_DBG_PRINT_RL("Failed to add tracker to tracker, waiting\n");
@@ -263,6 +281,7 @@ NV_STATUS uvm_tracker_add_tracker_safe(uvm_tracker_t *dst, uvm_tracker_t *src)
 
 bool uvm_tracker_is_entry_completed(uvm_tracker_entry_t *tracker_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2314);
     if (!tracker_entry->channel)
         return true;
 
@@ -271,6 +290,7 @@ bool uvm_tracker_is_entry_completed(uvm_tracker_entry_t *tracker_entry)
 
 static void uvm_tracker_entry_print_pending_pushes(uvm_tracker_entry_t *entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2315);
     uvm_channel_t *channel = entry->channel;
     uvm_gpu_t *gpu = uvm_channel_get_gpu(channel);
 
@@ -285,6 +305,7 @@ static void uvm_tracker_entry_print_pending_pushes(uvm_tracker_entry_t *entry)
 
 static void uvm_tracker_print_pending_pushes(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2316);
     uvm_tracker_entry_t *entry;
     for_each_tracker_entry(entry, tracker)
         uvm_tracker_entry_print_pending_pushes(entry);
@@ -292,6 +313,7 @@ static void uvm_tracker_print_pending_pushes(uvm_tracker_t *tracker)
 
 static NV_STATUS wait_for_entry_with_spin(uvm_tracker_entry_t *tracker_entry, uvm_spin_loop_t *spin)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2317);
     NV_STATUS status = NV_OK;
 
     while (!uvm_tracker_is_entry_completed(tracker_entry) && status == NV_OK) {
@@ -314,6 +336,7 @@ static NV_STATUS wait_for_entry_with_spin(uvm_tracker_entry_t *tracker_entry, uv
 
 NV_STATUS uvm_tracker_wait_for_entry(uvm_tracker_entry_t *tracker_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2318);
     uvm_spin_loop_t spin;
     uvm_spin_loop_init(&spin);
     return wait_for_entry_with_spin(tracker_entry, &spin);
@@ -321,6 +344,7 @@ NV_STATUS uvm_tracker_wait_for_entry(uvm_tracker_entry_t *tracker_entry)
 
 NV_STATUS uvm_tracker_wait(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2319);
     NV_STATUS status = NV_OK;
     uvm_spin_loop_t spin;
 
@@ -350,6 +374,7 @@ NV_STATUS uvm_tracker_wait(uvm_tracker_t *tracker)
 
 NV_STATUS uvm_tracker_wait_for_other_gpus(uvm_tracker_t *tracker, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2320);
     NV_STATUS status = NV_OK;
     uvm_tracker_entry_t *entry;
     uvm_spin_loop_t spin;
@@ -378,6 +403,7 @@ NV_STATUS uvm_tracker_wait_for_other_gpus(uvm_tracker_t *tracker, uvm_gpu_t *gpu
 
 NV_STATUS uvm_tracker_check_errors(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2321);
     uvm_tracker_entry_t *tracker_entry;
     NV_STATUS status = uvm_global_get_status();
 
@@ -395,6 +421,7 @@ NV_STATUS uvm_tracker_check_errors(uvm_tracker_t *tracker)
 
 NV_STATUS uvm_tracker_query(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2322);
     NV_STATUS status;
     bool completed = uvm_tracker_is_completed(tracker);
 
@@ -407,6 +434,7 @@ NV_STATUS uvm_tracker_query(uvm_tracker_t *tracker)
 
 void uvm_tracker_remove_completed(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2323);
     NvU32 i = 0;
 
     uvm_tracker_entry_t *entries = uvm_tracker_get_entries(tracker);
@@ -426,6 +454,7 @@ void uvm_tracker_remove_completed(uvm_tracker_t *tracker)
 
 bool uvm_tracker_is_completed(uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2324);
     uvm_tracker_remove_completed(tracker);
 
     return tracker->size == 0;
@@ -433,6 +462,7 @@ bool uvm_tracker_is_completed(uvm_tracker_t *tracker)
 
 uvm_gpu_t *uvm_tracker_entry_gpu(uvm_tracker_entry_t *entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2325);
     return uvm_channel_get_gpu(entry->channel);
 }
 

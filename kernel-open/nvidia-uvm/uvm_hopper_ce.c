@@ -29,6 +29,7 @@
 
 static NvU32 ce_aperture(uvm_aperture_t aperture)
 {
+    printk(KERN_ERR "=====================================   %d\n", 838);
     BUILD_BUG_ON(HWCONST(C8B5, SET_SRC_PHYS_MODE, TARGET, LOCAL_FB) !=
                  HWCONST(C8B5, SET_DST_PHYS_MODE, TARGET, LOCAL_FB));
     BUILD_BUG_ON(HWCONST(C8B5, SET_SRC_PHYS_MODE, TARGET, COHERENT_SYSMEM) !=
@@ -51,12 +52,14 @@ static NvU32 ce_aperture(uvm_aperture_t aperture)
 
 void uvm_hal_hopper_ce_offset_out(uvm_push_t *push, NvU64 offset_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 839);
     NV_PUSH_2U(C8B5, OFFSET_OUT_UPPER, HWVALUE(C8B5, OFFSET_OUT_UPPER, UPPER, NvOffset_HI32(offset_out)),
                      OFFSET_OUT_LOWER, HWVALUE(C8B5, OFFSET_OUT_LOWER, VALUE, NvOffset_LO32(offset_out)));
 }
 
 void uvm_hal_hopper_ce_offset_in_out(uvm_push_t *push, NvU64 offset_in, NvU64 offset_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 840);
     NV_PUSH_4U(C8B5, OFFSET_IN_UPPER,  HWVALUE(C8B5, OFFSET_IN_UPPER,  UPPER, NvOffset_HI32(offset_in)),
                      OFFSET_IN_LOWER,  HWVALUE(C8B5, OFFSET_IN_LOWER,  VALUE, NvOffset_LO32(offset_in)),
                      OFFSET_OUT_UPPER, HWVALUE(C8B5, OFFSET_OUT_UPPER, UPPER, NvOffset_HI32(offset_out)),
@@ -66,6 +69,7 @@ void uvm_hal_hopper_ce_offset_in_out(uvm_push_t *push, NvU64 offset_in, NvU64 of
 // Return the flush type and the flush enablement.
 static NvU32 hopper_get_flush_value(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 841);
     NvU32 flush_value;
     uvm_membar_t membar = uvm_push_get_and_reset_membar_flag(push);
 
@@ -87,6 +91,7 @@ static NvU32 hopper_get_flush_value(uvm_push_t *push)
 
 void uvm_hal_hopper_ce_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 842);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     NvU32 launch_dma_plc_mode;
 
@@ -105,6 +110,7 @@ void uvm_hal_hopper_ce_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 p
 
 void uvm_hal_hopper_ce_semaphore_reduction_inc(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 843);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     NvU32 launch_dma_plc_mode;
 
@@ -126,6 +132,7 @@ void uvm_hal_hopper_ce_semaphore_reduction_inc(uvm_push_t *push, NvU64 gpu_va, N
 
 void uvm_hal_hopper_ce_semaphore_timestamp(uvm_push_t *push, NvU64 gpu_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 844);
     uvm_gpu_t *gpu;
     NvU32 launch_dma_plc_mode;
 
@@ -145,6 +152,7 @@ void uvm_hal_hopper_ce_semaphore_timestamp(uvm_push_t *push, NvU64 gpu_va)
 
 static NvU32 hopper_memset_push_phys_mode(uvm_push_t *push, uvm_gpu_address_t dst)
 {
+    printk(KERN_ERR "=====================================   %d\n", 845);
     if (dst.is_virtual)
         return HWCONST(C8B5, LAUNCH_DMA, DST_TYPE, VIRTUAL);
 
@@ -154,6 +162,7 @@ static NvU32 hopper_memset_push_phys_mode(uvm_push_t *push, uvm_gpu_address_t ds
 
 static bool va_is_flat_vidmem(uvm_gpu_t *gpu, NvU64 va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 846);
     return (uvm_mmu_gpu_needs_static_vidmem_mapping(gpu) || uvm_mmu_gpu_needs_dynamic_vidmem_mapping(gpu)) &&
            va >= gpu->parent->flat_vidmem_va_base &&
            va < gpu->parent->flat_vidmem_va_base + UVM_GPU_MAX_PHYS_MEM;
@@ -163,6 +172,7 @@ static bool va_is_flat_vidmem(uvm_gpu_t *gpu, NvU64 va)
 // the address needed by the fast scrubber.
 static bool hopper_scrub_enable(uvm_gpu_t *gpu, uvm_gpu_address_t *dst, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 847);
     if (!IS_ALIGNED(dst->address, UVM_PAGE_SIZE_4K) || !IS_ALIGNED(size, UVM_PAGE_SIZE_4K))
         return false;
 
@@ -182,6 +192,7 @@ static bool hopper_scrub_enable(uvm_gpu_t *gpu, uvm_gpu_address_t *dst, size_t s
 
 static NvU32 hopper_memset_copy_type(uvm_push_t *push, uvm_gpu_address_t dst)
 {
+    printk(KERN_ERR "=====================================   %d\n", 848);
     if (uvm_conf_computing_mode_enabled(uvm_push_get_gpu(push)) && dst.is_unprotected)
         return HWCONST(C8B5, LAUNCH_DMA, COPY_TYPE, NONPROT2NONPROT);
     return HWCONST(C8B5, LAUNCH_DMA, COPY_TYPE, DEFAULT);
@@ -189,6 +200,7 @@ static NvU32 hopper_memset_copy_type(uvm_push_t *push, uvm_gpu_address_t dst)
 
 NvU32 uvm_hal_hopper_ce_memcopy_copy_type(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_address_t src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 849);
     if (uvm_conf_computing_mode_enabled(uvm_push_get_gpu(push)) && dst.is_unprotected && src.is_unprotected)
         return HWCONST(C8B5, LAUNCH_DMA, COPY_TYPE, NONPROT2NONPROT);
     return HWCONST(C8B5, LAUNCH_DMA, COPY_TYPE, DEFAULT);
@@ -199,6 +211,7 @@ static void hopper_memset_common(uvm_push_t *push,
                                  size_t num_elements,
                                  size_t memset_element_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 850);
     // If >4GB memsets ever become an important use case, this function should
     // use multi-line transfers so we don't have to iterate (bug 1766588).
     static const size_t max_single_memset = 0xFFFFFFFF;
@@ -274,6 +287,7 @@ static void hopper_memset_common(uvm_push_t *push,
 
 void uvm_hal_hopper_ce_memset_8(uvm_push_t *push, uvm_gpu_address_t dst, NvU64 value, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 851);
     UVM_ASSERT_MSG(size % 8 == 0, "size: %zd\n", size);
 
     size /= 8;
@@ -291,6 +305,7 @@ void uvm_hal_hopper_ce_memset_8(uvm_push_t *push, uvm_gpu_address_t dst, NvU64 v
 
 void uvm_hal_hopper_ce_memset_1(uvm_push_t *push, uvm_gpu_address_t dst, NvU8 value, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 852);
     if (hopper_scrub_enable(uvm_push_get_gpu(push), &dst, size)) {
         NvU64 value64 = value;
 
@@ -313,6 +328,7 @@ void uvm_hal_hopper_ce_memset_1(uvm_push_t *push, uvm_gpu_address_t dst, NvU8 va
 
 void uvm_hal_hopper_ce_memset_4(uvm_push_t *push, uvm_gpu_address_t dst, NvU32 value, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 853);
     UVM_ASSERT_MSG(size % 4 == 0, "size: %zd\n", size);
 
     if (hopper_scrub_enable(uvm_push_get_gpu(push), &dst, size)) {
@@ -340,6 +356,7 @@ bool uvm_hal_hopper_ce_memset_is_valid(uvm_push_t *push,
                                        size_t num_elements,
                                        size_t element_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 854);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
     // In HCC, if a memset uses physical addressing for the destination, then
@@ -369,6 +386,7 @@ bool uvm_hal_hopper_ce_memset_is_valid(uvm_push_t *push,
 
 bool uvm_hal_hopper_ce_memcopy_is_valid(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_address_t src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 855);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
     if (uvm_conf_computing_mode_is_hcc(gpu)) {
@@ -403,6 +421,7 @@ bool uvm_hal_hopper_ce_memcopy_is_valid(uvm_push_t *push, uvm_gpu_address_t dst,
 // has been removed.
 static void encrypt_or_decrypt(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_address_t src, NvU32 size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 856);
     NvU32 pipelined_value;
     NvU32 launch_dma_src_dst_type;
     NvU32 launch_dma_plc_mode;
@@ -458,6 +477,7 @@ static void encrypt_or_decrypt(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_
 // GPU initialization time.
 static NvU64 encrypt_iv_address(uvm_push_t *push, uvm_gpu_address_t dst)
 {
+    printk(KERN_ERR "=====================================   %d\n", 857);
     NvU64 iv_address;
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
@@ -484,6 +504,7 @@ void uvm_hal_hopper_ce_encrypt(uvm_push_t *push,
                                NvU32 size,
                                uvm_gpu_address_t auth_tag)
 {
+    printk(KERN_ERR "=====================================   %d\n", 858);
 
     NvU32 auth_tag_address_hi32, auth_tag_address_lo32;
     NvU64 iv_address;
@@ -534,6 +555,7 @@ void uvm_hal_hopper_ce_decrypt(uvm_push_t *push,
                                NvU32 size,
                                uvm_gpu_address_t auth_tag)
 {
+    printk(KERN_ERR "=====================================   %d\n", 859);
 
     NvU32 auth_tag_address_hi32, auth_tag_address_lo32;
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);

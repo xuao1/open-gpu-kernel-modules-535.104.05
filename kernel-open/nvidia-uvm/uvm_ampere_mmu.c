@@ -38,6 +38,7 @@
 
 uvm_mmu_engine_type_t uvm_hal_ampere_mmu_engine_id_to_type(NvU16 mmu_engine_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 94);
     if (mmu_engine_id >= NV_PFAULT_MMU_ENG_ID_HOST0 && mmu_engine_id <= NV_PFAULT_MMU_ENG_ID_HOST31)
         return UVM_MMU_ENGINE_TYPE_HOST;
 
@@ -53,6 +54,7 @@ uvm_mmu_engine_type_t uvm_hal_ampere_mmu_engine_id_to_type(NvU16 mmu_engine_id)
 
 static NvU32 page_table_depth_ampere(NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 95);
     // The common-case is page_size == UVM_PAGE_SIZE_2M, hence the first check
     if (page_size == UVM_PAGE_SIZE_2M)
         return 3;
@@ -64,6 +66,7 @@ static NvU32 page_table_depth_ampere(NvU32 page_size)
 
 static NvU32 page_sizes_ampere(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 96);
     return UVM_PAGE_SIZE_512M | UVM_PAGE_SIZE_2M | UVM_PAGE_SIZE_64K | UVM_PAGE_SIZE_4K;
 }
 
@@ -71,6 +74,7 @@ static uvm_mmu_mode_hal_t ampere_mmu_mode_hal;
 
 uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_ampere(NvU32 big_page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 97);
     static bool initialized = false;
 
     UVM_ASSERT(big_page_size == UVM_PAGE_SIZE_64K || big_page_size == UVM_PAGE_SIZE_128K);
@@ -100,6 +104,7 @@ uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_ampere(NvU32 big_page_size)
 
 NvU16 uvm_hal_ampere_mmu_client_id_to_utlb_id(NvU16 client_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 98);
     switch (client_id) {
         case NV_PFAULT_CLIENT_GPC_RAST:
         case NV_PFAULT_CLIENT_GPC_GCC:

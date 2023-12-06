@@ -34,6 +34,7 @@ MODULE_PARM_DESC(uvm_ats_mode, "Set to 0 to disable ATS (Address Translation Ser
 
 void uvm_ats_init(const UvmPlatformInfo *platform_info)
 {
+    printk(KERN_ERR "=====================================   %d\n", 99);
     g_uvm_global.ats.supported = platform_info->atsSupported;
 
     g_uvm_global.ats.enabled = uvm_ats_mode                     &&
@@ -44,6 +45,7 @@ void uvm_ats_init(const UvmPlatformInfo *platform_info)
 
 void uvm_ats_init_va_space(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 100);
     uvm_init_rwsem(&va_space->ats.lock, UVM_LOCK_ORDER_LEAF);
 
     if (UVM_ATS_IBM_SUPPORTED())
@@ -52,6 +54,7 @@ void uvm_ats_init_va_space(uvm_va_space_t *va_space)
 
 NV_STATUS uvm_ats_add_gpu(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 101);
     if (UVM_ATS_IBM_SUPPORTED()) {
         // uvm_ibm_add_gpu() needs to be called even if ATS is disabled since it
         // sets parent_gpu->npu. Not setting parent_gpu->npu will result in
@@ -69,6 +72,7 @@ NV_STATUS uvm_ats_add_gpu(uvm_parent_gpu_t *parent_gpu)
 
 void uvm_ats_remove_gpu(uvm_parent_gpu_t *parent_gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 102);
     if (UVM_ATS_IBM_SUPPORTED()) {
         // uvm_ibm_remove_gpu() needs to be called even if ATS is disabled since
         // uvm_ibm_add_gpu() is called even in that case and
@@ -85,6 +89,7 @@ void uvm_ats_remove_gpu(uvm_parent_gpu_t *parent_gpu)
 
 NV_STATUS uvm_ats_bind_gpu(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 103);
     NV_STATUS status = NV_OK;
 
     UVM_ASSERT(gpu_va_space);
@@ -105,6 +110,7 @@ NV_STATUS uvm_ats_bind_gpu(uvm_gpu_va_space_t *gpu_va_space)
 
 void uvm_ats_unbind_gpu(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 104);
     UVM_ASSERT(gpu_va_space);
 
     if (!gpu_va_space->ats.enabled)
@@ -118,6 +124,7 @@ void uvm_ats_unbind_gpu(uvm_gpu_va_space_t *gpu_va_space)
 
 NV_STATUS uvm_ats_register_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 105);
     NV_STATUS status = NV_OK;
     uvm_va_space_t *va_space;
     uvm_gpu_id_t gpu_id;
@@ -151,6 +158,7 @@ NV_STATUS uvm_ats_register_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
 
 void uvm_ats_unregister_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 106);
     uvm_gpu_id_t gpu_id;
     uvm_va_space_t *va_space;
 
@@ -174,6 +182,7 @@ void uvm_ats_unregister_gpu_va_space(uvm_gpu_va_space_t *gpu_va_space)
 
 void uvm_ats_invalidate(uvm_va_space_t *va_space, NvU64 start, NvU64 end)
 {
+    printk(KERN_ERR "=====================================   %d\n", 107);
     // We can only reach here from the mmu_notifier callbacks and these callbacks
     // wouldn't have been registered if ATS wasn't enabled.
     UVM_ASSERT(g_uvm_global.ats.enabled);

@@ -35,6 +35,7 @@
 
 static void sign_push(uvm_push_t *push, NvU32 *init_method, NvU8 *auth_tag)
 {
+    printk(KERN_ERR "=====================================   %d\n", 892);
     NvU32 *sign_input_buf = push->begin + UVM_METHOD_SIZE / sizeof(*push->begin);
     NvU32 sign_size = 0;
     NV_STATUS status;
@@ -77,6 +78,7 @@ static void sign_push(uvm_push_t *push, NvU32 *init_method, NvU8 *auth_tag)
 
 void uvm_hal_hopper_sec2_init(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 893);
     // Commonly, we would push a SET_OBJECT HOPPER_SEC2_WORK_LAUNCH_A in the
     // init function. During channel initialization, this method would be sent
     // to ESCHED to notify the expected SEC2 class ID. ESCHED forwards this
@@ -86,6 +88,7 @@ void uvm_hal_hopper_sec2_init(uvm_push_t *push)
 
 void uvm_hal_hopper_sec2_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 894);
     NvU32 sem_lo;
     NvU32 flush_value;
     NvU8 *sign_auth_tag_ptr;
@@ -134,6 +137,7 @@ void uvm_hal_hopper_sec2_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32
 
 void uvm_hal_hopper_sec2_semaphore_timestamp_unsupported(uvm_push_t *push, NvU64 gpu_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 895);
     // TODO: Bug 3804752: [uvm][HCC] Add support for Hopper SEC2 HAL in UVM.
     // Semaphore_timestamp is not implemented in the SEC2 engine yet. We will
     // add support in UVM when they become available.
@@ -143,6 +147,7 @@ void uvm_hal_hopper_sec2_semaphore_timestamp_unsupported(uvm_push_t *push, NvU64
 
 static void execute_with_membar(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 896);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     uvm_membar_t membar = uvm_push_get_and_reset_membar_flag(push);
 
@@ -160,6 +165,7 @@ static void execute_with_membar(uvm_push_t *push)
 
 void uvm_hal_hopper_sec2_decrypt(uvm_push_t *push, NvU64 dst_va, NvU64 src_va, NvU32 size, NvU64 auth_tag_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 897);
     NvU8 *sign_auth_tag_ptr;
     NvU32 sign_auth_tag_addr_lo;
     uvm_gpu_address_t sign_auth_tag_gpu_va;

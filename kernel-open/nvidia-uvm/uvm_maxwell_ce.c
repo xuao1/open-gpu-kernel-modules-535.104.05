@@ -28,6 +28,7 @@
 
 void uvm_hal_maxwell_ce_init(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1008);
     // Notably this sends SET_OBJECT with the CE class on subchannel 0 instead
     // of the recommended by HW subchannel 4 (subchannel 4 is required to
     // match CE usage on GRCE). For the UVM driver using subchannel 0 has the
@@ -38,12 +39,14 @@ void uvm_hal_maxwell_ce_init(uvm_push_t *push)
 
 void uvm_hal_maxwell_ce_offset_out(uvm_push_t *push, NvU64 offset_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1009);
     NV_PUSH_2U(B0B5, OFFSET_OUT_UPPER, HWVALUE(B0B5, OFFSET_OUT_UPPER, UPPER, NvOffset_HI32(offset_out)),
                      OFFSET_OUT_LOWER, HWVALUE(B0B5, OFFSET_OUT_LOWER, VALUE, NvOffset_LO32(offset_out)));
 }
 
 void uvm_hal_maxwell_ce_offset_in_out(uvm_push_t *push, NvU64 offset_in, NvU64 offset_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1010);
     NV_PUSH_4U(B0B5, OFFSET_IN_UPPER,  HWVALUE(B0B5, OFFSET_IN_UPPER,  UPPER, NvOffset_HI32(offset_in)),
                      OFFSET_IN_LOWER,  HWVALUE(B0B5, OFFSET_IN_LOWER,  VALUE, NvOffset_LO32(offset_in)),
                      OFFSET_OUT_UPPER, HWVALUE(B0B5, OFFSET_OUT_UPPER, UPPER, NvOffset_HI32(offset_out)),
@@ -52,6 +55,7 @@ void uvm_hal_maxwell_ce_offset_in_out(uvm_push_t *push, NvU64 offset_in, NvU64 o
 
 void uvm_hal_maxwell_ce_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1011);
     NvU32 flush_value;
     bool use_flush;
 
@@ -73,6 +77,7 @@ void uvm_hal_maxwell_ce_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 
 
 void uvm_hal_maxwell_ce_semaphore_reduction_inc(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1012);
     NvU32 flush_value;
     bool use_flush;
 
@@ -97,6 +102,7 @@ void uvm_hal_maxwell_ce_semaphore_reduction_inc(uvm_push_t *push, NvU64 gpu_va, 
 
 void uvm_hal_maxwell_ce_semaphore_timestamp(uvm_push_t *push, NvU64 gpu_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1013);
     NvU32 flush_value;
     bool use_flush;
 
@@ -118,6 +124,7 @@ void uvm_hal_maxwell_ce_semaphore_timestamp(uvm_push_t *push, NvU64 gpu_va)
 
 static void maxwell_membar_after_transfer(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1014);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
     if (uvm_push_get_and_reset_flag(push, UVM_PUSH_FLAG_NEXT_MEMBAR_NONE))
@@ -136,6 +143,7 @@ static void maxwell_membar_after_transfer(uvm_push_t *push)
 
 static NvU32 ce_aperture(uvm_aperture_t aperture)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1015);
     BUILD_BUG_ON(HWCONST(B0B5, SET_SRC_PHYS_MODE, TARGET, LOCAL_FB) !=
                  HWCONST(B0B5, SET_DST_PHYS_MODE, TARGET, LOCAL_FB));
     BUILD_BUG_ON(HWCONST(B0B5, SET_SRC_PHYS_MODE, TARGET, COHERENT_SYSMEM) !=
@@ -153,6 +161,7 @@ static NvU32 ce_aperture(uvm_aperture_t aperture)
 // flags
 NvU32 uvm_hal_maxwell_ce_phys_mode(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_address_t src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1016);
     NvU32 launch_dma_src_dst_type = 0;
 
     if (src.is_virtual)
@@ -182,17 +191,20 @@ NvU32 uvm_hal_maxwell_ce_phys_mode(uvm_push_t *push, uvm_gpu_address_t dst, uvm_
 // Noop, since DISABLE_PLC doesn't exist in Maxwell.
 NvU32 uvm_hal_maxwell_ce_plc_mode(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1017);
     return 0;
 }
 
 // Noop, since COPY_TYPE doesn't exist in Maxwell.
 NvU32 uvm_hal_maxwell_ce_memcopy_copy_type(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_address_t src)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1018);
     return 0;
 }
 
 void uvm_hal_maxwell_ce_memcopy(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu_address_t src, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1019);
     // If >4GB copies ever become an important use case, this function should
     // use multi-line transfers so we don't have to iterate (bug 1766588).
     static const size_t max_single_copy_size = 0xFFFFFFFF;
@@ -248,6 +260,7 @@ void uvm_hal_maxwell_ce_memcopy(uvm_push_t *push, uvm_gpu_address_t dst, uvm_gpu
 
 void uvm_hal_maxwell_ce_memcopy_v_to_v(uvm_push_t *push, NvU64 dst_va, NvU64 src_va, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1020);
     uvm_push_get_gpu(push)->parent->ce_hal->memcopy(push,
                                                     uvm_gpu_address_virtual(dst_va),
                                                     uvm_gpu_address_virtual(src_va),
@@ -257,6 +270,7 @@ void uvm_hal_maxwell_ce_memcopy_v_to_v(uvm_push_t *push, NvU64 dst_va, NvU64 src
 // Push SET_DST_PHYS mode if needed and return LAUNCH_DMA_DST_TYPE flags
 static NvU32 maxwell_memset_push_phys_mode(uvm_push_t *push, uvm_gpu_address_t dst)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1021);
     if (dst.is_virtual)
         return HWCONST(B0B5, LAUNCH_DMA, DST_TYPE, VIRTUAL);
 
@@ -266,6 +280,7 @@ static NvU32 maxwell_memset_push_phys_mode(uvm_push_t *push, uvm_gpu_address_t d
 
 static void memset_common(uvm_push_t *push, uvm_gpu_address_t dst, size_t size, size_t memset_element_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1022);
     // If >4GB memsets ever become an important use case, this function should
     // use multi-line transfers so we don't have to iterate (bug 1766588).
     static const size_t max_single_memset_size = 0xFFFFFFFF;
@@ -315,6 +330,7 @@ static void memset_common(uvm_push_t *push, uvm_gpu_address_t dst, size_t size, 
 
 void uvm_hal_maxwell_ce_memset_1(uvm_push_t *push, uvm_gpu_address_t dst, NvU8 value, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1023);
     NV_PUSH_2U(B0B5, SET_REMAP_CONST_B,    (NvU32)value,
                      SET_REMAP_COMPONENTS,
        HWCONST(B0B5, SET_REMAP_COMPONENTS, DST_X,               CONST_B) |
@@ -326,6 +342,7 @@ void uvm_hal_maxwell_ce_memset_1(uvm_push_t *push, uvm_gpu_address_t dst, NvU8 v
 
 void uvm_hal_maxwell_ce_memset_4(uvm_push_t *push, uvm_gpu_address_t dst, NvU32 value, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1024);
     UVM_ASSERT_MSG(size % 4 == 0, "size: %zd\n", size);
 
     size /= 4;
@@ -341,6 +358,7 @@ void uvm_hal_maxwell_ce_memset_4(uvm_push_t *push, uvm_gpu_address_t dst, NvU32 
 
 void uvm_hal_maxwell_ce_memset_8(uvm_push_t *push, uvm_gpu_address_t dst, NvU64 value, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1025);
     UVM_ASSERT_MSG(size % 8 == 0, "size: %zd\n", size);
 
     size /= 8;
@@ -358,6 +376,7 @@ void uvm_hal_maxwell_ce_memset_8(uvm_push_t *push, uvm_gpu_address_t dst, NvU64 
 
 void uvm_hal_maxwell_ce_memset_v_4(uvm_push_t *push, NvU64 dst_va, NvU32 value, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1026);
     uvm_push_get_gpu(push)->parent->ce_hal->memset_4(push, uvm_gpu_address_virtual(dst_va), value, size);
 }
 
@@ -367,6 +386,7 @@ void uvm_hal_maxwell_ce_encrypt_unsupported(uvm_push_t *push,
                                             NvU32 size,
                                             uvm_gpu_address_t auth_tag)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1027);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
     UVM_ASSERT_MSG(false, "CE encrypt is not supported on GPU: %s.\n", uvm_gpu_name(gpu));
@@ -378,6 +398,7 @@ void uvm_hal_maxwell_ce_decrypt_unsupported(uvm_push_t *push,
                                             NvU32 size,
                                             uvm_gpu_address_t auth_tag)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1028);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
 
     UVM_ASSERT_MSG(false, "CE decrypt is not supported on GPU: %s.\n", uvm_gpu_name(gpu));

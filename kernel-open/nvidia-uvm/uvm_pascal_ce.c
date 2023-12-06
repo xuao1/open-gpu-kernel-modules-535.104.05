@@ -27,12 +27,14 @@
 
 void uvm_hal_pascal_ce_offset_out(uvm_push_t *push, NvU64 offset_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1425);
     NV_PUSH_2U(C0B5, OFFSET_OUT_UPPER, HWVALUE(C0B5, OFFSET_OUT_UPPER, UPPER, NvOffset_HI32(offset_out)),
                      OFFSET_OUT_LOWER, HWVALUE(C0B5, OFFSET_OUT_LOWER, VALUE, NvOffset_LO32(offset_out)));
 }
 
 void uvm_hal_pascal_ce_offset_in_out(uvm_push_t *push, NvU64 offset_in, NvU64 offset_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1426);
     NV_PUSH_4U(C0B5, OFFSET_IN_UPPER,  HWVALUE(C0B5, OFFSET_IN_UPPER,  UPPER, NvOffset_HI32(offset_in)),
                      OFFSET_IN_LOWER,  HWVALUE(C0B5, OFFSET_IN_LOWER,  VALUE, NvOffset_LO32(offset_in)),
                      OFFSET_OUT_UPPER, HWVALUE(C0B5, OFFSET_OUT_UPPER, UPPER, NvOffset_HI32(offset_out)),
@@ -41,6 +43,7 @@ void uvm_hal_pascal_ce_offset_in_out(uvm_push_t *push, NvU64 offset_in, NvU64 of
 
 void uvm_hal_pascal_ce_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1427);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     NvU32 flush_value;
     NvU32 launch_dma_plc_mode;
@@ -67,6 +70,7 @@ void uvm_hal_pascal_ce_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 p
 
 void uvm_hal_pascal_ce_semaphore_reduction_inc(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1428);
     uvm_gpu_t *gpu = uvm_push_get_gpu(push);
     NvU32 flush_value;
     NvU32 launch_dma_plc_mode;
@@ -96,6 +100,7 @@ void uvm_hal_pascal_ce_semaphore_reduction_inc(uvm_push_t *push, NvU64 gpu_va, N
 
 void uvm_hal_pascal_ce_semaphore_timestamp(uvm_push_t *push, NvU64 gpu_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1429);
     uvm_gpu_t *gpu;
     NvU32 flush_value;
     NvU32 launch_dma_plc_mode;

@@ -45,6 +45,7 @@ static bool g_ops_registered = false;
 
 static NV_STATUS uvm_register_callbacks(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 381);
     NV_STATUS status = NV_OK;
 
     g_exported_uvm_ops.suspend = uvm_suspend_entry;
@@ -65,6 +66,7 @@ static NV_STATUS uvm_register_callbacks(void)
 // Calling this function more than once is harmless:
 static void uvm_unregister_callbacks(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 382);
     if (g_ops_registered) {
         uvm_rm_locked_call_void(nvUvmInterfaceDeRegisterUvmOps());
         g_ops_registered = false;
@@ -73,6 +75,7 @@ static void uvm_unregister_callbacks(void)
 
 NV_STATUS uvm_global_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 383);
     NV_STATUS status;
     UvmPlatformInfo platform_info;
 
@@ -205,6 +208,7 @@ error:
 
 void uvm_global_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 384);
     uvm_assert_mutex_unlocked(&g_uvm_global.global_lock);
 
     // Guarantee completion of any release callbacks scheduled after the flush
@@ -243,6 +247,7 @@ void uvm_global_exit(void)
 // be completed without processing.
 static void uvm_gpu_set_isr_suspended(uvm_gpu_t *gpu, bool is_suspended)
 {
+    printk(KERN_ERR "=====================================   %d\n", 385);
     uvm_spin_lock_irqsave(&gpu->parent->isr.interrupts_lock);
 
     gpu->parent->isr.is_suspended = is_suspended;
@@ -252,6 +257,7 @@ static void uvm_gpu_set_isr_suspended(uvm_gpu_t *gpu, bool is_suspended)
 
 static NV_STATUS uvm_suspend(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 386);
     uvm_va_space_t *va_space = NULL;
     uvm_global_gpu_id_t gpu_id;
     uvm_gpu_t *gpu;
@@ -335,11 +341,13 @@ static NV_STATUS uvm_suspend(void)
 
 NV_STATUS uvm_suspend_entry(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 387);
     UVM_ENTRY_RET(uvm_suspend());
 }
 
 static NV_STATUS uvm_resume(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 388);
     uvm_va_space_t *va_space = NULL;
     uvm_global_gpu_id_t gpu_id;
     uvm_gpu_t *gpu;
@@ -390,16 +398,19 @@ static NV_STATUS uvm_resume(void)
 
 NV_STATUS uvm_resume_entry(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 389);
     UVM_ENTRY_RET(uvm_resume());
 }
 
 bool uvm_global_is_suspended(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 390);
     return g_uvm_global.pm.is_suspended;
 }
 
 void uvm_global_set_fatal_error_impl(NV_STATUS error)
 {
+    printk(KERN_ERR "=====================================   %d\n", 391);
     NV_STATUS previous_error;
 
     UVM_ASSERT(error != NV_OK);
@@ -417,6 +428,7 @@ void uvm_global_set_fatal_error_impl(NV_STATUS error)
 
 NV_STATUS uvm_global_reset_fatal_error(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 392);
     if (!uvm_enable_builtin_tests) {
         UVM_ASSERT_MSG(0, "Resetting global fatal error without tests being enabled\n");
         return NV_ERR_INVALID_STATE;
@@ -427,6 +439,7 @@ NV_STATUS uvm_global_reset_fatal_error(void)
 
 void uvm_global_mask_retain(const uvm_global_processor_mask_t *mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 393);
     uvm_gpu_t *gpu;
     for_each_global_gpu_in_mask(gpu, mask)
         uvm_gpu_retain(gpu);
@@ -434,6 +447,7 @@ void uvm_global_mask_retain(const uvm_global_processor_mask_t *mask)
 
 void uvm_global_mask_release(const uvm_global_processor_mask_t *mask)
 {
+    printk(KERN_ERR "=====================================   %d\n", 394);
     uvm_global_gpu_id_t gpu_id;
 
     if (uvm_global_processor_mask_empty(mask))
@@ -451,6 +465,7 @@ void uvm_global_mask_release(const uvm_global_processor_mask_t *mask)
 
 NV_STATUS uvm_global_mask_check_ecc_error(uvm_global_processor_mask_t *gpus)
 {
+    printk(KERN_ERR "=====================================   %d\n", 395);
     uvm_gpu_t *gpu;
 
     for_each_global_gpu_in_mask(gpu, gpus) {

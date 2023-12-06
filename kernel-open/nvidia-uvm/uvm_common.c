@@ -36,6 +36,7 @@ MODULE_PARM_DESC(uvm_debug_prints, "Enable uvm debug prints.");
 
 bool uvm_debug_prints_enabled(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 331);
     return uvm_debug_prints != 0;
 }
 
@@ -80,11 +81,13 @@ bool uvm_release_asserts_set_global_error_for_tests __read_mostly = false;
 //
 NV_STATUS errno_to_nv_status(int errnoCode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 332);
     if (errnoCode < 0)
         errnoCode = -errnoCode;
 
     switch (errnoCode)
     {
+    printk(KERN_ERR "=====================================   %d\n", 333);
         case 0:
             return NV_OK;
 
@@ -150,6 +153,7 @@ NV_STATUS errno_to_nv_status(int errnoCode)
 // Returns POSITIVE errno
 int nv_status_to_errno(NV_STATUS status)
 {
+    printk(KERN_ERR "=====================================   %d\n", 334);
     switch (status) {
         case NV_OK:
             return 0;
@@ -225,11 +229,13 @@ int nv_status_to_errno(NV_STATUS status)
 //
 unsigned uvm_get_stale_process_id(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 335);
     return (unsigned)task_tgid_vnr(current);
 }
 
 unsigned uvm_get_stale_thread_id(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 336);
     return (unsigned)task_pid_vnr(current);
 }
 
@@ -241,17 +247,20 @@ unsigned uvm_get_stale_thread_id(void)
 //
 NvBool uvm_user_id_security_check(uid_t euidTarget)
 {
+    printk(KERN_ERR "=====================================   %d\n", 337);
     return (NV_CURRENT_EUID() == euidTarget) ||
            (UVM_ROOT_UID == euidTarget);
 }
 
 void on_uvm_test_fail(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 338);
     (void)NULL;
 }
 
 void on_uvm_assert(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 339);
     (void)NULL;
 #ifdef __COVERITY__
     __coverity_panic__()
@@ -260,6 +269,7 @@ void on_uvm_assert(void)
 
 NV_STATUS uvm_spin_loop(uvm_spin_loop_t *spin)
 {
+    printk(KERN_ERR "=====================================   %d\n", 340);
     NvU64 curr = NV_GETTIME();
 
     // This schedule() is required for functionality, not just system
@@ -318,6 +328,7 @@ NV_STATUS uvm_spin_loop(uvm_spin_loop_t *spin)
 //
 static char uvm_digit_to_hex(unsigned value)
 {
+    printk(KERN_ERR "=====================================   %d\n", 341);
     if (value >= 10)
         return value - 10 + 'a';
     else
@@ -326,6 +337,7 @@ static char uvm_digit_to_hex(unsigned value)
 
 int format_uuid_to_buffer(char *buffer, unsigned bufferLength, const NvProcessorUuid *pUuidStruct)
 {
+    printk(KERN_ERR "=====================================   %d\n", 342);
     char *str = buffer+8;
     unsigned i;
     unsigned dashMask = 1 << 4 | 1 << 6 | 1 << 8 | 1 << 10;

@@ -376,21 +376,25 @@ static unsigned g_uvm_perf_thrashing_max_resets;
 // Helpers to get/set the time stamp
 static NvU64 page_thrashing_get_time_stamp(page_thrashing_info_t *entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1536);
     return entry->last_time_stamp << (64 - PAGE_THRASHING_LAST_TIME_STAMP_BITS);
 }
 
 static void page_thrashing_set_time_stamp(page_thrashing_info_t *entry, NvU64 time_stamp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1537);
     entry->last_time_stamp = time_stamp >> (64 - PAGE_THRASHING_LAST_TIME_STAMP_BITS);
 }
 
 static NvU64 page_thrashing_get_throttling_end_time_stamp(page_thrashing_info_t *entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1538);
     return entry->throttling_end_time_stamp << (64 - PAGE_THRASHING_THROTTLING_END_TIME_STAMP_BITS);
 }
 
 static void page_thrashing_set_throttling_end_time_stamp(page_thrashing_info_t *entry, NvU64 time_stamp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1539);
     entry->throttling_end_time_stamp = time_stamp >> (64 - PAGE_THRASHING_THROTTLING_END_TIME_STAMP_BITS);
 }
 
@@ -413,6 +417,7 @@ static uvm_perf_module_event_callback_desc_t g_callbacks_thrashing[] = {
 
 static int nv_procfs_read_thrashing_stats(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1540);
     processor_thrashing_stats_t *processor_stats = (processor_thrashing_stats_t *)s->private;
 
     UVM_ASSERT(processor_stats);
@@ -432,6 +437,7 @@ static int nv_procfs_read_thrashing_stats(struct seq_file *s, void *v)
 
 static int nv_procfs_read_thrashing_stats_entry(struct seq_file *s, void *v)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1541);
     UVM_ENTRY_RET(nv_procfs_read_thrashing_stats(s, v));
 }
 
@@ -443,6 +449,7 @@ UVM_DEFINE_SINGLE_PROCFS_FILE(thrashing_stats_entry);
 //
 static NV_STATUS cpu_thrashing_stats_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1542);
     struct proc_dir_entry *cpu_base_dir_entry = uvm_procfs_get_cpu_base_dir();
 
     if (uvm_procfs_is_debug_enabled()) {
@@ -460,6 +467,7 @@ static NV_STATUS cpu_thrashing_stats_init(void)
 
 static void cpu_thrashing_stats_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1543);
     if (g_cpu_thrashing_stats.procfs_file) {
         UVM_ASSERT(uvm_procfs_is_debug_enabled());
         proc_remove(g_cpu_thrashing_stats.procfs_file);
@@ -472,11 +480,13 @@ static void cpu_thrashing_stats_exit(void)
 // No lock may be held. Therefore, the stats must be updated using atomics
 static processor_thrashing_stats_t *gpu_thrashing_stats_get_or_null(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1544);
     return uvm_perf_module_type_data(gpu->perf_modules_data, UVM_PERF_MODULE_TYPE_THRASHING);
 }
 
 static processor_thrashing_stats_t *thrashing_stats_get_or_null(uvm_va_space_t *va_space, uvm_processor_id_t id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1545);
     if (UVM_ID_IS_CPU(id)) {
         if (g_cpu_thrashing_stats.procfs_file)
             return &g_cpu_thrashing_stats;
@@ -492,6 +502,7 @@ static processor_thrashing_stats_t *thrashing_stats_get_or_null(uvm_va_space_t *
 // Global lock needs to be held
 static NV_STATUS gpu_thrashing_stats_create(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1546);
     processor_thrashing_stats_t *gpu_thrashing;
 
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
@@ -518,6 +529,7 @@ static NV_STATUS gpu_thrashing_stats_create(uvm_gpu_t *gpu)
 
 static void gpu_thrashing_stats_destroy(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1547);
     processor_thrashing_stats_t *gpu_thrashing = gpu_thrashing_stats_get_or_null(gpu);
 
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
@@ -539,6 +551,7 @@ static void gpu_thrashing_stats_destroy(uvm_gpu_t *gpu)
 // that.
 static va_space_thrashing_info_t *va_space_thrashing_info_get_or_null(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1548);
     return uvm_perf_module_type_data(va_space->perf_modules_data, UVM_PERF_MODULE_TYPE_THRASHING);
 }
 
@@ -550,6 +563,7 @@ static va_space_thrashing_info_t *va_space_thrashing_info_get_or_null(uvm_va_spa
 // that.
 static va_space_thrashing_info_t *va_space_thrashing_info_get(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1549);
     va_space_thrashing_info_t *va_space_thrashing = va_space_thrashing_info_get_or_null(va_space);
     UVM_ASSERT(va_space_thrashing);
 
@@ -558,6 +572,7 @@ static va_space_thrashing_info_t *va_space_thrashing_info_get(uvm_va_space_t *va
 
 static void va_space_thrashing_info_init_params(va_space_thrashing_info_t *va_space_thrashing)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1550);
     UVM_ASSERT(!va_space_thrashing->params.test_overrides);
 
     va_space_thrashing->params.enable = g_uvm_perf_thrashing_enable;
@@ -594,6 +609,7 @@ static void va_space_thrashing_info_init_params(va_space_thrashing_info_t *va_sp
 // VA space lock needs to be held in write mode
 static va_space_thrashing_info_t *va_space_thrashing_info_create(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1551);
     va_space_thrashing_info_t *va_space_thrashing;
     uvm_assert_rwsem_locked_write(&va_space->lock);
 
@@ -616,6 +632,7 @@ static va_space_thrashing_info_t *va_space_thrashing_info_create(uvm_va_space_t 
 // VA space lock needs to be in write mode
 static void va_space_thrashing_info_destroy(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1552);
     va_space_thrashing_info_t *va_space_thrashing = va_space_thrashing_info_get_or_null(va_space);
     uvm_assert_rwsem_locked_write(&va_space->lock);
 
@@ -628,6 +645,7 @@ static void va_space_thrashing_info_destroy(uvm_va_space_t *va_space)
 // Get the thrashing detection struct for the given block
 static block_thrashing_info_t *thrashing_info_get(uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1553);
     uvm_assert_mutex_locked(&va_block->lock);
     return uvm_perf_module_type_data(va_block->perf_modules_data, UVM_PERF_MODULE_TYPE_THRASHING);
 }
@@ -636,6 +654,7 @@ static block_thrashing_info_t *thrashing_info_get(uvm_va_block_t *va_block)
 // does not exist
 static block_thrashing_info_t *thrashing_info_get_create(uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1554);
     block_thrashing_info_t *block_thrashing = thrashing_info_get(va_block);
 
     BUILD_BUG_ON((1 << 8 * sizeof(block_thrashing->num_thrashing_pages)) < PAGES_PER_UVM_VA_BLOCK);
@@ -660,6 +679,7 @@ static void thrashing_reset_pages_in_region(uvm_va_block_t *va_block, NvU64 addr
 
 void uvm_perf_thrashing_info_destroy(uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1555);
     block_thrashing_info_t *block_thrashing = thrashing_info_get(va_block);
 
     if (block_thrashing) {
@@ -674,6 +694,7 @@ void uvm_perf_thrashing_info_destroy(uvm_va_block_t *va_block)
 
 void thrashing_block_destroy_cb(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1556);
     uvm_va_block_t *va_block;
 
     UVM_ASSERT(g_uvm_perf_thrashing_enable);
@@ -697,6 +718,7 @@ void thrashing_block_destroy_cb(uvm_perf_event_t event_id, uvm_perf_event_data_t
 
 void thrashing_block_munmap_cb(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1557);
     uvm_va_block_t *va_block = event_data->block_munmap.block;
     uvm_va_block_region_t region = event_data->block_munmap.region;
 
@@ -715,6 +737,7 @@ static bool thrashing_state_checks(uvm_va_block_t *va_block,
                                    page_thrashing_info_t *page_thrashing,
                                    uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1558);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     va_space_thrashing_info_t *va_space_thrashing = va_space_thrashing_info_get(va_space);
 
@@ -767,6 +790,7 @@ static void thrashing_throttle_update(va_space_thrashing_info_t *va_space_thrash
                                       uvm_processor_id_t processor,
                                       NvU64 time_stamp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1559);
     NvU64 current_end_time_stamp = page_thrashing_get_throttling_end_time_stamp(page_thrashing);
 
     uvm_assert_mutex_locked(&va_block->lock);
@@ -800,6 +824,7 @@ static void thrashing_throttle_processor(uvm_va_block_t *va_block,
                                          uvm_page_index_t page_index,
                                          uvm_processor_id_t processor)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1560);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     NvU64 address = uvm_va_block_cpu_page_address(va_block, page_index);
 
@@ -836,6 +861,7 @@ static void thrashing_throttle_end_processor(uvm_va_block_t *va_block,
                                              uvm_page_index_t page_index,
                                              uvm_processor_id_t processor)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1561);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     NvU64 address = uvm_va_block_cpu_page_address(va_block, page_index);
 
@@ -859,6 +885,7 @@ static void thrashing_throttling_reset_page(uvm_va_block_t *va_block,
                                             page_thrashing_info_t *page_thrashing,
                                             uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1562);
     uvm_processor_id_t processor_id;
 
     for_each_id_in_mask(processor_id, &page_thrashing->throttled_processors) {
@@ -876,6 +903,7 @@ static void thrashing_throttling_reset_page(uvm_va_block_t *va_block,
 // page is not pinned.
 static pinned_page_t *find_pinned_page(block_thrashing_info_t *block_thrashing, uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1563);
     pinned_page_t *pinned_page;
 
     list_for_each_entry(pinned_page, &block_thrashing->pinned_pages.list, va_block_list_entry) {
@@ -900,6 +928,7 @@ static NV_STATUS thrashing_pin_page(va_space_thrashing_info_t *va_space_thrashin
                                     uvm_processor_id_t residency,
                                     uvm_processor_id_t requester)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1564);
     uvm_processor_mask_t current_residency;
 
     uvm_assert_mutex_locked(&va_block->lock);
@@ -968,6 +997,7 @@ static void thrashing_unpin_page(va_space_thrashing_info_t *va_space_thrashing,
                                  page_thrashing_info_t *page_thrashing,
                                  uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1565);
     uvm_assert_mutex_locked(&va_block->lock);
     UVM_ASSERT(page_thrashing->pinned);
 
@@ -1017,6 +1047,7 @@ static void thrashing_detected(uvm_va_block_t *va_block,
                                uvm_page_index_t page_index,
                                uvm_processor_id_t processor_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1566);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     NvU64 address = uvm_va_block_cpu_page_address(va_block, page_index);
 
@@ -1038,6 +1069,7 @@ static void thrashing_reset_page(va_space_thrashing_info_t *va_space_thrashing,
                                  block_thrashing_info_t *block_thrashing,
                                  uvm_page_index_t page_index)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1567);
     page_thrashing_info_t *page_thrashing = &block_thrashing->pages[page_index];
     uvm_assert_mutex_locked(&va_block->lock);
 
@@ -1067,6 +1099,7 @@ static void thrashing_reset_page(va_space_thrashing_info_t *va_space_thrashing,
 // described by address and bytes
 static void thrashing_reset_pages_in_region(uvm_va_block_t *va_block, NvU64 address, NvU64 bytes)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1568);
     uvm_page_index_t page_index;
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     va_space_thrashing_info_t *va_space_thrashing = va_space_thrashing_info_get(va_space);
@@ -1091,6 +1124,7 @@ static NV_STATUS unmap_remote_pinned_pages(uvm_va_block_t *va_block,
                                            uvm_va_block_region_t region,
                                            const uvm_processor_mask_t *unmap_processors)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1569);
     NV_STATUS status = NV_OK;
     NV_STATUS tracker_status;
     uvm_tracker_t local_tracker = UVM_TRACKER_INIT();
@@ -1139,6 +1173,7 @@ NV_STATUS uvm_perf_thrashing_unmap_remote_pinned_pages_all(uvm_va_block_t *va_bl
                                                            uvm_va_block_context_t *va_block_context,
                                                            uvm_va_block_region_t region)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1570);
     block_thrashing_info_t *block_thrashing;
     uvm_processor_mask_t unmap_processors;
     const uvm_va_policy_t *policy = uvm_va_policy_get_region(va_block, region);
@@ -1167,6 +1202,7 @@ static bool migrating_wrong_pages(uvm_va_block_t *va_block,
                                   uvm_processor_id_t proc_id,
                                   uvm_make_resident_cause_t cause)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1571);
     uvm_page_index_t page_index;
     block_thrashing_info_t *block_thrashing = NULL;
     uvm_va_block_region_t region = uvm_va_block_region_from_start_size(va_block, address, bytes);
@@ -1192,6 +1228,7 @@ static bool is_migration_pinned_pages_update(uvm_va_block_t *va_block,
                                              NvU64 address,
                                              NvU64 bytes)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1572);
     const block_thrashing_info_t *block_thrashing = NULL;
     uvm_va_block_region_t region = uvm_va_block_region_from_start_size(va_block, address, bytes);
     bool ret;
@@ -1221,6 +1258,7 @@ static bool is_migration_pinned_pages_update(uvm_va_block_t *va_block,
 // affected pages are thrashing or not.
 void thrashing_event_cb(uvm_perf_event_t event_id, uvm_perf_event_data_t *event_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1573);
     va_space_thrashing_info_t *va_space_thrashing;
     block_thrashing_info_t *block_thrashing = NULL;
     uvm_va_block_t *va_block;
@@ -1376,6 +1414,7 @@ static bool thrashing_processors_can_access(uvm_va_space_t *va_space,
                                             page_thrashing_info_t *page_thrashing,
                                             uvm_processor_id_t to)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1574);
     if (UVM_ID_IS_INVALID(to))
         return false;
 
@@ -1387,6 +1426,7 @@ static bool thrashing_processors_have_fast_access_to(uvm_va_space_t *va_space,
                                                      page_thrashing_info_t *page_thrashing,
                                                      uvm_processor_id_t to)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1575);
     uvm_processor_mask_t fast_to;
 
     if (UVM_ID_IS_INVALID(to))
@@ -1406,6 +1446,7 @@ static void thrashing_processors_common_locations(uvm_va_space_t *va_space,
                                                   page_thrashing_info_t *page_thrashing,
                                                   uvm_processor_mask_t *common_locations)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1576);
     bool is_first = true;
     uvm_processor_id_t id;
 
@@ -1427,6 +1468,7 @@ static void thrashing_processors_common_locations(uvm_va_space_t *va_space,
 static bool preferred_location_is_thrashing(uvm_processor_id_t preferred_location,
                                             page_thrashing_info_t *page_thrashing)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1577);
     if (UVM_ID_IS_INVALID(preferred_location))
         return false;
 
@@ -1439,6 +1481,7 @@ static uvm_perf_thrashing_hint_t get_hint_for_migration_thrashing(va_space_thras
                                                                   page_thrashing_info_t *page_thrashing,
                                                                   uvm_processor_id_t requester)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1578);
     uvm_perf_thrashing_hint_t hint;
     uvm_processor_id_t closest_resident_id;
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
@@ -1597,6 +1640,7 @@ uvm_perf_thrashing_hint_t uvm_perf_thrashing_get_hint(uvm_va_block_t *va_block,
                                                       NvU64 address,
                                                       uvm_processor_id_t requester)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1579);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     va_space_thrashing_info_t *va_space_thrashing = va_space_thrashing_info_get(va_space);
     block_thrashing_info_t *block_thrashing = NULL;
@@ -1759,6 +1803,7 @@ done:
 
 uvm_processor_mask_t *uvm_perf_thrashing_get_thrashing_processors(uvm_va_block_t *va_block, NvU64 address)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1580);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     va_space_thrashing_info_t *va_space_thrashing = va_space_thrashing_info_get(va_space);
     block_thrashing_info_t *block_thrashing = NULL;
@@ -1780,6 +1825,7 @@ uvm_processor_mask_t *uvm_perf_thrashing_get_thrashing_processors(uvm_va_block_t
 
 const uvm_page_mask_t *uvm_perf_thrashing_get_thrashing_pages(uvm_va_block_t *va_block)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1581);
     uvm_va_space_t *va_space = uvm_va_block_get_va_space(va_block);
     va_space_thrashing_info_t *va_space_thrashing = va_space_thrashing_info_get(va_space);
     block_thrashing_info_t *block_thrashing = NULL;
@@ -1800,6 +1846,7 @@ const uvm_page_mask_t *uvm_perf_thrashing_get_thrashing_pages(uvm_va_block_t *va
 #define TIMER_GRANULARITY_NS 20000ULL
 static void thrashing_unpin_pages(struct work_struct *work)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1582);
     struct delayed_work *dwork = to_delayed_work(work);
     va_space_thrashing_info_t *va_space_thrashing = container_of(dwork, va_space_thrashing_info_t, pinned_pages.dwork);
     uvm_va_space_t *va_space = va_space_thrashing->va_space;
@@ -1885,11 +1932,13 @@ exit_no_list_lock:
 
 static void thrashing_unpin_pages_entry(struct work_struct *work)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1583);
     UVM_ENTRY_VOID(thrashing_unpin_pages(work));
 }
 
 NV_STATUS uvm_perf_thrashing_load(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1584);
     va_space_thrashing_info_t *va_space_thrashing;
     NV_STATUS status;
 
@@ -1910,6 +1959,7 @@ NV_STATUS uvm_perf_thrashing_load(uvm_va_space_t *va_space)
 
 void uvm_perf_thrashing_stop(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1585);
     va_space_thrashing_info_t *va_space_thrashing;
 
     uvm_va_space_down_write(va_space);
@@ -1931,6 +1981,7 @@ void uvm_perf_thrashing_stop(uvm_va_space_t *va_space)
 
 void uvm_perf_thrashing_unload(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1586);
     va_space_thrashing_info_t *va_space_thrashing = va_space_thrashing_info_get_or_null(va_space);
 
     uvm_perf_module_unload(&g_module_thrashing, va_space);
@@ -1946,6 +1997,7 @@ void uvm_perf_thrashing_unload(uvm_va_space_t *va_space)
 
 NV_STATUS uvm_perf_thrashing_register_gpu(uvm_va_space_t *va_space, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1587);
     // If a simulated GPU is registered, re-initialize thrashing parameters in
     // case they need to be adjusted.
     bool params_need_readjusting = g_uvm_global.num_simulated_devices > 0;
@@ -1972,6 +2024,7 @@ NV_STATUS uvm_perf_thrashing_register_gpu(uvm_va_space_t *va_space, uvm_gpu_t *g
 
 NV_STATUS uvm_perf_thrashing_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1588);
     NV_STATUS status;
 
     INIT_THRASHING_PARAMETER_TOGGLE(uvm_perf_thrashing_enable, UVM_PERF_THRASHING_ENABLE_DEFAULT);
@@ -2031,6 +2084,7 @@ error:
 
 void uvm_perf_thrashing_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1589);
     cpu_thrashing_stats_exit();
 
     kmem_cache_destroy_safe(&g_va_block_thrashing_info_cache);
@@ -2039,6 +2093,7 @@ void uvm_perf_thrashing_exit(void)
 
 NV_STATUS uvm_perf_thrashing_add_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1590);
     if (!uvm_procfs_is_debug_enabled())
         return NV_OK;
 
@@ -2047,11 +2102,13 @@ NV_STATUS uvm_perf_thrashing_add_gpu(uvm_gpu_t *gpu)
 
 void uvm_perf_thrashing_remove_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1591);
     gpu_thrashing_stats_destroy(gpu);
 }
 
 NV_STATUS uvm_test_get_page_thrashing_policy(UVM_TEST_GET_PAGE_THRASHING_POLICY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1592);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     va_space_thrashing_info_t *va_space_thrashing;
 
@@ -2076,6 +2133,7 @@ NV_STATUS uvm_test_get_page_thrashing_policy(UVM_TEST_GET_PAGE_THRASHING_POLICY_
 
 NV_STATUS uvm_test_set_page_thrashing_policy(UVM_TEST_SET_PAGE_THRASHING_POLICY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1593);
     NV_STATUS status = NV_OK;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     va_space_thrashing_info_t *va_space_thrashing;

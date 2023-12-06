@@ -31,11 +31,13 @@
 
 void uvm_hal_maxwell_host_wait_for_idle(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1042);
     NV_PUSH_1U(A16F, WFI, 0);
 }
 
 void uvm_hal_maxwell_host_membar_sys(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1043);
     NV_PUSH_1U(A16F, MEM_OP_B,
        HWCONST(A16F, MEM_OP_B, OPERATION, SYSMEMBAR_FLUSH));
 }
@@ -45,6 +47,7 @@ void uvm_hal_maxwell_host_tlb_invalidate_all_a16f(uvm_push_t *push,
                                                   NvU32 depth,
                                                   uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1044);
     NvU32 target;
 
     UVM_ASSERT_MSG(pdb.aperture == UVM_APERTURE_VID || pdb.aperture == UVM_APERTURE_SYS, "aperture: %u", pdb.aperture);
@@ -74,6 +77,7 @@ void uvm_hal_maxwell_host_tlb_invalidate_all_b06f(uvm_push_t *push,
                                                   NvU32 depth,
                                                   uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1045);
     NvU32 target;
     NvU32 pdb_lo;
     NvU32 pdb_hi;
@@ -111,6 +115,7 @@ void uvm_hal_maxwell_host_tlb_invalidate_va(uvm_push_t *push,
                                             NvU32 page_size,
                                             uvm_membar_t membar)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1046);
     // No per VA invalidate on Maxwell, redirect to invalidate all.
     uvm_push_get_gpu(push)->parent->host_hal->tlb_invalidate_all(push, pdb, depth, membar);
 }
@@ -119,6 +124,7 @@ void uvm_hal_maxwell_host_tlb_invalidate_test(uvm_push_t *push,
                                               uvm_gpu_phys_address_t pdb,
                                               UVM_TEST_INVALIDATE_TLB_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1047);
     NvU32 target_pdb = 0;
     NvU32 invalidate_gpc_value;
 
@@ -147,6 +153,7 @@ void uvm_hal_maxwell_host_tlb_invalidate_test(uvm_push_t *push,
 
 void uvm_hal_maxwell_host_noop(uvm_push_t *push, NvU32 size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1048);
     UVM_ASSERT_MSG(size % 4 == 0, "size %u\n", size);
 
     if (size == 0)
@@ -169,11 +176,13 @@ void uvm_hal_maxwell_host_noop(uvm_push_t *push, NvU32 size)
 
 void uvm_hal_maxwell_host_interrupt(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1049);
     NV_PUSH_1U(A16F, NON_STALL_INTERRUPT, 0);
 }
 
 void uvm_hal_maxwell_host_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1050);
     NvU32 sem_lo;
     UVM_ASSERT(!(NvOffset_LO32(gpu_va) & ~HWSHIFTMASK(A16F, SEMAPHOREB, OFFSET_LOWER)));
     sem_lo = READ_HWVALUE(NvOffset_LO32(gpu_va), A16F, SEMAPHOREB, OFFSET_LOWER);
@@ -190,6 +199,7 @@ void uvm_hal_maxwell_host_semaphore_release(uvm_push_t *push, NvU64 gpu_va, NvU3
 
 void uvm_hal_maxwell_host_semaphore_acquire(uvm_push_t *push, NvU64 gpu_va, NvU32 payload)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1051);
     NvU32 sem_lo;
     UVM_ASSERT(!(NvOffset_LO32(gpu_va) & ~HWSHIFTMASK(A16F, SEMAPHOREB, OFFSET_LOWER)));
     sem_lo = READ_HWVALUE(NvOffset_LO32(gpu_va), A16F, SEMAPHOREB, OFFSET_LOWER);
@@ -203,6 +213,7 @@ void uvm_hal_maxwell_host_semaphore_acquire(uvm_push_t *push, NvU64 gpu_va, NvU3
 
 void uvm_hal_maxwell_host_semaphore_timestamp(uvm_push_t *push, NvU64 gpu_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1052);
     NvU32 sem_lo;
     UVM_ASSERT(!(NvOffset_LO32(gpu_va) & ~HWSHIFTMASK(A16F, SEMAPHOREB, OFFSET_LOWER)));
     sem_lo = READ_HWVALUE(NvOffset_LO32(gpu_va), A16F, SEMAPHOREB, OFFSET_LOWER);
@@ -222,6 +233,7 @@ void uvm_hal_maxwell_host_set_gpfifo_entry(NvU64 *fifo_entry,
                                            NvU32 pushbuffer_length,
                                            uvm_gpfifo_sync_t sync_flag)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1053);
     NvU64 fifo_entry_value;
     const NvU32 sync_value = (sync_flag == UVM_GPFIFO_SYNC_WAIT) ? HWCONST(A16F, GP_ENTRY1, SYNC, WAIT) :
                                                                    HWCONST(A16F, GP_ENTRY1, SYNC, PROCEED);
@@ -241,6 +253,7 @@ void uvm_hal_maxwell_host_set_gpfifo_entry(NvU64 *fifo_entry,
 
 void uvm_hal_maxwell_host_set_gpfifo_noop(NvU64 *fifo_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1054);
     UVM_ASSERT(!uvm_global_is_suspended());
 
     // A NOOP control GPFIFO does not require a GP_ENTRY0.
@@ -249,25 +262,30 @@ void uvm_hal_maxwell_host_set_gpfifo_noop(NvU64 *fifo_entry)
 
 void uvm_hal_maxwell_host_set_gpfifo_pushbuffer_segment_base_unsupported(NvU64 *fifo_entry, NvU64 pushbuffer_va)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1055);
     UVM_ASSERT_MSG(false, "host set_gpfifo_pushbuffer_segment_base called on Maxwell GPU\n");
 }
 
 void uvm_hal_maxwell_host_write_gpu_put(uvm_channel_t *channel, NvU32 gpu_put)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1056);
     UVM_GPU_WRITE_ONCE(*channel->channel_info.gpPut, gpu_put);
 }
 
 void uvm_hal_maxwell_host_init_noop(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1057);
 }
 
 void uvm_hal_maxwell_replay_faults_unsupported(uvm_push_t *push, uvm_fault_replay_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1058);
     UVM_ASSERT_MSG(false, "host replay_faults called on Maxwell GPU\n");
 }
 
 void uvm_hal_maxwell_cancel_faults_global_unsupported(uvm_push_t *push, uvm_gpu_phys_address_t instance_ptr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1059);
     UVM_ASSERT_MSG(false, "host cancel_faults_global called on Maxwell GPU\n");
 }
 
@@ -276,6 +294,7 @@ void uvm_hal_maxwell_cancel_faults_targeted_unsupported(uvm_push_t *push,
                                                        NvU32 gpc_id,
                                                        NvU32 client_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1060);
     UVM_ASSERT_MSG(false, "host cancel_faults_targeted called on Maxwell GPU\n");
 }
 
@@ -284,6 +303,7 @@ void uvm_hal_maxwell_cancel_faults_va_unsupported(uvm_push_t *push,
                                                   const uvm_fault_buffer_entry_t *fault_entry,
                                                   uvm_fault_cancel_va_mode_t cancel_va_mode)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1061);
     UVM_ASSERT_MSG(false, "host cancel_faults_va called on Maxwell GPU\n");
 }
 
@@ -291,6 +311,7 @@ void uvm_hal_maxwell_host_clear_faulted_channel_sw_method_unsupported(uvm_push_t
                                                                       uvm_user_channel_t *user_channel,
                                                                       const uvm_fault_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1062);
     UVM_ASSERT_MSG(false, "host clear_faulted_channel_sw_method called on Maxwell GPU\n");
 }
 
@@ -298,33 +319,39 @@ void uvm_hal_maxwell_host_clear_faulted_channel_method_unsupported(uvm_push_t *p
                                                                    uvm_user_channel_t *user_channel,
                                                                    const uvm_fault_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1063);
     UVM_ASSERT_MSG(false, "host clear_faulted_channel_method called on Maxwell GPU\n");
 }
 
 void uvm_hal_maxwell_host_clear_faulted_channel_register_unsupported(uvm_user_channel_t *user_channel,
                                                                      const uvm_fault_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1064);
     UVM_ASSERT_MSG(false, "host clear_faulted_channel_register called on Maxwell GPU\n");
 }
 
 void uvm_hal_maxwell_access_counter_clear_all_unsupported(uvm_push_t *push)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1065);
     UVM_ASSERT_MSG(false, "host access_counter_clear_all called on Maxwell GPU\n");
 }
 
 void uvm_hal_maxwell_access_counter_clear_type_unsupported(uvm_push_t *push, uvm_access_counter_type_t type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1066);
     UVM_ASSERT_MSG(false, "host access_counter_clear_type called on Maxwell GPU\n");
 }
 
 void uvm_hal_maxwell_access_counter_clear_targeted_unsupported(uvm_push_t *push,
                                                                const uvm_access_counter_buffer_entry_t *buffer_entry)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1067);
     UVM_ASSERT_MSG(false, "host access_counter_clear_targeted called on Maxwell GPU\n");
 }
 
 NvU64 uvm_hal_maxwell_get_time(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1068);
     NvU32 time0;
     NvU32 time1_first, time1_second;
 

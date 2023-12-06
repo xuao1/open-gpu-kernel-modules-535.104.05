@@ -36,6 +36,7 @@
 
 static NvU32 entries_per_index_volta(NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2883);
     UVM_ASSERT(depth < 5);
     if (depth == 3)
         return 2;
@@ -44,6 +45,7 @@ static NvU32 entries_per_index_volta(NvU32 depth)
 
 static NvLength entry_offset_volta(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2884);
     UVM_ASSERT(depth < 5);
     if (page_size == UVM_PAGE_SIZE_4K && depth == 3)
         return MMU_SMALL;
@@ -52,6 +54,7 @@ static NvLength entry_offset_volta(NvU32 depth, NvU32 page_size)
 
 static NvU64 single_pde_volta(uvm_mmu_page_table_alloc_t *phys_alloc, NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2885);
     NvU64 pde_bits = 0;
 
     if (phys_alloc != NULL) {
@@ -95,6 +98,7 @@ static NvU64 single_pde_volta(uvm_mmu_page_table_alloc_t *phys_alloc, NvU32 dept
 
 static NvU64 big_half_pde_volta(uvm_mmu_page_table_alloc_t *phys_alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2886);
     NvU64 pde_bits = 0;
 
     if (phys_alloc != NULL) {
@@ -121,6 +125,7 @@ static NvU64 big_half_pde_volta(uvm_mmu_page_table_alloc_t *phys_alloc)
 
 static NvU64 small_half_pde_volta(uvm_mmu_page_table_alloc_t *phys_alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2887);
     NvU64 pde_bits = 0;
 
     if (phys_alloc != NULL) {
@@ -147,6 +152,7 @@ static NvU64 small_half_pde_volta(uvm_mmu_page_table_alloc_t *phys_alloc)
 
 static void make_pde_volta(void *entry, uvm_mmu_page_table_alloc_t **phys_allocs, NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2888);
     NvU32 entry_count = entries_per_index_volta(depth);
     NvU64 *entry_bits = (NvU64 *)entry;
 
@@ -170,6 +176,7 @@ static void make_pde_volta(void *entry, uvm_mmu_page_table_alloc_t **phys_allocs
 // physical addressing
 static NvU64 make_pte_volta(uvm_aperture_t aperture, NvU64 address, uvm_prot_t prot, NvU64 flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2889);
     NvU8 aperture_bits = 0;
     NvU64 pte_bits = 0;
 
@@ -247,6 +254,7 @@ static uvm_mmu_mode_hal_t volta_mmu_mode_hal;
 
 uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_volta(NvU32 big_page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2890);
     static bool initialized = false;
 
     UVM_ASSERT(big_page_size == UVM_PAGE_SIZE_64K || big_page_size == UVM_PAGE_SIZE_128K);
@@ -276,6 +284,7 @@ uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_volta(NvU32 big_page_size)
 
 uvm_mmu_engine_type_t uvm_hal_volta_mmu_engine_id_to_type(NvU16 mmu_engine_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2891);
     if (mmu_engine_id >= NV_PFAULT_MMU_ENG_ID_HOST0 && mmu_engine_id <= NV_PFAULT_MMU_ENG_ID_HOST13)
         return UVM_MMU_ENGINE_TYPE_HOST;
 
@@ -290,6 +299,7 @@ uvm_mmu_engine_type_t uvm_hal_volta_mmu_engine_id_to_type(NvU16 mmu_engine_id)
 
 NvU16 uvm_hal_volta_mmu_client_id_to_utlb_id(NvU16 client_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2892);
     switch (client_id) {
         case NV_PFAULT_CLIENT_GPC_RAST:
         case NV_PFAULT_CLIENT_GPC_GCC:

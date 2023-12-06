@@ -93,6 +93,7 @@ static NV_STATUS uvm_pte_buffer_init(uvm_va_range_t *va_range,
                                      NvU32 page_size,
                                      uvm_pte_buffer_t *pte_buffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 969);
     uvm_gpu_va_space_t *gpu_va_space = uvm_gpu_va_space_get(va_range->va_space, gpu);
     uvm_page_tree_t *tree = &gpu_va_space->page_tables;
     size_t num_all_ptes;
@@ -124,6 +125,7 @@ static NV_STATUS uvm_pte_buffer_init(uvm_va_range_t *va_range,
 
 static void uvm_pte_buffer_deinit(uvm_pte_buffer_t *pte_buffer)
 {
+    printk(KERN_ERR "=====================================   %d\n", 970);
     uvm_kvfree(pte_buffer->mapping_info.pteBuffer);
 }
 
@@ -134,6 +136,7 @@ static NV_STATUS uvm_pte_buffer_get(uvm_pte_buffer_t *pte_buffer,
                                     NvU64 map_size,
                                     NvU64 **ptes_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 971);
     NV_STATUS status;
     size_t pte_offset;
     size_t num_ptes;
@@ -213,6 +216,7 @@ static NV_STATUS copy_ptes(uvm_page_tree_t *tree,
                            uvm_range_tree_node_t *range_node,
                            uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 972);
     uvm_push_t push;
     NV_STATUS status;
     NvU32 pte_size = uvm_mmu_pte_size(tree, page_size);
@@ -279,6 +283,7 @@ static NV_STATUS map_rm_pt_range(uvm_page_tree_t *tree,
                                  NvU64 map_offset,
                                  uvm_tracker_t *tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 973);
     uvm_gpu_phys_address_t pte_addr;
     NvU64 page_size = pt_range->page_size;
     NvU32 pte_size = uvm_mmu_pte_size(tree, page_size);
@@ -343,6 +348,7 @@ static NV_STATUS map_rm_pt_range(uvm_page_tree_t *tree,
 // UVM_VA_RANGE_TYPE_EXTERNAL or UVM_VA_RANGE_TYPE_CHANNEL.
 static uvm_membar_t va_range_downgrade_membar(uvm_va_range_t *va_range, uvm_ext_gpu_map_t *ext_gpu_map)
 {
+    printk(KERN_ERR "=====================================   %d\n", 974);
     if (va_range->type == UVM_VA_RANGE_TYPE_CHANNEL) {
         return uvm_hal_downgrade_membar_type(va_range->channel.gpu_va_space->gpu,
                                              va_range->channel.aperture == UVM_APERTURE_VID);
@@ -366,6 +372,7 @@ NV_STATUS uvm_va_range_map_rm_allocation(uvm_va_range_t *va_range,
                                          uvm_ext_gpu_map_t *ext_gpu_map,
                                          uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 975);
     uvm_gpu_va_space_t *gpu_va_space = uvm_gpu_va_space_get(va_range->va_space, mapping_gpu);
     uvm_page_tree_t *page_tree;
     uvm_pte_buffer_t pte_buffer;
@@ -490,6 +497,7 @@ out:
 
 static bool uvm_api_mapping_type_invalid(UvmGpuMappingType map_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 976);
     BUILD_BUG_ON((int)UvmGpuMappingTypeDefault != (int)UvmRmGpuMappingTypeDefault);
     BUILD_BUG_ON((int)UvmGpuMappingTypeReadWriteAtomic != (int)UvmRmGpuMappingTypeReadWriteAtomic);
     BUILD_BUG_ON((int)UvmGpuMappingTypeReadWrite != (int)UvmRmGpuMappingTypeReadWrite);
@@ -509,6 +517,7 @@ static bool uvm_api_mapping_type_invalid(UvmGpuMappingType map_type)
 
 static bool uvm_api_caching_type_invalid(UvmGpuCachingType cache_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 977);
     BUILD_BUG_ON((int)UvmGpuCachingTypeDefault != (int)UvmRmGpuCachingTypeDefault);
     BUILD_BUG_ON((int)UvmGpuCachingTypeForceUncached != (int)UvmRmGpuCachingTypeForceUncached);
     BUILD_BUG_ON((int)UvmGpuCachingTypeForceCached != (int)UvmRmGpuCachingTypeForceCached);
@@ -528,6 +537,7 @@ static bool uvm_api_kind_type_invalid(UvmGpuFormatType format_type,
                                       UvmGpuFormatElementBits element_bits,
                                       UvmGpuCompressionType compression_type)
 {
+    printk(KERN_ERR "=====================================   %d\n", 978);
     BUILD_BUG_ON((int)UvmGpuFormatTypeDefault != (int)UvmRmGpuFormatTypeDefault);
     BUILD_BUG_ON((int)UvmGpuFormatTypeBlockLinear != (int)UvmRmGpuFormatTypeBlockLinear);
     BUILD_BUG_ON((int)UvmGpuFormatTypeCount != (int)UvmRmGpuFormatTypeCount);
@@ -577,6 +587,7 @@ static bool uvm_api_kind_type_invalid(UvmGpuFormatType format_type,
 
 static void uvm_release_rm_handle(struct nv_kref *ref)
 {
+    printk(KERN_ERR "=====================================   %d\n", 979);
     uvm_ext_gpu_mem_handle *mem_handle = container_of(ref, uvm_ext_gpu_mem_handle, ref_count);
 
     if (mem_handle->rm_handle) {
@@ -591,6 +602,7 @@ static void uvm_release_rm_handle(struct nv_kref *ref)
 
 static NV_STATUS uvm_create_external_range(uvm_va_space_t *va_space, UVM_CREATE_EXTERNAL_RANGE_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 980);
     uvm_va_range_t *va_range = NULL;
     struct mm_struct *mm;
     NV_STATUS status = NV_OK;
@@ -623,6 +635,7 @@ static NV_STATUS uvm_create_external_range(uvm_va_space_t *va_space, UVM_CREATE_
 
 NV_STATUS uvm_api_create_external_range(UVM_CREATE_EXTERNAL_RANGE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 981);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     return uvm_create_external_range(va_space, params);
 }
@@ -632,6 +645,7 @@ static NV_STATUS set_ext_gpu_map_location(uvm_ext_gpu_map_t *ext_gpu_map,
                                           uvm_gpu_t *mapping_gpu,
                                           const UvmGpuMemoryInfo *mem_info)
 {
+    printk(KERN_ERR "=====================================   %d\n", 982);
     uvm_gpu_t *owning_gpu;
 
     if (!mem_info->deviceDescendant && !mem_info->sysmem) {
@@ -672,6 +686,7 @@ static NV_STATUS set_ext_gpu_map_location(uvm_ext_gpu_map_t *ext_gpu_map,
 
 static uvm_ext_gpu_map_t *uvm_va_range_ext_gpu_map(uvm_va_range_t *va_range, uvm_gpu_t *mapping_gpu, NvU64 addr)
 {
+    printk(KERN_ERR "=====================================   %d\n", 983);
     uvm_ext_gpu_map_t *ext_gpu_map = NULL;
     uvm_range_tree_node_t *node;
     uvm_ext_gpu_range_tree_t *range_tree;
@@ -701,6 +716,7 @@ static NV_STATUS uvm_ext_gpu_map_split(uvm_range_tree_t *tree,
                                        NvU64 new_end,
                                        uvm_ext_gpu_map_t **new_map)
 {
+    printk(KERN_ERR "=====================================   %d\n", 984);
     uvm_ext_gpu_map_t *new;
     NV_STATUS status;
     NvU64 new_start = new_end + 1;
@@ -756,6 +772,7 @@ static NV_STATUS uvm_unmap_external_in_range(uvm_va_range_t *va_range,
                                              NvU64 end,
                                              struct list_head *deferred_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 985);
     uvm_ext_gpu_range_tree_t *range_tree = uvm_ext_gpu_range_tree(va_range, gpu);
     uvm_ext_gpu_map_t *ext_map, *ext_map_next = NULL;
     NV_STATUS status = NV_OK;
@@ -839,6 +856,7 @@ static NV_STATUS uvm_map_external_allocation_on_gpu(uvm_va_range_t *va_range,
                                                     NvU64 length,
                                                     uvm_tracker_t *out_tracker)
 {
+    printk(KERN_ERR "=====================================   %d\n", 986);
     uvm_va_space_t *va_space = va_range->va_space;
     uvm_ext_gpu_map_t *ext_gpu_map = NULL;
     uvm_ext_gpu_range_tree_t *range_tree = uvm_ext_gpu_range_tree(va_range, mapping_gpu);
@@ -951,6 +969,7 @@ error:
 // Actual implementation of UvmMapExternalAllocation
 static NV_STATUS uvm_map_external_allocation(uvm_va_space_t *va_space, UVM_MAP_EXTERNAL_ALLOCATION_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 987);
     uvm_va_range_t *va_range = NULL;
     uvm_gpu_t *mapping_gpu;
     uvm_processor_mask_t mapped_gpus;
@@ -1056,12 +1075,14 @@ error:
 
 NV_STATUS uvm_api_map_external_allocation(UVM_MAP_EXTERNAL_ALLOCATION_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 988);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     return uvm_map_external_allocation(va_space, params);
 }
 
 static NvU64 external_sparse_pte_maker(uvm_page_table_range_vec_t *range_vec, NvU64 offset, void *caller_data)
 {
+    printk(KERN_ERR "=====================================   %d\n", 989);
     return range_vec->tree->hal->make_sparse_pte();
 }
 
@@ -1071,6 +1092,7 @@ static NV_STATUS uvm_map_external_sparse_on_gpu(uvm_va_range_t *va_range,
                                                 NvU64 length,
                                                 struct list_head *deferred_free_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 990);
     uvm_va_space_t *va_space = va_range->va_space;
     uvm_ext_gpu_map_t *ext_gpu_map = NULL;
     uvm_ext_gpu_range_tree_t *range_tree = uvm_ext_gpu_range_tree(va_range, mapping_gpu);
@@ -1141,6 +1163,7 @@ error:
 
 static NV_STATUS uvm_map_external_sparse(uvm_va_space_t *va_space, UVM_MAP_EXTERNAL_SPARSE_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 991);
     uvm_va_range_t *va_range = NULL;
     uvm_gpu_t *mapping_gpu = NULL;
     NV_STATUS status = NV_OK;
@@ -1188,6 +1211,7 @@ out:
 
 NV_STATUS uvm_api_map_external_sparse(UVM_MAP_EXTERNAL_SPARSE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 992);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     return uvm_map_external_sparse(va_space, params);
 }
@@ -1195,6 +1219,7 @@ NV_STATUS uvm_api_map_external_sparse(UVM_MAP_EXTERNAL_SPARSE_PARAMS *params, st
 // Version of free which returns but doesn't release the owning GPU
 static uvm_gpu_t *uvm_ext_gpu_map_free_internal(uvm_ext_gpu_map_t *ext_gpu_map)
 {
+    printk(KERN_ERR "=====================================   %d\n", 993);
     uvm_gpu_t *owning_gpu;
 
     if (!ext_gpu_map)
@@ -1213,6 +1238,7 @@ static uvm_gpu_t *uvm_ext_gpu_map_free_internal(uvm_ext_gpu_map_t *ext_gpu_map)
 
 void uvm_ext_gpu_map_free(uvm_ext_gpu_map_t *ext_gpu_map)
 {
+    printk(KERN_ERR "=====================================   %d\n", 994);
     uvm_gpu_t *owning_gpu = uvm_ext_gpu_map_free_internal(ext_gpu_map);
     if (owning_gpu)
         uvm_gpu_release(owning_gpu);
@@ -1222,6 +1248,7 @@ void uvm_ext_gpu_map_destroy(uvm_va_range_t *va_range,
                              uvm_ext_gpu_map_t *ext_gpu_map,
                              struct list_head *deferred_free_list)
 {
+    printk(KERN_ERR "=====================================   %d\n", 995);
     uvm_membar_t membar;
     uvm_ext_gpu_range_tree_t *range_tree;
     uvm_gpu_t *mapped_gpu;
@@ -1281,6 +1308,7 @@ static NV_STATUS uvm_unmap_external(uvm_va_space_t *va_space,
                                     NvU64 length,
                                     const NvProcessorUuid *gpu_uuid)
 {
+    printk(KERN_ERR "=====================================   %d\n", 996);
     uvm_va_range_t *va_range;
     uvm_gpu_t *gpu = NULL;
     NV_STATUS status = NV_OK;
@@ -1328,6 +1356,7 @@ out:
 
 NV_STATUS uvm_api_unmap_external(UVM_UNMAP_EXTERNAL_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 997);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     return uvm_unmap_external(va_space, params->base, params->length, &params->gpuUuid);
 }
@@ -1337,6 +1366,7 @@ NV_STATUS uvm_api_unmap_external(UVM_UNMAP_EXTERNAL_PARAMS *params, struct file 
 // created by UvmMemMap and UvmAlloc go through mmap/munmap.
 static NV_STATUS uvm_free(uvm_va_space_t *va_space, NvU64 base, NvU64 length)
 {
+    printk(KERN_ERR "=====================================   %d\n", 998);
     uvm_va_range_t *va_range;
     NV_STATUS status = NV_OK;
     uvm_global_processor_mask_t retained_mask;
@@ -1398,6 +1428,7 @@ out:
 
 NV_STATUS uvm_api_free(UVM_FREE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 999);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     return uvm_free(va_space, params->base, params->length);
 }

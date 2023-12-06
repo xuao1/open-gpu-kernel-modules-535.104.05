@@ -45,6 +45,7 @@ static uvm_aperture_t get_aperture(uvm_va_space_t *va_space,
                                    UvmGpuMemoryInfo *memory_info,
                                    bool sli_supported)
 {
+    printk(KERN_ERR "=====================================   %d\n", 374);
     if (memory_info->sysmem) {
         return UVM_APERTURE_SYS;
     }
@@ -57,6 +58,7 @@ static uvm_aperture_t get_aperture(uvm_va_space_t *va_space,
 
 static bool is_cacheable(UvmGpuExternalMappingInfo *ext_mapping_info, uvm_aperture_t aperture)
 {
+    printk(KERN_ERR "=====================================   %d\n", 375);
     if (ext_mapping_info->cachingType == UvmRmGpuCachingTypeForceCached)
         return true;
     else if (ext_mapping_info->cachingType == UvmRmGpuCachingTypeForceUncached)
@@ -69,6 +71,7 @@ static bool is_cacheable(UvmGpuExternalMappingInfo *ext_mapping_info, uvm_apertu
 
 static NvU32 get_protection(UvmGpuExternalMappingInfo *ext_mapping_info)
 {
+    printk(KERN_ERR "=====================================   %d\n", 376);
     if (ext_mapping_info->mappingType == UvmRmGpuMappingTypeReadWriteAtomic ||
         ext_mapping_info->mappingType == UvmRmGpuMappingTypeDefault)
         return UVM_PROT_READ_WRITE_ATOMIC;
@@ -86,6 +89,7 @@ static NV_STATUS verify_mapping_info(uvm_va_space_t *va_space,
                                      UvmGpuMemoryInfo *memory_info,
                                      bool sli_supported)
 {
+    printk(KERN_ERR "=====================================   %d\n", 377);
     NvU32 index = 0, total_pte_count = 0, skip = 0, page_size = 0;
     uvm_aperture_t aperture = 0;
     NvU32 prot;
@@ -153,6 +157,7 @@ static NV_STATUS verify_mapping_info(uvm_va_space_t *va_space,
 
 static NV_STATUS test_get_rm_ptes_single_gpu(uvm_va_space_t *va_space, UVM_TEST_GET_RM_PTES_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 378);
     NV_STATUS status = NV_OK;
     NV_STATUS free_status;
     uvm_gpu_t *memory_mapping_gpu;
@@ -262,6 +267,7 @@ done:
 
 static NV_STATUS test_get_rm_ptes_multi_gpu(uvm_va_space_t *va_space, UVM_TEST_GET_RM_PTES_PARAMS *params)
 {
+    printk(KERN_ERR "=====================================   %d\n", 379);
     NV_STATUS status = NV_OK;
     NV_STATUS free_status;
     uvm_gpu_t *memory_mapping_gpu;
@@ -327,6 +333,7 @@ done:
 
 NV_STATUS uvm_test_get_rm_ptes(UVM_TEST_GET_RM_PTES_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 380);
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 

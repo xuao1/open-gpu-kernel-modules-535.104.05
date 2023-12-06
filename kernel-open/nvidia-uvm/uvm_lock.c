@@ -27,6 +27,7 @@
 
 const char *uvm_lock_order_to_string(uvm_lock_order_t lock_order)
 {
+    printk(KERN_ERR "=====================================   %d\n", 927);
     BUILD_BUG_ON(UVM_LOCK_ORDER_COUNT != 33);
 
     switch (lock_order) {
@@ -69,6 +70,7 @@ const char *uvm_lock_order_to_string(uvm_lock_order_t lock_order)
 
 bool __uvm_record_lock(void *lock, uvm_lock_order_t lock_order, uvm_lock_flags_t flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 928);
     bool correct = true;
     uvm_lock_order_t conflicting_order;
     uvm_thread_context_lock_t *uvm_context = uvm_thread_context_lock_get();
@@ -141,6 +143,7 @@ bool __uvm_record_lock(void *lock, uvm_lock_order_t lock_order, uvm_lock_flags_t
 
 bool __uvm_record_unlock(void *lock, uvm_lock_order_t lock_order, uvm_lock_flags_t flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 929);
     bool correct = true;
     uvm_thread_context_lock_t *uvm_context = uvm_thread_context_lock_get();
     uvm_lock_flags_t mode_flags = (flags & UVM_LOCK_FLAGS_MODE_MASK);
@@ -203,6 +206,7 @@ bool __uvm_record_unlock(void *lock, uvm_lock_order_t lock_order, uvm_lock_flags
 
 bool __uvm_record_downgrade(void *lock, uvm_lock_order_t lock_order)
 {
+    printk(KERN_ERR "=====================================   %d\n", 930);
     uvm_thread_context_lock_t *uvm_context = uvm_thread_context_lock_get();
 
     if (!uvm_context) {
@@ -226,6 +230,7 @@ bool __uvm_record_downgrade(void *lock, uvm_lock_order_t lock_order)
 
 bool __uvm_check_locked(void *lock, uvm_lock_order_t lock_order, uvm_lock_flags_t flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 931);
     uvm_thread_context_lock_t *uvm_context = uvm_thread_context_lock_get();
     uvm_lock_flags_t mode_flags = (flags & UVM_LOCK_FLAGS_MODE_MASK);
     bool exclusive = (mode_flags == UVM_LOCK_FLAGS_MODE_EXCLUSIVE);
@@ -264,11 +269,13 @@ bool __uvm_check_locked(void *lock, uvm_lock_order_t lock_order, uvm_lock_flags_
 
 bool __uvm_locking_initialized(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 932);
     return uvm_thread_context_global_initialized();
 }
 
 bool __uvm_check_lockable_order(uvm_lock_order_t lock_order, uvm_lock_flags_t flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 933);
     uvm_lock_order_t conflicting_order;
     uvm_thread_context_lock_t *uvm_context = uvm_thread_context_lock_get();
     bool trylock = (flags & UVM_LOCK_FLAGS_TRYLOCK);
@@ -299,6 +306,7 @@ bool __uvm_check_lockable_order(uvm_lock_order_t lock_order, uvm_lock_flags_t fl
 
 bool __uvm_check_unlocked_order(uvm_lock_order_t lock_order)
 {
+    printk(KERN_ERR "=====================================   %d\n", 934);
     uvm_thread_context_lock_t *uvm_context = uvm_thread_context_lock_get();
     if (!uvm_context)
         return true;
@@ -320,6 +328,7 @@ bool __uvm_check_unlocked_order(uvm_lock_order_t lock_order)
 
 bool __uvm_check_all_unlocked(uvm_thread_context_lock_t *uvm_context)
 {
+    printk(KERN_ERR "=====================================   %d\n", 935);
     uvm_lock_order_t lock_order;
     NvU32 still_locked_count;
 
@@ -343,11 +352,13 @@ bool __uvm_check_all_unlocked(uvm_thread_context_lock_t *uvm_context)
 
 bool __uvm_thread_check_all_unlocked(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 936);
     return __uvm_check_all_unlocked(uvm_thread_context_lock_get());
 }
 
 NV_STATUS uvm_bit_locks_init(uvm_bit_locks_t *bit_locks, size_t count, uvm_lock_order_t lock_order)
 {
+    printk(KERN_ERR "=====================================   %d\n", 937);
     // TODO: Bug 1772140: Notably bit locks currently do not work on memory
     // allocated through vmalloc() (including big allocations created with
     // uvm_kvmalloc()). The problem is the bit_waitqueue() helper used by the
@@ -372,6 +383,7 @@ NV_STATUS uvm_bit_locks_init(uvm_bit_locks_t *bit_locks, size_t count, uvm_lock_
 
 void uvm_bit_locks_deinit(uvm_bit_locks_t *bit_locks)
 {
+    printk(KERN_ERR "=====================================   %d\n", 938);
     kfree(bit_locks->bits);
     memset(bit_locks, 0, sizeof(*bit_locks));
 }

@@ -166,11 +166,13 @@ MODULE_PARM_DESC(uvm_enable_va_space_mm,
 
 bool uvm_va_space_mm_enabled_system(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2809);
     return UVM_CAN_USE_MMU_NOTIFIERS() && uvm_enable_va_space_mm;
 }
 
 bool uvm_va_space_mm_enabled(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2810);
     // A va_space doesn't have any association with an mm in multi-process
     // sharing mode.
     if (va_space->initialization_flags & UVM_INIT_FLAGS_MULTI_PROCESS_SHARING_MODE)
@@ -182,6 +184,7 @@ bool uvm_va_space_mm_enabled(uvm_va_space_t *va_space)
 #if UVM_CAN_USE_MMU_NOTIFIERS()
     static uvm_va_space_t *get_va_space(struct mmu_notifier *mn)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2811);
         // This may be called without a thread context present, so be careful
         // what is used here.
         return container_of(mn, uvm_va_space_t, va_space_mm.mmu_notifier);
@@ -192,6 +195,7 @@ bool uvm_va_space_mm_enabled(uvm_va_space_t *va_space)
                                                       unsigned long start,
                                                       unsigned long end)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2812);
         // In most cases ->invalidate_range() is called with exclusive end.
         // uvm_ats_invalidate() expects an inclusive end so we have to
         // convert it.
@@ -220,6 +224,7 @@ bool uvm_va_space_mm_enabled(uvm_va_space_t *va_space)
 
     static int uvm_mmu_notifier_register(uvm_va_space_mm_t *va_space_mm)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2813);
         UVM_ASSERT(va_space_mm->mm);
         uvm_assert_mmap_lock_locked_write(va_space_mm->mm);
 
@@ -229,23 +234,27 @@ bool uvm_va_space_mm_enabled(uvm_va_space_t *va_space)
 
     static void uvm_mmu_notifier_unregister(uvm_va_space_mm_t *va_space_mm)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2814);
         mmu_notifier_unregister(&va_space_mm->mmu_notifier, va_space_mm->mm);
     }
 #else
     static int uvm_mmu_notifier_register(uvm_va_space_mm_t *va_space_mm)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2815);
         UVM_ASSERT(0);
         return 0;
     }
 
     static void uvm_mmu_notifier_unregister(uvm_va_space_mm_t *va_space_mm)
     {
+    printk(KERN_ERR "=====================================   %d\n", 2816);
         UVM_ASSERT(0);
     }
 #endif // UVM_CAN_USE_MMU_NOTIFIERS()
 
 NV_STATUS uvm_va_space_mm_register(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2817);
     uvm_va_space_mm_t *va_space_mm = &va_space->va_space_mm;
     int ret;
 
@@ -295,6 +304,7 @@ NV_STATUS uvm_va_space_mm_register(uvm_va_space_t *va_space)
 
 void uvm_va_space_mm_unregister(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2818);
     uvm_va_space_mm_t *va_space_mm = &va_space->va_space_mm;
 
     // We can't hold the VA space lock or mmap_lock because
@@ -330,6 +340,7 @@ void uvm_va_space_mm_unregister(uvm_va_space_t *va_space)
 
 struct mm_struct *uvm_va_space_mm_retain(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2819);
     uvm_va_space_mm_t *va_space_mm = &va_space->va_space_mm;
     struct mm_struct *mm = NULL;
 
@@ -359,6 +370,7 @@ out:
 
 struct mm_struct *uvm_va_space_mm_or_current_retain(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2820);
     // We should only attempt to use current->mm from a user thread
     UVM_ASSERT(!(current->flags & PF_KTHREAD));
 
@@ -382,6 +394,7 @@ struct mm_struct *uvm_va_space_mm_or_current_retain(uvm_va_space_t *va_space)
 
 void uvm_va_space_mm_release(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2821);
     uvm_va_space_mm_t *va_space_mm = &va_space->va_space_mm;
 
     UVM_ASSERT(uvm_va_space_mm_enabled(va_space));
@@ -409,6 +422,7 @@ void uvm_va_space_mm_release(uvm_va_space_t *va_space)
 
 void uvm_va_space_mm_or_current_release(uvm_va_space_t *va_space, struct mm_struct *mm)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2822);
     if (!uvm_va_space_mm_enabled(va_space) || !mm)
         return;
 
@@ -417,6 +431,7 @@ void uvm_va_space_mm_or_current_release(uvm_va_space_t *va_space, struct mm_stru
 
 static void uvm_va_space_mm_shutdown(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2823);
     uvm_va_space_mm_t *va_space_mm = &va_space->va_space_mm;
     uvm_gpu_va_space_t *gpu_va_space;
     uvm_gpu_t *gpu;
@@ -511,6 +526,7 @@ static void uvm_va_space_mm_shutdown(uvm_va_space_t *va_space)
 
 static NV_STATUS mm_read64(struct mm_struct *mm, NvU64 addr, NvU64 *val)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2824);
     long ret;
     struct page *page;
     NvU64 *mapping;
@@ -536,6 +552,7 @@ static NV_STATUS mm_read64(struct mm_struct *mm, NvU64 addr, NvU64 *val)
 
 NV_STATUS uvm_test_va_space_mm_retain(UVM_TEST_VA_SPACE_MM_RETAIN_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2825);
     uvm_va_space_t *va_space = NULL;
     struct mm_struct *mm = NULL;
     NV_STATUS status = NV_OK;
@@ -574,6 +591,7 @@ NV_STATUS uvm_test_va_space_mm_retain(UVM_TEST_VA_SPACE_MM_RETAIN_PARAMS *params
 NV_STATUS uvm_test_va_space_mm_or_current_retain(UVM_TEST_VA_SPACE_MM_OR_CURRENT_RETAIN_PARAMS *params,
                                                  struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2826);
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
     struct mm_struct *mm;
     NV_STATUS status = NV_OK;

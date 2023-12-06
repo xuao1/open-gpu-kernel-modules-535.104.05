@@ -30,6 +30,7 @@
 
 NV_STATUS uvm_perf_heuristics_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1501);
     NV_STATUS status;
 
     status = uvm_perf_thrashing_init();
@@ -49,12 +50,14 @@ NV_STATUS uvm_perf_heuristics_init(void)
 
 void uvm_perf_heuristics_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1502);
     uvm_perf_access_counters_exit();
     uvm_perf_thrashing_exit();
 }
 
 NV_STATUS uvm_perf_heuristics_add_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1503);
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
 
     return uvm_perf_thrashing_add_gpu(gpu);
@@ -62,6 +65,7 @@ NV_STATUS uvm_perf_heuristics_add_gpu(uvm_gpu_t *gpu)
 
 void uvm_perf_heuristics_remove_gpu(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1504);
     uvm_assert_mutex_locked(&g_uvm_global.global_lock);
 
     uvm_perf_thrashing_remove_gpu(gpu);
@@ -69,6 +73,7 @@ void uvm_perf_heuristics_remove_gpu(uvm_gpu_t *gpu)
 
 NV_STATUS uvm_perf_heuristics_load(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1505);
     NV_STATUS status;
 
     status = uvm_perf_thrashing_load(va_space);
@@ -83,6 +88,7 @@ NV_STATUS uvm_perf_heuristics_load(uvm_va_space_t *va_space)
 
 NV_STATUS uvm_perf_heuristics_register_gpu(uvm_va_space_t *va_space, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1506);
     uvm_assert_rwsem_locked_write(&va_space->lock);
 
     return uvm_perf_thrashing_register_gpu(va_space, gpu);
@@ -90,6 +96,7 @@ NV_STATUS uvm_perf_heuristics_register_gpu(uvm_va_space_t *va_space, uvm_gpu_t *
 
 void uvm_perf_heuristics_stop(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1507);
     uvm_assert_lockable_order(UVM_LOCK_ORDER_VA_SPACE);
 
     // Prefetch heuristics don't need a stop operation for now
@@ -98,6 +105,7 @@ void uvm_perf_heuristics_stop(uvm_va_space_t *va_space)
 
 void uvm_perf_heuristics_unload(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1508);
     uvm_assert_rwsem_locked_write(&va_space->lock);
 
     uvm_perf_access_counters_unload(va_space);

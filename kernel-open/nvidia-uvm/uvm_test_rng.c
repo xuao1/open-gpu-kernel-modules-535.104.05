@@ -37,6 +37,7 @@
 
 void uvm_test_rng_init(uvm_test_rng_t *rng, NvU32 seed)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2162);
     rng->z     = 362436069;
     rng->w     = 521288629;
     rng->jcong = 380116160;
@@ -45,6 +46,7 @@ void uvm_test_rng_init(uvm_test_rng_t *rng, NvU32 seed)
 
 NvU32 uvm_test_rng_32(uvm_test_rng_t *rng)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2163);
     unsigned int mwc;
 
     rng->z = 36969*(rng->z & 65535) + (rng->z >> 16);
@@ -64,6 +66,7 @@ NvU32 uvm_test_rng_32(uvm_test_rng_t *rng)
 
 NvU64 uvm_test_rng_64(uvm_test_rng_t *rng)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2164);
     NvU64 val64;
     val64 = uvm_test_rng_32(rng);
     val64 <<= 32;
@@ -73,6 +76,7 @@ NvU64 uvm_test_rng_64(uvm_test_rng_t *rng)
 
 NvUPtr uvm_test_rng_ptr(uvm_test_rng_t *rng)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2165);
     if (sizeof(NvUPtr) == sizeof(NvU32))
         return uvm_test_rng_32(rng);
     return (NvUPtr)uvm_test_rng_64(rng);
@@ -82,6 +86,7 @@ NvUPtr uvm_test_rng_ptr(uvm_test_rng_t *rng)
 // range. As described above, this is good enough for testing purposes.
 NvU32 uvm_test_rng_range_32(uvm_test_rng_t *rng, NvU32 lo, NvU32 hi)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2166);
     if (lo == 0 && hi == ~0U)
         return uvm_test_rng_32(rng);
     return lo + (uvm_test_rng_32(rng) % (hi - lo + 1));
@@ -89,6 +94,7 @@ NvU32 uvm_test_rng_range_32(uvm_test_rng_t *rng, NvU32 lo, NvU32 hi)
 
 NvU64 uvm_test_rng_range_64(uvm_test_rng_t *rng, NvU64 lo, NvU64 hi)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2167);
     if (lo == 0 && hi == ~0ULL)
         return uvm_test_rng_64(rng);
     return lo + (uvm_test_rng_64(rng) % (hi - lo + 1));
@@ -96,6 +102,7 @@ NvU64 uvm_test_rng_range_64(uvm_test_rng_t *rng, NvU64 lo, NvU64 hi)
 
 NvUPtr uvm_test_rng_range_ptr(uvm_test_rng_t *rng, NvUPtr lo, NvUPtr hi)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2168);
     if (sizeof(NvUPtr) == sizeof(NvU32))
         return uvm_test_rng_range_32(rng, lo, hi);
     return (NvUPtr)uvm_test_rng_range_64(rng, lo, hi);
@@ -106,11 +113,13 @@ NvUPtr uvm_test_rng_range_ptr(uvm_test_rng_t *rng, NvUPtr lo, NvUPtr hi)
 
 NvU64 uvm_test_rng_log64(uvm_test_rng_t *rng)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2169);
     return uvm_test_rng_range_log64(rng, 0, ~0ULL);
 }
 
 NvU64 uvm_test_rng_range_log64(uvm_test_rng_t *rng, NvU64 lo, NvU64 hi)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2170);
     NvU32 log2_lo, log2_hi, rand_exp;
     NvU64 rand_lo, rand_hi;
 
@@ -162,6 +171,7 @@ NvU64 uvm_test_rng_range_log64(uvm_test_rng_t *rng, NvU64 lo, NvU64 hi)
 
 void uvm_test_rng_memset(uvm_test_rng_t *rng, void *ptr, size_t size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2171);
     // This implementation is optimized to generate as few random numbers as
     // possible, and to write to memory in natively-aligned chunks. This means
     // the code is somewhat ugly because it has to handle all starting
@@ -278,6 +288,7 @@ static const NvU64 test_vals_log64[] =
 
 NV_STATUS uvm_test_rng_sanity(UVM_TEST_RNG_SANITY_PARAMS *params, struct file *file)
 {
+    printk(KERN_ERR "=====================================   %d\n", 2172);
     uvm_test_rng_t rng;
     size_t i, j;
     NvU32 seed = 0;

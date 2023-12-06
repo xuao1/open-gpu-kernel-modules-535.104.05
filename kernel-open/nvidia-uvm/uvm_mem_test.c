@@ -34,6 +34,7 @@ static const size_t sysmem_alloc_sizes[] = { 1, PAGE_SIZE - 1, PAGE_SIZE, 7 * PA
 
 static NvU32 first_page_size(NvU32 page_sizes)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1175);
     return page_sizes & ~(page_sizes - 1);
 }
 
@@ -44,6 +45,7 @@ static NvU32 first_page_size(NvU32 page_sizes)
 
 static inline NV_STATUS __alloc_map_sysmem(NvU64 size, uvm_gpu_t *gpu, uvm_mem_t **sys_mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1176);
     if (g_uvm_global.conf_computing_enabled)
         return uvm_mem_alloc_sysmem_dma_and_map_cpu_kernel(size, gpu, current->mm, sys_mem);
 
@@ -52,6 +54,7 @@ static inline NV_STATUS __alloc_map_sysmem(NvU64 size, uvm_gpu_t *gpu, uvm_mem_t
 
 static NV_STATUS check_accessible_from_gpu(uvm_gpu_t *gpu, uvm_mem_t *mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1177);
     NV_STATUS status = NV_OK;
     uvm_mem_t *sys_mem = NULL;
     uvm_push_t push;
@@ -175,6 +178,7 @@ done:
 
 static NV_STATUS test_map_gpu(uvm_mem_t *mem, uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1178);
     NvU64 gpu_va;
 
     TEST_NV_CHECK_RET(uvm_mem_map_gpu_kernel(mem, gpu));
@@ -207,6 +211,7 @@ static NV_STATUS test_map_gpu(uvm_mem_t *mem, uvm_gpu_t *gpu)
 
 static NV_STATUS test_map_cpu(uvm_mem_t *mem)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1179);
     char *cpu_addr;
 
     if (uvm_mem_is_vidmem(mem))
@@ -242,6 +247,7 @@ static NV_STATUS test_map_cpu(uvm_mem_t *mem)
 
 static NV_STATUS test_alloc_sysmem(uvm_va_space_t *va_space, NvU32 page_size, size_t size, uvm_mem_t **mem_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1180);
     NV_STATUS status;
     uvm_mem_t *mem;
     uvm_gpu_t *gpu;
@@ -270,6 +276,7 @@ error:
 
 static NV_STATUS test_alloc_sysmem_dma(uvm_va_space_t *va_space, uvm_gpu_t *dma_owner, size_t size, uvm_mem_t **mem_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1181);
     NV_STATUS status;
     uvm_mem_t *mem;
     uvm_gpu_t *gpu;
@@ -300,6 +307,7 @@ error:
 
 static NV_STATUS test_alloc_vidmem(uvm_gpu_t *gpu, NvU32 page_size, size_t size, uvm_mem_t **mem_out)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1182);
     NV_STATUS status;
     uvm_mem_t *mem;
     uvm_mem_alloc_params_t params = { 0 };
@@ -335,6 +343,7 @@ error:
 
 static bool should_test_page_size(size_t alloc_size, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1183);
     if (g_uvm_global.num_simulated_devices == 0)
         return true;
 
@@ -343,6 +352,7 @@ static bool should_test_page_size(size_t alloc_size, NvU32 page_size)
 
 static NV_STATUS test_all(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1184);
     NV_STATUS status = NV_OK;
     uvm_gpu_t *gpu;
     NvU32 gpu_count;
@@ -459,6 +469,7 @@ cleanup:
 
 static NV_STATUS test_basic_vidmem(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1185);
     NV_STATUS status = NV_OK;
     NvU32 page_size;
     NvU32 page_sizes = gpu->address_space_tree.hal->page_sizes();
@@ -495,6 +506,7 @@ done:
 
 static NV_STATUS test_basic_vidmem_unprotected(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1186);
     NV_STATUS status = NV_OK;
     uvm_mem_t *mem = NULL;
 
@@ -530,6 +542,7 @@ static NV_STATUS test_basic_vidmem_unprotected(uvm_gpu_t *gpu)
 
 static NV_STATUS test_basic_sysmem(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1187);
     NV_STATUS status = NV_OK;
     uvm_mem_t *mem = NULL;
     int i;
@@ -549,6 +562,7 @@ done:
 
 static NV_STATUS test_basic_sysmem_dma(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1188);
     NV_STATUS status = NV_OK;
     uvm_mem_t *mem = NULL;
     int i;
@@ -568,6 +582,7 @@ done:
 
 static NV_STATUS test_basic_dma_pool(uvm_gpu_t *gpu)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1189);
     size_t i, j;
     size_t num_buffers;
     size_t status = NV_OK;
@@ -605,6 +620,7 @@ done:
 
 static NV_STATUS test_basic(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1190);
     uvm_gpu_t *gpu;
 
     TEST_NV_CHECK_RET(test_basic_sysmem());
@@ -621,6 +637,7 @@ static NV_STATUS test_basic(uvm_va_space_t *va_space)
 
 static NV_STATUS tests(uvm_va_space_t *va_space)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1191);
     TEST_NV_CHECK_RET(test_basic(va_space));
     TEST_NV_CHECK_RET(test_all(va_space));
 
@@ -629,6 +646,7 @@ static NV_STATUS tests(uvm_va_space_t *va_space)
 
 NV_STATUS uvm_test_mem_sanity(UVM_TEST_MEM_SANITY_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1192);
     NV_STATUS status;
     uvm_va_space_t *va_space = uvm_va_space_get(filp);
 

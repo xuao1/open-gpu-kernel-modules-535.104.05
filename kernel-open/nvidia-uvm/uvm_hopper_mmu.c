@@ -44,6 +44,7 @@
 
 uvm_mmu_engine_type_t uvm_hal_hopper_mmu_engine_id_to_type(NvU16 mmu_engine_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 872);
     if (mmu_engine_id >= NV_PFAULT_MMU_ENG_ID_HOST0 && mmu_engine_id <= NV_PFAULT_MMU_ENG_ID_HOST44)
         return UVM_MMU_ENGINE_TYPE_HOST;
 
@@ -58,6 +59,7 @@ uvm_mmu_engine_type_t uvm_hal_hopper_mmu_engine_id_to_type(NvU16 mmu_engine_id)
 
 static NvU32 page_table_depth_hopper(NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 873);
     // The common-case is page_size == UVM_PAGE_SIZE_2M, hence the first check
     if (page_size == UVM_PAGE_SIZE_2M)
         return 4;
@@ -68,6 +70,7 @@ static NvU32 page_table_depth_hopper(NvU32 page_size)
 
 static NvU32 entries_per_index_hopper(NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 874);
     UVM_ASSERT(depth < 6);
     if (depth == 4)
         return 2;
@@ -76,6 +79,7 @@ static NvU32 entries_per_index_hopper(NvU32 depth)
 
 static NvLength entry_offset_hopper(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 875);
     UVM_ASSERT(depth < 6);
     if ((page_size == UVM_PAGE_SIZE_4K) && (depth == 4))
         return MMU_SMALL;
@@ -84,11 +88,13 @@ static NvLength entry_offset_hopper(NvU32 depth, NvU32 page_size)
 
 static NvLength entry_size_hopper(NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 876);
     return entries_per_index_hopper(depth) * 8;
 }
 
 static NvU32 index_bits_hopper(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 877);
     static const NvU32 bit_widths[] = {1, 9, 9, 9, 8};
 
     // some code paths keep on querying this until they get a 0, meaning only
@@ -112,11 +118,13 @@ static NvU32 index_bits_hopper(NvU32 depth, NvU32 page_size)
 
 static NvU32 num_va_bits_hopper(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 878);
     return 57;
 }
 
 static NvLength allocation_size_hopper(NvU32 depth, NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 879);
     UVM_ASSERT(depth < 6);
     if (depth == 5 && page_size == UVM_PAGE_SIZE_64K)
         return 256;
@@ -128,6 +136,7 @@ static NvLength allocation_size_hopper(NvU32 depth, NvU32 page_size)
 // PTE Permission Control Flags
 static NvU64 pte_pcf(uvm_prot_t prot, NvU64 flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 880);
     bool ac = !(flags & UVM_MMU_PTE_FLAGS_ACCESS_COUNTERS_DISABLED);
     bool cached = flags & UVM_MMU_PTE_FLAGS_CACHED;
 
@@ -173,6 +182,7 @@ static NvU64 pte_pcf(uvm_prot_t prot, NvU64 flags)
 
 static NvU64 make_pte_hopper(uvm_aperture_t aperture, NvU64 address, uvm_prot_t prot, NvU64 flags)
 {
+    printk(KERN_ERR "=====================================   %d\n", 881);
     NvU8 aperture_bits = 0;
     NvU64 pte_bits = 0;
 
@@ -217,6 +227,7 @@ static NvU64 make_pte_hopper(uvm_aperture_t aperture, NvU64 address, uvm_prot_t 
 
 static NvU64 make_sked_reflected_pte_hopper(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 882);
     return HWCONST64(_MMU_VER3, PTE, VALID, TRUE) |
            HWVALUE64(_MMU_VER3, PTE, PCF, pte_pcf(UVM_PROT_READ_WRITE_ATOMIC, UVM_MMU_PTE_FLAGS_NONE)) |
            HWVALUE64(_MMU_VER3, PTE, KIND, NV_MMU_PTE_KIND_SMSKED_MESSAGE);
@@ -224,12 +235,14 @@ static NvU64 make_sked_reflected_pte_hopper(void)
 
 static NvU64 make_sparse_pte_hopper(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 883);
     return HWCONST64(_MMU_VER3, PTE, VALID, FALSE) |
            HWCONST64(_MMU_VER3, PTE, PCF, SPARSE);
 }
 
 static NvU64 unmapped_pte_hopper(NvU32 page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 884);
     // Setting PCF to NO_VALID_4KB_PAGE on an otherwise-zeroed big PTE causes
     // the corresponding 4k PTEs to be ignored. This allows the invalidation of
     // a mixed PDE range to be much faster.
@@ -244,6 +257,7 @@ static NvU64 unmapped_pte_hopper(NvU32 page_size)
 
 static NvU64 poisoned_pte_hopper(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 885);
     // An invalid PTE won't be fatal from faultable units like SM, which is the
     // most likely source of bad PTE accesses.
 
@@ -262,6 +276,7 @@ static NvU64 poisoned_pte_hopper(void)
 
 static NvU64 single_pde_hopper(uvm_mmu_page_table_alloc_t *phys_alloc, NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 886);
     NvU64 pde_bits = 0;
 
     if (phys_alloc != NULL) {
@@ -313,6 +328,7 @@ static NvU64 single_pde_hopper(uvm_mmu_page_table_alloc_t *phys_alloc, NvU32 dep
 
 static NvU64 big_half_pde_hopper(uvm_mmu_page_table_alloc_t *phys_alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 887);
     NvU64 pde_bits = 0;
 
     if (phys_alloc != NULL) {
@@ -342,6 +358,7 @@ static NvU64 big_half_pde_hopper(uvm_mmu_page_table_alloc_t *phys_alloc)
 
 static NvU64 small_half_pde_hopper(uvm_mmu_page_table_alloc_t *phys_alloc)
 {
+    printk(KERN_ERR "=====================================   %d\n", 888);
     NvU64 pde_bits = 0;
 
     if (phys_alloc != NULL) {
@@ -370,6 +387,7 @@ static NvU64 small_half_pde_hopper(uvm_mmu_page_table_alloc_t *phys_alloc)
 
 static void make_pde_hopper(void *entry, uvm_mmu_page_table_alloc_t **phys_allocs, NvU32 depth)
 {
+    printk(KERN_ERR "=====================================   %d\n", 889);
     NvU32 entry_count = entries_per_index_hopper(depth);
     NvU64 *entry_bits = (NvU64 *)entry;
 
@@ -393,6 +411,7 @@ static uvm_mmu_mode_hal_t hopper_mmu_mode_hal;
 
 uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_hopper(NvU32 big_page_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 890);
     static bool initialized = false;
 
     UVM_ASSERT(big_page_size == UVM_PAGE_SIZE_64K || big_page_size == UVM_PAGE_SIZE_128K);
@@ -433,6 +452,7 @@ uvm_mmu_mode_hal_t *uvm_hal_mmu_mode_hopper(NvU32 big_page_size)
 
 NvU16 uvm_hal_hopper_mmu_client_id_to_utlb_id(NvU16 client_id)
 {
+    printk(KERN_ERR "=====================================   %d\n", 891);
     switch (client_id) {
         case NV_PFAULT_CLIENT_GPC_RAST:
         case NV_PFAULT_CLIENT_GPC_GCC:

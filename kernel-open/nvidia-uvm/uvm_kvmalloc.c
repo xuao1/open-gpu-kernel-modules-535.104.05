@@ -92,6 +92,7 @@ MODULE_PARM_DESC(uvm_leak_checker,
 
 NV_STATUS uvm_kvmalloc_init(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 906);
     if (uvm_leak_checker >= UVM_KVMALLOC_LEAK_CHECK_ORIGIN) {
         spin_lock_init(&g_uvm_leak_checker.lock);
         uvm_rb_tree_init(&g_uvm_leak_checker.allocation_info);
@@ -107,6 +108,7 @@ NV_STATUS uvm_kvmalloc_init(void)
 
 void uvm_kvmalloc_exit(void)
 {
+    printk(KERN_ERR "=====================================   %d\n", 907);
     if (!g_malloc_initialized)
         return;
 
@@ -153,6 +155,7 @@ void uvm_kvmalloc_exit(void)
 
 static void insert_info(uvm_kvmalloc_info_t *info)
 {
+    printk(KERN_ERR "=====================================   %d\n", 908);
     NV_STATUS status;
     unsigned long irq_flags;
 
@@ -166,6 +169,7 @@ static void insert_info(uvm_kvmalloc_info_t *info)
 
 static uvm_kvmalloc_info_t *remove_info(void *p)
 {
+    printk(KERN_ERR "=====================================   %d\n", 909);
     uvm_rb_tree_node_t *node;
     uvm_kvmalloc_info_t *info = NULL;
     unsigned long irq_flags;
@@ -189,6 +193,7 @@ static uvm_kvmalloc_info_t *remove_info(void *p)
 
 static void alloc_tracking_add(void *p, const char *file, int line, const char *function)
 {
+    printk(KERN_ERR "=====================================   %d\n", 910);
     // Add uvm_kvsize(p) instead of size because uvm_kvsize might be larger (due
     // to ksize), and uvm_kvfree only knows about uvm_kvsize
     size_t size = uvm_kvsize(p);
@@ -220,6 +225,7 @@ static void alloc_tracking_add(void *p, const char *file, int line, const char *
 
 static void alloc_tracking_remove(void *p)
 {
+    printk(KERN_ERR "=====================================   %d\n", 911);
     size_t size = uvm_kvsize(p);
     uvm_kvmalloc_info_t *info;
 
@@ -239,6 +245,7 @@ static void alloc_tracking_remove(void *p)
 
 static uvm_vmalloc_hdr_t *get_hdr(void *p)
 {
+    printk(KERN_ERR "=====================================   %d\n", 912);
     uvm_vmalloc_hdr_t *hdr;
     UVM_ASSERT(is_vmalloc_addr(p));
     hdr = container_of(p, uvm_vmalloc_hdr_t, ptr);
@@ -248,6 +255,7 @@ static uvm_vmalloc_hdr_t *get_hdr(void *p)
 
 static void *alloc_internal(size_t size, bool zero_memory)
 {
+    printk(KERN_ERR "=====================================   %d\n", 913);
     uvm_vmalloc_hdr_t *hdr;
 
     // Make sure that the allocation pointer is suitably-aligned for a natively-
@@ -277,6 +285,7 @@ static void *alloc_internal(size_t size, bool zero_memory)
 
 void *__uvm_kvmalloc(size_t size, const char *file, int line, const char *function)
 {
+    printk(KERN_ERR "=====================================   %d\n", 914);
     void *p = alloc_internal(size, false);
 
     if (uvm_leak_checker && p)
@@ -287,6 +296,7 @@ void *__uvm_kvmalloc(size_t size, const char *file, int line, const char *functi
 
 void *__uvm_kvmalloc_zero(size_t size, const char *file, int line, const char *function)
 {
+    printk(KERN_ERR "=====================================   %d\n", 915);
     void *p = alloc_internal(size, true);
 
     if (uvm_leak_checker && p)
@@ -297,6 +307,7 @@ void *__uvm_kvmalloc_zero(size_t size, const char *file, int line, const char *f
 
 void uvm_kvfree(void *p)
 {
+    printk(KERN_ERR "=====================================   %d\n", 916);
     if (!p)
         return;
 
@@ -312,6 +323,7 @@ void uvm_kvfree(void *p)
 // Handle reallocs of kmalloc-based allocations
 static void *realloc_from_kmalloc(void *p, size_t new_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 917);
     void *new_p;
 
     // Simple case: kmalloc -> kmalloc
@@ -330,6 +342,7 @@ static void *realloc_from_kmalloc(void *p, size_t new_size)
 // Handle reallocs of vmalloc-based allocations
 static void *realloc_from_vmalloc(void *p, size_t new_size)
 {
+    printk(KERN_ERR "=====================================   %d\n", 918);
     uvm_vmalloc_hdr_t *old_hdr = get_hdr(p);
     void *new_p;
 
@@ -354,6 +367,7 @@ static void *realloc_from_vmalloc(void *p, size_t new_size)
 
 void *__uvm_kvrealloc(void *p, size_t new_size, const char *file, int line, const char *function)
 {
+    printk(KERN_ERR "=====================================   %d\n", 919);
     void *new_p;
     uvm_kvmalloc_info_t *info = NULL;
     size_t old_size;
@@ -404,6 +418,7 @@ void *__uvm_kvrealloc(void *p, size_t new_size, const char *file, int line, cons
 
 size_t uvm_kvsize(void *p)
 {
+    printk(KERN_ERR "=====================================   %d\n", 920);
     UVM_ASSERT(g_malloc_initialized);
     UVM_ASSERT(p);
     if (is_vmalloc_addr(p))

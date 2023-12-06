@@ -40,6 +40,7 @@
 
 static bool is_write_populate(struct vm_area_struct *vma, uvm_populate_permissions_t populate_permissions)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1866);
     switch (populate_permissions) {
         case UVM_POPULATE_PERMISSIONS_INHERIT:
             return vma->vm_flags & VM_WRITE;
@@ -55,6 +56,7 @@ static bool is_write_populate(struct vm_area_struct *vma, uvm_populate_permissio
 
 NV_STATUS uvm_handle_fault(struct vm_area_struct *vma, unsigned long start, unsigned long vma_num_pages, bool write)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1867);
     NV_STATUS status = NV_OK;
 
     unsigned long i;
@@ -88,6 +90,7 @@ NV_STATUS uvm_populate_pageable_vma(struct vm_area_struct *vma,
                                     bool touch,
                                     uvm_populate_permissions_t populate_permissions)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1868);
     unsigned long vma_num_pages;
     unsigned long outer = start + length;
     unsigned int gup_flags = is_write_populate(vma, populate_permissions) ? FOLL_WRITE : 0;
@@ -186,6 +189,7 @@ NV_STATUS uvm_populate_pageable(struct mm_struct *mm,
                                 bool touch,
                                 uvm_populate_permissions_t populate_permissions)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1869);
     struct vm_area_struct *vma;
     const unsigned long end = start + length;
     unsigned long prev_end = end;
@@ -219,6 +223,7 @@ NV_STATUS uvm_populate_pageable(struct mm_struct *mm,
 
 NV_STATUS uvm_api_populate_pageable(const UVM_POPULATE_PAGEABLE_PARAMS *params, struct file *filp)
 {
+    printk(KERN_ERR "=====================================   %d\n", 1870);
     NV_STATUS status;
     bool allow_managed;
     bool skip_prot_check;
