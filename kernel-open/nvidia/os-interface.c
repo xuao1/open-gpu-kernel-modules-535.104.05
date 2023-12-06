@@ -52,13 +52,13 @@ NvBool os_dma_buf_enabled = NV_FALSE;
 
 void NV_API_CALL os_disable_console_access(void)
 {
-    printk(KERN_ERR "=====================================   862\n");
+    // printk(KERN_ERR "=====================================   862\n");
     console_lock();
 }
 
 void NV_API_CALL os_enable_console_access(void)
 {
-    printk(KERN_ERR "=====================================   863\n");
+    // printk(KERN_ERR "=====================================   863\n");
     console_unlock();
 }
 
@@ -74,7 +74,7 @@ NV_STATUS NV_API_CALL os_alloc_mutex
     void **ppMutex
 )
 {
-    printk(KERN_ERR "=====================================   864\n");
+    // printk(KERN_ERR "=====================================   864\n");
     NV_STATUS rmStatus;
     os_mutex_t *os_mutex;
 
@@ -101,7 +101,7 @@ void NV_API_CALL os_free_mutex
     void  *pMutex
 )
 {
-    printk(KERN_ERR "=====================================   865\n");
+    // printk(KERN_ERR "=====================================   865\n");
     os_mutex_t *os_mutex = (os_mutex_t *)pMutex;
 
     if (os_mutex != NULL)
@@ -119,7 +119,7 @@ NV_STATUS NV_API_CALL os_acquire_mutex
     void  *pMutex
 )
 {
-    printk(KERN_ERR "=====================================   866\n");
+    // printk(KERN_ERR "=====================================   866\n");
     os_mutex_t *os_mutex = (os_mutex_t *)pMutex;
 
     if (!NV_MAY_SLEEP())
@@ -136,7 +136,7 @@ NV_STATUS NV_API_CALL os_cond_acquire_mutex
     void * pMutex
 )
 {
-    printk(KERN_ERR "=====================================   867\n");
+    // printk(KERN_ERR "=====================================   867\n");
     os_mutex_t *os_mutex = (os_mutex_t *)pMutex;
     if (!NV_MAY_SLEEP())
     {
@@ -157,7 +157,7 @@ void NV_API_CALL os_release_mutex
     void *pMutex
 )
 {
-    printk(KERN_ERR "=====================================   868\n");
+    // printk(KERN_ERR "=====================================   868\n");
     os_mutex_t *os_mutex = (os_mutex_t *)pMutex;
     up(os_mutex);
 }
@@ -170,7 +170,7 @@ void* NV_API_CALL os_alloc_semaphore
     NvU32 initialValue
 )
 {
-    printk(KERN_ERR "=====================================   869\n");
+    // printk(KERN_ERR "=====================================   869\n");
     NV_STATUS rmStatus;
     os_semaphore_t *os_sema;
 
@@ -191,7 +191,7 @@ void NV_API_CALL os_free_semaphore
     void *pSema
 )
 {
-    printk(KERN_ERR "=====================================   870\n");
+    // printk(KERN_ERR "=====================================   870\n");
     os_semaphore_t *os_sema = (os_semaphore_t *)pSema;
 
     os_free_mem(os_sema);
@@ -202,7 +202,7 @@ NV_STATUS NV_API_CALL os_acquire_semaphore
     void *pSema
 )
 {
-    printk(KERN_ERR "=====================================   871\n");
+    // printk(KERN_ERR "=====================================   871\n");
     os_semaphore_t *os_sema = (os_semaphore_t *)pSema;
 
     if (!NV_MAY_SLEEP())
@@ -218,7 +218,7 @@ NV_STATUS NV_API_CALL os_cond_acquire_semaphore
     void * pSema
 )
 {
-    printk(KERN_ERR "=====================================   872\n");
+    // printk(KERN_ERR "=====================================   872\n");
     os_semaphore_t *os_sema = (os_semaphore_t *)pSema;
     //
     // NOTE: down_trylock() is safe to call from IRQ, se we don't need an
@@ -239,7 +239,7 @@ NV_STATUS NV_API_CALL os_release_semaphore
     void *pSema
 )
 {
-    printk(KERN_ERR "=====================================   873\n");
+    // printk(KERN_ERR "=====================================   873\n");
     os_semaphore_t *os_sema = (os_semaphore_t *)pSema;
     up(os_sema);
     return NV_OK;
@@ -249,7 +249,7 @@ typedef struct rw_semaphore os_rwlock_t;
 
 void* NV_API_CALL os_alloc_rwlock(void)
 {
-    printk(KERN_ERR "=====================================   874\n");
+    // printk(KERN_ERR "=====================================   874\n");
     os_rwlock_t *os_rwlock = NULL;
 
     NV_STATUS rmStatus = os_alloc_mem((void *)&os_rwlock, sizeof(os_rwlock_t));
@@ -266,14 +266,14 @@ void* NV_API_CALL os_alloc_rwlock(void)
 
 void NV_API_CALL os_free_rwlock(void *pRwLock)
 {
-    printk(KERN_ERR "=====================================   875\n");
+    // printk(KERN_ERR "=====================================   875\n");
     os_rwlock_t *os_rwlock = (os_rwlock_t *)pRwLock;
     os_free_mem(os_rwlock);
 }
 
 NV_STATUS NV_API_CALL os_acquire_rwlock_read(void *pRwLock)
 {
-    printk(KERN_ERR "=====================================   876\n");
+    // printk(KERN_ERR "=====================================   876\n");
     os_rwlock_t *os_rwlock = (os_rwlock_t *)pRwLock;
 
     if (!NV_MAY_SLEEP())
@@ -286,7 +286,7 @@ NV_STATUS NV_API_CALL os_acquire_rwlock_read(void *pRwLock)
 
 NV_STATUS NV_API_CALL os_acquire_rwlock_write(void *pRwLock)
 {
-    printk(KERN_ERR "=====================================   877\n");
+    // printk(KERN_ERR "=====================================   877\n");
     os_rwlock_t *os_rwlock = (os_rwlock_t *)pRwLock;
 
     if (!NV_MAY_SLEEP())
@@ -299,7 +299,7 @@ NV_STATUS NV_API_CALL os_acquire_rwlock_write(void *pRwLock)
 
 NV_STATUS NV_API_CALL os_cond_acquire_rwlock_read(void *pRwLock)
 {
-    printk(KERN_ERR "=====================================   878\n");
+    // printk(KERN_ERR "=====================================   878\n");
     os_rwlock_t *os_rwlock = (os_rwlock_t *)pRwLock;
 
     if (down_read_trylock(os_rwlock))
@@ -312,7 +312,7 @@ NV_STATUS NV_API_CALL os_cond_acquire_rwlock_read(void *pRwLock)
 
 NV_STATUS NV_API_CALL os_cond_acquire_rwlock_write(void *pRwLock)
 {
-    printk(KERN_ERR "=====================================   879\n");
+    // printk(KERN_ERR "=====================================   879\n");
     os_rwlock_t *os_rwlock = (os_rwlock_t *)pRwLock;
 
     if (down_write_trylock(os_rwlock))
@@ -325,46 +325,46 @@ NV_STATUS NV_API_CALL os_cond_acquire_rwlock_write(void *pRwLock)
 
 void NV_API_CALL os_release_rwlock_read(void *pRwLock)
 {
-    printk(KERN_ERR "=====================================   880\n");
+    // printk(KERN_ERR "=====================================   880\n");
     os_rwlock_t *os_rwlock = (os_rwlock_t *)pRwLock;
     up_read(os_rwlock);
 }
 
 void NV_API_CALL os_release_rwlock_write(void *pRwLock)
 {
-    printk(KERN_ERR "=====================================   881\n");
+    // printk(KERN_ERR "=====================================   881\n");
     os_rwlock_t *os_rwlock = (os_rwlock_t *)pRwLock;
     up_write(os_rwlock);
 }
 
 NvBool NV_API_CALL os_semaphore_may_sleep(void)
 {
-    // printk(KERN_ERR "=====================================   882\n");
+    // // printk(KERN_ERR "=====================================   882\n");
     return NV_MAY_SLEEP();
 }
 
 NvBool NV_API_CALL os_is_isr(void)
 {
-    printk(KERN_ERR "=====================================   883\n");
+    // printk(KERN_ERR "=====================================   883\n");
     return (in_irq());
 }
 
 // return TRUE if the caller is the super-user
 NvBool NV_API_CALL os_is_administrator(void)
 {
-    printk(KERN_ERR "=====================================   884\n");
+    // printk(KERN_ERR "=====================================   884\n");
     return NV_IS_SUSER();
 }
 
 NvBool NV_API_CALL os_allow_priority_override(void)
 {
-    printk(KERN_ERR "=====================================   885\n");
+    // printk(KERN_ERR "=====================================   885\n");
     return capable(CAP_SYS_NICE);
 }
 
 NvU64 NV_API_CALL os_get_num_phys_pages(void)
 {
-    printk(KERN_ERR "=====================================   886\n");
+    // printk(KERN_ERR "=====================================   886\n");
     return (NvU64)NV_NUM_PHYSPAGES;
 }
 
@@ -373,7 +373,7 @@ char* NV_API_CALL os_string_copy(
     const char *src
 )
 {
-    printk(KERN_ERR "=====================================   887\n");
+    // printk(KERN_ERR "=====================================   887\n");
     return strcpy(dst, src);
 }
 
@@ -381,19 +381,19 @@ NvU32 NV_API_CALL os_string_length(
     const char* str
 )
 {
-    printk(KERN_ERR "=====================================   888\n");
+    // printk(KERN_ERR "=====================================   888\n");
     return strlen(str);
 }
 
 NvU32 NV_API_CALL os_strtoul(const char *str, char **endp, NvU32 base)
 {
-    printk(KERN_ERR "=====================================   889\n");
+    // printk(KERN_ERR "=====================================   889\n");
     return (NvU32)simple_strtoul(str, endp, base);
 }
 
 NvS32 NV_API_CALL os_string_compare(const char *str1, const char *str2)
 {
-    printk(KERN_ERR "=====================================   890\n");
+    // printk(KERN_ERR "=====================================   890\n");
     return strcmp(str1, str2);
 }
 
@@ -403,7 +403,7 @@ void *os_mem_copy_custom(
     NvU32       length
 )
 {
-    printk(KERN_ERR "=====================================   891\n");
+    // printk(KERN_ERR "=====================================   891\n");
     void *ret = dstPtr;
     NvU32 dwords, bytes = length;
     NvU8 *dst = dstPtr;
@@ -441,7 +441,7 @@ void *NV_API_CALL os_mem_copy(
     NvU32       length
 )
 {
-    printk(KERN_ERR "=====================================   892\n");
+    // printk(KERN_ERR "=====================================   892\n");
 #if defined(NVCPU_AARCH64)
     /*
      * TODO: Remove once memset/memcpy restructure is complete
@@ -499,7 +499,7 @@ NV_STATUS NV_API_CALL os_memcpy_from_user(
     NvU32       n
 )
 {
-    printk(KERN_ERR "=====================================   893\n");
+    // printk(KERN_ERR "=====================================   893\n");
     return (NV_COPY_FROM_USER(to, from, n) ? NV_ERR_INVALID_ADDRESS : NV_OK);
 }
 
@@ -509,7 +509,7 @@ NV_STATUS NV_API_CALL os_memcpy_to_user(
     NvU32       n
 )
 {
-    printk(KERN_ERR "=====================================   894\n");
+    // printk(KERN_ERR "=====================================   894\n");
     return (NV_COPY_TO_USER(to, from, n) ? NV_ERR_INVALID_ADDRESS : NV_OK);
 }
 
@@ -519,7 +519,7 @@ void* NV_API_CALL os_mem_set(
     NvU32  length
 )
 {
-    // printk(KERN_ERR "=====================================   895\n");
+    // // printk(KERN_ERR "=====================================   895\n");
 #if defined(NVCPU_AARCH64)
     /*
      * TODO: Remove once memset/memcpy restructure is complete
@@ -548,7 +548,7 @@ NvS32 NV_API_CALL os_mem_cmp(
     NvU32 length
 )
 {
-    printk(KERN_ERR "=====================================   896\n");
+    // printk(KERN_ERR "=====================================   896\n");
     return memcmp(buf0, buf1, length);
 }
 
@@ -592,7 +592,7 @@ NV_STATUS NV_API_CALL os_alloc_mem(
     NvU64 size
 )
 {
-    printk(KERN_ERR "=====================================   897\n");
+    // printk(KERN_ERR "=====================================   897\n");
     NvU64 original_size = size;
     unsigned long alloc_size;
 
@@ -640,7 +640,7 @@ NV_STATUS NV_API_CALL os_alloc_mem(
 
 void NV_API_CALL os_free_mem(void *address)
 {
-    printk(KERN_ERR "=====================================   898\n");
+    // printk(KERN_ERR "=====================================   898\n");
     NvU64 size;
 
     NV_MEM_TRACKING_RETRIEVE_SIZE(address, size);
@@ -666,7 +666,7 @@ NV_STATUS NV_API_CALL os_get_current_time(
     NvU32 *useconds
 )
 {
-    // printk(KERN_ERR "=====================================   899\n");
+    // // printk(KERN_ERR "=====================================   899\n");
     struct timespec64 tm;
 
     ktime_get_real_ts64(&tm);
@@ -682,7 +682,7 @@ NV_STATUS NV_API_CALL os_get_current_time(
 //
 NvU64 NV_API_CALL os_get_current_tick_hr(void)
 {
-    printk(KERN_ERR "=====================================   900\n");
+    // printk(KERN_ERR "=====================================   900\n");
     struct timespec64 tm;
     ktime_get_raw_ts64(&tm);
     return (NvU64) timespec64_to_ns(&tm);
@@ -692,7 +692,7 @@ NvU64 NV_API_CALL os_get_current_tick_hr(void)
 
 NvU64 NV_API_CALL os_get_current_tick(void)
 {
-    // printk(KERN_ERR "=====================================   901\n");
+    // // printk(KERN_ERR "=====================================   901\n");
 #if defined(NV_JIFFIES_TO_TIMESPEC_PRESENT)
     struct timespec ts;
     jiffies_to_timespec(jiffies, &ts);
@@ -706,7 +706,7 @@ NvU64 NV_API_CALL os_get_current_tick(void)
 
 NvU64 NV_API_CALL os_get_tick_resolution(void)
 {
-    printk(KERN_ERR "=====================================   902\n");
+    // printk(KERN_ERR "=====================================   902\n");
     return (NvU64)jiffies_to_usecs(1) * NSEC_PER_USEC;
 }
 
@@ -714,7 +714,7 @@ NvU64 NV_API_CALL os_get_tick_resolution(void)
 
 NvU64 NV_API_CALL os_get_current_tick(void)
 {
-    printk(KERN_ERR "=====================================   903\n");
+    // printk(KERN_ERR "=====================================   903\n");
     /*
      * 'jiffies' overflows regularly on 32-bit builds (unsigned long is 4 bytes
      * instead of 8 bytes), so it's unwise to build a tick counter on it, since
@@ -737,7 +737,7 @@ NvU64 NV_API_CALL os_get_current_tick(void)
 
 NvU64 NV_API_CALL os_get_tick_resolution(void)
 {
-    printk(KERN_ERR "=====================================   904\n");
+    // printk(KERN_ERR "=====================================   904\n");
     /*
      * os_get_current_tick() uses os_get_current_time(), which has
      * microsecond resolution.
@@ -755,19 +755,19 @@ NvU64 NV_API_CALL os_get_tick_resolution(void)
 
 NV_STATUS NV_API_CALL os_delay_us(NvU32 MicroSeconds)
 {
-    printk(KERN_ERR "=====================================   905\n");
+    // printk(KERN_ERR "=====================================   905\n");
     return nv_sleep_us(MicroSeconds);
 }
 
 NV_STATUS NV_API_CALL os_delay(NvU32 MilliSeconds)
 {
-    printk(KERN_ERR "=====================================   906\n");
+    // printk(KERN_ERR "=====================================   906\n");
     return nv_sleep_ms(MilliSeconds);
 }
 
 NvU64 NV_API_CALL os_get_cpu_frequency(void)
 {
-    printk(KERN_ERR "=====================================   907\n");
+    // printk(KERN_ERR "=====================================   907\n");
     NvU64 cpu_hz = 0;
 #if defined(CONFIG_CPU_FREQ)
     cpu_hz = (cpufreq_get(0) * 1000);
@@ -785,13 +785,13 @@ NvU64 NV_API_CALL os_get_cpu_frequency(void)
 
 NvU32 NV_API_CALL os_get_current_process(void)
 {
-    printk(KERN_ERR "=====================================   908\n");
+    // printk(KERN_ERR "=====================================   908\n");
     return NV_GET_CURRENT_PROCESS();
 }
 
 void NV_API_CALL os_get_current_process_name(char *buf, NvU32 len)
 {
-    printk(KERN_ERR "=====================================   909\n");
+    // printk(KERN_ERR "=====================================   909\n");
     task_lock(current);
     strncpy(buf, current->comm, len - 1);
     buf[len - 1] = '\0';
@@ -800,7 +800,7 @@ void NV_API_CALL os_get_current_process_name(char *buf, NvU32 len)
 
 NV_STATUS NV_API_CALL os_get_current_thread(NvU64 *threadId)
 {
-    // printk(KERN_ERR "=====================================   910\n");
+    // // printk(KERN_ERR "=====================================   910\n");
     if (in_interrupt())
         *threadId = 0;
     else
@@ -823,7 +823,7 @@ NvU32 cur_debuglevel = 0xffffffff;
  */
 inline void NV_API_CALL out_string(const char *str)
 {
-    printk(KERN_ERR "=====================================   911\n");
+    // printk(KERN_ERR "=====================================   911\n");
     printk("%s", str);
 }
 
@@ -833,7 +833,7 @@ inline void NV_API_CALL out_string(const char *str)
  */
 int NV_API_CALL nv_printf(NvU32 debuglevel, const char *printf_format, ...)
 {
-    printk(KERN_ERR "=====================================   912\n");
+    // printk(KERN_ERR "=====================================   912\n");
     va_list arglist;
     int chars_written = 0;
 
@@ -885,7 +885,7 @@ int NV_API_CALL nv_printf(NvU32 debuglevel, const char *printf_format, ...)
 
 NvS32 NV_API_CALL os_snprintf(char *buf, NvU32 size, const char *fmt, ...)
 {
-    printk(KERN_ERR "=====================================   913\n");
+    // printk(KERN_ERR "=====================================   913\n");
     va_list arglist;
     int chars_written;
 
@@ -898,20 +898,20 @@ NvS32 NV_API_CALL os_snprintf(char *buf, NvU32 size, const char *fmt, ...)
 
 NvS32 NV_API_CALL os_vsnprintf(char *buf, NvU32 size, const char *fmt, va_list arglist)
 {
-    printk(KERN_ERR "=====================================   914\n");
+    // printk(KERN_ERR "=====================================   914\n");
     return vsnprintf(buf, size, fmt, arglist);
 }
 
 void NV_API_CALL os_log_error(const char *fmt, va_list ap)
 {
-    printk(KERN_ERR "=====================================   915\n");
+    // printk(KERN_ERR "=====================================   915\n");
     unsigned long flags;
 
     NV_SPIN_LOCK_IRQSAVE(&nv_error_string_lock, flags);
 
     vsnprintf(nv_error_string, MAX_ERROR_STRING, fmt, ap);
     nv_error_string[MAX_ERROR_STRING - 1] = 0;
-    printk(KERN_ERR "%s", nv_error_string);
+    // printk(KERN_ERR "%s", nv_error_string);
 
     NV_SPIN_UNLOCK_IRQRESTORE(&nv_error_string_lock, flags);
 }
@@ -921,7 +921,7 @@ void NV_API_CALL os_io_write_byte(
     NvU8 value
 )
 {
-    printk(KERN_ERR "=====================================   916\n");
+    // printk(KERN_ERR "=====================================   916\n");
     outb(value, address);
 }
 
@@ -930,7 +930,7 @@ void NV_API_CALL os_io_write_word(
     NvU16 value
 )
 {
-    printk(KERN_ERR "=====================================   917\n");
+    // printk(KERN_ERR "=====================================   917\n");
     outw(value, address);
 }
 
@@ -939,7 +939,7 @@ void NV_API_CALL os_io_write_dword(
     NvU32 value
 )
 {
-    printk(KERN_ERR "=====================================   918\n");
+    // printk(KERN_ERR "=====================================   918\n");
     outl(value, address);
 }
 
@@ -947,7 +947,7 @@ NvU8 NV_API_CALL os_io_read_byte(
     NvU32 address
 )
 {
-    printk(KERN_ERR "=====================================   919\n");
+    // printk(KERN_ERR "=====================================   919\n");
     return inb(address);
 }
 
@@ -955,7 +955,7 @@ NvU16 NV_API_CALL os_io_read_word(
     NvU32 address
 )
 {
-    printk(KERN_ERR "=====================================   920\n");
+    // printk(KERN_ERR "=====================================   920\n");
     return inw(address);
 }
 
@@ -963,14 +963,14 @@ NvU32 NV_API_CALL os_io_read_dword(
     NvU32 address
 )
 {
-    printk(KERN_ERR "=====================================   921\n");
+    // printk(KERN_ERR "=====================================   921\n");
     return inl(address);
 }
 
 
 static NvBool NV_API_CALL xen_support_fully_virtualized_kernel(void)
 {
-    printk(KERN_ERR "=====================================   922\n");
+    // printk(KERN_ERR "=====================================   922\n");
 #if defined(NV_XEN_SUPPORT_FULLY_VIRTUALIZED_KERNEL)
     return (os_is_vgx_hyper());
 #endif
@@ -983,7 +983,7 @@ void* NV_API_CALL os_map_kernel_space(
     NvU32 mode
 )
 {
-    printk(KERN_ERR "=====================================   923\n");
+    // printk(KERN_ERR "=====================================   923\n");
     void *vaddr;
 
     if (!xen_support_fully_virtualized_kernel() && start == 0)
@@ -1034,7 +1034,7 @@ void NV_API_CALL os_unmap_kernel_space(
     NvU64 size_bytes
 )
 {
-    printk(KERN_ERR "=====================================   924\n");
+    // printk(KERN_ERR "=====================================   924\n");
     if (addr == (void *)PAGE_OFFSET)
         return;
 
@@ -1044,7 +1044,7 @@ void NV_API_CALL os_unmap_kernel_space(
 // flush the cpu's cache, uni-processor version
 NV_STATUS NV_API_CALL os_flush_cpu_cache(void)
 {
-    printk(KERN_ERR "=====================================   925\n");
+    // printk(KERN_ERR "=====================================   925\n");
     CACHE_FLUSH();
     return NV_OK;
 }
@@ -1052,7 +1052,7 @@ NV_STATUS NV_API_CALL os_flush_cpu_cache(void)
 // flush the cache of all cpus
 NV_STATUS NV_API_CALL os_flush_cpu_cache_all(void)
 {
-    printk(KERN_ERR "=====================================   926\n");
+    // printk(KERN_ERR "=====================================   926\n");
 #if defined(NVCPU_AARCH64)
     CACHE_FLUSH_ALL();
     return NV_OK;
@@ -1062,7 +1062,7 @@ NV_STATUS NV_API_CALL os_flush_cpu_cache_all(void)
 
 NV_STATUS NV_API_CALL os_flush_user_cache(void)
 {
-    printk(KERN_ERR "=====================================   927\n");
+    // printk(KERN_ERR "=====================================   927\n");
 #if defined(NVCPU_AARCH64)
     if (!NV_MAY_SLEEP())
     {
@@ -1083,14 +1083,14 @@ NV_STATUS NV_API_CALL os_flush_user_cache(void)
 
 void NV_API_CALL os_flush_cpu_write_combine_buffer(void)
 {
-    // printk(KERN_ERR "=====================================   928\n");
+    // // printk(KERN_ERR "=====================================   928\n");
     WRITE_COMBINE_FLUSH();
 }
 
 // override initial debug level from registry
 void NV_API_CALL os_dbg_init(void)
 {
-    printk(KERN_ERR "=====================================   929\n");
+    // printk(KERN_ERR "=====================================   929\n");
     NvU32 new_debuglevel;
     nvidia_stack_t *sp = NULL;
 
@@ -1114,7 +1114,7 @@ void NV_API_CALL os_dbg_init(void)
 
 void NV_API_CALL os_dbg_set_level(NvU32 new_debuglevel)
 {
-    printk(KERN_ERR "=====================================   930\n");
+    // printk(KERN_ERR "=====================================   930\n");
     nv_printf(NV_DBG_SETUP, "NVRM: Changing debuglevel from 0x%x to 0x%x\n",
         cur_debuglevel, new_debuglevel);
     cur_debuglevel = new_debuglevel;
@@ -1122,13 +1122,13 @@ void NV_API_CALL os_dbg_set_level(NvU32 new_debuglevel)
 
 NvU64 NV_API_CALL os_get_max_user_va(void)
 {
-    printk(KERN_ERR "=====================================   931\n");
+    // printk(KERN_ERR "=====================================   931\n");
 	return TASK_SIZE;
 }
 
 NV_STATUS NV_API_CALL os_schedule(void)
 {
-    printk(KERN_ERR "=====================================   932\n");
+    // printk(KERN_ERR "=====================================   932\n");
     if (NV_MAY_SLEEP())
     {
         set_current_state(TASK_INTERRUPTIBLE);
@@ -1151,7 +1151,7 @@ typedef struct {
 
 static void os_execute_work_item(void *_oqd)
 {
-    printk(KERN_ERR "=====================================   933\n");
+    // printk(KERN_ERR "=====================================   933\n");
     os_queue_data_t *oqd = _oqd;
     nvidia_stack_t *sp = NULL;
     void *data = oqd->data;
@@ -1170,7 +1170,7 @@ static void os_execute_work_item(void *_oqd)
 
 NV_STATUS NV_API_CALL os_queue_work_item(struct os_work_queue *queue, void *data)
 {
-    printk(KERN_ERR "=====================================   934\n");
+    // printk(KERN_ERR "=====================================   934\n");
     os_queue_data_t *oqd;
     nv_kthread_q_t *kthread;
 
@@ -1198,7 +1198,7 @@ NV_STATUS NV_API_CALL os_queue_work_item(struct os_work_queue *queue, void *data
 
 NV_STATUS NV_API_CALL os_flush_work_queue(struct os_work_queue *queue)
 {
-    printk(KERN_ERR "=====================================   935\n");
+    // printk(KERN_ERR "=====================================   935\n");
     nv_kthread_q_t *kthread;
 
     /* Use the global queue unless a valid queue was provided */
@@ -1224,7 +1224,7 @@ extern NvU32 NVreg_EnableDbgBreakpoint;
 
 void NV_API_CALL os_dbg_breakpoint(void)
 {
-    printk(KERN_ERR "=====================================   936\n");
+    // printk(KERN_ERR "=====================================   936\n");
     if (NVreg_EnableDbgBreakpoint == 0)
     {
         return;
@@ -1247,7 +1247,7 @@ void NV_API_CALL os_dbg_breakpoint(void)
 
 NvU32 NV_API_CALL os_get_cpu_number(void)
 {
-    // printk(KERN_ERR "=====================================   937\n");
+    // // printk(KERN_ERR "=====================================   937\n");
     NvU32 cpu_id = get_cpu();
     put_cpu();
     return cpu_id;
@@ -1255,19 +1255,19 @@ NvU32 NV_API_CALL os_get_cpu_number(void)
 
 NvU32 NV_API_CALL os_get_cpu_count(void)
 {
-    printk(KERN_ERR "=====================================   938\n");
+    // printk(KERN_ERR "=====================================   938\n");
     return NV_NUM_CPUS();
 }
 
 NvBool NV_API_CALL os_pat_supported(void)
 {
-    printk(KERN_ERR "=====================================   939\n");
+    // printk(KERN_ERR "=====================================   939\n");
     return (nv_pat_mode != NV_PAT_MODE_DISABLED);
 }
 
 NvBool NV_API_CALL os_is_efi_enabled(void)
 {
-    printk(KERN_ERR "=====================================   940\n");
+    // printk(KERN_ERR "=====================================   940\n");
     return efi_enabled(EFI_BOOT);
 }
 
@@ -1281,7 +1281,7 @@ void NV_API_CALL os_get_screen_info(
     NvU64 consoleBar2Address
 )
 {
-    printk(KERN_ERR "=====================================   941\n");
+    // printk(KERN_ERR "=====================================   941\n");
     *pPhysicalAddress = 0;
     *pFbWidth = *pFbHeight = *pFbDepth = *pFbPitch = 0;
 
@@ -1355,7 +1355,7 @@ void NV_API_CALL os_get_screen_info(
 
 void NV_API_CALL os_dump_stack(void)
 {
-    printk(KERN_ERR "=====================================   942\n");
+    // printk(KERN_ERR "=====================================   942\n");
     dump_stack();
 }
 
@@ -1367,7 +1367,7 @@ typedef struct os_spinlock_s
 
 NV_STATUS NV_API_CALL os_alloc_spinlock(void **ppSpinlock)
 {
-    printk(KERN_ERR "=====================================   944\n");
+    // printk(KERN_ERR "=====================================   944\n");
     NV_STATUS rmStatus;
     os_spinlock_t *os_spinlock;
 
@@ -1386,13 +1386,13 @@ NV_STATUS NV_API_CALL os_alloc_spinlock(void **ppSpinlock)
 
 void NV_API_CALL os_free_spinlock(void *pSpinlock)
 {
-    printk(KERN_ERR "=====================================   945\n");
+    // printk(KERN_ERR "=====================================   945\n");
     os_free_mem(pSpinlock);
 }
 
 NvU64 NV_API_CALL os_acquire_spinlock(void *pSpinlock)
 {
-    // printk(KERN_ERR "=====================================   946\n");
+    // // printk(KERN_ERR "=====================================   946\n");
     os_spinlock_t *os_spinlock = (os_spinlock_t *)pSpinlock;
     unsigned long eflags;
 
@@ -1409,7 +1409,7 @@ NvU64 NV_API_CALL os_acquire_spinlock(void *pSpinlock)
 
 void NV_API_CALL os_release_spinlock(void *pSpinlock, NvU64 oldIrql)
 {
-    // printk(KERN_ERR "=====================================   947\n");
+    // // printk(KERN_ERR "=====================================   947\n");
     os_spinlock_t *os_spinlock = (os_spinlock_t *)pSpinlock;
     unsigned long eflags;
 
@@ -1424,7 +1424,7 @@ void NV_API_CALL os_release_spinlock(void *pSpinlock, NvU64 oldIrql)
 
 NV_STATUS NV_API_CALL os_get_version_info(os_version_info * pOsVersionInfo)
 {
-    printk(KERN_ERR "=====================================   948\n");
+    // printk(KERN_ERR "=====================================   948\n");
     NV_STATUS status      = NV_OK;
 
     pOsVersionInfo->os_major_version = NV_KERNEL_RELEASE;
@@ -1444,7 +1444,7 @@ NV_STATUS NV_API_CALL os_get_version_info(os_version_info * pOsVersionInfo)
 
 NvBool NV_API_CALL os_is_xen_dom0(void)
 {
-    printk(KERN_ERR "=====================================   949\n");
+    // printk(KERN_ERR "=====================================   949\n");
 #if defined(NV_DOM0_KERNEL_PRESENT)
     return NV_TRUE;
 #else
@@ -1454,7 +1454,7 @@ NvBool NV_API_CALL os_is_xen_dom0(void)
 
 NvBool NV_API_CALL os_is_vgx_hyper(void)
 {
-    printk(KERN_ERR "=====================================   950\n");
+    // printk(KERN_ERR "=====================================   950\n");
 #if defined(NV_VGX_HYPER)
     return NV_TRUE;
 #else
@@ -1464,7 +1464,7 @@ NvBool NV_API_CALL os_is_vgx_hyper(void)
 
 NV_STATUS NV_API_CALL os_inject_vgx_msi(NvU16 guestID, NvU64 msiAddr, NvU32 msiData)
 {
-    printk(KERN_ERR "=====================================   951\n");
+    // printk(KERN_ERR "=====================================   951\n");
 #if defined(NV_VGX_HYPER) && defined(NV_DOM0_KERNEL_PRESENT) && \
     defined(NV_XEN_IOEMU_INJECT_MSI)
     int rc = 0;
@@ -1484,7 +1484,7 @@ NV_STATUS NV_API_CALL os_inject_vgx_msi(NvU16 guestID, NvU64 msiAddr, NvU32 msiD
 
 NvBool NV_API_CALL os_is_grid_supported(void)
 {
-    printk(KERN_ERR "=====================================   952\n");
+    // printk(KERN_ERR "=====================================   952\n");
 #if defined(NV_GRID_BUILD)
     return NV_TRUE;
 #else
@@ -1494,7 +1494,7 @@ NvBool NV_API_CALL os_is_grid_supported(void)
 
 NvU32 NV_API_CALL os_get_grid_csp_support(void)
 {
-    printk(KERN_ERR "=====================================   953\n");
+    // printk(KERN_ERR "=====================================   953\n");
 #if defined(NV_GRID_BUILD_CSP)
     return NV_GRID_BUILD_CSP;
 #else
@@ -1504,13 +1504,13 @@ NvU32 NV_API_CALL os_get_grid_csp_support(void)
 
 void NV_API_CALL os_bug_check(NvU32 bugCode, const char *bugCodeStr)
 {
-    printk(KERN_ERR "=====================================   954\n");
+    // printk(KERN_ERR "=====================================   954\n");
     panic(bugCodeStr);
 }
 
 NV_STATUS NV_API_CALL os_get_euid(NvU32 *pSecToken)
 {
-    printk(KERN_ERR "=====================================   955\n");
+    // printk(KERN_ERR "=====================================   955\n");
     *pSecToken = NV_CURRENT_EUID();
     return NV_OK;
 }
@@ -1519,7 +1519,7 @@ NV_STATUS NV_API_CALL os_get_euid(NvU32 *pSecToken)
 
 static NvBool os_verify_checksum(const NvU8 *pMappedAddr, NvU32 length)
 {
-    printk(KERN_ERR "=====================================   956\n");
+    // printk(KERN_ERR "=====================================   956\n");
     NvU8 sum = 0;
     NvU32 iter = 0;
 
@@ -1554,7 +1554,7 @@ static NvBool os_verify_checksum(const NvU8 *pMappedAddr, NvU32 length)
 
 static NV_STATUS os_get_smbios_header_legacy(NvU64 *pSmbsAddr)
 {
-    printk(KERN_ERR "=====================================   957\n");
+    // printk(KERN_ERR "=====================================   957\n");
 #if !defined(NVCPU_X86_64)
     return NV_ERR_NOT_SUPPORTED;
 #else
@@ -1599,7 +1599,7 @@ static NV_STATUS os_get_smbios_header_legacy(NvU64 *pSmbsAddr)
 #if (defined(NV_LINUX_EFI_H_PRESENT) && defined(CONFIG_EFI))
 static NV_STATUS os_verify_smbios_header_uefi(NvU64 smbsAddr)
 {
-    printk(KERN_ERR "=====================================   958\n");
+    // printk(KERN_ERR "=====================================   958\n");
     NV_STATUS status = NV_ERR_OBJECT_NOT_FOUND;
     NvU64 start= 0, offset =0 , size = 32;
     NvU8 *pMappedAddr = NULL, *pBufAddr = NULL;
@@ -1638,7 +1638,7 @@ done:
 
 static NV_STATUS os_get_smbios_header_uefi(NvU64 *pSmbsAddr)
 {
-    printk(KERN_ERR "=====================================   959\n");
+    // printk(KERN_ERR "=====================================   959\n");
     NV_STATUS status = NV_ERR_OPERATING_SYSTEM;
 
 // Make sure that efi.h is present before using "struct efi".
@@ -1676,7 +1676,7 @@ static NV_STATUS os_get_smbios_header_uefi(NvU64 *pSmbsAddr)
 // The function locates the SMBIOS entry point.
 NV_STATUS NV_API_CALL os_get_smbios_header(NvU64 *pSmbsAddr)
 {
-    printk(KERN_ERR "=====================================   960\n");
+    // printk(KERN_ERR "=====================================   960\n");
 
 #if !defined(NVCPU_X86_64) && !defined(NVCPU_AARCH64)
     return NV_ERR_NOT_SUPPORTED;
@@ -1701,7 +1701,7 @@ NV_STATUS NV_API_CALL os_get_acpi_rsdp_from_uefi
     NvU32  *pRsdpAddr
 )
 {
-    printk(KERN_ERR "=====================================   961\n");
+    // printk(KERN_ERR "=====================================   961\n");
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
 
     if (pRsdpAddr == NULL)
@@ -1736,18 +1736,18 @@ NV_STATUS NV_API_CALL os_get_acpi_rsdp_from_uefi
 
 void NV_API_CALL os_add_record_for_crashLog(void *pbuffer, NvU32 size)
 {
-    printk(KERN_ERR "=====================================   962\n");
+    // printk(KERN_ERR "=====================================   962\n");
 }
 
 void NV_API_CALL os_delete_record_for_crashLog(void *pbuffer)
 {
-    printk(KERN_ERR "=====================================   963\n");
+    // printk(KERN_ERR "=====================================   963\n");
 }
 
 #if !defined(NV_VGPU_KVM_BUILD)
 NV_STATUS NV_API_CALL os_call_vgpu_vfio(void *pvgpu_vfio_info, NvU32 cmd_type)
 {
-    printk(KERN_ERR "=====================================   964\n");
+    // printk(KERN_ERR "=====================================   964\n");
     return NV_ERR_NOT_SUPPORTED;
 }
 #endif
@@ -1760,7 +1760,7 @@ NV_STATUS NV_API_CALL os_alloc_pages_node
     NvU64 *pAddress
 )
 {
-    printk(KERN_ERR "=====================================   965\n");
+    // printk(KERN_ERR "=====================================   965\n");
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
 
 #if defined(__GFP_THISNODE) && defined(GFP_HIGHUSER_MOVABLE) && \
@@ -1845,7 +1845,7 @@ NV_STATUS NV_API_CALL os_get_page
     NvU64 address
 )
 {
-    printk(KERN_ERR "=====================================   966\n");
+    // printk(KERN_ERR "=====================================   966\n");
     get_page(NV_GET_PAGE_STRUCT(address));
     return NV_OK;
 }
@@ -1855,7 +1855,7 @@ NV_STATUS NV_API_CALL os_put_page
     NvU64 address
 )
 {
-    printk(KERN_ERR "=====================================   967\n");
+    // printk(KERN_ERR "=====================================   967\n");
     put_page(NV_GET_PAGE_STRUCT(address));
     return NV_OK;
 }
@@ -1865,7 +1865,7 @@ NvU32 NV_API_CALL os_get_page_refcount
     NvU64 address
 )
 {
-    printk(KERN_ERR "=====================================   968\n");
+    // printk(KERN_ERR "=====================================   968\n");
     return NV_PAGE_COUNT(NV_GET_PAGE_STRUCT(address));
 }
 
@@ -1874,7 +1874,7 @@ NvU32 NV_API_CALL os_count_tail_pages
     NvU64 address
 )
 {
-    printk(KERN_ERR "=====================================   969\n");
+    // printk(KERN_ERR "=====================================   969\n");
     NvU32 order = compound_order(compound_head(NV_GET_PAGE_STRUCT(address)));
 
     return 1 << order;
@@ -1886,7 +1886,7 @@ void NV_API_CALL os_free_pages_phys
     NvU32 size
 )
 {
-    printk(KERN_ERR "=====================================   970\n");
+    // printk(KERN_ERR "=====================================   970\n");
     __free_pages(NV_GET_PAGE_STRUCT(address), get_order(size));
 }
 
@@ -1895,7 +1895,7 @@ NV_STATUS NV_API_CALL os_numa_memblock_size
     NvU64 *memblock_size
 )
 {
-    printk(KERN_ERR "=====================================   971\n");
+    // printk(KERN_ERR "=====================================   971\n");
 #if NV_IS_EXPORT_SYMBOL_PRESENT_memory_block_size_bytes
     *memblock_size = memory_block_size_bytes();
     return NV_OK;
@@ -1911,7 +1911,7 @@ NV_STATUS NV_API_CALL os_open_temporary_file
     void **ppFile
 )
 {
-    printk(KERN_ERR "=====================================   972\n");
+    // printk(KERN_ERR "=====================================   972\n");
 #if defined(O_TMPFILE)
     struct file *file;
     const char *default_path = "/tmp";
@@ -1964,7 +1964,7 @@ void NV_API_CALL os_close_file
     void *pFile
 )
 {
-    printk(KERN_ERR "=====================================   973\n");
+    // printk(KERN_ERR "=====================================   973\n");
     filp_close(pFile, NULL);
 }
 
@@ -1978,7 +1978,7 @@ NV_STATUS NV_API_CALL os_write_file
     NvU64 offset
 )
 {
-    printk(KERN_ERR "=====================================   974\n");
+    // printk(KERN_ERR "=====================================   974\n");
     loff_t f_pos = offset;
     ssize_t num_written;
     int num_retries = NV_MAX_NUM_FILE_IO_RETRIES;
@@ -2019,7 +2019,7 @@ NV_STATUS NV_API_CALL os_read_file
     NvU64 offset
 )
 {
-    printk(KERN_ERR "=====================================   975\n");
+    // printk(KERN_ERR "=====================================   975\n");
     loff_t f_pos = offset;
     ssize_t num_read;
     int num_retries = NV_MAX_NUM_FILE_IO_RETRIES;
@@ -2058,7 +2058,7 @@ NV_STATUS NV_API_CALL os_open_readonly_file
     void       **ppFile
 )
 {
-    printk(KERN_ERR "=====================================   976\n");
+    // printk(KERN_ERR "=====================================   976\n");
     struct file *file;
 
     /*
@@ -2089,7 +2089,7 @@ NV_STATUS NV_API_CALL os_open_and_read_file
     NvU64       count
 )
 {
-    printk(KERN_ERR "=====================================   977\n");
+    // printk(KERN_ERR "=====================================   977\n");
     void *fileHandle;
     NV_STATUS status;
 
@@ -2108,7 +2108,7 @@ NV_STATUS NV_API_CALL os_open_and_read_file
 
 NvBool NV_API_CALL os_is_nvswitch_present(void)
 {
-    printk(KERN_ERR "=====================================   978\n");
+    // printk(KERN_ERR "=====================================   978\n");
     struct pci_device_id nvswitch_pci_table[] = {
         {
             PCI_DEVICE(PCI_VENDOR_ID_NVIDIA, PCI_ANY_ID),
@@ -2130,7 +2130,7 @@ NV_STATUS NV_API_CALL os_get_random_bytes
     NvU16 numBytes
 )
 {
-    printk(KERN_ERR "=====================================   979\n");
+    // printk(KERN_ERR "=====================================   979\n");
 #if defined NV_WAIT_FOR_RANDOM_BYTES_PRESENT
     if (wait_for_random_bytes() < 0)
         return NV_ERR_NOT_READY;
@@ -2145,7 +2145,7 @@ NV_STATUS NV_API_CALL os_alloc_wait_queue
     os_wait_queue **wq
 )
 {
-    printk(KERN_ERR "=====================================   980\n");
+    // printk(KERN_ERR "=====================================   980\n");
     NV_KMALLOC(*wq, sizeof(os_wait_queue));
     if (*wq == NULL)
         return NV_ERR_NO_MEMORY;
@@ -2160,7 +2160,7 @@ void NV_API_CALL os_free_wait_queue
     os_wait_queue *wq
 )
 {
-    printk(KERN_ERR "=====================================   981\n");
+    // printk(KERN_ERR "=====================================   981\n");
     NV_KFREE(wq, sizeof(os_wait_queue));
 }
 
@@ -2169,7 +2169,7 @@ void NV_API_CALL os_wait_uninterruptible
     os_wait_queue *wq
 )
 {
-    printk(KERN_ERR "=====================================   982\n");
+    // printk(KERN_ERR "=====================================   982\n");
     wait_for_completion(&wq->q);
 }
 
@@ -2178,7 +2178,7 @@ void NV_API_CALL os_wait_interruptible
     os_wait_queue *wq
 )
 {
-    printk(KERN_ERR "=====================================   983\n");
+    // printk(KERN_ERR "=====================================   983\n");
     wait_for_completion_interruptible(&wq->q);
 }
 
@@ -2187,7 +2187,7 @@ void NV_API_CALL os_wake_up
     os_wait_queue *wq
 )
 {
-    printk(KERN_ERR "=====================================   984\n");
+    // printk(KERN_ERR "=====================================   984\n");
     complete_all(&wq->q);
 }
 
@@ -2196,7 +2196,7 @@ nv_cap_t* NV_API_CALL os_nv_cap_init
     const char *path
 )
 {
-    printk(KERN_ERR "=====================================   985\n");
+    // printk(KERN_ERR "=====================================   985\n");
     return nv_cap_init(path);
 }
 
@@ -2207,7 +2207,7 @@ nv_cap_t* NV_API_CALL os_nv_cap_create_dir_entry
     int mode
 )
 {
-    printk(KERN_ERR "=====================================   986\n");
+    // printk(KERN_ERR "=====================================   986\n");
     return nv_cap_create_dir_entry(parent_cap, name, mode);
 }
 
@@ -2218,7 +2218,7 @@ nv_cap_t* NV_API_CALL os_nv_cap_create_file_entry
     int mode
 )
 {
-    printk(KERN_ERR "=====================================   987\n");
+    // printk(KERN_ERR "=====================================   987\n");
     return nv_cap_create_file_entry(parent_cap, name, mode);
 }
 
@@ -2227,7 +2227,7 @@ void NV_API_CALL os_nv_cap_destroy_entry
     nv_cap_t *cap
 )
 {
-    printk(KERN_ERR "=====================================   988\n");
+    // printk(KERN_ERR "=====================================   988\n");
     nv_cap_destroy_entry(cap);
 }
 
@@ -2237,7 +2237,7 @@ int NV_API_CALL os_nv_cap_validate_and_dup_fd
     int fd
 )
 {
-    printk(KERN_ERR "=====================================   989\n");
+    // printk(KERN_ERR "=====================================   989\n");
     return nv_cap_validate_and_dup_fd(cap, fd);
 }
 
@@ -2246,7 +2246,7 @@ void NV_API_CALL os_nv_cap_close_fd
     int fd
 )
 {
-    printk(KERN_ERR "=====================================   990\n");
+    // printk(KERN_ERR "=====================================   990\n");
     nv_cap_close_fd(fd);
 }
 
@@ -2261,7 +2261,7 @@ typedef struct os_numa_gpu_mem_hotplug_notifier_s
 static int os_numa_verify_gpu_memory_zone(struct notifier_block *nb,
                                           unsigned long action, void *data)
 {
-    printk(KERN_ERR "=====================================   992\n");
+    // printk(KERN_ERR "=====================================   992\n");
     os_numa_gpu_mem_hotplug_notifier_t *notifier = container_of(nb,
         os_numa_gpu_mem_hotplug_notifier_t,
         memory_notifier);
@@ -2306,7 +2306,7 @@ NV_STATUS NV_API_CALL os_numa_add_gpu_memory
     NvU32 *nodeId
 )
 {
-    printk(KERN_ERR "=====================================   993\n");
+    // printk(KERN_ERR "=====================================   993\n");
 #if defined(NV_ADD_MEMORY_DRIVER_MANAGED_PRESENT)
     int node = 0;
     nv_linux_state_t *nvl = pci_get_drvdata(handle);
@@ -2398,7 +2398,7 @@ NV_STATUS NV_API_CALL os_numa_remove_gpu_memory
     NvU32 nodeId
 )
 {
-    printk(KERN_ERR "=====================================   994\n");
+    // printk(KERN_ERR "=====================================   994\n");
 #ifdef NV_ADD_MEMORY_DRIVER_MANAGED_PRESENT
     nv_linux_state_t *nvl = pci_get_drvdata(handle);
 #ifdef NV_OFFLINE_AND_REMOVE_MEMORY_PRESENT
@@ -2456,7 +2456,7 @@ NV_STATUS NV_API_CALL os_offline_page_at_address
     NvU64 address
 )
 {
-    printk(KERN_ERR "=====================================   995\n");
+    // printk(KERN_ERR "=====================================   995\n");
 #if defined(CONFIG_MEMORY_FAILURE)
     int flags = 0;
     int ret;

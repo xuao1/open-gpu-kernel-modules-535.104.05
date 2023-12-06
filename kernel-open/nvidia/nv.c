@@ -2075,7 +2075,7 @@ nvidia_ioctl(
     unsigned long i_arg)
 {
     printk(KERN_ERR "=====================================   720\n");
-    printk(KERN_ERR, "xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: %u, arg: %lu\n", _IOC_NR(cmd), i_arg);
+    // printk(KERN_ERR, "xuao 3. nvidia_ioctl in kernel-open/nvidia/nv.c cmd: %u, arg: %lu\n", _IOC_NR(cmd), i_arg);
     NV_STATUS rmStatus;
     int status = 0;
     nv_linux_state_t *nvl = NV_GET_NVL_FROM_FILEP(file);
