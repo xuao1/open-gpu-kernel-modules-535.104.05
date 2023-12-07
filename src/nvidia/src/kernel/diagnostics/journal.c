@@ -105,7 +105,6 @@ static volatile NvS32 nvLogRecursion = 0;
 // NvDump interface config - communicates with external kernel debuggers
 NVDUMP_EXPORT volatile NV_DECLARE_ALIGNED(NVDUMP_CONFIG, 8) nvDumpConfig =
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 578);
     NVDUMP_CONFIG_SIGNATURE, // sigHead
     NvP64_NULL, // debuggerControlFuncAddr
     { NvP64_NULL, NVDUMP_DEBUGGER_BUFFER_SIZE, 0 }, // buffer
