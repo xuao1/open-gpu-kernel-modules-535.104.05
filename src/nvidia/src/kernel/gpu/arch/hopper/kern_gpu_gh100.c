@@ -251,7 +251,6 @@ gpuHandleSecFault_GH100
     (void)REF_NUM(NV_EP_PCFG_GPU_VSEC_DEBUG_SEC##field, 0); \
     if (DRF_VAL(_EP_PCFG_GPU, _VSEC_DEBUG_SEC, field, secDebug) != 0) \
     { \
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1136);
         MODS_ARCH_ERROR_PRINTF("NV_EP_PCFG_GPU_VSEC_DEBUG_SEC" #field "\n"); \
         NV_PRINTF(LEVEL_FATAL, "SEC_FAULT type: " #field "\n"); \
         nvErrorLog_va((void *)(pGpu), SEC_FAULT_ERROR, \
