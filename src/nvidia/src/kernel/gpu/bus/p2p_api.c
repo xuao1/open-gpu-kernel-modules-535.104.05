@@ -56,7 +56,6 @@ _p2papiReservePeerID
     NvBool                   bSpaAccessOnly
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2532);
     NvU32 gpu0Instance = gpuGetInstance(pLocalGpu);
     NvU32 gpu1Instance = gpuGetInstance(pRemoteGpu);
 
@@ -65,7 +64,6 @@ _p2papiReservePeerID
         !bEgmPeer &&
         (pNv503bAllocParams->hSubDevice == pNv503bAllocParams->hPeerSubDevice))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2533);
         *peer1 = *peer2 = 0;
 
         // Reserve the peer1 ID for NVLink use
@@ -76,7 +74,6 @@ _p2papiReservePeerID
     {
         if (bEgmPeer)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2534);
             // Check if a peer ID is already allocated for P2P from pLocalGpu to pRemoteGpu
             *peer1 = kbusGetEgmPeerId_HAL(pLocalGpu, pLocalKernelBus, pRemoteGpu);
 
@@ -95,18 +92,15 @@ _p2papiReservePeerID
 
     if (*peer1 != BUS_INVALID_PEER && *peer2 != BUS_INVALID_PEER)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2535);
         goto update_mask;
     }
     else if (*peer1 == BUS_INVALID_PEER && *peer2 == BUS_INVALID_PEER)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2536);
         // Get the peer ID pGpu0 should use for P2P over NVLINK to pGpu1i
         *peer1 = kbusGetUnusedPeerId_HAL(pLocalGpu, pLocalKernelBus);
         // If could not find a free peer ID, return error
         if (*peer1 == BUS_INVALID_PEER)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2537);
             NV_PRINTF(LEVEL_ERROR,
                       "GPU%d: peerID not available for NVLink P2P\n",
                       gpu0Instance);
@@ -119,7 +113,6 @@ _p2papiReservePeerID
 
         if (pNv503bAllocParams->hSubDevice == pNv503bAllocParams->hPeerSubDevice)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2538);
             // The loopback check here becomes true only in the EGM case
             NV_ASSERT_OR_RETURN(bEgmPeer, NV_ERR_INVALID_STATE);
             *peer2 = *peer1;
@@ -131,7 +124,6 @@ _p2papiReservePeerID
             // If could not find a free peer ID, return error
             if (*peer2 == BUS_INVALID_PEER)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2539);
                 NV_PRINTF(LEVEL_ERROR,
                           "GPU%d: peerID not available for NVLink P2P\n",
                           gpu1Instance);
@@ -153,7 +145,6 @@ _p2papiReservePeerID
 update_mask:
         if (bEgmPeer)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2540);
             NV_PRINTF(LEVEL_INFO, "EGM peer\n");
         }
     //
@@ -163,7 +154,6 @@ update_mask:
     if ((pLocalKernelBus->p2p.busNvlinkPeerNumberMask[gpu1Instance] & NVBIT(*peer1)) &&
         (pRemoteKernelBus->p2p.busNvlinkPeerNumberMask[gpu0Instance] & NVBIT(*peer2)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2541);
         //
         // Increment the mapping refcount per peerID - since there is another usage
         // of a mapping that is using this peerID
@@ -180,7 +170,6 @@ update_mask:
 
         if (bSpaAccessOnly)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2542);
             pLocalKernelBus->p2p.busNvlinkMappingRefcountPerPeerIdSpa[*peer1]++;
             pRemoteKernelBus->p2p.busNvlinkMappingRefcountPerPeerId[*peer2]++;
         }
@@ -216,7 +205,6 @@ update_mask:
 
     if (bSpaAccessOnly)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2543);
         pLocalKernelBus->p2p.busNvlinkMappingRefcountPerPeerIdSpa[*peer1]++;
         pRemoteKernelBus->p2p.busNvlinkMappingRefcountPerPeerId[*peer2]++;
     }
@@ -235,7 +223,6 @@ update_mask:
 update_params:
     if (bEgmPeer)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2544);
         pNv503bAllocParams->subDeviceEgmPeerIdMask = NVBIT(*peer1);
         pNv503bAllocParams->peerSubDeviceEgmPeerIdMask = NVBIT(*peer2);
     }
@@ -260,7 +247,6 @@ p2papiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2545);
     Subdevice               *pSubDevice;
     Subdevice               *pPeerSubDevice;
     NvU32                    subDevicePeerIdMask;
@@ -318,40 +304,32 @@ p2papiConstruct_IMPL
 
     if (pNv503bAllocParams->subDevicePeerIdMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2546);
         if (!ONEBITSET(pNv503bAllocParams->subDevicePeerIdMask))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2547);
             return NV_ERR_INVALID_ARGUMENT;
         }
     }
 
     if (pNv503bAllocParams->peerSubDevicePeerIdMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2548);
         if (!ONEBITSET(pNv503bAllocParams->peerSubDevicePeerIdMask))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2549);
             return NV_ERR_INVALID_ARGUMENT;
         }
     }
 
     if (pNv503bAllocParams->subDeviceEgmPeerIdMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2550);
         if (!ONEBITSET(pNv503bAllocParams->subDeviceEgmPeerIdMask))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2551);
             return NV_ERR_INVALID_ARGUMENT;
         }
     }
 
     if (pNv503bAllocParams->peerSubDeviceEgmPeerIdMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2552);
         if (!ONEBITSET(pNv503bAllocParams->peerSubDeviceEgmPeerIdMask))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2553);
             return NV_ERR_INVALID_ARGUMENT;
         }
     }
@@ -359,15 +337,12 @@ p2papiConstruct_IMPL
     // Ensure any loopback requests match
     if (pNv503bAllocParams->hSubDevice == pNv503bAllocParams->hPeerSubDevice)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2554);
         if (pNv503bAllocParams->subDevicePeerIdMask != pNv503bAllocParams->peerSubDevicePeerIdMask)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2555);
             return NV_ERR_INVALID_ARGUMENT;
         }
         if (pNv503bAllocParams->subDeviceEgmPeerIdMask != pNv503bAllocParams->peerSubDeviceEgmPeerIdMask)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2556);
             return NV_ERR_INVALID_ARGUMENT;
         }
     }
@@ -388,14 +363,12 @@ p2papiConstruct_IMPL
 
     if (gpuIsApmFeatureEnabled(pLocalGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2557);
         return NV_ERR_NOT_SUPPORTED;
     }
 
     // SPA peer only supported when we support ATS
     if (bSpaAccessOnly && (!pLocalGpu->getProperty(pLocalGpu, PDB_PROP_GPU_ATS_SUPPORTED)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2558);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -405,7 +378,6 @@ p2papiConstruct_IMPL
     pP2pCapsParams = portMemAllocStackOrHeap(sizeof(*pP2pCapsParams));
     if (pP2pCapsParams == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2559);
         return NV_ERR_NO_MEMORY;
     }
 
@@ -455,7 +427,6 @@ p2papiConstruct_IMPL
     if ((bP2PWriteCapable || bP2PReadCapable) &&
         p2pConnectionType == P2P_CONNECTIVITY_PCIE)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2560);
         status = kbusSetP2PMailboxBar1Area_HAL(pLocalGpu, pLocalKernelBus,
                                                pNv503bAllocParams->mailboxBar1Addr,
                                                pNv503bAllocParams->mailboxTotalSize);
@@ -470,7 +441,6 @@ p2papiConstruct_IMPL
     // Process any specific peer id requests for peer 1
     if (subDevicePeerIdMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2561);
         peer1 = BIT_IDX_32(subDevicePeerIdMask);
     }
     else
@@ -481,7 +451,6 @@ p2papiConstruct_IMPL
     // Process any specific peer id requests for peer 2
     if (peerSubDevicePeerIdMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2562);
         peer2 = BIT_IDX_32(peerSubDevicePeerIdMask);
     }
     else
@@ -492,7 +461,6 @@ p2papiConstruct_IMPL
     // Process any specific peer id requests for EGM peer 1
     if (subDeviceEgmPeerIdMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2563);
         egmPeer1 = BIT_IDX_32(subDeviceEgmPeerIdMask);
     }
     else
@@ -503,7 +471,6 @@ p2papiConstruct_IMPL
     // Process any specific peer id requests for EGM peer 2
     if (peerSubDeviceEgmPeerIdMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2564);
         egmPeer2 = BIT_IDX_32(peerSubDeviceEgmPeerIdMask);
     }
     else
@@ -513,10 +480,8 @@ p2papiConstruct_IMPL
 
     if (!IS_VIRTUAL(pLocalGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2565);
         if (!(bP2PWriteCapable || bP2PReadCapable))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2566);
             NV_PRINTF(LEVEL_ERROR,
                       "ERROR: P2P is Disabled, cannot create mappings\n");
             return NV_ERR_NOT_SUPPORTED;
@@ -528,11 +493,9 @@ p2papiConstruct_IMPL
 
         if (pLocalKernelNvlink && pRemoteKernelNvlink)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2567);
             status = knvlinkTrainFabricLinksToActive(pLocalGpu, pLocalKernelNvlink);
             if (status != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2568);
                 NV_PRINTF(LEVEL_ERROR,
                           "link training between GPU%u and SWITCH failed with status %x\n",
                           pLocalGpu->gpuInstance, status);
@@ -542,7 +505,6 @@ p2papiConstruct_IMPL
             status = knvlinkTrainFabricLinksToActive(pRemoteGpu, pRemoteKernelNvlink);
             if (status != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2569);
                 NV_PRINTF(LEVEL_ERROR,
                           "link training between GPU%u and SWITCH failed with status %x\n",
                           pRemoteGpu->gpuInstance, status);
@@ -554,7 +516,6 @@ p2papiConstruct_IMPL
     // check to see if a p2p mapping between these two subdevices already exist
     if (!IsGP100orBetter(pLocalGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2570);
         RS_ORDERED_ITERATOR iter;
         P2PApi *pOtherP2PApi = NULL;
 
@@ -562,7 +523,6 @@ p2papiConstruct_IMPL
                                     classId(P2PApi), NV_TRUE /*bExactMatch*/);
         while (clientRefOrderedIterNext(iter.pClient, &iter))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2571);
             pOtherP2PApi = dynamicCast(iter.pResourceRef->pResource, P2PApi);
             if (pOtherP2PApi == NULL)
                 return NV_ERR_INVALID_OBJECT_HANDLE;
@@ -571,7 +531,6 @@ p2papiConstruct_IMPL
                 ((pLocalGpu == pOtherP2PApi->peer1 && pRemoteGpu == pOtherP2PApi->peer2) ||
                  (pLocalGpu == pOtherP2PApi->peer2 && pRemoteGpu == pOtherP2PApi->peer1)))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2572);
                 NV_PRINTF(LEVEL_INFO,
                           "Mapping already exists between the two subdevices (0x%08x), (0x%08x). "
                           "Multiple mappings not supported on pre-PASCAL GPUs\n",
@@ -593,7 +552,6 @@ p2papiConstruct_IMPL
         memmgrIsLocalEgmEnabled(GPU_GET_MEMORY_MANAGER(pLocalGpu)) &&
         memmgrIsLocalEgmEnabled(GPU_GET_MEMORY_MANAGER(pRemoteGpu)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2573);
         NV_PRINTF(LEVEL_INFO, "EGM P2P not setup because of SPA only P2P flag!\n");
     }
 
@@ -605,7 +563,6 @@ p2papiConstruct_IMPL
 
     if (IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pLocalGpu) || !IS_VIRTUAL(pLocalGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2574);
         //
         // TODO: This function need to have a cleanup path when this function
         //       fails after kbusCreateP2PMaping(), busBindLocalGfidForP2P()
@@ -621,7 +578,6 @@ p2papiConstruct_IMPL
                                                        pP2PApi->attributes));
         if (bEgmPeer)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2575);
             NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
                                   kbusCreateP2PMapping_HAL(pLocalGpu, pLocalKernelBus, pRemoteGpu,
                                                            pRemoteKernelBus, &egmPeer1, &egmPeer2,
@@ -631,7 +587,6 @@ p2papiConstruct_IMPL
 
         if (p2pConnectionType == P2P_CONNECTIVITY_PCIE_BAR1)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2576);
             NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
                                   kbusGetBar1P2PDmaInfo_HAL(pLocalGpu, pRemoteGpu,
                                       pRemoteKernelBus,
@@ -652,14 +607,12 @@ p2papiConstruct_IMPL
         IS_VIRTUAL_WITH_SRIOV(pGpu) &&
         gpuIsSplitVasManagementServerClientRmEnabled(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2577);
         NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
                               _p2papiReservePeerID(pLocalGpu, pLocalKernelBus, pRemoteGpu,
                                                    pRemoteKernelBus, pNv503bAllocParams, pP2PApi,
                                                    &peer1, &peer2, NV_FALSE, bSpaAccessOnly));
         if (bEgmPeer)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2578);
             NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
                                   _p2papiReservePeerID(pLocalGpu, pLocalKernelBus, pRemoteGpu,
                                                        pRemoteKernelBus, pNv503bAllocParams, pP2PApi,
@@ -676,7 +629,6 @@ p2papiConstruct_IMPL
 
     if (!IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pLocalGpu) && IS_VIRTUAL(pLocalGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2579);
         NV_RM_RPC_ALLOC_OBJECT(pLocalGpu,
                                pParams->hClient,
                                pParams->hParent,
@@ -695,10 +647,8 @@ p2papiConstruct_IMPL
     //
     if (pLocalKernelBus->flaInfo.bFlaAllocated && !pLocalKernelBus->flaInfo.bFlaBind)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2580);
         if (!IS_VIRTUAL(pLocalGpu))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2581);
             goto remote_fla_bind;
         }
         NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
@@ -709,13 +659,10 @@ remote_fla_bind:
 
     if (hDevice != hPeerDevice)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2582);
         if (pRemoteKernelBus->flaInfo.bFlaAllocated && !pRemoteKernelBus->flaInfo.bFlaBind)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2583);
             if (!IS_VIRTUAL(pRemoteGpu))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2584);
                 return status;
             }
             NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
@@ -727,13 +674,11 @@ remote_fla_bind:
     NV_ASSERT_OK_OR_RETURN(refAddDependant(RES_GET_REF(pSubDevice), pCallContext->pResourceRef));
     if (hDevice != hPeerDevice)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2585);
         NV_ASSERT_OK_OR_RETURN(refAddDependant(RES_GET_REF(pPeerSubDevice), pCallContext->pResourceRef));
     }
 
     if (status == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2586);
         NV_CHECK_OR_RETURN(LEVEL_ERROR, pLocalKernelBus->totalP2pObjectsAliveRefCount < NV_U32_MAX, NV_ERR_INSUFFICIENT_RESOURCES);
         NV_CHECK_OR_RETURN(LEVEL_ERROR, pRemoteKernelBus->totalP2pObjectsAliveRefCount < NV_U32_MAX, NV_ERR_INSUFFICIENT_RESOURCES);
         pLocalKernelBus->totalP2pObjectsAliveRefCount++;
@@ -748,7 +693,6 @@ p2papiDestruct_IMPL
     P2PApi *pP2PApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2587);
     CALL_CONTEXT                *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
     NvHandle                     hClient;
@@ -784,7 +728,6 @@ p2papiDestruct_IMPL
 
     if (IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pLocalGpu) || !IS_VIRTUAL(pLocalGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2588);
         // remove any resources associated with this mapping
         NV_CHECK_OK_OR_GOTO(status, LEVEL_ERROR,
                             kbusRemoveP2PMapping_HAL(pLocalGpu, pLocalKernelBus,
@@ -795,7 +738,6 @@ p2papiDestruct_IMPL
             memmgrIsLocalEgmEnabled(GPU_GET_MEMORY_MANAGER(pLocalGpu)) &&
             memmgrIsLocalEgmEnabled(GPU_GET_MEMORY_MANAGER(pRemoteGpu)))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2589);
             status = kbusRemoveP2PMapping_HAL(pLocalGpu, pLocalKernelBus,
                                               pRemoteGpu, pRemoteKernelBus,
                                               pP2PApi->egmPeerId1, pP2PApi->egmPeerId2,

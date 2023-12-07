@@ -38,7 +38,6 @@
 
 void kflcnConfigureEngine_IMPL(OBJGPU *pGpu, KernelFalcon *pKernelFalcon, KernelFalconEngineConfig *pFalconConfig)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4837);
     pKernelFalcon->registerBase       = pFalconConfig->registerBase;
     pKernelFalcon->riscvRegisterBase  = pFalconConfig->riscvRegisterBase;
     pKernelFalcon->fbifBase           = pFalconConfig->fbifBase;
@@ -59,14 +58,12 @@ void kflcnConfigureEngine_IMPL(OBJGPU *pGpu, KernelFalcon *pKernelFalcon, Kernel
 
 KernelFalcon *kflcnGetKernelFalconForEngine_IMPL(OBJGPU *pGpu, ENGDESCRIPTOR physEngDesc)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4838);
     //
     // Check for any special objects that are instantiated as GPU children.
     // Otherwise, OBJGPU keeps track of all falcons as reported by GSP
     //
     switch (physEngDesc)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4839);
         // this list is mirrored in subdeviceCtrlCmdInternalGetConstructedFalconInfo_IMPL
         case ENG_SEC2:     return staticCast(GPU_GET_KERNEL_SEC2(pGpu), KernelFalcon);
         case ENG_GSP:      return staticCast(GPU_GET_KERNEL_GSP(pGpu), KernelFalcon);
@@ -78,7 +75,6 @@ KernelFalcon *kflcnGetKernelFalconForEngine_IMPL(OBJGPU *pGpu, ENGDESCRIPTOR phy
 
 static NvBool _kflcnNeedToAllocContext(OBJGPU *pGpu, KernelChannel *pKernelChannel)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4840);
     NvU32 gfid = kchannelGetGfid(pKernelChannel);
 
     //
@@ -100,7 +96,6 @@ static NV_STATUS _kflcnAllocAndMapCtxBuffer
     KernelChannel *pKernelChannel
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4841);
     MEMORY_DESCRIPTOR  *pCtxMemDesc = NULL;
     CTX_BUF_POOL_INFO  *pCtxBufPool = NULL;
     KernelChannelGroup *pKernelChannelGroup = pKernelChannel->pKernelChannelGroupApi->pKernelChannelGroup;
@@ -114,7 +109,6 @@ static NV_STATUS _kflcnAllocAndMapCtxBuffer
     kchangrpGetEngineContextMemDesc(pGpu, pKernelChannelGroup, &pCtxMemDesc);
     if (pCtxMemDesc != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4842);
         NV_PRINTF(LEVEL_ERROR, "This channel already has a falcon engine instance on engine %d:%d\n",
                   ENGDESC_FIELD(pKernelFalcon->physEngDesc, _CLASS),
                   ENGDESC_FIELD(pKernelFalcon->physEngDesc, _INST));
@@ -123,7 +117,6 @@ static NV_STATUS _kflcnAllocAndMapCtxBuffer
 
     if (ctxBufPoolIsSupported(pGpu) && pKernelChannelGroup->pCtxBufPool != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4843);
         flags |= MEMDESC_FLAGS_OWNED_BY_CTX_BUF_POOL;
         pCtxBufPool = pKernelChannelGroup->pCtxBufPool;
     }
@@ -156,7 +149,6 @@ static NV_STATUS _kflcnAllocAndMapCtxBuffer
 
     if (!gvaspaceIsExternallyOwned(pGVAS))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4844);
         NV_ASSERT_OK_OR_GOTO(status,
             kchannelMapEngineCtxBuf(pGpu, pKernelChannel, pKernelFalcon->physEngDesc),
             done);
@@ -165,7 +157,6 @@ static NV_STATUS _kflcnAllocAndMapCtxBuffer
 done:
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4845);
         memdescFree(pCtxMemDesc);
         memdescDestroy(pCtxMemDesc);
     }
@@ -180,7 +171,6 @@ static NV_STATUS _kflcnPromoteContext
     KernelChannel *pKernelChannel
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4846);
     RM_API                *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     RsClient              *pClient = RES_GET_CLIENT(pKernelChannel);
     Subdevice             *pSubdevice;
@@ -209,7 +199,6 @@ static NV_STATUS _kflcnPromoteContext
     // Promote physical address only. VA will be promoted later as part of nvgpuBindChannelResources
     if (gvaspaceIsExternallyOwned(pGVAS))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4847);
         MEMORY_DESCRIPTOR *pMemDesc = NULL;
         NvU32 physAttr = 0x0;
 
@@ -219,7 +208,6 @@ static NV_STATUS _kflcnPromoteContext
 
         switch (memdescGetAddressSpace(pMemDesc))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4848);
             case ADDR_FBMEM:
                 physAttr = FLD_SET_DRF(2080, _CTRL_GPU_INITIALIZE_CTX,
                            _APERTURE, _VIDMEM, physAttr);
@@ -228,13 +216,11 @@ static NV_STATUS _kflcnPromoteContext
             case ADDR_SYSMEM:
                 if (memdescGetCpuCacheAttrib(pMemDesc) == NV_MEMORY_CACHED)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4849);
                     physAttr = FLD_SET_DRF(2080, _CTRL_GPU_INITIALIZE_CTX,
                                 _APERTURE, _COH_SYS, physAttr);
                 }
                 else if (memdescGetCpuCacheAttrib(pMemDesc) == NV_MEMORY_UNCACHED)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4850);
                     physAttr = FLD_SET_DRF(2080, _CTRL_GPU_INITIALIZE_CTX,
                                _APERTURE, _NCOH_SYS, physAttr);
                 }
@@ -280,7 +266,6 @@ NV_STATUS kflcnAllocContext_IMPL
     NvU32          classNum
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4851);
     NV_ASSERT_OR_RETURN(pKernelChannel != NULL, NV_ERR_INVALID_CHANNEL);
 
     if (!_kflcnNeedToAllocContext(pGpu, pKernelChannel))
@@ -301,7 +286,6 @@ NV_STATUS kflcnFreeContext_IMPL
     NvU32          classNum
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4852);
     MEMORY_DESCRIPTOR *pCtxMemDesc = NULL;
     NV_ASSERT_OR_RETURN(pKernelChannel != NULL, NV_ERR_INVALID_CHANNEL);
 
@@ -317,7 +301,6 @@ NV_STATUS kflcnFreeContext_IMPL
 
     if (pCtxMemDesc == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4853);
         NV_PRINTF(LEVEL_WARNING,
                   "The channel 0x%x does not have a falcon engine instance for engDesc=0x%x\n",
                   kchannelGetDebugTag(pKernelChannel), pKernelFalcon->physEngDesc);
@@ -339,11 +322,9 @@ NV_STATUS gkflcnConstruct_IMPL
     KernelFalconEngineConfig *pFalconConfig
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4854);
     KernelFalcon *pKernelFalcon = staticCast(pGenericKernelFalcon, KernelFalcon);
     if (pFalconConfig != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4855);
         kflcnConfigureEngine(pGpu, pKernelFalcon, pFalconConfig);
     }
     return NV_OK;
@@ -351,14 +332,12 @@ NV_STATUS gkflcnConstruct_IMPL
 
 NV_STATUS gkflcnResetHw_IMPL(OBJGPU *pGpu, GenericKernelFalcon *pGenKernFlcn)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4856);
     NV_ASSERT_FAILED("This should only be called on full KernelFalcon implementations");
     return NV_ERR_NOT_SUPPORTED;
 }
 
 void gkflcnRegisterIntrService_IMPL(OBJGPU *pGpu, GenericKernelFalcon *pGenericKernelFalcon, IntrServiceRecord pRecords[MC_ENGINE_IDX_MAX])
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4857);
     KernelFalcon *pKernelFalcon = staticCast(pGenericKernelFalcon, KernelFalcon);
     NV_ASSERT_OR_RETURN_VOID(pKernelFalcon);
 
@@ -373,7 +352,6 @@ void gkflcnRegisterIntrService_IMPL(OBJGPU *pGpu, GenericKernelFalcon *pGenericK
     // Register to handle nonstalling interrupts of the corresponding physical falcon in kernel rm
     if (pKernelFalcon->physEngDesc != ENG_INVALID)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4858);
         NvU32 mcIdx = MC_ENGINE_IDX_NULL;
 
         NV_STATUS status = kfifoEngineInfoXlate_HAL(pGpu, GPU_GET_KERNEL_FIFO(pGpu),
@@ -392,7 +370,6 @@ void gkflcnRegisterIntrService_IMPL(OBJGPU *pGpu, GenericKernelFalcon *pGenericK
 
 NV_STATUS gkflcnServiceNotificationInterrupt_IMPL(OBJGPU *pGpu, GenericKernelFalcon *pGenericKernelFalcon, IntrServiceServiceNotificationInterruptArguments *pParams)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4859);
     NvU32 idxMc = pParams->engineIdx;
     RM_ENGINE_TYPE rmEngineType = RM_ENGINE_TYPE_NULL;
 
@@ -401,26 +378,22 @@ NV_STATUS gkflcnServiceNotificationInterrupt_IMPL(OBJGPU *pGpu, GenericKernelFal
     if (MC_ENGINE_IDX_NVDECn(0) <= idxMc &&
         idxMc < MC_ENGINE_IDX_NVDECn(RM_ENGINE_TYPE_NVDEC_SIZE))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4860);
         NvU32 nvdecIdx = idxMc - MC_ENGINE_IDX_NVDECn(0);
         rmEngineType = RM_ENGINE_TYPE_NVDEC(nvdecIdx);
     }
     else if (idxMc == MC_ENGINE_IDX_OFA0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4861);
         rmEngineType = RM_ENGINE_TYPE_OFA;
     }
     else if (MC_ENGINE_IDX_NVJPEGn(0) <= idxMc &&
              idxMc < MC_ENGINE_IDX_NVJPEGn(RM_ENGINE_TYPE_NVJPEG_SIZE))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4862);
         NvU32 nvjpgIdx = idxMc - MC_ENGINE_IDX_NVJPEGn(0);
         rmEngineType = RM_ENGINE_TYPE_NVJPEG(nvjpgIdx);
     }
     else if (MC_ENGINE_IDX_MSENCn(0) <= idxMc &&
              idxMc < MC_ENGINE_IDX_MSENCn(RM_ENGINE_TYPE_NVENC_SIZE))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4863);
         NvU32 msencIdx = idxMc - MC_ENGINE_IDX_MSENCn(0);
         rmEngineType = RM_ENGINE_TYPE_NVENC(msencIdx);
     }

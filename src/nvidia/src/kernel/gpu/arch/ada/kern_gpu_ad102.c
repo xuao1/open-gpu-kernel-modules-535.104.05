@@ -79,7 +79,6 @@ static const GPUCHILDPRESENT gpuChildrenPresent_AD102[] =
 const GPUCHILDPRESENT *
 gpuGetChildrenPresent_AD102(OBJGPU *pGpu, NvU32 *pNumEntries)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1113);
     *pNumEntries = NV_ARRAY_ELEMENTS(gpuChildrenPresent_AD102);
     return gpuChildrenPresent_AD102;
 }

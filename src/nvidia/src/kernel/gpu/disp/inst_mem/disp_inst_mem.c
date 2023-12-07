@@ -63,7 +63,6 @@ instmemConstruct_IMPL
     DisplayInstanceMemory *pInstMem
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3706);
     pInstMem->pInstMem = NULL;
     pInstMem->pAllocedInstMemDesc = NULL;
     pInstMem->pInstMemDesc = NULL;
@@ -83,7 +82,6 @@ instmemDestruct_IMPL
     DisplayInstanceMemory *pInstMem
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3707);
 }
 
 /*! @brief Initialized heap related files in display instance memory */
@@ -96,7 +94,6 @@ instmemInitBitmap
     NvU32                  hashTableSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3708);
     NV_STATUS status = NV_OK;
     NvU64     base, limit;
     NvU64     allocSize, allocOffset;
@@ -118,7 +115,6 @@ instmemInitBitmap
     pInstMem->pInstHeap = portMemAllocNonPaged(sizeof(OBJEHEAP));
     if (pInstMem->pInstHeap == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3709);
         NV_PRINTF(LEVEL_ERROR, "Unable to allocate instance memory heap manager.\n");
         status = NV_ERR_NO_MEMORY;
         goto exit;
@@ -161,7 +157,6 @@ instmemInitBitmap
                      NULL);                     // callback ownership checker
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3710);
         NV_PRINTF(LEVEL_ERROR, "eheapAlloc failed for instance memory heap manager.\n");
         status = NV_ERR_NO_MEMORY;
     }
@@ -179,7 +174,6 @@ instmemInitHashTable
     NvU32                  hashTableSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3711);
     NV_STATUS status = NV_OK;
     NvU32     i;
 
@@ -191,7 +185,6 @@ instmemInitHashTable
                                                sizeof(SW_HASH_TABLE_ENTRY));
     if (pInstMem->pHashTable == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3712);
         NV_PRINTF(LEVEL_ERROR, "Unable to allocate hash table.\n");
         status = NV_ERR_NO_MEMORY;
         goto exit;
@@ -200,7 +193,6 @@ instmemInitHashTable
     // Initialize Hash Table.
     for (i = 0; i < pInstMem->nHashTableEntries; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3713);
         pInstMem->pHashTable[i].pContextDma = NULL;
     }
 
@@ -225,7 +217,6 @@ instmemSetMemory_IMPL
     NvU32                  dispInstMemSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3714);
     pInstMem->instMemAddrSpace = dispInstMemAddrSpace;
     pInstMem->instMemAttr = dispInstMemAttr;
     pInstMem->instMemBase = dispInstMemBase;
@@ -241,13 +232,11 @@ instmemInitMemDesc
     NvU32                  instMemSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3715);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_STATUS status = NV_OK;
 
     if (pGpu->getProperty(pGpu, PDB_PROP_GPU_TEGRA_SOC_NVDISPLAY))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3716);
         //
         // FB reserved memory logic not be getting called for Tegra system memory scanout.
         // So as InstMem Desc is not getting initialized, currently hardcoding
@@ -259,7 +248,6 @@ instmemInitMemDesc
     }
     else if (IS_GSP_CLIENT(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3717);
         // ToDO: Need to respect RM overrides and keep monolithic design same as offload.
         instmemSetMemory(pGpu, pInstMem,
                          ADDR_FBMEM, NV_MEMORY_WRITECOMBINED,
@@ -268,7 +256,6 @@ instmemInitMemDesc
 
     switch (pInstMem->instMemAddrSpace)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3718);
         default:
         case ADDR_FBMEM:
             {
@@ -303,7 +290,6 @@ instmemInitMemDesc
 
                 if (pGpu->getProperty(pGpu, PDB_PROP_GPU_TEGRA_SOC_NVDISPLAY))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3719);
                     //
                     // On Orin, display FE goes through the NISO SMMU to read
                     // from Instance Memory. As such, there's absolutely no
@@ -352,7 +338,6 @@ instmemDestroy
     DisplayInstanceMemory *pInstMem
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3720);
     // Free up the inst mem descriptors
     memdescDestroy(pInstMem->pInstMemDesc);
     pInstMem->pInstMemDesc = NULL;
@@ -363,7 +348,6 @@ instmemDestroy
 
     if (pInstMem->pInstHeap != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3721);
         pInstMem->pInstHeap->eheapDestruct(pInstMem->pInstHeap);
         portMemFree(pInstMem->pInstHeap);
         pInstMem->pInstHeap = NULL;
@@ -380,7 +364,6 @@ instmemStateInitLocked_IMPL
     DisplayInstanceMemory *pInstMem
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3722);
     NV_STATUS status = NV_OK;
     RM_API   *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32     hClient = pGpu->hInternalClient;
@@ -413,7 +396,6 @@ instmemStateInitLocked_IMPL
 exit:
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3723);
         instmemDestroy(pGpu, pInstMem);
     }
 
@@ -427,7 +409,6 @@ instmemStateDestroy_IMPL
     DisplayInstanceMemory *pInstMem
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3724);
     instmemDestroy(pGpu, pInstMem);
 }
 
@@ -439,7 +420,6 @@ instmemStateLoad_IMPL
     NvU32                  flags
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3725);
     NvBool bPersistent;
 
     //
@@ -451,7 +431,6 @@ instmemStateLoad_IMPL
     bPersistent = (pInstMem->instMemAddrSpace == ADDR_SYSMEM);
     if (bPersistent)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3726);
         //
         // Windows issues bind/update/unbind control calls with BYPASS_LOCK,
         // so we generate a new BAR2 mapping control call time.
@@ -473,10 +452,8 @@ instmemStateUnload_IMPL
     NvU32                  flags
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3727);
     if (pInstMem->pInstMem != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3728);
         memdescUnmapInternal(pGpu, pInstMem->pInstMemDesc, TRANSFER_FLAGS_NONE);
         pInstMem->pInstMem = NULL;
     }
@@ -496,7 +473,6 @@ _instmemReserveContextDma
     NvU32                 *offset
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3729);
     NV_STATUS         rmStatus;
     NvU64             allocSize  = DISPLAY_CONTEXT_DMA_INST_SIZE;  // size << 4;
     NvU64             allocOffset;
@@ -519,7 +495,6 @@ _instmemReserveContextDma
    // return the allocation offset if successful
    if (rmStatus == NV_OK)
    {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3730);
        *offset = (NvU32)allocOffset;
    }
    else
@@ -541,7 +516,6 @@ _instmemFreeContextDma
     NvU32                  offset
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3731);
     //
     // If instance is already set to 0, then it has already been freed.  This can
     // happen in some cases when a mode switch is happening while MIDI is playing
@@ -569,7 +543,6 @@ _instmemClearHashEntry
     NvU32                  htEntry
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3732);
     MemoryManager      *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     TRANSFER_SURFACE    dest = {0};
     NvU32               entryOffset;
@@ -609,16 +582,13 @@ _instmemRemoveHashEntry
     DispChannel           *pDispChannel
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3733);
     NvU32 htEntry;
 
     for (htEntry = 0; htEntry < pInstMem->nHashTableEntries; htEntry++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3734);
         if ( (pInstMem->pHashTable[htEntry].pContextDma == pContextDma) &&
              (pInstMem->pHashTable[htEntry].pDispChannel == pDispChannel))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3735);
             _instmemClearHashEntry(pGpu, pInstMem, htEntry);
             return NV_OK;
         }
@@ -637,7 +607,6 @@ _instmemAddHashEntry
     NvU32                  offset
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3736);
     KernelDisplay     *pKernelDisplay  = GPU_GET_KERNEL_DISPLAY(pGpu);
     MemoryManager     *pMemoryManager  = GPU_GET_MEMORY_MANAGER(pGpu);
     NvHandle           hClient         = RES_GET_CLIENT_HANDLE(pContextDma);
@@ -667,7 +636,6 @@ _instmemAddHashEntry
 
     if (offset == 0)  //NV_UDISP_HASH_TBL_INSTANCE_INVALID
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3737);
         NV_PRINTF(LEVEL_ERROR, "Instance pointer is invalid!!\n");
         return (NV_ERR_GENERIC);
     }
@@ -720,7 +688,6 @@ _instmemAddHashEntry
     Entry = hash;
     for (i = hash; i < Limit; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3738);
         // Mask off high bits of i since we loop the hash table.
         Entry = i & (pInstMem->nHashTableEntries - 1);
         if (pInstMem->pHashTable[Entry].pContextDma == NULL)
@@ -729,7 +696,6 @@ _instmemAddHashEntry
 
     if (pInstMem->pHashTable[Entry].pContextDma != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3739);
         NV_PRINTF(LEVEL_ERROR, "Display Hash table is FULL!!\n");
         return NV_ERR_TOO_MANY_PRIMARIES;
     }
@@ -772,7 +738,6 @@ _instmemProbeHashEntry
     DispChannel           *pDispChannel
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3740);
     KernelDisplay *pKernelDisplay  = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32          dispChannelNum;
     NV_STATUS      status;
@@ -783,7 +748,6 @@ _instmemProbeHashEntry
     status = kdispGetChannelNum_HAL(pKernelDisplay, pDispChannel->DispClass, pDispChannel->InstanceNumber, &dispChannelNum);
     if (status == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3741);
         instmemHashFunc_HAL(pGpu, pInstMem,
                             RES_GET_CLIENT_HANDLE(pContextDma),
                             RES_GET_HANDLE(pContextDma),
@@ -797,13 +761,11 @@ _instmemProbeHashEntry
 
     for (i = hash; i < limit; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3742);
         NvU32 htEntry = i & (pInstMem->nHashTableEntries - 1);
 
         if ((pInstMem->pHashTable[htEntry].pDispChannel == pDispChannel) &&
             (pInstMem->pHashTable[htEntry].pContextDma == pContextDma))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3743);
             return NV_OK;
         }
     }
@@ -823,7 +785,6 @@ instmemBindContextDma_IMPL
     DispChannel           *pDispChannel
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3744);
     NvU32     gpuSubDevInst;
     NV_STATUS status;
 
@@ -833,7 +794,6 @@ instmemBindContextDma_IMPL
     status = _instmemProbeHashEntry(pGpu, pInstMem, pContextDma, pDispChannel);
     if (status == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3745);
         NV_PRINTF(LEVEL_ERROR, "The ctx dma (0x%x) has already been bound\n",
                   RES_GET_HANDLE(pContextDma));
         status = NV_ERR_STATE_IN_USE;
@@ -842,12 +802,10 @@ instmemBindContextDma_IMPL
 
     if (pContextDma->InstRefCount[gpuSubDevInst] == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3746);
         // Reserve inst mem space for this ctx dma
         status = _instmemReserveContextDma(pGpu, pInstMem, &(pContextDma->Instance[gpuSubDevInst]));
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3747);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to alloc space in disp inst mem for ctx dma 0x%x\n",
                       RES_GET_HANDLE(pContextDma));
@@ -858,7 +816,6 @@ instmemBindContextDma_IMPL
         status = instmemCommitContextDma_HAL(pGpu, pInstMem, pContextDma);
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3748);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to commit ctx dma (0x%x) to inst mem\n",
                       RES_GET_HANDLE(pContextDma));
@@ -879,10 +836,8 @@ instmemBindContextDma_IMPL
                                   pContextDma->Instance[gpuSubDevInst]);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3749);
         if (pContextDma->InstRefCount[gpuSubDevInst] == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3750);
             instmemDecommitContextDma_HAL(pGpu, pInstMem, pContextDma);
             _instmemFreeContextDma(pGpu, pInstMem, pContextDma->Instance[gpuSubDevInst]);
             pContextDma->Instance[gpuSubDevInst] = 0;
@@ -909,19 +864,16 @@ _instmemRemoveReference
     ContextDma            *pContextDma
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3751);
     NvU32 gpuSubDevInst = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
 
     NV_ASSERT(pContextDma->InstRefCount[gpuSubDevInst]);
     if (pContextDma->InstRefCount[gpuSubDevInst])
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3752);
         pContextDma->InstRefCount[gpuSubDevInst]--;
 
         // Remove DMA object if this is the last binding
         if (pContextDma->InstRefCount[gpuSubDevInst] == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3753);
             instmemDecommitContextDma_HAL(pGpu, pInstMem, pContextDma);
             _instmemFreeContextDma(pGpu, pInstMem, pContextDma->Instance[gpuSubDevInst]);
             pContextDma->Instance[gpuSubDevInst] = 0;
@@ -941,14 +893,12 @@ instmemUnbindContextDma_IMPL
     DispChannel           *pDispChannel
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3754);
     NV_STATUS status;
 
     // If ContextDma is not bound to this subdevice, there is no bookkeeping to do
     status = _instmemRemoveHashEntry(pGpu, pInstMem, pContextDma, pDispChannel);
     if (status == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3755);
         _instmemRemoveReference(pGpu, pInstMem, pContextDma);
     }
 
@@ -966,16 +916,13 @@ instmemUnbindContextDmaFromAllChannels_IMPL
     ContextDma            *pContextDma
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3756);
     NvU32 htEntry;
 
     // Check all entries in the hash table
     for (htEntry = 0; htEntry < pInstMem->nHashTableEntries; htEntry++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3757);
         if (pInstMem->pHashTable[htEntry].pContextDma == pContextDma)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3758);
             _instmemClearHashEntry(pGpu, pInstMem, htEntry);
             _instmemRemoveReference(pGpu, pInstMem, pContextDma);
         }
@@ -994,16 +941,13 @@ instmemUnbindDispChannelContextDmas_IMPL
     DispChannel           *pDispChannel
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3759);
     NvU32 htEntry;
 
     // Check all entries in the hash table
     for (htEntry = 0; htEntry < pInstMem->nHashTableEntries; htEntry++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3760);
         if (pInstMem->pHashTable[htEntry].pDispChannel == pDispChannel)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3761);
             ContextDma *pContextDma = pInstMem->pHashTable[htEntry].pContextDma;
 
             _instmemClearHashEntry(pGpu, pInstMem, htEntry);

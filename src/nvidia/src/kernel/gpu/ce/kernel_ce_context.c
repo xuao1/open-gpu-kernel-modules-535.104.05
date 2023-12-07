@@ -57,7 +57,6 @@
 ENGDESCRIPTOR
 kceGetEngineDescFromAllocParams(OBJGPU *pGpu, NvU32 externalClassId, void *pAllocParams)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3011);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     NvU32 engineIndex = 0;
     RsResourceRef *pDeviceRef;
@@ -75,13 +74,11 @@ kceGetEngineDescFromAllocParams(OBJGPU *pGpu, NvU32 externalClassId, void *pAllo
 
     if (IsAMODEL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3012);
         RM_ENGINE_TYPE rmEngineType;
 
         // On AMODEL CopyEngine is allocated using OBJGR
         if (IS_MIG_IN_USE(pGpu))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3013);
             KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
             MIG_INSTANCE_REF ref;
 
@@ -100,7 +97,6 @@ kceGetEngineDescFromAllocParams(OBJGPU *pGpu, NvU32 externalClassId, void *pAllo
 
     switch (externalClassId)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3014);
         case MAXWELL_DMA_COPY_A:
         case PASCAL_DMA_COPY_A:
         case PASCAL_DMA_COPY_B:
@@ -115,7 +111,6 @@ kceGetEngineDescFromAllocParams(OBJGPU *pGpu, NvU32 externalClassId, void *pAllo
 
             switch (pNvA0b5CreateParms->version)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3015);
                 case NVB0B5_ALLOCATION_PARAMETERS_VERSION_0:
                 {
                     NV_PRINTF(LEVEL_INFO,
@@ -134,10 +129,8 @@ kceGetEngineDescFromAllocParams(OBJGPU *pGpu, NvU32 externalClassId, void *pAllo
                     // Loop over supported engines
                     for (i = 0; i < RM_ENGINE_TYPE_COPY_SIZE; i++)
                     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3016);
                         if (gpuGetRmEngineType(pNvA0b5CreateParms->engineType) == RM_ENGINE_TYPE_COPY(i))
                         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3017);
                             engineIndex = i;
                             break;
                         }
@@ -146,7 +139,6 @@ kceGetEngineDescFromAllocParams(OBJGPU *pGpu, NvU32 externalClassId, void *pAllo
                     // Make sure we found something we support
                     if (i == RM_ENGINE_TYPE_COPY_SIZE)
                     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3018);
                         NV_PRINTF(LEVEL_ERROR,
                                   "Unknown engine type %d requested\n",
                                   pNvA0b5CreateParms->engineType);
@@ -180,7 +172,6 @@ kceGetEngineDescFromAllocParams(OBJGPU *pGpu, NvU32 externalClassId, void *pAllo
                              RM_ENGINE_TYPE_COPY(engineIndex), &engineIndex);
     if (status == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3019);
         NV_PRINTF(LEVEL_INFO, "Class %d, CE%d\n", externalClassId, engineIndex);
     // confirm that engine is valid
         NV_ASSERT_OR_RETURN(GPU_GET_KCE(pGpu, engineIndex), ENG_INVALID);
@@ -200,7 +191,6 @@ kcectxConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3020);
     // stub, initialization done in chandesConstruct
     return NV_OK;
 }
@@ -211,7 +201,6 @@ kcectxDestruct_IMPL
     KernelCeContext *pKCeContext
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3021);
     ChannelDescendant *pChannelDescendant = staticCast(pKCeContext, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
 

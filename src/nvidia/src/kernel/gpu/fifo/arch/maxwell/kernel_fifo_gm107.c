@@ -50,20 +50,17 @@ kfifoConstructHal_GM107
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4944);
     NV_STATUS status;
     PREALLOCATED_USERD_INFO *pUserdInfo = &pKernelFifo->userdInfo;
 
     if (FLD_TEST_DRF(_REG_STR_RM, _INST_VPR, _INSTBLK, _TRUE, pGpu->instVprOverrides))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4945);
         pKernelFifo->bInstProtectedMem = NV_TRUE;
     }
 
     // Instance Memory
     switch (DRF_VAL( _REG_STR_RM, _INST_LOC, _INSTBLK, pGpu->instLocOverrides))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4946);
         default:
         case NV_REG_STR_RM_INST_LOC_INSTBLK_DEFAULT:
             if (kfifoIsMixedInstmemApertureDefAllowed(pKernelFifo))
@@ -98,12 +95,10 @@ kfifoConstructHal_GM107
     // Create child object KernelSchedMgr
     if (kfifoIsSchedSupported(pKernelFifo))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4947);
         pKernelFifo->pKernelSchedMgr = NULL;
         status = objCreate(&pKernelFifo->pKernelSchedMgr, pKernelFifo, KernelSchedMgr);
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4948);
             pKernelFifo->pKernelSchedMgr = NULL;
             return status;
         }
@@ -127,14 +122,12 @@ _kfifoAllocDummyPage
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4949);
     NV_STATUS status   = NV_OK;
     NvU32     flags    = MEMDESC_FLAGS_NONE;
     NvBool    bBcState = gpumgrGetBcEnabledStatus(pGpu);
 
     if (bBcState)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4950);
         flags |= MEMDESC_FLAGS_ALLOC_PER_SUBDEVICE;
     }
 
@@ -148,7 +141,6 @@ _kfifoAllocDummyPage
                            flags);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4951);
         NV_PRINTF(LEVEL_ERROR, "Could not memdescCreate for dummy page\n");
         DBG_BREAKPOINT();
         return status;
@@ -157,7 +149,6 @@ _kfifoAllocDummyPage
     status = memdescAllocList(pKernelFifo->pDummyPageMemDesc, pKernelFifo->pInstAllocList);
     if (status !=  NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4952);
         NV_PRINTF(LEVEL_ERROR, "Could not allocate dummy page\n");
         DBG_BREAKPOINT();
         memdescDestroy(pKernelFifo->pDummyPageMemDesc);
@@ -177,7 +168,6 @@ _kfifoFreeDummyPage
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4953);
     // Free dummy page memdesc
     memdescFree(pKernelFifo->pDummyPageMemDesc);
     memdescDestroy(pKernelFifo->pDummyPageMemDesc);
@@ -192,29 +182,24 @@ kfifoStatePostLoad_GM107
     NvU32       flags
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4954);
     NV_STATUS                      status     = NV_OK;
     const PREALLOCATED_USERD_INFO *pUserdInfo = kfifoGetPreallocatedUserdInfo(pKernelFifo);
 
     if (!(flags & GPU_STATE_FLAGS_PRESERVING))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4955);
         // Prealloc USERD
         NV_ASSERT_OK_OR_RETURN(kfifoPreAllocUserD_HAL(pGpu, pKernelFifo));
 
         if (gpumgrIsParentGPU(pGpu))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4956);
             if (kfifoIsZombieSubctxWarEnabled(pKernelFifo))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4957);
                 NvBool bBcState = gpumgrGetBcEnabledStatus(pGpu);
                 gpumgrSetBcEnabledStatus(pGpu, NV_TRUE);
 
                 status = _kfifoAllocDummyPage(pGpu, pKernelFifo);
                 if (status != NV_OK)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4958);
                     NV_PRINTF(LEVEL_ERROR,
                               "Failed to allocate dummy page for zombie subcontexts\n");
                     DBG_BREAKPOINT();
@@ -224,7 +209,6 @@ kfifoStatePostLoad_GM107
 
                 if (IS_VIRTUAL_WITH_SRIOV(pGpu))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4959);
                     NV2080_CTRL_FIFO_SETUP_VF_ZOMBIE_SUBCTX_PDB_PARAMS params;
                     MEMORY_DESCRIPTOR *pDummyPageMemDesc = kfifoGetDummyPageMemDesc(pKernelFifo);
 
@@ -244,7 +228,6 @@ kfifoStatePostLoad_GM107
                                       status);
                     if (status != NV_OK)
                     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4960);
                         NV_PRINTF(LEVEL_ERROR,
                             "RM control call to setup zombie subctx failed, status 0x%x\n", status);
                         DBG_BREAKPOINT();
@@ -263,7 +246,6 @@ kfifoStatePostLoad_GM107
 
     if (IS_GSP_CLIENT(pGpu) || IS_VIRTUAL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4961);
         status = kfifoTriggerPostSchedulingEnableCallback(pGpu, pKernelFifo);
         if (status != NV_OK)
             return status;
@@ -280,7 +262,6 @@ kfifoStatePreUnload_GM107
     NvU32       flags
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4962);
     NV_STATUS status = NV_OK;
     NvU32     sliLoopReentrancy;
 
@@ -288,12 +269,10 @@ kfifoStatePreUnload_GM107
 
     if (!(flags & GPU_STATE_FLAGS_PRESERVING) && gpumgrIsParentGPU(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4963);
         NvBool bBcState = NV_FALSE;
 
         if (kfifoIsZombieSubctxWarEnabled(pKernelFifo))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4964);
             _kfifoFreeDummyPage(pGpu, pKernelFifo);
         }
 
@@ -319,7 +298,6 @@ kfifoStatePreUnload_GM107
 
     if (!(flags & GPU_STATE_FLAGS_PRESERVING))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4965);
         // Free preallocated userd
         kfifoFreePreAllocUserD_HAL(pGpu, pKernelFifo);
     }
@@ -336,7 +314,6 @@ kfifoChannelGroupGetDefaultTimeslice_GM107
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4966);
     return NV_RAMRL_ENTRY_TIMESLICE_TIMEOUT_128 << NV_RAMRL_ENTRY_TIMESLICE_SCALE_3;
 }
 
@@ -352,7 +329,6 @@ kfifoGetInstMemInfo_GM107
     const NV_ADDRESS_SPACE **ppInstAllocList
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4967);
     NV_ASSERT_OR_RETURN(pSize != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(pAlignment != NULL, NV_ERR_INVALID_ARGUMENT);
 
@@ -380,7 +356,6 @@ kfifoGetInstBlkSizeAlign_GM107
     NvU32      *pShift
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4968);
     *pSize  = NV_RAMIN_ALLOC_SIZE;
     *pShift = NV_RAMIN_BASE_SHIFT;
 
@@ -402,13 +377,11 @@ kfifoGetDefaultRunlist_GM107
     RM_ENGINE_TYPE rmEngineType
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4969);
     NvU32 runlistId = INVALID_RUNLIST_ID;
     ENGDESCRIPTOR engDesc = ENG_GR(0);
 
     if (RM_ENGINE_TYPE_IS_VALID(rmEngineType))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4970);
         // if translation fails, defualt is ENG_GR(0)
         NV_ASSERT_OK(
             kfifoEngineInfoXlate_HAL(pGpu, pKernelFifo,
@@ -423,7 +396,6 @@ kfifoGetDefaultRunlist_GM107
                                  ENGINE_INFO_TYPE_RUNLIST,
                                  &runlistId) != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4971);
         runlistId = INVALID_RUNLIST_ID;
     }
 
@@ -450,13 +422,11 @@ kfifoRunlistSetId_GM107
     NvU32   runlistId
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4972);
     NV_ASSERT_OR_RETURN(pKernelChannel != NULL, NV_ERR_INVALID_ARGUMENT);
 
     if ((runlistId != kchannelGetRunlistId(pKernelChannel)) &&
         kchannelIsRunlistSet(pGpu, pKernelChannel))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4973);
         NV_PRINTF(LEVEL_ERROR,
                   "Channel has already been assigned a runlist incompatible with this "
                   "engine (requested: 0x%x current: 0x%x).\n", runlistId,
@@ -473,7 +443,6 @@ kfifoRunlistSetId_GM107
         (pKernelChannel->pKernelChannelGroupApi != NULL) &&
         !pKernelChannel->pKernelChannelGroupApi->pKernelChannelGroup->bAllocatedByRm)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4974);
         NV_PRINTF(LEVEL_ERROR, "Runlist does not support TSGs\n");
         return NV_ERR_INVALID_STATE;
     }
@@ -481,12 +450,10 @@ kfifoRunlistSetId_GM107
     // If you want to set runlistId of channel - first set it on TSG
     if (pKernelChannel->pKernelChannelGroupApi != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4975);
         // Change TSG runlist if channel is the only one
         if (pKernelChannel->pKernelChannelGroupApi->pKernelChannelGroup->chanCount == 1 ||
             !pKernelChannel->pKernelChannelGroupApi->pKernelChannelGroup->bRunlistAssigned)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4976);
             pKernelChannel->pKernelChannelGroupApi->pKernelChannelGroup->runlistId = runlistId;
             pKernelChannel->pKernelChannelGroupApi->pKernelChannelGroup->bRunlistAssigned = NV_TRUE;
         }
@@ -523,7 +490,6 @@ kfifoRunlistSetIdByEngine_GM107
     NvU32   engDesc
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4977);
     NvU32 runlistId;
     NV_STATUS status;
     NvU32 subctxType = 0;
@@ -551,7 +517,6 @@ kfifoRunlistSetIdByEngine_GM107
     status = kfifoRunlistSetId_HAL(pGpu, pKernelFifo, pKernelChannel, runlistId);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4978);
         NV_PRINTF(LEVEL_ERROR, "Unable to program runlist for %s\n",
                   kfifoGetEngineName_HAL(pKernelFifo, ENGINE_INFO_TYPE_ENG_DESC, engDesc));
     }
@@ -569,7 +534,6 @@ kfifoChannelGetFifoContextMemDesc_GM107
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4979);
     FIFO_INSTANCE_BLOCK *pInstanceBlock;
 
     /* UVM calls nvGpuOpsGetChannelInstanceMemInfo
@@ -587,7 +551,6 @@ kfifoChannelGetFifoContextMemDesc_GM107
 
     switch (engineState)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4980);
         case FIFO_CTX_INST_BLOCK:
             *ppMemDesc = pInstanceBlock->pInstanceBlockDesc;
             break;
@@ -630,7 +593,6 @@ kfifoConvertInstToKernelChannel_GM107
     KernelChannel   **ppKernelChannel
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4981);
     MemoryManager       *pMemoryManager   = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelChannel       *pKernelChannel   = NULL;
     FIFO_INSTANCE_BLOCK *pInstanceBlock;
@@ -646,7 +608,6 @@ kfifoConvertInstToKernelChannel_GM107
 
     switch (pInst->aperture)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4982);
         case INST_BLOCK_APERTURE_SYSTEM_COHERENT_MEMORY:
         case INST_BLOCK_APERTURE_SYSTEM_NON_COHERENT_MEMORY:
             instAperture = ADDR_SYSMEM;
@@ -678,7 +639,6 @@ kfifoConvertInstToKernelChannel_GM107
     kfifoGetChannelIterator(pGpu, pKernelFifo, &chanIt);
     while (kfifoGetNextKernelChannel(pGpu, pKernelFifo, &chanIt, &pKernelChannel) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4983);
         NV_ASSERT_OR_ELSE(pKernelChannel != NULL, continue);
 
         pInstanceBlock = pKernelChannel->pFifoHalData[gpumgrGetSubDeviceInstanceFromGpu(pGpu)];
@@ -695,7 +655,6 @@ kfifoConvertInstToKernelChannel_GM107
                                                 &instMemDesc),
                 memdescGetPhysAddr(&instMemDesc, AT_GPU, 0)))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4984);
                 *ppKernelChannel = pKernelChannel;
                 memdescDestroy(&instMemDesc);
                 return NV_OK;
@@ -714,10 +673,8 @@ kfifoConvertInstToKernelChannel_GM107
 static inline NvBool
 _isEngineInfoTypeValidForOnlyHostDriven(ENGINE_INFO_TYPE type)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4985);
     switch (type)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4986);
         case ENGINE_INFO_TYPE_RUNLIST:
         case ENGINE_INFO_TYPE_RUNLIST_PRI_BASE:
         case ENGINE_INFO_TYPE_RUNLIST_ENGINE_ID:
@@ -757,7 +714,6 @@ kfifoEngineInfoXlate_GM107
     NvU32            *pOutVal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4987);
     const ENGINE_INFO *pEngineInfo       = kfifoGetEngineInfo(pKernelFifo);
     FIFO_ENGINE_LIST  *pFoundInputEngine = NULL;
 
@@ -769,7 +725,6 @@ kfifoEngineInfoXlate_GM107
 
     if (pEngineInfo == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4988);
         NV_ASSERT_OK_OR_RETURN(kfifoConstructEngineList_HAL(pGpu, pKernelFifo));
         pEngineInfo = kfifoGetEngineInfo(pKernelFifo);
     }
@@ -777,7 +732,6 @@ kfifoEngineInfoXlate_GM107
 
     if (inType == ENGINE_INFO_TYPE_INVALID)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4989);
         NV_ASSERT_OR_RETURN(inVal < pEngineInfo->engineInfoListSize,
                             NV_ERR_INVALID_ARGUMENT);
         pFoundInputEngine = &pEngineInfo->engineInfoList[inVal];
@@ -790,19 +744,15 @@ kfifoEngineInfoXlate_GM107
              (pFoundInputEngine == NULL);
              ++i)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4990);
             FIFO_ENGINE_LIST *pThisEngine = &pEngineInfo->engineInfoList[i];
 
             if (inType == ENGINE_INFO_TYPE_PBDMA_ID)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4991);
                 NvU32 j;
                 for (j = 0; j < pThisEngine->numPbdmas; ++j)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4992);
                     if (pThisEngine->pbdmaIds[j] == inVal)
                     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4993);
                         pFoundInputEngine = pThisEngine;
                         break;
                     }
@@ -810,7 +760,6 @@ kfifoEngineInfoXlate_GM107
             }
             else if (pThisEngine->engineData[inType] == inVal)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4994);
                 pFoundInputEngine = pThisEngine;
             }
         }
@@ -818,14 +767,12 @@ kfifoEngineInfoXlate_GM107
 
     if (pFoundInputEngine == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4995);
         return NV_ERR_OBJECT_NOT_FOUND;
     }
 
     if (_isEngineInfoTypeValidForOnlyHostDriven(outType) &&
         !pFoundInputEngine->engineData[ENGINE_INFO_TYPE_IS_HOST_DRIVEN_ENGINE])
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4996);
         //
         // Bug 3748452 TODO
         // Bug 3772199 TODO
@@ -857,7 +804,6 @@ kfifoChannelGroupGetLocalMaxSubcontext_GM107
     NvBool              bLegacyMode
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4997);
     // Pre-AMPERE, each channel group has the global maximum available
     return kfifoGetMaxSubcontext_HAL(pGpu, pKernelFifo, bLegacyMode);
 }
@@ -870,7 +816,6 @@ kfifoSetupUserD_GM107
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4998);
     TRANSFER_SURFACE tSurf = {.pMemDesc = pMemDesc, .offset = 0};
 
     NV_ASSERT_OK(memmgrMemSet(GPU_GET_MEMORY_MANAGER(pGpu), &tSurf, 0,
@@ -895,12 +840,10 @@ kfifoGetNumEngines_GM107
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4999);
     const ENGINE_INFO *pEngineInfo = kfifoGetEngineInfo(pKernelFifo);
 
     if (pEngineInfo == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5000);
         NV_ASSERT_OR_RETURN(kfifoConstructEngineList_HAL(pGpu, pKernelFifo) == NV_OK, 0);
 
         pEngineInfo = kfifoGetEngineInfo(pKernelFifo);
@@ -930,22 +873,18 @@ kfifoGetEngineName_GM107
     NvU32 inVal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5001);
     const ENGINE_INFO *pEngineInfo = kfifoGetEngineInfo(pKernelFifo);
     NvU32 i;
 
     if (inType == ENGINE_INFO_TYPE_INVALID)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5002);
         NV_ASSERT_OR_RETURN (inVal < pEngineInfo->engineInfoListSize, NULL);
         return pEngineInfo->engineInfoList[inVal].engineName;
     }
     for (i = 0; i < pEngineInfo->engineInfoListSize; ++i)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5003);
         if (pEngineInfo->engineInfoList[i].engineData[inType] == inVal)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5004);
             return pEngineInfo->engineInfoList[i].engineName;
         }
     }
@@ -971,7 +910,6 @@ kfifoGetMaxNumRunlists_GM107
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5005);
     const ENGINE_INFO *pEngineInfo = kfifoGetEngineInfo(pKernelFifo);
 
     return pEngineInfo->maxNumRunlists;
@@ -988,13 +926,11 @@ kfifoGetEnginePbdmaIds_GM107
     NvU32 *pNumPbdmas
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5006);
     const ENGINE_INFO *pEngineInfo = kfifoGetEngineInfo(pKernelFifo);
     NvU32 i;
 
     if (pEngineInfo == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5007);
         NV_ASSERT_OK_OR_RETURN(kfifoConstructEngineList_HAL(pGpu, pKernelFifo));
 
         pEngineInfo = kfifoGetEngineInfo(pKernelFifo);
@@ -1003,7 +939,6 @@ kfifoGetEnginePbdmaIds_GM107
 
     if (type == ENGINE_INFO_TYPE_INVALID)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5008);
         NV_ASSERT_OR_RETURN(val < pEngineInfo->engineInfoListSize, NV_ERR_INVALID_ARGUMENT);
         *ppPbdmaIds = pEngineInfo->engineInfoList[val].pbdmaIds;
         *pNumPbdmas = pEngineInfo->engineInfoList[val].numPbdmas;
@@ -1012,10 +947,8 @@ kfifoGetEnginePbdmaIds_GM107
 
     for (i = 0; i < pEngineInfo->engineInfoListSize; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5009);
         if (pEngineInfo->engineInfoList[i].engineData[type] == val)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5010);
             *ppPbdmaIds = pEngineInfo->engineInfoList[i].pbdmaIds;
             *pNumPbdmas = pEngineInfo->engineInfoList[i].numPbdmas;
             return NV_OK;
@@ -1044,7 +977,6 @@ kfifoGetEnginePartnerList_GM107
     NV2080_CTRL_GPU_GET_ENGINE_PARTNERLIST_PARAMS *pPartnerListParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5011);
     const NvU32 numEngines = kfifoGetNumEngines_HAL(pGpu, pKernelFifo);
     NvU32 i;
     NvU32 srcRunlist;
@@ -1078,7 +1010,6 @@ kfifoGetEnginePartnerList_GM107
     // Get the PBDMA ID for the runqueue-th runqueue
     if (pPartnerListParams->runqueue >= numSrcPbdmaIds)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5012);
         return NV_ERR_INVALID_ARGUMENT;
     }
     srcPbdmaId = pSrcPbdmaIds[pPartnerListParams->runqueue];
@@ -1089,7 +1020,6 @@ kfifoGetEnginePartnerList_GM107
     //
     for (i = 0; i < numEngines; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5013);
         NV_ASSERT_OK_OR_RETURN(kfifoEngineInfoXlate_HAL(pGpu, pKernelFifo,
                                                         ENGINE_INFO_TYPE_INVALID, i,
                                                         ENGINE_INFO_TYPE_ENG_DESC, &engDesc));
@@ -1097,7 +1027,6 @@ kfifoGetEnginePartnerList_GM107
         NV_ASSERT_OK_OR_RETURN(gpuGetClassList(pGpu, &numClasses, NULL, engDesc));
         if (numClasses == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5014);
             NV_PRINTF(LEVEL_INFO,
                       "EngineID %x is not part classDB, skipping\n",
                       engDesc);
@@ -1110,7 +1039,6 @@ kfifoGetEnginePartnerList_GM107
 
         if (runlist == srcRunlist)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5015);
             NvU32 j;
             RM_ENGINE_TYPE localRmEngineType;
 
@@ -1120,10 +1048,8 @@ kfifoGetEnginePartnerList_GM107
 
             for (j = 0; j < numPbdmaIds; j++)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5016);
                 if (pPbdmaIds[j] == srcPbdmaId)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5017);
                     NV_ASSERT_OK_OR_RETURN(kfifoEngineInfoXlate_HAL(pGpu, pKernelFifo,
                                                                     ENGINE_INFO_TYPE_INVALID, i,
                                                                     ENGINE_INFO_TYPE_RM_ENGINE_TYPE, (NvU32 *)&localRmEngineType));
@@ -1131,7 +1057,6 @@ kfifoGetEnginePartnerList_GM107
                     // Don't include input in output list
                     if (localRmEngineType != rmEngineType)
                     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5018);
                         pPartnerListParams->partnerList[pPartnerListParams->numPartners++] =
                             gpuGetNv2080EngineType(localRmEngineType);
 
@@ -1161,13 +1086,11 @@ kfifoRunlistIsTsgHeaderSupported_GM107
     NvU32 runlistId
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5019);
     NvU32 tmp_runlist;
 
     if (kfifoEngineInfoXlate_HAL(pGpu, pKernelFifo, ENGINE_INFO_TYPE_ENG_DESC,
         ENG_GR(0), ENGINE_INFO_TYPE_RUNLIST, &tmp_runlist) != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5020);
         NV_PRINTF(LEVEL_ERROR,
                   "can't find runlist ID for engine ENG_GR(0)!\n");
         NV_ASSERT(0);
@@ -1190,7 +1113,6 @@ kfifoRunlistGetEntrySize_GM107
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5021);
     return NV_RAMRL_ENTRY_SIZE;
 }
 
@@ -1207,7 +1129,6 @@ kfifoRunlistGetBaseShift_GM107
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5022);
     return NV_RAMRL_BASE_SHIFT;
 }
 
@@ -1226,7 +1147,6 @@ kfifoPreAllocUserD_GM107
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5023);
     OBJGPU     *pParentGpu             = gpumgrGetParentGPU(pGpu);
     KernelFifo *pParentKernelFifo      = GPU_GET_KERNEL_FIFO(pParentGpu);
     KernelBus  *pKernelBus             = GPU_GET_KERNEL_BUS(pGpu);
@@ -1252,7 +1172,6 @@ kfifoPreAllocUserD_GM107
     // We don't support RM allocated USERD for vGPU guest with SRIOV
     if (IS_VIRTUAL_WITH_SRIOV(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5024);
         return NV_OK;
     }
 
@@ -1260,7 +1179,6 @@ kfifoPreAllocUserD_GM107
 
     if (pUserdInfo->userdBar1CpuPtr == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5025);
         bFifoFirstInit = NV_TRUE;
     }
     else
@@ -1276,14 +1194,12 @@ kfifoPreAllocUserD_GM107
     //
     if (bFifoFirstInit)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5026);
         pUserdInfo->userdBar1MapStartOffset   =  0;
         pUserdInfo->userdBar1MapSize          =  0;
 
         // This is a WAR for HW bug 600241
         if (pUserdInfo->userdAperture == ADDR_SYSMEM)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5027);
             pKernelFifo->bUserdInSystemMemory = NV_TRUE;
         }
     }
@@ -1302,7 +1218,6 @@ kfifoPreAllocUserD_GM107
                            flags);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5028);
         NV_PRINTF(LEVEL_ERROR,
                   "Could not memdescCreate for USERD for %x #channels\n",
                   numChannels);
@@ -1318,14 +1233,12 @@ kfifoPreAllocUserD_GM107
     //
     if (IS_VIRTUAL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5029);
         // Force page size to 4KB to match host phys access
         memmgrSetMemDescPageSize_HAL(pGpu, pMemoryManager,
                                      pUserdInfo->userdPhysDesc[currentGpuInst],
                                      AT_GPU, RM_ATTR_PAGE_SIZE_4KB);
         if (bFifoFirstInit)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5030);
             pUserdInfo->userdBar1MapStartOffset = kfifoGetUserdBar1MapStartOffset_HAL(pGpu, pKernelFifo);
         }
     }
@@ -1334,7 +1247,6 @@ kfifoPreAllocUserD_GM107
         status = memdescAlloc(pUserdInfo->userdPhysDesc[currentGpuInst]);
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5031);
             NV_PRINTF(LEVEL_ERROR,
                       "Could not allocate USERD for %x #channels\n",
                       numChannels);
@@ -1354,7 +1266,6 @@ kfifoPreAllocUserD_GM107
         if (bCoherentCpuMapping &&
             (memdescGetAddressSpace(pUserdInfo->userdPhysDesc[currentGpuInst]) == ADDR_FBMEM))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5032);
 
             NV_PRINTF(LEVEL_INFO, "Mapping USERD with coherent link.\n");
             NV_ASSERT(pGpu->getProperty(pGpu, PDB_PROP_GPU_ATS_SUPPORTED));
@@ -1362,7 +1273,6 @@ kfifoPreAllocUserD_GM107
 
             if (bFifoFirstInit)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5033);
                 pUserdInfo->userdBar1MapStartOffset =  pUserdInfo->userdPhysDesc[currentGpuInst]->_pteArray[0] +
                                                        pUserdInfo->userdPhysDesc[currentGpuInst]->PteAdjust;
             }
@@ -1372,7 +1282,6 @@ kfifoPreAllocUserD_GM107
             // vGpu may boot with partitioning enabled but that's not true for host RM
             if ((pKernelMIGManager != NULL) && kmigmgrIsMIGMemPartitioningEnabled(pGpu, pKernelMIGManager))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5034);
                 status = NV_ERR_INVALID_STATE;
                 NV_PRINTF(LEVEL_ERROR, "Pre-allocated USERD is not supported with MIG\n");
                 DBG_BREAKPOINT();
@@ -1386,7 +1295,6 @@ kfifoPreAllocUserD_GM107
 
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5035);
             NV_PRINTF(LEVEL_ERROR, "Could not map USERD to BAR1\n");
             DBG_BREAKPOINT();
             goto fail;
@@ -1398,13 +1306,11 @@ kfifoPreAllocUserD_GM107
 
     if (bFifoFirstInit)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5036);
         pUserdInfo->userdBar1MapSize = NvU64_LO32(temp);
 
         if (bCoherentCpuMapping &&
             (memdescGetAddressSpace(pUserdInfo->userdPhysDesc[currentGpuInst]) == ADDR_FBMEM))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5037);
             pUserdInfo->userdBar1CpuPtr = kbusMapCoherentCpuMapping_HAL(pGpu, pKernelBus,
                                              pUserdInfo->userdPhysDesc[currentGpuInst]);
             status = pUserdInfo->userdBar1CpuPtr == NULL ? NV_ERR_GENERIC : NV_OK;
@@ -1422,7 +1328,6 @@ kfifoPreAllocUserD_GM107
 
         if ((pUserdInfo->userdBar1CpuPtr == NULL) && (status != NV_OK))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5038);
             NV_PRINTF(LEVEL_ERROR, "Could not cpu map BAR1 snoop range\n");
             DBG_BREAKPOINT();
             goto fail;
@@ -1458,7 +1363,6 @@ kfifoFreePreAllocUserD_GM107
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5039);
     OBJGPU            *pParentGpu           = gpumgrGetParentGPU(pGpu);
     KernelBus         *pKernelBus           = GPU_GET_KERNEL_BUS(pGpu);
     NvU32              currentGpuInst       = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
@@ -1470,29 +1374,24 @@ kfifoFreePreAllocUserD_GM107
     // We don't support RM allocated USERD for vGPU guest with SRIOV
     if (IS_VIRTUAL_WITH_SRIOV(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5040);
         return;
     }
 
     if (gpumgrGetBcEnabledStatus(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5041);
         DBG_BREAKPOINT();
     }
 
     if (bCoherentCpuMapping)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5042);
         NV_PRINTF(LEVEL_INFO, "Unmapping USERD from NVLINK.\n");
         NV_ASSERT(pGpu->getProperty(pGpu, PDB_PROP_GPU_ATS_SUPPORTED));
     }
 
     if (pUserdInfo->userdBar1CpuPtr)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5043);
         if (bCoherentCpuMapping)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5044);
             kbusUnmapCoherentCpuMapping_HAL(pGpu, pKernelBus,
                 pUserdInfo->userdPhysDesc[currentGpuInst]);
         }
@@ -1506,13 +1405,10 @@ kfifoFreePreAllocUserD_GM107
 
     if (pUserdInfo->userdBar1MapSize)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5045);
         if ((!IS_VIRTUAL(pGpu)) && (!bCoherentCpuMapping))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5046);
             if ((pUserdInfo->userdBar1RefMask & NVBIT(pGpu->gpuInstance)) != 0)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5047);
                 //
                 // Unmap in UC for each GPU with a pKernelFifo userd
                 // reference mapped through bar1
@@ -1547,13 +1443,11 @@ kfifoGetUserdBar1MapInfo_GM107
     NvU32      *pBar1MapSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5048);
     const PREALLOCATED_USERD_INFO *pUserdInfo = kfifoGetPreallocatedUserdInfo(pKernelFifo);
 
     // We don't support RM allocated USERD in vGPU guest with SRIOV
     if (IS_VIRTUAL_WITH_SRIOV(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5049);
         *pBar1MapOffset = 0;
         *pBar1MapSize   = 0;
 
@@ -1562,7 +1456,6 @@ kfifoGetUserdBar1MapInfo_GM107
 
     if (pUserdInfo->userdBar1MapSize == 0 )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5050);
         NV_PRINTF(LEVEL_ERROR, "BAR1 map of USERD has not been setup yet\n");
         NV_ASSERT( 0 );
         return NV_ERR_GENERIC;
@@ -1591,7 +1484,6 @@ kfifoGetUserdLocation_GM107
     NvU32 *pUserdAttribute
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5051);
     const PREALLOCATED_USERD_INFO *pUserdInfo = kfifoGetPreallocatedUserdInfo(pKernelFifo);
 
     NV_ASSERT_OR_RETURN(pUserdAperture != NULL && pUserdAttribute != NULL,
@@ -1618,7 +1510,6 @@ kfifoGetUserdSizeAlign_GM107
     NvU32 *pAddrShift
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5052);
     if (pSize != NULL)
         *pSize = 1<<NV_RAMUSERD_BASE_SHIFT;
     if (pAddrShift != NULL)
@@ -1644,7 +1535,6 @@ kfifoCheckEngine_GM107
     NvBool     *pPresent
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5053);
     NvU32 bEschedDriven = NV_FALSE;
     NV_STATUS status;
 

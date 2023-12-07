@@ -46,7 +46,6 @@ kdispComputeLsrMinTimeValue_v02_07
     NvU32   *computedLsrMinTime
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3433);
     //
     // For Pascal and onwards LSR_MIN_TIME has been moved to static clock
     //in ns from dispclock. Thus just send the swapRdyHiTime in ns.
@@ -69,7 +68,6 @@ kdispGetRgScanLock_v02_01
     NvU32      *pSlaveScanLockPin
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3434);
     NvU32 pinSetOut,  pinSetIn;
     NV_STATUS rmStatus = NV_OK;
 
@@ -77,7 +75,6 @@ kdispGetRgScanLock_v02_01
         !pSlaveScanLock  || !pSlaveScanLockPin  || head0 >= pKernelDisplay->numHeads ||
         ((pPeerGpu != NULL) && (head1 >= pKernelDisplay->numHeads)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3435);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -89,7 +86,6 @@ kdispGetRgScanLock_v02_01
     rmStatus = gpumgrGetGpuLockAndDrPorts(pGpu, pPeerGpu, &pinSetOut, &pinSetIn);
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3436);
         return rmStatus;
     }
 

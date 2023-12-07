@@ -41,10 +41,8 @@ gpuGetSriovCaps_TU102
     NV0080_CTRL_GPU_GET_SRIOV_CAPS_PARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1192);
     if (!gpuIsSriovEnabled(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1193);
         pParams->bSriovEnabled = NV_FALSE;
         return NV_OK;
     }
@@ -79,7 +77,6 @@ gpuGetSriovCaps_TU102
 NvU32
 gpuGetVirtRegPhysOffset_TU102(OBJGPU *pGpu)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1194);
     // No offset is needed, only in case of VF in SR-IOV
     if (IS_VIRTUAL_WITH_SRIOV(pGpu))
         return 0;
@@ -96,7 +93,6 @@ NvU32 gpuGetPhysAddrWidth_TU102
     NV_ADDRESS_SPACE addrSp
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1195);
     // Currently this function supports only sysmem addresses
     NV_ASSERT_OR_RETURN(ADDR_SYSMEM == addrSp, 0);
 
@@ -208,7 +204,6 @@ static const GPUCHILDPRESENT gpuChildrenPresent_TU106[] =
 const GPUCHILDPRESENT *
 gpuGetChildrenPresent_TU102(OBJGPU *pGpu, NvU32 *pNumEntries)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1196);
     *pNumEntries = NV_ARRAY_ELEMENTS(gpuChildrenPresent_TU102);
     return gpuChildrenPresent_TU102;
 }
@@ -216,7 +211,6 @@ gpuGetChildrenPresent_TU102(OBJGPU *pGpu, NvU32 *pNumEntries)
 const GPUCHILDPRESENT *
 gpuGetChildrenPresent_TU104(OBJGPU *pGpu, NvU32 *pNumEntries)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1197);
     *pNumEntries = NV_ARRAY_ELEMENTS(gpuChildrenPresent_TU104);
     return gpuChildrenPresent_TU104;
 }
@@ -224,7 +218,6 @@ gpuGetChildrenPresent_TU104(OBJGPU *pGpu, NvU32 *pNumEntries)
 const GPUCHILDPRESENT *
 gpuGetChildrenPresent_TU106(OBJGPU *pGpu, NvU32 *pNumEntries)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1198);
     *pNumEntries = NV_ARRAY_ELEMENTS(gpuChildrenPresent_TU106);
     return gpuChildrenPresent_TU106;
 }
@@ -242,21 +235,17 @@ gpuJtVersionSanityCheck_TU102
     OBJGPU *pGpu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1199);
     NV_STATUS status = NV_OK;
 
     if (!IS_SILICON(pGpu) || NV_IS_MODS)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1200);
         goto gpuJtVersionSanityCheck_TU102_EXIT;
     }
 
     if (FLD_TEST_DRF(_JT_FUNC, _CAPS, _JT_ENABLED, _TRUE, pGpu->acpiMethodData.jtMethodData.jtCaps))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1201);
         if (!(pGpu->acpiMethodData.jtMethodData.jtRevId == NV_JT_FUNC_CAPS_REVISION_ID_2_00))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1202);
             NV_PRINTF(LEVEL_ERROR,
                       "JT Version mismatch 0x%x\n", pGpu->acpiMethodData.jtMethodData.jtRevId);
             DBG_BREAKPOINT();

@@ -39,7 +39,6 @@ chandesConstruct_IMPL
     PARAM_TO_ENGDESC_FUNCTION *pParamToEngDescFn
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5127);
     OBJGPU           *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     NV_STATUS         status = NV_OK;
     RsResourceRef    *pResourceRef = pCallContext->pResourceRef;
@@ -54,7 +53,6 @@ chandesConstruct_IMPL
     pParent = pParentRef->pResource;
     if (pParent == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5128);
         return NV_ERR_INVALID_OBJECT_PARENT;
     }
 
@@ -72,7 +70,6 @@ chandesConstruct_IMPL
     //
     if (gpuIsDebuggerActive_HAL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5129);
         return NV_ERR_BUSY_RETRY;
     }
 
@@ -88,7 +85,6 @@ chandesConstruct_IMPL
     if (kfifoIsPerRunlistChramEnabled(pKernelFifo) &&
         (!RM_ENGINE_TYPE_IS_VALID(kchannelGetEngineType(pKernelChannel))))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5130);
         NV_PRINTF(LEVEL_ERROR,
                   "Channel should have engineType associated with it\n");
         return NV_ERR_INVALID_OBJECT_PARENT;
@@ -106,10 +102,8 @@ chandesConstruct_IMPL
         RM_ENGINE_TYPE_IS_VALID(kchannelGetEngineType(pKernelChannel)) &&
        (gpuIsCCorApmFeatureEnabled(pGpu) || bMIGInUse))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5131);
         if (rmapiutilIsExternalClassIdInternalOnly(pParams->externalClassId))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5132);
             ENGDESCRIPTOR engDesc;
 
             //
@@ -133,13 +127,11 @@ chandesConstruct_IMPL
             status = gpuGetClassByClassId(pGpu, pParams->externalClassId, &pClassDescriptor);
             if ((status != NV_OK) || (pClassDescriptor->engDesc != ENG_SW))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5133);
                 NvU32 engDesc;
                 RM_ENGINE_TYPE rmEngineType = kchannelGetEngineType(pKernelChannel);
                 // detect the GRCE case where we may be allocating a CE object on GR channel
                 if ((status == NV_OK) && IS_CE(pClassDescriptor->engDesc) && RM_ENGINE_TYPE_IS_GR(rmEngineType))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5134);
                     //
                     // Get the partner CE of GR engine based on runqueue of this channel
                     // Use this partner CE alongside externalClassId to fetch the correct class descriptor
@@ -166,7 +158,6 @@ chandesConstruct_IMPL
     }
     else if ((pParams->pAllocParams != NULL) && (pParamToEngDescFn != NULL))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5135);
         //
         // For classes like copy engine the per-engine code determines which
         // engine index to use based on the allocation params.
@@ -176,7 +167,6 @@ chandesConstruct_IMPL
 
         if (rmapiutilIsExternalClassIdInternalOnly(pParams->externalClassId))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5136);
             //
             // Internal classes do not appear in the classdb, as they are not
             // allowed to be allocated directly from usermode. Use the internal
@@ -191,7 +181,6 @@ chandesConstruct_IMPL
         }
         else if (engDesc != ENG_INVALID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5137);
             status = gpuGetClassByEngineAndClassId(pGpu, pParams->externalClassId,
                                                    engDesc, &pClassDescriptor);
         }
@@ -207,7 +196,6 @@ chandesConstruct_IMPL
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5138);
         NV_PRINTF(LEVEL_ERROR, "bad class 0x%x\n", pParams->externalClassId);
         return NV_ERR_INVALID_CLASS;
     }
@@ -219,7 +207,6 @@ chandesConstruct_IMPL
     //
     if (IS_GR(engDesc))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5139);
         //
         // Graphics engine can be disabled on kernel RM, so instead we are checking
         // the existence of KernelGraphics engine here when engDesc = ENG_GR(X)
@@ -231,7 +218,6 @@ chandesConstruct_IMPL
     //
     if (!IS_CE(engDesc))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5140);
         void *pEngObject = gpuGetEngstate(pGpu, engDesc);
         //
         // In a kernel-only config, falcons are represented by KernelFalcons and do not have an
@@ -242,7 +228,6 @@ chandesConstruct_IMPL
 
         if (pEngObject == NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5141);
             NV_PRINTF(LEVEL_ERROR, "engine is missing for class 0x%x\n",
                     pParams->externalClassId);
             return NV_ERR_INVALID_CLASS;
@@ -259,7 +244,6 @@ chandesConstruct_IMPL
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5142);
         NV_PRINTF(LEVEL_ERROR,
                   "Invalid object allocation request on channel:0x%08x\n",
                   kchannelGetDebugTag(pKernelChannel));
@@ -271,7 +255,6 @@ chandesConstruct_IMPL
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5143);
         return status;
     }
 
@@ -284,7 +267,6 @@ chandesDestruct_IMPL
     ChannelDescendant *pChannelDescendant
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5144);
     NV_STATUS          status;
 
     // scrub event references for this object
@@ -304,7 +286,6 @@ chandesGetSwMethods_IMPL
     NvU32             *pNumMethods
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5145);
     // Default behavior is SW methods not supported. Subclasses can implement
     // handlers if required.
     return NV_ERR_NOT_SUPPORTED;
@@ -324,7 +305,6 @@ NV_STATUS mthdNoOperation
     NvU32   Data
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5146);
     NV_PRINTF(LEVEL_INFO, "Method NoOperation: Class=0x%x Data=0x%x\n",
               Object->resourceDesc.externalClassId, Data);
     return (NV_OK);
@@ -336,7 +316,6 @@ NV_STATUS mthdNoOperation
  */
 NvBool chandesIsSwMethodStalling_IMPL(ChannelDescendant *pChannelDescendant, NvU32 hHandle)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5147);
     return NV_TRUE;
 }
 
@@ -347,10 +326,8 @@ chandesCheckMemInterUnmap_IMPL
     NvBool bSubdeviceHandleProvided
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5148);
     if (bSubdeviceHandleProvided)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5149);
         NV_PRINTF(LEVEL_ERROR, "Unicast DMA mappings of non-memory objects not supported.\n");
         return NV_ERR_NOT_SUPPORTED;
     }

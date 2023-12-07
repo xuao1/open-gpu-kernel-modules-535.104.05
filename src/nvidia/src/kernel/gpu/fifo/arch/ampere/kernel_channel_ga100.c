@@ -42,7 +42,6 @@ kchannelIsUserdAddrSizeValid_GA100
     NvU32          userdAddrHi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4873);
     return ((userdAddrLo & SF_MASK(NV_RAMRL_ENTRY_CHAN_USERD_PTR_LO)) == userdAddrLo) &&
            ((userdAddrHi & SF_MASK(NV_RAMRL_ENTRY_CHAN_USERD_PTR_HI_HW)) == userdAddrHi);
 }

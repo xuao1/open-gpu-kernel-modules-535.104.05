@@ -40,7 +40,6 @@ kflcnIntrRetrigger_GA100
     KernelFalcon *pKernelFlcn
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4769);
     kflcnRegWrite_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_INTR_RETRIGGER(0),
         DRF_DEF(_PFALCON, _FALCON_INTR_RETRIGGER, _TRIGGER, _TRUE));
 }
@@ -58,7 +57,6 @@ kflcnMaskImemAddr_GA100
     NvU32 addr
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4770);
     return (addr & (DRF_SHIFTMASK(NV_PFALCON_FALCON_IMEMC_OFFS) |
                     DRF_SHIFTMASK(NV_PFALCON_FALCON_IMEMC_BLK)));
 }
@@ -76,7 +74,6 @@ kflcnMaskDmemAddr_GA100
     NvU32 addr
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4771);
     return (addr & (DRF_SHIFTMASK(NV_PFALCON_FALCON_DMEMC_OFFS) |
                     DRF_SHIFTMASK(NV_PFALCON_FALCON_DMEMC_BLK)));
 }

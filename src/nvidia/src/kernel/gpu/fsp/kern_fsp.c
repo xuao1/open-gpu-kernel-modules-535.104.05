@@ -46,13 +46,11 @@ static NV_STATUS kfspReadMessage(OBJGPU *pGpu, KernelFsp *pKernelFsp, NvU8 *pPay
 NV_STATUS
 kfspConstructEngine_IMPL(OBJGPU *pGpu, KernelFsp *pKernelFsp, ENGDESCRIPTOR engDesc)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6002);
 
     // Initialize based on registry keys
     kfspInitRegistryOverrides(pGpu, pKernelFsp);
     if (pKernelFsp->getProperty(pKernelFsp, PDB_PROP_KFSP_IS_MISSING))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6003);
         NV_PRINTF(LEVEL_WARNING, "KernelFsp is disabled\n");
         return NV_ERR_OBJECT_NOT_FOUND;
     }
@@ -72,14 +70,12 @@ kfspInitRegistryOverrides
     KernelFsp *pKernelFsp
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6004);
     NvU32 data = 0;
 
     if (((osReadRegistryDword(pGpu, NV_REG_STR_RM_DISABLE_FSP, &data) == NV_OK) &&
         (data == NV_REG_STR_RM_DISABLE_FSP_YES) && IS_EMULATION(pGpu)) ||
         IS_FMODEL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6005);
         //
         // Force disable FSP engine, used only on emulation because some
         // emulation netlists stub out FSP but leave the engine in PTOP
@@ -90,23 +86,19 @@ kfspInitRegistryOverrides
 
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_DISABLE_COT_CMD, &data) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6006);
         // Assume non-zero value only has NV_REG_STR_RM_DISABLE_COT_CMD_YES
         if (data & DRF_SHIFTMASK(NV_REG_STR_RM_DISABLE_COT_CMD_FRTS_SYSMEM))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6007);
             pKernelFsp->setProperty(pKernelFsp, PDB_PROP_KFSP_DISABLE_FRTS_SYSMEM, NV_TRUE);
         }
 
         if (data & DRF_SHIFTMASK(NV_REG_STR_RM_DISABLE_COT_CMD_FRTS_VIDMEM))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6008);
             pKernelFsp->setProperty(pKernelFsp, PDB_PROP_KFSP_DISABLE_FRTS_VIDMEM, NV_TRUE);
         }
 
         if (data & DRF_SHIFTMASK(NV_REG_STR_RM_DISABLE_COT_CMD_GSPFMC))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6009);
             pKernelFsp->setProperty(pKernelFsp, PDB_PROP_KFSP_DISABLE_GSPFMC, NV_TRUE);
         }
     }
@@ -114,7 +106,6 @@ kfspInitRegistryOverrides
     // Inst-in-sys must only set up FRTS in SYSMEM. This includes FB broken.
     if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_ALL_INST_IN_SYSMEM))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6010);
         pKernelFsp->setProperty(pKernelFsp, PDB_PROP_KFSP_DISABLE_FRTS_VIDMEM, NV_TRUE);
     }
 }
@@ -139,7 +130,6 @@ kfspStateInitUnlocked_IMPL
     KernelFsp *pKernelFsp
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6011);
     return NV_OK;
 }
 
@@ -158,13 +148,11 @@ kfspStateDestroy_IMPL
     KernelFsp *pKernelFsp
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6012);
     portMemFree(pKernelFsp->pCotPayload);
     pKernelFsp->pCotPayload = NULL;
 
     if (pKernelFsp->pSysmemFrtsMemdesc != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6013);
         memdescUnmap(pKernelFsp->pSysmemFrtsMemdesc, NV_TRUE, 0,
             memdescGetKernelMapping(pKernelFsp->pSysmemFrtsMemdesc),
             memdescGetKernelMappingPriv(pKernelFsp->pSysmemFrtsMemdesc));
@@ -175,7 +163,6 @@ kfspStateDestroy_IMPL
 
     if (pKernelFsp->pVidmemFrtsMemdesc != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6014);
         memdescFree(pKernelFsp->pVidmemFrtsMemdesc);
         memdescDestroy(pKernelFsp->pVidmemFrtsMemdesc);
         pKernelFsp->pVidmemFrtsMemdesc = NULL;
@@ -183,7 +170,6 @@ kfspStateDestroy_IMPL
 
     if (pKernelFsp->pGspFmcMemdesc != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6015);
         memdescFree(pKernelFsp->pGspFmcMemdesc);
         memdescDestroy(pKernelFsp->pGspFmcMemdesc);
         pKernelFsp->pGspFmcMemdesc = NULL;
@@ -191,7 +177,6 @@ kfspStateDestroy_IMPL
 
     if (pKernelFsp->pGspBootArgsMemdesc != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6016);
         memdescFree(pKernelFsp->pGspBootArgsMemdesc);
         memdescDestroy(pKernelFsp->pGspBootArgsMemdesc);
         pKernelFsp->pGspBootArgsMemdesc = NULL;
@@ -214,7 +199,6 @@ kfspSecureReset_IMPL
     KernelFsp *pKernelFsp
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6017);
     // Should not reset FSP
     NV_PRINTF(LEVEL_ERROR, "FSP cannot be reset by CPU.\n");
     NV_ASSERT(0);
@@ -237,7 +221,6 @@ kfspIsQueueEmpty_IMPL
     KernelFsp *pKernelFsp
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6018);
     NvU32 cmdqHead, cmdqTail;
 
     kfspGetQueueHeadTail_HAL(pGpu, pKernelFsp, &cmdqHead, &cmdqTail);
@@ -261,21 +244,18 @@ kfspPollForQueueEmpty_IMPL
     KernelFsp *pKernelFsp
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6019);
     RMTIMEOUT timeout;
 
     gpuSetTimeout(pGpu, GPU_TIMEOUT_DEFAULT, &timeout, GPU_TIMEOUT_FLAGS_OSTIMER | GPU_TIMEOUT_FLAGS_BYPASS_THREAD_STATE);
 
     while (!kfspIsQueueEmpty(pGpu, pKernelFsp))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6020);
         //
         // For now we assume that any response from FSP before RM message send is complete
         // indicates an error and we should abort.
         //
         if (!kfspIsMsgQueueEmpty(pGpu, pKernelFsp))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6021);
             kfspReadMessage(pGpu, pKernelFsp, NULL, 0);
             NV_PRINTF(LEVEL_ERROR, "Received error message from FSP while waiting for CMDQ to be empty.\n");
             return NV_ERR_GENERIC;
@@ -283,7 +263,6 @@ kfspPollForQueueEmpty_IMPL
 
         if (gpuCheckTimeout(pGpu, &timeout) == NV_ERR_TIMEOUT)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6022);
             NV_PRINTF(LEVEL_ERROR, "Timed out waiting for FSP command queue to be empty.\n");
             return NV_ERR_TIMEOUT;
         }
@@ -308,7 +287,6 @@ kfspIsMsgQueueEmpty_IMPL
     KernelFsp *pKernelFsp
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6023);
     NvU32 msgqHead, msgqTail;
 
     kfspGetMsgQueueHeadTail_HAL(pGpu, pKernelFsp, &msgqHead, &msgqTail);
@@ -330,7 +308,6 @@ kfspPollForResponse_IMPL
     KernelFsp *pKernelFsp
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6024);
     RMTIMEOUT timeout;
     NV_STATUS status = NV_OK;
 
@@ -338,10 +315,8 @@ kfspPollForResponse_IMPL
     gpuSetTimeout(pGpu, GPU_TIMEOUT_DEFAULT, &timeout, GPU_TIMEOUT_FLAGS_OSTIMER | GPU_TIMEOUT_FLAGS_BYPASS_THREAD_STATE);
     while (kfspIsMsgQueueEmpty(pGpu, pKernelFsp))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6025);
         if (gpuCheckTimeout(pGpu, &timeout) == NV_ERR_TIMEOUT)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6026);
             NV_PRINTF(LEVEL_ERROR, "FSP command timed out\n");
             return NV_ERR_TIMEOUT;
         }
@@ -380,7 +355,6 @@ kfspReadMessage
     NvU32      payloadBufferSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6027);
     NvU8             *pPacketBuffer;
     NV_STATUS         status;
     NvU32             totalPayloadSize = 0;
@@ -388,7 +362,6 @@ kfspReadMessage
 
     if (kfspIsMsgQueueEmpty(pGpu, pKernelFsp))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6028);
         NV_PRINTF(LEVEL_WARNING, "Tried to read FSP response but MSG queue is empty\n");
         return NV_OK;
     }
@@ -398,7 +371,6 @@ kfspReadMessage
 
     while ((packetState != MCTP_PACKET_STATE_END) && (packetState != MCTP_PACKET_STATE_SINGLE_PACKET))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6029);
         NvU32 msgqHead, msgqTail;
         NvU32 packetSize;
         NvU32 curPayloadSize;
@@ -409,7 +381,6 @@ kfspReadMessage
         status = kfspPollForResponse(pGpu, pKernelFsp);
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6030);
             goto done;
         }
 
@@ -421,7 +392,6 @@ kfspReadMessage
         if ((packetSize < sizeof(NvU32)) ||
             (packetSize > kfspGetRmChannelSize_HAL(pGpu, pKernelFsp)))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6031);
             NV_PRINTF(LEVEL_ERROR, "FSP response packet is invalid size: size=0x%x bytes\n", packetSize);
             status = NV_ERR_INVALID_DATA;
             goto done;
@@ -432,13 +402,11 @@ kfspReadMessage
         status = kfspGetPacketInfo_HAL(pGpu, pKernelFsp, pPacketBuffer, packetSize, &packetState, &tag);
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6032);
             goto done;
         }
 
         if ((packetState == MCTP_PACKET_STATE_START) || (packetState == MCTP_PACKET_STATE_SINGLE_PACKET))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6033);
             // Packet contains payload header
             curHeaderSize = sizeof(MCTP_HEADER);
         }
@@ -451,7 +419,6 @@ kfspReadMessage
 
         if ((pPayloadBuffer == NULL) && (packetState != MCTP_PACKET_STATE_SINGLE_PACKET))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6034);
             NV_PRINTF(LEVEL_ERROR, "No buffer provided when receiving multi-packet message. Buffer needed to reconstruct message\n");
             status = NV_ERR_INSUFFICIENT_RESOURCES;
             goto done;
@@ -459,10 +426,8 @@ kfspReadMessage
 
         if (pPayloadBuffer != NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6035);
             if (payloadBufferSize < (totalPayloadSize + curPayloadSize))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6036);
                 NV_PRINTF(LEVEL_ERROR, "Buffer provided for message payload too small. Payload size: 0x%x Buffer size: 0x%x\n",
                           totalPayloadSize + curPayloadSize, payloadBufferSize);
                 status = NV_ERR_INSUFFICIENT_RESOURCES;
@@ -505,7 +470,6 @@ kfspSendPacket_IMPL
     NvU32        packetSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6037);
     NvU32 paddedSize;
     NvU8 *pBuffer = NULL;
     NV_STATUS status = NV_OK;
@@ -514,7 +478,6 @@ kfspSendPacket_IMPL
     status = kfspPollForQueueEmpty(pGpu, pKernelFsp);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6038);
         return NV_ERR_INSUFFICIENT_RESOURCES;
     }
 
@@ -562,7 +525,6 @@ kfspSendAndReadMessage_IMPL
     NvU32      responseBufferSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6039);
     NvU32 dataSent, dataRemaining;
     NvU32 packetPayloadCapacity;
     NvU32 curPayloadSize;
@@ -599,13 +561,11 @@ kfspSendAndReadMessage_IMPL
     status = kfspSendPacket(pGpu, pKernelFsp, pBuffer, curPayloadSize + headerSize);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6040);
         goto failed;
     }
 
     if (!bSinglePacket)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6041);
         // Multi packet case
         dataSent = curPayloadSize;
         dataRemaining = size - dataSent;
@@ -614,7 +574,6 @@ kfspSendAndReadMessage_IMPL
 
         while (dataRemaining > 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6042);
             NvBool bLastPacket = (dataRemaining <= packetPayloadCapacity);
             curPayloadSize = (bLastPacket) ? dataRemaining : packetPayloadCapacity;
 
@@ -627,7 +586,6 @@ kfspSendAndReadMessage_IMPL
             status = kfspSendPacket(pGpu, pKernelFsp, pBuffer, curPayloadSize + headerSize);
             if (status != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6043);
                 goto failed;
             }
 
@@ -640,7 +598,6 @@ kfspSendAndReadMessage_IMPL
     status = kfspPollForResponse(pGpu, pKernelFsp);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6044);
         goto failed;
     }
     status = kfspReadMessage(pGpu, pKernelFsp, pResponsePayload, responseBufferSize);

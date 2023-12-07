@@ -53,12 +53,10 @@ kbifIsMSIXEnabledInHW_TU102
     KernelBif *pKernelBif
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1321);
     NvU32 data32;
 
     if (IS_VIRTUAL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1322);
         // SR-IOV guests only support MSI-X
         return IS_VIRTUAL_WITH_SRIOV(pGpu);
     }
@@ -66,7 +64,6 @@ kbifIsMSIXEnabledInHW_TU102
     {
         if (GPU_BUS_CFG_RD32(pGpu, NV_XVE_MSIX_CAP_HDR, &data32) != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1323);
             NV_ASSERT_FAILED("Unable to read NV_XVE_MSIX_CAP_HDR\n");
             return NV_FALSE;
         }
@@ -87,10 +84,8 @@ kbifDisableP2PTransactions_TU102
     KernelBif *pKernelBif
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1324);
     if (IS_VIRTUAL_WITH_SRIOV(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1325);
         pKernelBif->setProperty(pKernelBif, PDB_PROP_KBIF_P2P_READS_DISABLED, NV_TRUE);
         pKernelBif->setProperty(pKernelBif, PDB_PROP_KBIF_P2P_WRITES_DISABLED, NV_TRUE);
     }
@@ -108,7 +103,6 @@ kbifGetVFSparseMmapRegions_TU102
     NvU64                   *pSizes
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1326);
     NvU64 offsetStart = 0;
     NvU64 offsetEnd = 0;
     NvU32 idx = 0;
@@ -127,7 +121,6 @@ kbifGetVFSparseMmapRegions_TU102
     bDryRun = ((pOffsets == NULL) || (pSizes == NULL));
     if (bDryRun)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1327);
         pOffsets = portMemAllocStackOrHeap(NVA084_CTRL_KERNEL_HOST_VGPU_DEVICE_MAX_BAR_MAPPING_RANGES * sizeof(pOffsets[0]));
         pSizes = portMemAllocStackOrHeap(NVA084_CTRL_KERNEL_HOST_VGPU_DEVICE_MAX_BAR_MAPPING_RANGES * sizeof(pSizes[0]));
     }
@@ -135,14 +128,12 @@ kbifGetVFSparseMmapRegions_TU102
     // For SRIOV heavy, trap BOOT_0 page
     if (gpuIsWarBug200577889SriovHeavyEnabled(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1328);
         offsetStart = osPageSize;
     }
 
     // For VF TLB emulation, trap MMU FAULT BUFFER page
     if ((maxInstance > 1) && pGpu->getProperty(pGpu, PDB_PROP_GPU_BUG_3007008_EMULATE_VF_MMU_TLB_INVALIDATE))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1329);
         offsetEnd = NV_VIRTUAL_FUNCTION_PRIV_MMU_FAULT_BUFFER_LO(0);
         pOffsets[idx] = offsetStart;
         pSizes[idx] = offsetEnd - offsetStart;
@@ -154,7 +145,6 @@ kbifGetVFSparseMmapRegions_TU102
     // For non-GSP, trap VGPU_EMU page
     if (!IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1330);
         offsetEnd = DRF_BASE(NV_VGPU_EMU);
         pOffsets[idx] = offsetStart;
         pSizes[idx] = offsetEnd - offsetStart;
@@ -166,7 +156,6 @@ kbifGetVFSparseMmapRegions_TU102
     // For non-HyperV, trap MSI-X table page
     if (!hypervisorIsType(OS_HYPERVISOR_HYPERV))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1331);
         // Assert whenever the MSI-X table page is not immediately after
         // the NV_VGPU_EMU page, as it will break the current assumption.
         ct_assert((DRF_BASE(NV_VGPU_EMU) + DRF_SIZE(NV_VGPU_EMU)) == NV_VIRTUAL_FUNCTION_PRIV_MSIX_TABLE_ADDR_LO(0));
@@ -177,7 +166,6 @@ kbifGetVFSparseMmapRegions_TU102
         // trapped, skip creating a 0 size region in between
         if (offsetEnd > offsetStart)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1332);
             pOffsets[idx] = offsetStart;
             pSizes[idx] = offsetEnd - offsetStart;
             idx++;
@@ -193,7 +181,6 @@ kbifGetVFSparseMmapRegions_TU102
 
     if (bDryRun)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1333);
         portMemFreeStackOrHeap(pOffsets);
         portMemFreeStackOrHeap(pSizes);
     }
@@ -205,7 +192,6 @@ kbifGetVFSparseMmapRegions_TU102
 
         for (i = 0; i < idx; i++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1334);
             NV_PRINTF(LEVEL_INFO, "VF Sparse Mmap Region[%u] range 0x%llx - 0x%llx, size 0x%llx\n",
                     i, pOffsets[i], pOffsets[i] + pSizes[i], pSizes[i]);
         }
@@ -227,7 +213,6 @@ kbifCacheVFInfo_TU102
     KernelBif *pKernelBif
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1335);
     NV_STATUS status = NV_OK;
     NvU32     regVal = 0;
     NvU32     saveLo = 0;

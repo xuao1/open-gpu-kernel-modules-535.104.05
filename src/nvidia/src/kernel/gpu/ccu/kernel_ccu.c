@@ -51,7 +51,6 @@ kccuConstructEngine_IMPL
    ENGDESCRIPTOR engDesc
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2707);
     NV_PRINTF(LEVEL_INFO, "KernelCcu: Constructor\n");
 
     return NV_OK;
@@ -68,7 +67,6 @@ kccuDestruct_IMPL
     KernelCcu *pKernelCcu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2708);
     NV_PRINTF(LEVEL_INFO, "KernelCcu: Destructor\n");
 
     return;
@@ -96,7 +94,6 @@ _kccuAllocMemory
    NvU64      counterBlockSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2709);
     NV_STATUS status            = NV_OK;
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
 
@@ -108,7 +105,6 @@ _kccuAllocMemory
 
     if (pKernelCcu->shrBuf[idx].pCounterDstInfo == NULL || pKernelCcu->shrBuf[idx].pKernelMapInfo == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2710);
         status = NV_ERR_NO_MEMORY;
         NV_PRINTF(LEVEL_ERROR, "CCU port mem alloc failed for(%u) with status: 0x%x\n", idx, status);
         goto free_alloc;
@@ -122,7 +118,6 @@ _kccuAllocMemory
                            MEMDESC_FLAGS_USER_READ_ONLY);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2711);
         NV_PRINTF(LEVEL_ERROR, "CCU memdescCreate failed for(%u) with status: 0x%x\n", idx, status);
         goto free_alloc;
     }
@@ -130,7 +125,6 @@ _kccuAllocMemory
     pMemDesc = pKernelCcu->pMemDesc[idx];
     if (pMemDesc == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2712);
         NV_PRINTF(LEVEL_ERROR, "CCU memdescCreate failed. memdesc for(%u) is NULL\n", idx);
         goto free_alloc;
     }
@@ -139,7 +133,6 @@ _kccuAllocMemory
     status = memdescAlloc(pMemDesc);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2713);
         NV_PRINTF(LEVEL_ERROR, "CCU memdescAlloc failed for(%u) with status: 0x%x\n", idx, status);
         memdescDestroy(pMemDesc);
         goto free_alloc;
@@ -151,7 +144,6 @@ _kccuAllocMemory
                         &pKernelCcu->shrBuf[idx].pKernelMapInfo->priv);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2714);
         NV_PRINTF(LEVEL_ERROR, "CCU memdescMap failed for(%u)with status: 0x%x\n", idx, status);
         memdescFree(pMemDesc);
         memdescDestroy(pMemDesc);
@@ -175,7 +167,6 @@ _kccuAllocMemory
     // Set mig swizz-id and compute-inst id to invalid
     if (!RMCFG_FEATURE_MODS_FEATURES)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2715);
         *pKernelCcu->shrBuf[idx].pCounterDstInfo->pSwizzId = CCU_MIG_INVALID_SWIZZID;
         *pKernelCcu->shrBuf[idx].pCounterDstInfo->pComputeId = CCU_MIG_INVALID_COMPUTEID;
     }
@@ -204,7 +195,6 @@ kccuShrBufIdxCleanup_IMPL
     NvU32      idx
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2716);
     MEMORY_DESCRIPTOR *pMemDesc = pKernelCcu->pMemDesc[idx];
 
     NV_PRINTF(LEVEL_INFO, "Shared buffer unmap & free for idx(%u).\n", idx);
@@ -237,7 +227,6 @@ _kccuUnmapAndFreeMemory
     KernelCcu  *pKernelCcu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2717);
     NvU32 i = 0;
     NV_STATUS status = NV_OK;
     NV2080_CTRL_INTERNAL_CCU_UNMAP_INFO_PARAMS params = { 0 };
@@ -257,17 +246,14 @@ _kccuUnmapAndFreeMemory
                              sizeof(params));
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2718);
         NV_PRINTF(LEVEL_ERROR, "CCU memdesc unmap request failed with status: 0x%x\n", status);
     }
 
     // Unmap & free mem desc
     for (i = 0; i < CCU_SHRBUF_COUNT_MAX; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2719);
         if (pKernelCcu->pMemDesc[i] != NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2720);
             kccuShrBufIdxCleanup(pGpu, pKernelCcu, i);
         }
     }
@@ -290,7 +276,6 @@ kccuShrBufInfoToCcu_IMPL
     NvU32      shrBufStartIdx
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2721);
     NV2080_CTRL_INTERNAL_CCU_MAP_INFO_PARAMS inParams = { 0 };
     NV_STATUS status = NV_OK;
     NvU32     idx    = 0;
@@ -299,10 +284,8 @@ kccuShrBufInfoToCcu_IMPL
 
     for (idx = shrBufStartIdx; idx < CCU_SHRBUF_COUNT_MAX; idx++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2722);
         if (pKernelCcu->pMemDesc[idx] != NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2723);
             inParams.phyAddr[idx] = memdescGetPhysAddr(pKernelCcu->pMemDesc[idx], AT_GPU, 0);
         }
     }
@@ -318,7 +301,6 @@ kccuShrBufInfoToCcu_IMPL
                              sizeof(inParams));
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2724);
         NV_PRINTF(LEVEL_ERROR, "CCU memdesc map request failed with status: 0x%x\n", status);
     }
 
@@ -340,7 +322,6 @@ _kccuInitDevSharedBuffer
     KernelCcu  *pKernelCcu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2725);
     NV_STATUS status = NV_OK;
 
     NV_PRINTF(LEVEL_INFO, "Init shared buffer for device counters.\n");
@@ -350,7 +331,6 @@ _kccuInitDevSharedBuffer
                               CCU_PER_GPU_COUNTER_Q_SIZE);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2726);
         NV_PRINTF(LEVEL_ERROR, "CCU memory allocation failed with status: 0x%x\n", status);
     }
 
@@ -372,7 +352,6 @@ kccuInitMigSharedBuffer_IMPL
     KernelCcu  *pKernelCcu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2727);
     NV_STATUS status = NV_OK;
     NvU32 idx;
 
@@ -381,12 +360,10 @@ kccuInitMigSharedBuffer_IMPL
     // Allocate shared buffer for each mig gpu instance
     for (idx = CCU_MIG_SHRBUF_ID_START; idx < CCU_SHRBUF_COUNT_MAX; idx++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2728);
         status = _kccuAllocMemory(pGpu, pKernelCcu, idx, CCU_MIG_INST_SHARED_BUFFER_SIZE_MAX,
                 CCU_MIG_INST_COUNTER_Q_SIZE);
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2729);
             NV_PRINTF(LEVEL_ERROR, "CCU memory allocation failed for idx(%u) with status: 0x%x\n",
                     idx, status);
 
@@ -417,14 +394,12 @@ NV_STATUS kccuStateLoad_IMPL
     NvU32      flags
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2730);
     NV_STATUS status = NV_OK;
 
     NV_PRINTF(LEVEL_INFO, "KernelCcu: State load \n");
 
     if (IS_VIRTUAL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2731);
         return NV_ERR_NOT_SUPPORTED;
     }
 
@@ -432,7 +407,6 @@ NV_STATUS kccuStateLoad_IMPL
     status = _kccuInitDevSharedBuffer(pGpu, pKernelCcu);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2732);
         NV_PRINTF(LEVEL_ERROR, "Failed to init device shared buffer(status: %u) \n", status);
         return status;
     }
@@ -440,11 +414,9 @@ NV_STATUS kccuStateLoad_IMPL
     // Create mig shared buffer
     if (IS_MIG_ENABLED(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2733);
         status = kccuInitMigSharedBuffer(pGpu, pKernelCcu);
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2734);
             NV_PRINTF(LEVEL_ERROR, "Failed to init mig shared buffer(status: %u) \n", status);
             return status;
         }
@@ -472,7 +444,6 @@ NV_STATUS kccuStateUnload_IMPL
     NvU32      flags
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2735);
     NV_STATUS status = NV_OK;
     NV_PRINTF(LEVEL_INFO, "KernelCcu: State unload \n");
 
@@ -506,18 +477,15 @@ NV_STATUS kccuMemDescGetForShrBufId_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2736);
     NV_PRINTF(LEVEL_INFO, "KernelCcu: Get memdesc for idx(%u) \n", idx);
 
     if (IS_VIRTUAL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2737);
         return NV_ERR_NOT_SUPPORTED;
     }
 
     if (idx >= CCU_SHRBUF_COUNT_MAX)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2738);
         NV_PRINTF(LEVEL_ERROR, "CCU memdesc get failed for input idx(%u). Invalid index.\n",
                   idx);
 
@@ -548,21 +516,17 @@ NV_STATUS kccuMemDescGetForSwizzId_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2739);
     NvU32 idx = 0;
 
     if (IS_VIRTUAL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2740);
         return NV_ERR_NOT_SUPPORTED;
     }
 
     for (idx = CCU_MIG_SHRBUF_ID_START; idx < CCU_SHRBUF_COUNT_MAX; idx++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2741);
         if (*pKernelCcu->shrBuf[idx].pCounterDstInfo->pSwizzId == swizzId)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2742);
             *ppMemDesc = pKernelCcu->pMemDesc[idx];
             break;
         }
@@ -570,7 +534,6 @@ NV_STATUS kccuMemDescGetForSwizzId_IMPL
 
     if (idx >= CCU_SHRBUF_COUNT_MAX)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2743);
         NV_PRINTF(LEVEL_ERROR, "KernelCcu: memdesc get failed for input swizzId(%u)\n",
                 swizzId);
 
@@ -596,12 +559,10 @@ NvU32 kccuCounterBlockSizeGet_IMPL
     NvBool     bDevCounter
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2744);
     NV_PRINTF(LEVEL_INFO, "KernelCcu: Get counter block size \n");
     // For device counter block
     if (bDevCounter)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2745);
         return CCU_PER_GPU_COUNTER_Q_SIZE;
     }
 
@@ -625,7 +586,6 @@ NV_STATUS kccuStreamStateSet_IMPL
     NV_COUNTER_COLLECTION_UNIT_STREAM_STATE_PARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2746);
     NV_STATUS status = NV_OK;
     NV2080_CTRL_INTERNAL_CCU_STREAM_STATE_PARAMS ccuParams = { 0 };
 
@@ -634,14 +594,12 @@ NV_STATUS kccuStreamStateSet_IMPL
     if (pParams == NULL || (pParams->bStreamState != CCU_STREAM_STATE_ENABLE &&
                             pParams->bStreamState != CCU_STREAM_STATE_DISABLE))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2747);
         NV_PRINTF(LEVEL_ERROR, "KernelCcu: Invalid input params\n");
         return NV_ERR_INVALID_ARGUMENT;
     }
 
     if (pKernelCcu->bStreamState == pParams->bStreamState)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2748);
         NV_PRINTF(LEVEL_INFO, "KernelCcu: CCU stream state is already (%s)\n",
                   pKernelCcu->bStreamState ? "ENABLED" : "DISABLED");
         return NV_OK;
@@ -660,7 +618,6 @@ NV_STATUS kccuStreamStateSet_IMPL
                              sizeof(ccuParams));
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2749);
         NV_PRINTF(LEVEL_ERROR, "CCU stream state set failed with status: 0x%x\n", status);
         return status;
     }
@@ -670,11 +627,9 @@ NV_STATUS kccuStreamStateSet_IMPL
     // Clear the shared buffer, when stream state is disabled
     if (pKernelCcu->bStreamState == CCU_STREAM_STATE_DISABLE)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2750);
         NvU32 i;
         for (i = 0; i < CCU_SHRBUF_COUNT_MAX; i++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2751);
             MEMORY_DESCRIPTOR *pMemDesc = pKernelCcu->pMemDesc[i];
 
             if (pMemDesc == NULL)
@@ -701,7 +656,6 @@ NvBool kccuStreamStateGet_IMPL
     KernelCcu   *pKernelCcu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2752);
     NV_PRINTF(LEVEL_INFO, "KernelCcu: Get ccu stream \n");
 
     return pKernelCcu->bStreamState;
@@ -730,22 +684,18 @@ NV_STATUS kccuMemDescGetForComputeInst_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2753);
     NvU32 idx;
 
     if (IS_VIRTUAL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2754);
         return NV_ERR_NOT_SUPPORTED;
     }
 
     for (idx = CCU_MIG_SHRBUF_ID_START; idx < CCU_SHRBUF_COUNT_MAX; idx++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2755);
         if (*pKernelCcu->shrBuf[idx].pCounterDstInfo->pSwizzId == swizzId &&
             *pKernelCcu->shrBuf[idx].pCounterDstInfo->pComputeId == computeId)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2756);
             *ppMemDesc = pKernelCcu->pMemDesc[idx];
             break;
         }
@@ -753,7 +703,6 @@ NV_STATUS kccuMemDescGetForComputeInst_IMPL
 
     if (idx >= CCU_SHRBUF_COUNT_MAX)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2757);
         NV_PRINTF(LEVEL_ERROR, "KernelCcu: memdesc get failed for input swizzId(%u), computeInst(%u)\n",
                   swizzId, computeId);
 

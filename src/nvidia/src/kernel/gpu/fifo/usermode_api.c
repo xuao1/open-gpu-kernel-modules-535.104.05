@@ -36,7 +36,6 @@ usrmodeConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5915);
     Memory                      *pMemory        = staticCast(pUserModeApi, Memory);
     OBJGPU                      *pGpu           = pMemory->pGpu;
     KernelFifo                  *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);
@@ -49,7 +48,6 @@ usrmodeConstruct_IMPL
     // Copy-construction has already been done by the base Memory class
     if (RS_IS_COPY_CTOR(pParams))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5916);
         return NV_OK;
     }
 
@@ -59,7 +57,6 @@ usrmodeConstruct_IMPL
     //
     if (hClass >= HOPPER_USERMODE_A && pAllocParams != NULL && pKernelFifo->pBar1VF != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5917);
         bBar1Mapping = pAllocParams->bBar1Mapping;
         bPrivMapping = pAllocParams->bPriv;
     }
@@ -67,7 +64,6 @@ usrmodeConstruct_IMPL
     if (pGpu->getProperty(pGpu, PDB_PROP_GPU_COHERENT_CPU_MAPPING) ||
         pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_ALL_INST_IN_SYSMEM))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5918);
         bBar1Mapping = NV_FALSE;
     }
 
@@ -81,7 +77,6 @@ usrmodeConstruct_IMPL
 
     if (bBar1Mapping)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5919);
         pMemDesc = bPrivMapping ? pKernelFifo->pBar1PrivVF : pKernelFifo->pBar1VF;
     }
 

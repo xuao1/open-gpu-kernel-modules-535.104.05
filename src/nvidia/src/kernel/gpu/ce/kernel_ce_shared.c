@@ -35,7 +35,6 @@
 
 NvBool ceIsCeGrce(OBJGPU *pGpu, RM_ENGINE_TYPE rmCeEngineType)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3028);
     NV2080_CTRL_GPU_GET_ENGINE_PARTNERLIST_PARAMS partnerParams = {0};
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
 
@@ -54,7 +53,6 @@ NvBool ceIsCeGrce(OBJGPU *pGpu, RM_ENGINE_TYPE rmCeEngineType)
     status = kfifoGetEnginePartnerList_HAL(pGpu, pKernelFifo, &partnerParams);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3029);
         // For channels that the hal didnt handle, we should just return
         // all of the supported engines except for the target engine.
         //
@@ -62,7 +60,6 @@ NvBool ceIsCeGrce(OBJGPU *pGpu, RM_ENGINE_TYPE rmCeEngineType)
         status = gpuUpdateEngineTable(pGpu);
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3030);
             NV_PRINTF(LEVEL_ERROR,
                       "Could not update the engine db. This is fatal\n");
             DBG_BREAKPOINT();
@@ -72,7 +69,6 @@ NvBool ceIsCeGrce(OBJGPU *pGpu, RM_ENGINE_TYPE rmCeEngineType)
         // Make sure it all will fit
         if (pGpu->engineDB.size > NV2080_CTRL_GPU_MAX_ENGINE_PARTNERS)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3031);
             NV_PRINTF(LEVEL_ERROR,
                       "PartnerList space too small. This is fatal\n");
             DBG_BREAKPOINT();
@@ -82,11 +78,9 @@ NvBool ceIsCeGrce(OBJGPU *pGpu, RM_ENGINE_TYPE rmCeEngineType)
         // Copy over all of the engines except the target
         for (i = 0; i < pGpu->engineDB.size; i++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3032);
             // Skip the engine handed in
             if (pGpu->engineDB.pType[i] != rmCeEngineType )
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3033);
                 partnerParams.partnerList[partnerParams.numPartners++] =
                     gpuGetNv2080EngineType(pGpu->engineDB.pType[i]);
             }
@@ -96,10 +90,8 @@ NvBool ceIsCeGrce(OBJGPU *pGpu, RM_ENGINE_TYPE rmCeEngineType)
     // check if gr is in the partnerList
     for (i = 0; i < partnerParams.numPartners; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3034);
         if (partnerParams.partnerList[i] == NV2080_ENGINE_TYPE_GRAPHICS)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3035);
             return NV_TRUE;
         }
     }
@@ -109,7 +101,6 @@ NvBool ceIsCeGrce(OBJGPU *pGpu, RM_ENGINE_TYPE rmCeEngineType)
 
 NvU32 ceCountGrCe(OBJGPU *pGpu)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3036);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     NvU32      engIdx;
     NvU32      grCeCount;
@@ -125,11 +116,9 @@ NvU32 ceCountGrCe(OBJGPU *pGpu)
     //
     for (engIdx = 0; engIdx < GPU_MAX_CES; ++engIdx)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3037);
         if (kbusCheckEngine_HAL(pGpu, pKernelBus, ENG_CE(engIdx)) &&
             ceIsCeGrce(pGpu, RM_ENGINE_TYPE_COPY(engIdx)))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3038);
             grCeCount++;
         }
     }
@@ -148,7 +137,6 @@ subdeviceCtrlCmdCeGetCapsV2_IMPL
     NV2080_CTRL_CE_GET_CAPS_V2_PARAMS *pCeCapsParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3039);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvU32 ceNumber;
     RM_ENGINE_TYPE rmEngineType = gpuGetRmEngineType(pCeCapsParams->ceEngineType);
@@ -159,7 +147,6 @@ subdeviceCtrlCmdCeGetCapsV2_IMPL
 
     if (!RM_ENGINE_TYPE_IS_COPY(rmEngineType))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3040);
         return NV_ERR_NOT_SUPPORTED;
     }
 
@@ -174,7 +161,6 @@ subdeviceCtrlCmdCeGetCapsV2_IMPL
         // not supposed to be user visible and cannot be allocated anyway.
         if (pKCe == NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3041);
             NV_PRINTF(LEVEL_INFO, "Skipping stubbed CE %d\n", ceNumber);
             return NV_ERR_NOT_SUPPORTED;
         }
@@ -191,7 +177,6 @@ subdeviceCtrlCmdCeGetAllCaps_IMPL
     NV2080_CTRL_CE_GET_ALL_CAPS_PARAMS *pCeCapsParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3042);
     RM_API *pRmApi;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     Device *pDevice = GPU_RES_GET_DEVICE(pSubdevice);
@@ -200,7 +185,6 @@ subdeviceCtrlCmdCeGetAllCaps_IMPL
 
     if (!RMCFG_FEATURE_PLATFORM_GSP)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3043);
         KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
 
         //
@@ -210,7 +194,6 @@ subdeviceCtrlCmdCeGetAllCaps_IMPL
         if ((pKernelNvlink != NULL) && !knvlinkIsForcedConfig(pGpu, pKernelNvlink) &&
              kmigmgrIsMIGNvlinkP2PSupported(pGpu, GPU_GET_KERNEL_MIG_MANAGER(pGpu)))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3044);
             knvlinkCoreGetRemoteDeviceInfo(pGpu, pKernelNvlink);
         }
     }

@@ -137,7 +137,6 @@ static NvBool    _rmGpuLockIsOwner(NvU32);
 NV_STATUS
 rmGpuLockInfoInit(void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 97);
     portMemSet(&rmGpuLockInfo, 0, sizeof(rmGpuLockInfo));
 
     rmGpuLockInfo.pLock = portSyncSpinlockCreate(portMemAllocatorGetGlobalNonPaged());
@@ -157,7 +156,6 @@ rmGpuLockInfoInit(void)
 void
 rmGpuLockInfoDestroy(void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 98);
     //
     // We expect all locks to have been freed by this point.
     //
@@ -175,7 +173,6 @@ rmGpuLockInfoDestroy(void)
 NV_STATUS
 rmGpuLockAlloc(NvU32 gpuInst)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 99);
     GPULOCK *pGpuLock;
     NvU32 gpuMask, gpuLockedMask;
     NV_STATUS status;
@@ -205,7 +202,6 @@ rmGpuLockAlloc(NvU32 gpuInst)
     pGpuLock->pWaitSema = portSyncSemaphoreCreate(portMemAllocatorGetGlobalNonPaged(), 0);
     if (pGpuLock->pWaitSema == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 100);
         status = NV_ERR_NO_MEMORY;
         goto done;
     }
@@ -228,7 +224,6 @@ rmGpuLockAlloc(NvU32 gpuInst)
                                 NV_RETURN_ADDRESS(), &gpuLockedMask);
     if (status == NV_WARN_NOTHING_TO_DO)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 101);
         // Verify that this is a valid case - i.e. we're attaching first GPU.
         NV_ASSERT(gpuMask == 0);
         status = NV_OK;
@@ -243,7 +238,6 @@ rmGpuLockAlloc(NvU32 gpuInst)
     // save this gpuInst if it's the largest we've seen so far
     if (rmGpuLockInfo.maxLockableGpuInst == (NvU32)-1)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 102);
         rmGpuLockInfo.maxLockableGpuInst = gpuInst;
     }
     else
@@ -271,7 +265,6 @@ rmGpuLockAlloc(NvU32 gpuInst)
 done:
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 103);
         if (pGpuLock->pWaitSema)
             portSyncSemaphoreDestroy(pGpuLock->pWaitSema);
 
@@ -292,7 +285,6 @@ done:
 void
 rmGpuLockFree(NvU32 gpuInst)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 104);
     NvU32 i;
     GPULOCK *pGpuLock;
     NV_STATUS status;
@@ -343,13 +335,10 @@ rmGpuLockFree(NvU32 gpuInst)
     //
     if (gpuInst == rmGpuLockInfo.maxLockableGpuInst)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 105);
         if (rmGpuLockInfo.gpusLockableMask != 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 106);
             for (i = rmGpuLockInfo.maxLockableGpuInst; i != (NvU32)-1; i--)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 107);
                 if (rmGpuLockInfo.gpusLockableMask & NVBIT(i))
                     break;
             }
@@ -369,7 +358,6 @@ rmGpuLockFree(NvU32 gpuInst)
 
     if (pGpuLock->pWaitSema)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 108);
         //
         // At this point, we may still have threads waiting on the semaphore,
         // and possibly one thread holding the lock.
@@ -378,7 +366,6 @@ rmGpuLockFree(NvU32 gpuInst)
         //
         while (pGpuLock->count <= 0) // volatile read
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 109);
             portSyncSemaphoreRelease(pGpuLock->pWaitSema);
             osSchedule(); // Yield execution
             portSyncSemaphoreAcquire(pGpuLock->pWaitSema);
@@ -400,7 +387,6 @@ rmGpuLockFree(NvU32 gpuInst)
 //
 static void _gpuLocksAcquireDisableInterrupts(NvU32 gpuInst, NvU32 flags)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 110);
     OBJGPU *pGpu = gpumgrGetGpu(gpuInst);
 
     //
@@ -423,7 +409,6 @@ static void _gpuLocksAcquireDisableInterrupts(NvU32 gpuInst, NvU32 flags)
 
     if (osLockShouldToggleInterrupts(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 111);
         Intr *pIntr = GPU_GET_INTR(pGpu);
         NvBool isIsr = !!(flags & GPU_LOCK_FLAGS_COND_ACQUIRE);
         NvBool bBcEnabled = gpumgrGetBcEnabledStatus(pGpu);
@@ -434,7 +419,6 @@ static void _gpuLocksAcquireDisableInterrupts(NvU32 gpuInst, NvU32 flags)
         // Note: SWRL is enabled only for vGPU, and is disabled otherwise.
         if (pGpu->getProperty(pGpu, PDB_PROP_GPU_SWRL_GRANULAR_LOCKING))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 112);
             // Disable the RM callback timer interrupt
             OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
             tmrRmCallbackIntrDisable(pTmr, pGpu);
@@ -445,7 +429,6 @@ static void _gpuLocksAcquireDisableInterrupts(NvU32 gpuInst, NvU32 flags)
         if ((pIntr != NULL) && pIntr->getProperty(pIntr, PDB_PROP_INTR_USE_INTR_MASK_FOR_LOCKING) &&
              (isIsr == NV_FALSE) )
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 113);
             NvU64 oldIrql;
             NvU32 intrMaskFlags;
 
@@ -457,11 +440,9 @@ static void _gpuLocksAcquireDisableInterrupts(NvU32 gpuInst, NvU32 flags)
 
             if (pIntr->getProperty(pIntr, PDB_PROP_INTR_USE_INTR_MASK_FOR_LOCKING))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 114);
                 // During non-cond RM code, allow some intrs to come in.
                 if (pIntr->getProperty(pIntr, PDB_PROP_INTR_SIMPLIFIED_VBLANK_HANDLING_FOR_CTRL_TREE))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 115);
                     intrSetDisplayInterruptEnable_HAL(pGpu, pIntr, NV_TRUE,  NULL /* threadstate */);
                 }
                 else
@@ -492,7 +473,6 @@ static void _gpuLocksAcquireDisableInterrupts(NvU32 gpuInst, NvU32 flags)
 static NV_STATUS
 _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pGpuLockedMask)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 116);
     NV_STATUS status = NV_OK;
     NvU32     gpuInst;
     NvU32     gpuMaskLocked = 0;
@@ -520,7 +500,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
     //
     if (gpuMask == GPUS_LOCK_ALL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 117);
         gpuMask = rmGpuLockInfo.gpusLockableMask;
         bLockAll = NV_TRUE;
     }
@@ -530,7 +509,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
     //
     if (gpuMask == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 118);
         status = NV_WARN_NOTHING_TO_DO;
         goto done;
     }
@@ -541,18 +519,15 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
     //
     if ((flags & GPU_LOCK_FLAGS_READ) && (module != RM_LOCK_MODULES_NONE))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 119);
         OBJSYS *pSys = SYS_GET_INSTANCE();
         if ((pSys->gpuLockModuleMask & NVBIT(module)) == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 120);
             flags &= ~RMAPI_LOCK_FLAGS_READ;
         }
     }
 
     if ((gpuMask & rmGpuLockInfo.gpusLockableMask) != gpuMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 121);
         NV_PRINTF(LEVEL_WARNING,
                   "Attempting to lock GPUs (mask=%08x) that are not lockable (mask=%08x). Will skip non-lockables.\n",
                   gpuMask, rmGpuLockInfo.gpusLockableMask);
@@ -560,7 +535,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
         // Nothing to do if no requested GPUs are lockable
         if (gpuMask == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 122);
             status = NV_ERR_INVALID_REQUEST;
             goto done;
         }
@@ -569,7 +543,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
     maxLockableGpuInst = rmGpuLockInfo.maxLockableGpuInst;
     if (maxLockableGpuInst >= NV_MAX_DEVICES)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 123);
         DBG_BREAKPOINT();
         status = NV_ERR_INVALID_STATE;
         goto done;
@@ -577,7 +550,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
 
     if (flags & GPU_LOCK_FLAGS_SAFE_LOCK_UPGRADE)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 124);
         NvU32 ownedMask = rmGpuLocksGetOwnedMask();
 
         // In safe mode, we never attempt to acquire locks we already own..
@@ -585,7 +557,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
         // If we already own everything we need, just bail early.
         if (gpuMask == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 125);
             status = NV_WARN_NOTHING_TO_DO;
             goto done;
         }
@@ -599,7 +570,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
         //    owned=0b00000000, needed=0b00000001: ((32-32) >  0), bCond=FALSE
         if ((32-portUtilCountLeadingZeros32(ownedMask)) > portUtilCountTrailingZeros32(gpuMask))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 126);
             bCondAcquireCheck = NV_TRUE;
         }
     }
@@ -615,12 +585,10 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
     //
     if (bCondAcquireCheck || bHighIrql)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 127);
         for (gpuInst = 0;
              gpuInst <= maxLockableGpuInst;
              gpuInst++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 128);
             if ((gpuMask & NVBIT(gpuInst)) == 0)
                 continue;
 
@@ -631,20 +599,16 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
             //
             if (bCondAcquireCheck)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 129);
                 if (pGpuLock->bRunning == NV_TRUE)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 130);
                     status = NV_ERR_STATE_IN_USE;
                     goto done;
                 }
             }
             else if (bHighIrql)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 131);
                 if (pGpuLock->count <= 0)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 132);
                     status = NV_ERR_STATE_IN_USE;
                     goto done;
                 }
@@ -659,7 +623,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
          gpuInst <= maxLockableGpuInst;
          gpuInst++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 133);
         // skip any not in the mask
         if ((gpuMask & NVBIT(gpuInst)) == 0)
             continue;
@@ -670,7 +633,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
         //
         if ((NVBIT(gpuInst) & rmGpuLockInfo.gpusLockableMask) == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 134);
             NV_PRINTF(LEVEL_NOTICE,
                 "GPU lock %d freed while we were waiting on a previous lock\n",
                 gpuInst);
@@ -685,7 +647,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
         //
         if (!bCondAcquireCheck && (pGpuLock->count <= 0))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 135);
             //
             // Assert that this is not already the owner of the GpusLock
             // (the lock will cause a hang if acquired recursively)
@@ -713,7 +674,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
             //
             if (_rmGpuLockIsOwner(NVBIT(gpuInst)))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 136);
                 NV_PRINTF(LEVEL_INFO,
                           "GPU lock is already acquired by this thread\n");
                 NV_ASSERT(0);
@@ -733,7 +693,6 @@ _rmGpuLocksAcquire(NvU32 gpuMask, NvU32 flags, NvU32 module, void *ra, NvU32 *pG
 
                 if ((rmGpuLockInfo.gpusLockableMask & NVBIT(gpuInst)) == 0)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 137);
                     NV_PRINTF(LEVEL_WARNING,
                               "GPU lock %d freed while threads were still waiting.\n",
                               gpuInst);
@@ -791,14 +750,12 @@ next_gpu_instance:
     // Log any changes to the GPU configuration due to race conditions
     if (maxLockableGpuInst != rmGpuLockInfo.maxLockableGpuInst)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 138);
         NV_PRINTF(LEVEL_NOTICE,
                   "Max lockable instance changed from %d to %d\n",
                   maxLockableGpuInst, rmGpuLockInfo.maxLockableGpuInst);
     }
     if (gpuMaskLocked != gpuMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 139);
         NV_PRINTF(LEVEL_WARNING,
                   "Locked a different GPU mask (0x%08x) than requested (0x%08x) @ %p.\n",
                   gpuMaskLocked, gpuMask, ra);
@@ -807,7 +764,6 @@ next_gpu_instance:
     // Log any case where we wanted to but failed to lock ALL GPUs.
     if (bLockAll)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 140);
         NV_ASSERT(gpuMaskLocked == rmGpuLockInfo.gpusLockedMask);
         NV_ASSERT(gpuMaskLocked == rmGpuLockInfo.gpusLockableMask);
     }
@@ -822,7 +778,6 @@ done:
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 141);
         threadPriorityRestore();
         return status;
     }
@@ -836,7 +791,6 @@ done:
 NV_STATUS
 rmGpuLocksAcquire(NvU32 flags, NvU32 module)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 142);
     NV_STATUS status;
     NvU32 gpusLockedMask = 0;
 
@@ -856,7 +810,6 @@ rmGpuLocksAcquire(NvU32 flags, NvU32 module)
     //
     if (status == NV_OK && gpusLockedMask != rmGpuLockInfo.gpusLockableMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 143);
         //
         // On Windows, at high IRQL we can't signal the semaphore. So we
         // use a second pGpu to schedule a DPC to do that. Pick one that
@@ -866,13 +819,11 @@ rmGpuLocksAcquire(NvU32 flags, NvU32 module)
 
         if (_rmGpuLocksRelease(gpusLockedMask, flags, pDpcGpu, NV_RETURN_ADDRESS()) == NV_SEMA_RELEASE_SUCCEED)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 144);
             // All locks successfully released without a DPC scheduled, can re-attempt.
             status = _rmGpuLocksAcquire(GPUS_LOCK_ALL, flags, module, NV_RETURN_ADDRESS(), &gpusLockedMask);
             // If it happened again, just release and return
             if (status == NV_OK && gpusLockedMask != rmGpuLockInfo.gpusLockableMask)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 145);
                 _rmGpuLocksRelease(gpusLockedMask, flags, pDpcGpu, NV_RETURN_ADDRESS());
                 status = NV_ERR_INVALID_LOCK_STATE;
             }
@@ -885,11 +836,9 @@ rmGpuLocksAcquire(NvU32 flags, NvU32 module)
 
     if (status == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 146);
         CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
         if (pCallContext != NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 147);
             NV_ASSERT(pCallContext->pLockInfo != NULL);
             if (pCallContext->pLockInfo != NULL)
                 pCallContext->pLockInfo->state |= RM_LOCK_STATES_GPUS_LOCK_ACQUIRED;
@@ -912,7 +861,6 @@ rmGpuGroupLockAcquire
     GPU_MASK* pGpuMask
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 148);
     NvU32 status = NV_OK;
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
@@ -928,7 +876,6 @@ rmGpuGroupLockAcquire
 
     if (bGSync)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 149);
         *pGpuMask = GPUS_LOCK_ALL;
     }
     else
@@ -941,7 +888,6 @@ rmGpuGroupLockAcquire
     status = _rmGpuLocksAcquire(*pGpuMask, flags, module, NV_RETURN_ADDRESS(), pGpuMask);
     if (status == NV_WARN_NOTHING_TO_DO)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 150);
         //
         // Callers using SAFE_LOCK_UPGRADE will often consider this normal,
         // so silence the print if the flag is passed.
@@ -954,7 +900,6 @@ rmGpuGroupLockAcquire
 
     if ((status == NV_OK) && bGSync)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 151);
         GPU_MASK deviceGpuMask = 0;
         rmGpuGroupLockGetMask(gpuInst, GPU_LOCK_GRP_DEVICE, &deviceGpuMask);
         //
@@ -963,7 +908,6 @@ rmGpuGroupLockAcquire
         //
         if ((rmGpuLocksGetOwnedMask() & deviceGpuMask) != deviceGpuMask)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 152);
             //
             // On Windows, at high IRQL we can't signal the semaphore. So we
             // use a second pGpu to schedule a DPC to do that. Pick one that
@@ -989,7 +933,6 @@ rmGpuGroupLockAcquire
 NvBool
 rmGpuGroupLockIsOwner(NvU32 gpuInst, GPU_LOCK_GRP_ID gpuGrpId, GPU_MASK* pGpuMask)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 153);
     NvBool bIsOwner = NV_FALSE;
     NvBool bReleaseSpinlock = NV_FALSE;
 
@@ -998,7 +941,6 @@ rmGpuGroupLockIsOwner(NvU32 gpuInst, GPU_LOCK_GRP_ID gpuGrpId, GPU_MASK* pGpuMas
 
     if ((gpuGrpId == GPU_LOCK_GRP_ALL) && (*pGpuMask == GPUS_LOCK_ALL))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 154);
         bReleaseSpinlock = NV_TRUE;
         portSyncSpinlockAcquire(rmGpuLockInfo.pLock);
         *pGpuMask = rmGpuLockInfo.gpusLockableMask;
@@ -1018,7 +960,6 @@ rmGpuGroupLockIsOwner(NvU32 gpuInst, GPU_LOCK_GRP_ID gpuGrpId, GPU_MASK* pGpuMas
 NV_STATUS
 rmDeviceGpuLocksAcquire(OBJGPU *pGpu, NvU32 flags, NvU32 module)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 155);
     NvU32 gpuMask;
     NvU32 gpuLockedMask = 0;
     NV_STATUS status;
@@ -1046,14 +987,12 @@ rmDeviceGpuLocksAcquire(OBJGPU *pGpu, NvU32 flags, NvU32 module)
     //
     if (pSys->getProperty(pSys, PDB_PROP_SYS_IS_GSYNC_ENABLED))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 156);
         status = _rmGpuLocksAcquire(GPUS_LOCK_ALL, flags, module,
                                     NV_RETURN_ADDRESS(), &gpuLockedMask);
 
         // Verify that we actually locked *this* pGpu, not all others.
         if (status == NV_OK && ((gpuLockedMask & gpuMask) != gpuMask))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 157);
             //
             // On Windows, at high IRQL we can't signal the semaphore. So we
             // use a second pGpu to schedule a DPC to do that. Pick one that
@@ -1075,10 +1014,8 @@ rmDeviceGpuLocksAcquire(OBJGPU *pGpu, NvU32 flags, NvU32 module)
         //
         if (status == NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 158);
             if (gpuMask != gpumgrGetGpuMask(pGpu))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 159);
                 _rmGpuLocksRelease(gpuLockedMask, flags, pGpu, NV_RETURN_ADDRESS());
                 status = NV_ERR_INVALID_DEVICE;
             }
@@ -1088,7 +1025,6 @@ rmDeviceGpuLocksAcquire(OBJGPU *pGpu, NvU32 flags, NvU32 module)
     // Even if we get NV_OK, there are a couple of edge cases to handle
     if (status == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 160);
         //
         // Currently, release-and-free sequence for GPU locks is not atomic, so
         // we could theoretically acquire a perfectly valid lock for a non-existent
@@ -1096,7 +1032,6 @@ rmDeviceGpuLocksAcquire(OBJGPU *pGpu, NvU32 flags, NvU32 module)
         //
         if (!gpumgrIsGpuPointerValid(pGpu))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 161);
             // We don't need a pDpcGpu here as this can't happen at DIRQL.
             _rmGpuLocksRelease(gpuLockedMask, flags, NULL, NV_RETURN_ADDRESS());
             status = NV_ERR_INVALID_DEVICE;
@@ -1106,7 +1041,6 @@ rmDeviceGpuLocksAcquire(OBJGPU *pGpu, NvU32 flags, NvU32 module)
             CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
             if (pCallContext != NULL)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 162);
                 NV_ASSERT(pCallContext->pLockInfo != NULL);
                 if (pCallContext->pLockInfo != NULL)
                     pCallContext->pLockInfo->state |= RM_LOCK_STATES_GPU_GROUP_LOCK_ACQUIRED;
@@ -1132,7 +1066,6 @@ rmDeviceGpuLocksAcquire(OBJGPU *pGpu, NvU32 flags, NvU32 module)
 //
 static void _gpuLocksReleaseEnableInterrupts(NvU32 gpuInst, NvU32 flags)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 163);
     OBJGPU *pGpu;
 
     pGpu = gpumgrGetGpu(gpuInst);
@@ -1156,7 +1089,6 @@ static void _gpuLocksReleaseEnableInterrupts(NvU32 gpuInst, NvU32 flags)
 
     if (osLockShouldToggleInterrupts(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 164);
         Intr *pIntr = GPU_GET_INTR(pGpu);
 
         // Make sure we only enable interrupts unicast
@@ -1165,7 +1097,6 @@ static void _gpuLocksReleaseEnableInterrupts(NvU32 gpuInst, NvU32 flags)
         if ((pIntr != NULL) &&
             pIntr->getProperty(pIntr, PDB_PROP_INTR_USE_INTR_MASK_FOR_LOCKING) )
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 165);
             NvU64 oldIrql;
             NvU32 intrMaskFlags;
             MC_ENGINE_BITVECTOR engines;
@@ -1178,7 +1109,6 @@ static void _gpuLocksReleaseEnableInterrupts(NvU32 gpuInst, NvU32 flags)
 
             if (pIntr->getProperty(pIntr, PDB_PROP_INTR_USE_INTR_MASK_FOR_LOCKING))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 166);
                 // Allow all intrs to be reflected and come in.
                 bitVectorSetAll(&engines);
                 intrSetIntrMask_HAL(pGpu, pIntr, &engines, NULL /* threadstate */);
@@ -1195,7 +1125,6 @@ static void _gpuLocksReleaseEnableInterrupts(NvU32 gpuInst, NvU32 flags)
         {
             if ((pGpu->bIsSOC == NV_FALSE) && !IS_VIRTUAL(pGpu) && !IS_GSP_CLIENT(pGpu))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 167);
                 NV_ASSERT(intrGetIntrEnFromHw_HAL(pGpu, pIntr, NULL) != INTERRUPT_TYPE_HARDWARE);
             }
         }
@@ -1204,7 +1133,6 @@ static void _gpuLocksReleaseEnableInterrupts(NvU32 gpuInst, NvU32 flags)
         // Note: SWRL is enabled only for vGPU, and is disabled otherwise.
         if (pGpu->getProperty(pGpu, PDB_PROP_GPU_SWRL_GRANULAR_LOCKING))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 168);
             // Enable the alarm interrupt. Rearm MSI when timer interrupt is pending.
             OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
             NvU32   retVal;
@@ -1213,7 +1141,6 @@ static void _gpuLocksReleaseEnableInterrupts(NvU32 gpuInst, NvU32 flags)
             tmrGetIntrStatus_HAL(pGpu, pTmr, &retVal, NULL);
             if (retVal != 0)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 169);
                 KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
                 kbifCheckAndRearmMSI(pGpu, pKernelBif);
             }
@@ -1225,14 +1152,12 @@ static void _gpuLocksReleaseEnableInterrupts(NvU32 gpuInst, NvU32 flags)
 
 static void _gpuLocksReleaseHandleDeferredWork(NvU32 gpuMask)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 170);
     OBJGPU    *pGpu;
     NvU32      i = 0;
     NvU32      gpuInstance = 0;
 
     while ((pGpu = gpumgrGetNextGpu(gpuMask, &gpuInstance)) != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 171);
         if (GPU_GET_INTR(pGpu) == NULL)
             continue;
 
@@ -1241,14 +1166,11 @@ static void _gpuLocksReleaseHandleDeferredWork(NvU32 gpuMask)
 
         for (i = 0; i < MAX_DEFERRED_CMDS; i++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 172);
             if (pGpu->pRmCtrlDeferredCmd[i].pending == RMCTRL_DEFERRED_READY)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 173);
                 // ignore failure here since caller won't be able to receive it
                 if (rmControl_Deferred(&pGpu->pRmCtrlDeferredCmd[i]) != NV_OK)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 174);
                     NV_ASSERT(0);
                 }
             }
@@ -1277,7 +1199,6 @@ static void _gpuLocksReleaseHandleDeferredWork(NvU32 gpuMask)
 static NvU32
 _rmGpuLocksRelease(NvU32 gpuMask, NvU32 flags, OBJGPU *pDpcGpu, void *ra)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 175);
     static volatile NvU32 bug200413011_WAR_WakeUpMask;
     GPULOCK *pGpuLock;
     NvU32   gpuMaskWakeup = 0;
@@ -1318,14 +1239,12 @@ _rmGpuLocksRelease(NvU32 gpuMask, NvU32 flags, OBJGPU *pDpcGpu, void *ra)
 
     if ((gpuMask & rmGpuLockInfo.gpusLockableMask) != gpuMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 176);
         NV_PRINTF(LEVEL_WARNING,
                   "Releasing nonlockable GPU (already went through teardown). gpuMask = 0x%08x, gpusLockableMask = 0x%08x.\n",
                   gpuMask, rmGpuLockInfo.gpusLockableMask);
     }
     if ((gpuMask & rmGpuLockInfo.gpusLockedMask) != gpuMask)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 177);
         NV_PRINTF(LEVEL_WARNING,
                   "Attempting to release unlocked GPUs. gpuMask = 0x%08x, gpusLockedMask = 0x%08x. Will skip them.\n",
                   gpuMask, rmGpuLockInfo.gpusLockedMask);
@@ -1333,7 +1252,6 @@ _rmGpuLocksRelease(NvU32 gpuMask, NvU32 flags, OBJGPU *pDpcGpu, void *ra)
 
         if (gpuMask == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 178);
             NV_PRINTF(LEVEL_WARNING, "No more GPUs to release after skipping");
             portSyncSpinlockRelease(rmGpuLockInfo.pLock);
             status = NV_OK;
@@ -1345,7 +1263,6 @@ _rmGpuLocksRelease(NvU32 gpuMask, NvU32 flags, OBJGPU *pDpcGpu, void *ra)
     highestInstanceInGpuMask = 31 - portUtilCountLeadingZeros32(gpuMask);
     if (highestInstanceInGpuMask > rmGpuLockInfo.maxLockableGpuInst)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 179);
         NV_PRINTF(LEVEL_WARNING, "GPU mask for release (0x%08x) has higher instance that maxLockableGpuIns (%d)\n",
             highestInstanceInGpuMask, rmGpuLockInfo.maxLockableGpuInst);
     }
@@ -1361,7 +1278,6 @@ _rmGpuLocksRelease(NvU32 gpuMask, NvU32 flags, OBJGPU *pDpcGpu, void *ra)
          gpuInst != (NvU32)-1;
          gpuInst--)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 180);
         if ((gpuMask & NVBIT(gpuInst)) == 0)
             continue;
 
@@ -1369,10 +1285,8 @@ _rmGpuLocksRelease(NvU32 gpuMask, NvU32 flags, OBJGPU *pDpcGpu, void *ra)
 
         if (pGpuLock->count < 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 181);
             if (!pGpuLock->bSignaled)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 182);
                 gpuMaskWakeup |= NVBIT(gpuInst);
                 if (bSemaCanWake)
                     pGpuLock->bSignaled = NV_TRUE;
@@ -1393,12 +1307,10 @@ _rmGpuLocksRelease(NvU32 gpuMask, NvU32 flags, OBJGPU *pDpcGpu, void *ra)
     //
     if (gpuMaskWakeup == 0 || bSemaCanWake)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 183);
         for (gpuInst = highestInstanceInGpuMask;
              gpuInst != (NvU32)-1;
              gpuInst--)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 184);
             if ((gpuMask & NVBIT(gpuInst)) == 0)
                 continue;
 
@@ -1437,7 +1349,6 @@ _rmGpuLocksRelease(NvU32 gpuMask, NvU32 flags, OBJGPU *pDpcGpu, void *ra)
 
     if (bSemaCanWake)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 185);
         NvU32 extraWakeUp;
         do { extraWakeUp = bug200413011_WAR_WakeUpMask; }
         while (!portAtomicCompareAndSwapU32(&bug200413011_WAR_WakeUpMask, 0, extraWakeUp));
@@ -1449,15 +1360,12 @@ _rmGpuLocksRelease(NvU32 gpuMask, NvU32 flags, OBJGPU *pDpcGpu, void *ra)
     //
     if (gpuMaskWakeup != 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 186);
         if (bSemaCanWake)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 187);
             for (gpuInst = highestInstanceInGpuMask;
                  gpuInst != (NvU32)-1;
                  gpuInst--)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 188);
                 if ((gpuMaskWakeup & NVBIT(gpuInst)) == 0)
                     continue;
 
@@ -1474,7 +1382,6 @@ _rmGpuLocksRelease(NvU32 gpuMask, NvU32 flags, OBJGPU *pDpcGpu, void *ra)
         {
             if (pDpcGpu == NULL)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 189);
                 NV_PRINTF(LEVEL_ERROR,
                     "Releasing GPU locks (mask:0x%08x) at raised IRQL without a DPC GPU at %p. Attempting to recover..\n",
                     gpuMask, ra);
@@ -1487,7 +1394,6 @@ _rmGpuLocksRelease(NvU32 gpuMask, NvU32 flags, OBJGPU *pDpcGpu, void *ra)
                       (gpuMask == rmGpuLockInfo.gpusLockedMask));
             if (gpuMask == gpumgrGetGpuMask(pDpcGpu))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 190);
                 status = osGpuLocksQueueRelease(pDpcGpu, DPC_RELEASE_SINGLE_GPU_LOCK);
                 goto done;
             }
@@ -1518,7 +1424,6 @@ done:
 NvU32
 rmGpuLocksRelease(NvU32 flags, OBJGPU *pDpcGpu)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 191);
     NvU32 gpuMask;
     NvU32 rc;
     CALL_CONTEXT *pCallContext;
@@ -1537,7 +1442,6 @@ rmGpuLocksRelease(NvU32 flags, OBJGPU *pDpcGpu)
 
     if (gpuMask == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 192);
         NV_PRINTF(LEVEL_WARNING,
                   "Attempting to release nonlockable GPUs. gpuMask = 0x%08x, gpusLockableMask = 0x%08x\n",
                   gpuMask, rmGpuLockInfo.gpusLockableMask);
@@ -1548,7 +1452,6 @@ rmGpuLocksRelease(NvU32 flags, OBJGPU *pDpcGpu)
     pCallContext = resservGetTlsCallContext();
     if (pCallContext != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 193);
         NV_ASSERT(pCallContext->pLockInfo != NULL);
         if (pCallContext->pLockInfo != NULL)
             pCallContext->pLockInfo->state &= ~RM_LOCK_STATES_GPUS_LOCK_ACQUIRED;
@@ -1563,7 +1466,6 @@ rmGpuLocksRelease(NvU32 flags, OBJGPU *pDpcGpu)
 void
 rmGpuLocksFreeze(GPU_MASK gpuMask)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 194);
     rmGpuLockInfo.gpusFreezeMask |= gpuMask;
 }
 
@@ -1573,7 +1475,6 @@ rmGpuLocksFreeze(GPU_MASK gpuMask)
 void
 rmGpuLocksUnfreeze(GPU_MASK gpuMask)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 195);
     rmGpuLockInfo.gpusFreezeMask &= ~gpuMask;
 }
 
@@ -1583,7 +1484,6 @@ rmGpuLocksUnfreeze(GPU_MASK gpuMask)
 NV_STATUS
 rmGpuGroupLockRelease(GPU_MASK gpuMask, NvU32 flags)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 196);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPU *pDpcGpu = NULL;
 
@@ -1597,7 +1497,6 @@ rmGpuGroupLockRelease(GPU_MASK gpuMask, NvU32 flags)
     //
     if (pSys->getProperty(pSys, PDB_PROP_SYS_IS_GSYNC_ENABLED))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 197);
         // See note for rmGpuLocksRelease() - assumes locks are actually held.
         gpuMask = rmGpuLockInfo.gpusLockedMask;
 
@@ -1613,7 +1512,6 @@ rmGpuGroupLockRelease(GPU_MASK gpuMask, NvU32 flags)
 NvU32
 rmDeviceGpuLocksRelease(OBJGPU *pGpu, NvU32 flags, OBJGPU *pDpcGpu)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 198);
     NvU32 gpuMask;
     NvU32 rc;
     OBJSYS    *pSys = SYS_GET_INSTANCE();
@@ -1626,7 +1524,6 @@ rmDeviceGpuLocksRelease(OBJGPU *pGpu, NvU32 flags, OBJGPU *pDpcGpu)
     //
     if (pSys->getProperty(pSys, PDB_PROP_SYS_IS_GSYNC_ENABLED))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 199);
         // See note for rmGpuLocksRelease() - assumes locks are actually held.
         gpuMask = rmGpuLockInfo.gpusLockedMask;
     }
@@ -1637,7 +1534,6 @@ rmDeviceGpuLocksRelease(OBJGPU *pGpu, NvU32 flags, OBJGPU *pDpcGpu)
 
     if (gpuMask == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 200);
         return NV_SEMA_RELEASE_SUCCEED;
     }
 
@@ -1646,7 +1542,6 @@ rmDeviceGpuLocksRelease(OBJGPU *pGpu, NvU32 flags, OBJGPU *pDpcGpu)
     pCallContext = resservGetTlsCallContext();
     if (pCallContext != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 201);
         NV_ASSERT(pCallContext->pLockInfo != NULL);
         if (pCallContext->pLockInfo != NULL)
             pCallContext->pLockInfo->state &= ~RM_LOCK_STATES_GPU_GROUP_LOCK_ACQUIRED;
@@ -1663,7 +1558,6 @@ rmDeviceGpuLocksRelease(OBJGPU *pGpu, NvU32 flags, OBJGPU *pDpcGpu)
 NV_STATUS
 rmGpuLockHide(NvU32 gpuMask)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 202);
     OBJGPU *pGpu = NULL;
     NvU32 gpuInst = 0;
     Intr *pIntr;
@@ -1671,7 +1565,6 @@ rmGpuLockHide(NvU32 gpuMask)
     // We should not be getting intrs on a Hidden GPU
     while ((pGpu = gpumgrGetNextGpu(gpuMask, &gpuInst)) != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 203);
         // XXX - return failure for this?
         pIntr = GPU_GET_INTR(pGpu);
         NV_ASSERT(intrGetIntrEnFromHw_HAL(pGpu, pIntr, NULL) == INTERRUPT_TYPE_DISABLED);
@@ -1690,13 +1583,11 @@ rmGpuLockHide(NvU32 gpuMask)
 void
 rmGpuLockShow(NvU32 gpuMask)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 204);
     portAtomicAndU32(&rmGpuLockInfo.gpusHiddenMask, ~gpuMask);
 }
 
 NvBool rmGpuLockIsHidden(OBJGPU *pGpu)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 205);
     return ((rmGpuLockInfo.gpusHiddenMask & NVBIT(pGpu->gpuInstance)) != 0);
 }
 
@@ -1708,7 +1599,6 @@ NvBool rmGpuLockIsHidden(OBJGPU *pGpu)
 static NvBool
 _rmGpuLockIsOwner(NvU32 gpuMask)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 206);
     NvU32 gpuInst;
     OS_THREAD_HANDLE threadId;
     OS_THREAD_HANDLE lockedThreadId;
@@ -1725,7 +1615,6 @@ _rmGpuLockIsOwner(NvU32 gpuMask)
          gpuInst <= highestInstanceInGpuMask;
          gpuInst++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 207);
         // skip any not lockable
         if ((gpuMask & NVBIT(gpuInst)) == 0)
             continue;
@@ -1746,7 +1635,6 @@ _rmGpuLockIsOwner(NvU32 gpuMask)
 NvBool
 rmGpuLockIsOwner(void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 208);
     return (_rmGpuLockIsOwner(rmGpuLockInfo.gpusLockableMask));
 }
 
@@ -1758,7 +1646,6 @@ rmGpuLockIsOwner(void)
 NvU32
 rmGpuLocksGetOwnedMask(void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 209);
     NvU32 gpuMask = 0;
     NvU32 gpuInst;
     OS_THREAD_HANDLE threadId;
@@ -1778,7 +1665,6 @@ rmGpuLocksGetOwnedMask(void)
          gpuInst <= highestInstanceInGpuMask;
          gpuInst++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 210);
         // skip any not lockable
         if ((lockableMask & NVBIT(gpuInst)) == 0)
             continue;
@@ -1797,7 +1683,6 @@ rmGpuLocksGetOwnedMask(void)
 NvBool
 rmDeviceGpuLockIsOwner(NvU32 gpuInst)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 211);
     return (_rmGpuLockIsOwner(gpumgrGetGrpMaskFromGpuInst(gpuInst)));
 }
 
@@ -1814,7 +1699,6 @@ rmDeviceGpuLockIsOwner(NvU32 gpuInst)
 NV_STATUS
 rmGpuLockSetOwner(OS_THREAD_HANDLE threadId)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 212);
     GPULOCK *pGpuLock;
     NvU32 gpuInst;
     NvU32 maxLockableGpuInst;
@@ -1822,14 +1706,12 @@ rmGpuLockSetOwner(OS_THREAD_HANDLE threadId)
     maxLockableGpuInst = rmGpuLockInfo.maxLockableGpuInst;
     if (maxLockableGpuInst >= NV_MAX_DEVICES)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 213);
         DBG_BREAKPOINT();
         return NV_ERR_INVALID_STATE;
     }
 
     for (gpuInst = 0; gpuInst <= maxLockableGpuInst; gpuInst++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 214);
         // skip any not lockable
         if ((rmGpuLockInfo.gpusLockableMask & NVBIT(gpuInst)) == 0)
             continue;
@@ -1838,7 +1720,6 @@ rmGpuLockSetOwner(OS_THREAD_HANDLE threadId)
 
         if (threadId != GPUS_LOCK_OWNER_PENDING_DPC_REFRESH)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 215);
             NV_ASSERT_OR_RETURN(pGpuLock->threadId == GPUS_LOCK_OWNER_PENDING_DPC_REFRESH, NV_ERR_INVALID_STATE);
         }
         pGpuLock->threadId = threadId;
@@ -1857,7 +1738,6 @@ rmGpuLockSetOwner(OS_THREAD_HANDLE threadId)
 NV_STATUS
 rmDeviceGpuLockSetOwner(OBJGPU *pGpu, OS_THREAD_HANDLE threadId)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 216);
     GPULOCK *pGpuLock;
     NvU32 gpuInst;
     NvU32 gpuMask;
@@ -1866,7 +1746,6 @@ rmDeviceGpuLockSetOwner(OBJGPU *pGpu, OS_THREAD_HANDLE threadId)
 
     if (pSys->getProperty(pSys, PDB_PROP_SYS_IS_GSYNC_ENABLED))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 217);
         gpuMask = rmGpuLockInfo.gpusLockedMask;
     }
     else
@@ -1877,14 +1756,12 @@ rmDeviceGpuLockSetOwner(OBJGPU *pGpu, OS_THREAD_HANDLE threadId)
     maxLockableGpuInst = rmGpuLockInfo.maxLockableGpuInst;
     if (maxLockableGpuInst >= NV_MAX_DEVICES)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 218);
         DBG_BREAKPOINT();
         return NV_ERR_INVALID_STATE;
     }
 
     for (gpuInst = 0; gpuInst <= maxLockableGpuInst; gpuInst++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 219);
         // skip any not lockable
         if ((gpuMask & NVBIT(gpuInst)) == 0)
             continue;
@@ -1893,7 +1770,6 @@ rmDeviceGpuLockSetOwner(OBJGPU *pGpu, OS_THREAD_HANDLE threadId)
 
         if (threadId != GPUS_LOCK_OWNER_PENDING_DPC_REFRESH)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 220);
             NV_ASSERT_OR_RETURN(pGpuLock->threadId == GPUS_LOCK_OWNER_PENDING_DPC_REFRESH, NV_ERR_INVALID_STATE);
         }
         pGpuLock->threadId = threadId;
@@ -1908,7 +1784,6 @@ rmDeviceGpuLockSetOwner(OBJGPU *pGpu, OS_THREAD_HANDLE threadId)
 //
 void bug200288016_WAR_ReleaseAllOwnedLocked(void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 221);
     NvU32 gpuInst;
     NvU32 gpuMask = 0;
     OS_THREAD_HANDLE threadId;
@@ -1916,14 +1791,12 @@ void bug200288016_WAR_ReleaseAllOwnedLocked(void)
     osGetCurrentThread(&threadId);
     for (gpuInst = 0; gpuInst < NV_MAX_DEVICES; gpuInst++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 222);
         if (rmGpuLockInfo.gpuLocks[gpuInst].threadId == threadId)
             gpuMask |= NVBIT(gpuInst);
     }
 
     if (gpuMask != 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 223);
         NV_PRINTF(LEVEL_ERROR,
                   "Worker thread finished without releasing all locks. gpuMask=%x\n",
                   gpuMask);
@@ -1945,21 +1818,18 @@ static INTR_MASK_LOCK intrMaskLock[NV_MAX_DEVICES];
 
 NV_STATUS rmIntrMaskLockAlloc(NvU32 gpuInst)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 224);
     intrMaskLock[gpuInst].pLock = portSyncSpinlockCreate(portMemAllocatorGetGlobalNonPaged());
     return (intrMaskLock[gpuInst].pLock == NULL) ? NV_ERR_INSUFFICIENT_RESOURCES : NV_OK;
 }
 
 void rmIntrMaskLockFree(NvU32 gpuInst)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 225);
     if (intrMaskLock[gpuInst].pLock != NULL)
         portSyncSpinlockDestroy(intrMaskLock[gpuInst].pLock);
 }
 
 NvU64 rmIntrMaskLockAcquire(OBJGPU *pGpu)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 226);
     if ((pGpu != NULL) && (intrMaskLock[pGpu->gpuInstance].pLock != NULL))
         portSyncSpinlockAcquire(intrMaskLock[pGpu->gpuInstance].pLock);
     return 0;
@@ -1967,7 +1837,6 @@ NvU64 rmIntrMaskLockAcquire(OBJGPU *pGpu)
 
 void rmIntrMaskLockRelease(OBJGPU *pGpu, NvU64 oldIrql)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 227);
     if ((pGpu != NULL) && (intrMaskLock[pGpu->gpuInstance].pLock != NULL))
         portSyncSpinlockRelease(intrMaskLock[pGpu->gpuInstance].pLock);
 }

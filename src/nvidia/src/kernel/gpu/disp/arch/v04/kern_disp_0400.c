@@ -50,12 +50,10 @@ kdispGetVgaWorkspaceBase_v04_00
     NvU64 *pOffset
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3461);
     NvU32 vgaReg = GPU_REG_RD32(pGpu, NV_PDISP_VGA_WORKSPACE_BASE);
 
     if (FLD_TEST_DRF(_PDISP, _VGA_WORKSPACE_BASE, _STATUS, _VALID, vgaReg))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3462);
         *pOffset = GPU_DRF_VAL(_PDISP, _VGA_WORKSPACE_BASE, _ADDR, vgaReg) << 16;
         return NV_TRUE;
     }
@@ -66,7 +64,6 @@ kdispGetVgaWorkspaceBase_v04_00
 static NV_STATUS setSliLinkGpioSwControl(OBJGPU *pGpu,
     NvU32 pinSet, NvU32 *pGpioFunction, NvU32 *pGpioPin, NvBool *pGpioDirection)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3463);
     NV_STATUS status = NV_OK;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -82,7 +79,6 @@ static NV_STATUS setSliLinkGpioSwControl(OBJGPU *pGpu,
 
     if (status == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3464);
         *pGpioFunction = params.gpioFunction;
         *pGpioPin = params.gpioPin;
         *pGpioDirection = params.gpioDirection;
@@ -93,7 +89,6 @@ static NV_STATUS setSliLinkGpioSwControl(OBJGPU *pGpu,
 
 static NV_STATUS programGpioDirection(OBJGPU *pGpu, NvU32 gpioPin, NvBool bInput)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3465);
     NV_STATUS status = NV_OK;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -112,7 +107,6 @@ static NV_STATUS programGpioDirection(OBJGPU *pGpu, NvU32 gpioPin, NvBool bInput
 
 static NV_STATUS programGpioOutput(OBJGPU *pGpu, NvU32 gpioPin, NvU32 value)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3466);
     NV_STATUS status = NV_OK;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -131,7 +125,6 @@ static NV_STATUS programGpioOutput(OBJGPU *pGpu, NvU32 gpioPin, NvU32 value)
 
 static NV_STATUS readGpioInput(OBJGPU *pGpu, NvU32 gpioPin, NvU32 *value)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3467);
     NV_STATUS status = NV_OK;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -153,7 +146,6 @@ static NV_STATUS readGpioInput(OBJGPU *pGpu, NvU32 gpioPin, NvU32 *value)
 
 static NV_STATUS activateHwFunction(OBJGPU *pGpu, NvU32 gpioPin, NvU32 function)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3468);
     NV_STATUS status = NV_OK;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -175,7 +167,6 @@ static NV_STATUS activateHwFunction(OBJGPU *pGpu, NvU32 gpioPin, NvU32 function)
 
 NV_STATUS kdispDetectSliLink_v04_00(KernelDisplay *pKernelDisplay, OBJGPU *pParentGpu, OBJGPU *pChildGpu, NvU32 parentPinSet, NvU32 childPinSet)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3469);
     // Sanity check, this function should be called with pDisp of Parent GPU
     NV_ASSERT(pKernelDisplay == GPU_GET_KERNEL_DISPLAY(pParentGpu));
 
@@ -193,7 +184,6 @@ NV_STATUS kdispDetectSliLink_v04_00(KernelDisplay *pKernelDisplay, OBJGPU *pPare
     // Check the  pinset info, needs to have only one bit set
     if (!ONEBITSET(parentPinSet) || !ONEBITSET(childPinSet))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3470);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -256,7 +246,6 @@ done:
     // Set the GPIOs on both GPUs to original direction and hw function state
     if (parentGpioPin != GPIO_INVALID_PIN)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3471);
         NV_ASSERT_OK(programGpioDirection(pParentGpu, parentGpioPin, parentGpioDirection));
         // restore the gpio to hw control mode. (aka non-normal mode)
         NV_ASSERT_OK(activateHwFunction(pParentGpu, parentGpioPin, parentGpioFunction));
@@ -264,7 +253,6 @@ done:
 
     if (childGpioPin != GPIO_INVALID_PIN)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3472);
         NV_ASSERT_OK(programGpioDirection(pChildGpu, childGpioPin, childGpioDirection));
         // restore the gpio to hw control mode. (aka non-normal mode)
         NV_ASSERT_OK(activateHwFunction(pChildGpu, childGpioPin, childGpioFunction));

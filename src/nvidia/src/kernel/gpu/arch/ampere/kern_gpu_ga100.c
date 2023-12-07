@@ -40,7 +40,6 @@ gpuFuseSupportsDisplay_GA100
     OBJGPU *pGpu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1114);
     return GPU_FLD_TEST_DRF_DEF(pGpu, _FUSE, _STATUS_OPT_DISPLAY, _DATA, _ENABLE);
 }
 
@@ -58,7 +57,6 @@ gpuClearFbhubPoisonIntrForBug2924523_GA100_KERNEL
     OBJGPU *pGpu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1115);
     NvU32 intrVector = NV_PFB_FBHUB_POISON_INTR_VECTOR_HW_INIT;
     NvU32 reg = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_REG(intrVector);
     NvU32 bit = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_BIT(intrVector);
@@ -79,7 +77,6 @@ gpuClearFbhubPoisonIntrForBug2924523_GA100_KERNEL
 
     if (intr != 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1116);
         NV_PRINTF(LEVEL_ERROR, "FBHUB Interrupt detected = 0x%X. Clearing it.\n", intr);
 
         // Clear FBHUB Poison interrupt
@@ -107,13 +104,11 @@ gpuGetFlaVasSize_GA100
     NvBool  bNvswitchVirtualization
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1117);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64  totalFbSize = (pMemoryManager->Ram.fbTotalMemSizeMb << 20);
 
     if (bNvswitchVirtualization || totalFbSize <= NVBIT64(36))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1118);
         return 0x2000000000;  // 128GB
     }
     else
@@ -131,7 +126,6 @@ gpuIsCtxBufAllocInPmaSupported_GA100
     OBJGPU *pGpu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1119);
     //
     // This is supported by default on baremetal RM.
     // This has no impact in guest-RM since ctxBufPools are disabled on guest.
@@ -189,7 +183,6 @@ static const GPUCHILDPRESENT gpuChildrenPresent_GA100[] =
 const GPUCHILDPRESENT *
 gpuGetChildrenPresent_GA100(OBJGPU *pGpu, NvU32 *pNumEntries)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1120);
     *pNumEntries = NV_ARRAY_ELEMENTS(gpuChildrenPresent_GA100);
     return gpuChildrenPresent_GA100;
 }
@@ -240,7 +233,6 @@ static const GPUCHILDPRESENT gpuChildrenPresent_GA102[] =
 const GPUCHILDPRESENT *
 gpuGetChildrenPresent_GA102(OBJGPU *pGpu, NvU32 *pNumEntries)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1121);
     *pNumEntries = NV_ARRAY_ELEMENTS(gpuChildrenPresent_GA102);
     return gpuChildrenPresent_GA102;
 }

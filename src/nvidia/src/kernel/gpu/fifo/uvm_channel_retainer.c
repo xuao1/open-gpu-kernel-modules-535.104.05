@@ -46,7 +46,6 @@ uvmchanrtnrConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5920);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pUvmChannelRetainer);
     KernelFifo  *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NV_STATUS rmStatus = NV_OK;
@@ -62,7 +61,6 @@ uvmchanrtnrConstruct_IMPL
 
     if (!uvmchanrtnrIsAllocationAllowed(pUvmChannelRetainer, pCallContext, pKernelChannel))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5921);
         NV_PRINTF(LEVEL_ERROR, "class Id %d can only be allocated by internal kernel clients\n",
             pCallContext->pResourceRef->externalClassId);
         return NV_ERR_INSUFFICIENT_PERMISSIONS;
@@ -91,7 +89,6 @@ uvmchanrtnrConstruct_IMPL
 fail:
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5922);
         NV_ASSERT_OK(kfifoChidMgrReleaseChid(pGpu, pKernelFifo, pChidMgr, pKernelChannel->ChID));
     }
 
@@ -104,7 +101,6 @@ uvmchanrtnrDestruct_IMPL
     UvmChannelRetainer *pUvmChannelRetainer
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5923);
     OBJGPU     *pGpu = GPU_RES_GET_GPU(pUvmChannelRetainer);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     CHID_MGR   *pChidMgr = NULL;
@@ -145,12 +141,10 @@ uvmchanrtnrIsAllocationAllowed_IMPL
 
     if (gpuIsSriovEnabled(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5924);
         NvU32 gfid;
         NV_ASSERT_OR_RETURN(vgpuGetCallingContextGfid(pGpu, &gfid) == NV_OK, NV_FALSE);
         if (IS_GFID_VF(gfid))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5925);
             bIsAllowed = (gfid == kchannelGetGfid(pKernelChannel));
         }
         else

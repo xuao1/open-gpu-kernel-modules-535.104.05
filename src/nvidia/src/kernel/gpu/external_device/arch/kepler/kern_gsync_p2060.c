@@ -93,7 +93,6 @@ extdevGetDevice_P2060
     PDACEXTERNALDEVICE pExternalDevice
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3961);
     NvU8 revId;
     NvU8 data;
     DAC_EXTERNAL_DEVICES externalDeviceId;
@@ -103,7 +102,6 @@ extdevGetDevice_P2060
     if (!RMCFG_FEATURE_EXTDEV_GSYNC_P2060 ||
         IS_EMULATION(pGpu) || IS_SIMULATION(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3962);
         return NV_FALSE;
     }
 
@@ -111,7 +109,6 @@ extdevGetDevice_P2060
     status = readregu008_extdevice(pGpu, pExternalDevice, (NvU8)NV_P2060_FPGA, &data);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3963);
         return NV_FALSE;
     }
     revId = data;
@@ -119,12 +116,10 @@ extdevGetDevice_P2060
     // Decode the register value into device ID
     if (DRF_VAL(_P2060, _FPGA, _ID, data) == NV_P2060_FPGA_ID_5)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3964);
         externalDeviceId = DAC_EXTERNAL_DEVICE_P2060;
     }
     else if (DRF_VAL(_P2061, _FPGA, _ID, data) == NV_P2061_FPGA_ID_4)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3965);
         externalDeviceId = DAC_EXTERNAL_DEVICE_P2061;
     }
     else
@@ -139,7 +134,6 @@ extdevGetDevice_P2060
     status = readregu008_extdevice(pGpu, pExternalDevice, (NvU8)NV_P2060_FPGA_EXREV, &data);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3966);
         return NV_FALSE;
     }
 
@@ -163,7 +157,6 @@ extdevConstruct_P2060
     PDACEXTERNALDEVICE  pExternalDevice
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3967);
     DACP2060EXTERNALDEVICE *pThis = (PDACP2060EXTERNALDEVICE)pExternalDevice;
     KernelDisplay          *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32 iface, head, i;
@@ -171,7 +164,6 @@ extdevConstruct_P2060
 
     if ( !extdevConstruct_Base(pGpu, pExternalDevice) )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3968);
         return 0;
     }
 
@@ -216,7 +208,6 @@ extdevConstruct_P2060
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3969);
         pThis->Iface[iface].GpuInfo.gpuId     = NV0000_CTRL_GPU_INVALID_ID;
         pThis->Iface[iface].GpuInfo.connected = NV_FALSE;
 
@@ -225,7 +216,6 @@ extdevConstruct_P2060
 
         for (head = 0; head < numHeads; head++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3970);
             pThis->Iface[iface].Sync.Master[head]     = 0;
             pThis->Iface[iface].Sync.Slaved[head]     = 0;
             pThis->Iface[iface].Sync.LocalSlave[head] = 0;
@@ -244,7 +234,6 @@ extdevConstruct_P2060
     //init MosaicData
     for (i = 0; i < NV_P2060_MAX_MOSAIC_GROUPS; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3971);
         gsyncResetMosaicData_P2060(i, pThis);
     }
 
@@ -261,7 +250,6 @@ _externalDeviceInit_P2060
     NvBool             bExtDevFound
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3972);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     RM_API   *pRmApi      = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32     hClient     = pGpu->hInternalClient;
@@ -277,7 +265,6 @@ _externalDeviceInit_P2060
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3973);
         NV_PRINTF(LEVEL_ERROR, "Extdev GPIO interrupt enable failed\n");
     }
     else
@@ -296,17 +283,14 @@ gsyncFindGpuHandleLocation
     NvU32                  *iface
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3974);
     DACP2060EXTERNALDEVICE *pThis = (PDACP2060EXTERNALDEVICE)pExternalDevice;
     NvU32 tempIface;
     NV_STATUS rmStatus = NV_ERR_GENERIC;
 
     for (tempIface = 0; tempIface < NV_P2060_MAX_IFACES_PER_GSYNC; tempIface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3975);
         if (pThis->i2cHandles[tempIface].gpuId == gpuId)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3976);
             *iface = tempIface;
             rmStatus = NV_OK;
         }
@@ -322,16 +306,13 @@ gsyncFindFreeHandleLocation
     NvU32                  *iface
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3977);
     NvU32 tempIface;
     NV_STATUS rmStatus = NV_ERR_GENERIC;
 
     for (tempIface = 0; tempIface < NV_P2060_MAX_IFACES_PER_GSYNC; tempIface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3978);
         if (pThis->i2cHandles[tempIface].gpuId == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3979);
             *iface = tempIface;
             rmStatus = NV_OK;
         }
@@ -347,7 +328,6 @@ extdevSaveI2cHandles_P2060
     DACEXTERNALDEVICE  *pExternalDevice
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3980);
     DACP2060EXTERNALDEVICE *pThis = (PDACP2060EXTERNALDEVICE)pExternalDevice;
     RM_API                 *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     NvHandle                hClient;
@@ -360,7 +340,6 @@ extdevSaveI2cHandles_P2060
     rmStatus = gsyncFindFreeHandleLocation(pThis, &iface);
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3981);
         NV_PRINTF(LEVEL_ERROR, "Maximum number of GPUs have been attached\n");
         return NV_FALSE;
     }
@@ -394,7 +373,6 @@ i2c_extdeviceHelper
     NvBool             write
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3982);
     RM_API                 *pRmApi  = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     DACP2060EXTERNALDEVICE *pThis   = (PDACP2060EXTERNALDEVICE)pExternalDevice;
     NV_STATUS               status  = NV_ERR_GENERIC;
@@ -404,14 +382,12 @@ i2c_extdeviceHelper
     pParams = portMemAllocNonPaged(sizeof(*pParams));
     if (pParams == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3983);
         return NV_ERR_NO_MEMORY;
     }
 
     status = gsyncFindGpuHandleLocation(pExternalDevice, pGpu->gpuId, &iface);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3984);
         NV_PRINTF(LEVEL_ERROR, "Couldn't find saved GPU entry, check saved i2chandles. \n");
         return status;
     }
@@ -426,7 +402,6 @@ i2c_extdeviceHelper
     pParams->transData.smbusByteData.registerAddress = SubAdr;
     if (write)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3985);
         pParams->transData.smbusByteData.message = *pData;
     }
 
@@ -437,7 +412,6 @@ i2c_extdeviceHelper
 
     if (!write)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3986);
         *pData = pParams->transData.smbusByteData.message;
     }
 
@@ -456,7 +430,6 @@ extdevInit_P2060
     PDACEXTERNALDEVICE pExternalDevice
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3987);
     OBJGPU  *pGpuTemp;
     OBJSYS  *pSys = SYS_GET_INSTANCE();
     OBJGSYNC *pGsyncTemp = NULL;
@@ -465,23 +438,19 @@ extdevInit_P2060
 
     if (!GpuIsP2060Connected(pGpu, (PDACP2060EXTERNALDEVICE)pExternalDevice))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3988);
         return NV_FALSE;
     }
 
     if (NV_OK != gsyncProgramExtStereoPolarity_P2060(pGpu, pExternalDevice))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3989);
         return NV_FALSE;
     }
 
     // Check regkeys
     if (NV_OK == osReadRegistryDword(pGpu, NV_REG_STR_RM_QSYNC_FW_REV_CHECK, &data))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3990);
         if (NV_REG_STR_RM_QSYNC_FW_REV_CHECK_DISABLE == data)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3991);
             pSys->setProperty(pSys, PDB_PROP_SYS_IS_QSYNC_FW_REVISION_CHECK_DISABLED, NV_TRUE);
         }
     }
@@ -489,7 +458,6 @@ extdevInit_P2060
     // Initialize SyncPolarity to FALLING_EDGE. Refer Bug 1035880
     if (NV_OK != gsyncSetSyncPolarity_P2060(pGpu, pExternalDevice, gsync_SyncPolarity_FallingEdge))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3992);
         return NV_FALSE;
     }
 
@@ -500,7 +468,6 @@ extdevInit_P2060
     gpuInstance = 0;
     while ((pGpuTemp = gpumgrGetNextGpu(gpuAttachMask, &gpuInstance)) != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3993);
         pGsyncTemp = gsyncmgrGetGsync(pGpuTemp);
 
         if (!pGsyncTemp || !pGsyncTemp->pExtDev)
@@ -520,19 +487,16 @@ gsyncReadBoardId_P2060
     NvU32              *uniqueId
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3994);
     NvU8  i, id = 0;
     NV_STATUS rmStatus = NV_OK;
 
     *uniqueId = 0;
     for (i = 0; i < 4; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3995);
         rmStatus = readregu008_extdeviceTargeted(pGpu, pExternalDevice,
                                   NV_P2060_FPGA_ASGN_ID(i), &id);
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3996);
             return rmStatus;
         }
         *uniqueId |= id << (i * 8);
@@ -550,7 +514,6 @@ gsyncAttachExternalDevice_P2060
     PDACEXTERNALDEVICE *ppExtdevs
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3997);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = NULL;
@@ -566,29 +529,23 @@ gsyncAttachExternalDevice_P2060
     rmStatus = gsyncReadBoardId_P2060(pGpu, *ppExtdevs, &uniqueId);
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3998);
         NV_PRINTF(LEVEL_ERROR, "failed to read P2060 device Id.\n");
         return NV_FALSE;
     }
 
     if (uniqueId != 0x0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3999);
         // HW says another GPU has been here first. Confirm this from SW.
         for (i = 0; i < NV30F1_MAX_GSYNCS; i++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4000);
             if (pGsyncMgr->gsyncTable[i].gpuCount)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4001);
                 pGsync = &pGsyncMgr->gsyncTable[i];
                 if (pGsync->pExtDev)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4002);
                     pThis  = (PDACP2060EXTERNALDEVICE) pGsync->pExtDev;
                     if (pThis->id == uniqueId)
                     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4003);
                         pOtherGpuId = pGsync->gpus[0].gpuId;
                         bExtDevFound = NV_TRUE;
                     }
@@ -597,23 +554,19 @@ gsyncAttachExternalDevice_P2060
 
             if (bExtDevFound)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4004);
                 break;
             }
         }
 
         if (!bExtDevFound)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4005);
             if ((IS_PASSTHRU(pGpu)))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4006);
                 // look for master board
                 rmStatus = readregu008_extdeviceTargeted(pGpu, *ppExtdevs,
                                                             (NvU8)NV_P2060_CONTROL, &ctrl);
                 if (rmStatus != NV_OK)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4007);
                     NV_PRINTF(LEVEL_ERROR, "Failed to read Ctrl data.\n");
                     return NV_FALSE;
                 }
@@ -624,7 +577,6 @@ gsyncAttachExternalDevice_P2060
 
                 if (rmStatus != NV_OK)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4008);
                     NV_PRINTF(LEVEL_ERROR, "Failed to get connector index for Gpu.\n");
                     return NV_FALSE;
                 }
@@ -635,7 +587,6 @@ gsyncAttachExternalDevice_P2060
 
             if (!bSkipResetForVM)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4009);
                 // ExtDev is not preset in pGsyncMgr. Issue RESET to P2060 HW.
                 regCtrl2 = FLD_SET_DRF_NUM(_P2060, _CONTROL2, _RESET, NV_TRUE, regCtrl2);
                 writeregu008_extdeviceTargeted(pGpu, *ppExtdevs,
@@ -646,7 +597,6 @@ gsyncAttachExternalDevice_P2060
                 rmStatus = gsyncReadBoardId_P2060(pGpu, *ppExtdevs, &uniqueId);
                 if ((rmStatus != NV_OK) || (uniqueId != 0))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4010);
                     NV_PRINTF(LEVEL_ERROR,
                         "failed to read P2060 device Id after reset.\n");
                     return NV_FALSE;
@@ -660,7 +610,6 @@ gsyncAttachExternalDevice_P2060
 
             if (!pGsync || !pGsync->pExtDev)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4011);
                 NV_ASSERT(0);
                 return NV_FALSE;
             }
@@ -673,7 +622,6 @@ gsyncAttachExternalDevice_P2060
             rmStatus = gsyncFindFreeHandleLocation(pExt2060Temp, &iface);
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4012);
                 NV_PRINTF(LEVEL_ERROR, "Failed to free index for new GPU entry. \n");
                 return NV_FALSE;
             }
@@ -681,7 +629,6 @@ gsyncAttachExternalDevice_P2060
             rmStatus = gsyncFindGpuHandleLocation(*ppExtdevs, pGpu->gpuId, &tempIface);
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4013);
                 NV_PRINTF(LEVEL_ERROR, "Couldn't find saved GPU entry, check extdevSaveI2cHandles. \n");
                 return NV_FALSE;
             }
@@ -704,20 +651,17 @@ gsyncAttachExternalDevice_P2060
 
     if (uniqueId == 0x0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4014);
         // Use pGpu->gpuId as unique value.
         uniqueId = pGpu->gpuId;
 
         for (i = 0; i < 4; i++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4015);
             id = (NvU8)(uniqueId >> (i * 8));
             rmStatus = writeregu008_extdeviceTargeted(pGpu, *ppExtdevs,
                                                       NV_P2060_FPGA_ASGN_ID(i),
                                                       id);
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4016);
                 NV_PRINTF(LEVEL_ERROR, "failed to update P2060 device Id.\n");
                 return NV_FALSE;
             }
@@ -728,7 +672,6 @@ gsyncAttachExternalDevice_P2060
     rmStatus = GetP2060ConnectorIndexFromGpu(pGpu, pThis, &iface);
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4017);
         NV_PRINTF(LEVEL_ERROR, "failed to find P2060 connector.\n");
         return NV_FALSE;
     }
@@ -758,14 +701,12 @@ gsyncAttachExternalDevice_P2060
 
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4018);
         NV_PRINTF(LEVEL_ERROR, "failed to attach P2060 gsync to gpu.\n");
         return NV_FALSE;
     }
 
     if (pThis->ExternalDevice.deviceId == DAC_EXTERNAL_DEVICE_P2061)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4019);
         pGpu->setProperty(pGpu, PDB_PROP_GPU_QSYNC_II_ATTACHED, NV_TRUE);
     }
     else
@@ -776,11 +717,9 @@ gsyncAttachExternalDevice_P2060
 
     if (!pThis->isNonFramelockInterruptEnabled)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4020);
         rmStatus = gsyncEnableNonFramelockInterrupt_P2060(pGpu, *ppExtdevs);
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4021);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to enable non-framelock interrupts on gsync GPU.\n");
             return NV_FALSE;
@@ -802,7 +741,6 @@ extdevDestroy_P2060
     PDACEXTERNALDEVICE pExternalDevice
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4022);
     DACP2060EXTERNALDEVICE *pThis = (PDACP2060EXTERNALDEVICE)pExternalDevice;
     RM_API   *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
@@ -813,19 +751,15 @@ extdevDestroy_P2060
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4023);
         if (pThis->Iface[iface].GpuInfo.gpuId == pGpu->gpuId)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4024);
             pThis->gpuAttachMask &= ~NVBIT(pGpu->gpuInstance);
             pExternalDevice->ReferenceCount--;
 
             if (pThis->Iface[iface].GpuInfo.connected)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4025);
                 if (pExternalDevice->ReferenceCount == 0)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4026);
                     // clear id for this gsync device.
                     pThis->id = 0;
 
@@ -840,10 +774,8 @@ extdevDestroy_P2060
             // been restored by disabling swap barriers.
             if (pThis->Iface[iface].DsiFliplock.saved == NV_TRUE)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4027);
                 for (head = 0; head < numHeads; head++)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4028);
                     kdispRestoreOriginalLsrMinTime_HAL(pGpu, pKernelDisplay, head,
                     pThis->Iface[iface].DsiFliplock.OrigLsrMinTime[head]);
                 }
@@ -861,7 +793,6 @@ extdevDestroy_P2060
             rmStatus = gsyncFindGpuHandleLocation(pExternalDevice, pGpu->gpuId, &iface);
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4029);
                 NV_PRINTF(LEVEL_ERROR, "Couldn't find saved GPU entry, check saved i2chandles. \n");
                 goto cleanup;
             }
@@ -884,7 +815,6 @@ extdevDestroy_P2060
 cleanup:
     if (pExternalDevice->ReferenceCount == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4030);
        // And continue the chain running.
        extdevDestroy_Base(pGpu, pExternalDevice);
     }
@@ -904,13 +834,11 @@ extdevService_P2060
     NvBool             rmStatus
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4031);
     OBJOS   *pOS    = GPU_GET_OS(pGpu);
     EXTDEV_INTR_DATA intrData;
 
     if (!rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4032);
         return;
     }
 
@@ -921,13 +849,11 @@ extdevService_P2060
 
     if (IS_GSP_CLIENT(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4033);
         EXTDEV_INTR_DATA *workerThreadData = NULL;
 
         workerThreadData = portMemAllocNonPaged(sizeof(EXTDEV_INTR_DATA));
         if (NULL != workerThreadData)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4034);
             *workerThreadData = intrData;
         }
         else
@@ -941,7 +867,6 @@ extdevService_P2060
                                                    (void *)workerThreadData,
                                                    OS_QUEUE_WORKITEM_FLAGS_LOCK_GPU_GROUP_SUBDEVICE_RW))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4035);
             portMemFree((void *)workerThreadData);
         }
     }
@@ -958,7 +883,6 @@ _extdevService
     void *workerThreadData
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4036);
     OBJGPU *pGpu = gpumgrGetGpu(gpuInstance);
     NV_STATUS rmStatus;
 
@@ -969,7 +893,6 @@ _extdevService
     rmStatus = gsyncUpdateGsyncStatusSnapshot_P2060(pGpu, intrData.pExtDevice);
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4037);
         NV_PRINTF(LEVEL_ERROR,
                   "Couldn't raad the register status physical RMs.\n");
         return;
@@ -977,7 +900,6 @@ _extdevService
     rmStatus = GetP2060GpuLocation(pGpu, pThis, &iface);
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4038);
         NV_PRINTF(LEVEL_ERROR,
                   "Cannot get P2060 Gpu location for serving interrupt.\n");
         return;
@@ -987,25 +909,20 @@ _extdevService
 
     if (intrData.lossRegStatus) //lost signal interrupts
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4039);
         if (DRF_VAL(_P2060, _STATUS4, _SYNC, (NvU32)intrData.lossRegStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4040);
             ifaceEvents[iface] |= NVBIT(NV30F1_GSYNC_NOTIFIERS_SYNC_LOSS(iface));
         }
         if (DRF_VAL(_P2060, _STATUS4, _STEREO, (NvU32)intrData.lossRegStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4041);
             ifaceEvents[iface] |= NVBIT(NV30F1_GSYNC_NOTIFIERS_STEREO_LOSS(iface));
         }
         if (DRF_VAL(_P2060, _STATUS4, _HS, (NvU32)intrData.lossRegStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4042);
             ifaceEvents[iface] |= NVBIT(NV30F1_GSYNC_NOTIFIERS_HOUSE_LOSS);
         }
         if (DRF_VAL(_P2060, _STATUS4, _RJ45, (NvU32)intrData.lossRegStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4043);
             ifaceEvents[iface] |= NVBIT(NV30F1_GSYNC_NOTIFIERS_RJ45_LOSS);
         }
 
@@ -1015,18 +932,15 @@ _extdevService
         //
         if (ifaceEvents[iface])
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4044);
             extdevScheduleWatchdog(pGpu, (PDACEXTERNALDEVICE)pThis);
             if (!gsyncIsOnlyFrameLockMaster_P2060(pThis))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4045);
                 pThis->watchdogCountDownValue = NV_P2060_WATCHDOG_COUNT_DOWN_VALUE;
             }
         }
 
         if (ifaceEvents[iface] && (pThis->Iface[iface].lastEventNotified != ifaceEvents[iface]))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4046);
              gsyncSignalServiceRequested(gsyncGetGsyncInstance(pGpu), ifaceEvents[iface], iface);
              pThis->Iface[iface].lastEventNotified = ifaceEvents[iface];
         }
@@ -1034,31 +948,25 @@ _extdevService
 
     if (intrData.gainRegStatus) //Gain signal interrupts
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4047);
         if (DRF_VAL(_P2060, _STATUS4, _SYNC, (NvU32)intrData.gainRegStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4048);
             ifaceEvents[iface] |= NVBIT(NV30F1_GSYNC_NOTIFIERS_SYNC_GAIN(iface));
         }
         if (DRF_VAL(_P2060, _STATUS4, _STEREO, (NvU32)intrData.gainRegStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4049);
             ifaceEvents[iface] |= NVBIT(NV30F1_GSYNC_NOTIFIERS_STEREO_GAIN(iface));
         }
         if (DRF_VAL(_P2060, _STATUS4, _HS, (NvU32)intrData.gainRegStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4050);
             ifaceEvents[iface] |= NVBIT(NV30F1_GSYNC_NOTIFIERS_HOUSE_GAIN);
         }
         if (DRF_VAL(_P2060, _STATUS4, _RJ45, (NvU32)intrData.gainRegStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4051);
             ifaceEvents[iface] |= NVBIT(NV30F1_GSYNC_NOTIFIERS_RJ45_GAIN);
         }
 
         if (ifaceEvents[iface] && (pThis->Iface[iface].lastEventNotified != ifaceEvents[iface]))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4052);
             gsyncSignalServiceRequested(gsyncGetGsyncInstance(pGpu), ifaceEvents[iface], iface);
             pThis->Iface[iface].lastEventNotified = ifaceEvents[iface];
         }
@@ -1066,10 +974,8 @@ _extdevService
 
     if (intrData.miscRegStatus) //Other interrupts
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4053);
         if (FLD_TEST_DRF(_P2060, _STATUS4, _FRM_CNT_MATCH_INT, _PENDING, (NvU32)intrData.miscRegStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4054);
             //
             // To enable frameCountTimerService callback to verify the cached difference 1 second
             // after the test signal is received.
@@ -1091,7 +997,6 @@ _extdevService
 
             if (rmStatus == NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4055);
                 //
                 // Set enableFrmCmpMatchInt flag NV_TRUE and return. This indicates
                 // that the frame compare match interrupt for slave needs to be
@@ -1104,12 +1009,10 @@ _extdevService
 
         if (FLD_TEST_DRF(_P2060, _STATUS4, _ERROR_INT, _PENDING, (NvU32)intrData.miscRegStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4056);
             // Some error condition observed. Update snapshot
             rmStatus  = gsyncUpdateGsyncStatusSnapshot_P2060(pGpu, intrData.pExtDevice);
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4057);
                 return;
             }
         }
@@ -1129,7 +1032,6 @@ extdevWatchdog_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4058);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NvU32 iface, head;
@@ -1152,7 +1054,6 @@ extdevWatchdog_P2060
 
     if (!gsyncIsFrameLocked_P2060(pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4059);
         gsyncCancelWatchdog_P2060(pThis);
         rmStatus = gsyncDisableFrameLockInterrupt_P2060((PDACEXTERNALDEVICE)pThis);
         return rmStatus;
@@ -1160,11 +1061,9 @@ extdevWatchdog_P2060
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4060);
         OBJGPU *pTmpGpu = NULL;
         if (pThis->Iface[iface].GpuInfo.gpuId == NV0000_CTRL_GPU_INVALID_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4061);
             continue;
         }
         pTmpGpu = gpumgrGetGpuFromId(pThis->Iface[iface].GpuInfo.gpuId);
@@ -1177,11 +1076,9 @@ extdevWatchdog_P2060
         // loop over the heads of the current gpu on this interface
         for ( head = 0; head < numHeads; head++ )
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4062);
             if (pThis->Iface[iface].Sync.Slaved[head] ||
                 pThis->Iface[iface].Sync.LocalSlave[head])
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4063);
                 bStereoLocked  = FLD_TEST_DRF(_P2060, _STATUS, _STEREO, _LOCK,
                                              (NvU32)pThis->Snapshot[iface].Status1);
 
@@ -1189,7 +1086,6 @@ extdevWatchdog_P2060
                  if ((pThis->Iface[iface].gainedSync) &&
                      (!bStereoEnabled[iface] || bStereoLocked))
                  {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4064);
                       break;
                  }
                  else
@@ -1203,7 +1099,6 @@ extdevWatchdog_P2060
     if ( NV_OK == rmStatus && pKernelDisplay->bExtdevIntrSupported
          && !pThis->watchdogCountDownValue)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4065);
         NV_PRINTF(LEVEL_INFO, "P2060[%d] extdevCancelWatchdog.\n", iface);
 
         // disable the watchdog,
@@ -1223,7 +1118,6 @@ gsyncApplyStereoPinAlwaysHiWar
     PDACEXTERNALDEVICE pExtDev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4066);
 
     return NV_OK;
 
@@ -1235,7 +1129,6 @@ gsyncUnApplyStereoPinAlwaysHiWar
     OBJGPU *pGpu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4067);
 
     return NV_OK;
 
@@ -1258,7 +1151,6 @@ gsyncReadUniversalFrameCount_P2060
     NvU32 *pFrameCount
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4068);
     OBJGPU   *pTmpGpu = NULL;
     KernelDisplay *pKernelDisplay = NULL;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
@@ -1273,7 +1165,6 @@ gsyncReadUniversalFrameCount_P2060
 
     if (!(pThis->FrameCountData.iface == NV_P2060_MAX_IFACES_PER_GSYNC))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4069);
         //
         // pThis->FrameCountData.iface exists.
         // Thus deriving pTmpGpu from it, and to maintain consistency reading the time from it.
@@ -1282,7 +1173,6 @@ gsyncReadUniversalFrameCount_P2060
 
         if (pTmpGpu)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4070);
             pTmpTmr = GPU_GET_TIMER(pTmpGpu);
             currentTime = tmrGetTime_HAL(pTmpGpu, pTmpTmr);
         }
@@ -1290,14 +1180,12 @@ gsyncReadUniversalFrameCount_P2060
 
     if (currentTime == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4071);
         // pTmpGpu doesn't exists, so getting the time from pGpu.
         currentTime = tmrGetTime_HAL(pGpu, pTmr);
     }
 
     if (NV_P2060_STATUS_SYNC_LOSS_TRUE == DRF_VAL(_P2060, _STATUS, _SYNC_LOSS, GetP2060GpuSnapshot(pGpu,pThis)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4072);
         // don't increment the frame counter in case of sync loss
         *pFrameCount = pThis->FrameCountData.totalFrameCount;
         pThis->FrameCountData.lastFrameCounterQueryTime = currentTime;
@@ -1315,7 +1203,6 @@ gsyncReadUniversalFrameCount_P2060
     if ((!pThis->FrameCountData.lastFrameCounterQueryTime) ||
        (queryTimeDiff > 2 * NV_P2060_FRAME_COUNT_TIMER_INTERVAL))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4073);
         //
         // P2060 refreshrate is in 0.00001 Hz, so divide by 10000 to get Hz.
         // divide 1000000 by refreshRate to get the frame time in us.
@@ -1333,7 +1220,6 @@ gsyncReadUniversalFrameCount_P2060
         // enable frame count match interrupt if not master
         if (!gsyncIsFrameLockMaster_P2060(pThis))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4074);
             NvU8 regCtrl3;
 
             // set frame count match value 1
@@ -1354,7 +1240,6 @@ gsyncReadUniversalFrameCount_P2060
 
             if (rmStatus == NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4075);
                 regCtrl3 |= DRF_DEF(_P2060, _CONTROL3, _INTERRUPT, _ON_FRAME_MATCH);
                 rmStatus = writeregu008_extdeviceTargeted(pGpu, (PDACEXTERNALDEVICE)pThis,
                                                           NV_P2060_CONTROL3, regCtrl3);
@@ -1363,7 +1248,6 @@ gsyncReadUniversalFrameCount_P2060
 
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4076);
             rmStatus |= gsyncResetFrameCountData_P2060(pGpu, pThis);
             return rmStatus;
         }
@@ -1387,7 +1271,6 @@ gsyncReadUniversalFrameCount_P2060
                        pThis->FrameCountData.head, &lineCount, &frameCount);
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4077);
             NV_PRINTF(LEVEL_ERROR, "Failed to read RG_DPCA.\n");
             return rmStatus;
         }
@@ -1398,14 +1281,12 @@ gsyncReadUniversalFrameCount_P2060
         //
         if (pThis->FrameCountData.currentFrameCount != frameCount)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4078);
             pThis->FrameCountData.previousFrameCount = pThis->FrameCountData.currentFrameCount;
             pThis->FrameCountData.currentFrameCount  = frameCount;
 
             // If rollback for gpu framecount has occured.
             if (pThis->FrameCountData.previousFrameCount > pThis->FrameCountData.currentFrameCount)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4079);
                 pThis->FrameCountData.numberOfRollbacks++;
             }
         }
@@ -1425,7 +1306,6 @@ gsyncReadUniversalFrameCount_P2060
         //
         if (lineCount > pThis->FrameCountData.vActive)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4080);
             pThis->FrameCountData.totalFrameCount++;
         }
 
@@ -1442,10 +1322,8 @@ gsyncReadUniversalFrameCount_P2060
     if ((!pThis->FrameCountData.isFrmCmpMatchIntMasterEnabled) &&
         (pThis->FrameCountData.totalFrameCount > (NV_P2060_MAX_GSYNC_FRAME_COUNT - 1000)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4081);
         if (gsyncIsOnlyFrameLockMaster_P2060(pThis))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4082);
             NvU8 regCtrl3;
 
             // enable frame count match interrupt
@@ -1458,7 +1336,6 @@ gsyncReadUniversalFrameCount_P2060
 
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4083);
                 rmStatus |= gsyncResetFrameCountData_P2060(pGpu, pThis);
             }
         }
@@ -1477,7 +1354,6 @@ gsyncReadFrameRate_P2060
     NvU32 *pFrameRate
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4084);
     NvU8  FrameCountLow, FrameCountMid, FrameCountHigh;
     NvU32 FrameCount;
     NV_STATUS rmStatus = NV_OK;
@@ -1488,7 +1364,6 @@ gsyncReadFrameRate_P2060
 
     if ( NV_OK == rmStatus )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4085);
         NvU32 divisor;
 
         FrameCount = ( ( (((NvU32)FrameCountHigh) & DRF_MASK(NV_P2060_FRAMERATE_HIGH_VAL)) << 16 )  |
@@ -1514,7 +1389,6 @@ gsyncReadHouseSyncFrameRate_P2060
     NvU32 *pFrameRate
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4086);
     NvU8  FrameCountLow, FrameCountMid, FrameCountHigh;
     NvU32 FrameCount;
     NV_STATUS rmStatus = NV_OK;
@@ -1525,7 +1399,6 @@ gsyncReadHouseSyncFrameRate_P2060
 
     if ( NV_OK == rmStatus )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4087);
         NvU32 divisor;
 
         FrameCount = ( ( (((NvU32)FrameCountHigh) & DRF_MASK(NV_P2060_HS_FRAMERATE_HIGH_VAL)) << 16 )  |
@@ -1547,7 +1420,6 @@ gsyncOptimizeTimingParameters_P2060
     GSYNCTIMINGPARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4088);
     RM_API   *pRmApi      = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32     hClient     = pGpu->hInternalClient;
     NvU32     hSubdevice  = pGpu->hInternalSubdevice;
@@ -1562,7 +1434,6 @@ gsyncOptimizeTimingParameters_P2060
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4089);
         NV_PRINTF(LEVEL_ERROR, "OptimizeTimingParameters control call has failed! \n");
     }
     else
@@ -1583,7 +1454,6 @@ gsyncProgramExtStereoPolarity_P2060
     PDACEXTERNALDEVICE pExternalDevice
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4090);
     NV_STATUS rmStatus = NV_OK;
     NvU8  ctrl4 = 0x00;
 
@@ -1591,7 +1461,6 @@ gsyncProgramExtStereoPolarity_P2060
                                              NV_P2060_CONTROL4, &ctrl4);
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4091);
         return rmStatus;
     }
 
@@ -1611,7 +1480,6 @@ gsyncSetStereoLockMode_P2060
     NvU32              enable
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4092);
     NvU8 ctrl4;
     NV_STATUS rmStatus;
 
@@ -1619,13 +1487,11 @@ gsyncSetStereoLockMode_P2060
 
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4093);
          return rmStatus;
     }
 
     if (enable)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4094);
         ctrl4 = FLD_SET_DRF(_P2060, _CONTROL4, _STEREO_LOCK_MODE, _ON, ctrl4);
     }
     else
@@ -1646,7 +1512,6 @@ gsyncGetStereoLockMode_P2060
     NvU32              *enable
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4095);
     NvU8 ctrl4;
     NV_STATUS rmStatus;
 
@@ -1654,7 +1519,6 @@ gsyncGetStereoLockMode_P2060
 
     if (NV_OK == rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4096);
         *enable = FLD_TEST_DRF(_P2060, _CONTROL4, _STEREO_LOCK_MODE, _ON, ctrl4);
     }
 
@@ -1669,7 +1533,6 @@ gsyncSetVideoMode_P2060
     GSYNCVIDEOMODE VideoMode
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4097);
     return NV_OK;
 }
 
@@ -1681,7 +1544,6 @@ gsyncGetVideoMode_P2060
     GSYNCVIDEOMODE *pVideoMode
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4098);
     NvU8 videoMode;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1692,11 +1554,9 @@ gsyncGetVideoMode_P2060
 
     if ( NV_OK == rmStatus )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4099);
         *pVideoMode = DRF_VAL(_P2060, _STATUS2, _HS_DETECT, videoMode);
         if (*pVideoMode == 0x02)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4100);
             // reported videoMode is composite. Convert it to RMAPI exported value.
             *pVideoMode = gsync_VideoMode_COMPOSITE;
         }
@@ -1716,7 +1576,6 @@ gsyncSetEmitTestSignal_P2060
     NvU32 bEmitTestSignal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4101);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1726,7 +1585,6 @@ gsyncSetEmitTestSignal_P2060
 
     if (!gsyncIsFrameLockMaster_P2060(pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4102);
         return NV_ERR_INVALID_DEVICE;
     }
 
@@ -1737,7 +1595,6 @@ gsyncSetEmitTestSignal_P2060
 
     if ( bEmitTestSignal )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4103);
         ctrl = FLD_SET_DRF(_P2060, _CONTROL, _TEST_MODE,  _ON, ctrl);
     }
     else
@@ -1776,7 +1633,6 @@ gsyncSetEmitTestSignal_P2060
         //
         if ((pThis->RefreshRate/10000) > 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4104);
             refreshTime = 1000 / (pThis->RefreshRate/10000);
         }
         NV_ASSERT(refreshTime != 0);
@@ -1797,7 +1653,6 @@ gsyncGetEmitTestSignal_P2060
  NvU32 *pVal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4105);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1806,7 +1661,6 @@ gsyncGetEmitTestSignal_P2060
 
     if ( NV_OK == rmStatus )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4106);
         *pVal = FLD_TEST_DRF(_P2060, _CONTROL, _TEST_MODE, _ON, ctrl);
     }
 
@@ -1824,7 +1678,6 @@ gsyncSetInterlaceMode_P2060
     NvU32 InterlaceMode
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4107);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1839,7 +1692,6 @@ gsyncSetInterlaceMode_P2060
 
     if ( rmStatus == NV_OK )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4108);
         ctrl = FLD_SET_DRF_NUM(_P2060, _CONTROL, _INTERLACE_MODE, (NvU8)InterlaceMode, ctrl);
         rmStatus = writeregu008_extdeviceTargeted(pGpu, pExtDev, NV_P2060_CONTROL, ctrl);
     }
@@ -1855,7 +1707,6 @@ gsyncGetInterlaceMode_P2060
     NvU32 *pVal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4109);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1867,7 +1718,6 @@ gsyncGetInterlaceMode_P2060
 
     if ( NV_OK == rmStatus )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4110);
         *pVal = FLD_TEST_DRF(_P2060, _CONTROL, _INTERLACE_MODE, _TRUE, ctrl);
     }
 
@@ -1885,7 +1735,6 @@ gsyncSetUseHouse_P2060
     NvU32 UseHouseSync
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4111);
     NvU8 ctrl;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1900,7 +1749,6 @@ gsyncSetUseHouse_P2060
 
     if (NV_OK == rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4112);
         ctrl = FLD_SET_DRF_NUM(_P2060, _CONTROL, _SYNC_SELECT, (NvU8)UseHouseSync, ctrl);
         rmStatus = writeregu008_extdeviceTargeted(pGpu, pExtDev, NV_P2060_CONTROL, ctrl);
     }
@@ -1916,7 +1764,6 @@ gsyncGetUseHouse_P2060
     NvU32 *val
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4113);
     NvU8 ctrl;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1925,7 +1772,6 @@ gsyncGetUseHouse_P2060
 
     if (NV_OK == rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4114);
         *val = FLD_TEST_DRF(_P2060, _CONTROL, _SYNC_SELECT, _HOUSE, ctrl);
 
         // update p2060 object
@@ -1943,7 +1789,6 @@ gsyncSetSyncPolarity_P2060
     GSYNCSYNCPOLARITY SyncPolarity
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4115);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1959,12 +1804,10 @@ gsyncSetSyncPolarity_P2060
 
     if ( NV_OK == rmStatus )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4116);
         currentSyncPolarity = DRF_VAL(_P2060, _CONTROL, _SYNC_POLARITY, ctrl);
 
         if (currentSyncPolarity != SyncPolarity)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4117);
             NvU32 frameTime = 0;
 
             ctrl = FLD_SET_DRF_NUM(_P2060, _CONTROL, _SYNC_POLARITY, (NvU8)SyncPolarity, ctrl);
@@ -1972,7 +1815,6 @@ gsyncSetSyncPolarity_P2060
 
             if ((pThis->RefreshRate/10000) > 0)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4118);
                 frameTime = 1000 / (pThis->RefreshRate/10000);
             }
 
@@ -1996,7 +1838,6 @@ gsyncGetSyncPolarity_P2060
     GSYNCSYNCPOLARITY *pSyncPolarity
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4119);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -2005,7 +1846,6 @@ gsyncGetSyncPolarity_P2060
 
     if ( NV_OK == rmStatus )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4120);
         *pSyncPolarity = DRF_VAL(_P2060, _CONTROL, _SYNC_POLARITY, ctrl);
     }
 
@@ -2023,7 +1863,6 @@ gsyncSetNSync_P2060
     NvU32 NSync
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4121);
     NvU8 regNSync;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -2035,7 +1874,6 @@ gsyncSetNSync_P2060
 
     if ( NV_OK == rmStatus )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4122);
         regNSync = FLD_SET_DRF_NUM(_P2060, _NSYNC, _FL, (NvU8)NSync, regNSync);
         rmStatus = writeregu008_extdeviceTargeted(pGpu, pExtDev, NV_P2060_NSYNC, regNSync);
     }
@@ -2051,7 +1889,6 @@ gsyncGetNSync_P2060
     NvU32 *pNSync
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4123);
     NvU8 regNSync;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -2060,7 +1897,6 @@ gsyncGetNSync_P2060
 
     if ( NV_OK == rmStatus )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4124);
         *pNSync = DRF_VAL(_P2060, _NSYNC, _FL, regNSync);
     }
 
@@ -2078,7 +1914,6 @@ gsyncSetSyncSkew_P2060
     NvU32 SyncSkew
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4125);
     NvU8 SyncSkewLow, SyncSkewHigh;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -2088,7 +1923,6 @@ gsyncSetSyncSkew_P2060
 
     if (gsyncSupportsLargeSyncSkew_P2060(pExtDev))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4126);
         SyncSkewLow  = (NvU8)((SyncSkew     ) & DRF_MASK(NV_P2060_SYNC_SKEW_LOW_VAL ));
         SyncSkewHigh = (NvU8)((SyncSkew >> 8) & DRF_MASK(NV_P2060_SYNC_SKEW_HIGH_VAL));
     }
@@ -2096,7 +1930,6 @@ gsyncSetSyncSkew_P2060
     {
         if ((SyncSkew != 0) && (SyncSkew != 1))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4127);
             return NV_ERR_NOT_SUPPORTED;
         }
         else
@@ -2121,7 +1954,6 @@ gsyncGetSyncSkew_P2060
     NvU32 *pSyncSkew
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4128);
     NvU8 SyncSkewLow, SyncSkewHigh;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -2131,7 +1963,6 @@ gsyncGetSyncSkew_P2060
 
     if ( NV_OK == rmStatus )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4129);
         *pSyncSkew =
             ( ((((NvU32)SyncSkewHigh) & DRF_MASK(NV_P2060_SYNC_SKEW_HIGH_VAL)) << 8 ) |
               ((((NvU32)SyncSkewLow ) & DRF_MASK(NV_P2060_SYNC_SKEW_LOW_VAL ))      ) ) ;
@@ -2151,7 +1982,6 @@ gsyncSetSyncStartDelay_P2060
     NvU32 StartDelay
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4130);
     NvU8 StartDelayLow, StartDelayHigh;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -2176,7 +2006,6 @@ gsyncGetSyncStartDelay_P2060
     NvU32 *pStartDelay
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4131);
     NvU8 StartDelayLow, StartDelayHigh;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -2186,7 +2015,6 @@ gsyncGetSyncStartDelay_P2060
 
     if ( NV_OK == rmStatus )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4132);
         *pStartDelay =
             ( ((((NvU32)StartDelayHigh) & DRF_MASK(NV_P2060_START_DELAY_HIGH_VAL)) << 8 ) |
               ((((NvU32)StartDelayLow ) & DRF_MASK(NV_P2060_START_DELAY_LOW_VAL ))      ) );
@@ -2210,7 +2038,6 @@ gsyncReadHouseSignalPresent_P2060
     NvU32 *pVal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4133);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NvU8 regStatus2;
     NvU32 regStatus = GetP2060GpuSnapshot(pGpu,pThis);
@@ -2220,7 +2047,6 @@ gsyncReadHouseSignalPresent_P2060
 
     if (bTestSyncLoss && FLD_TEST_DRF(_P2060, _STATUS, _SYNC_LOSS, _TRUE, (NvU32)regStatus))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4134);
         rmStatus |= gsyncUpdateGsyncStatusSnapshot_P2060(pGpu, pExtDev);
 
         if ( NV_OK != rmStatus )
@@ -2228,7 +2054,6 @@ gsyncReadHouseSignalPresent_P2060
 
         if (FLD_TEST_DRF(_P2060, _STATUS, _SYNC_LOSS, _TRUE, GetP2060GpuSnapshot(pGpu,pThis)))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4135);
             *pVal = 0; // bTestSyncLoss and (SYNC_LOSS == NV_TRUE)
         }
     }
@@ -2262,7 +2087,6 @@ gsyncReadIsSyncDetected_P2060
     NvU32 *pVal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4136);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32 numHeads = kdispGetNumHeads(pKernelDisplay);
@@ -2274,7 +2098,6 @@ gsyncReadIsSyncDetected_P2060
 
     if (!gsyncIsFrameLocked_P2060(pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4137);
         NvU8 regStatus;
 
         //
@@ -2294,20 +2117,15 @@ gsyncReadIsSyncDetected_P2060
 
         for (head = 0; head < numHeads; head++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4138);
             // Check if we're slaved to another master head in the same system
             if (pThis->Iface[iface].Sync.LocalSlave[head])
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4139);
                 for (tempIface = 0; tempIface < NV_P2060_MAX_IFACES_PER_GSYNC; tempIface++)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4140);
                     for (tempHead = 0; tempHead < numHeads; tempHead++)
                     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4141);
                         if (pThis->Iface[tempIface].Sync.Master[tempHead])
                         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4142);
                             //
                             // If we're slaved to another local head, we are
                             // receiving a sync signal from it. (But if it uses
@@ -2315,7 +2133,6 @@ gsyncReadIsSyncDetected_P2060
                             //
                             if (!pThis->Iface[tempIface].Sync.Slaved[tempHead])
                             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4143);
                                 *pVal = NV_TRUE;
                             }
                             else
@@ -2332,7 +2149,6 @@ gsyncReadIsSyncDetected_P2060
 
             if (pThis->Iface[iface].Sync.Master[head])
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4144);
                 //
                 // A master head with no house signal has its own sync signal.
                 // A master head with house signal has a sync signal if the
@@ -2340,7 +2156,6 @@ gsyncReadIsSyncDetected_P2060
                 //
                 if (pThis->Iface[iface].Sync.Slaved[head])
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4145);
                     NV_ASSERT_OK_OR_RETURN(
                         gsyncReadHouseSignalPresent_P2060(pGpu, pExtDev, NV_TRUE, pVal));
                     break;
@@ -2354,7 +2169,6 @@ gsyncReadIsSyncDetected_P2060
 
             if (pThis->Iface[iface].Sync.Slaved[head])
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4146);
                 NvU8 regStatus;
 
                 //
@@ -2389,13 +2203,11 @@ gsyncReadStereoLocked_P2060
     NvU32 *pVal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4147);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NV_STATUS rmStatus = NV_ERR_GENERIC;
 
     if (pVal)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4148);
         NvU32 iface;
 
         // Default return is stereo not locked.
@@ -2406,11 +2218,9 @@ gsyncReadStereoLocked_P2060
 
         if (NV_OK == rmStatus)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4149);
             // stereo status reporting only makes sense if we've gained sync.
             if (pThis->Iface[iface].gainedSync)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4150);
                 NvU32 regStatus = GetP2060GpuSnapshot(pGpu,pThis);
 
                 if ((NV_P2060_STATUS_MSTR_STEREO_NOT_ACTIVE ==
@@ -2418,7 +2228,6 @@ gsyncReadStereoLocked_P2060
                     (NV_P2060_STATUS_GPU_STEREO_NOT_ACTIVE ==
                     DRF_VAL(_P2060, _STATUS, _GPU_STEREO, regStatus)))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4151);
                     //
                     // If neither local nor master stereo is enabled
                     // stereo is locked.
@@ -2455,7 +2264,6 @@ gsyncReadIsTiming_P2060
     NvU32 *pVal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4152);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NvU32 iface;
 
@@ -2482,7 +2290,6 @@ gsyncProgramMaster_P2060
     NvBool skipSwapBarrierWar
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4153);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32       DisplayIds[OBJ_MAX_HEADS];
     NvU32       iface, head, index;
@@ -2496,16 +2303,12 @@ gsyncProgramMaster_P2060
 
     if ( Master && bRetainMaster)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4154);
         for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4155);
             for ( head = 0; head < numHeads; head++ )
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4156);
                 if ( pThis->Iface[iface].Sync.Master[head] )
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4157);
                     pThis->Iface[iface].Sync.Master[head] = 0;
                     pThis->Iface[iface].Sync.Slaved[head] = 0;
                     pThis->Iface[iface].Sync.LocalSlave[head] = 0;
@@ -2522,7 +2325,6 @@ gsyncProgramMaster_P2060
     rmStatus = GetP2060GpuLocation(pGpu, pThis, &iface);
     if (NV_OK != rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4158);
         NV_PRINTF(LEVEL_ERROR,
                   "Failed to get Gpu location. Can not program Master.\n");
         return rmStatus;
@@ -2533,7 +2335,6 @@ gsyncProgramMaster_P2060
                                             (NvU8)NV_P2060_CONTROL, &ctrl);
     if ((NV_OK != rmStatus))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4159);
         NV_PRINTF(LEVEL_ERROR,
                   "Failed to read Ctrl data. Can not program Master.\n");
         return rmStatus;
@@ -2548,7 +2349,6 @@ gsyncProgramMaster_P2060
     rmStatus = GetP2060ConnectorIndexFromGpu(pGpu, pThis, &index);
     if (NV_OK != rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4160);
         NV_PRINTF(LEVEL_ERROR,
                   "Failed to get connector index for Gpu. Can not program Master.\n");
         return rmStatus;
@@ -2566,16 +2366,13 @@ gsyncProgramMaster_P2060
     // Bail out if non TS GPU tries to change it.
     if (IS_PASSTHRU(pGpu) && (bQSyncAlreadyMaster & !bGPUAlreadyMaster))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4161);
         return rmStatus;
     }
 
     if (bQSyncAlreadyMaster != bEnableMaster)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4162);
         if (pThis->ExternalDevice.deviceRev == DAC_EXTERNAL_DEVICE_REV_NONE)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4163);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to read NV_P2060_FPGA. Can not program Master.\n");
             return rmStatus;
@@ -2583,12 +2380,10 @@ gsyncProgramMaster_P2060
 
         if (bEnableMaster)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4164);
             rmStatus = gsyncApplyStereoPinAlwaysHiWar(pGpu, (PDACEXTERNALDEVICE)pThis);
 
             if (NV_OK != rmStatus)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4165);
                 NV_PRINTF(LEVEL_ERROR,
                           "Failed to drive stereo output pin for bug3362661.\n");
             }
@@ -2601,7 +2396,6 @@ gsyncProgramMaster_P2060
                                                       (NvU8)NV_P2060_CONTROL, ctrl);
             if (NV_OK != rmStatus)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4166);
                 NV_PRINTF(LEVEL_ERROR,
                           "Failed to write SYNC_SRC. Can not program Master.\n");
                 return rmStatus;
@@ -2610,13 +2404,11 @@ gsyncProgramMaster_P2060
 
         if (bTestModePresent)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4167);
             // Clear the TEST mode bit before handling enable/disable master.
             ctrl = FLD_SET_DRF(_P2060, _CONTROL, _TEST_MODE, _OFF, ctrl);
 
             if (!bEnableMaster)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4168);
                 //
                 // Clear the TEST mode bit before disabling master as TEST mode
                 // can only be modified by the GPU TS under FPGA master mode.
@@ -2633,7 +2425,6 @@ gsyncProgramMaster_P2060
                                                   (NvU8)NV_P2060_CONTROL, ctrl);
         if (NV_OK != rmStatus)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4169);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to write I_AM_MSTR. Can not program Master.\n");
             return rmStatus;
@@ -2647,7 +2438,6 @@ gsyncProgramMaster_P2060
 
         if (bEnableMaster)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4170);
             // Remember the desired skipSwapBarrierWar setting for enable master calls.
             pThis->Iface[iface].skipSwapBarrierWar = skipSwapBarrierWar;
         }
@@ -2666,12 +2456,10 @@ gsyncProgramMaster_P2060
         if ((!skipSwapBarrierWar) &&
             needsMasterBarrierWar(&pThis->ExternalDevice))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4171);
             // enable/disable SwapRdy for GPU during enable/disable of Framelock Master.
             rmStatus = gsyncUpdateSwapRdyConnectionForGpu_P2060(pGpu, pThis, bEnableMaster);
             if (NV_OK != rmStatus)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4172);
                 NV_PRINTF(LEVEL_ERROR,
                           "Failed to update SwapRdyEnable. Can not program Master.\n");
                 return rmStatus;
@@ -2682,12 +2470,10 @@ gsyncProgramMaster_P2060
     // now we're ready to let the software know about it.
     for ( head = 0; head < numHeads; head++ )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4173);
         // is this head the desired master, or are we are disabling mastership?
         // If mastership is currently disabled, don't touch cache as this could destroy slave values.0
         if ((Master & DisplayIds[head]) || (!bEnableMaster && bQSyncAlreadyMaster))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4174);
             pThis->Iface[iface].Sync.Master[head] = (bEnableMaster);
             pThis->Iface[iface].Sync.Slaved[head] = (bEnableMaster && bHouseSelect);
 
@@ -2702,7 +2488,6 @@ gsyncProgramMaster_P2060
 
     if (!bEnableMaster && !gsyncIsFrameLocked_P2060(pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4175);
         // Disable Framelock interrupts as board is not framelocked now.
         gsyncDisableFrameLockInterrupt_P2060((PDACEXTERNALDEVICE)pThis);
 
@@ -2710,7 +2495,6 @@ gsyncProgramMaster_P2060
 
         if (NV_OK != rmStatus)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4176);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to drive stereo output pin for bug3362661.\n");
         }
@@ -2718,7 +2502,6 @@ gsyncProgramMaster_P2060
 
     if (!IsSLIEnabled(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4177);
         NvU32 otherGpuId;
         OBJGPU   *pOtherGpu;
         RM_API   *pRmApi;
@@ -2730,17 +2513,14 @@ gsyncProgramMaster_P2060
 
         for (tempIface = 0; tempIface < NV_P2060_MAX_IFACES_PER_GSYNC; tempIface++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4178);
             if (tempIface == iface)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4179);
                 continue;
             }
 
             otherGpuId = pThis->Iface[tempIface].GpuInfo.gpuId;
             if (otherGpuId == NV0000_CTRL_GPU_INVALID_ID)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4180);
                 continue;
             }
 
@@ -2749,7 +2529,6 @@ gsyncProgramMaster_P2060
 
             if (gpumgrGetGpuLockAndDrPorts(pGpu, pOtherGpu, &drOut, &drIn) != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4181);
                 continue;
             }
             //
@@ -2773,20 +2552,17 @@ gsyncProgramMaster_P2060
 
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4182);
                 NV_PRINTF(LEVEL_ERROR, "Extdev control call to save/restore GPIO direction is failed!\n");
             }
             else
             {
                 if (bEnableMaster && !pThis->Iface[tempIface].RasterSyncGpio.saved)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4183);
                     pThis->Iface[tempIface].RasterSyncGpio.direction = ctrlParams.bRasterSyncGpioDirection;
                     pThis->Iface[tempIface].RasterSyncGpio.saved = NV_TRUE;
                 }
                 else if (!bEnableMaster && pThis->Iface[tempIface].RasterSyncGpio.saved)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4184);
                      pThis->Iface[tempIface].RasterSyncGpio.saved = NV_FALSE;
                  }
             }
@@ -2794,11 +2570,9 @@ gsyncProgramMaster_P2060
             Slaves = gsyncReadSlaves_P2060(pOtherGpu, pThis);
             if (Slaves)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4185);
                 rmStatus = gsyncProgramSlaves_P2060(pOtherGpu, pThis, Slaves);
                 if (NV_OK != rmStatus)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4186);
                     NV_PRINTF(LEVEL_ERROR,
                               "Failed to program SLI slaves. Can not program Master.\n");
                     return rmStatus;
@@ -2810,13 +2584,11 @@ gsyncProgramMaster_P2060
     // Reset the frame count data and also disable frame compare match interrupt.
     if (!bEnableMaster)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4187);
         iface = pThis->FrameCountData.iface;
         head  = pThis->FrameCountData.head;
 
         if ((iface < NV_P2060_MAX_IFACES_PER_GSYNC) && (head  < numHeads))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4188);
             rmStatus |= gsyncResetFrameCountData_P2060(pGpu, pThis);
         }
     }
@@ -2833,7 +2605,6 @@ gsyncReadMaster_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4189);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32       DisplayIds[OBJ_MAX_HEADS];
     NvU32       iface, head;
@@ -2849,10 +2620,8 @@ gsyncReadMaster_P2060
 
     for ( head = 0; head < numHeads; head++ )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4190);
         if (pThis->Iface[iface].Sync.Master[head])
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4191);
             Master |= DisplayIds[head];
         }
     }
@@ -2861,10 +2630,8 @@ gsyncReadMaster_P2060
     if (gsyncIsP2060MasterBoard(pGpu, pThis) &&
         GpuIsP2060Master(pGpu, pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4192);
         if (Master)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4193);
             return Master;
         }
         else
@@ -2892,7 +2659,6 @@ gsyncProgramSlaves_P2060
     NvU32 Slaves
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4194);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32       DisplayIds[OBJ_MAX_HEADS];
     NvU32       iface, head, index;
@@ -2908,7 +2674,6 @@ gsyncProgramSlaves_P2060
     rmStatus = GetP2060GpuLocation(pGpu, pThis, &iface);
     if (NV_OK != rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4195);
         NV_PRINTF(LEVEL_ERROR,
                   "Failed to get Gpu location. Can not program Slave.\n");
         return rmStatus;
@@ -2918,7 +2683,6 @@ gsyncProgramSlaves_P2060
                                             (NvU8)NV_P2060_CONTROL, &ctrl);
     if (NV_OK != rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4196);
         NV_PRINTF(LEVEL_ERROR,
                   "Failed to read ctrl register. Can not program slave.\n");
         return rmStatus; // ouch
@@ -2930,12 +2694,10 @@ gsyncProgramSlaves_P2060
 
     if (bEnableSlaves || bLocalMaster)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4197);
         rmStatus = gsyncApplyStereoPinAlwaysHiWar(pGpu, (PDACEXTERNALDEVICE)pThis);
 
         if (NV_OK != rmStatus)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4198);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to drive stereo output pin for bug3362661.\n");
         }
@@ -2943,12 +2705,10 @@ gsyncProgramSlaves_P2060
 
     if (bHouseSelect && bEnableSlaves && bLocalMaster)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4199);
         rmStatus = readregu008_extdeviceTargeted(pGpu, (PDACEXTERNALDEVICE)pThis,
                                                 (NvU8)NV_P2060_CONTROL3, &ctrl3);
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4200);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to read ctrl3 register. Can not program slave.\n");
             return rmStatus;
@@ -2965,7 +2725,6 @@ gsyncProgramSlaves_P2060
 
     if (bEnableSlaves && !bLocalMaster)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4201);
        //
        // Sync source should be taken from GPU connected to Gsync board.
        // Get index of current GPU and make it sync source.
@@ -2974,7 +2733,6 @@ gsyncProgramSlaves_P2060
        rmStatus = GetP2060ConnectorIndexFromGpu(pGpu, pThis, &index);
        if (NV_OK != rmStatus)
        {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4202);
            NV_PRINTF(LEVEL_ERROR,
                      "Failed to get connector index for Gpu. Can not program slave.\n");
            return rmStatus;
@@ -2986,7 +2744,6 @@ gsyncProgramSlaves_P2060
                                                 (NvU8)NV_P2060_CONTROL, ctrl);
        if (NV_OK != rmStatus)
        {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4203);
            NV_PRINTF(LEVEL_ERROR,
                      "Failed to write SYNC_SRC. Can not program slave.\n");
            return rmStatus;
@@ -2999,12 +2756,10 @@ gsyncProgramSlaves_P2060
     //
     if ((!bHouseSelect) && bEnableSlaves && bLocalMaster)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4204);
         rmStatus = readregu008_extdeviceTargeted(pGpu, (PDACEXTERNALDEVICE)pThis,
                                                 (NvU8)NV_P2060_CONTROL3, &ctrl3);
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4205);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to read ctrl3 register. Can not program slave.\n");
             return rmStatus;
@@ -3024,10 +2779,8 @@ gsyncProgramSlaves_P2060
     // disable all existing slaves before enabling new slaves.
     if (bEnableSlaves)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4206);
         for ( head = 0; head < numHeads; head++ )
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4207);
             pThis->Iface[iface].Sync.Slaved[head] =     0;
             pThis->Iface[iface].Sync.LocalSlave[head] = 0;
         }
@@ -3035,11 +2788,9 @@ gsyncProgramSlaves_P2060
 
     for ( head = 0; head < numHeads; head++ )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4208);
         // is this head to be slaved, or are we freeing all slaves?
         if ((Slaves & DisplayIds[head]) || !bEnableSlaves)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4209);
             pThis->Iface[iface].Sync.Slaved[head] =     (bEnableSlaves &&  bCoupled);
             pThis->Iface[iface].Sync.LocalSlave[head] = (bEnableSlaves && !bCoupled);
 
@@ -3053,7 +2804,6 @@ gsyncProgramSlaves_P2060
 
     if (!bEnableSlaves && !gsyncIsFrameLocked_P2060(pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4210);
         // Disable Framelock interrupts as board is not framelocked now.
         gsyncDisableFrameLockInterrupt_P2060((PDACEXTERNALDEVICE)pThis);
 
@@ -3061,7 +2811,6 @@ gsyncProgramSlaves_P2060
 
         if (NV_OK != rmStatus)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4211);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to drive stereo output pin for bug3362661.\n");
         }
@@ -3070,13 +2819,10 @@ gsyncProgramSlaves_P2060
     // Reset FrameCountData and disable frame compare match interrupt.
     if (iface == pThis->FrameCountData.iface)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4212);
         if (!(Slaves & DisplayIds[pThis->FrameCountData.head]))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4213);
             if (pThis->Iface[iface].GpuInfo.gpuId != NV0000_CTRL_GPU_INVALID_ID)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4214);
                 rmStatus |= gsyncResetFrameCountData_P2060(pGpu, pThis);
             }
         }
@@ -3094,7 +2840,6 @@ gsyncReadSlaves_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4215);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32       DisplayIds[OBJ_MAX_HEADS];
     NvU32       iface, head;
@@ -3110,11 +2855,9 @@ gsyncReadSlaves_P2060
 
     for ( head = 0; head < numHeads; head++ )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4216);
         if (!pThis->Iface[iface].Sync.Master[head] &&
             (pThis->Iface[iface].Sync.Slaved[head] || pThis->Iface[iface].Sync.LocalSlave[head]))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4217);
             Slaves |= DisplayIds[head];
         }
     }
@@ -3129,7 +2872,6 @@ gsyncProgramSwapBarrier_P2060
     NvBool               bEnable
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4218);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU32          iface;
     NvU8           ctrl2 = 0;
@@ -3138,10 +2880,8 @@ gsyncProgramSwapBarrier_P2060
     status = GetP2060GpuLocation(pGpu, pThis, &iface);
     if (NV_OK != status)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4219);
        if (!IsSLIEnabled(pGpu))
        {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4220);
            //
            // If not in SLI, this function must only be called on GPUs connected
            // to the framelock board.
@@ -3166,25 +2906,21 @@ gsyncProgramSwapBarrier_P2060
     // Each connected GPU accesses it's own version of CONTROL2, on P2060
     if (GpuIsP2060Connected(pGpu, pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4221);
         status = readregu008_extdeviceTargeted(pGpu, pExtDev,
                                      NV_P2060_CONTROL2, &ctrl2);
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4222);
             return status;
         }
 
         if (pExtDev->deviceRev >= DAC_EXTERNAL_DEVICE_REV_MAX)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4223);
             return NV_ERR_INVALID_STATE;
         }
     }
 
     if (pThis->Iface[iface].SwapReadyRequested == bEnable)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4224);
        //
        // The SwapReadyRequested boolean keeps tracks of the current
        // requested state for this GPU. Skip the WAR algorithm if it's
@@ -3195,12 +2931,10 @@ gsyncProgramSwapBarrier_P2060
 
     if (bEnable)  // Enable Swap_rdy
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4225);
         ctrl2 = FLD_SET_DRF(_P2060, _CONTROL2, _SWAP_READY, _ENABLE, ctrl2);
 
         if (pThis->tSwapRdyHiLsrMinTime == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4226);
             NvU32 data = 0;
 
             // store Swap Lockout Window in pThis.
@@ -3208,7 +2942,6 @@ gsyncProgramSwapBarrier_P2060
             if (osReadRegistryDword(pGpu,
              NV_REG_STR_TIME_SWAP_RDY_HI_MODIFY_LSR_MIN_TIME, &data) == NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4227);
                 pThis->tSwapRdyHiLsrMinTime = data;
             }
         }
@@ -3217,19 +2950,16 @@ gsyncProgramSwapBarrier_P2060
 
         if (pThis->Iface[iface].DsiFliplock.saved == NV_FALSE)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4228);
             KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
             NvU32          numHeads = kdispGetNumHeads(pKernelDisplay);
             NvU32          head ;
 
             for (head = 0; head < numHeads; head++)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4229);
                 NvU32 newLsrMinTime;
                 if ((status = kdispComputeLsrMinTimeValue_HAL(pGpu, pKernelDisplay, head,
                              pThis->tSwapRdyHiLsrMinTime, &newLsrMinTime)) == NV_OK)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4230);
                     NvU32 origLsrMinTime;
                     kdispSetSwapBarrierLsrMinTime_HAL(pGpu, pKernelDisplay, head, &origLsrMinTime,
                                       newLsrMinTime);
@@ -3250,10 +2980,8 @@ gsyncProgramSwapBarrier_P2060
         if ((!pThis->Iface[iface].skipSwapBarrierWar) &&
              needsMasterBarrierWar(&pThis->ExternalDevice))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4231);
             if (gsyncIsP2060MasterBoard(pGpu, pThis) && GpuIsP2060Master(pGpu, pThis))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4232);
                 //
                 // Swap Rdy signal on Master + TS GPU will enabled or disabled during
                 // Enable/Disable of Master i.e. gsyncProgramMaster_P2060
@@ -3266,7 +2994,6 @@ gsyncProgramSwapBarrier_P2060
         if (GpuIsConnectedToMasterViaBridge(pGpu, pThis) &&
            (gpumgrGetGpuBridgeType() == SLI_BT_VIDLINK || isBoardWithNvlinkQsyncContention(pGpu)))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4233);
             //
             // Do not enable swapRdy Connection of pGpu. pGpu will take swap Rdy signal
             // from Master + TS GPU via SLI (MIO) bridge
@@ -3281,14 +3008,12 @@ gsyncProgramSwapBarrier_P2060
 
         if (pThis->Iface[iface].DsiFliplock.saved == NV_TRUE)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4234);
             KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
             NvU32          numHeads = kdispGetNumHeads(pKernelDisplay);
             NvU32          head ;
 
             for (head = 0; head < numHeads; head++)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4235);
                 kdispRestoreOriginalLsrMinTime_HAL(pGpu, pKernelDisplay, head,
                 pThis->Iface[iface].DsiFliplock.OrigLsrMinTime[head]);
             }
@@ -3299,10 +3024,8 @@ gsyncProgramSwapBarrier_P2060
         if ((!pThis->Iface[iface].skipSwapBarrierWar) &&
              needsMasterBarrierWar(&pThis->ExternalDevice))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4236);
             if (gsyncIsP2060MasterBoard(pGpu, pThis) && GpuIsP2060Master(pGpu, pThis))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4237);
                 //
                 // Swap Rdy signal on Master + TS GPU will enabled or disabled during
                 // Enable/Disable of Master i.e. gsyncProgramMaster_P2060
@@ -3319,7 +3042,6 @@ gsyncProgramSwapBarrier_P2060
     // Each connected GPU accesses it's own version of CONTROL2, on P2060
     if (GpuIsP2060Connected(pGpu, pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4238);
         status = writeregu008_extdeviceTargeted(pGpu, pExtDev,
                                                 NV_P2060_CONTROL2, ctrl2);
     }
@@ -3336,7 +3058,6 @@ gsyncReadSwapBarrier_P2060
     NvBool             *bEnable
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4239);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU32 iface;
     NV_STATUS status = NV_OK;
@@ -3344,10 +3065,8 @@ gsyncReadSwapBarrier_P2060
     status = GetP2060GpuLocation(pGpu, pThis, &iface);
     if (NV_OK != status)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4240);
        if (!IsSLIEnabled(pGpu))
        {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4241);
            //
            // If not in SLI, this function must only be called on GPUs connected
            // to the framelock board.
@@ -3371,7 +3090,6 @@ gsyncReadSwapBarrier_P2060
 
     if (gsyncIsP2060MasterBoard(pGpu, pThis) && GpuIsP2060Master(pGpu, pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4242);
         // Read swapRdy of Master + TS GPU.
         *bEnable = pThis->Iface[iface].SwapReadyRequested;
         return status; //NV_OK
@@ -3380,7 +3098,6 @@ gsyncReadSwapBarrier_P2060
     if (GpuIsConnectedToMasterViaBridge(pGpu, pThis) &&
        (gpumgrGetGpuBridgeType() == SLI_BT_VIDLINK || isBoardWithNvlinkQsyncContention(pGpu)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4243);
         // Read swapRdy of pGpu connected to Master + TS GPU via SLI (MIO) bridge.
         *bEnable = pThis->Iface[iface].SwapReadyRequested;
         return status; //NV_OK
@@ -3389,13 +3106,11 @@ gsyncReadSwapBarrier_P2060
     // Each connected GPU accesses it's own version of CONTROL2, on P2060
     if (GpuIsP2060Connected(pGpu, pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4244);
         NvU8 ctrl2 = 0;
         status = readregu008_extdeviceTargeted(pGpu,
                        pExtDev, NV_P2060_CONTROL2, &ctrl2);
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4245);
             return status;
         }
         *bEnable = (NV_P2060_CONTROL2_SWAP_READY_ENABLE ==
@@ -3413,7 +3128,6 @@ gsyncSetLsrMinTime
     NvU32                                     enable
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4246);
     PDACP2060EXTERNALDEVICE pThis    = (PDACP2060EXTERNALDEVICE)pExtDev;
     NV_STATUS               rmStatus = NV_OK;
     NvU32                   index;
@@ -3421,17 +3135,14 @@ gsyncSetLsrMinTime
     // Get Mosaic Timing Source GPU Connector Index.
     if (NV_OK != GetP2060ConnectorIndexFromGpu(pSourceGpu, pThis, &index))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4247);
         return NV_ERR_GENERIC;
     }
 
     if (enable)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4248);
         // Set LSR_MIN_TIME
         if (pThis->tSwapRdyHiLsrMinTime == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4249);
             NvU32 data = 0;
 
             // store Swap Lockout Window in pThis.
@@ -3440,14 +3151,12 @@ gsyncSetLsrMinTime
             if (osReadRegistryDword(pSourceGpu,
                     NV_REG_STR_TIME_SWAP_RDY_HI_MODIFY_LSR_MIN_TIME, &data) == NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4250);
                 pThis->tSwapRdyHiLsrMinTime = data;
             }
         }
 
         if (pThis->Iface[index].DsiFliplock.saved == NV_FALSE)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4251);
             KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pSourceGpu);
             NvU32           numHeads = kdispGetNumHeads(pKernelDisplay);
             NvU32           head;
@@ -3455,13 +3164,11 @@ gsyncSetLsrMinTime
             // Do we need to loop over numHeads?
             for (head = 0; head < numHeads; head++)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4252);
                 NvU32 newLsrMinTime;
 
                 if ((rmStatus = kdispComputeLsrMinTimeValue_HAL(pSourceGpu, pKernelDisplay, head,
                                     pThis->tSwapRdyHiLsrMinTime, &newLsrMinTime)) == NV_OK)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4253);
                     NvU32 origLsrMinTime;
 
                     kdispSetSwapBarrierLsrMinTime_HAL(pSourceGpu, pKernelDisplay, head, &origLsrMinTime,
@@ -3484,14 +3191,12 @@ gsyncSetLsrMinTime
     {
         if (pThis->Iface[index].DsiFliplock.saved == NV_TRUE)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4254);
             KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pSourceGpu);
             NvU32           numHeads = kdispGetNumHeads(pKernelDisplay);
             NvU32           head;
 
             for (head = 0; head < numHeads; head++)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4255);
                 kdispRestoreOriginalLsrMinTime_HAL(pSourceGpu, pKernelDisplay, head,
                     pThis->Iface[index].DsiFliplock.OrigLsrMinTime[head]);
             }
@@ -3511,7 +3216,6 @@ gsyncSetMosaic_P2060
     NV30F1_CTRL_GSYNC_SET_LOCAL_SYNC_PARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4256);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NV_STATUS rmStatus = NV_OK;
     OBJGPU *pTempGpu = NULL;
@@ -3520,7 +3224,6 @@ gsyncSetMosaic_P2060
 
     if (mosaicGroup >= NV_P2060_MAX_MOSAIC_GROUPS)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4257);
         NV_PRINTF(LEVEL_ERROR,
                   "mosaicGroup equaling/extending NV_P2060_MAX_MOSAIC_GROUPS.\n");
         return NV_ERR_INVALID_ARGUMENT;
@@ -3528,7 +3231,6 @@ gsyncSetMosaic_P2060
 
     if (pParams->slaveGpuCount > NV_P2060_MAX_MOSAIC_SLAVES)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4258);
         NV_PRINTF(LEVEL_ERROR,
                   "mosaic slaveGpuCount extending NV_P2060_MAX_MOSAIC_SLAVES.\n");
         return NV_ERR_INVALID_ARGUMENT;
@@ -3539,7 +3241,6 @@ gsyncSetMosaic_P2060
         NvU32 index;
         if (pThis->MosaicGroup[mosaicGroup].enabledMosaic)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4259);
             // mosaic is already enabled for this group,
             // client should disable it first and re-query for this group.
             NV_PRINTF(LEVEL_ERROR,
@@ -3550,7 +3251,6 @@ gsyncSetMosaic_P2060
         // Get Mosaic Timing Source GPU Connector Index.
         if ( NV_OK != GetP2060ConnectorIndexFromGpu(pSourceGpu, pThis, &index))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4260);
              return NV_ERR_GENERIC;
         }
 
@@ -3559,7 +3259,6 @@ gsyncSetMosaic_P2060
 
         for (i = 0; i < pThis->MosaicGroup[mosaicGroup].slaveGpuCount; i++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4261);
            pThis->MosaicGroup[mosaicGroup].gpuTimingSlaves[i] = pParams->gpuTimingSlaves[i];
 
            pTempGpu = gpumgrGetGpuFromId(pParams->gpuTimingSlaves[i]);
@@ -3575,7 +3274,6 @@ gsyncSetMosaic_P2060
                           (PDACEXTERNALDEVICE)pThis, NV_P2060_MOSAIC_MODE, mosaicReg);
            if (rmStatus != NV_OK)
            {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4262);
                NV_PRINTF(LEVEL_ERROR,
                          "Failed to write P2060 mosaic slave register.\n");
                return NV_ERR_GENERIC;
@@ -3597,7 +3295,6 @@ gsyncSetMosaic_P2060
                           (PDACEXTERNALDEVICE)pThis, NV_P2060_MOSAIC_MODE, mosaicReg);
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4263);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to write P2060 mosaic Source register.\n");
             return NV_ERR_GENERIC;
@@ -3610,7 +3307,6 @@ gsyncSetMosaic_P2060
     {
         if (!pThis->MosaicGroup[mosaicGroup].enabledMosaic)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4264);
             // mosaicgroup is not enabled, so can not disable
             NV_PRINTF(LEVEL_ERROR,
                       "trying to disable mosaicGroup which is not enabled.\n");
@@ -3619,7 +3315,6 @@ gsyncSetMosaic_P2060
 
         for (i = 0; i < pThis->MosaicGroup[mosaicGroup].slaveGpuCount; i++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4265);
             pTempGpu = gpumgrGetGpuFromId(pThis->MosaicGroup[mosaicGroup].gpuTimingSlaves[i]);
             NV_ASSERT_OR_RETURN(pTempGpu, NV_ERR_GENERIC);
 
@@ -3627,7 +3322,6 @@ gsyncSetMosaic_P2060
                           (PDACEXTERNALDEVICE)pThis, NV_P2060_MOSAIC_MODE, 0x00);
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4266);
                NV_PRINTF(LEVEL_ERROR,
                          "Failed to write P2060 mosaic slave register.\n");
                return NV_ERR_GENERIC;
@@ -3643,7 +3337,6 @@ gsyncSetMosaic_P2060
                           (PDACEXTERNALDEVICE)pThis, NV_P2060_MOSAIC_MODE, 0x00);
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4267);
              NV_PRINTF(LEVEL_ERROR,
                        "Failed to write P2060 mosaic Source register.\n");
              return NV_ERR_GENERIC;
@@ -3664,7 +3357,6 @@ gsyncSetMosaic_P2060
 static void
 DbgPrintP2060StatusRegister(NvU32 DebugLevel, NvU32 regStatus)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4268);
     if (DRF_VAL(_P2060, _STATUS, _SYNC_LOSS, regStatus))
         NV_PRINTF_EX(NV_PRINTF_MODULE, DebugLevel, "SYNC_LOSS ");
     if (DRF_VAL(_P2060, _STATUS, _STEREO, regStatus))
@@ -3685,7 +3377,6 @@ DbgPrintP2060StatusRegister(NvU32 DebugLevel, NvU32 regStatus)
 static NV_STATUS
 gsyncGpuStereoHeadSync(OBJGPU *pGpu, NvU32 iface, PDACEXTERNALDEVICE pExtDev, NvU32 status1)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4269);
     DACP2060EXTERNALDEVICE *pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     RM_API   *pRmApi      = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -3698,7 +3389,6 @@ gsyncGpuStereoHeadSync(OBJGPU *pGpu, NvU32 iface, PDACEXTERNALDEVICE pExtDev, Nv
 
     for (headIdx = 0; headIdx < numHeads; headIdx++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4270);
         ctrlParams.slave[headIdx]      = pThis->Iface[iface].Sync.Slaved[headIdx];
         ctrlParams.localSlave[headIdx] = pThis->Iface[iface].Sync.LocalSlave[headIdx];
         ctrlParams.master[headIdx]     = pThis->Iface[iface].Sync.Master[headIdx];
@@ -3711,7 +3401,6 @@ gsyncGpuStereoHeadSync(OBJGPU *pGpu, NvU32 iface, PDACEXTERNALDEVICE pExtDev, Nv
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4271);
         NV_PRINTF(LEVEL_ERROR, "Stereo headsync failed\n");
     }
 
@@ -3729,7 +3418,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4272);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NvU32 iface;
     NvU8 regStatus = 0;
@@ -3739,13 +3427,11 @@ gsyncUpdateGsyncStatusSnapshot_P2060
     // Only read status variables if the board is framelocked at all.
     if (!gsyncIsFrameLocked_P2060(pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4273);
         return rmStatus;
     }
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4274);
         NvU32 diffStatus = 0x00;
         NvU32 oldStatus  = 0x00;
         NvU32 newStatus  = 0x00;
@@ -3754,7 +3440,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
         // get status update for each interface
         if (pThis->Iface[iface].GpuInfo.gpuId != NV0000_CTRL_GPU_INVALID_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4275);
             int updateSnapshot = 1;
             int localMaster = 0;
 
@@ -3766,7 +3451,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
             rmStatus  = readregu008_extdeviceTargeted(pIfaceGpu, pExtDev, (NvU8)NV_P2060_STATUS, &regStatus);
             if ( NV_OK != rmStatus )
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4276);
                 return NV_ERR_GENERIC;
             }
 
@@ -3777,11 +3461,9 @@ gsyncUpdateGsyncStatusSnapshot_P2060
             if ( (NV_P2060_STATUS_VCXO_NOT_SERVO  == DRF_VAL(_P2060, _STATUS, _VCXO,      newStatus)) &&
                  (NV_P2060_STATUS_SYNC_LOSS_FALSE == DRF_VAL(_P2060, _STATUS, _SYNC_LOSS, newStatus)))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4277);
                 localMaster = 1;
                 if (!pThis->Iface[iface].gainedSync)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4278);
                     NV_PRINTF(LEVEL_INFO,
                               "P2060[%d] is local master => GAINED SYNC\n",
                               iface);
@@ -3796,7 +3478,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
                 if ((!pThis->Iface[iface].gainedSync) &&
                     (NV_P2060_STATUS_VCXO_LOCK == DRF_VAL(_P2060, _STATUS, _VCXO, newStatus)))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4279);
                     OBJTMR *pTmr = GPU_GET_TIMER(pIfaceGpu);
                     NvU64 timeDiff;
                     NvU64 currentTime;
@@ -3810,7 +3491,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
                     //
                     if (0 == pThis->Snapshot[iface].lastSyncCheckTime)
                     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4280);
                         pThis->Snapshot[iface].lastSyncCheckTime = currentTime;
                     }
 
@@ -3828,7 +3508,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
                     //
                     if (timeDiff >= 5000)
                     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4281);
                         NV_PRINTF(LEVEL_INFO, "P2060[%d] GAINED SYNC\n",
                                   iface);
 
@@ -3837,7 +3516,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
                         // We've gained sync, right time to also sync the stereo phase.
                         if (FLD_TEST_DRF(_P2060, _STATUS, _GPU_STEREO, _ACTIVE, newStatus))
                         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4282);
                             gsyncGpuStereoHeadSync(pIfaceGpu, iface, pExtDev, newStatus);
                             // Reset toggle time to wait some time before checking stereo sync again.
                             pThis->Snapshot[iface].lastStereoToggleTime = 0;
@@ -3857,7 +3535,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
             // Take over new status and send events only if desired.
             if (updateSnapshot)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4283);
                 //
                 // If we lost sync again reestablish syncwait mechanism.
                 // Local master can't loose sync per definition.
@@ -3865,7 +3542,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
                 if ((NV_P2060_STATUS_VCXO_LOCK != DRF_VAL(_P2060, _STATUS, _VCXO, newStatus)) &&
                     (!localMaster))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4284);
                     pThis->Iface[iface].gainedSync = 0;
                     pThis->Snapshot[iface].lastSyncCheckTime = 0;
                 }
@@ -3890,12 +3566,10 @@ gsyncUpdateGsyncStatusSnapshot_P2060
         if ((DRF_VAL(_P2060, _STATUS, _VCXO,      diffStatus)) ||
             (DRF_VAL(_P2060, _STATUS, _SYNC_LOSS, diffStatus)) ) // diff state: sync or lock
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4285);
             if (FLD_TEST_DRF(_P2060, _STATUS, _SYNC_LOSS, _FALSE, newStatus) &&
                 (FLD_TEST_DRF(_P2060, _STATUS, _VCXO,      _LOCK, newStatus) ||
                  FLD_TEST_DRF(_P2060, _STATUS, _VCXO, _NOT_SERVO, newStatus)))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4286);
                 ifaceEvents[iface] |= NVBIT(NV30F1_GSYNC_NOTIFIERS_SYNC_GAIN(iface));
             }
             else
@@ -3909,10 +3583,8 @@ gsyncUpdateGsyncStatusSnapshot_P2060
              FLD_TEST_DRF(_P2060, _STATUS, _VCXO, _NOT_SERVO, newStatus)) &&
              DRF_VAL(_P2060, _STATUS, _STEREO, diffStatus)) // diff state: stereo
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4287);
             if (FLD_TEST_DRF(_P2060, _STATUS, _STEREO, _LOCK, newStatus))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4288);
                 ifaceEvents[iface] |= NVBIT(NV30F1_GSYNC_NOTIFIERS_STEREO_GAIN(iface));
             }
             else
@@ -3924,15 +3596,12 @@ gsyncUpdateGsyncStatusSnapshot_P2060
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4289);
         // Only check stereo phase if we've gained sync.
         if (pThis->Iface[iface].gainedSync)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4290);
             // Only check and adjust stereo phase if stereo is enabled on this system.
             if (FLD_TEST_DRF(_P2060, _STATUS, _GPU_STEREO, _ACTIVE, pThis->Snapshot[iface].Status1))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4291);
                 //
                 // gsyncGpuStereoHeadSync() works without any gsync board interaction
                 // with gpu register access only. In addition it will also sync heads
@@ -3955,7 +3624,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
 
                 if (pThis->Snapshot[iface].lastStereoToggleTime == 0)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4292);
                     pThis->Snapshot[iface].lastStereoToggleTime = currentTime;
                 }
                 timeDiff = (NvU32)((currentTime - pThis->Snapshot[iface].lastStereoToggleTime) / 1000000); // time in ms
@@ -3963,7 +3631,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
                 // toggle stereo if it is not locked more than 5 sec.
                 if (timeDiff >= 5000)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4293);
                     gsyncGpuStereoHeadSync(pIfaceGpu, iface, pExtDev, pThis->Snapshot[iface].Status1);
                     pThis->Snapshot[iface].lastStereoToggleTime = currentTime;
                 }
@@ -3971,7 +3638,6 @@ gsyncUpdateGsyncStatusSnapshot_P2060
                 // Only report stereo loss if stereo is not in phase.
                 if (!(FLD_TEST_DRF(_P2060, _STATUS, _STEREO, _LOCK, pThis->Snapshot[iface].Status1)))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4294);
                     ifaceEvents[iface] |= NVBIT(NV30F1_GSYNC_NOTIFIERS_STEREO_LOSS(iface)); // report loss this time.
                 }
             }
@@ -3980,10 +3646,8 @@ gsyncUpdateGsyncStatusSnapshot_P2060
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4295);
         if (ifaceEvents[iface] && (pThis->Iface[iface].lastEventNotified != ifaceEvents[iface]))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4296);
             NV_PRINTF(LEVEL_INFO, "Event P2060[%d]: 0x%x (", iface,
                       ifaceEvents[iface]);
             gsyncDbgPrintGsyncEvents(LEVEL_INFO, ifaceEvents[iface], iface);
@@ -4013,7 +3677,6 @@ gsyncRefSignal_P2060
     NvU32              *pPresence
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4297);
     NV_STATUS status = NV_OK;
     NvU32 rate;
     NvU32 value = 0;
@@ -4022,7 +3685,6 @@ gsyncRefSignal_P2060
 
     if (!bRate)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4298);
         return NV_OK;
     }
 
@@ -4034,11 +3696,9 @@ gsyncRefSignal_P2060
 
     switch ( rType )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4299);
     case refFetchGet:
          if (gsync_Signal_RJ45_0 == Signal || gsync_Signal_RJ45_1 == Signal)
          {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4300);
              // Relevant only if this port is an input
              NvU32 port0Direction, expectedPort0Direction;
              NvU32 port1Direction, expectedPort1Direction;
@@ -4056,7 +3716,6 @@ gsyncRefSignal_P2060
 
              if (gsync_Signal_RJ45_0 == Signal)
              {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4301);
                  expectedPort0Direction = NV_P2060_STATUS2_PORT0_INPUT;
                  expectedPort1Direction = NV_P2060_STATUS2_PORT1_OUTPUT;
              }
@@ -4067,10 +3726,8 @@ gsyncRefSignal_P2060
              }
              if (port0Direction == expectedPort0Direction && port1Direction == expectedPort1Direction)
              {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4302);
                  if (bMaster)
                  {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4303);
                      *pPresence = ~0;
                  }
                  else
@@ -4085,19 +3742,16 @@ gsyncRefSignal_P2060
          }
          else if (gsync_Signal_House == Signal)
          {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4304);
              status = gsyncReadHouseSignalPresent_P2060(pGpu, pExtDev, NV_FALSE, &value);
 
              if (value && NV_OK == status)
              {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4305);
                  status = gsyncReadHouseSyncFrameRate_P2060(pGpu, pExtDev, &rate);
                  if (NV_OK != status)
                      return status;
 
                  if (bMaster)
                  {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4306);
                     *pPresence = rate;
                  }
                  else
@@ -4140,7 +3794,6 @@ gsyncRefMaster_P2060
     NvBool skipSwapBarrierWar
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4307);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NvU32 Master = pThis->Master;
     NvU32 RefreshRate = pThis->RefreshRate;
@@ -4148,11 +3801,9 @@ gsyncRefMaster_P2060
 
     switch ( rType )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4308);
     case refSetCommit:
         if (!retainMaster)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4309);
             Master = pThis->Master = *pDisplayMask;
         }
         RefreshRate = pThis->RefreshRate = *pRefresh;
@@ -4163,19 +3814,16 @@ gsyncRefMaster_P2060
 
     switch ( rType )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4310);
     case refSetCommit:
         // Only masterable gpus can be set to master, but either can be set to non-master.
         if (Master && (!gsyncGpuCanBeMaster_P2060(pGpu, (PDACEXTERNALDEVICE)pThis)))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4311);
             NV_PRINTF(LEVEL_INFO, "P2060 GPU can not be Framelock Master.\n");
             return NV_ERR_GENERIC;
         }
 
         if (GpuIsMosaicTimingSlave(pGpu, pThis))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4312);
             NV_PRINTF(LEVEL_INFO,
                       "P2060 GPU is mosaic timing slave. Can not set Framelock Master.\n");
             return NV_ERR_GENERIC;
@@ -4194,7 +3842,6 @@ gsyncRefMaster_P2060
 
     switch ( rType )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4313);
     case refFetchGet:
         pThis->Master = Master;
         /*NOBREAK*/
@@ -4223,7 +3870,6 @@ gsyncRefSlaves_P2060
     NvU32 *pRefresh
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4314);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NV_STATUS status = NV_OK;
     NvU32 Slaves = pThis->Slaves;
@@ -4231,7 +3877,6 @@ gsyncRefSlaves_P2060
 
     switch ( rType )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4315);
     case refSetCommit:
         pThis->Slaves = *pDisplayMasks;
         pThis->RefreshRate = *pRefresh;
@@ -4244,7 +3889,6 @@ gsyncRefSlaves_P2060
 
     switch ( rType )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4316);
     case refSetCommit:
         status = gsyncProgramSlaves_P2060(pGpu, pThis, Slaves);
         break;
@@ -4259,7 +3903,6 @@ gsyncRefSlaves_P2060
 
     switch ( rType )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4317);
     case refFetchGet:
         pThis->Slaves = Slaves;
         /*NOBREAK*/
@@ -4286,7 +3929,6 @@ gsyncGetCplStatus_P2060
     NvU32 *pVal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4318);
     NV_STATUS status = NV_OK;
     NvU8  regStatus2;
 
@@ -4294,7 +3936,6 @@ gsyncGetCplStatus_P2060
 
     switch (CplStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4319);
         case gsync_Status_Refresh:
             // Read GSYNC Framerate value.
             status = gsyncReadFrameRate_P2060(pGpu, pExtDev, pVal);
@@ -4305,7 +3946,6 @@ gsyncGetCplStatus_P2060
             status = gsyncReadHouseSignalPresent_P2060(pGpu, pExtDev, NV_FALSE, pVal);
             if (NV_OK == status &&  *pVal)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4320);
                 // Read HS Framerate value.
                 status = gsyncReadHouseSyncFrameRate_P2060(pGpu, pExtDev, pVal);
             }
@@ -4335,7 +3975,6 @@ gsyncGetCplStatus_P2060
             status = readregu008_extdeviceTargeted(pGpu, pExtDev, (NvU8)NV_P2060_STATUS2, &regStatus2);
             if ( NV_OK == status )
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4321);
                 *pVal = FLD_TEST_DRF(_P2060, _STATUS2, _PORT0, _INPUT, (NvU32)regStatus2);
             }
             break;
@@ -4344,7 +3983,6 @@ gsyncGetCplStatus_P2060
             status = readregu008_extdeviceTargeted(pGpu, pExtDev, (NvU8)NV_P2060_STATUS2, &regStatus2);
             if ( NV_OK == status )
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4322);
                 *pVal = FLD_TEST_DRF(_P2060, _STATUS2, _PORT1, _INPUT, (NvU32)regStatus2);
             }
             break;
@@ -4353,7 +3991,6 @@ gsyncGetCplStatus_P2060
             status = readregu008_extdeviceTargeted(pGpu, pExtDev, (NvU8)NV_P2060_STATUS2, &regStatus2);
             if ( NV_OK == status )
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4323);
                 *pVal = FLD_TEST_DRF(_P2060, _STATUS2, _ETHER0_DETECTED, _TRUE, (NvU32)regStatus2);
             }
             break;
@@ -4362,7 +3999,6 @@ gsyncGetCplStatus_P2060
             status = readregu008_extdeviceTargeted(pGpu, pExtDev, (NvU8)NV_P2060_STATUS2, &regStatus2);
             if ( NV_OK == status )
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4324);
                 *pVal = FLD_TEST_DRF(_P2060, _STATUS2, _ETHER1_DETECTED, _TRUE, (NvU32)regStatus2);
             }
             break;
@@ -4389,7 +4025,6 @@ gsyncSetWatchdog_P2060
     NvU32 pVal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4325);
     OBJGPU *pTempGpu = NULL;
     PDACP2060EXTERNALDEVICE pP2060 = (PDACP2060EXTERNALDEVICE)pExtDev;
     NV_STATUS status = NV_OK;
@@ -4398,14 +4033,12 @@ gsyncSetWatchdog_P2060
 
     if (pVal)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4326);
         gsyncCancelWatchdog_P2060(pP2060);
         pTempGpu = GetP2060WatchdogGpu(pGpu, pP2060);
 
         extdevScheduleWatchdog(pTempGpu, (PDACEXTERNALDEVICE)pP2060);
         if (!gsyncIsOnlyFrameLockMaster_P2060(pP2060))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4327);
             pP2060->watchdogCountDownValue = NV_P2060_WATCHDOG_COUNT_DOWN_VALUE;
         }
     }
@@ -4424,7 +4057,6 @@ gsyncGetRevision_P2060
     GSYNCCAPSPARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4328);
     OBJSYS  *pSys = SYS_GET_INSTANCE();
     NV_STATUS status = NV_OK;
     DAC_EXTERNAL_DEVICES deviceId = pExtDev->deviceId;
@@ -4432,7 +4064,6 @@ gsyncGetRevision_P2060
 
     if (!pGpu)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4329);
         return NV_ERR_GENERIC; // something more descriptive, perhaps?
     }
 
@@ -4447,14 +4078,12 @@ gsyncGetRevision_P2060
         (deviceId == DAC_EXTERNAL_DEVICE_P2060 ||
          deviceId == DAC_EXTERNAL_DEVICE_P2061))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4330);
         DACP2060EXTERNALDEVICE *p2060 = (DACP2060EXTERNALDEVICE *)pExtDev;
 
         pParams->capFlags = NV30F1_CTRL_GSYNC_GET_CAPS_CAP_FLAGS_FREQ_ACCURACY_3DPS;
 
         if (!pSys->getProperty(pSys, PDB_PROP_SYS_IS_QSYNC_FW_REVISION_CHECK_DISABLED))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4331);
             pParams->isFirmwareRevMismatch = isFirmwareRevMismatch(pGpu, deviceRev);
         }
         else
@@ -4484,13 +4113,11 @@ gsyncGetRevision_P2060
         // for certain configs.
         if (needsMasterBarrierWar(pExtDev))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4332);
             pParams->capFlags |= NV30F1_CTRL_GSYNC_GET_CAPS_CAP_FLAGS_NEED_MASTER_BARRIER_WAR;
         }
 
         if (supportsMulDiv(pExtDev))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4333);
             pParams->capFlags |= NV30F1_CTRL_GSYNC_GET_CAPS_CAP_FLAGS_MULTIPLY_DIVIDE_SYNC;
             pParams->maxMulDivValue = (NV_P2060_MULTIPLIER_DIVIDER_VALUE_MINUS_ONE_MAX + 1);
         }
@@ -4515,12 +4142,10 @@ gsyncRefSwapBarrier_P2060
     NvBool               *bEnable
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4334);
     NV_STATUS status = NV_OK;
 
     switch (rType)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4335);
         case refSetCommit:
             status = gsyncProgramSwapBarrier_P2060(pGpu, pExtDev, *bEnable);
             break;
@@ -4546,17 +4171,14 @@ gsyncConfigFlashGsync_P2060
     NvU32                  preFlash
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4336);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU32 iface;
     NV_STATUS rmStatus = NV_OK;
 
     if (preFlash)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4337);
         if (pThis->isNonFramelockInterruptEnabled == NV_FALSE)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4338);
             // Non-Framelock interrupts are already disabled.
             return NV_OK;
         }
@@ -4564,11 +4186,9 @@ gsyncConfigFlashGsync_P2060
         // Disable non-Framelock interrupts for given gpu
         for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4339);
             if (pThis->Iface[iface].GpuInfo.gpuId != NV0000_CTRL_GPU_INVALID_ID &&
                 pThis->interruptEnabledInterface == iface)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4340);
                 OBJGPU *pTmpGpu = gpumgrGetGpuFromId(pThis->Iface[iface].GpuInfo.gpuId);
 
                 NV_ASSERT(pTmpGpu);
@@ -4576,7 +4196,6 @@ gsyncConfigFlashGsync_P2060
                 rmStatus = gsyncDisableNonFramelockInterrupt_P2060(pTmpGpu, (PDACEXTERNALDEVICE)pThis);
                 if (rmStatus != NV_OK)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4341);
                     NV_PRINTF(LEVEL_ERROR,
                               "Failed to disable non-framelock interrupts on gsync GPU.\n");
                     return rmStatus;
@@ -4590,12 +4209,10 @@ gsyncConfigFlashGsync_P2060
     {
         if (pThis->isNonFramelockInterruptEnabled == NV_FALSE)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4342);
             // Enable non-Framelock interrupts for given gpu
             rmStatus = GetP2060ConnectorIndexFromGpu(pGpu, pThis, &iface);
             if (NV_OK != rmStatus)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4343);
                 NV_PRINTF(LEVEL_ERROR,
                           "failed to find P2060 connector of the GPU.\n");
                 return rmStatus;
@@ -4604,7 +4221,6 @@ gsyncConfigFlashGsync_P2060
             rmStatus = gsyncEnableNonFramelockInterrupt_P2060(pGpu, (PDACEXTERNALDEVICE)pThis);
             if (NV_OK != rmStatus)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4344);
                 NV_PRINTF(LEVEL_ERROR,
                           "Failed to enable non-framelock interrupts on gsync GPU.\n");
                 return rmStatus;
@@ -4616,10 +4232,8 @@ gsyncConfigFlashGsync_P2060
         // Program External Stereo Sync Polarity for all attached gpus.
         for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4345);
             if (pThis->Iface[iface].GpuInfo.gpuId != NV0000_CTRL_GPU_INVALID_ID)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4346);
                 OBJGPU *pTmpGpu = gpumgrGetGpuFromId(pThis->Iface[iface].GpuInfo.gpuId);
 
                 NV_ASSERT(pTmpGpu);
@@ -4627,7 +4241,6 @@ gsyncConfigFlashGsync_P2060
                 rmStatus = gsyncProgramExtStereoPolarity_P2060(pTmpGpu, (PDACEXTERNALDEVICE)pThis);
                 if (NV_OK != rmStatus)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4347);
                     NV_PRINTF(LEVEL_ERROR,
                               "Failed to Program External Stereo Polarity for GPU.\n");
                     return rmStatus;
@@ -4648,7 +4261,6 @@ GetP2060GpuSnapshot
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4348);
     NvU32 iface;
     NV_STATUS status;
 
@@ -4669,7 +4281,6 @@ GpuIsP2060Master
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4349);
     NvU8 regControl;
     NvU32 index;
     NvBool bIsMasterGpu;
@@ -4677,21 +4288,18 @@ GpuIsP2060Master
 
     if (!pGpu || !GpuIsP2060Connected(pGpu, pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4350);
         return NV_FALSE;
     }
 
     // Get the connector index and check if it is master
     if ( NV_OK != GetP2060ConnectorIndexFromGpu(pGpu, pThis, &index))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4351);
         return NV_FALSE;
     }
 
     rmStatus = readregu008_extdeviceTargeted(pGpu, (PDACEXTERNALDEVICE)pThis, (NvU8)NV_P2060_CONTROL, &regControl);
     if (NV_OK != rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4352);
         return NV_FALSE;
     }
 
@@ -4709,12 +4317,10 @@ GpuIsP2060Connected
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4353);
     NvU32 iface;
 
     if (NV_OK == GetP2060GpuLocation(pGpu, pThis, &iface))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4354);
         return pThis->Iface[iface].GpuInfo.connected;
     }
 
@@ -4731,23 +4337,19 @@ GetP2060MasterableGpu
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4355);
     OBJGPU *tempGpu;
     NvU32 iface;
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4356);
         if (pThis->Iface[iface].GpuInfo.gpuId != NV0000_CTRL_GPU_INVALID_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4357);
             tempGpu = gpumgrGetGpuFromId(pThis->Iface[iface].GpuInfo.gpuId);
 
             NV_ASSERT(tempGpu);
 
             if (gsyncGpuCanBeMaster_P2060(tempGpu, (PDACEXTERNALDEVICE)pThis))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4358);
                 return tempGpu;
             }
         }
@@ -4767,14 +4369,12 @@ GetP2060ConnectorIndexFromGpu
     NvU32 *index
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4359);
     NV_STATUS rmStatus = NV_OK;
     NvU8 regStatus2;
 
     rmStatus  = readregu008_extdeviceTargeted(pGpu, (PDACEXTERNALDEVICE)pThis, (NvU8)NV_P2060_STATUS2, &regStatus2);
     if (NV_OK == rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4360);
         *index = DRF_VAL(_P2060, _STATUS2, _GPU_PORT, (NvU32)regStatus2);
     }
 
@@ -4792,15 +4392,12 @@ GetP2060GpuLocation
     NvU32 *iface
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4361);
     NvU32 tempIface;
 
     for (tempIface = 0; tempIface < NV_P2060_MAX_IFACES_PER_GSYNC; tempIface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4362);
         if (pThis->Iface[tempIface].GpuInfo.gpuId == pGpu->gpuId)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4363);
             *iface = tempIface;
 
             return NV_OK;
@@ -4819,7 +4416,6 @@ gsyncProgramFramelockEnable_P2060
     NvBool                  bEnable
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4364);
     //
     // Key here is to force the status register snapshot
     // to unsynched and setting back the timeout for
@@ -4846,7 +4442,6 @@ gsyncProgramFramelockEnable_P2060
 
     if (bEnable)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4365);
         gsyncSignalServiceRequested(gsyncGetGsyncInstance(pGpu),
             NVBIT(NV30F1_GSYNC_NOTIFIERS_SYNC_LOSS(iface)), iface);
         pThis->Iface[iface].lastEventNotified =
@@ -4861,25 +4456,20 @@ GpuIsMosaicTimingSlave
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4366);
     OBJGPU *pTempGpu = NULL;
     NvU8 i, j;
 
     for (i = 0; i < NV_P2060_MAX_MOSAIC_GROUPS; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4367);
         if (pThis->MosaicGroup[i].enabledMosaic)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4368);
              for (j = 0; j < NV_P2060_MAX_MOSAIC_SLAVES; j++)
              {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4369);
                   pTempGpu = gpumgrGetGpuFromId(pThis->MosaicGroup[i].gpuTimingSlaves[j]);
                   NV_ASSERT(pTempGpu);
 
                   if (pTempGpu == pGpu)
                   {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4370);
                       return NV_TRUE;
                   }
              }
@@ -4899,7 +4489,6 @@ gsyncGpuCanBeMaster_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4371);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     OBJGPU *pTempGpu;
     NvU32 iface, tempIface;
@@ -4908,7 +4497,6 @@ gsyncGpuCanBeMaster_P2060
     // If FPGA board in not master, Any GPU attached to board can be master.
     if (!gsyncIsP2060MasterBoard(pGpu, pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4372);
         return NV_TRUE;
     }
 
@@ -4916,22 +4504,18 @@ gsyncGpuCanBeMaster_P2060
     status = GetP2060GpuLocation(pGpu, pThis, &iface);
     if (NV_OK != status)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4373);
         return NV_FALSE;
     }
 
     for (tempIface = 0; tempIface < NV_P2060_MAX_IFACES_PER_GSYNC; tempIface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4374);
         if (tempIface == iface)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4375);
             continue;
         }
 
         if (pThis->Iface[tempIface].GpuInfo.gpuId == NV0000_CTRL_GPU_INVALID_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4376);
             continue;
         }
 
@@ -4941,7 +4525,6 @@ gsyncGpuCanBeMaster_P2060
 
         if (GpuIsP2060Master(pTempGpu, pThis))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4377);
             return NV_FALSE;
         }
     }
@@ -4957,14 +4540,11 @@ GetP2060Gpu
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4378);
     NvU32 iface;
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4379);
         if (pThis->Iface[iface].GpuInfo.gpuId != NV0000_CTRL_GPU_INVALID_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4380);
             OBJGPU *pTmpGpu = gpumgrGetGpuFromId(pThis->Iface[iface].GpuInfo.gpuId);
 
             NV_ASSERT(pTmpGpu);
@@ -4982,7 +4562,6 @@ GetP2060WatchdogGpu
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4381);
    return GetP2060Gpu(pGpu, pThis);
 }
 
@@ -4997,7 +4576,6 @@ gsyncIsStereoEnabled_p2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4382);
     NvU8 regStatus;
     NV_STATUS rmStatus;
 
@@ -5005,11 +4583,9 @@ gsyncIsStereoEnabled_p2060
 
     if (rmStatus == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4383);
         if (FLD_TEST_DRF(_P2060, _STATUS, _GPU_STEREO, _ACTIVE, regStatus) ||
             FLD_TEST_DRF(_P2060, _STATUS, _MSTR_STEREO, _ACTIVE, regStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4384);
             // stereo is enabled on the client or the server or both
             return NV_TRUE;
         }
@@ -5026,7 +4602,6 @@ gsyncCancelWatchdog_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4385);
     NvU32 iface;
     OBJGPU *pTempGpu = NULL;
 
@@ -5035,7 +4610,6 @@ gsyncCancelWatchdog_P2060
     // Cancel callbacks on all gpus
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4386);
         if (pThis->Iface[iface].GpuInfo.gpuId == NV0000_CTRL_GPU_INVALID_ID)
             continue;
 
@@ -5059,7 +4633,6 @@ gsyncEnableFramelockInterrupt_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4387);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU8  regCtrl3;
     NvU32 iface;
@@ -5068,22 +4641,18 @@ gsyncEnableFramelockInterrupt_P2060
     // Turn ON the interrupts
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4388);
         if (pThis->Iface[iface].GpuInfo.gpuId != NV0000_CTRL_GPU_INVALID_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4389);
             OBJGPU *pTmpGpu = gpumgrGetGpuFromId(pThis->Iface[iface].GpuInfo.gpuId);
             NV_ASSERT(pTmpGpu);
 
             if (gsyncReadMaster_P2060(pTmpGpu, pThis) || gsyncReadSlaves_P2060(pTmpGpu, pThis))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4390);
                 status = readregu008_extdeviceTargeted(pTmpGpu,
                          (PDACEXTERNALDEVICE)pThis, NV_P2060_CONTROL3,  &regCtrl3);
 
                 if (gsyncIsStereoEnabled_p2060(pTmpGpu, pExtDev))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4391);
                       regCtrl3 |= DRF_DEF(_P2060, _CONTROL3, _INTERRUPT, _ON_STEREO_CHG);
                 }
                 regCtrl3 |= DRF_DEF(_P2060, _CONTROL3, _INTERRUPT, _ON_SYNC_CHG);
@@ -5107,7 +4676,6 @@ gsyncDisableFrameLockInterrupt_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4392);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU8  regCtrl3;
     NvU32 iface;
@@ -5116,10 +4684,8 @@ gsyncDisableFrameLockInterrupt_P2060
     // Turn Off the interrupts
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4393);
         if (pThis->Iface[iface].GpuInfo.gpuId != NV0000_CTRL_GPU_INVALID_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4394);
             OBJGPU *pTmpGpu = gpumgrGetGpuFromId(pThis->Iface[iface].GpuInfo.gpuId);
 
             NV_ASSERT(pTmpGpu);
@@ -5150,7 +4716,6 @@ gsyncEnableNonFramelockInterrupt_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4395);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU8  regCtrl3 = 0x00;
     NV_STATUS rmStatus = NV_OK;
@@ -5176,7 +4741,6 @@ gsyncDisableNonFramelockInterrupt_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4396);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU8  regCtrl3 = 0x00;
     NV_STATUS rmStatus = NV_OK;
@@ -5199,12 +4763,10 @@ gsyncResetMosaicData_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4397);
    NvU8 i;
 
    if (!pThis)
    {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4398);
         return;
    }
 
@@ -5212,7 +4774,6 @@ gsyncResetMosaicData_P2060
 
    for (i = 0; i < NV_P2060_MAX_MOSAIC_SLAVES; i++)
    {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4399);
       pThis->MosaicGroup[mosaicGroup].gpuTimingSlaves[i] = NV0000_CTRL_GPU_INVALID_ID;
    }
 
@@ -5232,7 +4793,6 @@ gsyncUpdateSwapRdyConnectionForGpu_P2060
     NvBool bEnable
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4400);
     NV_STATUS rmStatus = NV_OK;
     NvU8 ctrl2 = 0x00;
 
@@ -5240,7 +4800,6 @@ gsyncUpdateSwapRdyConnectionForGpu_P2060
                                              NV_P2060_CONTROL2, &ctrl2);
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4401);
         return rmStatus;
     }
 
@@ -5262,22 +4821,18 @@ gsyncIsFrameLockMaster_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4402);
     NvU32 iface;
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4403);
         if (pThis->Iface[iface].GpuInfo.gpuId != NV0000_CTRL_GPU_INVALID_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4404);
             OBJGPU *pTmpGpu = gpumgrGetGpuFromId(pThis->Iface[iface].GpuInfo.gpuId);
 
             NV_ASSERT(pTmpGpu);
 
             if (gsyncReadMaster_P2060(pTmpGpu, pThis))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4405);
                 return NV_TRUE;
             }
         }
@@ -5295,22 +4850,18 @@ gsyncIsFrameLocked_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4406);
     NvU32 iface;
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4407);
         if (pThis->Iface[iface].GpuInfo.gpuId != NV0000_CTRL_GPU_INVALID_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4408);
             OBJGPU *pTmpGpu = gpumgrGetGpuFromId(pThis->Iface[iface].GpuInfo.gpuId);
             NV_ASSERT(pTmpGpu);
 
             if (gsyncReadMaster_P2060(pTmpGpu, pThis) ||
                 gsyncReadSlaves_P2060(pTmpGpu, pThis))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4409);
                 return NV_TRUE;
             }
         }
@@ -5328,7 +4879,6 @@ gsyncIsOnlyFrameLockMaster_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4410);
     NvU32 iface, numHeads, head;
     KernelDisplay  *pKernelDisplay;
     OBJGPU  *pGpu;
@@ -5336,10 +4886,8 @@ gsyncIsOnlyFrameLockMaster_P2060
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4411);
         if (pThis->Iface[iface].GpuInfo.gpuId != NV0000_CTRL_GPU_INVALID_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4412);
             pGpu  = gpumgrGetGpuFromId(pThis->Iface[iface].GpuInfo.gpuId);
             NV_ASSERT_OR_RETURN(pGpu, NV_FALSE);
 
@@ -5348,14 +4896,12 @@ gsyncIsOnlyFrameLockMaster_P2060
 
             for (head = 0; head < numHeads; head++)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4413);
                 if (pThis->Iface[iface].Sync.Master[head])
                     bIsMaster = NV_TRUE;
 
                 if (pThis->Iface[iface].Sync.Slaved[head] ||
                     pThis->Iface[iface].Sync.LocalSlave[head])
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4414);
                     return NV_FALSE;
                 }
             }
@@ -5375,21 +4921,18 @@ gsyncIsP2060MasterBoard
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4415);
     NvU8 ctrl;
     NvBool bIsMasterBoard;
     NV_STATUS rmStatus;
 
     if (!pGpu || !GpuIsP2060Connected(pGpu, pThis))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4416);
         return NV_FALSE;
     }
 
     rmStatus = readregu008_extdeviceTargeted(pGpu, (PDACEXTERNALDEVICE)pThis, (NvU8)NV_P2060_CONTROL, &ctrl);
     if (NV_OK != rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4417);
         return NV_FALSE;
     }
 
@@ -5408,7 +4951,6 @@ GpuIsConnectedToMasterViaBridge
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4418);
     OBJGPU *pOtherGpu = NULL;
     NvU32 gpuMask, gpuIndex, tempIface;
     NvU32 drOut, drIn;
@@ -5417,19 +4959,15 @@ GpuIsConnectedToMasterViaBridge
     gpuIndex = 0;
     while ((pOtherGpu = gpumgrGetNextGpu(gpuMask, &gpuIndex)) != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4419);
         if ((pGpu == pOtherGpu) || gpumgrGetGpuLockAndDrPorts(pGpu, pOtherGpu, &drOut, &drIn) != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4420);
             continue;
         }
 
         if (GetP2060GpuLocation(pOtherGpu, pThis, &tempIface) == NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4421);
             if (gsyncIsP2060MasterBoard(pOtherGpu, pThis) && GpuIsP2060Master(pOtherGpu, pThis))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4422);
                 // pGpu is connected to pOtherGpu via SLI bridge.
                 // Both GPUs are connected to same P2060.
                 return NV_TRUE;
@@ -5463,7 +5001,6 @@ NV_STATUS gsyncFrameCountTimerService_P2060
     void *pComponent
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4423);
     PDACP2060EXTERNALDEVICE pThis = NULL;
     NV_STATUS status;
     OBJGSYNC *pGsync = NULL;
@@ -5479,7 +5016,6 @@ NV_STATUS gsyncFrameCountTimerService_P2060
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4424);
         return status;
     }
 
@@ -5505,14 +5041,12 @@ gsyncResetFrameCountData_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4425);
 
     NvU8 regCtrl3;
     NV_STATUS rmStatus;
 
     if (!pThis)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4426);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -5557,7 +5091,6 @@ gsyncUpdateFrameCount_P2060
     OBJGPU *pGpu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4427);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     RM_API *pRmApi;
     NvU32 hClient;
@@ -5584,21 +5117,17 @@ gsyncUpdateFrameCount_P2060
     // get any framelocked head
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4428);
         if (pThis->Iface[iface].GpuInfo.gpuId == NV0000_CTRL_GPU_INVALID_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4429);
             continue;
         }
 
         for (head = 0; head < numHeads; head++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4430);
             if (pThis->Iface[iface].Sync.Master[head] ||
                 pThis->Iface[iface].Sync.Slaved[head] ||
                 pThis->Iface[iface].Sync.LocalSlave[head])
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4431);
                 // Update pThis->FrameCountData with iface and head
                 pThis->FrameCountData.iface = iface;
                 pThis->FrameCountData.head  = head;
@@ -5612,7 +5141,6 @@ gsyncUpdateFrameCount_P2060
 
     if (head == numHeads)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4432);
         return NV_ERR_GENERIC;
     }
 
@@ -5636,7 +5164,6 @@ gsyncUpdateFrameCount_P2060
 
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4433);
         return rmStatus;
     }
 
@@ -5653,7 +5180,6 @@ gsyncUpdateFrameCount_P2060
                    pThis->FrameCountData.head, &lineCount, &frameCount);
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4434);
         NV_PRINTF(LEVEL_ERROR, "Failed to read RG_DPCA.\n");
         return rmStatus;
     }
@@ -5667,7 +5193,6 @@ gsyncUpdateFrameCount_P2060
     //
     if ((lineCount >= safeRegionUpperLimit) || (lineCount <= safeRegionLowerLimit))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4435);
         //
         // timeout of one frameTime(in nano seconds), to avoid going into an infinite
         // loop in case linecount is stuck to some value.
@@ -5678,12 +5203,10 @@ gsyncUpdateFrameCount_P2060
         while (((lineCount >= safeRegionUpperLimit) || (lineCount <= safeRegionLowerLimit)) &&
                 (gpuCheckTimeout(pGpu, &timeout) != NV_ERR_TIMEOUT))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4436);
             rmStatus = kdispReadRgLineCountAndFrameCount_HAL(pGpu, pKernelDisplay,
                            pThis->FrameCountData.head, &lineCount, &frameCount);
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4437);
                 NV_PRINTF(LEVEL_ERROR, "Failed to read RG_DPCA.\n");
                 return rmStatus;
             }
@@ -5691,7 +5214,6 @@ gsyncUpdateFrameCount_P2060
 
         if ((lineCount >= safeRegionUpperLimit) || (lineCount <= safeRegionLowerLimit))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4438);
             return NV_ERR_TIMEOUT;
         }
     }
@@ -5702,7 +5224,6 @@ gsyncUpdateFrameCount_P2060
 
     if (rmStatus != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4439);
         return rmStatus;
     }
 
@@ -5730,7 +5251,6 @@ gsyncUpdateFrameCount_P2060
 
     if (pThis->FrameCountData.enableFrmCmpMatchIntSlave)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4440);
         pThis->FrameCountData.enableFrmCmpMatchIntSlave = NV_FALSE;
 
         // enable frame count match interrupt
@@ -5739,7 +5259,6 @@ gsyncUpdateFrameCount_P2060
 
         if (rmStatus == NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4441);
             regCtrl3 |= DRF_DEF(_P2060, _CONTROL3, _INTERRUPT, _ON_FRAME_MATCH);
             rmStatus = writeregu008_extdeviceTargeted(pGpu, (PDACEXTERNALDEVICE)pThis,
                                                       NV_P2060_CONTROL3, regCtrl3);
@@ -5751,7 +5270,6 @@ gsyncUpdateFrameCount_P2060
     //
     if (pThis->FrameCountData.bReCheck)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4442);
 
         NV_STATUS status = NV_OK;
         OBJTMR *pTmr  = GPU_GET_TIMER(pGpu);
@@ -5766,7 +5284,6 @@ gsyncUpdateFrameCount_P2060
 
         if (status == NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4443);
             pThis->FrameCountData.bReCheck = 0;
         }
 
@@ -5787,28 +5304,23 @@ gsyncGetNumberOfGpuFrameCountRollbacks_P2060
     NvU32 high
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4444);
     NvU32 mid = (low + high) / 2;
 
     if (FrameCount >= (high * NV_P2060_MAX_GPU_FRAME_COUNT))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4445);
         return high;
     }
     else if ((FrameCount >= (mid * NV_P2060_MAX_GPU_FRAME_COUNT)) &&
              (FrameCount < ((mid+1) * NV_P2060_MAX_GPU_FRAME_COUNT)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4446);
         return mid;
     }
     else if ((FrameCount > (NV_P2060_MAX_GPU_FRAME_COUNT * low)) && (FrameCount < (mid * NV_P2060_MAX_GPU_FRAME_COUNT)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4447);
         return gsyncGetNumberOfGpuFrameCountRollbacks_P2060(FrameCount, low, mid);
     }
     else if ((FrameCount > (NV_P2060_MAX_GPU_FRAME_COUNT * mid)) && (FrameCount < (high * NV_P2060_MAX_GPU_FRAME_COUNT)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4448);
         return gsyncGetNumberOfGpuFrameCountRollbacks_P2060(FrameCount, mid+1, high);
     }
     else
@@ -5824,10 +5336,8 @@ gsyncSupportsLargeSyncSkew_P2060
     DACEXTERNALDEVICE *pExtdev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4449);
     if (pExtdev->deviceId == DAC_EXTERNAL_DEVICE_P2061)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4450);
         // All p2061 revisions support sync skew > 1.
         return NV_TRUE;
     }
@@ -5849,10 +5359,8 @@ needsMasterBarrierWar
     PDACEXTERNALDEVICE pExtdev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4451);
     if (pExtdev->deviceId == DAC_EXTERNAL_DEVICE_P2061)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4452);
         // All p2061 revisions do not need the WAR.
         return NV_FALSE;
     }
@@ -5877,17 +5385,14 @@ isFirmwareRevMismatch
     DAC_EXTERNAL_DEVICE_REVS currentRev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4453);
     if (IsKEPLER(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4454);
         return ((currentRev < NV_P2060_MIN_REV) ||
                 (currentRev == DAC_EXTERNAL_DEVICE_REV_5) ||
                 (currentRev == DAC_EXTERNAL_DEVICE_REV_6));
     }
     else if (IsMAXWELL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4455);
         return (currentRev < NV_P2060_MIN_REV);
     }
     else
@@ -5911,7 +5416,6 @@ isBoardWithNvlinkQsyncContention
     OBJGPU *pGpu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4456);
     NvU16 devIds[] = {
         0x2230,     // Nvidia RTX A6000 (PG133 SKU 500)
         0x2231,     // Nvidia RTX A5000 (PG132 SKU 500)
@@ -5923,10 +5427,8 @@ isBoardWithNvlinkQsyncContention
 
     for (i=0; i < (sizeof(devIds)/sizeof(devIds[0])); i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4457);
         if (thisDevId == devIds[i])
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4458);
             return NV_TRUE;
         }
     }
@@ -5941,16 +5443,13 @@ supportsMulDiv
     DACEXTERNALDEVICE *pExtDev
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4459);
     // Supported only for 2061 boards with >= 2.4
     if (pExtDev->deviceId == DAC_EXTERNAL_DEVICE_P2061)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4460);
         if ((pExtDev->deviceRev >= DAC_EXTERNAL_DEVICE_REV_3) ||
             ((pExtDev->deviceRev == DAC_EXTERNAL_DEVICE_REV_2) &&
              (pExtDev->deviceExRev >= 4)))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4461);
             return NV_TRUE;
         }
     }
@@ -5965,7 +5464,6 @@ gsyncGetMulDiv_P2060
     NV30F1_CTRL_GSYNC_MULTIPLY_DIVIDE_SETTINGS *pMulDivSettings
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4462);
     DACP2060EXTERNALDEVICE *pThis = (DACP2060EXTERNALDEVICE *)pExtDev;
     NvU8 reg;
 
@@ -5997,7 +5495,6 @@ gsyncSetMulDiv_P2060
     NV30F1_CTRL_GSYNC_MULTIPLY_DIVIDE_SETTINGS *pMulDivSettings
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4463);
     DACP2060EXTERNALDEVICE *pThis = (DACP2060EXTERNALDEVICE *)pExtDev;
     NvU8 reg;
 
@@ -6014,7 +5511,6 @@ gsyncSetMulDiv_P2060
 
     switch (pMulDivSettings->multiplyDivideMode)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4464);
         case NV30F1_CTRL_GSYNC_SET_CONTROL_MULTIPLY_DIVIDE_MODE_MULTIPLY:
             reg = FLD_SET_DRF(_P2060, _MULTIPLIER_DIVIDER, _MODE, _MULTIPLY, reg);
             break;

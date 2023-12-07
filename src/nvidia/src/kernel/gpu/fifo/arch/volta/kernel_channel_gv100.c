@@ -46,7 +46,6 @@ kchannelIsUserdAddrSizeValid_GV100
     NvU32          userdAddrHi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5089);
     return ((userdAddrLo & DRF_MASK(NV_PPBDMA_USERD_ADDR)) == userdAddrLo) &&
            ((userdAddrHi & DRF_MASK(NV_PPBDMA_USERD_HI_ADDR)) == userdAddrHi);
 }
@@ -74,12 +73,10 @@ kchannelCreateUserdMemDescBc_GV100
     NvU64          *pUserdOffset
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5090);
     NV_STATUS rmStatus = NV_OK;
 
     if (phUserdMemory[0] != 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5091);
         NvU32 iter = 0;
 
         SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY | SLI_LOOP_FLAGS_IGNORE_REENTRANCY)
@@ -91,7 +88,6 @@ kchannelCreateUserdMemDescBc_GV100
 
         if (!hUserdMemory)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5092);
             //
             // pUserdMemory[iter] may be 0 for non-zero iter in case USERD is in FB
             // The following hack will be removed once clients fix this.
@@ -115,7 +111,6 @@ kchannelCreateUserdMemDescBc_GV100
 
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5093);
             SLI_LOOP_BREAK;
         }
 
@@ -124,7 +119,6 @@ kchannelCreateUserdMemDescBc_GV100
 
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5094);
             SLI_LOOP_START(SLI_LOOP_FLAGS_NONE);
             kchannelDestroyUserdMemDesc_HAL(pGpu, pKernelChannel);
             SLI_LOOP_END
@@ -164,7 +158,6 @@ kchannelCreateUserdMemDesc_GV100
     NvU32          *pUserdAper
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5095);
     KernelFifo             *pKernelFifo            = GPU_GET_KERNEL_FIFO(pGpu);
     RsResourceRef          *pUserdMemoryRef;
     Memory                 *pUserdMemory           = NULL;
@@ -191,7 +184,6 @@ kchannelCreateUserdMemDesc_GV100
                                          classId(Memory),
                                          &pUserdMemoryRef) != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5096);
         NV_ASSERT(pUserdMemoryRef);
         return NV_ERR_OBJECT_NOT_FOUND;
     }
@@ -204,7 +196,6 @@ kchannelCreateUserdMemDesc_GV100
     // check that the memory is not VPR
     if (memdescGetFlag(pUserdMemDescForSubDev, MEMDESC_ALLOC_FLAGS_PROTECTED))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5097);
         return NV_ERR_INVALID_FLAGS;
     }
 
@@ -215,7 +206,6 @@ kchannelCreateUserdMemDesc_GV100
     // Adjust for the DMA window start address, if any
     if (memdescGetAddressSpace(pUserdMemDescForSubDev) == ADDR_SYSMEM)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5098);
         RmPhysAddr dmaWindowStart = gpuGetDmaStartAddress(pGpu); 
         NV_ASSERT_OR_RETURN(userdAddr > dmaWindowStart, NV_ERR_INVALID_ADDRESS);
 
@@ -228,7 +218,6 @@ kchannelCreateUserdMemDesc_GV100
     // Check that the physical address is of the correct size
     if (!kchannelIsUserdAddrSizeValid_HAL(pKernelChannel, userdAddrLo, userdAddrHi))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5099);
         NV_PRINTF(LEVEL_ERROR,
                   "physical addr size of userdAddrHi=0x%08x, userAddrLo=0x%08x is incorrect!\n",
                   userdAddrHi, userdAddrLo);
@@ -258,7 +247,6 @@ kchannelCreateUserdMemDesc_GV100
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5100);
         return status;
     }
 
@@ -266,7 +254,6 @@ kchannelCreateUserdMemDesc_GV100
     if ((pUserdMemory->pMemDesc->Alignment < userdAlignment) &&
         (pUserdMemory->pMemDesc->Alignment  != 0))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5101);
         memdescDestroy(pUserdSubMemDesc);
         return NV_ERR_INVALID_ADDRESS;
     }
@@ -275,7 +262,6 @@ kchannelCreateUserdMemDesc_GV100
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5102);
         DBG_BREAKPOINT();
     }
 
@@ -299,7 +285,6 @@ kchannelDestroyUserdMemDesc_GV100
     KernelChannel    *pKernelChannel
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5103);
     NvU32 subdevInst = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
 
     memdescDestroy(pKernelChannel->pUserdSubDeviceMemDesc[subdevInst]);

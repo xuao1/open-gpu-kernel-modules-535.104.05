@@ -36,7 +36,6 @@ NV_STATUS subdeviceCtrlCmdFlcnGetCtxBufferInfo_IMPL
     NV2080_CTRL_FLCN_GET_CTX_BUFFER_INFO_PARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4864);
     POBJGPU pGpu = GPU_RES_GET_GPU(pSubdevice);
     PMEMORY_DESCRIPTOR pMemDesc, pRootMemDesc;
     RsClient *pUserClient;
@@ -55,7 +54,6 @@ NV_STATUS subdeviceCtrlCmdFlcnGetCtxBufferInfo_IMPL
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||
         (IS_VIRTUAL_WITH_SRIOV(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4865);
         CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
         RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams;
 
@@ -78,7 +76,6 @@ NV_STATUS subdeviceCtrlCmdFlcnGetCtxBufferInfo_IMPL
 
     switch (kchannelGetEngineType(pKernelChannel))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4866);
         case RM_ENGINE_TYPE_SEC2:
         {
             break;
@@ -113,7 +110,6 @@ NV_STATUS subdeviceCtrlCmdFlcnGetCtxBufferInfo_IMPL
     pageSize = memdescGetPageSize(pMemDesc, AT_GPU);
     if (pageSize == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4867);
         status = memmgrSetMemDescPageSize_HAL(pMemDesc->pGpu,
                                               GPU_GET_MEMORY_MANAGER(pMemDesc->pGpu),
                                               pMemDesc,
@@ -142,7 +138,6 @@ NV_STATUS subdeviceCtrlCmdFlcnGetCtxBufferInfo_IMPL
 
     if (pParams->bDeviceDescendant)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4868);
         NvU32 flags = DRF_DEF(2080_GPU_CMD, _GPU_GET_GID_FLAGS, _TYPE, _SHA1) |
             DRF_DEF(2080_GPU_CMD, _GPU_GET_GID_FLAGS, _FORMAT, _BINARY);
         NvU32 uuidLength;
@@ -169,7 +164,6 @@ subdeviceCtrlCmdFlcnGetCtxBufferSize_IMPL
     NV2080_CTRL_FLCN_GET_CTX_BUFFER_SIZE_PARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4869);
     POBJGPU pGpu = GPU_RES_GET_GPU(pSubdevice);
     PMEMORY_DESCRIPTOR pMemDesc;
     KernelChannel *pKernelChannel = NULL;
@@ -188,7 +182,6 @@ subdeviceCtrlCmdFlcnGetCtxBufferSize_IMPL
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||
         (IS_VIRTUAL_WITH_SRIOV(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4870);
         CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
         RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams;
 
@@ -209,7 +202,6 @@ subdeviceCtrlCmdFlcnGetCtxBufferSize_IMPL
 
     switch (kchannelGetEngineType(pKernelChannel))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4871);
         case RM_ENGINE_TYPE_SEC2:
         {
             break;
@@ -225,7 +217,6 @@ subdeviceCtrlCmdFlcnGetCtxBufferSize_IMPL
     pageSize = memdescGetPageSize(pMemDesc, AT_GPU);
     if (pageSize == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4872);
         status = memmgrSetMemDescPageSize_HAL(pMemDesc->pGpu,
                                               GPU_GET_MEMORY_MANAGER(pMemDesc->pGpu),
                                               pMemDesc,

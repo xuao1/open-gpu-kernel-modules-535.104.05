@@ -87,7 +87,6 @@ kdispConstructEngine_IMPL(OBJGPU        *pGpu,
                           KernelDisplay *pKernelDisplay,
                           ENGDESCRIPTOR  engDesc)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3762);
     NV_STATUS status;
 
     //
@@ -115,7 +114,6 @@ kdispConstructEngine_IMPL(OBJGPU        *pGpu,
     status = kdispConstructInstMem_HAL(pKernelDisplay);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3763);
         return status;
     }
 
@@ -133,7 +131,6 @@ kdispDestruct_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3764);
     // Destroy children
     kdispDestructInstMem_HAL(pKernelDisplay);
     kdispDestructKhead(pKernelDisplay);
@@ -146,14 +143,12 @@ kdispConstructInstMem_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3765);
     NV_STATUS status;
     DisplayInstanceMemory *pInst;
 
     status = objCreate(&pInst, pKernelDisplay, DisplayInstanceMemory);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3766);
         return status;
     }
 
@@ -168,7 +163,6 @@ kdispDestructInstMem_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3767);
     objDelete(pKernelDisplay->pInst);
     pKernelDisplay->pInst = NULL;
 }
@@ -180,18 +174,15 @@ kdispConstructKhead_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3768);
     NV_STATUS   status;
     KernelHead *pKernelHead;
     NvU8        headIdx;
 
     for (headIdx = 0; headIdx < OBJ_MAX_HEADS; headIdx++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3769);
         status = objCreate(&pKernelHead, pKernelDisplay, KernelHead);
         if (status != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3770);
             return status;
         }
 
@@ -208,12 +199,10 @@ kdispDestructKhead_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3771);
     NvU8      headIdx;
 
     for (headIdx = 0; headIdx < OBJ_MAX_HEADS; headIdx++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3772);
         objDelete(pKernelDisplay->pKernelHead[headIdx]);
         pKernelDisplay->pKernelHead[headIdx] = NULL;
     }
@@ -226,7 +215,6 @@ kdispAllocateCommonHandle_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3773);
     NV_STATUS rmStatus;
     NvHandle  hClient;
     NvHandle  hDevice;
@@ -257,7 +245,6 @@ kdispDestroyCommonHandle_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3774);
     NV_STATUS rmStatus;
     RM_API   *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
@@ -280,7 +267,6 @@ NV_STATUS
 kdispStatePreInitLocked_IMPL(OBJGPU        *pGpu,
                              KernelDisplay *pKernelDisplay)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3775);
     NV_STATUS status;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32   hClient = pGpu->hInternalClient;
@@ -295,7 +281,6 @@ kdispStatePreInitLocked_IMPL(OBJGPU        *pGpu,
                              &ctrlParams, sizeof(ctrlParams));
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3776);
         NV_PRINTF(LEVEL_WARNING,
                   "Failed to read display IP version (FUSE disabled), status=0x%x\n",
                   status);
@@ -316,7 +301,6 @@ NV_STATUS
 kdispInitBrightcStateLoad_IMPL(OBJGPU *pGpu,
                                KernelDisplay *pKernelDisplay)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3777);
     NV2080_CTRL_INTERNAL_INIT_BRIGHTC_STATE_LOAD_PARAMS *pBrightcInfo = NULL;
     NvU32 status = NV_ERR_NOT_SUPPORTED;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -324,7 +308,6 @@ kdispInitBrightcStateLoad_IMPL(OBJGPU *pGpu,
     pBrightcInfo = portMemAllocNonPaged(sizeof(NV2080_CTRL_INTERNAL_INIT_BRIGHTC_STATE_LOAD_PARAMS));
     if (pBrightcInfo == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3778);
         NV_PRINTF(LEVEL_ERROR, "Could not allocate memory for pBrightcInfo\n");
         return NV_ERR_NO_MEMORY;
     }
@@ -333,7 +316,6 @@ kdispInitBrightcStateLoad_IMPL(OBJGPU *pGpu,
     pBrightcInfo->status = status;
     if ((pKernelDisplay != NULL) && (pKernelDisplay->pStaticInfo->internalDispActiveMask != 0))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3779);
         // Fill in the Backlight Method Data.
         pBrightcInfo->backLightDataSize = sizeof(pBrightcInfo->backLightData);
         status = osCallACPI_DSM(pGpu, ACPI_DSM_FUNCTION_CURRENT, NV_ACPI_GENERIC_FUNC_GETBACKLIGHT,
@@ -358,7 +340,6 @@ kdispSetupAcpiEdid_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3780);
     NV2080_CTRL_CMD_INTERNAL_SET_STATIC_EDID_DATA_PARAMS *pEdidParams = NULL;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32 status = NV_ERR_GENERIC;
@@ -367,7 +348,6 @@ kdispSetupAcpiEdid_IMPL
     pEdidParams = portMemAllocNonPaged(sizeof(NV2080_CTRL_CMD_INTERNAL_SET_STATIC_EDID_DATA_PARAMS));
     if (pEdidParams == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3781);
         NV_PRINTF(LEVEL_ERROR, "Could not allocate memory for pEdidParams\n");
         return NV_ERR_NO_MEMORY;
     }
@@ -377,7 +357,6 @@ kdispSetupAcpiEdid_IMPL
 
     for (index = 0; index < pEdidParams->tableLen; index++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3782);
         pEdidParams->edidTable[index].bufferSize = MAX_EDID_SIZE_FROM_SBIOS;
         status = osCallACPI_DDC(pGpu, pGpu->acpiMethodData.dodMethodData.acpiIdList[index],
                                     pEdidParams->edidTable[index].edidBuffer,
@@ -399,33 +378,27 @@ void
 kdispInitRegistryOverrides_IMPL(OBJGPU        *pGpu,
                                 KernelDisplay *pKernelDisplay)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3783);
     NvU32 data32 = 0;
 
     if (pKernelDisplay == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3784);
         return;
     }
 
     if (NV_OK == osReadRegistryDword(pGpu, NV_REG_STR_RM_BUG_2089053_WAR, &data32))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3785);
         if (data32 == NV_REG_STR_RM_BUG_2089053_WAR_DISABLE)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3786);
             pKernelDisplay->setProperty(pKernelDisplay, PDB_PROP_KDISP_BUG_2089053_SERIALIZE_AGGRESSIVE_VBLANK_ALWAYS, NV_FALSE);
             pKernelDisplay->setProperty(pKernelDisplay, PDB_PROP_KDISP_BUG_2089053_SERIALIZE_AGGRESSIVE_VBLANKS_ONLY_ON_HMD_ACTIVE, NV_FALSE);
         }
         else if (data32 == NV_REG_STR_RM_BUG_2089053_WAR_ENABLE_ALWAYS)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3787);
             pKernelDisplay->setProperty(pKernelDisplay, PDB_PROP_KDISP_BUG_2089053_SERIALIZE_AGGRESSIVE_VBLANK_ALWAYS, NV_TRUE);
             pKernelDisplay->setProperty(pKernelDisplay, PDB_PROP_KDISP_BUG_2089053_SERIALIZE_AGGRESSIVE_VBLANKS_ONLY_ON_HMD_ACTIVE, NV_FALSE);
         }
         else if (data32 == NV_REG_STR_RM_BUG_2089053_WAR_ENABLE_ON_HMD_ACTIVE_ONLY)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3788);
             pKernelDisplay->setProperty(pKernelDisplay, PDB_PROP_KDISP_BUG_2089053_SERIALIZE_AGGRESSIVE_VBLANKS_ONLY_ON_HMD_ACTIVE, NV_TRUE);
             pKernelDisplay->setProperty(pKernelDisplay, PDB_PROP_KDISP_BUG_2089053_SERIALIZE_AGGRESSIVE_VBLANK_ALWAYS, NV_FALSE);
         }
@@ -436,7 +409,6 @@ NV_STATUS
 kdispStateInitLocked_IMPL(OBJGPU        *pGpu,
                           KernelDisplay *pKernelDisplay)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3789);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS status = NV_OK;
     KernelDisplayStaticInfo *pStaticInfo;
@@ -444,7 +416,6 @@ kdispStateInitLocked_IMPL(OBJGPU        *pGpu,
     pStaticInfo = portMemAllocNonPaged(sizeof(KernelDisplayStaticInfo));
     if (pStaticInfo == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3790);
         NV_PRINTF(LEVEL_ERROR, "Could not allocate KernelDisplayStaticInfo");
         status = NV_ERR_NO_MEMORY;
         goto exit;
@@ -465,7 +436,6 @@ kdispStateInitLocked_IMPL(OBJGPU        *pGpu,
     status = kdispInitBrightcStateLoad_HAL(pGpu, pKernelDisplay);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3791);
         NV_PRINTF(LEVEL_ERROR, "rmapi control call for brightc state load failed\n");
         goto exit;
     }
@@ -474,14 +444,12 @@ kdispStateInitLocked_IMPL(OBJGPU        *pGpu,
     status = kdispSetupAcpiEdid_HAL(pGpu, pKernelDisplay);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3792);
         NV_PRINTF(LEVEL_WARNING, "rmapi control call for acpi child device init failed\n");
         goto exit;
     }
 
     if (pKernelDisplay->pInst != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3793);
         NV_CHECK_OK_OR_GOTO(status, LEVEL_ERROR,
                 instmemStateInitLocked(pGpu, pKernelDisplay->pInst), exit);
     }
@@ -493,7 +461,6 @@ kdispStateInitLocked_IMPL(OBJGPU        *pGpu,
 
     if (pKernelDisplay->pStaticInfo->i2cPort == NV402C_CTRL_NUM_I2C_PORTS)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3794);
         NV_PRINTF(LEVEL_INFO, "Error in getting valid I2Cport for Extdevice or extdevice doesn't exist\n");
     }
     else
@@ -502,14 +469,12 @@ kdispStateInitLocked_IMPL(OBJGPU        *pGpu,
 
         if (NV_OK != gpuExtdevConstruct_HAL(pGpu))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3795);
             NV_PRINTF(LEVEL_INFO, "gpuExtdevConstruct() failed or not supported\n");
         }
     }
 
     if (pKernelDisplay->getProperty(pKernelDisplay, PDB_PROP_KDISP_IMP_ENABLE))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3796);
         // NOTE: Fills IMP parameters and populate those to disp object in Tegra
         NV_CHECK_OK_OR_GOTO(status, LEVEL_ERROR,
                 kdispImportImpData_HAL(pKernelDisplay), exit);
@@ -525,10 +490,8 @@ void
 kdispStateDestroy_IMPL(OBJGPU *pGpu,
                        KernelDisplay *pKernelDisplay)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3797);
     if (pKernelDisplay->pInst != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3798);
         instmemStateDestroy(pGpu, pKernelDisplay->pInst);
     }
 
@@ -546,7 +509,6 @@ kdispStateLoad_IMPL
     NvU32         flags
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3799);
     NV_STATUS status = NV_OK;
 
     if (pKernelDisplay->pInst != NULL)
@@ -563,7 +525,6 @@ kdispStateUnload_IMPL
     NvU32         flags
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3800);
     NV_STATUS status = NV_OK;
 
     if (pKernelDisplay->pInst != NULL)
@@ -576,7 +537,6 @@ kdispStateUnload_IMPL
 NV_STATUS
 kdispImportImpData_IMPL(KernelDisplay *pKernelDisplay)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3801);
     OBJGPU *pGpu = ENG_GET_GPU(pKernelDisplay);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32   hClient = pGpu->hInternalClient;
@@ -592,7 +552,6 @@ kdispImportImpData_IMPL(KernelDisplay *pKernelDisplay)
     simulationMode = osGetSimulationMode();
     if (simulationMode == NV_SIM_MODE_TEGRA_FPGA)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3802);
         pKernelDisplay->setProperty(pKernelDisplay, PDB_PROP_KDISP_IMP_ENABLE, NV_FALSE);
         return NV_OK;
     }
@@ -615,14 +574,12 @@ kdispGetIntChnClsForHwCls_IMPL
     DISPCHNCLASS  *pDispChnClass
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3803);
     // sanity check
     if (pDispChnClass == NULL)
         return NV_ERR_INVALID_ARGUMENT;
 
     switch (hwClass)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3804);
         case NV917A_CURSOR_CHANNEL_PIO:
         case NVC37A_CURSOR_IMM_CHANNEL_PIO:
         case NVC57A_CURSOR_IMM_CHANNEL_PIO:
@@ -691,7 +648,6 @@ kdispNotifyEvent_IMPL
     NvV16          info16
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3805);
     PEVENTNOTIFICATION pEventNotifications;
     NvU32             *pNotifyActions;
     NvU32              disableCmd, singleCmd;
@@ -701,7 +657,6 @@ kdispNotifyEvent_IMPL
     // search notifiers with events hooked up for this gpu
     while (serverutilShareIterNext(&it))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3806);
         RsShared   *pShared = it.pShared;
         DisplayApi *pDisplayApi;
         INotifier  *pNotifier;
@@ -733,7 +688,6 @@ kdispNotifyEvent_IMPL
         pNotifyActions = pDisplayApi->pNotifyActions[subDeviceInst];
         if (pNotifyActions == NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3807);
             continue;
         }
 
@@ -741,21 +695,18 @@ kdispNotifyEvent_IMPL
         pEventNotifications = inotifyGetNotificationList(pNotifier);
         if (pEventNotifications == NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3808);
             continue;
         }
 
         // skip if client not "listening" to events of this type
         if (pNotifyActions[notifyIndex] == disableCmd)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3809);
             continue;
         }
 
         if (pDisplayApi->hNotifierMemory != NV01_NULL_OBJECT &&
             pDisplayApi->pNotifierMemory != NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3810);
             notifyFillNotifierMemory(pGpu, pDisplayApi->pNotifierMemory, info32, info16,
                                      NV5070_NOTIFICATION_STATUS_DONE_SUCCESS, notifyIndex);
         }
@@ -768,7 +719,6 @@ kdispNotifyEvent_IMPL
         // reset if single shot notify action
         if (pNotifyActions[notifyIndex] == singleCmd)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3811);
             pNotifyActions[notifyIndex] = disableCmd;
         }
     }
@@ -781,7 +731,6 @@ kdispSetWarPurgeSatellitesOnCoreFree_IMPL
     NvBool value
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3812);
     pKernelDisplay->bWarPurgeSatellitesOnCoreFree = value;
 }
 
@@ -795,7 +744,6 @@ kdispRegisterRgLineCallback_IMPL
     NvBool bEnable
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3813);
     NV_ASSERT_OR_RETURN(head < OBJ_MAX_HEADS, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(rgIntrLine < MAX_RG_LINE_CALLBACKS_PER_HEAD, NV_ERR_INVALID_ARGUMENT);
 
@@ -803,12 +751,10 @@ kdispRegisterRgLineCallback_IMPL
 
     if (bEnable && *slot == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3814);
         *slot = pRgLineCallback;
     }
     else if (!bEnable && *slot == pRgLineCallback)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3815);
         *slot = NULL;
     }
     else
@@ -837,7 +783,6 @@ kdispInvokeRgLineCallback_KERNEL
     NvBool bIsIrqlIsr
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3816);
     NV_ASSERT_OR_RETURN_VOID(head < OBJ_MAX_HEADS);
     NV_ASSERT_OR_RETURN_VOID(rgIntrLine < MAX_RG_LINE_CALLBACKS_PER_HEAD);
 
@@ -845,12 +790,10 @@ kdispInvokeRgLineCallback_KERNEL
 
     if (pCallbackObject != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3817);
         rglcbInvoke(pCallbackObject, bIsIrqlIsr);
     }
     else if (IS_GSP_CLIENT(ENG_GET_GPU(pKernelDisplay)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3818);
         //
         // For offloaded RM case, getting a callback invocation without a registered callback could
         // happen during or after deregistration: there might already have been an event in the
@@ -902,7 +845,6 @@ kdispServiceVblank_KERNEL
     THREAD_STATE_NODE *pThreadState
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3819);
     NvU32      pending, check_pending, pending_checked;
     NvU32      Head;
     NvU32      maskNonEmptyQueues[OBJ_MAX_HEADS];  // array of masks of VBLANK_STATE_PROCESS_XXX_LATENCY bits, indicating which queues are non-empty
@@ -923,7 +865,6 @@ kdispServiceVblank_KERNEL
     // For the ISR we want to know how much time since the last ISR.
     if (timeStampIndexISR)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3820);
         NvU64 temp64;
 
         temp64 = timeStampStartISR[timeStampIndexISR].time64;
@@ -937,14 +878,12 @@ kdispServiceVblank_KERNEL
     // If the caller failed to spec which queue, figure they wanted all of them
     if (!(state & VBLANK_STATE_PROCESS_ALL_CALLBACKS) )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3821);
         state |= VBLANK_STATE_PROCESS_ALL_CALLBACKS;
     }
 
     // If the headmask is 0, we should process all heads
     if (headmask == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3822);
         headmask = 0xFFFFFFFF;
     }
 
@@ -954,7 +893,6 @@ kdispServiceVblank_KERNEL
     //
     if (state & VBLANK_STATE_PROCESS_IMMEDIATE)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3823);
         pending = headmask;
     }
     else
@@ -966,7 +904,6 @@ kdispServiceVblank_KERNEL
     //  No sense in doing anything if there is nothing pending.
     if (pending == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3824);
         return;
     }
 
@@ -988,13 +925,11 @@ kdispServiceVblank_KERNEL
     //
     while(pending_checked != pending)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3825);
         pKernelHead = KDISP_GET_HEAD(pKernelDisplay, Head);
 
         // Move on if this crtc's interrupt isn't pending...
         if ( (headmask & check_pending & ~pending_checked) & NVBIT(Head))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3826);
             // Track that we have now checked this head
             pending_checked |= NVBIT(Head);
 
@@ -1014,14 +949,12 @@ kdispServiceVblank_KERNEL
         // Don't check for new interrupts if we are in immediate mode
         if (!(state & VBLANK_STATE_PROCESS_IMMEDIATE) )
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3827);
             pending = kdispReadPendingVblank_HAL(pGpu, pKernelDisplay, pThreadState);
         }
 
         // if there was a change in the pending state, we should recheck everything
         if (check_pending != pending)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3828);
             // We need to recheck heads that were not pending before
             check_pending = pending;
             Head = 0;
@@ -1035,14 +968,12 @@ kdispServiceVblank_KERNEL
         // Make sure we dont waste time on heads that dont exist
         if (Head >= OBJ_MAX_HEADS)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3829);
             break;
         }
     }
 
     if (state & VBLANK_STATE_PROCESS_CALLED_FROM_ISR)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3830);
         // store off which heads have pending vblank interrupts, for comparison at the next DPC time.
         pKernelDisplay->isrVblankHeads = pending;
 
@@ -1051,11 +982,9 @@ kdispServiceVblank_KERNEL
     // increment the per-head vblank total counter, for any head with a pending vblank intr
     for (Head=0; Head < OBJ_MAX_HEADS; Head++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3831);
         // Move on if this crtc's interrupt isn't pending...
         if ((pending & NVBIT(Head)) == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3832);
             continue;
         }
 
@@ -1076,7 +1005,6 @@ kdispServiceVblank_KERNEL
         // did they ask for processing of low-latency work?
         if (state & VBLANK_STATE_PROCESS_LOW_LATENCY /* & maskNonEmptyQueues[Head]*/)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3833);
             //
             // don't let the DPC thread increment the low-latency counter.
             // otherwise, the counter will frequently increment at double the
@@ -1091,7 +1019,6 @@ kdispServiceVblank_KERNEL
             //
             if ( !(state & VBLANK_STATE_PROCESS_CALLED_FROM_DPC) || (pending & NVBIT(Head) & ~pKernelDisplay->isrVblankHeads) )
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3834);
                 // either we were called from the ISR, or vblank is asserted in DPC when it wasn't in the ISR
 
                 // low latency queue requested, and this isn't a DPC thread.
@@ -1103,7 +1030,6 @@ kdispServiceVblank_KERNEL
         // did they ask for processing of normal-latency work?
         if (state & VBLANK_STATE_PROCESS_NORMAL_LATENCY /* & maskNonEmptyQueues[Head]*/)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3835);
             // processing of the normal latency queue requested
             Count = kheadGetVblankNormLatencyCounter_HAL(pKernelHead) + 1;
             kheadSetVblankNormLatencyCounter_HAL(pKernelHead, Count);
@@ -1118,11 +1044,9 @@ kdispServiceVblank_KERNEL
 
     if (!unionNonEmptyQueues)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3836);
         // all queues (belonging to heads with pending vblank ints) are empty.
         if (IS_GSP_CLIENT(pGpu))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3837);
             kheadResetPendingVblank_HAL(pGpu, pKernelHead, pThreadState);
         }
         return;
@@ -1134,12 +1058,10 @@ kdispServiceVblank_KERNEL
     //
     for (Head = 0; Head < OBJ_MAX_HEADS; Head++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3838);
         pKernelHead = KDISP_GET_HEAD(pKernelDisplay, Head);
         // Move on if this crtc's interrupt isn't pending...
         if ((pending & NVBIT(Head)) == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3839);
             continue;
         }
 
@@ -1155,7 +1077,6 @@ kdispServiceVblank_KERNEL
     if ( (maskCallbacksStillPending) &&
          (state & VBLANK_STATE_PROCESS_CALLED_FROM_ISR) )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3840);
         //
         // there are still callbacks pending; don't clear
         // PCRTC_INTR, yet. The expectation is that the OS layer
@@ -1165,11 +1086,9 @@ kdispServiceVblank_KERNEL
         //
         for(i=0; i< OBJ_MAX_HEADS; i++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3841);
             pKernelHead = KDISP_GET_HEAD(pKernelDisplay, i);
             if (IS_GSP_CLIENT(pGpu))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3842);
                 kheadResetPendingVblank_HAL(pGpu, pKernelHead, pThreadState);
             }
         }
@@ -1179,11 +1098,9 @@ kdispServiceVblank_KERNEL
         // reset the VBlank intrs we've handled, and don't reset the vblank intrs we haven't.
         for(i=0; i< OBJ_MAX_HEADS; i++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3843);
             pKernelHead = KDISP_GET_HEAD(pKernelDisplay, i);
             if (pending & NVBIT(i) & ~maskCallbacksStillPending)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3844);
                 kheadResetPendingVblank_HAL(pGpu, pKernelHead, pThreadState);
             }
         }
@@ -1194,18 +1111,15 @@ kdispServiceVblank_KERNEL
 
 NvU32 kdispReadPendingVblank_IMPL(OBJGPU *pGpu, KernelDisplay *pKernelDisplay, THREAD_STATE_NODE *pThreadState)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3845);
     KernelHead *pKernelHead;
     NvU32       headIdx, pending = 0;
 
     for (headIdx = 0; headIdx < kdispGetNumHeads(pKernelDisplay); headIdx++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3846);
         pKernelHead = KDISP_GET_HEAD(pKernelDisplay, headIdx);
 
         if (kheadReadPendingVblank_HAL(pGpu, pKernelHead, NULL, pThreadState))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3847);
             pending |= NVBIT(headIdx);
         }
     }
@@ -1224,7 +1138,6 @@ kdispRegisterIntrService_IMPL
     IntrServiceRecord pRecords[MC_ENGINE_IDX_MAX]
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3848);
     NvU32 engineIdx = MC_ENGINE_IDX_DISP;
     NV_ASSERT(pRecords[engineIdx].pInterruptService == NULL);
     pRecords[engineIdx].pInterruptService = staticCast(pKernelDisplay, IntrService);
@@ -1259,7 +1172,6 @@ kdispInvokeDisplayModesetCallback_KERNEL
     NvU32 minRequiredFloorBandwidthKBPS
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3849);
     NV_STATUS   status;
 
     NV_PRINTF(LEVEL_INFO,

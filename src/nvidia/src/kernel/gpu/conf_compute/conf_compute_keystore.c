@@ -75,15 +75,12 @@ static NvU64 getChannelMaxValue (void);
 NV_STATUS
 ccKeyStoreInit (OBJGPU *pGpu)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3253);
     if (gpuIsApmFeatureEnabled(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3254);
         ccMode = APM;
     }
     else if (gpuIsCCFeatureEnabled(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3255);
         ccMode = HCC;
     }
     else
@@ -101,10 +98,8 @@ ccKeyStoreDeposit
     CC_KMB keyMaterialBundle
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3256);
     if (slotNumber >= NUM_SLOTS)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3257);
         return NV_ERR_INVALID_INDEX;
     }
 
@@ -112,7 +107,6 @@ ccKeyStoreDeposit
 
     for (NvU32 index = 0; index < CC_AES_256_GCM_IV_SIZE_DWORD; index++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3258);
         keySlot[slotNumber].encryptBundle.iv[index] = 0;
         keySlot[slotNumber].decryptBundle.iv[index] = 0;
     }
@@ -128,21 +122,17 @@ ccKeyStoreRetrieveViaChannel
     PCC_KMB        keyMaterialBundle
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3259);
     NvU32 slotNumber;
 
     if (RM_ENGINE_TYPE_IS_COPY(kchannelGetEngineType(pKernelChannel)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3260);
         if (getSlotNumberLce (pKernelChannel, &slotNumber) != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3261);
             return NV_ERR_INVALID_PARAMETER;
         }
     }
     else if (kchannelGetEngineType(pKernelChannel) == RM_ENGINE_TYPE_SEC2)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3262);
         slotNumber = KEYSTORE_SLOT_SEC2;
     }
     else
@@ -152,10 +142,8 @@ ccKeyStoreRetrieveViaChannel
 
     if ((rotateOperation == ROTATE_IV_ENCRYPT) || (rotateOperation == ROTATE_IV_ALL_VALID))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3263);
         if (checkAndIncrementSlot (slotNumber, ROTATE_IV_ENCRYPT) != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3264);
             // Right now returns error to caller. Depending on how the re-keying flow is designed
             // this may initiate re-keying.
 
@@ -165,10 +153,8 @@ ccKeyStoreRetrieveViaChannel
 
     if ((rotateOperation == ROTATE_IV_DECRYPT) || (rotateOperation == ROTATE_IV_ALL_VALID))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3265);
         if (checkAndIncrementSlot (slotNumber, ROTATE_IV_DECRYPT) != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3266);
             // Right now returns error to caller. Depending on how the re-keying flow is designed
             // this may initiate re-keying.
 
@@ -184,7 +170,6 @@ ccKeyStoreRetrieveViaChannel
 void
 cckeyStoreClear (void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3267);
     portMemSet (keySlot, 0, sizeof(keySlot));
 }
 
@@ -195,14 +180,12 @@ getSlotNumberLce
     NvU32         *slotNumber
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3268);
     NvU8 index;
 
     // TODO: Get actual privilege level of channel. For now assume
     // all channels have user mode privilege.
     switch (kchannelGetEngineType(pKernelChannel))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3269);
         case RM_ENGINE_TYPE_COPY0:
             index = 0;
             break;
@@ -243,17 +226,14 @@ checkAndIncrementSlot
     ROTATE_IV_TYPE rotateOperation  // Will only be ROTATE_IV_ENCRYPT or ROTATE_IV_DECRYPT.
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3270);
     if (checkSlot (slotNumber, rotateOperation) != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3271);
         return NV_ERR_GENERIC;
     }
 
     // TODO: Unconditionally increment channel counter once HCC supports it.
     if (ccMode == APM)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3272);
         incrementChannelCounter (slotNumber, rotateOperation);
     }
 
@@ -267,10 +247,8 @@ checkSlot
     ROTATE_IV_TYPE rotateOperation  // Will only be ROTATE_IV_ENCRYPT or ROTATE_IV_DECRYPT.
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3273);
     if (getChannelCounter (slotNumber, rotateOperation) == getChannelMaxValue())
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3274);
         return NV_ERR_GENERIC;
     }
 
@@ -284,37 +262,31 @@ incrementChannelCounter
     ROTATE_IV_TYPE rotateOperation  // Will only be ROTATE_IV_ENCRYPT or ROTATE_IV_DECRYPT.
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3275);
     NvU64 channelCounter = getChannelCounter (slotNumber, rotateOperation);
 
     channelCounter++;
 
     switch (rotateOperation)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3276);
         case ROTATE_IV_ENCRYPT:
             if (ccMode == HCC)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3277);
                 keySlot[slotNumber].encryptBundle.iv[2] = (NvU32) (channelCounter >> 32);
                 keySlot[slotNumber].encryptBundle.iv[1] = (NvU32) (channelCounter);
             }
             else if (ccMode == APM)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3278);
                 keySlot[slotNumber].encryptBundle.iv[2] = (NvU32) (channelCounter);
             }
             break;
         case ROTATE_IV_DECRYPT:
             if (ccMode == HCC)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3279);
                 keySlot[slotNumber].decryptBundle.iv[2] = (NvU32) (channelCounter >> 32);
                 keySlot[slotNumber].decryptBundle.iv[1] = (NvU32) (channelCounter);
             }
             else if (ccMode == APM)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3280);
                 keySlot[slotNumber].decryptBundle.iv[2] = (NvU32) (channelCounter);
             }
             break;
@@ -330,35 +302,29 @@ getChannelCounter
     ROTATE_IV_TYPE rotateOperation  // Will only be ROTATE_IV_ENCRYPT or ROTATE_IV_DECRYPT.
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3281);
     NvU64 channelCounter = 0;
 
     switch (rotateOperation)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3282);
         case ROTATE_IV_ENCRYPT:
             if (ccMode == HCC)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3283);
                 channelCounter = CONCAT64(keySlot[slotNumber].encryptBundle.iv[2],
                     keySlot[slotNumber].encryptBundle.iv[1]);
             }
             else if (ccMode == APM)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3284);
                 channelCounter = keySlot[slotNumber].encryptBundle.iv[2];
             }
             break;
         case ROTATE_IV_DECRYPT:
             if (ccMode == HCC)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3285);
                 channelCounter = CONCAT64(keySlot[slotNumber].decryptBundle.iv[2],
                     keySlot[slotNumber].decryptBundle.iv[1]);
             }
             else if (ccMode == APM)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3286);
                 channelCounter = keySlot[slotNumber].decryptBundle.iv[2];
             }
             break;
@@ -372,10 +338,8 @@ getChannelCounter
 static NvU64
 getChannelMaxValue (void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3287);
     switch (ccMode)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3288);
         case HCC:
             return NV_U64_MAX;
         case APM:

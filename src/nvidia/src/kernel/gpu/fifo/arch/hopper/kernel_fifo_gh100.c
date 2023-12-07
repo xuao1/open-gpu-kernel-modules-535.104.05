@@ -46,11 +46,9 @@ kfifoCheckChannelAllocAddrSpaces_GH100
     NV_ADDRESS_SPACE  gpFifoAddrSpace
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4897);
     if ((userdAddrSpace == ADDR_SYSMEM) &&
         ((pushBuffAddrSpace == ADDR_FBMEM || gpFifoAddrSpace == ADDR_FBMEM)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4898);
         return NV_ERR_NOT_SUPPORTED;
     }
 
@@ -74,7 +72,6 @@ kfifoGetCtxBufferMapFlags_GH100
     NvU32       *pflags
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4899);
     if (IS_GR(engine))
         *pflags |= DMA_VA_LIMIT_57B;
 
@@ -94,7 +91,6 @@ kfifoConstructUsermodeMemdescs_GH100
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4900);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU32 attr                    = 0;
     NvU32 attr2                   = 0;
@@ -108,7 +104,6 @@ kfifoConstructUsermodeMemdescs_GH100
 
     for(i = 0; i < 2; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4901);
         NvBool bPriv = (i==0);
         NvU64 offset = bPriv ? DRF_BASE(NV_VIRTUAL_FUNCTION_PRIV) :  DRF_BASE(NV_VIRTUAL_FUNCTION);
         NvU64 size   = bPriv ? DRF_SIZE(NV_VIRTUAL_FUNCTION_PRIV) : DRF_SIZE(NV_VIRTUAL_FUNCTION);

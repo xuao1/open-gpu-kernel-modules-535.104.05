@@ -41,7 +41,6 @@ kfifoIdleChannelsPerDevice_KERNEL
     NvU32       timeout
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5891);
     NV_STATUS rmStatus = NV_OK;
     NV_RM_RPC_IDLE_CHANNELS(pGpu, phClients, phDevices, phChannels,
                             numChannels, flags, timeout, rmStatus);
@@ -64,7 +63,6 @@ RmIdleChannels
     NvBool      bUserModeArgs
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5892);
     OBJGPU          *pGpu;
     KernelFifo      *pKernelFifo;
     NV_STATUS        rmStatus = NV_OK;
@@ -86,7 +84,6 @@ RmIdleChannels
 
     switch(DRF_VAL(OS30, _FLAGS, _CHANNEL, flags))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5893);
         case NVOS30_FLAGS_CHANNEL_SINGLE:
             numChannels = 1;
             phClients  = &hClient;
@@ -98,7 +95,6 @@ RmIdleChannels
 
             if (numChannels == 0)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5894);
                 return NV_OK;
             }
 
@@ -140,7 +136,6 @@ RmIdleChannels
     // both).
     for (chanIdx = 0; chanIdx < numChannels; chanIdx++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5895);
         NvU32        gpuInst;
         RsClient    *pClient;
         GpuResource *pGpuResource;
@@ -151,7 +146,6 @@ RmIdleChannels
         //
         if (hClient != phClients[chanIdx])
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5896);
             rmStatus = NV_ERR_INSUFFICIENT_PERMISSIONS;
             goto done;
         }
@@ -184,14 +178,12 @@ RmIdleChannels
     // gpus we're trying to idle.
     if (!rmGpuGroupLockIsOwner(0, GPU_LOCK_GRP_MASK, &gpuLockMask))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5897);
         // LOCK: acquire Device lock
         rmStatus = rmGpuGroupLockAcquire(0, GPU_LOCK_GRP_MASK,
                                          GPUS_LOCK_FLAGS_NONE,
                                          RM_LOCK_MODULES_FIFO, &gpuLockMask);
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5898);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to acquire Device lock, error 0x%x\n", rmStatus);
             goto done;
@@ -202,7 +194,6 @@ RmIdleChannels
     // Loop over all devices, idling those necessary given this channel list
     for (gpuIdx = 0; gpuIdx < NV_MAX_DEVICES; ++gpuIdx)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5899);
         NvHandle *pPerGpuClients;
         NvHandle *pPerGpuDevices;
         NvHandle *pPerGpuChannels;
@@ -210,7 +201,6 @@ RmIdleChannels
 
         if (numChannelsPerGpu[gpuIdx] == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5900);
             continue;
         }
 
@@ -233,7 +223,6 @@ RmIdleChannels
              chanIdx < numChannels && perGpuIdx < numChannelsPerGpu[gpuIdx];
              chanIdx++)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5901);
             RsClient    *pClient;
             GpuResource *pGpuResource;
 
@@ -250,7 +239,6 @@ RmIdleChannels
                                                    &pGpuResource) == NV_OK &&
                 gpuGetInstance(GPU_RES_GET_GPU(pGpuResource)) == gpuIdx)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5902);
                 pPerGpuClients[perGpuIdx]  = phClients[chanIdx];
                 pPerGpuDevices[perGpuIdx]  = phDevices[chanIdx];
                 pPerGpuChannels[perGpuIdx] = phChannels[chanIdx];
@@ -266,7 +254,6 @@ RmIdleChannels
 
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5903);
             goto done;
         }
     }
@@ -275,7 +262,6 @@ done:
 
     if (isGpuGrpLockAcquired)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5904);
         //UNLOCK: release Device lock
         rmGpuGroupLockRelease(gpuLockMask, GPUS_LOCK_FLAGS_NONE);
     }
@@ -283,25 +269,21 @@ done:
     // paramCopy structs not initialized for CHANNEL_SINGLE
     if (DRF_VAL(OS30, _FLAGS, _CHANNEL, flags) == NVOS30_FLAGS_CHANNEL_LIST)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5905);
         // No need to copy these back out
         if (phClients != NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5906);
             paramCopyClients.flags |= RMAPI_PARAM_COPY_FLAGS_SKIP_COPYOUT;
             (void) rmapiParamsRelease(&paramCopyClients);
         }
 
         if (phDevices != NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5907);
             paramCopyDevices.flags |= RMAPI_PARAM_COPY_FLAGS_SKIP_COPYOUT;
             (void) rmapiParamsRelease(&paramCopyDevices);
         }
 
         if (phChannels != NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5908);
             paramCopyChannels.flags |= RMAPI_PARAM_COPY_FLAGS_SKIP_COPYOUT;
             (void) rmapiParamsRelease(&paramCopyChannels);
         }

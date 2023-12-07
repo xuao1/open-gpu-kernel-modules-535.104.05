@@ -48,7 +48,6 @@ kflcnIsRiscvActive_GA10X
     KernelFalcon *pKernelFlcn
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4772);
     NvU32 val = kflcnRiscvRegRead_HAL(pGpu, pKernelFlcn, NV_PRISCV_RISCV_CPUCTL);
 
     return FLD_TEST_DRF(_PRISCV, _RISCV_CPUCTL, _ACTIVE_STAT, _ACTIVE, val);
@@ -69,7 +68,6 @@ kflcnRiscvProgramBcr_GA102
     NvBool bBRFetch
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4773);
     NvU32 bcr;
 
     bcr = DRF_DEF(_PRISCV_RISCV, _BCR_CTRL, _CORE_SELECT, _RISCV)   |
@@ -89,7 +87,6 @@ void kflcnSwitchToFalcon_GA10X
     KernelFalcon *pKernelFlcn
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4774);
     NvU32     bcrCtrl;
     RMTIMEOUT timeout;
     NV_STATUS status = NV_OK;
@@ -110,7 +107,6 @@ void kflcnSwitchToFalcon_GA10X
     gpuSetTimeout(pGpu, GPU_TIMEOUT_DEFAULT, &timeout, 0);
     for (;;)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4775);
         bcrCtrl = kflcnRiscvRegRead_HAL(pGpu, pKernelFlcn, NV_PRISCV_RISCV_BCR_CTRL);
         if (FLD_TEST_DRF(_PRISCV_RISCV, _BCR_CTRL, _VALID, _TRUE, bcrCtrl))
             break;
@@ -128,7 +124,6 @@ void kflcnSwitchToFalcon_GA10X
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4776);
         NV_ASSERT_OK_FAILED("Failed to switch core to Falcon mode", status);
     }
 }
@@ -146,7 +141,6 @@ kflcnPreResetWait_GA10X
     KernelFalcon *pKernelFlcn
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4777);
     NvU32 hwcfg2;
     RMTIMEOUT timeout;
     NvU32 flags = (GPU_TIMEOUT_FLAGS_TMR |
@@ -155,7 +149,6 @@ kflcnPreResetWait_GA10X
 
     if (!IS_SILICON(pGpu) && !IS_EMULATION(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4778);
         return NV_OK;
     }
 
@@ -163,21 +156,17 @@ kflcnPreResetWait_GA10X
 
     if (IS_SILICON(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4779);
         gpuSetTimeout(pGpu, PRE_RESET_TIMEOUT_US, &timeout, flags);
     }
     else if (IS_EMULATION(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4780);
         gpuSetTimeout(pGpu, PRE_RESET_PRE_SILICON_TIMEOUT_US, &timeout, flags);
     }
 
     while (!FLD_TEST_DRF(_PFALCON, _FALCON_HWCFG2, _RESET_READY, _TRUE, hwcfg2))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4781);
         if (gpuCheckTimeout(pGpu, &timeout) == NV_ERR_TIMEOUT)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4782);
             break;
         }
 
@@ -201,7 +190,6 @@ kflcnPreResetWait_GA10X
 static NvBool
 _kflcnWaitForScrubbingToFinish(OBJGPU *pGpu, void *pVoid)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4783);
     NvBool bResult = NV_FALSE;
     NvU32 dmaCtrl = 0;
     KernelFalcon *pKernelFlcn = reinterpretCast(pVoid, KernelFalcon *);
@@ -210,7 +198,6 @@ _kflcnWaitForScrubbingToFinish(OBJGPU *pGpu, void *pVoid)
 
     if (FLD_TEST_DRF(_PFALCON, _FALCON_HWCFG2, _MEM_SCRUBBING, _DONE, dmaCtrl))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4784);
         bResult = NV_TRUE;
     }
 
@@ -220,7 +207,6 @@ _kflcnWaitForScrubbingToFinish(OBJGPU *pGpu, void *pVoid)
 NV_STATUS
 kflcnWaitForResetToFinish_GA102(OBJGPU *pGpu, KernelFalcon *pKernelFlcn)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4785);
     // Skip the wait if we are in the reset path
     if (API_GPU_IN_RESET_SANITY_CHECK(pGpu))
         return NV_ERR_GPU_IN_FULLCHIP_RESET;
@@ -244,7 +230,6 @@ kflcnReadIntrStatus_GA102
     KernelFalcon *pKernelFlcn
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4786);
     return ((kflcnRegRead_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_IRQSTAT) &
              kflcnRegRead_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_IRQMASK) &
              kflcnRegRead_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_IRQDEST)) |

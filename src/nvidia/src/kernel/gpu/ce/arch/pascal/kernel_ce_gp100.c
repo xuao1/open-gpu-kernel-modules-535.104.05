@@ -31,7 +31,6 @@
 
 NV_STATUS kceStateLoad_GP100(OBJGPU *pGpu, KernelCE *pKCe, NvU32 flags)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2936);
     KernelCE *pKCeShim;
 
     // Mark first CE to load as the owner
@@ -40,17 +39,14 @@ NV_STATUS kceStateLoad_GP100(OBJGPU *pGpu, KernelCE *pKCe, NvU32 flags)
 
     if (!IS_VIRTUAL(pGpu) && pKCe->bShimOwner)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2937);
         NV_ASSERT_OK_OR_RETURN(kceTopLevelPceLceMappingsUpdate(pGpu, pKCe));
     }
     if (gpuIsCCFeatureEnabled(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2938);
         ConfidentialCompute *pCC = GPU_GET_CONF_COMPUTE(pGpu);
 
         switch (pKCe->publicID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2939);
             case 2:
                 NV_ASSERT_OK_OR_RETURN(confComputeDeriveSecrets(pCC, MC_ENGINE_IDX_CE2));
                 break;
@@ -95,7 +91,6 @@ kceIsCeSysmemRead_GP100
     KernelCE *pKCe
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2940);
     NvU32 sysmemReadCE;
     NvU32 sysmemWriteCE;
     NvU32 nvlinkP2PCeMask;
@@ -126,7 +121,6 @@ kceIsCeSysmemWrite_GP100
     KernelCE  *pKCe
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2941);
     NvU32 sysmemReadCE;
     NvU32 sysmemWriteCE;
     NvU32 nvlinkP2PCeMask;
@@ -157,7 +151,6 @@ kceIsCeNvlinkP2P_GP100
     KernelCE  *pKCe
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2942);
     NvU32 sysmemReadCE;
     NvU32 sysmemWriteCE;
     NvU32 nvlinkP2PCeMask = 0;
@@ -198,7 +191,6 @@ kceGetNvlinkMaxTopoForTable_GP100
     NvU32                   *pLargestTopoIdx
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2943);
     NvU32  cachedTopoIdx  = 0;
     NvU32  currentTopoIdx = 0;
     NvBool bCachedIdxExists, bCurrentIdxExists;
@@ -225,11 +217,9 @@ kceGetNvlinkMaxTopoForTable_GP100
 
     if (bCachedIdxExists && bCurrentIdxExists)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2944);
         // Both topologies are in the table
         if (cachedExposeCeMask & ~currentExposeCeMask)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2945);
             // Current topo's exposeCeMask is a subset of cached topo exposeCeMask
             *pLargestTopoIdx = cachedTopoIdx;
         }
@@ -240,7 +230,6 @@ kceGetNvlinkMaxTopoForTable_GP100
 
             if (cachedExposeCeMask != currentExposeCeMask)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2946);
                 //
                 // Current topo's exposeCeMask is superset of cached topo exposeCeMask
                 //
@@ -256,13 +245,11 @@ kceGetNvlinkMaxTopoForTable_GP100
     }
     else if (bCachedIdxExists)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2947);
         // only cached topo is in table
         *pLargestTopoIdx = cachedTopoIdx;
     }
     else if (bCurrentIdxExists)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2948);
         // only current topo is in table
         *pLargestTopoIdx = currentTopoIdx;
     }

@@ -44,7 +44,6 @@
 static void
 _clearOutstandingComputeChannels(void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 22);
     OBJGPU *pGpu = NULL;
     NvU32 gpuMask = 0;
     NvU32 gpuCount = 0;
@@ -57,7 +56,6 @@ _clearOutstandingComputeChannels(void)
 
     while ((pGpu = gpumgrGetNextGpu(gpuMask, &gpuInstance)) != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 23);
         pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
         if (pRmApi->Control(pRmApi,
@@ -67,7 +65,6 @@ _clearOutstandingComputeChannels(void)
                             NULL,
                             0) != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 24);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to recover all compute channels for GPU %d\n",
                       pGpu->gpuInstance);
@@ -78,14 +75,12 @@ _clearOutstandingComputeChannels(void)
 static void
 _clearFmState(void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 25);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     Fabric *pFabric = SYS_GET_FABRIC(pSys);
     NvU32 flags = fabricGetFmSessionFlags(pFabric);
 
     if (!pSys->getProperty(pSys, PDB_PROP_SYS_FABRIC_MANAGER_IS_INITIALIZED))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 26);
         NV_PRINTF(LEVEL_INFO,
                   "Fabric manager state is already cleared.\n");
         return;
@@ -97,7 +92,6 @@ _clearFmState(void)
 
     if (FLD_TEST_REF(NV000F_FLAGS_CHANNEL_RECOVERY, _ENABLED, flags))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 27);
         _clearOutstandingComputeChannels();
     }
 }
@@ -110,7 +104,6 @@ fmsessionapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 28);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     Fabric *pFabric = SYS_GET_FABRIC(pSys);
     NvHandle hClient = pCallContext->pClient->hClient;
@@ -123,7 +116,6 @@ fmsessionapiConstruct_IMPL
 
     if ((pCallContext->secInfo.privLevel >= RS_PRIV_LEVEL_KERNEL) && !RMCFG_FEATURE_PLATFORM_MODS)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 29);
         NV_PRINTF(LEVEL_ERROR,
                   "only supported for usermode clients\n");
         return NV_ERR_NOT_SUPPORTED;
@@ -131,7 +123,6 @@ fmsessionapiConstruct_IMPL
 
     if (pSys->getProperty(pSys, PDB_PROP_SYS_FABRIC_MANAGER_IS_REGISTERED))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 30);
         NV_PRINTF(LEVEL_ERROR, "duplicate object creation\n");
         return NV_ERR_STATE_IN_USE;
     }
@@ -146,10 +137,8 @@ fmsessionapiConstruct_IMPL
     //
     if (status == NV_ERR_NOT_SUPPORTED)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 31);
         if (rmclientIsAdminByHandle(hClient, pCallContext->secInfo.privLevel))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 32);
             status = NV_OK;
         }
         else
@@ -160,14 +149,12 @@ fmsessionapiConstruct_IMPL
     }
     else if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 33);
          NV_PRINTF(LEVEL_ERROR, "Capability validation failed\n");
          return status;
     }
 
     if (pFabric != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 34);
 
         fabricSetFmSessionFlags(pFabric, pAllocParams->flags);
     }
@@ -183,7 +170,6 @@ fmsessionapiDestruct_IMPL
     FmSessionApi *pFmSessionApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 35);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     NV_PRINTF(LEVEL_INFO, "Fabric manager is shutting down.\n");
@@ -200,12 +186,10 @@ fmsessionapiCtrlCmdSetFmState_IMPL
     FmSessionApi *pFmSessionApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 36);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     if (pSys->getProperty(pSys, PDB_PROP_SYS_FABRIC_MANAGER_IS_INITIALIZED))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 37);
         NV_PRINTF(LEVEL_INFO,
                   "Fabric manager state is already set.\n");
         return NV_OK;
@@ -224,7 +208,6 @@ fmsessionapiCtrlCmdClearFmState_IMPL
     FmSessionApi *pFmSessionApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 38);
     _clearFmState();
 
     return NV_OK;

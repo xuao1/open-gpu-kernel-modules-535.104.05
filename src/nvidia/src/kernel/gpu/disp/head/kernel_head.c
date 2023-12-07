@@ -28,7 +28,6 @@
 NV_STATUS
 kheadConstruct_IMPL(KernelHead *pKernelHead)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3647);
     pKernelHead->Vblank.IntrState = NV_HEAD_VBLANK_INTR_UNAVAILABLE;
     return NV_OK;
 }
@@ -39,7 +38,6 @@ kheadGetVblankTotalCounter_IMPL
     KernelHead *pKernelHead
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3648);
     return pKernelHead->Vblank.Counters.Total;
 }
 
@@ -50,7 +48,6 @@ kheadSetVblankTotalCounter_IMPL
     NvU32    counter
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3649);
     pKernelHead->Vblank.Counters.Total = counter;
 }
 
@@ -60,7 +57,6 @@ kheadGetVblankLowLatencyCounter_IMPL
     KernelHead *pKernelHead
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3650);
     return pKernelHead->Vblank.Counters.LowLatency;
 }
 
@@ -71,7 +67,6 @@ kheadSetVblankLowLatencyCounter_IMPL
     NvU32    counter
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3651);
     pKernelHead->Vblank.Counters.LowLatency = counter;
 }
 
@@ -81,7 +76,6 @@ kheadGetVblankNormLatencyCounter_IMPL
     KernelHead *pKernelHead
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3652);
     return pKernelHead->Vblank.Counters.NormLatency;
 }
 
@@ -92,7 +86,6 @@ kheadSetVblankNormLatencyCounter_IMPL
     NvU32    counter
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3653);
     pKernelHead->Vblank.Counters.NormLatency = counter;
 }
 
@@ -105,10 +98,8 @@ kheadIsVblankCallbackDue
     NvU32           vblankCount
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3654);
     if (pCallback->Flags & VBLANK_CALLBACK_FLAG_SPECIFIED_TIMESTAMP)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3655);
         //
         // Time stamp based call backs don't have a valid vblank count
         // vblank might be delayed and we might see only one vblank instead of two.
@@ -129,28 +120,23 @@ kheadIsVblankCallbackDue
         //
         if (VBLANK_STATE_PROCESS_IMMEDIATE & state)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3656);
             return NV_TRUE;
         }
 
         // Persistent callbacks that want to run every vblank
         if ((pCallback->Flags & VBLANK_CALLBACK_FLAG_PERSISTENT) && (pCallback->Flags & VBLANK_CALLBACK_FLAG_SPECIFIED_VBLANK_NEXT))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3657);
             return NV_TRUE;
         }
 
         // Every other callback whose time has come.
         if (pCallback->VBlankCount == 1+vblankCount)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3658);
             // Some callbacks might have become due, but only want ISR time exclusively (no DPC)
             if (pCallback->Flags & VBLANK_CALLBACK_FLAG_LOW_LATENCY__ISR_ONLY)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3659);
                 if (!(state & VBLANK_STATE_PROCESS_CALLED_FROM_ISR))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3660);
                     // Callback explicitly wants ISR time for its processing.
                     return NV_FALSE;
                 }
@@ -171,7 +157,6 @@ kheadCheckVblankCallbacksQueued_IMPL
     NvU32   *expiring
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3661);
     OBJTMR           *pTmr;
     NvU64             time;
     NvU32             queues = 0;
@@ -181,7 +166,6 @@ kheadCheckVblankCallbacksQueued_IMPL
 
     if (expiring)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3662);
         *expiring = 0;
     }
     //
@@ -193,12 +177,10 @@ kheadCheckVblankCallbacksQueued_IMPL
     if ( (pKernelHead->Vblank.Callback.pListLL) &&
          (state & VBLANK_STATE_PROCESS_LOW_LATENCY) )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3663);
         queues |= VBLANK_STATE_PROCESS_LOW_LATENCY;
 
         if (expiring)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3664);
             NvU32 vblankCount;
             VBLANKCALLBACK *pCallback;
 
@@ -209,7 +191,6 @@ kheadCheckVblankCallbacksQueued_IMPL
             {
                 if (kheadIsVblankCallbackDue(pCallback, state, time, vblankCount))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3665);
                     *expiring |= VBLANK_STATE_PROCESS_LOW_LATENCY;
                 }
                 pCallback = pCallback->Next;
@@ -221,12 +202,10 @@ kheadCheckVblankCallbacksQueued_IMPL
     if ( (pKernelHead->Vblank.Callback.pListNL) &&
          (state & VBLANK_STATE_PROCESS_NORMAL_LATENCY) )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3666);
         queues |= VBLANK_STATE_PROCESS_NORMAL_LATENCY;
 
         if (expiring)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3667);
             NvU32 vblankCount;
             VBLANKCALLBACK *pCallback;
 
@@ -237,7 +216,6 @@ kheadCheckVblankCallbacksQueued_IMPL
             {
                 if (kheadIsVblankCallbackDue(pCallback, state, time, vblankCount))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3668);
                     *expiring |= VBLANK_STATE_PROCESS_NORMAL_LATENCY;
                 }
 
@@ -256,15 +234,12 @@ kheadReadVblankIntrState_IMPL
     KernelHead *pKernelHead
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3669);
     // Check to make sure that our SW state grooves with the HW state
     if (kheadReadVblankIntrEnable_HAL(pGpu, pKernelHead))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3670);
         // HW is enabled, check if SW state is not enabled
         if (pKernelHead->Vblank.IntrState != NV_HEAD_VBLANK_INTR_ENABLED)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3671);
             pKernelHead->Vblank.IntrState = NV_HEAD_VBLANK_INTR_ENABLED;
         }
     }
@@ -280,7 +255,6 @@ kheadReadVblankIntrState_IMPL
         if ((pKernelHead->Vblank.IntrState == NV_HEAD_VBLANK_INTR_ENABLED) ||
             (pKernelHead->Vblank.IntrState == NV_HEAD_VBLANK_INTR_UNAVAILABLE))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3672);
             NvU32 state = NV_HEAD_VBLANK_INTR_UNAVAILABLE;
 
             //
@@ -290,26 +264,22 @@ kheadReadVblankIntrState_IMPL
             //
             if (kheadGetDisplayInitialized_HAL(pGpu, pKernelHead))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3673);
                 state = NV_HEAD_VBLANK_INTR_AVAILABLE;
             }
 
             if (state != pKernelHead->Vblank.IntrState)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3674);
                 pKernelHead->Vblank.IntrState = state;
             }
         }
         else if (pKernelHead->Vblank.IntrState == NV_HEAD_VBLANK_INTR_AVAILABLE)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3675);
             //
             // If HW is not enabled and head is not driving any display then
             // the SW state should be UNAVAILABLE
             //
             if (!kheadGetDisplayInitialized_HAL(pGpu, pKernelHead))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3676);
                 pKernelHead->Vblank.IntrState = NV_HEAD_VBLANK_INTR_UNAVAILABLE;
             }
         }
@@ -326,7 +296,6 @@ kheadWriteVblankIntrState_IMPL
     NvU32    newstate
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3677);
     NvU32 previous;
     NvBool enablehw = NV_FALSE; // Dont update the hw by default
     NvBool updatehw = NV_FALSE; // Dont enable the hw by default
@@ -339,7 +308,6 @@ kheadWriteVblankIntrState_IMPL
          (newstate != NV_HEAD_VBLANK_INTR_AVAILABLE)   &&
          (newstate != NV_HEAD_VBLANK_INTR_ENABLED) )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3678);
         NV_PRINTF(LEVEL_ERROR, "Unknown state %x requested on head %d.\n",
                   newstate, pKernelHead->PublicId);
         return;
@@ -353,7 +321,6 @@ kheadWriteVblankIntrState_IMPL
 
     switch(previous)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3679);
         case NV_HEAD_VBLANK_INTR_UNAVAILABLE:
             NV_PRINTF(LEVEL_INFO, "UNAVAILABLE -> ");
             break;
@@ -370,7 +337,6 @@ kheadWriteVblankIntrState_IMPL
 
     switch(newstate)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3680);
         case NV_HEAD_VBLANK_INTR_UNAVAILABLE:
             NV_PRINTF(LEVEL_INFO, "UNAVAILABLE\n");
             break;
@@ -390,14 +356,12 @@ kheadWriteVblankIntrState_IMPL
     // Move to the new state
     switch(newstate)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3681);
         // Move to the unavailable state. This has an implied disabled state.
         case NV_HEAD_VBLANK_INTR_UNAVAILABLE:
 
             // If the hw is on, turn it off
             if (previous == NV_HEAD_VBLANK_INTR_ENABLED)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3682);
                 enablehw = NV_FALSE;
                 updatehw = NV_TRUE;
             }
@@ -409,7 +373,6 @@ kheadWriteVblankIntrState_IMPL
             // If the hw is on, turn it off
             if (previous == NV_HEAD_VBLANK_INTR_ENABLED)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3683);
                 enablehw = NV_FALSE;
                 updatehw = NV_TRUE;
             }
@@ -421,7 +384,6 @@ kheadWriteVblankIntrState_IMPL
             // If the hw was off, turn it on
             if (previous != NV_HEAD_VBLANK_INTR_ENABLED)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3684);
                 enablehw = NV_TRUE;
                 updatehw = NV_TRUE;
             }
@@ -442,7 +404,6 @@ kheadWriteVblankIntrState_IMPL
     // Update the hw
     if (updatehw)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3685);
         kheadWriteVblankIntrEnable_HAL(pGpu, pKernelHead, enablehw);
     }
 }

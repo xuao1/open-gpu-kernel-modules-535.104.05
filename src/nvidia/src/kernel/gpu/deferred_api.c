@@ -83,7 +83,6 @@ _Class5080AddDeferredApi
     NvBool                           bUserModeArgs
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3289);
     NV_STATUS          rmStatus = NV_OK;
     DEFERRED_API_INFO *pCliDeferredApi;
     CALL_CONTEXT      *pCallContext = resservGetTlsCallContext();
@@ -96,7 +95,6 @@ _Class5080AddDeferredApi
     // validate handle
     if (!serverutilValidateNewResourceHandle(hClient, hDeferredApi))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3290);
         return NV_ERR_INVALID_OBJECT_HANDLE;
     }
 
@@ -104,7 +102,6 @@ _Class5080AddDeferredApi
     pCliDeferredApi = portMemAllocNonPaged(sizeof(DEFERRED_API_INFO) + size);
     if (NULL != pCliDeferredApi)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3291);
         // initialize the entry
         pCliDeferredApi->Client      = hClient;
         pCliDeferredApi->Handle      = hDeferredApi;
@@ -120,7 +117,6 @@ _Class5080AddDeferredApi
         rmStatus = btreeInsert(&pCliDeferredApi->Node, &pDeferredApiObject->DeferredApiList);
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3292);
             portMemFree(pCliDeferredApi);
             pCliDeferredApi = NULL;
         }
@@ -142,7 +138,6 @@ _Class5080AddDeferredApiV2
     NvU32                               size
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3293);
     NV_STATUS          rmStatus = NV_OK;
     DEFERRED_API_INFO *pCliDeferredApi;
     CALL_CONTEXT      *pCallContext = resservGetTlsCallContext();
@@ -155,7 +150,6 @@ _Class5080AddDeferredApiV2
     // validate handle
     if (!serverutilValidateNewResourceHandle(hClient, hDeferredApi))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3294);
         return NV_ERR_INVALID_OBJECT_HANDLE;
     }
 
@@ -164,7 +158,6 @@ _Class5080AddDeferredApiV2
     // Object already exists
     if (NV_OK == rmStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3295);
         return NV_ERR_INVALID_OBJECT_HANDLE;
     }
 
@@ -172,7 +165,6 @@ _Class5080AddDeferredApiV2
     pCliDeferredApi = portMemAllocNonPaged(sizeof(DEFERRED_API_INFO) + size);
     if (NULL != pCliDeferredApi)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3296);
         // initialize the entry
         pCliDeferredApi->Client      = hClient;
         pCliDeferredApi->Handle      = hDeferredApi;
@@ -189,7 +181,6 @@ _Class5080AddDeferredApiV2
 
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3297);
             portMemFree(pCliDeferredApi);
             pCliDeferredApi = NULL;
         }
@@ -209,12 +200,10 @@ _Class5080GetDeferredApiInfo
     DEFERRED_API_INFO **ppCliDeferredApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3298);
     NODE *pNode;
 
     if (btreeSearch(hDeferredApi, &pNode, pDeferredApiObject->DeferredApiList) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3299);
         *ppCliDeferredApi = pNode->Data;
         return NV_OK;
     }
@@ -230,7 +219,6 @@ static NV_STATUS _Class5080DelDeferredApi
     NvHandle           hDeferredApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3300);
     DEFERRED_API_INFO *pDeferredApi = NULL;
     NV_STATUS          status;
     NODE              *pNode;
@@ -239,7 +227,6 @@ static NV_STATUS _Class5080DelDeferredApi
     if (NV_OK == _Class5080GetDeferredApiInfo(pDeferredApiObject,
                                               hDeferredApi, &pDeferredApi))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3301);
         status = btreeSearch(hDeferredApi, &pNode, pDeferredApiObject->DeferredApiList);
         if (status != NV_OK)
             return NV_ERR_GENERIC;
@@ -247,25 +234,21 @@ static NV_STATUS _Class5080DelDeferredApi
         status = btreeUnlink(pNode, &pDeferredApiObject->DeferredApiList);
         if (status == NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3302);
             NV5080_CTRL_DEFERRED_API_PARAMS *pDeferredApiParams;
             pDeferredApiParams = (NV5080_CTRL_DEFERRED_API_PARAMS *)pDeferredApi->pDeferredApiInfo;
 
             if (pDeferredApi->Flags & DEFERRED_API_INFO_FLAGS_HAS_PRIVATE_DATA_ALLOC)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3303);
                 portMemFree((void *)NvP64_VALUE(pDeferredApi->pDeferredPrivateData));
             }
 
             if (DRF_VAL(5080_CTRL, _CMD_DEFERRED_API, _FLAGS_WAIT_FOR_TLB_FLUSH, pDeferredApiParams->flags) ==
                   NV5080_CTRL_CMD_DEFERRED_API_FLAGS_WAIT_FOR_TLB_FLUSH_TRUE)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3304);
                 // decrement count, if API was waiting on a TLB flush, but never saw one
                 if ((pDeferredApi->Flags & DEFERRED_API_INFO_FLAGS_HAS_EXECUTED) &&
                     !(pDeferredApi->Flags & DEFERRED_API_INFO_FLAGS_HAS_TLB_FLUSHED))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3305);
                     pDeferredApiObject->NumWaitingOnTLBFlush--;
                 }
             }
@@ -285,7 +268,6 @@ static NV_STATUS _Class5080UpdateTLBFlushState
     DeferredApiObject *pDeferredApiObject
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3306);
     NODE                            *pNode;
     DEFERRED_API_INFO               *pCliDeferredApi;
     NV5080_CTRL_DEFERRED_API_PARAMS *pDeferredApi;
@@ -294,7 +276,6 @@ static NV_STATUS _Class5080UpdateTLBFlushState
     while (pNode &&
            pDeferredApiObject->NumWaitingOnTLBFlush)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3307);
         pCliDeferredApi = pNode->Data;
         pDeferredApi    = (NV5080_CTRL_DEFERRED_API_PARAMS *) pCliDeferredApi->pDeferredApiInfo;
 
@@ -302,12 +283,10 @@ static NV_STATUS _Class5080UpdateTLBFlushState
         if (DRF_VAL(5080_CTRL, _CMD_DEFERRED_API, _FLAGS_WAIT_FOR_TLB_FLUSH, pDeferredApi->flags) ==
             NV5080_CTRL_CMD_DEFERRED_API_FLAGS_WAIT_FOR_TLB_FLUSH_TRUE)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3308);
             // check if API has EXECUTED and newly TLB_FLUSHED
             if ((pCliDeferredApi->Flags & DEFERRED_API_INFO_FLAGS_HAS_EXECUTED) &&
                 !(pCliDeferredApi->Flags & DEFERRED_API_INFO_FLAGS_HAS_TLB_FLUSHED))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3309);
                 pCliDeferredApi->Flags |= DEFERRED_API_INFO_FLAGS_HAS_TLB_FLUSHED;
                 pDeferredApiObject->NumWaitingOnTLBFlush--;
 
@@ -317,7 +296,6 @@ static NV_STATUS _Class5080UpdateTLBFlushState
                 if (DRF_VAL(5080_CTRL, _CMD_DEFERRED_API, _FLAGS_DELETE, pDeferredApi->flags) ==
                     NV5080_CTRL_CMD_DEFERRED_API_FLAGS_DELETE_IMPLICIT)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3310);
                     _Class5080DelDeferredApi(pDeferredApiObject, pCliDeferredApi->Handle);
                 }
                 continue;
@@ -344,14 +322,11 @@ defapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3311);
     if (pParams->pAllocParams != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3312);
         NV5080_ALLOC_PARAMS *pAllocParams = pParams->pAllocParams;
         if (pAllocParams->notifyCompletion)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3313);
             staticCast(pDeferredApi, ChannelDescendant)->notifyAction  = NV_OS_WRITE_THEN_AWAKEN;
             staticCast(pDeferredApi, ChannelDescendant)->bNotifyTrigger = NV_TRUE;
         }
@@ -366,7 +341,6 @@ defapiDestruct_IMPL
     DeferredApiObject *pDeferredApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3314);
     ChannelDescendant *pChannelDescendant = staticCast(pDeferredApi, ChannelDescendant);
     NODE              *pNode;
     DEFERRED_API_INFO *pCliDeferredApi;
@@ -377,7 +351,6 @@ defapiDestruct_IMPL
     btreeEnumStart(0, &pNode, pDeferredApi->DeferredApiList);
     while (pNode)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3315);
         pCliDeferredApi = pNode->Data;
 
         btreeEnumNext(&pNode, pDeferredApi->DeferredApiList);
@@ -392,7 +365,6 @@ defapiCtrlCmdDeferredApi_IMPL
     NV5080_CTRL_DEFERRED_API_PARAMS *pDeferredApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3316);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     OBJGPU   *pGpu   = GPU_RES_GET_GPU(pDeferredApiObj);
     NV_STATUS status = NV_OK;
@@ -406,7 +378,6 @@ defapiCtrlCmdDeferredApi_IMPL
     //
     if (IS_VIRTUAL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3317);
         NV_RM_RPC_DEFERRED_API_CONTROL(pGpu,
                                        RES_GET_CLIENT_HANDLE(pDeferredApiObj),
                                        RES_GET_PARENT_HANDLE(pDeferredApiObj),
@@ -432,7 +403,6 @@ defapiCtrlCmdDeferredApiV2_IMPL
     NV5080_CTRL_DEFERRED_API_V2_PARAMS *pDeferredApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3318);
     NV_STATUS status = NV_OK;
     OBJGPU   *pGpu   = GPU_RES_GET_GPU(pDeferredApiObj);
 
@@ -445,7 +415,6 @@ defapiCtrlCmdDeferredApiV2_IMPL
     //
     if (IS_VIRTUAL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3319);
         NV_RM_RPC_DEFERRED_API_CONTROL(pGpu,
                                        RES_GET_CLIENT_HANDLE(pDeferredApiObj),
                                        RES_GET_PARENT_HANDLE(pDeferredApiObj),
@@ -470,7 +439,6 @@ defapiCtrlCmdRemoveApi_IMPL
     NV5080_CTRL_REMOVE_API_PARAMS *pRemoveApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3320);
     NV_STATUS status = NV_OK;
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pDeferredApiObj);
 
@@ -483,7 +451,6 @@ defapiCtrlCmdRemoveApi_IMPL
     //
     if (IS_VIRTUAL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3321);
         NV_RM_RPC_REMOVE_DEFERRED_API(pGpu,
                                       RES_GET_CLIENT_HANDLE(pDeferredApiObj),
                                       RES_GET_PARENT_HANDLE(pDeferredApiObj),
@@ -505,7 +472,6 @@ _class5080DeferredApiV2
     NvU32 Data
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3322);
     DeferredApiObject   *pDeferredApiObject = dynamicCast(Object, DeferredApiObject);
     DEFERRED_API_INFO   *pCliDeferredApi    = NULL;
     NV5080_CTRL_DEFERRED_API_PARAMS *pDeferredApi;
@@ -517,12 +483,10 @@ _class5080DeferredApiV2
                                             Data, &pCliDeferredApi);
     if (rmStatus == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3323);
         pDeferredApi = pCliDeferredApi->pDeferredApiInfo;
 
         switch (pDeferredApi->cmd)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3324);
         case NV2080_CTRL_CMD_GPU_INITIALIZE_CTX:
             paramSize = sizeof(NV2080_CTRL_GPU_INITIALIZE_CTX_PARAMS);
             break;
@@ -557,7 +521,6 @@ _class5080DeferredApiV2
 
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3325);
                 NV_PRINTF(LEVEL_ERROR,
                           "Unable to find target gpu from hClient(%x), hDevice(%x)\n",
                           pDeferredApi->hClientVA, pDeferredApi->hDeviceVA);
@@ -580,7 +543,6 @@ _class5080DeferredApiV2
                                                              &pVAS);
                 if (NV_OK == rmStatus)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3326);
                     vaspaceInvalidateTlb(pVAS, pTgtGpu, PTE_UPGRADE);
 
                     if (pDeferredApiObject->NumWaitingOnTLBFlush)
@@ -622,7 +584,6 @@ _class5080DeferredApiV2
 
         if (bIsCtrlCall)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3327);
             RmCtrlParams        rmCtrlParams;
             RmCtrlExecuteCookie rmCtrlExecuteCookie = {0};
             RS_LOCK_INFO        lockInfo = {0};
@@ -658,28 +619,24 @@ _class5080DeferredApiV2
             if ((RMCFG_FEATURE_RM_BASIC_LOCK_MODEL && osIsRaisedIRQL()) ||
                 hypervisorIsVgxHyper())
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3328);
                 rmCtrlParams.flags |= NVOS54_FLAGS_IRQL_RAISED;
             }
 
             rmStatus = serverGetClientUnderLock(&g_resServ, pCliDeferredApi->Client, &pRsClient);
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3329);
                 goto cleanup;
             }
 
             rmStatus = subdeviceGetByGpu(pRsClient, pGpu, &pSubdevice);
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3330);
                 goto cleanup;
             }
 
             rmStatus = resControlLookup(staticCast(pSubdevice, RsResource), &rmCtrlParams, &pEntry);
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3331);
                 goto cleanup;
             }
 
@@ -699,7 +656,6 @@ _class5080DeferredApiV2
 
             if (RMCFG_FEATURE_PLATFORM_GSP && IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pGpu))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3332);
                 NvU32 gfid = kchannelGetGfid(Object->pKernelChannel);
                 callContext.secInfo.pProcessToken = (void *)(NvU64) gfid;
             }
@@ -710,10 +666,8 @@ _class5080DeferredApiV2
 
             if (rmStatus == NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3333);
                 if (pEntry->paramSize == 0)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3334);
                     typedef NV_STATUS (*CONTROL_EXPORT_FNPTR_NO_PARAMS)(void*);
                     CONTROL_EXPORT_FNPTR_NO_PARAMS pFunc = ((CONTROL_EXPORT_FNPTR_NO_PARAMS) pEntry->pFunc);
                     rmStatus = pFunc((void*)pSubdevice);
@@ -737,12 +691,10 @@ cleanup:
         if (DRF_VAL(5080_CTRL, _CMD_DEFERRED_API, _FLAGS_DELETE, pDeferredApi->flags) ==
             NV5080_CTRL_CMD_DEFERRED_API_FLAGS_DELETE_IMPLICIT)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3335);
             // delete implicitly, unless WAIT_FOR_TLB_FLUSH is also NV_TRUE
             if (DRF_VAL(5080_CTRL, _CMD_DEFERRED_API, _FLAGS_WAIT_FOR_TLB_FLUSH, pDeferredApi->flags) ==
                 NV5080_CTRL_CMD_DEFERRED_API_FLAGS_WAIT_FOR_TLB_FLUSH_TRUE)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3336);
                 pDeferredApiObject->NumWaitingOnTLBFlush++;
             }
             else
@@ -768,7 +720,6 @@ NV_STATUS defapiGetSwMethods_IMPL
     NvU32              *pNumMethods
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3337);
     *ppMethods = Nv50DeferredApi;
     *pNumMethods = NV_ARRAY_ELEMENTS(Nv50DeferredApi);
     return NV_OK;
@@ -780,7 +731,6 @@ NvBool defapiIsSwMethodStalling_IMPL
     NvU32              hDeferredApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3338);
     DEFERRED_API_INFO               *pCliDeferredApi = NULL;
     NV5080_CTRL_DEFERRED_API_PARAMS *pDeferredApiParams;
 
@@ -789,13 +739,11 @@ NvBool defapiIsSwMethodStalling_IMPL
                                                       &pCliDeferredApi);
     if (rmStatus == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3339);
         pDeferredApiParams = pCliDeferredApi->pDeferredApiInfo;
 
         // Clear the PBDMA interrupt before executing the software method.
         if (pDeferredApiParams->cmd == NV2080_CTRL_CMD_FIFO_UPDATE_CHANNEL_INFO)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3340);
             return NV_FALSE;
         }
     }

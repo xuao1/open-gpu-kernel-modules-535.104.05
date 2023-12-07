@@ -48,7 +48,6 @@ kdispGetChannelNum_v03_00
     NvU32 *pChannelNum
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3437);
     NV_STATUS status = NV_ERR_INVALID_ARGUMENT;
 
     if (pChannelNum == NULL)
@@ -59,15 +58,12 @@ kdispGetChannelNum_v03_00
 
     switch (channelClass)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3438);
         case dispChnClass_Curs:
             if ((channelInstance < NV_PDISP_CHN_NUM_CURS__SIZE_1) &&
                 (channelInstance < NV_PDISP_FE_HW_SYS_CAP_HEAD_EXISTS__SIZE_1))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3439);
                 if (FLD_IDX_TEST_DRF(_PDISP, _FE_HW_SYS_CAP, _HEAD_EXISTS, channelInstance, _YES, pStaticInfo->feHwSysCap))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3440);
                     *pChannelNum = NV_PDISP_CHN_NUM_CURS(channelInstance);
                     status = NV_OK;
                 }
@@ -81,10 +77,8 @@ kdispGetChannelNum_v03_00
         case dispChnClass_Winim:
             if (channelInstance < NV_PDISP_CHN_NUM_WINIM__SIZE_1)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3441);
                 if (pStaticInfo->windowPresentMask & NVBIT32(channelInstance))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3442);
                     *pChannelNum = NV_PDISP_CHN_NUM_WINIM(channelInstance);
                     status = NV_OK;
                 }
@@ -103,10 +97,8 @@ kdispGetChannelNum_v03_00
         case dispChnClass_Win:
             if (channelInstance < NV_PDISP_CHN_NUM_WIN__SIZE_1)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3443);
                 if (pStaticInfo->windowPresentMask & NVBIT32(channelInstance))
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3444);
                     *pChannelNum = NV_PDISP_CHN_NUM_WIN(channelInstance);
                     status = NV_OK;
                 }
@@ -151,10 +143,8 @@ kdispGetDisplayCapsBaseAndSize_v03_00
     NvU32         *pSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3445);
     if (pOffset)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3446);
         // Tegra offsets needs to be subtracted with -0x610000.
         *pOffset = DRF_BASE(NV_PDISP_FE_SW) +
                    kdispGetBaseOffset_HAL(pGpu, pKernelDisplay);
@@ -162,7 +152,6 @@ kdispGetDisplayCapsBaseAndSize_v03_00
 
     if (pSize)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3447);
         *pSize = sizeof(NvC373DispCapabilities_Map);
     }
 }
@@ -184,10 +173,8 @@ kdispGetDisplaySfUserBaseAndSize_v03_00
     NvU32         *pSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3448);
     if (pOffset)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3449);
         // Tegra offsets needs to be subtracted with -0x610000.
         *pOffset = DRF_BASE(NV_PDISP_SF_USER_0) +
                    kdispGetBaseOffset_HAL(pGpu, pKernelDisplay);
@@ -195,7 +182,6 @@ kdispGetDisplaySfUserBaseAndSize_v03_00
 
     if (pSize)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3450);
         *pSize = sizeof(NvC371DispSfUserMap);
     }
 }
@@ -223,7 +209,6 @@ kdispGetDisplayChannelUserBaseAndSize_v03_00
     NvU32         *pSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3451);
     NvU32 dispChannelNum;
     NV_STATUS status;
 
@@ -244,10 +229,8 @@ kdispGetDisplayChannelUserBaseAndSize_v03_00
     //
     if (pSize != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3452);
         switch (channelClass)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3453);
             case dispChnClass_Curs:
                 *pSize = NV_UDISP_FE_CHN_ASSY_BASEADR_CURS(dispChannelNum + 1) - NV_UDISP_FE_CHN_ASSY_BASEADR_CURS(dispChannelNum);
                 break;
@@ -287,10 +270,8 @@ kdispSelectClass_v03_00_KERNEL
     NvU32 swClass
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3454);
     if (!gpuIsClassSupported(pGpu, swClass))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3455);
         NV_PRINTF(LEVEL_ERROR, "class %x not supported\n", swClass);
         return NV_ERR_INVALID_CLASS;
     }
@@ -319,12 +300,10 @@ kdispReadRgLineCountAndFrameCount_v03_00_KERNEL
     NvU32         *pFrameCount
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3456);
     NvU32 data32;
 
     if (head >= kdispGetNumHeads(pKernelDisplay))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3457);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -353,7 +332,6 @@ kdispRestoreOriginalLsrMinTime_v03_00
     NvU32    origLsrMinTime
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3458);
     NvU32 feFliplock;
 
     feFliplock = GPU_REG_RD32(pGpu, NV_PDISP_FE_FLIPLOCK);
@@ -384,7 +362,6 @@ kdispSetSwapBarrierLsrMinTime_v03_00
     NvU32    newLsrMinTime
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3459);
     NvU32    dsiFliplock;
 
     dsiFliplock = GPU_REG_RD32(pGpu, NV_PDISP_FE_FLIPLOCK);
@@ -392,7 +369,6 @@ kdispSetSwapBarrierLsrMinTime_v03_00
 
     if (newLsrMinTime == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3460);
         dsiFliplock = FLD_SET_DRF_NUM(_PDISP, _FE_FLIPLOCK, _LSR_MIN_TIME,
                       FLIPLOCK_LSR_MIN_TIME_FOR_SAWP_BARRIER_V02, dsiFliplock);
     }

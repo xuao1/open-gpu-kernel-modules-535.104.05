@@ -48,13 +48,11 @@ kfifoEngineInfoXlate_GA100
     NvU32           *pOutVal
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4875);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
 
     // We no longer store ENGINE_INFO_TYPE_INTR on Ampere+ (bug 24110055)
     if (inType == ENGINE_INFO_TYPE_INTR || outType == ENGINE_INFO_TYPE_INTR)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4876);
         return NV_ERR_NOT_SUPPORTED;
     }
 
@@ -64,7 +62,6 @@ kfifoEngineInfoXlate_GA100
     //
     if (IS_MIG_IN_USE(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4877);
         NvU32 baseGrFaultId;
         NV_ASSERT_OK_OR_RETURN(kfifoEngineInfoXlate_GV100(pGpu, pKernelFifo,
                                                           ENGINE_INFO_TYPE_ENG_DESC, ENG_GR(0),
@@ -72,14 +69,12 @@ kfifoEngineInfoXlate_GA100
 
         if (inType == ENGINE_INFO_TYPE_MMU_FAULT_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4878);
             NvU32 subctxId, grIdx;
             NvU32 maxSubctx = kfifoGetMaxSubcontext_HAL(pGpu, pKernelFifo, NV_FALSE);
 
             // check if input fault ID corresponds to GR
             if ((inVal >= baseGrFaultId) && (inVal < (baseGrFaultId + maxSubctx)))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4879);
                 subctxId = inVal - baseGrFaultId;
                 NV_ASSERT_OK_OR_RETURN(kgrmgrGetGrIdxForVeid(pGpu, pKernelGraphicsManager, subctxId, &grIdx));
                 inVal = RM_ENGINE_TYPE_GR(grIdx);
@@ -89,7 +84,6 @@ kfifoEngineInfoXlate_GA100
 
         if (outType == ENGINE_INFO_TYPE_MMU_FAULT_ID)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4880);
             NvU32 grIdx, startSubctxId;
             NV_STATUS status;
             RM_ENGINE_TYPE rmEngineType;
@@ -102,7 +96,6 @@ kfifoEngineInfoXlate_GA100
             // check if rmEngineType corresponding to input is GR
             if (RM_ENGINE_TYPE_IS_GR(rmEngineType))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4881);
                 grIdx = RM_ENGINE_TYPE_GR_IDX(rmEngineType);
                 NV_ASSERT_OK_OR_RETURN(kgrmgrGetVeidBaseForGrIdx(pGpu, pKernelGraphicsManager, grIdx, &startSubctxId));
                 *pOutVal = baseGrFaultId + startSubctxId;
@@ -132,7 +125,6 @@ kfifoChannelGroupGetLocalMaxSubcontext_GA100
     NvBool              bLegacyMode
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4882);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
 
     NV_ASSERT_OR_RETURN(pKernelChannelGroup != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -140,7 +132,6 @@ kfifoChannelGroupGetLocalMaxSubcontext_GA100
     if (IS_MIG_IN_USE(pGpu) && !bLegacyMode &&
         RM_ENGINE_TYPE_IS_GR(pKernelChannelGroup->engineType))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4883);
         NvU32 grIdx = RM_ENGINE_TYPE_GR_IDX(pKernelChannelGroup->engineType);
         return nvPopCount64(pKernelGraphicsManager->grIdxVeidMask[grIdx]);
     }
@@ -169,13 +160,11 @@ kfifoUpdateUsermodeDoorbell_GA100
     NvU32       runlistId
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4884);
     //
     // Updating the usermode doorbell is different for CPU vs. GSP.
     //
     if (!RMCFG_FEATURE_PLATFORM_GSP)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4885);
         return kfifoUpdateUsermodeDoorbell_TU102(pGpu, pKernelFifo, workSubmitToken, runlistId);
     }
     else
@@ -206,7 +195,6 @@ kfifoGenerateWorkSubmitToken_GA100
     NvBool         bUsedForHost
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4886);
     NvU32          chId;
     NvU32          gfId;
     NvU32          runlistId;
@@ -225,12 +213,10 @@ kfifoGenerateWorkSubmitToken_GA100
 
     if (!RMCFG_FEATURE_PLATFORM_GSP || (IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pGpu) && IS_GFID_VF(gfId)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4887);
 
         // TODO: Remove check on Ampere. Bug 200606706.
         if (!bUsedForHost && IS_GFID_VF(gfId))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4888);
             NvU32 vChId;
 
             NV_ASSERT_OK_OR_RETURN(kfifoGetVChIdForSChId_HAL(pGpu, pKernelFifo,
@@ -243,7 +229,6 @@ kfifoGenerateWorkSubmitToken_GA100
         // TODO: Remove, on Ampere channels should be set to a valid runlist before allocation. Bug 200606706.
         if (!kchannelIsRunlistSet(pGpu, pKernelChannel))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4889);
             NV_PRINTF(LEVEL_NOTICE,
                       "FAILED Channel 0x%x is not assigned to runlist yet\n",
                       chId);
@@ -283,7 +268,6 @@ kfifoRunlistGetBaseShift_GA100
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4890);
     return NV_RAMRL_ENTRY_BASE_SHIFT;
 }
 
@@ -298,7 +282,6 @@ kfifoGetMaxCeChannelGroups_GA100
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4891);
     ENGDESCRIPTOR eng = 0;
     NvU32 deviceIndex;
     const ENGINE_INFO *pEngineInfo = kfifoGetEngineInfo(pKernelFifo);
@@ -314,7 +297,6 @@ kfifoGetMaxCeChannelGroups_GA100
     //
     for (deviceIndex = 0; deviceIndex < pEngineInfo->engineInfoListSize; deviceIndex++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4892);
         eng = pEngineInfo->engineInfoList[deviceIndex].engineData[ENGINE_INFO_TYPE_ENG_DESC];
 
         // All GR CE use the same pool as GR
@@ -322,7 +304,6 @@ kfifoGetMaxCeChannelGroups_GA100
             (IS_CE(eng) &&
              (!ceIsCeGrce(pGpu, pEngineInfo->engineInfoList[deviceIndex].engineData[ENGINE_INFO_TYPE_RM_ENGINE_TYPE]))))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4893);
             maxCeChannels += kfifoRunlistQueryNumChannels_HAL(pGpu, pKernelFifo, 0);
         }
     }
@@ -330,7 +311,6 @@ kfifoGetMaxCeChannelGroups_GA100
     // override max channels if we can run out of BAR2 page tables
     if (kbusIsBug2751296LimitBar2PtSize(GPU_GET_KERNEL_BUS(pGpu)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4894);
         // 2k for GR CE and 2k for the rest
         maxCeChannels = 4096;
     }

@@ -58,7 +58,6 @@ kbifGetPcieConfigAccessTestRegisters_GM107
     NvU32     *pcieStart
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1276);
    *pciStart  = NV_XVE_ID;
    *pcieStart = NV_XVE_VCCAP_HDR;
 }
@@ -80,14 +79,12 @@ kbifVerifyPcieConfigAccessTestRegisters_GM107
     NvU32      nvXveVccapHdr
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1277);
     NvU32 data;
 
     GPU_BUS_CFG_RD32(pGpu, NV_XVE_ID, &data);
 
     if (FLD_TEST_DRF(_XVE, _ID, _VENDOR, _NVIDIA, data))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1278);
         if (data != nvXveId)
             return NV_ERR_NOT_SUPPORTED;
 
@@ -96,7 +93,6 @@ kbifVerifyPcieConfigAccessTestRegisters_GM107
         if (FLD_TEST_DRF(_XVE, _VCCAP_HDR, _ID, _VC, data) &&
             FLD_TEST_DRF(_XVE, _VCCAP_HDR, _VER, _1, data))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1279);
             if (data != nvXveVccapHdr)
                 return NV_ERR_NOT_SUPPORTED;
             return NV_OK;
@@ -118,12 +114,10 @@ kbifRearmMSI_GM107
     KernelBif *pKernelBif
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1280);
     NV_STATUS status = gpuSanityCheckRegisterAccess(pGpu, 0, NULL);
 
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1281);
         return;
     }
 
@@ -146,11 +140,9 @@ kbifIsMSIEnabledInHW_GM107
     KernelBif *pKernelBif
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1282);
     NvU32 data32;
     if (NV_OK != GPU_BUS_CFG_RD32(pGpu, NV_XVE_MSI_CTRL, &data32))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1283);
         NV_PRINTF(LEVEL_ERROR, "unable to read NV_XVE_MSI_CTRL\n");
     }
 
@@ -172,15 +164,12 @@ kbifIsPciIoAccessEnabled_GM107
     KernelBif *pKernelBif
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1284);
     NvU32   data = 0;
 
     if (NV_OK == GPU_BUS_CFG_RD32(pGpu, NV_XVE_DEV_CTRL, &data))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1285);
         if (FLD_TEST_DRF(_XVE, _DEV_CTRL, _CMD_IO_SPACE, _ENABLED, data))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1286);
             return NV_TRUE;
         }
     }
@@ -203,15 +192,12 @@ kbifIs3dController_GM107
     KernelBif *pKernelBif
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1287);
     NvU32   data = 0;
 
     if (NV_OK == GPU_BUS_CFG_RD32(pGpu, NV_XVE_REV_ID, &data))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1288);
         if (FLD_TEST_DRF(_XVE, _REV_ID, _CLASS_CODE, _3D, data))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1289);
             return NV_TRUE;
         }
     }
@@ -236,7 +222,6 @@ kbifEnableNoSnoop_GM107
     NvBool     bEnable
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1290);
     NvU8  fieldVal;
     NvU32 regVal;
 
@@ -264,12 +249,10 @@ kbifPcieConfigEnableRelaxedOrdering_GM107
     KernelBif *pKernelBif
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1291);
     NvU32 xveDevCtrlStatus;
 
     if(NV_ERR_GENERIC  == GPU_BUS_CFG_RD32(pGpu, NV_XVE_DEVICE_CONTROL_STATUS, &xveDevCtrlStatus))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1292);
         NV_PRINTF(LEVEL_ERROR,
                   "Unable to read NV_XVE_DEVICE_CONTROL_STATUS!\n");
         DBG_BREAKPOINT();
@@ -294,12 +277,10 @@ kbifPcieConfigDisableRelaxedOrdering_GM107
     KernelBif *pKernelBif
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1293);
     NvU32 xveDevCtrlStatus;
 
     if(NV_ERR_GENERIC  == GPU_BUS_CFG_RD32(pGpu, NV_XVE_DEVICE_CONTROL_STATUS, &xveDevCtrlStatus))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1294);
         NV_PRINTF(LEVEL_ERROR,
                   "Unable to read NV_XVE_DEVICE_CONTROL_STATUS!\n");
         DBG_BREAKPOINT();
@@ -331,13 +312,11 @@ kbifGetXveStatusBits_GM107
     NvU32     *pStatus
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1295);
     // control/status reg
     NvU32 xveDevCtrlStatus;
 
     if (NV_OK  != GPU_BUS_CFG_RD32(pGpu, NV_XVE_DEVICE_CONTROL_STATUS, &xveDevCtrlStatus))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1296);
         NV_PRINTF(LEVEL_ERROR,
                   "Unable to read NV_XVE_DEVICE_CONTROL_STATUS!\n");
     }
@@ -349,10 +328,8 @@ kbifGetXveStatusBits_GM107
     // The register read above returns garbage on fmodel, so just return.
     if (IS_FMODEL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1297);
         if (pStatus)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1298);
             *pStatus = 0;
         }
         return NV_OK;
@@ -372,7 +349,6 @@ kbifGetXveStatusBits_GM107
 
     if (pKernelBif->EnteredRecoverySinceErrorsLastChecked)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1299);
         pKernelBif->EnteredRecoverySinceErrorsLastChecked = NV_FALSE;
         *pBits |= NV2080_CTRL_BUS_INFO_PCIE_LINK_ERRORS_ENTERED_RECOVERY;
     }
@@ -397,16 +373,13 @@ kbifClearXveStatus_GM107
     NvU32     *pStatus
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1300);
     NvU32 xveDevCtrlStatus;
 
     if (pStatus)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1301);
         xveDevCtrlStatus = *pStatus;
         if (xveDevCtrlStatus == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1302);
             return NV_OK;
         }
     }
@@ -414,7 +387,6 @@ kbifClearXveStatus_GM107
     {
         if (NV_OK  != GPU_BUS_CFG_RD32(pGpu, NV_XVE_DEVICE_CONTROL_STATUS, &xveDevCtrlStatus))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1303);
             NV_PRINTF(LEVEL_ERROR,
                       "Unable to read NV_XVE_DEVICE_CONTROL_STATUS!\n");
         }
@@ -442,13 +414,11 @@ kbifGetXveAerBits_GM107
     NvU32     *pBits
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1304);
     NvU32 xveAerUncorr;
     NvU32 xveAerCorr;
 
     if (pBits == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1305);
         return NV_ERR_GENERIC;
     }
 
@@ -456,13 +426,11 @@ kbifGetXveAerBits_GM107
 
     if (NV_OK != GPU_BUS_CFG_RD32(pGpu, NV_XVE_AER_UNCORR_ERR, &xveAerUncorr))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1306);
         NV_PRINTF(LEVEL_ERROR, "Unable to read NV_XVE_AER_UNCORR_ERR\n");
         return NV_ERR_GENERIC;
     }
     if (NV_OK != GPU_BUS_CFG_RD32(pGpu, NV_XVE_AER_CORR_ERR, &xveAerCorr))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1307);
         NV_PRINTF(LEVEL_ERROR, "Unable to read NV_XVE_AER_CORR_ERR\n");
         return NV_ERR_GENERIC;
     }
@@ -470,7 +438,6 @@ kbifGetXveAerBits_GM107
     // The register read above returns garbage on fmodel, so just return.
     if (IS_FMODEL(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1308);
         return NV_OK;
     }
 
@@ -520,7 +487,6 @@ kbifClearXveAer_GM107
     NvU32      bits
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1309);
     NvU32 xveAerUncorr = 0;
     NvU32 xveAerCorr   = 0;
 
@@ -552,12 +518,10 @@ kbifClearXveAer_GM107
 
     if (xveAerUncorr != 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1310);
         GPU_BUS_CFG_WR32(pGpu, NV_XVE_AER_UNCORR_ERR, xveAerUncorr);
     }
     if (xveAerCorr != 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1311);
         GPU_BUS_CFG_WR32(pGpu, NV_XVE_AER_CORR_ERR, xveAerCorr);
     }
 
@@ -583,7 +547,6 @@ kbifGetPciConfigSpacePriMirror_GM107
     NvU32     *pSize
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1312);
     *pBase = DEVICE_BASE(NV_PCFG);
     *pSize = DEVICE_EXTENT(NV_PCFG) - DEVICE_BASE(NV_PCFG) + 1;
     return NV_OK;
@@ -602,7 +565,6 @@ kbifExecC73War_GM107
     KernelBif *pKernelBif
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1313);
     OBJSYS  *pSys = SYS_GET_INSTANCE();
     OBJOS   *pOS  = SYS_GET_OS(pSys);
     OBJCL   *pCl  = SYS_GET_CL(pSys);
@@ -610,7 +572,6 @@ kbifExecC73War_GM107
 
     if (CS_NVIDIA_C73 == pCl->Chipset)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1314);
         //
         // Turn off L0s on the chipset which are required by the suspend/resume
         // cycles in Vista. See bug 400044 for more details.
@@ -620,7 +581,6 @@ kbifExecC73War_GM107
         if (!pOS->getProperty(pOS, PDB_PROP_OS_DOES_NOT_ALLOW_DIRECT_PCIE_MAPPINGS) &&
             (pGpu->gpuClData.rootPort.vAddr != 0))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1315);
             val = MEM_RD32((NvU8*)pGpu->gpuClData.rootPort.vAddr+NV_XVR_VEND_XP1);
             val = FLD_SET_DRF(_XVR, _VEND_XP1, _IGNORE_L0S, _EN, val);
             MEM_WR32((NvU8*)pGpu->gpuClData.rootPort.vAddr+NV_XVR_VEND_XP1, val);
@@ -628,7 +588,6 @@ kbifExecC73War_GM107
         else if (pOS->getProperty(pOS, PDB_PROP_OS_DOES_NOT_ALLOW_DIRECT_PCIE_MAPPINGS) &&
                  pGpu->gpuClData.rootPort.addr.valid)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1316);
             val = osPciReadDword(pGpu->gpuClData.rootPort.addr.handle, NV_XVR_VEND_XP1);
             val = FLD_SET_DRF(_XVR, _VEND_XP1, _IGNORE_L0S, _EN, val);
             osPciWriteDword(pGpu->gpuClData.rootPort.addr.handle, NV_XVR_VEND_XP1, val);
@@ -651,12 +610,10 @@ kbifGetBusOptionsAddr_GM107
     NvU32      *addrReg
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1317);
     NV_STATUS status = NV_OK;
 
     switch (options)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1318);
         case BUS_OPTIONS_DEV_CONTROL_STATUS:
             *addrReg = NV_XVE_DEVICE_CONTROL_STATUS;
             break;
@@ -683,7 +640,6 @@ kbifDisableSysmemAccess_GM107
     NvBool      bDisable
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1319);
     NV_STATUS status = NV_OK;
     RM_API   *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_INTERNAL_BIF_DISABLE_SYSTEM_MEMORY_ACCESS_PARAMS params = {0};
@@ -702,7 +658,6 @@ kbifDisableSysmemAccess_GM107
     // Only set the PDB in kernel if it was set in physical successfully
     if (status == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1320);
         pKernelBif->setProperty(pKernelBif, PDB_PROP_KBIF_SYSTEM_ACCESS_DISABLED, bDisable);
     }
 

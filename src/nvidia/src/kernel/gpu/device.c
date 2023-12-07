@@ -61,7 +61,6 @@ deviceConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3341);
     NV0080_ALLOC_PARAMETERS         *pNv0080AllocParams = pParams->pAllocParams;
     NvU32                            deviceInst, flags, vaMode;
     NvU32                            deviceClass        = pParams->externalClassId;
@@ -79,7 +78,6 @@ deviceConstruct_IMPL
 
     if (pNv0080AllocParams == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3342);
         deviceInst   = pParams->externalClassId - NV01_DEVICE_0;
         hClientShare = NV01_NULL_OBJECT;
         flags        = 0;
@@ -99,13 +97,11 @@ deviceConstruct_IMPL
         // valid only if NV_DEVICE_ALLOCATION_FLAGS_RESTRICT_RESERVED_VALIMITS is flagged.
         if (flags & NV_DEVICE_ALLOCATION_FLAGS_RESTRICT_RESERVED_VALIMITS)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3343);
             vaStartInternal = pNv0080AllocParams->vaStartInternal;
             vaLimitInternal = pNv0080AllocParams->vaLimitInternal;
 
             if ((vaLimitInternal < vaStartInternal)  || (vaLimitInternal == 0))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3344);
                 return NV_ERR_INVALID_ARGUMENT;
             }
         }
@@ -114,14 +110,12 @@ deviceConstruct_IMPL
     // validate device instance
     if (gpumgrIsDeviceInstanceValid(deviceInst) != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3345);
         return NV_ERR_INVALID_CLASS;
     }
 
     // Make sure this device has not been disabled
     if (gpumgrIsDeviceEnabled(deviceInst) == NV_FALSE)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3346);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -136,10 +130,8 @@ deviceConstruct_IMPL
 
     if (pCallContext->secInfo.privLevel < RS_PRIV_LEVEL_KERNEL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3347);
         if (!osIsGpuAccessible(pGpu))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3348);
             // Delete the device from the client since we should not be allocating it
             _deviceTeardownRef(pDevice, pCallContext);
             _deviceTeardown(pDevice, pCallContext);
@@ -154,7 +146,6 @@ deviceConstruct_IMPL
     if (pOS->getProperty(pOS, PDB_PROP_OS_LIMIT_GPU_RESET) &&
         pGpu->getProperty(pGpu, PDB_PROP_GPU_IN_FULLCHIP_RESET))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3349);
         // Delete the device from the client since we should not be allocating it
         _deviceTeardownRef(pDevice, pCallContext);
         _deviceTeardown(pDevice, pCallContext);
@@ -171,7 +162,6 @@ deviceConstruct_IMPL
             !krcTestAllowAlloc(pGpu, pKernelRc,
                                NV_ROBUST_CHANNEL_ALLOCFAIL_DEVICE))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3350);
             _deviceTeardownRef(pDevice, pCallContext);
             _deviceTeardown(pDevice, pCallContext);
             return NV_ERR_GENERIC;
@@ -180,7 +170,6 @@ deviceConstruct_IMPL
 
     if (IS_VIRTUAL(pGpu) || IS_GSP_CLIENT(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3351);
         physicalAllocFlags = flags & ~(NV_DEVICE_ALLOCATION_FLAGS_PLUGIN_CONTEXT
             | NV_DEVICE_ALLOCATION_FLAGS_HOST_VGPU_DEVICE);
 
@@ -188,7 +177,6 @@ deviceConstruct_IMPL
                                      hTargetClient, hTargetDevice, deviceClass, physicalAllocFlags, vaSize, vaMode, rmStatus);
         if (rmStatus != NV_OK)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3352);
             return rmStatus;
         }
     }
@@ -202,7 +190,6 @@ deviceDestruct_IMPL
     Device *pDevice
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3353);
     CALL_CONTEXT           *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
     NV_STATUS               rmStatus = NV_OK;
@@ -221,7 +208,6 @@ deviceDestruct_IMPL
     if (_deviceTeardownRef(pDevice, pCallContext) != NV_OK ||
         _deviceTeardown(pDevice, pCallContext) != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3354);
         tmpStatus = NV_ERR_INVALID_OBJECT_HANDLE;
         if (tmpStatus != NV_OK && rmStatus == NV_OK)
             rmStatus = tmpStatus;
@@ -235,24 +221,20 @@ deviceDestruct_IMPL
     //
     if (GPU_RES_GET_GPU(pDevice))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3355);
         OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
         // vGpu support
         if (IS_VIRTUAL(pGpu) || IS_GSP_CLIENT(pGpu))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3356);
             RsResourceRef *pResourceRef = pCallContext->pResourceRef;
             NvHandle       hDevice = pResourceRef->hResource;
 
             if (rmStatus == NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3357);
                 NV_RM_RPC_FREE(pGpu, hClient, hClient, hDevice, rmStatus);
             }
 
             if (rmStatus != NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3358);
                 pParams->status = rmStatus;
                 return;
             }
@@ -270,7 +252,6 @@ deviceControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3359);
 
     //
     // Some assertions to make RMCTRL to NVOC migration smooth
@@ -294,7 +275,6 @@ deviceInternalControlForward_IMPL
     NvU32 size
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3360);
     return gpuresInternalControlForward_IMPL(staticCast(pDevice, GpuResource), command, pParams, size);
 }
 
@@ -320,7 +300,6 @@ deviceInit_IMPL
     NvU32    vaMode
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3361);
     OBJGPU      *pGpu;
     NV_STATUS    status;
     GpuResource *pGpuResource = staticCast(pDevice, GpuResource);
@@ -334,7 +313,6 @@ deviceInit_IMPL
     status = deviceGetByInstance(pCallContext->pClient, deviceInst, &pExistingDevice);
     if (status == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3362);
         //
         // RS-TODO: Status code should be NV_ERR_STATE_IN_USE, however keeping
         // existing code from CliAllocElement (for now)
@@ -347,7 +325,6 @@ deviceInit_IMPL
 
     if ((pGpu = gpumgrGetGpu(gpuInst)) == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3363);
         return NV_ERR_INVALID_STATE;
     }
 
@@ -375,14 +352,12 @@ deviceInit_IMPL
 
         if (pGpu->getProperty(pGpu, PDB_PROP_GPU_ACCOUNTING_ON))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3364);
             // Try to start accounting for this procId/SubProcessId.
             // If gpuacctStartGpuAccounting() fails, just assert and print error.
             // gpuacctStartGpuAccounting() is not a major failure, we will continue with deviceInit() as normal.
             if ((pRsClient->type == CLIENT_TYPE_USER) && (gpuacctStartGpuAccounting(pGpuAcct,
                 pGpu->gpuInstance, pClient->ProcID, pClient->SubProcessID) != NV_OK))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3365);
                 NV_ASSERT(0);
                 NV_PRINTF(LEVEL_ERROR,
                           "gpuacctStartGpuAccounting() failed for procId : %d and SubProcessID : "
@@ -394,7 +369,6 @@ deviceInit_IMPL
 
     if (allocFlags & NV_DEVICE_ALLOCATION_FLAGS_PLUGIN_CONTEXT)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3366);
         NV_ASSERT_OR_RETURN(allocFlags & NV_DEVICE_ALLOCATION_FLAGS_HOST_VGPU_DEVICE,
             NV_ERR_INVALID_ARGUMENT);
     }
@@ -402,7 +376,6 @@ deviceInit_IMPL
 done:
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3367);
         deviceRemoveFromClientShare(pDevice);
     }
 
@@ -419,7 +392,6 @@ _deviceTeardown
     CALL_CONTEXT *pCallContext
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3368);
     OBJGPU    *pGpu     = GPU_RES_GET_GPU(pDevice);
     PORT_UNREFERENCED_VARIABLE(pGpu);
 
@@ -432,7 +404,6 @@ _deviceTeardown
     // introduce any change in functionality.
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3369);
         NV_PRINTF(LEVEL_ERROR,"Disable of Cuda limit activation failed");
         DBG_BREAKPOINT();
     }
@@ -446,7 +417,6 @@ _deviceTeardown
         if ((pRsClient->type == CLIENT_TYPE_USER) &&
              pGpu->getProperty(pGpu, PDB_PROP_GPU_ACCOUNTING_ON))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3370);
             gpuacctStopGpuAccounting(pGpuAcct,
                 pGpu->gpuInstance, pClient->ProcID, pClient->SubProcessID);
         }
@@ -461,7 +431,6 @@ static NV_STATUS _deviceTeardownRef
     CALL_CONTEXT *pCallContext
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3371);
 
     return NV_OK;
 }
@@ -474,7 +443,6 @@ deviceGetByHandle_IMPL
     Device          **ppDevice
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3372);
     RsResourceRef  *pResourceRef;
     NV_STATUS       status;
 
@@ -497,7 +465,6 @@ deviceGetByInstance_IMPL
     Device          **ppDevice
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3373);
     RS_ITERATOR  it;
     Device      *pDevice;
 
@@ -507,12 +474,10 @@ deviceGetByInstance_IMPL
 
     while (clientRefIterNext(it.pClient, &it))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3374);
         pDevice = dynamicCast(it.pResourceRef->pResource, Device);
 
         if ((pDevice != NULL) && (deviceInstance == pDevice->deviceInst))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3375);
             *ppDevice = pDevice;
             return NV_OK;
         }
@@ -530,7 +495,6 @@ deviceGetByGpu_IMPL
     Device          **ppDevice
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3376);
     NvU32     deviceInstance = gpuGetDeviceInstance(pGpu);
     NV_STATUS status;
 
@@ -541,7 +505,6 @@ deviceGetByGpu_IMPL
     // If pGpu is not the primary GPU return failure
     if (!bAnyInGroup && pGpu != GPU_RES_GET_GPU(*ppDevice))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3377);
         *ppDevice = NULL;
         return NV_ERR_OBJECT_NOT_FOUND;
     }
@@ -585,7 +548,6 @@ CliSetGpuContext
     OBJGPUGRP **ppGpuGrp
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3378);
     Device    *pDevice;
     RsClient  *pClient;
     NV_STATUS  status;
@@ -625,7 +587,6 @@ CliGetGpuFromContext
     NvBool        *pbBroadcast
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3379);
     NV_STATUS status;
     OBJGPU   *pGpu;
 
@@ -645,7 +606,6 @@ CliGetGpuFromHandle
     NvBool *pbBroadcast
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3380);
     RsClient    *pClient;
     NV_STATUS    status;
     OBJGPU      *pGpu;

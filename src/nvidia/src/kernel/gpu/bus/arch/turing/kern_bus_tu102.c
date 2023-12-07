@@ -41,7 +41,6 @@ kbusGetUnusedPciePeerId_TU102
     KernelBus *pKernelBus
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2198);
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
     NvU32         nvlinkIdMask  = 0;
     NvU32         peerId;
@@ -50,7 +49,6 @@ kbusGetUnusedPciePeerId_TU102
         (pKernelNvlink->getProperty(pKernelNvlink,
                         PDB_PROP_KNVLINK_WAR_BUG_3471679_PEERID_FILTERING)))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2199);
         //
         // Get the mask of NvLink peerIds, to exclude them from the
         // peerIds PCIE P2P is using.
@@ -64,12 +62,10 @@ kbusGetUnusedPciePeerId_TU102
 
     for (peerId = 0; peerId < pKernelBus->numPeers; peerId++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2200);
         if ((pKernelBus->p2pPcie.busPeer[peerId].refCount == 0) &&
             (!pKernelBus->p2pPcie.busPeer[peerId].bReserved) &&
             ((BIT(peerId) & nvlinkIdMask) == 0))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2201);
             return peerId;
         }
     }

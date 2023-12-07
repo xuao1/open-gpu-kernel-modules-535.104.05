@@ -38,7 +38,6 @@ gsyncapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4724);
     NV_STATUS                status = NV_OK;
     NV30F1_ALLOC_PARAMETERS *pNv30f1AllocParams = pParams->pAllocParams;
     RmClient                *pClient            = dynamicCast(pCallContext->pClient, RmClient);
@@ -48,7 +47,6 @@ gsyncapiConstruct_IMPL
 
     if (pClient == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4725);
         return NV_ERR_INVALID_CLIENT;
     }
 
@@ -65,7 +63,6 @@ gsyncapiConstruct_IMPL
 
     for (eventNum = 0; eventNum < NV30F1_CTRL_GSYNC_EVENT_TYPES; eventNum++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4726);
         pGSyncApi->pEventByType[eventNum] = NULL;
     }
 
@@ -80,7 +77,6 @@ gsyncapiControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4727);
     RMCFG_FEATURE_ENABLED_OR_BAIL(EXTDEV_GSYNC);
 
     if (gsyncIsInstanceValid(pGSyncApi->instance) == NV_FALSE)
@@ -96,13 +92,11 @@ CliNotifyGsyncEvent
     NvU32 eventFlags
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4728);
     RS_SHARE_ITERATOR it = serverutilShareIter(classId(NotifShare));
 
     // RMCONFIG: is GYSNC enabled?
     if ( ! RMCFG_FEATURE_EXTDEV_GSYNC)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4729);
         NV_ASSERT(RMCFG_FEATURE_EXTDEV_GSYNC);
         return;
     }
@@ -111,7 +105,6 @@ CliNotifyGsyncEvent
     // search notifiers with events hooked up for this gpu
     while (serverutilShareIterNext(&it))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4730);
         RsShared *pShared = it.pShared;
         GSyncApi *pGSyncApi;
         INotifier *pNotifier;
@@ -144,7 +137,6 @@ CliNotifyGsyncEvent
 
         if (pGSyncApi->oldEventNotification)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4731);
             // client is using old api
             OBJGPU *pMasterableGpu = gsyncGetMasterableGpuByInstance(gsyncInst);
             NvU32 oldEventFlags = gsyncConvertNewEventToOldEventNum(eventFlags);
@@ -154,14 +146,12 @@ CliNotifyGsyncEvent
             // convert mask to array index (only one bit should be set)
             while (tempMask >>= 1)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4732);
                 eventNum++;
             }
 
             // now, look for an event to trigger
             if (eventNum < NV30F1_CTRL_GSYNC_EVENT_TYPES)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4733);
                 pEventNotification = pGSyncApi->pEventByType[eventNum];
             }
 
@@ -172,7 +162,6 @@ CliNotifyGsyncEvent
             if ((NV30F1_CTRL_GSYNC_SET_EVENT_NOTIFICATION_ACTION_SMART_SYNC_LOSS == oldEventFlags) &&
                 (pEventNotification == NULL))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4734);
                 // update smart event notification tracking when
                 // client is NOT registered for SYNC_LOSS
                 // Ref. CL 14042432 and bug 200668208 for details
@@ -183,7 +172,6 @@ CliNotifyGsyncEvent
                 (pGSyncApi->notifyAction & oldEventFlags) &&
                 (pGSyncApi->lastEventNotified != oldEventFlags))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4735);
                 NV_PRINTF(LEVEL_INFO,
                           "gsync instance 0x%0x has had a status change: 0x%0x\n",
                           gsyncInst, oldEventFlags);
@@ -215,7 +203,6 @@ CliNotifyGsyncEvent
             if (pEventNotification->NotifyType == NV01_EVENT_KERNEL_CALLBACK ||
                  (pEventNotification->NotifyIndex == NV30F1_GSYNC_NOTIFIERS_ALL))
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4736);
                 NvNotification eventData;
                 portMemSet((void *)&eventData, 0, sizeof(NvNotification));
                 eventData.info32 = eventFlags;
@@ -240,17 +227,14 @@ CliNotifyGsyncEvent
 
                 for (notifyIndex = 0; eventFlags >> notifyIndex; notifyIndex++)
                 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4737);
                     if (eventFlags & NVBIT(notifyIndex))
                     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4738);
                         NV_PRINTF(LEVEL_INFO,
                                   "gsync instance 0x%0x has had a status change: %d\n",
                                   gsyncInst, notifyIndex);
 
                         if (pEventNotification->NotifyType == NV01_EVENT_OS_EVENT)
                         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4739);
                             osObjectEventNotification(
                                 pNotifierShare->hNotifierClient,
                                 pNotifierShare->hNotifierResource,

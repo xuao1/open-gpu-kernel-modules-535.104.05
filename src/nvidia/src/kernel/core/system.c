@@ -96,7 +96,6 @@ static sysChildObject sysChildObjects[] =
 NV_STATUS
 sysConstruct_IMPL(OBJSYS *pSys)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 256);
     NV_STATUS          status;
     OBJOS             *pOS;
     NvU32              sec = 0;
@@ -112,7 +111,6 @@ sysConstruct_IMPL(OBJSYS *pSys)
     status = _sysCreateChildObjects(pSys);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 257);
         goto failed;
     }
 
@@ -130,7 +128,6 @@ sysConstruct_IMPL(OBJSYS *pSys)
 
     if (!pOS->osRmInitRm(pOS))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 258);
         status = NV_ERR_GENERIC;
         goto failed;
     }
@@ -171,7 +168,6 @@ failed:
 void
 sysDestruct_IMPL(OBJSYS *pSys)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 259);
     //
     // Any of these operations might fail but go ahead and
     // attempt to free remaining resources before complaining.
@@ -203,7 +199,6 @@ sysDestruct_IMPL(OBJSYS *pSys)
 static NV_STATUS
 _sysCreateChildObjects(OBJSYS *pSys)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 260);
     NV_STATUS status = NV_OK;
     NvU32 i, n;
 
@@ -211,10 +206,8 @@ _sysCreateChildObjects(OBJSYS *pSys)
 
     for (i = 0; i < n; i++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 261);
         if (sysChildObjects[i].bDynamicConstruct)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 262);
             NvLength offset = sysChildObjects[i].childOffset;
             Dynamic **ppChild = reinterpretCast(reinterpretCast(pSys, NvU8*) + offset, Dynamic**);
             Dynamic *pNewObj;
@@ -222,7 +215,6 @@ _sysCreateChildObjects(OBJSYS *pSys)
 
             if (status == NV_OK)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 263);
                 *ppChild = pNewObj;
             }
         }
@@ -235,7 +227,6 @@ _sysCreateChildObjects(OBJSYS *pSys)
             //
             switch (sysChildObjects[i].pClassInfo->classId)
             {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 264);
                 case classId(OBJOS):
                     status = _sysCreateOs(pSys);
                     break;
@@ -259,14 +250,12 @@ _sysCreateChildObjects(OBJSYS *pSys)
 static void
 _sysDeleteChildObjects(OBJSYS *pSys)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 265);
     int i;
 
     osRmCapUnregister(&pSys->pOsRmCaps);
 
     for (i = NV_ARRAY_ELEMENTS(sysChildObjects) - 1; i >= 0; i--)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 266);
         NvLength offset = sysChildObjects[i].childOffset;
         Dynamic **ppChild = reinterpretCast(reinterpretCast(pSys, NvU8*) + offset, Dynamic**);
         objDelete(*ppChild);
@@ -281,14 +270,12 @@ _sysRegistryOverrideResourceServer
     OBJGPU *pGpu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 267);
     NvU32 data32;
 
     // Set read-only API lock override
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_READONLY_API_LOCK,
                             &data32) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 268);
         NvU32 apiMask = 0;
 
         if (FLD_TEST_DRF(_REG_STR_RM, _READONLY_API_LOCK, _ALLOC_RESOURCE, _ENABLE, data32))
@@ -328,7 +315,6 @@ _sysRegistryOverrideResourceServer
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_READONLY_API_LOCK_MODULE,
                             &data32) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 269);
         pSys->apiLockModuleMask = data32;
     }
     else
@@ -339,21 +325,18 @@ _sysRegistryOverrideResourceServer
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_CLIENT_HANDLE_LOOKUP,
                             &data32) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 270);
         pSys->setProperty(pSys, PDB_PROP_SYS_CLIENT_HANDLE_LOOKUP, !!data32);
     }
 
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_CLIENT_LIST_DEFERRED_FREE,
                             &data32) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 271);
         pSys->bUseDeferredClientListFree = !!data32;
     }
 
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_CLIENT_LIST_DEFERRED_FREE_LIMIT,
                             &data32) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 272);
         pSys->clientListDeferredFreeLimit = data32;
     }
 }
@@ -365,17 +348,14 @@ _sysRegistryOverrideExternalFabricMgmt
     OBJGPU *pGpu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 273);
     NvU32 data32;
 
     // Set external fabric management property
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_EXTERNAL_FABRIC_MGMT,
                             &data32) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 274);
         if (FLD_TEST_DRF(_REG_STR_RM, _EXTERNAL_FABRIC_MGMT, _MODE, _ENABLE, data32))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 275);
             NV_PRINTF(LEVEL_INFO,
                       "Enabling external fabric management.\n");
 
@@ -384,7 +364,6 @@ _sysRegistryOverrideExternalFabricMgmt
 
         if (FLD_TEST_DRF(_REG_STR_RM, _EXTERNAL_FABRIC_MGMT, _MODE, _DISABLE, data32))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 276);
             NV_PRINTF(LEVEL_INFO,
                       "Disabling external fabric management.\n");
 
@@ -399,7 +378,6 @@ sysEnableExternalFabricMgmt_IMPL
     OBJSYS *pSys
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 277);
     pSys->setProperty(pSys, PDB_PROP_SYS_FABRIC_IS_EXTERNALLY_MANAGED, NV_TRUE);
 
     NV_PRINTF(LEVEL_INFO,
@@ -412,7 +390,6 @@ sysForceInitFabricManagerState_IMPL
     OBJSYS *pSys
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 278);
     //
     // We should only allow force init if there is not way to run fabric
     // manager. For example, HGX-2 virtualization use-case.
@@ -420,7 +397,6 @@ sysForceInitFabricManagerState_IMPL
     if (pSys->getProperty(pSys, PDB_PROP_SYS_NVSWITCH_IS_PRESENT) ||
         pSys->getProperty(pSys, PDB_PROP_SYS_FABRIC_MANAGER_IS_REGISTERED))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 279);
         NV_ASSERT(0);
         return;
     }
@@ -437,11 +413,9 @@ _sysNvSwitchDetection
     OBJSYS *pSys
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 280);
 
     if (osIsNvswitchPresent())
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 281);
         pSys->setProperty(pSys, PDB_PROP_SYS_NVSWITCH_IS_PRESENT, NV_TRUE);
 
         NV_PRINTF(LEVEL_INFO, "NvSwitch is found in the system\n");
@@ -458,7 +432,6 @@ _sysNvSwitchDetection
 static void
 _sysInitStaticConfig(OBJSYS *pSys)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 282);
     portMemSet(&pSys->staticConfig, 0, sizeof(pSys->staticConfig));
     osInitSystemStaticConfig(&pSys->staticConfig);
 }
@@ -466,7 +439,6 @@ _sysInitStaticConfig(OBJSYS *pSys)
 NV_STATUS
 coreInitializeRm(void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 283);
     NV_STATUS  status;
     OBJSYS    *pSys = NULL;
 
@@ -485,7 +457,6 @@ coreInitializeRm(void)
     // Required before any NV_PRINTF() calls
     if (!DBG_INIT())
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 284);
         status = NV_ERR_GENERIC;
         return status;
     }
@@ -503,7 +474,6 @@ coreInitializeRm(void)
 void
 coreShutdownRm(void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 285);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     //
@@ -527,7 +497,6 @@ coreShutdownRm(void)
 NvS32
 RmInitRm(void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 286);
     return (coreInitializeRm() == NV_OK);
 }
 
@@ -535,7 +504,6 @@ RmInitRm(void)
 NvS32
 RmDestroyRm(void)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 287);
     coreShutdownRm();
     return NV_TRUE;
 }
@@ -543,7 +511,6 @@ RmDestroyRm(void)
 static NV_STATUS
 _sysCreateOs(OBJSYS *pSys)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 288);
     OBJOS      *pOS;
     NV_STATUS   status;
 
@@ -553,14 +520,12 @@ _sysCreateOs(OBJSYS *pSys)
     status = objCreate(&pOS, pSys, OBJOS);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 289);
         return status;
     }
 
     status = constructObjOS(pOS);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 290);
         objDelete(pOS);
         return status;
     }
@@ -568,7 +533,6 @@ _sysCreateOs(OBJSYS *pSys)
     status = osRmCapRegisterSys(&pSys->pOsRmCaps);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 291);
         //
         // Device objects needed for some access rights failed
         // This is not system-critical since access rights are currently disabled,
@@ -587,14 +551,12 @@ _sysCreateOs(OBJSYS *pSys)
 NV_STATUS
 sysCaptureState_IMPL(OBJSYS *pSys)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 292);
     return NV_OK;
 }
 
 OBJOS*
 sysGetOs_IMPL(OBJSYS *pSys)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 293);
     if (pSys->pOS)
         return pSys->pOS;
 
@@ -614,14 +576,12 @@ sysInitRegistryOverrides_IMPL
     OBJSYS         *pSys
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 294);
     OBJGPU         *pGpu      = NULL;
     NvU32           data32    = 0;
 
     if (pSys->getProperty(pSys,
                 PDB_PROP_SYS_REGISTRY_OVERRIDES_INITIALIZED))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 295);
         // The registry overrides, if any, have already been applied.
         return;
     }
@@ -630,7 +590,6 @@ sysInitRegistryOverrides_IMPL
     pGpu = gpumgrGetSomeGpu();
     if (pGpu == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 296);
         // Too early call ! we can not read the registry.
         return;
     }
@@ -638,57 +597,47 @@ sysInitRegistryOverrides_IMPL
     if ((osReadRegistryDword(pGpu,
             NV_REG_STR_RM_ENABLE_EVENT_TRACER, &data32) == NV_OK) && data32 )
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 297);
         RMTRACE_ENABLE(data32);
     }
 
     if (osReadRegistryDword(pGpu,
             NV_REG_STR_RM_CLIENT_DATA_VALIDATION, &data32) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 298);
         if (FLD_TEST_DRF(_REG_STR_RM, _CLIENT_DATA_VALIDATION, _KERNEL_BUFFERS, _ENABLED, data32))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 299);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_KERNEL_BUFFERS, NV_TRUE);
         }
         else if (FLD_TEST_DRF(_REG_STR_RM, _CLIENT_DATA_VALIDATION, _KERNEL_BUFFERS, _DISABLED, data32))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 300);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_KERNEL_BUFFERS, NV_FALSE);
         }
 
         if (FLD_TEST_DRF(_REG_STR_RM, _CLIENT_DATA_VALIDATION, _HANDLE, _ENABLED, data32))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 301);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_CLIENT_HANDLE, NV_TRUE);
         }
         else  if (FLD_TEST_DRF(_REG_STR_RM, _CLIENT_DATA_VALIDATION, _HANDLE, _DISABLED, data32))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 302);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_CLIENT_HANDLE, NV_FALSE);
         }
 
         if (FLD_TEST_DRF(_REG_STR_RM, _CLIENT_DATA_VALIDATION, _STRICT_CLIENT, _ENABLED, data32))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 303);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_CLIENT_HANDLE_STRICT, NV_TRUE);
         }
         else if (FLD_TEST_DRF(_REG_STR_RM, _CLIENT_DATA_VALIDATION, _STRICT_CLIENT, _DISABLED, data32))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 304);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_CLIENT_HANDLE_STRICT, NV_FALSE);
         }
 
         if (FLD_TEST_DRF(_REG_STR_RM, _CLIENT_DATA_VALIDATION, _ALL, _ENABLED, data32))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 305);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_CLIENT_HANDLE, NV_TRUE);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_KERNEL_BUFFERS, NV_TRUE);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_CLIENT_HANDLE_STRICT, NV_TRUE);
         }
         else  if (FLD_TEST_DRF(_REG_STR_RM, _CLIENT_DATA_VALIDATION, _ALL, _DISABLED, data32))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 306);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_CLIENT_HANDLE, NV_FALSE);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_KERNEL_BUFFERS, NV_FALSE);
             pSys->setProperty(pSys, PDB_PROP_SYS_VALIDATE_CLIENT_HANDLE_STRICT, NV_FALSE);
@@ -700,10 +649,8 @@ sysInitRegistryOverrides_IMPL
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_STREAM_MEMOPS,
                             &data32) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 307);
         if (FLD_TEST_DRF(_REG_STR_RM, _STREAM_MEMOPS, _ENABLE, _YES, data32))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 308);
             pSys->setProperty(pSys, PDB_PROP_SYS_ENABLE_STREAM_MEMOPS, NV_TRUE);
         }
     }
@@ -711,7 +658,6 @@ sysInitRegistryOverrides_IMPL
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_PRIORITY_BOOST,
                             &data32) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 309);
         if (data32 == NV_REG_STR_RM_PRIORITY_BOOST_DISABLE)
             pSys->setProperty(pSys, PDB_PROP_SYS_PRIORITY_BOOST, NV_FALSE);
         else
@@ -721,7 +667,6 @@ sysInitRegistryOverrides_IMPL
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_PRIORITY_THROTTLE_DELAY,
                             &data32) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 310);
         pSys->setProperty(pSys, PDB_PROP_SYS_PRIORITY_THROTTLE_DELAY_US, data32);
     }
 
@@ -730,14 +675,12 @@ sysInitRegistryOverrides_IMPL
 
     if (osBugCheckOnTimeoutEnabled())
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 311);
         pSys->setProperty(pSys, PDB_PROP_SYS_BUGCHECK_ON_TIMEOUT, NV_TRUE);
     }
 
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_ENABLE_ROUTE_TO_PHYSICAL_LOCK_BYPASS,
                             &data32) == NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 312);
         pSys->setProperty(pSys, PDB_PROP_SYS_ROUTE_TO_PHYSICAL_LOCK_BYPASS, !!data32);
     }
 
@@ -747,7 +690,6 @@ sysInitRegistryOverrides_IMPL
 void
 sysApplyLockingPolicy_IMPL(OBJSYS *pSys)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 313);
     g_resServ.bRouteToPhysicalLockBypass = pSys->getProperty(pSys, PDB_PROP_SYS_ROUTE_TO_PHYSICAL_LOCK_BYPASS);
     g_resServ.roTopLockApiMask = pSys->apiLockMask;
 }
@@ -759,7 +701,6 @@ sysSyncExternalFabricMgmtWAR_IMPL
     OBJGPU  *pGpu
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 314);
     NV0000_CTRL_CMD_SYSTEM_SYNC_EXTERNAL_FABRIC_MGMT_PARAMS params;
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS  status = NV_OK;

@@ -30,6 +30,5 @@ NV_STATUS hdacodecConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1203);
     return NV_OK;
 }

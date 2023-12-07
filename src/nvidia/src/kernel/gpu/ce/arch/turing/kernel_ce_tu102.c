@@ -72,7 +72,6 @@ kceGetNvlinkAutoConfigCeValues_TU102
     NvU32    *pExposeCeMask
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2949);
     KernelNvlink *pKernelNvlink      = GPU_GET_KERNEL_NVLINK(pGpu);
     OBJGPU       *pRemoteGpu         = NULL;
     NV_STATUS     status             = NV_OK;
@@ -91,14 +90,12 @@ kceGetNvlinkAutoConfigCeValues_TU102
 
     if ((pPceLceMap == NULL) || (pGrceConfig == NULL) || (pExposeCeMask == NULL))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2950);
         status = NV_ERR_INVALID_ARGUMENT;
         goto done;
     }
 
     if (pKernelNvlink == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2951);
         status = NV_ERR_NOT_SUPPORTED;
         goto done;
     }
@@ -112,7 +109,6 @@ kceGetNvlinkAutoConfigCeValues_TU102
 
     if (gpuGetNumCEs(pGpu) == 0)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2952);
         status = NV_ERR_NOT_SUPPORTED;
         goto done;
     }
@@ -122,12 +118,10 @@ kceGetNvlinkAutoConfigCeValues_TU102
     // Get the max{nvlinks/peer, for all connected peers}
     while ((pRemoteGpu = gpumgrGetNextGpu(gpuMask, &gpuInstance)) != NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2953);
         NvU32 numLinksToPeer = knvlinkGetNumLinksToPeer(pGpu, pKernelNvlink,
                                                         pRemoteGpu);
         if (numLinksToPeer == 0)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2954);
             continue;
         }
 
@@ -145,7 +139,6 @@ kceGetNvlinkAutoConfigCeValues_TU102
 
         if (numLinksToPeer > maxLinksPerPeer)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2955);
             maxLinksPerPeer = numLinksToPeer;
         }
     }
@@ -162,7 +155,6 @@ kceGetNvlinkAutoConfigCeValues_TU102
 
     if (!bEntryExists)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2956);
         NV_PRINTF(LEVEL_INFO,
                   "GPU%d : NVLINK config not found in PCE2LCE table - using default entry\n",
                   gpuGetInstance(pGpu));
@@ -184,18 +176,15 @@ kceGetNvlinkAutoConfigCeValues_TU102
 
     for (pceIdx = 0; pceIdx < pce2lceConfigSize1; pceIdx++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2957);
         pPceLceMap[pceIdx] = nvLinkCeAutoConfigTable_TU102[topoIdx].pceLceMap[pceIdx];
     }
 
     for (grceIdx = 0; grceIdx < grceConfigSize1; grceIdx++)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2958);
         NvU32 grceSharedLce = nvLinkCeAutoConfigTable_TU102[topoIdx].grceConfig[grceIdx];
 
         if (grceSharedLce != 0xF)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2959);
             // GRCE is shared
             pGrceConfig[grceIdx] = DRF_NUM(_CE, _GRCE_CONFIG, _SHARED, 1) |
                                    DRF_NUM(_CE, _GRCE_CONFIG, _SHARED_LCE, grceSharedLce);
@@ -236,7 +225,6 @@ done:
  */
 NvU32 kceGetGrceConfigSize1_TU102(KernelCE* kce)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2960);
     return NV_CE_GRCE_CONFIG__SIZE_1;
 }
 
@@ -252,6 +240,5 @@ NvU32 kceGetGrceConfigSize1_TU102(KernelCE* kce)
  */
 NvU32 kceGetPce2lceConfigSize1_TU102(KernelCE* kce)
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2961);
     return NV_CE_PCE2LCE_CONFIG__SIZE_1;
 }

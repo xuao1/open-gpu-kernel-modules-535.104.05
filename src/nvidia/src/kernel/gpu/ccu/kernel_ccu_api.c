@@ -41,7 +41,6 @@ kccuapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2758);
     NV_PRINTF(LEVEL_INFO, "Kernel Ccu Api: Construct\n");
 
     return NV_OK;
@@ -53,7 +52,6 @@ kccuapiDestruct_IMPL
     KernelCcuApi *pKernelCcuApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2759);
     NV_PRINTF(LEVEL_INFO, "Kernel Ccu Api: Destruct\n");
     return;
 }
@@ -67,7 +65,6 @@ _kccuapiMemdescGet
     MEMORY_DESCRIPTOR **pMemDesc
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2760);
     MIG_INSTANCE_REF ref;
     NV_STATUS status      = NV_OK;
     OBJGPU    *pGpu       = GPU_RES_GET_GPU(pKernelCcuApi);
@@ -78,13 +75,11 @@ _kccuapiMemdescGet
 
     if (pKernelCcu == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2761);
         return NV_ERR_INVALID_OBJECT;
     }
 
     if (!IS_MIG_ENABLED(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2762);
         return kccuMemDescGetForShrBufId(pGpu, pKernelCcu, CCU_DEV_SHRBUF_ID, pMemDesc);
     }
 
@@ -92,11 +87,9 @@ _kccuapiMemdescGet
     status = kmigmgrGetInstanceRefFromClient(pGpu, pKernelMIGManager, hClient, &ref);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2763);
         // Check if client is allowed to query for device counters
         if (rmclientIsCapable(pClient, NV_RM_CAP_SYS_SMC_MONITOR))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2764);
             return kccuMemDescGetForShrBufId(pGpu, pKernelCcu, CCU_DEV_SHRBUF_ID, pMemDesc);
         }
 
@@ -106,7 +99,6 @@ _kccuapiMemdescGet
 
     if ((ref.pKernelMIGGpuInstance == NULL) || (ref.pMIGComputeInstance == NULL))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2765);
         return NV_ERR_INVALID_POINTER;
     }
 
@@ -124,7 +116,6 @@ kccuapiMap_IMPL
     RsCpuMapping      *pCpuMapping
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2766);
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
     NV_STATUS status  = NV_OK;
     NvBool bKernel    = NV_FALSE;
@@ -138,7 +129,6 @@ kccuapiMap_IMPL
                                         &bKernel);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2767);
         NV_PRINTF(LEVEL_ERROR, "Kernel mapping validation failed with status: 0x%x\n", status);
         return status;
     }
@@ -149,7 +139,6 @@ kccuapiMap_IMPL
 
     if (pMemDesc == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2768);
         NV_PRINTF(LEVEL_ERROR, "Shared buffer memdesc is NULL\n");
         return NV_ERR_INVALID_OBJECT;
     }
@@ -164,7 +153,6 @@ kccuapiMap_IMPL
                         &pCpuMapping->pPrivate->pPriv);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2769);
         NV_PRINTF(LEVEL_ERROR, "kernelCcuApi shared buffer memdescMap failed with status: 0x%x\n", status);
         return status;
     }
@@ -180,7 +168,6 @@ kccuapiUnmap_IMPL
     RsCpuMapping *pCpuMapping
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2770);
     NV_STATUS status = NV_OK;
     NvBool bKernel   = NV_FALSE;
     NvHandle hClient = pCallContext->pClient->hClient;
@@ -194,7 +181,6 @@ kccuapiUnmap_IMPL
                                         &bKernel);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2771);
         NV_PRINTF(LEVEL_ERROR, "Kernel mapping validation failed with status: 0x%x\n", status);
         return status;
     }
@@ -203,7 +189,6 @@ kccuapiUnmap_IMPL
 
     if (pMemDesc == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2772);
         NV_PRINTF(LEVEL_ERROR, "Shared buffer memdesc is NULL\n");
         return NV_ERR_INVALID_OBJECT;
     }
@@ -226,7 +211,6 @@ kccuapiGetMapAddrSpace_IMPL
     NV_ADDRESS_SPACE *pAddrSpace
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2773);
     NV_ADDRESS_SPACE addrSpace  = 0;
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
     NvHandle hClient  = pCallContext->pClient->hClient;
@@ -239,7 +223,6 @@ kccuapiGetMapAddrSpace_IMPL
 
     if (pMemDesc == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2774);
         NV_PRINTF(LEVEL_ERROR, "Shared buffer memdesc is NULL\n");
         return NV_ERR_INVALID_OBJECT;
     }
@@ -258,7 +241,6 @@ kccuapiGetMemoryMappingDescriptor_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2775);
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
     NvHandle hClient  = RES_GET_CLIENT_HANDLE(pKernelCcuApi);
     RmClient *pClient = dynamicCast(RES_GET_CLIENT(pKernelCcuApi), RmClient);
@@ -269,7 +251,6 @@ kccuapiGetMemoryMappingDescriptor_IMPL
 
     if (pMemDesc == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2776);
         NV_PRINTF(LEVEL_ERROR, "Shared buffer memdesc is NULL\n");
         return NV_ERR_INVALID_OBJECT;
     }
@@ -286,7 +267,6 @@ kccuapiCtrlCmdSubscribe_IMPL
     NV_COUNTER_COLLECTION_UNIT_SUBSCRIBE_PARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2777);
     MIG_INSTANCE_REF ref;
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
     NV_STATUS status      = NV_OK;
@@ -300,19 +280,16 @@ kccuapiCtrlCmdSubscribe_IMPL
 
     if (pKernelCcu == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2778);
         return NV_ERR_INVALID_OBJECT;
     }
 
     if (!IS_MIG_ENABLED(pGpu))
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2779);
         NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
                 kccuMemDescGetForShrBufId(pGpu, pKernelCcu, CCU_DEV_SHRBUF_ID, &pMemDesc));
 
         if (pMemDesc == NULL)
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2780);
             return NV_ERR_NO_MEMORY;
         }
 
@@ -326,11 +303,9 @@ kccuapiCtrlCmdSubscribe_IMPL
     status = kmigmgrGetInstanceRefFromClient(pGpu, pKernelMIGManager, hClient, &ref);
     if (status != NV_OK)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2781);
         // Check if client is allowed to query for device counters or not
         if (!rmclientIsCapable(pClient, NV_RM_CAP_SYS_SMC_MONITOR))
         {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2782);
             // Return if the client is not allowed
             return status;
         }
@@ -350,7 +325,6 @@ kccuapiCtrlCmdSubscribe_IMPL
 
     if (pMemDesc == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2783);
         return NV_ERR_NO_MEMORY;
     }
     pParams->bufferSize = memdescGetSize(pMemDesc);
@@ -364,7 +338,6 @@ kccuapiCtrlCmdUnsubscribe_IMPL
     KernelCcuApi *pKernelCcuApi
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2784);
     NV_PRINTF(LEVEL_INFO, "Kernel Ccu Api: CCU unsubscribe request\n");
 
     return NV_OK;
@@ -377,7 +350,6 @@ kccuapiCtrlCmdSetStreamState_IMPL
     NV_COUNTER_COLLECTION_UNIT_STREAM_STATE_PARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2785);
     OBJGPU    *pGpu       = GPU_RES_GET_GPU(pKernelCcuApi);
     KernelCcu *pKernelCcu = GPU_GET_KERNEL_CCU(pGpu);
 
@@ -385,7 +357,6 @@ kccuapiCtrlCmdSetStreamState_IMPL
 
     if (pKernelCcu == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2786);
         return NV_ERR_INVALID_OBJECT;
     }
 
@@ -403,7 +374,6 @@ kccuapiCtrlCmdGetStreamState_IMPL
     NV_COUNTER_COLLECTION_UNIT_STREAM_STATE_PARAMS *pParams
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2787);
     OBJGPU    *pGpu       = GPU_RES_GET_GPU(pKernelCcuApi);
     KernelCcu *pKernelCcu = GPU_GET_KERNEL_CCU(pGpu);
 
@@ -411,7 +381,6 @@ kccuapiCtrlCmdGetStreamState_IMPL
 
     if (pKernelCcu == NULL)
     {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2788);
         return NV_ERR_INVALID_OBJECT;
     }
 

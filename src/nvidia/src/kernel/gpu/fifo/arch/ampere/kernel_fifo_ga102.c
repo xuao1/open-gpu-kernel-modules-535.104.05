@@ -37,6 +37,5 @@ kfifoRunlistGetBaseShift_GA102
     KernelFifo *pKernelFifo
 )
 {
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4895);
     return NV_RAMRL_ENTRY_BASE_SHIFT;
 }
