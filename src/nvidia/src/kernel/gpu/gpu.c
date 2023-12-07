@@ -88,7 +88,6 @@ typedef struct GPUCHILDTYPE  GPUCHILDTYPE;
 
 #define  RMTRACE_ENGINE_PROFILE_EVENT(EventName, EngineId, ReadCount, WriteCount)           \
 {                                                                                           \
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6045);
         RMTRACE_PROBE4(generic, marker,                                                     \
                        NvU32, EngineId, sizeof(NvU32),                                      \
                        char*, EventName, sizeof(EventName),                                 \
