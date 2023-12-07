@@ -272,7 +272,7 @@ NVRM resControl_IMPL: ioctl 21: src: __resControl__ in re_resource.c resControl_
 + pFunc = 3237853552，method = 2212365078（16 进制为 83DE0316）：15 次
 + pFunc = 3237853456，method = 2212365077（16 进制为 83DE0315）：20 次
 
-直接全局搜索 `pFunc` 目前看起来不现实，因为对这个变量的赋值有很多初，所以通过查看在本函数中，什么时候对 `pEntry` 赋值。
+直接全局搜索 `pFunc` 目前看起来不现实，因为对这个变量的赋值有很多处，所以通过查看在本函数中，什么时候对 `pEntry` 赋值。
 
 阅读源码发现，可以通过 `pEntry->methodId` 来查找。
 
