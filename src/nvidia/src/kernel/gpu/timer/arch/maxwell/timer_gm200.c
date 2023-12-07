@@ -41,6 +41,7 @@ tmrSetCountdownIntrDisable_GM200
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4137);
     NvU32 reg = GPU_REG_RD32(pGpu, NV_PTIMER_INTR_EN_0);
 
     reg = FLD_SET_DRF(_PTIMER, _INTR_EN_0, _TIMER, _DISABLED, reg);
@@ -56,6 +57,7 @@ tmrSetCountdownIntrEnable_GM200
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4138);
     NvU32 reg = GPU_REG_RD32(pGpu, NV_PTIMER_INTR_EN_0);
 
     reg = FLD_SET_DRF(_PTIMER, _INTR_EN_0, _TIMER, _ENABLED, reg);
@@ -72,6 +74,7 @@ tmrSetCountdownIntrReset_GM200
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4139);
     GPU_REG_WR32_EX(pGpu, NV_PTIMER_INTR_0,
                     DRF_DEF(_PTIMER, _INTR_0, _TIMER, _RESET), pThreadState);
     return NV_OK;
@@ -85,6 +88,7 @@ tmrGetCountdownPending_GM200
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4140);
     NvU32 reg = GPU_REG_RD32_EX(pGpu, NV_PTIMER_INTR_0, pThreadState);
     return FLD_TEST_DRF(_PTIMER, _INTR_0, _TIMER, _PENDING, reg);
 }
@@ -99,6 +103,7 @@ tmrSetCountdown_GM200
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4141);
     GPU_REG_WR32_EX(pGpu, NV_PTIMER_TIMER_0, timer, pThreadState);
     return NV_OK;
 }

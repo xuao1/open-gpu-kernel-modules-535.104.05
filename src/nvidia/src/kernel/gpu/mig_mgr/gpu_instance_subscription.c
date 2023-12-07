@@ -61,6 +61,7 @@ _gisubscriptionClientSharesVASCrossPartition
     NvU32 targetedSwizzId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3387);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGPUInstanceSubscription);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -108,6 +109,7 @@ gisubscriptionConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pRmAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3388);
     NVC637_ALLOCATION_PARAMETERS *pUserParams = pRmAllocParams->pAllocParams;
     RsClient *pRsClient = pCallContext->pClient;
     OBJGPU *pGpu;
@@ -238,6 +240,7 @@ gisubscriptionCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3389);
     RsResourceRef *pSrcRef = pParams->pSrcRef;
     GPUInstanceSubscription *pGPUInstanceSubscriptionSrc = dynamicCast(pSrcRef->pResource, GPUInstanceSubscription);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGPUInstanceSubscription);
@@ -288,6 +291,7 @@ gisubscriptionDestruct_IMPL
     GPUInstanceSubscription *pGPUInstanceSubscription
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3390);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGPUInstanceSubscription);
     CALL_CONTEXT *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
@@ -319,6 +323,7 @@ gisubscriptionIsDuped_IMPL
     GPUInstanceSubscription *pGPUInstanceSubscription
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3391);
     return pGPUInstanceSubscription->bIsDuped;
 }
 
@@ -330,6 +335,7 @@ gisubscriptionGetGPUInstanceSubscription_IMPL
     GPUInstanceSubscription **ppGPUInstanceSubscription
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3392);
     RsResourceRef *pResourceRef;
 
     NV_ASSERT_OR_RETURN(NULL != ppGPUInstanceSubscription, NV_ERR_INVALID_ARGUMENT);
@@ -351,6 +357,7 @@ gisubscriptionCanCopy_IMPL
     GPUInstanceSubscription *pGPUInstanceSubscription
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3393);
     return NV_TRUE;
 }
 
@@ -367,6 +374,7 @@ gisubscriptionCtrlCmdExecPartitionsCreate_IMPL
     NVC637_CTRL_EXEC_PARTITIONS_CREATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3394);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGPUInstanceSubscription);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -502,6 +510,7 @@ gisubscriptionCtrlCmdExecPartitionsDelete_IMPL
     NVC637_CTRL_EXEC_PARTITIONS_DELETE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3395);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGPUInstanceSubscription);
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance = pGPUInstanceSubscription->pKernelMIGGpuInstance;
@@ -597,6 +606,7 @@ gisubscriptionCtrlCmdExecPartitionsGet_IMPL
     NVC637_CTRL_EXEC_PARTITIONS_GET_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3396);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGPUInstanceSubscription);
     ComputeInstanceSubscription *pComputeInstanceSubscription = NULL;
@@ -690,6 +700,7 @@ gisubscriptionCtrlCmdExecPartitionsGetActiveIds_IMPL
     NVC637_CTRL_EXEC_PARTITIONS_GET_ACTIVE_IDS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3397);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGPUInstanceSubscription);
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance = pGPUInstanceSubscription->pKernelMIGGpuInstance;
@@ -734,6 +745,7 @@ gisubscriptionCtrlCmdExecPartitionsExport_IMPL
     NVC637_CTRL_EXEC_PARTITIONS_IMPORT_EXPORT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3398);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGPUInstanceSubscription);
     KERNEL_MIG_GPU_INSTANCE *pGPUInstance = pGPUInstanceSubscription->pKernelMIGGpuInstance;
     MIG_COMPUTE_INSTANCE *pMIGComputeInstance;
@@ -814,6 +826,7 @@ gisubscriptionCtrlCmdExecPartitionsImport_IMPL
     NVC637_CTRL_EXEC_PARTITIONS_IMPORT_EXPORT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3399);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGPUInstanceSubscription);
     KERNEL_MIG_GPU_INSTANCE *pGPUInstance = pGPUInstanceSubscription->pKernelMIGGpuInstance;
     NV_STATUS status = NV_OK;
@@ -920,6 +933,7 @@ gisubscriptionShouldClassBeFreedOnUnsubscribe_IMPL
     NvU32 internalClassId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3400);
     NvBool bShouldFree = NV_TRUE;
 
     switch (internalClassId)
@@ -954,6 +968,7 @@ gisubscriptionCleanupOnUnsubscribe_IMPL
     CALL_CONTEXT *pCallContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3401);
     RsResourceRef *pDeviceRef;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     RS_ITERATOR iter;
@@ -1037,6 +1052,7 @@ gisubscriptionCtrlCmdExecPartitionsGetProfileCapacity_IMPL
     NVC637_CTRL_EXEC_PARTITIONS_GET_PROFILE_CAPACITY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3402);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGPUInstanceSubscription);
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance = pGPUInstanceSubscription->pKernelMIGGpuInstance;
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);

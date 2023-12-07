@@ -33,6 +33,7 @@ sec2ctxConstructHal_KERNEL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3970);
     ChannelDescendant *pChannelDescendant = staticCast(pSec2Context, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     KernelFalcon      *pKernelFalcon = kflcnGetKernelFalconForEngine(pGpu, ENG_SEC2);
@@ -47,6 +48,7 @@ sec2ctxDestructHal_KERNEL
     Sec2Context *pSec2Context
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3971);
     ChannelDescendant *pChannelDescendant = staticCast(pSec2Context, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     KernelFalcon      *pKernelFalcon = kflcnGetKernelFalconForEngine(pGpu, ENG_SEC2);

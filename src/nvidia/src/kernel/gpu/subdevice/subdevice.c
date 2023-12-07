@@ -54,6 +54,7 @@ subdeviceConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4010);
     NV2080_ALLOC_PARAMETERS *pNv2080AllocParams = pParams->pAllocParams;
     OBJGPU                  *pPrimaryGpu;
     OBJGPU                  *pGpu;
@@ -140,6 +141,7 @@ subdeviceUnsetDynamicBoostLimit_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4011);
     if (!pSubdevice->bUpdateTGP)
         return NV_OK;
 
@@ -160,6 +162,7 @@ subdevicePreDestruct_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4012);
     subdeviceUnsetDynamicBoostLimit(pSubdevice);
 }
 
@@ -169,6 +172,7 @@ subdeviceDestruct_IMPL
     Subdevice* pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4013);
     CALL_CONTEXT           *pCallContext;
     RsClient               *pRsClient       = RES_GET_CLIENT(pSubdevice);
     RsResourceRef          *pResourceRef    = RES_GET_REF(pSubdevice);
@@ -239,6 +243,7 @@ subdeviceInternalControlForward_IMPL
     NvU32 size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4014);
     return gpuresInternalControlForward_IMPL(staticCast(pSubdevice, GpuResource), command, pParams, size);
 }
 
@@ -258,6 +263,7 @@ subdeviceGetByHandle_IMPL
     Subdevice       **ppSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4015);
     RsResourceRef  *pResourceRef;
     NV_STATUS       status;
 
@@ -280,6 +286,7 @@ subdeviceGetByGpu_IMPL
     Subdevice       **ppSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4016);
     Subdevice          *pSubdevice = NULL;
     OBJGPU             *pTmpGpu = NULL;
     RS_ITERATOR         it;
@@ -316,6 +323,7 @@ subdeviceGetByInstance_IMPL
     Subdevice       **ppSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4017);
     RsResourceRef      *pDeviceRef;
     Subdevice          *pSubdevice;
     RS_ITERATOR         it;
@@ -349,6 +357,7 @@ subdeviceUnsetGpuDebugMode_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4018);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     if (!pSubdevice->bGpuDebugModeEnabled)
@@ -368,6 +377,7 @@ subdeviceReleaseComputeModeReservation_IMPL
     CALL_CONTEXT    *pCallContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4019);
     RsClient *pRsClient = pCallContext->pClient;
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pSubdevice);
     GPU_RES_SET_THREAD_BC_STATE(pSubdevice);
@@ -387,6 +397,7 @@ subdeviceRestoreGrTickFreq_IMPL
     CALL_CONTEXT *pCallContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4020);
     if (!pSubdevice->bMaxGrTickFreqRequested)
         return;
 
@@ -412,6 +423,7 @@ subdeviceRestoreWatchdog_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4021);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelRc *pKernelRc;
 

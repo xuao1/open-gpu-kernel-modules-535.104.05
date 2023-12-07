@@ -67,6 +67,7 @@ rmapiInitialize
     void
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5662);
     NV_STATUS         status = NV_OK;
     API_SECURITY_INFO secInfo = {0};
 
@@ -131,6 +132,7 @@ rmapiShutdown
     void
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5663);
     if (!g_bResServInit)
         return;
 
@@ -153,6 +155,7 @@ _rmapiInitInterface
     NvBool             bGpuLockInternal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5664);
     //
     // Initialize to all stubs first, so any APIs not explicitly set here
     // will return NV_ERR_NOT_SUPPORTED if called
@@ -214,6 +217,7 @@ rmapiGetInterface
     RMAPI_TYPE rmapiType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5665);
     return &g_RmApiList[rmapiType];
 }
 
@@ -223,6 +227,7 @@ _rmapiUnrefGpuAccessNeeded
     NvU32           gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5666);
     NvU32           gpuInstance = 0;
     OBJGPU         *pGpu = NULL;
 
@@ -238,6 +243,7 @@ _rmapiRefGpuAccessNeeded
     NvU32          *pGpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5667);
     NV_STATUS       status = NV_OK;
     NvU32           mask = 0;
     NvU32           gpuInstance = 0;
@@ -283,6 +289,7 @@ rmapiPrologue
     RM_API_CONTEXT *pContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5668);
     NV_STATUS       status = NV_OK;
     NvBool          bApiLockTaken = NV_FALSE;
     NvU32           mask;
@@ -337,6 +344,7 @@ rmapiEpilogue
     RM_API_CONTEXT *pContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5669);
     NV_STATUS       status = NV_OK;
     NvBool          bApiLockTaken = NV_FALSE;
     NvU32           mask;
@@ -384,6 +392,7 @@ rmapiInitLockInfo
     RS_LOCK_INFO      *pLockInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5670);
     NV_ASSERT_OR_RETURN_VOID(pLockInfo != NULL);
     pLockInfo->flags = 0;
     pLockInfo->state = 0;
@@ -426,6 +435,7 @@ rmapiInitLockInfo
 static NV_STATUS
 _rmapiLockAlloc(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5671);
     // Turn on by default for Linux to get some soak time
     // bug 2539044, bug 2536036: Enable by default.
     g_resServ.bUnlockedParamCopy = NV_TRUE;
@@ -460,12 +470,14 @@ _rmapiLockAlloc(void)
 static void
 _rmapiLockFree(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5672);
     portSyncRwLockDestroy(g_RmApiLock.pLock);
 }
 
 NV_STATUS
 rmapiLockAcquire(NvU32 flags, NvU32 module)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5673);
     NV_STATUS rmStatus = NV_OK;
     NvU64 threadId = portThreadGetCurrentThreadId();
 
@@ -590,6 +602,7 @@ rmapiLockAcquire(NvU32 flags, NvU32 module)
 void
 rmapiLockRelease(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5674);
     NvU64 threadId = portThreadGetCurrentThreadId();
     NvU64 timestamp;
 
@@ -629,6 +642,7 @@ rmapiLockRelease(void)
 NvBool
 rmapiLockIsOwner(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5675);
     return tlsEntryGet(g_RmApiLock.tlsEntryId) != NvP64_NULL;
 }
 
@@ -641,6 +655,7 @@ rmapiSetDelPendingClientResourcesFromGpuMask
     NvU32 gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5676);
     RS_ITERATOR             it;
     RmClient              **ppClient;
     RmClient               *pClient;
@@ -692,6 +707,7 @@ rmapiDelPendingDevices
     NvU32 gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5677);
     RmClient **ppClient;
     RmClient  *pClient;
     RsClient  *pRsClient;
@@ -734,6 +750,7 @@ rmapiReportLeakedDevices
     NvU32 gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5678);
     RmClient **ppClient;
     RmClient  *pClient;
     RsClient  *pRsClient;
@@ -780,6 +797,7 @@ rmapiDelPendingClients
     void
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5679);
     RmClient **ppClient;
     RmClient  *pClient;
     RsClient  *pRsClient;
@@ -812,6 +830,7 @@ rmapiGetClientHandlesFromOSInfo
     NvU32     *pClientHandleListSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5680);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     NvHandle   *pClientHandleList;

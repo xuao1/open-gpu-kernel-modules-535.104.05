@@ -34,6 +34,7 @@ NV_STATUS rmapiParamsAcquire
     NvBool             bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5639);
     NvBool      bUseParamsDirectly;
     void       *pKernelParams = NULL;
     NV_STATUS   rmStatus = NV_OK;
@@ -147,6 +148,7 @@ NV_STATUS rmapiParamsRelease
     RMAPI_PARAM_COPY  *pParamCopy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5640);
     NV_STATUS rmStatus = NV_OK;
 
     // nothing to do, rmapiParamsAcquire() is either not called or not completed
@@ -201,6 +203,7 @@ NV_STATUS rmapiParamsCopyIn
     NvBool      bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5641);
     NV_STATUS  rmStatus;
 
     // error check parameters
@@ -255,6 +258,7 @@ NV_STATUS rmapiParamsCopyOut
     NvBool      bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5642);
     NV_STATUS  rmStatus;
 
     // error check parameters
@@ -300,6 +304,7 @@ rmapiParamsCopyInit
     NvU32             hClass
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5643);
     NvU32             status;
     NvBool            bAllowNull;
 

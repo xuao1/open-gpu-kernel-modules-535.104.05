@@ -53,6 +53,7 @@ memCtrlCmdGetSurfaceCompressionCoverageLvm_IMPL
     NV0041_CTRL_GET_SURFACE_COMPRESSION_COVERAGE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2825);
     NvU64               _zero = 0, _contigSegmentSize;
     NvU32               _memAperture, _memFormat, _comprOffset, _zcullId;
     NvU32               _gpuCacheAttr, _gpuP2PCacheAttr;
@@ -101,6 +102,7 @@ memCtrlCmdGetSurfaceInfoLvm_IMPL
     NV0041_CTRL_GET_SURFACE_INFO_PARAMS *pSurfaceInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2826);
     NV0041_CTRL_SURFACE_INFO *pSurfaceInfos = NvP64_VALUE(pSurfaceInfoParams->surfaceInfoList);
     OBJGPU             *pGpu    = pMemory->pGpu;
     NV_STATUS           status  = NV_OK;
@@ -241,6 +243,7 @@ memCtrlCmdSurfaceFlushGpuCache_IMPL
     NV0041_CTRL_SURFACE_FLUSH_GPU_CACHE_PARAMS *pCacheFlushParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2827);
     OBJGPU *pGpu = pMemory->pGpu;
     NV_STATUS status = NV_OK;
     FB_CACHE_OP cacheOp = FB_CACHE_OP_UNDEFINED;
@@ -330,6 +333,7 @@ memCtrlCmdGetMemPageSize_IMPL
     NV0041_CTRL_GET_MEM_PAGE_SIZE_PARAMS *pPageSizeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2828);
     OBJGPU             *pGpu = pMemory->pGpu;
     PMEMORY_DESCRIPTOR  pTempMemDesc = NULL;
     NvU64               tempPageSize = 0;
@@ -362,6 +366,7 @@ memCtrlCmdUpdateSurfaceCompression_IMPL
     NV0041_CTRL_UPDATE_SURFACE_COMPRESSION_PARAMS *pUpdateParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2829);
     OBJGPU     *pGpu = pMemory->pGpu;
     NV_STATUS   status = NV_OK;
 
@@ -389,6 +394,7 @@ memCtrlCmdSetTag_IMPL
     NV0041_CTRL_CMD_SET_TAG_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2830);
     pMemory->tag = pParams->tag;
 
     return NV_OK;
@@ -401,6 +407,7 @@ memCtrlCmdGetTag_IMPL
     NV0041_CTRL_CMD_GET_TAG_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2831);
     pParams->tag = pMemory->tag;
 
     return NV_OK;

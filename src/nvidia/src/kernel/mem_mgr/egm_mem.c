@@ -39,6 +39,7 @@ egmmemConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4435);
     Memory                      *pMemory            = staticCast(pExtendedGpuMemory, Memory);
     OBJGPU                      *pGpu               = pMemory->pGpu;
     MemoryManager               *pMemoryManager     = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -242,6 +243,7 @@ egmmemValidateParams
     NV_MEMORY_ALLOCATION_PARAMS *pAllocData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4436);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
     NV_CHECK_OK_OR_RETURN(LEVEL_ERROR, stdmemValidateParams(pGpu, hClient, pAllocData));
@@ -288,6 +290,7 @@ egmmemAllocResources
     FB_ALLOC_INFO               *pFbAllocInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4437);
     NV_STATUS                    status          = NV_OK;
     NV_MEMORY_ALLOCATION_PARAMS *pVidHeapAlloc   = pAllocRequest->pUserParams;
     MEMORY_DESCRIPTOR           *pMemDesc        = NULL;

@@ -40,6 +40,7 @@ kmemsysReadUsableFbSize_GP102
     NvU64              *pFbSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3324);
     //
     // VBIOS Devinit calculates lower range values in
     // NV_PFB_PRI_MMU_LOCAL_MEMORY_RANGE.

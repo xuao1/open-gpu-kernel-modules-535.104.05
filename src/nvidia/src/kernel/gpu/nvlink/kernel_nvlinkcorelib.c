@@ -49,6 +49,7 @@ knvlinkCoreDriverLoadWar_IMPL
     KernelNvlink  *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3807);
     //
     // All platforms which support NVLINK_CORE should call nvlink_lib_initialize
     // explicitly, if NVLink support is needed. It is not RM's responsibility to
@@ -84,6 +85,7 @@ knvlinkCoreDriverUnloadWar_IMPL
     KernelNvlink  *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3808);
 #if defined(INCLUDE_NVLINK_LIB)
 
     if (RMCFG_FEATURE_PLATFORM_WINDOWS)
@@ -109,6 +111,7 @@ knvlinkCoreIsDriverSupported_IMPL
     KernelNvlink  *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3809);
 #if defined(INCLUDE_NVLINK_LIB)
 
     if (nvlink_lib_is_initialized())
@@ -138,6 +141,7 @@ knvlinkCoreAddDevice_IMPL
     KernelNvlink  *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3810);
     NV_STATUS status = NV_OK;
 
 #if defined(INCLUDE_NVLINK_LIB)
@@ -257,6 +261,7 @@ knvlinkCoreUpdateDeviceUUID_IMPL
     KernelNvlink  *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3811);
     NV_STATUS status = NV_OK;
 
 #if defined(INCLUDE_NVLINK_LIB)
@@ -333,6 +338,7 @@ knvlinkCoreAddLink_IMPL
     NvU32          linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3812);
     NV_STATUS status = NV_OK;
 
 #if defined(INCLUDE_NVLINK_LIB)
@@ -458,6 +464,7 @@ knvlinkCoreRemoveLink_IMPL
     NvU32          linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3813);
     NV_STATUS status = NV_OK;
 
 #if defined(INCLUDE_NVLINK_LIB)
@@ -494,6 +501,7 @@ knvlinkCoreRemoveDevice_IMPL
     KernelNvlink  *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3814);
 #if defined(INCLUDE_NVLINK_LIB)
 
     OBJGPU       *pGpu1          = NULL;
@@ -561,6 +569,7 @@ knvlinkIsGpuConnectedToNvswitch_IMPL
     KernelNvlink  *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3815);
     NvBool bConnected = NV_FALSE;
 
 #if defined(INCLUDE_NVLINK_LIB)
@@ -605,6 +614,7 @@ knvlinkIsLinkConnected_IMPL
     NvU32          linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3816);
 #if defined(INCLUDE_NVLINK_LIB)
 
     //
@@ -642,6 +652,7 @@ _knvlinkUpdateRemoteEndUuidInfo
     KernelNvlink  *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3817);
     OBJGPU       *pGpu1          = NULL;
     KernelNvlink *pKernelNvlink1 = NULL;
     unsigned      remoteLinkId;

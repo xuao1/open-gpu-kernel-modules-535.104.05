@@ -72,6 +72,7 @@ kceGetNvlinkAutoConfigCeValues_TU102
     NvU32    *pExposeCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 769);
     KernelNvlink *pKernelNvlink      = GPU_GET_KERNEL_NVLINK(pGpu);
     OBJGPU       *pRemoteGpu         = NULL;
     NV_STATUS     status             = NV_OK;
@@ -225,6 +226,7 @@ done:
  */
 NvU32 kceGetGrceConfigSize1_TU102(KernelCE* kce)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 770);
     return NV_CE_GRCE_CONFIG__SIZE_1;
 }
 
@@ -240,5 +242,6 @@ NvU32 kceGetGrceConfigSize1_TU102(KernelCE* kce)
  */
 NvU32 kceGetPce2lceConfigSize1_TU102(KernelCE* kce)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 771);
     return NV_CE_PCE2LCE_CONFIG__SIZE_1;
 }

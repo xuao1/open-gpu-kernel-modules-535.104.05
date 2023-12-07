@@ -46,6 +46,7 @@ kioctrlMinionConstruct_GV100
     KernelIoctrl *pKernelIoctrl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3745);
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
 
     // By default, MINION is available based on chip type. Condition further...
@@ -177,6 +178,7 @@ kioctrlGetMinionEnableDefault_GV100
     KernelIoctrl *pKernelIoctrl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3746);
     //
     // Arch requests that NVLink MINION always be DISABLED by default on RTL
     // for performance reasons.  They will force enable when needed.

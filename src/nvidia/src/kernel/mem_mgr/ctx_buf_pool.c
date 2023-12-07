@@ -55,6 +55,7 @@ ctxBufPoolIsSupported
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4423);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvBool bCallingContextPlugin;
     NvU32 gfid = GPU_GFID_PF;
@@ -117,6 +118,7 @@ ctxBufPoolInit
     CTX_BUF_POOL_INFO **ppCtxBufPool
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4424);
     NV_STATUS status = NV_OK;
     CTX_BUF_POOL_INFO *pCtxBufPool = NULL;
     NvU32 i, poolConfig;
@@ -195,6 +197,7 @@ ctxBufPoolDestroy
     CTX_BUF_POOL_INFO **ppCtxBufPool
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4425);
     NvU32 i;
     CTX_BUF_POOL_INFO *pCtxBufPool;
     NV_ASSERT((ppCtxBufPool != NULL) && (*ppCtxBufPool != NULL));
@@ -255,6 +258,7 @@ ctxBufPoolReserve
     NvU32              bufCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4426);
     NV_STATUS status = NV_OK;
     NvU64 pageSize;
     NvU32 i;
@@ -331,6 +335,7 @@ ctxBufPoolTrim
     CTX_BUF_POOL_INFO *pCtxBufPool
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4427);
     NvU32 i;
     NV_ASSERT_OR_RETURN(pCtxBufPool != NULL, NV_ERR_INVALID_ARGUMENT);
 
@@ -358,6 +363,7 @@ ctxBufPoolRelease
     CTX_BUF_POOL_INFO *pCtxBufPool
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4428);
     NvU32 i;
     NV_ASSERT(pCtxBufPool != NULL);
 
@@ -382,6 +388,7 @@ ctxBufPoolAllocate
     PMEMORY_DESCRIPTOR pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4429);
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pPool = NULL;
     NV_ASSERT_OR_RETURN(pCtxBufPool != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(pMemDesc != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -458,6 +465,7 @@ ctxBufPoolFree
     PMEMORY_DESCRIPTOR pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4430);
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pPool = NULL;
     NV_ASSERT_OR_RETURN(pCtxBufPool != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(pMemDesc != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -537,6 +545,7 @@ ctxBufPoolGetGlobalPool
     CTX_BUF_POOL_INFO **ppCtxBufPool
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4431);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     CTX_BUF_POOL_INFO *pCtxBufPool = NULL;
 
@@ -587,6 +596,7 @@ ctxBufPoolGetSizeAndPageSize
     NvU64             *pPageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4432);
     MemoryManager          *pMemoryManager      = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_STATUS               status              = NV_OK;
     NvU64                   pageSize            = 0;
@@ -708,6 +718,7 @@ ctxBufPoolIsScrubSkipped
     CTX_BUF_POOL_INFO *pCtxBufPool
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4433);
     NvU32 i;
     NV_ASSERT_OR_RETURN(pCtxBufPool != NULL, NV_ERR_INVALID_ARGUMENT);
     for (i = 0; i < RM_ATTR_PAGE_SIZE_INVALID; i++)
@@ -733,6 +744,7 @@ ctxBufPoolSetScrubSkip
     NvBool             bSkipScrub
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4434);
     NvU32 i;
     NV_ASSERT_OR_RETURN_VOID(pCtxBufPool != NULL);
     for (i = 0; i < RM_ATTR_PAGE_SIZE_INVALID; i++)

@@ -50,6 +50,7 @@ tmrSetCurrentTime_GM107
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4132);
     NvU64   ns;                     // Time since 1970 in ns.
     NvU32   seconds;                // Time since 1970 in seconds
     NvU32   useconds;               //  and uSeconds.
@@ -95,6 +96,7 @@ tmrGetGpuAndCpuTimestampPair_GM107
     NvU64   *pCpuTime
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4133);
 #if PORT_IS_FUNC_SUPPORTED(portUtilExReadTimestampCounter)
     NvU32 gpuTimeLo[NV_NUM_PTIMER_SAMPLES];
     NvU64 cpuTime[NV_NUM_PTIMER_SAMPLES+1];
@@ -171,6 +173,7 @@ tmrGetGpuPtimerOffset_GM107
     NvU32   *pGpuTimestampOffsetHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4134);
     if (pGpuTimestampOffsetLo)
     {
         *pGpuTimestampOffsetLo = NV_PTIMER_TIME_0;
@@ -200,6 +203,7 @@ tmrGrTickFreqChange_GM107
     NvBool   bSetMax
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4135);
     NvU32 grTickFreq;
 
     grTickFreq = GPU_REG_RD32(pGpu, NV_PTIMER_GR_TICK_FREQ);
@@ -232,6 +236,7 @@ tmrGetTimeEx_GM107
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4136);
     NvU32 TimeLo  = 0;
     NvU32 TimeHi  = 0;
     NvU32 TimeHi2 = 0;

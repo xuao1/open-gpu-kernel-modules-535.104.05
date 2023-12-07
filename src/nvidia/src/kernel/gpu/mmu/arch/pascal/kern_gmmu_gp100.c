@@ -37,6 +37,7 @@
 NvBool
 kgmmuFmtIsVersionSupported_GP10X(KernelGmmu *pKernelGmmu, NvU32 version)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3562);
     return (version == GMMU_FMT_VERSION_2);
 }
 
@@ -59,6 +60,7 @@ kgmmuGetPDBAllocSize_GP100
     NvU64                vaLimit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3563);
     return mmuFmtLevelSize(pLevelFmt);
 }
 
@@ -85,6 +87,7 @@ kgmmuInstBlkVaLimitGet_GP100
     NvU64                *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3564);
     ct_assert(SF_OFFSET(NV_RAMIN_ADR_LIMIT_HI) == SF_OFFSET(NV_RAMIN_ADR_LIMIT_LO) + 4);
     ct_assert((SF_OFFSET(NV_RAMIN_ADR_LIMIT_LO) & 7) == 0);
 
@@ -132,6 +135,7 @@ kgmmuInstBlkPageDirBaseGet_GP100
     NvU32                *pDataHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3565);
 
     NV_ASSERT(subctxId == FIFO_PDB_IDX_BASE);
 
@@ -195,6 +199,7 @@ kgmmuInstBlkPageDirBaseGet_GP100
 const char *
 kgmmuGetFaultTypeString_GP100(KernelGmmu *pGmmu, NvU32 faultType)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3566);
     switch (faultType)
     {
         case NV_PFAULT_FAULT_TYPE_PDE:

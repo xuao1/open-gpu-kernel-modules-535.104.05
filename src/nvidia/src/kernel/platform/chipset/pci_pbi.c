@@ -67,6 +67,7 @@
 //
 static NV_STATUS pciPbiCheck(void *handle, NvU32 cap_base)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5064);
     if ((osPciReadByte(handle, PCI_PBI_CAP_ADDR(cap_base, PCI_PBI_REG_PBCI)) == PCI_PBI_CAP_ID) &&
         (osPciReadByte(handle, PCI_PBI_CAP_ADDR(cap_base, PCI_PBI_REG_PBLS)) == PCI_PBI_REG_PBLS_LENGTH) &&
         (osPciReadByte(handle, PCI_PBI_CAP_ADDR(cap_base, PCI_PBI_REG_PBCC)) == PCI_PBI_REG_PBCC_ENABLED))
@@ -81,6 +82,7 @@ static NV_STATUS pciPbiCheck(void *handle, NvU32 cap_base)
 //
 static NvU32 pciPbiFindCapability(void *handle)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5065);
     // Start at the beginning of the PCI capability list
     NvU32 cap_base = osPciReadByte(handle, PCI_CAPABILITY_LIST_BASE);
 
@@ -96,6 +98,7 @@ static NvU32 pciPbiFindCapability(void *handle)
 //
 static NV_STATUS pciPbiAcquireMutex(void *handle, NvU32 cap_base)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5066);
     NvU32 id;
 
     // check to see if mutex is available
@@ -120,6 +123,7 @@ static NV_STATUS pciPbiAcquireMutex(void *handle, NvU32 cap_base)
 //
 static void pciPbiReleaseMutex(void *handle, NvU32 cap_base)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5067);
     NvU32 id;
 
     // check to see if we own the mutex
@@ -140,6 +144,7 @@ static void pciPbiReleaseMutex(void *handle, NvU32 cap_base)
 //
 static NV_STATUS pciPbiError(int status)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5068);
     switch (status)
     {
         case NV_PBI_COMMAND_STATUS_SUCCESS:
@@ -161,6 +166,7 @@ static NV_STATUS pciPbiError(int status)
 //
 static NV_STATUS pciPbiCheckStatusWait(void *handle, NvU32 cap_base)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5069);
     NvU32 cmdStatus;
     NvU32 status;
     NvU32 intr;
@@ -258,6 +264,7 @@ NV_STATUS pciPbiSendCommandWait(void *handle, NvU32 cap_base, NvU32 command, NvU
 //
 NV_STATUS pciPbiReadUuid(void *handle, NvU8 *uuid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5070);
     NV_STATUS status;
     NvU32 command;
     NvU32 capability;
@@ -337,6 +344,7 @@ done:
 //
 NV_STATUS pciPbiGetFeature(void *handle, NvU32 *feature)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5071);
     NV_STATUS status;
     NvU32 command;
     NvU32 cap_base;

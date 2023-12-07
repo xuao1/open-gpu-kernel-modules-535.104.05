@@ -39,6 +39,7 @@
 //! OBJPFM's constructor
 NV_STATUS pfmConstruct_IMPL(OBJPFM *pPfm)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5164);
     initNbsiObject(&pPfm->nbsi);
     return NV_OK;
 }
@@ -54,6 +55,7 @@ pfmUpdateAcpiIdMapping_IMPL
     NvU32 index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5165);
     NvU32 gpuInst = 0;
 
     gpuInst = gpuGetInstance(pGpu);
@@ -71,6 +73,7 @@ pfmFindAcpiId_IMPL
     NvU32  displayId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5166);
     NvU8  i;
     NvU32 gpuInst = 0;
     NvU32 acpiId = 0;
@@ -97,6 +100,7 @@ pfmFindDodIndex_IMPL
     NvU32  displayId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5167);
     NvU8  i;
     NvU32 gpuInst = 0;
     NvU32 dodIndex = 0;
@@ -123,6 +127,7 @@ pfmFindDevMaskFromDodIndex_IMPL
     NvU32  dodIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5168);
     NvU8  i;
     NvU32 gpuInst = 0;
     NvU32 devMask = 0;
@@ -149,6 +154,7 @@ pfmFindDevMaskFromAcpiId_IMPL
     NvU32  AcpiId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5169);
     NvU8  i;
     NvU32 gpuInst = 0;
     NvU32 devMask = 0;
@@ -176,6 +182,7 @@ pfmUpdateDeviceAcpiId_IMPL
     NvU32      devMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5170);
     NvU32 gpuInst = 0;
     NvU32 i;
 

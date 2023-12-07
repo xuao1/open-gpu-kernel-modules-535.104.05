@@ -80,6 +80,7 @@ dmaAllocMap_IMPL
     CLI_DMA_MAPPING_INFO *pDmaMappingInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2749);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     NV_STATUS         status = NV_OK;
     NvU32             p2p;
@@ -213,6 +214,7 @@ dmaFreeMap_IMPL
     NvU32                 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2750);
     NV_STATUS status = NV_OK;
     NvU32     p2p, subDevIdTgt;
     NvU32     deviceInst = gpuGetDeviceInstance(pGpu);
@@ -258,6 +260,7 @@ deviceCtrlCmdDmaGetPteInfo_IMPL
     NV0080_CTRL_DMA_GET_PTE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2751);
     OBJGPU         *pGpu = GPU_RES_GET_GPU(pDevice);
     OBJVASPACE     *pVAS = NULL;
     NV_STATUS       status = NV_OK;
@@ -292,6 +295,7 @@ deviceCtrlCmdDmaUpdatePde2_IMPL
     NV0080_CTRL_DMA_UPDATE_PDE_2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2752);
     OBJGPU      *pGpu       = GPU_RES_GET_GPU(pDevice);;
     OBJVASPACE  *pVAS       = NULL;
     NV_STATUS    status     = NV_OK;
@@ -363,6 +367,7 @@ deviceCtrlCmdDmaSetVASpaceSize_IMPL
     NV0080_CTRL_DMA_SET_VA_SPACE_SIZE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2753);
     OBJGPU          *pGpu    = GPU_RES_GET_GPU(pDevice);
     OBJVASPACE      *pVAS    = NULL;
 
@@ -418,6 +423,7 @@ deviceCtrlCmdDmaSetPageDirectory_IMPL
     NV0080_CTRL_DMA_SET_PAGE_DIRECTORY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2754);
     NvHandle        hClient     = RES_GET_CLIENT_HANDLE(pDevice);
     NvHandle        hDevice     = RES_GET_HANDLE(pDevice);
     OBJGPU         *pGpu        = GPU_RES_GET_GPU(pDevice);
@@ -516,6 +522,7 @@ deviceCtrlCmdDmaUnsetPageDirectory_IMPL
     NV0080_CTRL_DMA_UNSET_PAGE_DIRECTORY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2755);
     OBJGPU         *pGpu          = GPU_RES_GET_GPU(pDevice);
     OBJVASPACE     *pVAS          = NULL;
     CALL_CONTEXT   *pCallContext  = resservGetTlsCallContext();
@@ -604,6 +611,7 @@ deviceCtrlCmdDmaSetPteInfo_IMPL
     NV0080_CTRL_DMA_SET_PTE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2756);
     OBJGPU     *pGpu    = GPU_RES_GET_GPU(pDevice);
     OBJVASPACE *pVAS    = NULL;
     NV_STATUS   status  = NV_OK;
@@ -637,6 +645,7 @@ deviceCtrlCmdDmaFlush_IMPL
     NV0080_CTRL_DMA_FLUSH_PARAMS *flushParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2757);
     OBJGPU             *pGpu        = GPU_RES_GET_GPU(pDevice);
     KernelBus          *pKernelBus  = GPU_GET_KERNEL_BUS(pGpu);
     FB_CACHE_MEMTYPE    targetMem   = FB_CACHE_MEM_UNDEFINED;
@@ -709,6 +718,7 @@ deviceCtrlCmdDmaAdvSchedGetVaCaps_IMPL
     NV0080_CTRL_DMA_ADV_SCHED_GET_VA_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2758);
     OBJGPU        *pGpu           = GPU_RES_GET_GPU(pDevice);
     OBJVASPACE    *pVAS           = NULL;
     NV_STATUS      status         = NV_OK;
@@ -743,6 +753,7 @@ deviceCtrlCmdDmaGetPdeInfo_IMPL
     NV0080_CTRL_DMA_GET_PDE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2759);
     OBJGPU         *pGpu            = GPU_RES_GET_GPU(pDevice);
     NV_STATUS       status          = NV_OK;
     OBJVASPACE     *pVAS            = NULL;
@@ -791,6 +802,7 @@ deviceCtrlCmdDmaSetDefaultVASpace_IMPL
     NV0080_CTRL_DMA_SET_DEFAULT_VASPACE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2760);
     OBJGPU   *pGpu   = GPU_RES_GET_GPU(pDevice);
     NV_STATUS status = NV_OK;
 
@@ -832,6 +844,7 @@ subdeviceCtrlCmdDmaInvalidateTLB_IMPL
     NV2080_CTRL_DMA_INVALIDATE_TLB_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2761);
     OBJGPU     *pGpu    = GPU_RES_GET_GPU(pSubdevice);
     OBJVASPACE *pVAS    = NULL;
 
@@ -879,6 +892,7 @@ subdeviceCtrlCmdDmaGetInfo_IMPL
     NV2080_CTRL_DMA_GET_INFO_PARAMS *pDmaInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2762);
     OBJGPU     *pGpu   = GPU_RES_GET_GPU(pSubdevice);
     NV_STATUS   status = NV_OK;
     NvU32       i;
@@ -931,6 +945,7 @@ deviceCtrlCmdDmaInvalidateTLB_IMPL
     NV0080_CTRL_DMA_INVALIDATE_TLB_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2763);
     OBJGPU      *pGpu    = GPU_RES_GET_GPU(pDevice);
     OBJVASPACE  *pVAS    = NULL;
 
@@ -992,6 +1007,7 @@ deviceCtrlCmdDmaGetCaps_IMPL
     NV0080_CTRL_DMA_GET_CAPS_PARAMS *pDmaCapsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2764);
     NV_STATUS   status = NV_OK;
     OBJGPU     *pGpu = GPU_RES_GET_GPU(pDevice);
     VirtMemAllocator *pDma = GPU_GET_DMA(pGpu);
@@ -1042,6 +1058,7 @@ deviceCtrlCmdDmaEnablePrivilegedRange_IMPL
     NV0080_CTRL_DMA_ENABLE_PRIVILEGED_RANGE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2765);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
 
     if (pParams->hVASpace != NV01_NULL_OBJECT)
@@ -1066,6 +1083,7 @@ diagapiCtrlCmdDmaIsSupportedSparseVirtual_IMPL
     NV208F_CTRL_DMA_IS_SUPPORTED_SPARSE_VIRTUAL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2766);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDiagApi);
     VirtMemAllocator *pDma = GPU_GET_DMA(pGpu);
 
@@ -1080,6 +1098,7 @@ diagapiCtrlCmdDmaGetVasBlockDetails_IMPL
     NV208F_CTRL_DMA_GET_VAS_BLOCK_DETAILS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2767);
     OBJGPU             *pGpu        = GPU_RES_GET_GPU(pDiagApi);
     RsResourceRef      *pSubdevRef;
     Subdevice          *pGpuSubDevInfo;
@@ -1126,6 +1145,7 @@ dmaPageArrayInit
     NvU32           pageCount   //!< [in] Number of pages represented.
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2768);
     portMemSet(pPageArray, 0, sizeof(*pPageArray));
     pPageArray->pData = pPageData;
     pPageArray->count = pageCount;
@@ -1142,6 +1162,7 @@ dmaPageArrayInitFromMemDesc
     ADDRESS_TRANSLATION addressTranslation  //!< [in] Address translation for page array.
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2769);
     dmaPageArrayInit(pPageArray,
         memdescGetPteArray(pMemDesc, addressTranslation),
         memdescGetPteArraySize(pMemDesc, addressTranslation));
@@ -1160,6 +1181,7 @@ dmaPageArrayGetPhysAddr
     NvU32           pageIndex   //!< [in] Page index to retrieve.
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2770);
     RmPhysAddr addr;
 
     NV_ASSERT_OR_RETURN(pPageArray->pData, ~0ULL);

@@ -45,6 +45,7 @@ dispcmnCtrlCmdSpecificSetAcpiIdMapping_IMPL
     NV0073_CTRL_SPECIFIC_SET_ACPI_ID_MAPPING_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 942);
     OBJGPU     *pGpu = DISPAPI_GET_GPU(pDispCommon);
     OBJGPU     *pOrigGpu = pGpu;
     OBJSYS     *pSys = SYS_GET_INSTANCE();
@@ -105,6 +106,7 @@ dispcmnCtrlCmdSystemAcpiSubsystemActivated_IMPL
     NV0073_CTRL_SYSTEM_ACPI_SUBSYSTEM_ACTIVATED_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 943);
     OBJGPU    *pGpu   = DISPAPI_GET_GPU(pDispCommon);
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     OBJOS     *pOs    = NULL;
@@ -151,6 +153,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
     NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_PARAMS *pAcpiMethodParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 944);
     OBJGPU *pGpu          = DISPAPI_GET_GPU(pDispCommon);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     OBJSYS *pSys          = SYS_GET_INSTANCE();

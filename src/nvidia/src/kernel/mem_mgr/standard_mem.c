@@ -39,6 +39,7 @@ NV_STATUS stdmemValidateParams
     NV_MEMORY_ALLOCATION_PARAMS *pAllocData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4693);
     NvBool         bIso;
     RS_PRIV_LEVEL  privLevel;
     CALL_CONTEXT  *pCallContext = resservGetTlsCallContext();
@@ -165,6 +166,7 @@ void stdmemDumpInputAllocParams
     CALL_CONTEXT                 *pCallContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4694);
     NV_PRINTF(LEVEL_INFO, "stdmemConstruct input\n");
     NV_PRINTF(LEVEL_INFO, "          Owner: 0x%x\n", pAllocData->owner);
     NV_PRINTF(LEVEL_INFO, "        hMemory: 0x%x\n", pCallContext->pResourceRef->hResource);
@@ -193,6 +195,7 @@ void stdmemDumpOutputAllocParams
     NV_MEMORY_ALLOCATION_PARAMS  *pAllocData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4695);
     NV_PRINTF(LEVEL_INFO, "stdmemConstruct output\n");
     NV_PRINTF(LEVEL_INFO, "         Height: 0x%x\n", pAllocData->height);
     NV_PRINTF(LEVEL_INFO, "          Width: 0x%x\n", pAllocData->width);
@@ -215,12 +218,14 @@ stdmemConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4696);
     return NV_OK;
 }
 
 
 NvBool stdmemCanCopy_IMPL(StandardMemory *pStandardMemory)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4697);
     return NV_TRUE;
 }
 
@@ -245,6 +250,7 @@ stdmemQueryPageSize
     NV_MEMORY_ALLOCATION_PARAMS *pAllocData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4698);
     NvU32 retAttr  = pAllocData->attr;
     NvU32 retAttr2 = pAllocData->attr2;
 
@@ -258,5 +264,6 @@ stdmemQueryPageSize
 
 NvU64 stdmemGetSysmemPageSize_IMPL(OBJGPU * pGpu, StandardMemory *pStdMemory)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4699);
     return GPU_GET_MEMORY_MANAGER(pGpu)->sysmemPageSize;
 }

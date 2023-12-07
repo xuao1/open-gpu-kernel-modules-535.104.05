@@ -43,6 +43,7 @@ memmgrInitBaseFbRegions_FWCLIENT
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3017);
     NV2080_CTRL_CMD_FB_GET_FB_REGION_INFO_PARAMS *pFbRegionInfoParams;
     NV2080_CTRL_CMD_FB_GET_FB_REGION_FB_REGION_INFO *pFbRegionInfo;
     GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
@@ -139,6 +140,7 @@ memmgrPreInitReservedMemory_FWCLIENT
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3018);
     KernelBus     *pKernelBus     = GPU_GET_KERNEL_BUS(pGpu);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU64          tmpAddr        = 0;
@@ -198,6 +200,7 @@ memmgrCalcReservedFbSpaceHal_FWCLIENT
     NvU64         *rsvdISOSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3019);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     NvU64       rsvdSizeBytes;

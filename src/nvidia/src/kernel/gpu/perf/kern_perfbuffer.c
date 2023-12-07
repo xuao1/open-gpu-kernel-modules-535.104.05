@@ -47,6 +47,7 @@ perfbufferConstructHal_KERNEL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3890);
     OBJGPU           *pGpu           = GPU_RES_GET_GPU(pResource);
     RsResourceRef    *pResourceRef   = pCallContext->pResourceRef;
     NvHandle          hClient        = pCallContext->pClient->hClient;
@@ -72,6 +73,7 @@ perfbufferPrivilegeCheck_IMPL
     PerfBuffer *pResource
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3891);
     OBJGPU  *pGpu = GPU_RES_GET_GPU(pResource);
 
     if (gpuIsRmProfilingPrivileged(pGpu) && !osIsAdministrator())

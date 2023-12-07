@@ -180,6 +180,7 @@ XlateUserModeArgsToSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5451);
     portMemSet(pSecInfo, 0, sizeof(*pSecInfo));
 
     if (bInternalCall == NV_FALSE && bUserModeArgs == NV_TRUE)
@@ -211,6 +212,7 @@ static void _nv04Alloc
     NvBool             bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5452);
     RM_API            *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
     API_SECURITY_INFO  secInfo;
 
@@ -238,6 +240,7 @@ static void _nv04AllocWithSecInfo
     API_SECURITY_INFO secInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5453);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
 
     pArgs->status = pRmApi->AllocWithSecInfo(pRmApi, pArgs->hRoot, pArgs->hObjectParent, &pArgs->hObjectNew,
@@ -263,6 +266,7 @@ static void _nv04AllocWithAccess
     NvBool             bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5454);
     RM_API            *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
     NvU32              flags = RMAPI_ALLOC_FLAGS_NONE;
     API_SECURITY_INFO  secInfo;
@@ -283,6 +287,7 @@ static void _nv04AllocWithAccessSecInfo
     API_SECURITY_INFO secInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5455);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
     NvU32   flags = RMAPI_ALLOC_FLAGS_NONE;
 
@@ -309,6 +314,7 @@ static void _nv01Free
     NvBool             bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5456);
     RM_API            *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
     API_SECURITY_INFO  secInfo;
 
@@ -332,6 +338,7 @@ static void _nv01FreeWithSecInfo
     API_SECURITY_INFO  secInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5457);
     RM_API            *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
 
     pArgs->status = pRmApi->FreeWithSecInfo(pRmApi, pArgs->hRoot, pArgs->hObjectOld, RMAPI_FREE_FLAGS_NONE, &secInfo);
@@ -356,6 +363,7 @@ static void _nv04MapMemory
     NvBool             bInternalCall
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5458);
     RM_API             *pRmApi = rmapiGetInterface(bInternalCall ? RMAPI_MODS_LOCK_BYPASS : RMAPI_EXTERNAL);
     API_SECURITY_INFO  secInfo;
 
@@ -371,6 +379,7 @@ static void _nv04MapMemoryWithSecInfo
     API_SECURITY_INFO  secInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5459);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
 
     pArgs->status = pRmApi->MapToCpuWithSecInfoV2(pRmApi, pArgs->hClient, pArgs->hDevice, pArgs->hMemory, pArgs->offset,
@@ -394,6 +403,7 @@ static void _nv04UnmapMemory
     NvBool             bInternalCall
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5460);
     RM_API             *pRmApi = rmapiGetInterface(bInternalCall ? RMAPI_MODS_LOCK_BYPASS : RMAPI_EXTERNAL);
     API_SECURITY_INFO  secInfo;
 
@@ -409,6 +419,7 @@ static void _nv04UnmapMemoryWithSecInfo
     API_SECURITY_INFO  secInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5461);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
 
     pArgs->status = pRmApi->UnmapFromCpuWithSecInfo(pRmApi, pArgs->hClient, pArgs->hDevice, pArgs->hMemory,
@@ -421,6 +432,7 @@ static void _nv04MapMemoryDma
     NvBool             bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5462);
 
     RM_API             *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
     API_SECURITY_INFO  secInfo;
@@ -438,6 +450,7 @@ static void _nv04MapMemoryDmaWithSecInfo
     API_SECURITY_INFO  secInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5463);
 
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
 
@@ -463,6 +476,7 @@ static void _nv04UnmapMemoryDma
     NvBool             bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5464);
 
     RM_API             *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
     API_SECURITY_INFO  secInfo;
@@ -479,6 +493,7 @@ static void _nv04UnmapMemoryDmaWithSecInfo
     API_SECURITY_INFO  secInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5465);
 
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
 
@@ -503,6 +518,7 @@ static void _nv04ControlWithSecInfo
     NvBool             bInternalCall
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5466);
     RmDeprecatedControlHandler pDeprecatedHandler = RmDeprecatedGetControlHandler(pArgs);
     if (pDeprecatedHandler != NULL)
     {
@@ -536,6 +552,7 @@ static void _nv04Control
     NvBool             bInternalCall
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5467);
     API_SECURITY_INFO  secInfo = {0};
     XlateUserModeArgsToSecInfo(bUserModeArgs, bInternalCall, &secInfo);
     _nv04ControlWithSecInfo(pArgs, secInfo, bInternalCall);
@@ -558,6 +575,7 @@ static void _nv04DupObject
     NvBool             bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5468);
     RM_API            *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
     API_SECURITY_INFO  secInfo;
 
@@ -573,6 +591,7 @@ static void _nv04DupObjectWithSecInfo
     API_SECURITY_INFO  secInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5469);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
 
     pArgs->status = pRmApi->DupObjectWithSecInfo(pRmApi, pArgs->hClient, pArgs->hParent, &pArgs->hObject,
@@ -585,6 +604,7 @@ static void _nv04Share
     NvBool bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5470);
     RM_API            *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
     API_SECURITY_INFO  secInfo;
 
@@ -600,6 +620,7 @@ static void _nv04ShareWithSecInfo
     API_SECURITY_INFO  secInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5471);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL);
 
     pArgs->status = pRmApi->ShareWithSecInfo(pRmApi, pArgs->hClient, pArgs->hObject,

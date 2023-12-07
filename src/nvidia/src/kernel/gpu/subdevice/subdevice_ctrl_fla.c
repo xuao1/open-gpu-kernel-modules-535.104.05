@@ -40,6 +40,7 @@ _subdeviceFlaRangeModeHostManagedVasDestroy
     NV2080_CTRL_FLA_RANGE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4028);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvU32   gfid;
 
@@ -63,6 +64,7 @@ _subdeviceFlaRangeModeHostManagedVasInit
     NV2080_CTRL_FLA_RANGE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4029);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     NvU32 hSubdevice = RES_GET_HANDLE(pSubdevice);
@@ -110,6 +112,7 @@ _subdeviceFlaRangeModeInit
     NV2080_CTRL_FLA_RANGE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4030);
     OBJGPU    *pGpu       = GPU_RES_GET_GPU(pSubdevice);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     NV_STATUS  status;
@@ -173,6 +176,7 @@ subdeviceCtrlCmdFlaRange_IMPL
     NV2080_CTRL_FLA_RANGE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4031);
     NV_STATUS status = NV_OK;
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
@@ -250,6 +254,7 @@ subdeviceCtrlCmdFlaGetRange_IMPL
     NV2080_CTRL_FLA_GET_RANGE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4032);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -260,6 +265,7 @@ subdeviceCtrlCmdFlaGetFabricMemStats_IMPL
     NV2080_CTRL_FLA_GET_FABRIC_MEM_STATS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4033);
     OBJGPU         *pGpu       = GPU_RES_GET_GPU(pSubdevice);
     FABRIC_VASPACE *pFabricVAS = NULL;
     NV_STATUS       status = NV_OK;

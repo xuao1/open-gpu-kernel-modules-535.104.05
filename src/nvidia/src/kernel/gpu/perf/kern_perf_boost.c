@@ -46,6 +46,7 @@ subdeviceCtrlCmdKPerfBoost_IMPL
     NV2080_CTRL_PERF_BOOST_PARAMS *pBoostParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3892);
     OBJGPU      *pGpu            = GPU_RES_GET_GPU(pSubdevice);
     KernelPerf  *pKernelPerf     = GPU_GET_KERNEL_PERF(pGpu);
     NV_STATUS    status          = NV_OK;
@@ -67,6 +68,7 @@ kperfBoostSet_3x
     NV2080_CTRL_PERF_BOOST_PARAMS *pBoostParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3893);
     OBJGPU    *pGpu   = GPU_RES_GET_GPU(pSubdevice);
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS  status = NV_OK;

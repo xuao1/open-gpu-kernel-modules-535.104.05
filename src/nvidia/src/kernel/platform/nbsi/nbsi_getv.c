@@ -79,6 +79,7 @@ static NV_STATUS rtnNbsiElement
     NvU32  * pErrorCode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5117);
     NvU32 elementSize;
     NvU32 rtnData;
     NvU16 nullTerm = 0;
@@ -254,6 +255,7 @@ NV_STATUS getNbsiValue
     NvU32  * pErrorCode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5118);
     NBSI_OBJ        *pNbsiObj = getNbsiObject();
     NBSI_DRIVER_OBJ *pNbsiDriverObj;
     NBSI_MODULE     *pNbsiModule;

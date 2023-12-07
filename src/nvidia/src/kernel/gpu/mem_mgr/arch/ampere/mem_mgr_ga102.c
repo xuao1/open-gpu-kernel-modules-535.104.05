@@ -38,6 +38,7 @@ memmgrEnableDynamicPageOfflining_GA102
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2591);
     if (IS_VIRTUAL(pGpu) || hypervisorIsVgxHyper() ||
         gpuIsGlobalPoisonFuseEnabled(pGpu))
     {

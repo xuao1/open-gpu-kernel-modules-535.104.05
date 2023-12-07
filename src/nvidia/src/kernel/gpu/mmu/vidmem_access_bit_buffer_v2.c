@@ -35,6 +35,7 @@ vidmemAccessBitBufConstructHelper_KERNEL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3705);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pVidmemAccessBitBuffer);
     return IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pGpu) && !IS_VIRTUAL(pGpu)? NV_OK : NV_ERR_NOT_SUPPORTED;
 }

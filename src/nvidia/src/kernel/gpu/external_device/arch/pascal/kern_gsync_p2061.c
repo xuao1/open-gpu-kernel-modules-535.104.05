@@ -37,6 +37,7 @@ gsyncGetHouseSyncMode_P2061
     NvU8*              houseSyncMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1176);
     NvU8      regCtrl4;
     NV_STATUS status;
 
@@ -58,6 +59,7 @@ gsyncSetHouseSyncMode_P2061
     NvU8               houseSyncMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1177);
     NvU8      regStatus2;
     NvU8      regCtrl4;
     NV_STATUS status;
@@ -109,6 +111,7 @@ gsyncGetCplStatus_P2061
     NvU32 *pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1178);
     NV_STATUS status = NV_OK;
     NvU8 regStatus2;
     NvU8 regStatus6;
@@ -149,6 +152,7 @@ gsyncSetSyncSkew_P2061_V204
     NvU32              syncSkew
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1179);
     DACP2060EXTERNALDEVICE *pThis = (DACP2060EXTERNALDEVICE *)pExtDev;
     NvU64 temp;
 
@@ -198,6 +202,7 @@ gsyncGetSyncSkew_P2061_V204
     NvU32             *pSyncSkew
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1180);
     NvU8 data;
     NvU32 syncSkew;
     NvU64 temp;

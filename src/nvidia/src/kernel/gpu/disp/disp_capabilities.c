@@ -44,6 +44,7 @@ dispcapConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 924);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDispCapabilities);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
 
@@ -64,6 +65,7 @@ dispcapGetRegBaseOffsetAndSize_IMPL
     NvU32 *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 925);
     if (pOffset)
     {
         *pOffset = pDispCapabilities->ControlOffset;

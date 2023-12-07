@@ -38,6 +38,7 @@ gsyncapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1266);
     NV_STATUS                status = NV_OK;
     NV30F1_ALLOC_PARAMETERS *pNv30f1AllocParams = pParams->pAllocParams;
     RmClient                *pClient            = dynamicCast(pCallContext->pClient, RmClient);
@@ -77,6 +78,7 @@ gsyncapiControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1267);
     RMCFG_FEATURE_ENABLED_OR_BAIL(EXTDEV_GSYNC);
 
     if (gsyncIsInstanceValid(pGSyncApi->instance) == NV_FALSE)
@@ -92,6 +94,7 @@ CliNotifyGsyncEvent
     NvU32 eventFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1268);
     RS_SHARE_ITERATOR it = serverutilShareIter(classId(NotifShare));
 
     // RMCONFIG: is GYSNC enabled?

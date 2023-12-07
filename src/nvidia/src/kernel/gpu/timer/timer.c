@@ -53,6 +53,7 @@ tmrConstructEngine_IMPL
     ENGDESCRIPTOR engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4150);
     // Mark that this timer is not yet initialized
     pTmr->bInitialized = NV_FALSE;
 
@@ -98,6 +99,7 @@ tmrStateInitUnlocked_IMPL
     OBJTMR  *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4151);
     NV_STATUS  status;
 
     status = _tmrGrTimeStampFreqRefcntInit(pGpu, pTmr);
@@ -124,6 +126,7 @@ _tmrGrTimeStampFreqRefcntInit
     OBJTMR  *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4152);
     NV_STATUS  status  = NV_OK;
     status = objCreate(&pTmr->pGrTickFreqRefcnt, pTmr, OBJREFCNT,
                 staticCast(pTmr, Dynamic), 0, &_tmrGrTimeStampFreqStateChange, NULL);
@@ -156,6 +159,7 @@ _tmrGrTimeStampFreqStateChange
     REFCNT_STATE newState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4153);
     NV_STATUS status        = NV_OK;
     OBJTMR   *pTmr          = dynamicCast(pDynamic, OBJTMR);
     OBJGPU *pGpu            = NULL;
@@ -185,6 +189,7 @@ _tmrGrTimeStampFreqStateChange
 void
 tmrDestruct_IMPL(OBJTMR  *pTmr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4154);
     // Delete the Granular lock for SWRL Timer callback
     if (pTmr->pTmrSwrlLock != NULL)
     {
@@ -203,11 +208,13 @@ tmrDestruct_IMPL(OBJTMR  *pTmr)
  */
 static NV_INLINE NvBool tmrEventsExist(OBJTMR *pTmr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4155);
     return pTmr->pRmActiveEventList != NULL;
 }
 
 static NV_INLINE NvBool tmrIsOSTimer(OBJTMR *pTmr, PTMR_EVENT pEventPublic)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4156);
     return ((pEventPublic != NULL) &&
            (pTmr->getProperty(pTmr, PDB_PROP_TMR_USE_OS_TIMER_FOR_CALLBACKS) ||
            (pEventPublic->flags & TMR_FLAG_USE_OS_TIMER)));
@@ -227,6 +234,7 @@ NV_STATUS tmrEventCreate_IMPL
     NvU32       flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4157);
     PTMR_EVENT_PVT *ppEvent = (PTMR_EVENT_PVT*)ppEventPublic;
     NV_STATUS status = NV_OK;
 
@@ -262,6 +270,7 @@ _tmrScheduleCallbackInterrupt
     NvU64   alarmTime
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4158);
     //
     // Don't schedule the interrupt if we are polling.  The interrupt can be
     // routed to a different device, which could get confused.  Also we don't
@@ -292,6 +301,7 @@ tmrResetCallbackInterrupt_IMPL
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4159);
     if (pTmr->getProperty(pTmr, PDB_PROP_TMR_USE_COUNTDOWN_TIMER_FOR_RM_CALLBACKS))
     {
         tmrSetCountdownIntrReset_HAL(pGpu, pTmr, NULL);
@@ -309,6 +319,7 @@ tmrGetCallbackInterruptPending_IMPL
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4160);
     if (pTmr->getProperty(pTmr, PDB_PROP_TMR_USE_COUNTDOWN_TIMER_FOR_RM_CALLBACKS))
     {
         return tmrGetCountdownPending_HAL(pGpu, pTmr, NULL);
@@ -331,6 +342,7 @@ void tmrEventCancel_IMPL
     PTMR_EVENT      pEventPublic
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4161);
     NvU64 nextAlarmTime;
     OBJGPU *pGpu = ENG_GET_GPU(pTmr);
     PTMR_EVENT_PVT pEvent = (PTMR_EVENT_PVT)pEventPublic;
@@ -400,6 +412,7 @@ void tmrEventDestroy_IMPL
     PTMR_EVENT  pEventPublic
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4162);
     PTMR_EVENT_PVT pEvent = (PTMR_EVENT_PVT)pEventPublic;
 
     if (pEvent != NULL)
@@ -426,6 +439,7 @@ void tmrEventDestroy_IMPL
 static NV_STATUS
 _nv0004CtrlCmdTmrSetAlarmNotifyCallback(OBJGPU *pGpu, OBJTMR *pTmr, void *pData)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4163);
     PEVENTNOTIFICATION pNotifyEvent = pData;
     NV_STATUS status = NV_OK;
 
@@ -450,6 +464,7 @@ tmrapiCtrlCmdTmrSetAlarmNotify_IMPL
     NV0004_CTRL_TMR_SET_ALARM_NOTIFY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4164);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pTimerApi);
     OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
     PEVENTNOTIFICATION pNotifyEvent = inotifyGetNotificationList(staticCast(pTimerApi, INotifier));
@@ -482,6 +497,7 @@ NV_STATUS tmrGetCurrentTimeEx_IMPL
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4165);
     OBJGPU *pGpu = ENG_GET_GPU(pTmr);
 
     if (API_GPU_IN_RESET_SANITY_CHECK(pGpu))
@@ -507,6 +523,7 @@ NV_STATUS tmrGetCurrentTime_IMPL
     NvU64              *pTime
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4166);
     return tmrGetCurrentTimeEx(pTmr, pTime, NULL);
 }
 
@@ -520,6 +537,7 @@ NV_STATUS tmrGetCurrentDiffTime_IMPL
     NvU64  *pDiffTime
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4167);
     NvU64 currentTime;
     NV_STATUS rmStatus;
 
@@ -553,6 +571,7 @@ NV_STATUS tmrEventScheduleRel_IMPL
     NvU64       RelTime
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4168);
     NvU64   AbsTime, currentTime;
     NV_STATUS rmStatus;
 
@@ -598,6 +617,7 @@ NV_STATUS tmrScheduleCallbackRel_IMPL
     NvU32               ChId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4169);
     NvU64   AbsTime, currentTime;
     NV_STATUS rmStatus;
 
@@ -625,6 +645,7 @@ NV_STATUS tmrScheduleCallbackRelSec_IMPL
     NvU32               ChId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4170);
     NvU64 RelTimeNs;
 
     RelTimeNs = (NvU64)RelTimeSec * 1000000000;
@@ -643,6 +664,7 @@ NvBool tmrEventOnList_IMPL
     PTMR_EVENT  pEventPublic
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4171);
     PTMR_EVENT_PVT pEvent = (PTMR_EVENT_PVT)pEventPublic;
     PTMR_EVENT_PVT pScan  = tmrIsOSTimer(pTmr, pEventPublic) ?
                             pTmr->pRmActiveOSTimerEventList :
@@ -672,6 +694,7 @@ NvBool tmrCallbackOnList_IMPL
     void               *Object
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4172);
     NvBool onList = NV_FALSE;
     PTMR_EVENT_PVT tmrScan;
     PTMR_EVENT_PVT tmrList;
@@ -700,6 +723,7 @@ _tmrGetNextFreeCallback
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4173);
     PTMR_EVENT_PVT pEvent = NULL;
 
     pEvent = pTmr->pRmCallbackFreeList_OBSOLETE;
@@ -730,6 +754,7 @@ _tmrInsertCallback
     NvU64           Time
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4174);
     NV_STATUS      returnStatus = NV_ERR_GENERIC; // Indicate that the timer was NOT inserted in the list
     OBJGPU *pGpu = ENG_GET_GPU(pTmr);
 
@@ -768,6 +793,7 @@ _tmrInsertCallbackInList
     PTMR_EVENT_PVT  pEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4175);
     PTMR_EVENT_PVT   pScan;
     NvBool           bAddedAsHead  = NV_TRUE;
     NvU64            nextAlarmTime;
@@ -861,6 +887,7 @@ NV_STATUS tmrEventScheduleAbs_IMPL
     NvU64       timeAbsNs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4176);
     NV_STATUS      rmStatus = NV_OK;
     TMR_EVENT_PVT *pEvent = (TMR_EVENT_PVT *)pEventPublic;
 
@@ -927,6 +954,7 @@ NV_STATUS tmrScheduleCallbackAbs_IMPL
     NvU32               ChId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4177);
     PTMR_EVENT_PVT tmrInsert;
     // Get a free callback from the free list.
     if(pTmr->pRmCallbackFreeList_OBSOLETE == NULL)
@@ -972,6 +1000,7 @@ static void _tmrScanCallback
     void   *pObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4178);
     PTMR_EVENT_PVT  tmrScan;
     PTMR_EVENT_PVT  tmrNext;
     PTMR_EVENT_PVT  tmrCurrent;
@@ -1065,6 +1094,7 @@ _tmrScanCallbackOSTimer
     PTMR_EVENT_PVT  pEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4179);
     PTMR_EVENT_PVT  pCurrent = pTmr->pRmActiveOSTimerEventList;
 
     if (pCurrent == pEvent)
@@ -1096,6 +1126,7 @@ _tmrGetNextAlarmTime
     NvU64  *pNextAlarmTime
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4180);
     if (pTmr->pRmActiveEventList == NULL)
     {
         *pNextAlarmTime = 0;
@@ -1116,6 +1147,7 @@ static PTMR_EVENT_PVT  _tmrPullCallbackFromHead
     OBJTMR         *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4181);
     PTMR_EVENT_PVT tmrDelete = pTmr->pRmActiveEventList;
     if (tmrDelete)
     {
@@ -1147,6 +1179,7 @@ tmrTimeUntilNextCallback_IMPL
     NvU64 *pTimeUntilCallbackNs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4182);
     NvU64           currentTime;
     NvU64           nextAlarmTime;
     NV_STATUS       status;
@@ -1178,6 +1211,7 @@ tmrCallExpiredCallbacks_IMPL
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4183);
     NvU64           currentTime = 0;
     NvU64           nextAlarmTime;
     PTMR_EVENT_PVT  pEvent;
@@ -1263,6 +1297,7 @@ _tmrStateLoadCallbacks
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4184);
     NvU64 nextAlarmTime = 0;
     PTMR_EVENT_PVT pScan = pTmr->pRmActiveOSTimerEventList;
 
@@ -1313,6 +1348,7 @@ tmrRmCallbackIntrEnable_IMPL
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4185);
     tmrResetCallbackInterrupt(pGpu, pTmr);
 
     if (pTmr->getProperty(pTmr, PDB_PROP_TMR_USE_COUNTDOWN_TIMER_FOR_RM_CALLBACKS))
@@ -1335,6 +1371,7 @@ tmrRmCallbackIntrDisable_IMPL
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4186);
     if (pTmr->getProperty(pTmr, PDB_PROP_TMR_USE_COUNTDOWN_TIMER_FOR_RM_CALLBACKS))
     {
         tmrSetCountdownIntrDisable_HAL(pGpu, pTmr);
@@ -1352,6 +1389,7 @@ tmrSetCountdownCallback_IMPL
     TIMEPROC_COUNTDOWN pSwrlCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4187);
     pTmr->pSwrlCallback = pSwrlCallback;
 }
 
@@ -1365,6 +1403,7 @@ tmrGetSystemTime_IMPL
     PDAYMSECTIME    pTime
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4188);
     NvU32   sec;
     NvU32   usec;
 
@@ -1394,6 +1433,7 @@ tmrCheckCallbacksReleaseSem_IMPL
     NvU32   chId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4189);
     PTMR_EVENT_PVT pScan;
 
     for (pScan = pTmr->pRmActiveEventList; pScan != NULL; pScan = pScan->pNext)
@@ -1417,6 +1457,7 @@ tmrInitCallbacks_IMPL
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4190);
     NvU32   i;
 
     // Initialize the timer callback lists.
@@ -1453,6 +1494,7 @@ tmrCancelCallback_IMPL
     void   *pObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4191);
     OBJGPU *pGpu = ENG_GET_GPU(pTmr);
     NvU64   nextAlarmTime;
 
@@ -1493,6 +1535,7 @@ tmrDiffExceedsTime_IMPL
     NvU32           time
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4192);
     NvU32   msecsInADay = 1000 * 3600 * 24;
     NvBool  bRetVal     = NV_FALSE;
 
@@ -1534,6 +1577,7 @@ tmrStateInitLocked_IMPL
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4193);
 
     return NV_OK;
 }
@@ -1549,6 +1593,7 @@ tmrStateLoad_IMPL
     NvU32   flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4194);
     // Have to restore any pending callbacks' state
     _tmrStateLoadCallbacks(pGpu, pTmr);
 
@@ -1566,6 +1611,7 @@ tmrStateUnload_IMPL
     NvU32   flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4195);
     PTMR_EVENT_PVT pScan = pTmr->pRmActiveOSTimerEventList;
     NvU64 currentSysTime, elapsedTime;
 
@@ -1609,6 +1655,7 @@ tmrStateDestroy_IMPL
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4196);
     objDelete(pTmr->pGrTickFreqRefcnt);
     pTmr->pGrTickFreqRefcnt = NULL;
 }
@@ -1621,6 +1668,7 @@ tmrapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4197);
     return NV_OK;
 }
 
@@ -1630,6 +1678,7 @@ tmrapiDestruct_IMPL
     TimerApi *pTimerApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4198);
 }
 
 NV_STATUS
@@ -1641,6 +1690,7 @@ tmrapiGetRegBaseOffsetAndSize_IMPL
     NvU32 *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4199);
     NV_STATUS status;
     NvU32 offset;
 
@@ -1660,6 +1710,7 @@ tmrapiGetRegBaseOffsetAndSize_IMPL
 void
 tmrapiDeregisterEvents_IMPL(TimerApi *pTimerApi)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4200);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pTimerApi);
     OBJTMR            *pTmr = GPU_GET_TIMER(pGpu);
     PEVENTNOTIFICATION pNotifyEvent = inotifyGetNotificationList(staticCast(pTimerApi, INotifier));
@@ -1701,6 +1752,7 @@ static NV_STATUS _tmrCallbackWrapperfunction
     PTMR_EVENT pEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4201);
     wrapperStorage_t *pObj_Inner = (wrapperStorage_t *)pEvent->pUserData;
 
     // Backup the wrapper function and data
@@ -1738,6 +1790,7 @@ tmrCtrlCmdEventCreate
     TMR_EVENT_SET_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4202);
     NV_STATUS         rc;
     PTMR_EVENT        pEvent;
     wrapperStorage_t *pWrapper;
@@ -1778,6 +1831,7 @@ tmrCtrlCmdEventSchedule
     TMR_EVENT_SCHEDULE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4203);
     NV_STATUS rc;
     OBJTMR    *pTmr   = GPU_GET_TIMER(pGpu);
     TMR_EVENT *pEvent = (PTMR_EVENT)NvP64_VALUE(pParams->pEvent);
@@ -1815,6 +1869,7 @@ tmrCtrlCmdEventCancel
     TMR_EVENT_GENERAL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4204);
     OBJTMR    *pTmr   = GPU_GET_TIMER(pGpu);
     PTMR_EVENT pEvent = (PTMR_EVENT)NvP64_VALUE(pParams->pEvent);
     tmrEventCancel(pTmr, pEvent);
@@ -1835,6 +1890,7 @@ tmrCtrlCmdEventDestroy
     TMR_EVENT_GENERAL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4205);
     OBJTMR    *pTmr   = GPU_GET_TIMER(pGpu);
     PTMR_EVENT pEvent = (PTMR_EVENT)NvP64_VALUE(pParams->pEvent);
 
@@ -1853,6 +1909,7 @@ NV_STATUS tmrEventServiceTimer_IMPL
     PTMR_EVENT          pPublicEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4206);
     PTMR_EVENT_PVT pEvent = (PTMR_EVENT_PVT)pPublicEvent;
     NV_STATUS status      = NV_ERR_INVALID_REQUEST;
 
@@ -1881,6 +1938,7 @@ NV_STATUS tmrEventServiceTimer_IMPL
 void
 tmrRegisterIntrService_IMPL(OBJGPU *pGpu, OBJTMR *pTmr, IntrServiceRecord pRecords[MC_ENGINE_IDX_MAX])
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4207);
     NV_ASSERT(pRecords[MC_ENGINE_IDX_TMR].pInterruptService == NULL);
     pRecords[MC_ENGINE_IDX_TMR].pInterruptService = staticCast(pTmr, IntrService);
 
@@ -1903,6 +1961,7 @@ tmrRegisterIntrService_IMPL(OBJGPU *pGpu, OBJTMR *pTmr, IntrServiceRecord pRecor
 NvBool
 tmrClearInterrupt_IMPL(OBJGPU *pGpu, OBJTMR *pTmr, IntrServiceClearInterruptArguments *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4208);
     Intr *pIntr = GPU_GET_INTR(pGpu);
     NV_ASSERT_OR_RETURN(pParams != NULL, NV_FALSE);
 

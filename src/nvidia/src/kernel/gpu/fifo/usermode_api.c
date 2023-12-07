@@ -36,6 +36,7 @@ usrmodeConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1623);
     Memory                      *pMemory        = staticCast(pUserModeApi, Memory);
     OBJGPU                      *pGpu           = pMemory->pGpu;
     KernelFifo                  *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);

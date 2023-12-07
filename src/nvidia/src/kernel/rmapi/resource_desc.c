@@ -113,6 +113,7 @@ g_RsResourceDescList[] =
 
 void RsResInfoInitialize(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5657);
     //
     // Keep the array sorted by externalClassId, so we can binary search it
     // Simple bubble-sort is fine here as the number of elements is below 300,
@@ -143,6 +144,7 @@ RsResInfoByExternalClassId
     NvU32 externalClassId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5658);
     NvU32 low  = 0;
     NvU32 high = NUM_ENTRIES_DESC_LIST;
 
@@ -168,11 +170,13 @@ RsResInfoByExternalClassId
 
 NvU32 RsResInfoGetInternalClassId(const RS_RESOURCE_DESC *pResDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5659);
     return pResDesc ? pResDesc->internalClassId : 0;
 }
 
 void RsResInfoGetResourceList(const RS_RESOURCE_DESC **ppResourceList, NvU32 *numResources)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5660);
     *ppResourceList = g_RsResourceDescList;
     *numResources = NV_ARRAY_ELEMENTS(g_RsResourceDescList);
 }
@@ -186,6 +190,7 @@ rmapiGetClassAllocParamSize
     NvU32    hClass
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5661);
     RS_RESOURCE_DESC *pResDesc;
 
     *pAllocParamSizeBytes = 0;

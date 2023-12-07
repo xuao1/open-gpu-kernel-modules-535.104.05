@@ -109,6 +109,7 @@ Intel_25XX_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4911);
     RmPhysAddr baseAddress;
 
     if (!pCl->FHBAddr.valid)
@@ -137,6 +138,7 @@ Intel_2A40_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4912);
     RmPhysAddr baseAddress;
 
     if (!pCl->FHBAddr.valid)
@@ -179,6 +181,7 @@ Intel_0040_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4913);
     pCl->setProperty(pCl, PDB_PROP_CL_ASLM_SUPPORTS_GEN2_LINK_UPGRADE, NV_TRUE);
 
     return Intel_Core_Nehalem_Processor_setupFunc(pCl);
@@ -191,6 +194,7 @@ Intel_2E00_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4914);
     RmPhysAddr baseAddress;
 
     if (!pCl->FHBAddr.valid)
@@ -229,6 +233,7 @@ Intel_29X0_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4915);
     NV_STATUS  rmStatus;
 
     rmStatus = Intel_29XX_setupFunc(pCl);
@@ -245,6 +250,7 @@ Intel_29E0_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4916);
     NV_STATUS  rmStatus;
     NvU32      capId;
 
@@ -284,6 +290,7 @@ Intel_29XX_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4917);
     RmPhysAddr baseAddress;
 
     if (!pCl->FHBAddr.valid)
@@ -315,6 +322,7 @@ Intel_25E0_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4918);
     RmPhysAddr baseAddress;
 
     if (!pCl->FHBAddr.valid)
@@ -335,6 +343,7 @@ Intel_27XX_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4919);
     RmPhysAddr baseAddress;
 
     if (!pCl->FHBAddr.valid)
@@ -362,6 +371,7 @@ Intel_359E_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4920);
     RmPhysAddr baseAddress;
 
     if (!pCl->FHBAddr.valid)
@@ -389,6 +399,7 @@ Intel_4000_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4921);
     RmPhysAddr baseAddress;
 
     if (!pCl->FHBAddr.valid)
@@ -410,6 +421,7 @@ Intel_4003_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4922);
     void *pHandle;
     NvU32 hecbase;
     RmPhysAddr baseAddress;
@@ -478,6 +490,7 @@ Intel_Core_Nehalem_Processor_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4923);
     NvS32 bus;
     RmPhysAddr baseAddress;
 
@@ -545,6 +558,7 @@ Intel_3400_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4924);
     // Set ASPM L0S\L1 properties
     _Set_ASPM_L0S_L1(pCl, NV_TRUE, NV_FALSE);
 
@@ -562,6 +576,7 @@ Intel_3B42_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4925);
     void *pHandle;
     NvU16 deviceId;
     NvU16 cpuDeviceId;
@@ -605,6 +620,7 @@ Intel_Huron_River_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4926);
     // Enable Gen2 ASLM
     pCl->setProperty(pCl, PDB_PROP_CL_ASLM_SUPPORTS_GEN2_LINK_UPGRADE, NV_TRUE);
 
@@ -627,6 +643,7 @@ Intel_1C4B_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4927);
     return Intel_Huron_River_setupFunc(pCl);
 }
 
@@ -637,6 +654,7 @@ Intel_1C49_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4928);
     return Intel_Huron_River_setupFunc(pCl);
 }
 
@@ -647,6 +665,7 @@ Intel_1C10_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4929);
     return NV_OK;
 }
 
@@ -657,6 +676,7 @@ Intel_1C46_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4930);
     return NV_OK;
 }
 
@@ -667,6 +687,7 @@ Intel_1D40_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4931);
     pCl->setProperty(pCl, PDB_PROP_CL_ON_PCIE_GEN3_PATSBURG, NV_TRUE);
 
     if (DEVICE_ID_INTEL_0E00_HOST_BRIDGE == pCl->FHBBusInfo.deviceID)
@@ -692,6 +713,7 @@ Intel_8D47_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4932);
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IN_ASPM_POR_LIST, NV_TRUE);
 
     // Set ASPM L0S\L1 properties
@@ -713,6 +735,7 @@ Intel_8D44_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4933);
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IN_ASPM_POR_LIST, NV_TRUE);
 
     // Set ASPM L0S\L1 properties
@@ -731,6 +754,7 @@ Intel_1E10_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4934);
     // Set ASPM L0S\L1 properties
     _Set_ASPM_L0S_L1(pCl, NV_FALSE, NV_FALSE);
 
@@ -758,6 +782,7 @@ Intel_8C4B_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4935);
     switch (pCl->FHBBusInfo.deviceID)
     {
         case DEVICE_ID_INTEL_0C00_HASWELL_HOST_BRIDGE:
@@ -784,6 +809,7 @@ Intel_8CC4_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4936);
     return NV_OK;
 }
 
@@ -794,6 +820,7 @@ Intel_A145_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4937);
     return NV_OK;
 }
 
@@ -804,6 +831,7 @@ Intel_A2C5_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4938);
     return NV_OK;
 }
 
@@ -814,6 +842,7 @@ Intel_A242_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4939);
     return NV_OK;
 }
 
@@ -824,6 +853,7 @@ Intel_A2D2_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4940);
     return NV_OK;
 }
 
@@ -834,6 +864,7 @@ Intel_A2C9_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4941);
     return NV_OK;
 }
 
@@ -844,6 +875,7 @@ Intel_A301_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4942);
     return NV_OK;
 }
 
@@ -854,6 +886,7 @@ Intel_0685_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4943);
     return NV_OK;
 }
 
@@ -864,6 +897,7 @@ Intel_4381_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4944);
     pCl->setProperty(pCl, PDB_PROP_CL_HAS_RESIZABLE_BAR_ISSUE, NV_TRUE);
 
     //
@@ -886,6 +920,7 @@ Intel_7A82_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4945);
     pCl->setProperty(pCl, PDB_PROP_CL_HAS_RESIZABLE_BAR_ISSUE, NV_TRUE);
 
     return NV_OK;
@@ -898,6 +933,7 @@ Intel_7A04_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4946);
     pCl->setProperty(pCl, PDB_PROP_CL_HAS_RESIZABLE_BAR_ISSUE, NV_TRUE);
 
     return NV_OK;
@@ -909,6 +945,7 @@ Nvidia_T210_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4947);
     if (!pCl->FHBAddr.valid)
         return NV_ERR_GENERIC;
 
@@ -936,6 +973,7 @@ Nvidia_T194_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4948);
     NV_STATUS status;
 
     status = Nvidia_T210_setupFunc(pCl);
@@ -953,6 +991,7 @@ Nvidia_TH500_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4949);
     if (!pCl->FHBAddr.valid)
         return NV_ERR_GENERIC;
 
@@ -977,6 +1016,7 @@ SiS_656_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4950);
     NvU32 PcieConfigBaseReg;
     RmPhysAddr baseAddress;
 
@@ -1006,6 +1046,7 @@ ATI_RS400_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4951);
     NvU32 nbcfg;
 
     if (!pCl->FHBAddr.valid)
@@ -1028,6 +1069,7 @@ ATI_RS480_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4952);
     NvU32 rev;
 
     if (!pCl->FHBAddr.valid)
@@ -1050,6 +1092,7 @@ ATI_RS480_setupFunc
 NV_STATUS
 AMD_RS780_setupFunc(OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4953);
     if (!pCl->FHBAddr.valid)
         return NV_ERR_GENERIC;
 
@@ -1063,6 +1106,7 @@ AMD_RS780_setupFunc(OBJCL *pCl)
 NV_STATUS
 AMD_FX790_setupFunc(OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4954);
     if (!pCl->FHBAddr.valid)
         return NV_ERR_GENERIC;
 
@@ -1072,17 +1116,20 @@ AMD_FX790_setupFunc(OBJCL *pCl)
 
 NV_STATUS ATI_RD870_setupFunc(OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4955);
     return NV_OK;
 }
 
 NV_STATUS ATI_RD890_setupFunc(OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4956);
     pCl->setProperty(pCl, PDB_PROP_CL_RELAXED_ORDERING_NOT_CAPABLE, NV_TRUE);
     return NV_OK;
 }
 
 NV_STATUS ATI_RX780_setupFunc(OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4957);
     pCl->setProperty(pCl, PDB_PROP_CL_RELAXED_ORDERING_NOT_CAPABLE, NV_TRUE);
     return NV_OK;
 }
@@ -1094,6 +1141,7 @@ AMD_FX890_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4958);
    // Set ASPM L0S\L1 properties
     _Set_ASPM_L0S_L1(pCl, NV_FALSE, NV_FALSE);
 
@@ -1107,6 +1155,7 @@ ATI_FX990_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4959);
     pCl->setProperty(pCl, PDB_PROP_CL_BUG_999673_P2P_ARBITRARY_SPLIT_WAR, NV_TRUE);
 
    // Set ASPM L0S\L1 properties
@@ -1123,6 +1172,7 @@ AMD_X370_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4960);
 
     // Set ASPM L0S\L1 properties
     _Set_ASPM_L0S_L1(pCl, NV_FALSE, NV_FALSE);
@@ -1137,6 +1187,7 @@ VIA_VX900_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4961);
     // This chipset is not capable of Gen1/Gen2 switch.
     pCl->setProperty(pCl, PDB_PROP_CL_PCIE_GEN1_GEN2_SWITCH_CHIPSET_DISABLED, NV_TRUE);
 
@@ -1150,6 +1201,7 @@ APM_Storm_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4962);
     // This chipset has trouble with multiple traffic classes
     pCl->setProperty(pCl, PDB_PROP_CL_PCIE_NON_COHERENT_USE_TC0_ONLY, NV_TRUE);
 
@@ -1163,6 +1215,7 @@ ARMV8_generic_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4963);
     return NV_OK;
 }
 
@@ -1173,6 +1226,7 @@ Marvell_ThunderX2_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4964);
     // TODO Need to check if any more PDB properties should be set
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IO_COHERENT, NV_TRUE);
     return NV_OK;
@@ -1185,6 +1239,7 @@ QEMU_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4965);
     //
     // TODO Need to check if any more PDB properties should be set and
     // use ACPI tables to determine whether system is I/O coherent,
@@ -1201,6 +1256,7 @@ Ampere_eMag_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4966);
     // TODO Need to check if any more PDB properties should be set
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IO_COHERENT, NV_TRUE);
     return NV_OK;
@@ -1213,6 +1269,7 @@ Huawei_Kunpeng920_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4967);
     //
     // TODO Need to check if any more PDB properties should be set and
     // use ACPI tables to determine whether system is I/O coherent,
@@ -1229,6 +1286,7 @@ Mellanox_BlueField_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4968);
     // TODO Need to check if any more PDB properties should be set
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IO_COHERENT, NV_TRUE);
     return NV_OK;
@@ -1241,6 +1299,7 @@ Mellanox_BlueField3_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4969);
     // Bug 4151565: BlueField 3 does not support WC mapping 
     pCl->setProperty(pCl, PDB_PROP_CL_DISABLE_IOMAP_WC, NV_TRUE);
     return NV_OK;
@@ -1254,6 +1313,7 @@ Amazon_Gravitron2_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4970);
     // TODO Need to check if any more PDB properties should be set
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IO_COHERENT, NV_TRUE);
     return NV_OK;
@@ -1266,6 +1326,7 @@ Fujitsu_A64FX_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4971);
     // TODO Need to check if any more PDB properties should be set
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IO_COHERENT, NV_TRUE);
     return NV_OK;
@@ -1278,6 +1339,7 @@ Ampere_Altra_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4972);
     // TODO Need to check if any more PDB properties should be set
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IO_COHERENT, NV_TRUE);
 
@@ -1296,6 +1358,7 @@ Arm_NeoverseN1_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4973);
     // TODO Need to check if any more PDB properties should be set
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IO_COHERENT, NV_TRUE);
     return NV_OK;
@@ -1312,6 +1375,7 @@ csGetInfoStrings
     NvU32 nameStrLen
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4974);
     NvU32 i;
     const char* pszUnknown = "Unknown";
     NvU32 szUnknownLen = portStringLength(pszUnknown);
@@ -1398,6 +1462,7 @@ _Set_ASPM_L0S_L1
     NvBool         bDisableL1
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4975);
     //
     // this chipset is part of exception list to enable/disable L0S/L1
     // (refer bug 529308)

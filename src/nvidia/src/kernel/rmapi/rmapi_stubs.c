@@ -44,6 +44,7 @@ static NV_STATUS _rmapiAllocWithSecInfo_STUB(RM_API *pRmApi, NvHandle hClient, N
 
 static NV_STATUS _rmapiFree_STUB(RM_API *pRmApi, NvHandle hClient, NvHandle hObject)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5723);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -55,6 +56,7 @@ static NV_STATUS _rmapiFreeWithSecInfo_STUB(RM_API *pRmApi, NvHandle hClient, Nv
 
 static NV_STATUS _rmapiDisableClients_STUB(RM_API *pRmApi, NvHandle *phClientList, NvU32 numClients)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5724);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -78,6 +80,7 @@ static NV_STATUS _rmapiControlWithSecInfo_STUB(RM_API *pRmApi, NvHandle hClient,
 
 static NV_STATUS _rmapiControlPrefetch_STUB(RM_API *pRmApi, NvU32 cmd)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5725);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -156,6 +159,7 @@ static NV_STATUS _rmapiUnmapWithSecInfo_STUB(RM_API *pRmApi, NvHandle hClient, N
 
 void rmapiInitStubInterface(RM_API *pRmApi)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5726);
     portMemSet(pRmApi, 0, sizeof(*pRmApi));
 
     pRmApi->Alloc                        = _rmapiAlloc_STUB;

@@ -40,6 +40,7 @@ uvmGetRegOffsetAccessCntrBufferPut_TU102
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4241);
     NV_ASSERT(accessCounterIndex == 0);
 
     return NV_VIRTUAL_FUNCTION_PRIV_ACCESS_COUNTER_NOTIFY_BUFFER_PUT;
@@ -52,6 +53,7 @@ uvmGetRegOffsetAccessCntrBufferGet_TU102
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4242);
     NV_ASSERT(accessCounterIndex == 0);
 
     return NV_VIRTUAL_FUNCTION_PRIV_ACCESS_COUNTER_NOTIFY_BUFFER_GET;
@@ -64,6 +66,7 @@ uvmGetRegOffsetAccessCntrBufferHi_TU102
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4243);
     NV_ASSERT(accessCounterIndex == 0);
 
     return NV_VIRTUAL_FUNCTION_PRIV_ACCESS_COUNTER_NOTIFY_BUFFER_HI;
@@ -76,6 +79,7 @@ uvmGetRegOffsetAccessCntrBufferLo_TU102
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4244);
     NV_ASSERT(accessCounterIndex == 0);
 
     return NV_VIRTUAL_FUNCTION_PRIV_ACCESS_COUNTER_NOTIFY_BUFFER_LO;
@@ -88,6 +92,7 @@ uvmGetRegOffsetAccessCntrBufferConfig_TU102
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4245);
     NV_ASSERT(accessCounterIndex == 0);
 
     return NV_VIRTUAL_FUNCTION_PRIV_ACCESS_COUNTER_CONFIG;
@@ -100,6 +105,7 @@ uvmGetRegOffsetAccessCntrBufferInfo_TU102
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4246);
     NV_ASSERT(accessCounterIndex == 0);
 
     return NV_VIRTUAL_FUNCTION_PRIV_ACCESS_COUNTER_NOTIFY_BUFFER_INFO;
@@ -112,6 +118,7 @@ uvmGetRegOffsetAccessCntrBufferSize_TU102
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4247);
     NV_ASSERT(accessCounterIndex == 0);
 
     return NV_VIRTUAL_FUNCTION_PRIV_ACCESS_COUNTER_NOTIFY_BUFFER_SIZE;
@@ -126,6 +133,7 @@ uvmReadAccessCntrBufferPutPtr_TU102
     NvU32  *pPutOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4248);
     *pPutOffset = GPU_VREG_RD32(pGpu, uvmGetRegOffsetAccessCntrBufferPut_HAL(pUvm, accessCounterIndex));
 
     return NV_OK;
@@ -140,6 +148,7 @@ uvmReadAccessCntrBufferGetPtr_TU102
     NvU32  *pGetOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4249);
     *pGetOffset = GPU_VREG_RD32(pGpu, uvmGetRegOffsetAccessCntrBufferGet_HAL(pUvm, accessCounterIndex));
 
     return NV_OK;
@@ -154,6 +163,7 @@ uvmWriteAccessCntrBufferGetPtr_TU102
     NvU32   getPtrValue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4250);
     GPU_VREG_WR32(pGpu, uvmGetRegOffsetAccessCntrBufferGet_HAL(pUvm, accessCounterIndex), getPtrValue);
 
     return NV_OK;
@@ -168,6 +178,7 @@ uvmEnableAccessCntr_TU102
     NvBool  bIsErrorRecovery
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4251);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     NvBool bRmOwnsAccessCntr = !!(pKernelGmmu->uvmSharedIntrRmOwnsMask &
                                   RM_UVM_SHARED_INTR_MASK_HUB_ACCESS_COUNTER_NOTIFY);
@@ -206,6 +217,7 @@ uvmGetAccessCntrRegisterMappings_TU102
     NvU32 *pAccessCntrMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4252);
     Intr *pIntr = GPU_GET_INTR(pGpu);
     DEVICE_MAPPING *pMapping = gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0);
     NvP64 bar0Mapping = NV_PTR_TO_NvP64(pMapping->gpuNvAddr);
@@ -235,6 +247,7 @@ uvmReadAccessCntrBufferFullPtr_TU102
     NvBool *pFullFlag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4253);
     NvU32 info = GPU_VREG_RD32(pGpu, uvmGetRegOffsetAccessCntrBufferInfo_HAL(pUvm, accessCounterIndex));
 
     *pFullFlag = FLD_TEST_DRF(_VIRTUAL_FUNCTION, _PRIV_ACCESS_COUNTER_NOTIFY_BUFFER_INFO, _FULL, _TRUE, info);
@@ -251,6 +264,7 @@ uvmAccessCntrSetThreshold_TU102
     NvU32   threshold
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4254);
     NvU32 regOffsetConfig = uvmGetRegOffsetAccessCntrBufferConfig_HAL(pUvm, accessCounterIndex);
     NvU32 config          = GPU_VREG_RD32(pGpu, regOffsetConfig);
 
@@ -269,6 +283,7 @@ uvmGetAccessCounterBufferSize_TU102
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4255);
     return GPU_VREG_RD32(pGpu, uvmGetRegOffsetAccessCntrBufferSize_HAL(pUvm, accessCounterIndex)) *
             NV_ACCESS_COUNTER_NOTIFY_BUF_SIZE;
 }
@@ -283,6 +298,7 @@ uvmAccessCntrSetGranularity_TU102
     NvU32 granularity
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4256);
     NvU32 regOffsetConfig = uvmGetRegOffsetAccessCntrBufferConfig_HAL(pUvm, accessCounterIndex);
     NvU32 config          = GPU_VREG_RD32(pGpu, regOffsetConfig);
 
@@ -343,6 +359,7 @@ uvmProgramWriteAccessCntrBufferAddress_TU102
     NvU64   addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4257);
     GPU_VREG_WR32(pGpu, uvmGetRegOffsetAccessCntrBufferHi_HAL(pUvm, accessCounterIndex), NvU64_HI32(addr));
     GPU_VREG_WR32(pGpu, uvmGetRegOffsetAccessCntrBufferLo_HAL(pUvm, accessCounterIndex), NvU64_LO32(addr));
 }
@@ -356,6 +373,7 @@ uvmProgramAccessCntrBufferEnabled_TU102
     NvBool  bEn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4258);
     NvU32 regOffsetLo = uvmGetRegOffsetAccessCntrBufferLo_HAL(pUvm, accessCounterIndex);
     NvU32 lo          = GPU_VREG_RD32(pGpu, regOffsetLo);
 
@@ -371,6 +389,7 @@ uvmIsAccessCntrBufferEnabled_TU102
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4259);
     NvU32 lo = GPU_VREG_RD32(pGpu, uvmGetRegOffsetAccessCntrBufferLo_HAL(pUvm, accessCounterIndex));
 
     return FLD_TEST_DRF(_VIRTUAL_FUNCTION, _PRIV_ACCESS_COUNTER_NOTIFY_BUFFER_LO, _EN, _TRUE, lo);
@@ -384,6 +403,7 @@ uvmIsAccessCntrBufferPushed_TU102
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4260);
     NvU32 info = GPU_VREG_RD32(pGpu, uvmGetRegOffsetAccessCntrBufferInfo_HAL(pUvm, accessCounterIndex));
 
     return FLD_TEST_DRF(_VIRTUAL_FUNCTION, _PRIV_ACCESS_COUNTER_NOTIFY_BUFFER_INFO, _PUSHED, _TRUE, info);
@@ -397,6 +417,7 @@ uvmEnableAccessCntrIntr_TU102
     NvU32   intrType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4261);
     Intr *pIntr = GPU_GET_INTR(pGpu);
 
     if (intrType == intr_all || intrType == intr_notify)
@@ -415,6 +436,7 @@ uvmDisableAccessCntrIntr_TU102
     OBJUVM *pUvm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4262);
     Intr *pIntr = GPU_GET_INTR(pGpu);
 
     intrDisableLeaf_HAL(pGpu, pIntr,
@@ -429,6 +451,7 @@ uvmAccessCntrService_TU102
     OBJUVM *pUvm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4263);
     NvU32 i;
 
     for (i = 0; i < pUvm->accessCounterBufferCount; i++)

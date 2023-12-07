@@ -27,6 +27,7 @@
 static NV_INLINE NvBool
 _isDeviceProfilingPermitted(OBJGPU *pGpu, ProfilerBase *pProf, API_SECURITY_INFO *pSecInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2400);
     if (pSecInfo->privLevel >= RS_PRIV_LEVEL_USER_ROOT)
     {
         return NV_TRUE;
@@ -43,6 +44,7 @@ _isDeviceProfilingPermitted(OBJGPU *pGpu, ProfilerBase *pProf, API_SECURITY_INFO
 static NvBool
 _isMemoryProfilingPermitted(OBJGPU *pGpu, ProfilerBase *pProf, NvHandle hClient)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2401);
     NvBool bSmcGpuPartitioningEnabled = IS_MIG_IN_USE(pGpu);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
 
@@ -73,6 +75,7 @@ profilerBaseConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2402);
     return profilerBaseConstructState_HAL(pProf, pCallContext, pParams);
 }
 
@@ -82,6 +85,7 @@ profilerBaseDestruct_IMPL
     ProfilerBase *pProf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2403);
     profilerBaseDestructState_HAL(pProf);
 }
 
@@ -93,6 +97,7 @@ profilerDevConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2404);
     PROFILER_CLIENT_PERMISSIONS clientPermissions = {0};
 
     if (!profilerDevQueryCapabilities_HAL(pProfDev, pCallContext, pParams,
@@ -113,6 +118,7 @@ profilerDevQueryCapabilities_IMPL
     PROFILER_CLIENT_PERMISSIONS *pClientPermissions
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2405);
     OBJGPU              *pGpu                   = GPU_RES_GET_GPU(pProfDev);
     ProfilerBase        *pProfBase              = staticCast(pProfDev, ProfilerBase);
     API_SECURITY_INFO   *pSecInfo               = pParams->pSecInfo;
@@ -149,6 +155,7 @@ profilerDevConstructState_IMPL
     PROFILER_CLIENT_PERMISSIONS clientPermissions
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2406);
     NV_CHECK_OK_OR_RETURN(LEVEL_ERROR, profilerDevConstructStatePrologue_HAL(pProfDev,
                             pCallContext, pAllocParams));
 
@@ -169,6 +176,7 @@ profilerDevConstructStatePrologue_FWCLIENT
     RS_RES_ALLOC_PARAMS_INTERNAL *pAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2407);
     OBJGPU      *pGpu       = GPU_RES_GET_GPU(pProfDev);
     NvHandle    hClient     = RES_GET_CLIENT_HANDLE(pProfDev);
     NvHandle    hParent     = RES_GET_PARENT_HANDLE(pProfDev);
@@ -191,6 +199,7 @@ profilerDevConstructStateInterlude_IMPL
     PROFILER_CLIENT_PERMISSIONS clientPermissions
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2408);
     OBJGPU          *pGpu       = GPU_RES_GET_GPU(pProfDev);
     RM_API          *pRmApi     = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvHandle        hClient     = RES_GET_CLIENT_HANDLE(pProfDev);
@@ -215,6 +224,7 @@ profilerDevDestruct_IMPL
     ProfilerDev *pProfDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2409);
     profilerDevDestructState_HAL(pProfDev);
 }
 
@@ -224,6 +234,7 @@ profilerDevDestructState_FWCLIENT
     ProfilerDev *pProfDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2410);
     NvHandle                    hClient;
     NvHandle                    hParent;
     NvHandle                    hObject;

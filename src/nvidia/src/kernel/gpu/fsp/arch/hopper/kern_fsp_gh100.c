@@ -61,6 +61,7 @@ kfspUpdateQueueHeadTail_GH100
     NvU32      queueTail
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1626);
     // The write to HEAD needs to happen after TAIL because it will interrupt FSP
     GPU_REG_WR32(pGpu, NV_PFSP_QUEUE_TAIL(FSP_EMEM_CHANNEL_RM), queueTail);
     GPU_REG_WR32(pGpu, NV_PFSP_QUEUE_HEAD(FSP_EMEM_CHANNEL_RM), queueHead);
@@ -83,6 +84,7 @@ kfspGetQueueHeadTail_GH100
     NvU32     *pQueueTail
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1627);
     *pQueueHead = GPU_REG_RD32(pGpu, NV_PFSP_QUEUE_HEAD(FSP_EMEM_CHANNEL_RM));
     *pQueueTail = GPU_REG_RD32(pGpu, NV_PFSP_QUEUE_TAIL(FSP_EMEM_CHANNEL_RM));
 }
@@ -104,6 +106,7 @@ kfspUpdateMsgQueueHeadTail_GH100
     NvU32      msgqTail
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1628);
     GPU_REG_WR32(pGpu, NV_PFSP_MSGQ_TAIL(FSP_EMEM_CHANNEL_RM), msgqTail);
     GPU_REG_WR32(pGpu, NV_PFSP_MSGQ_HEAD(FSP_EMEM_CHANNEL_RM), msgqHead);
 }
@@ -125,6 +128,7 @@ kfspGetMsgQueueHeadTail_GH100
     NvU32     *pMsgqTail
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1629);
     *pMsgqHead = GPU_REG_RD32(pGpu, NV_PFSP_MSGQ_HEAD(FSP_EMEM_CHANNEL_RM));
     *pMsgqTail = GPU_REG_RD32(pGpu, NV_PFSP_MSGQ_TAIL(FSP_EMEM_CHANNEL_RM));
 }
@@ -144,6 +148,7 @@ kfspGetRmChannelSize_GH100
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1630);
     //
     // Channel size is hardcoded to 1K for now. Later we will use EMEMR to
     // properly fetch the lower and higher bounds of the EMEM channel
@@ -172,6 +177,7 @@ kfspNvdmToSeid_GH100
     NvU8       nvdmType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1631);
     NvU8 seid;
 
     switch (nvdmType)
@@ -211,6 +217,7 @@ kfspCreateMctpHeader_GH100
     NvU8       seq
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1632);
     return REF_NUM(MCTP_HEADER_SOM,  (som)) |
            REF_NUM(MCTP_HEADER_EOM,  (eom)) |
            REF_NUM(MCTP_HEADER_SEID, (seid)) |
@@ -234,6 +241,7 @@ kfspCreateNvdmHeader_GH100
     NvU32      nvdmType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1633);
     return REF_DEF(MCTP_MSG_HEADER_TYPE, _VENDOR_PCI) |
            REF_DEF(MCTP_MSG_HEADER_VENDOR_ID, _NV)    |
            REF_NUM(MCTP_MSG_HEADER_NVDM_TYPE, (nvdmType));
@@ -262,6 +270,7 @@ kfspGetPacketInfo_GH100
     NvU8              *pTag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1634);
     NvU32 mctpHeader;
     NvU8  som, eom;
     NV_STATUS status = NV_OK;
@@ -319,6 +328,7 @@ kfspValidateMctpPayloadHeader_GH100
     NvU32     size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1635);
     NvU32 mctpPayloadHeader;
     NvU16 mctpVendorId;
     NvU8  mctpMessageType;
@@ -369,6 +379,7 @@ kfspProcessNvdmMessage_GH100
     NvU32      size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1636);
     NvU8 nvdmType;
     NV_STATUS status = NV_OK;
 
@@ -409,6 +420,7 @@ kfspProcessCommandResponse_GH100
     NvU32      size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1637);
     NVDM_PAYLOAD_COMMAND_RESPONSE *pCmdResponse;
     NvU32 headerSize = sizeof(NvU8); // NVDM type
     NV_STATUS status = NV_OK;
@@ -460,6 +472,7 @@ kfspConfigEmemc_GH100
     NvBool     bAincr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1638);
     NvU32 offsetBlks, offsetDwords;
     NvU32 reg32 = 0;
 
@@ -505,6 +518,7 @@ kfspWriteToEmem_GH100
     NvU32      size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1639);
     NvU32 i, reg32;
     NvU32 ememOffsetEnd;
 
@@ -559,6 +573,7 @@ kfspReadFromEmem_GH100
     NvU32      size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1640);
     NvU32 i, reg32;
     NvU32 ememOffsetEnd;
 
@@ -601,6 +616,7 @@ kfspWaitForSecureBoot_GH100
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1641);
     NV_STATUS status  = NV_OK;
     RMTIMEOUT timeout;
 
@@ -647,6 +663,7 @@ kfspCheckGspSecureScratch_GH100
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1642);
 
     return NV_FALSE;
 }
@@ -658,6 +675,7 @@ kfspGetGspUcodeArchive
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1643);
     KernelGsp *pKernelGsp                 = GPU_GET_KERNEL_GSP(pGpu);
     ConfidentialCompute *pCC              = GPU_GET_CONF_COMPUTE(pGpu);
     NV_ASSERT(pCC != NULL);
@@ -764,6 +782,7 @@ kfspGetGspBootArgs
     RmPhysAddr *pBootArgsGspSysmemOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1644);
     NV_STATUS status         = NV_OK;
 
     ConfidentialCompute *pCC = GPU_GET_CONF_COMPUTE(pGpu);
@@ -799,6 +818,7 @@ kfspSetupGspImages
     NVDM_PAYLOAD_COT *pCotPayload
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1645);
     NV_STATUS status = NV_OK;
 
     const BINDATA_ARCHIVE *pBinArchive;
@@ -903,6 +923,7 @@ _kfspIsGspTargetMaskReleased
     void    *pVoid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1646);
     const NvU32   privErrTargetLocked      = 0xBADF4100U;
     const NvU32   privErrTargetLockedMask  = 0xFFFFFF00U; // Ignore LSB - it has extra error information
     NvU32 reg;
@@ -927,6 +948,7 @@ kfspWaitForGspTargetMaskReleased_GH100
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1647);
     NV_STATUS status = NV_OK;
 
     status =  gpuTimeoutCondWait(pGpu, _kfspIsGspTargetMaskReleased, NULL, NULL);
@@ -941,6 +963,7 @@ _kfspCheckGspBootStatus
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1648);
     // On GSP-RM, the kgsp code path will check for GSP boot status
     return NV_OK;
 }
@@ -960,6 +983,7 @@ kfspDumpDebugState_GH100
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1649);
     //
     // Older microcodes did not have the version populated in scratch.
     // They will report a version of 0.
@@ -997,6 +1021,7 @@ kfspGspFmcIsEnforced_GH100
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1650);
     return NV_TRUE;
 }
 
@@ -1015,6 +1040,7 @@ kfspSendBootCommands_GH100
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1651);
     NV_STATUS status = NV_OK;
     NV_STATUS statusBoot = NV_OK;
     NvU32 frtsSize = 0;
@@ -1204,6 +1230,7 @@ kfspErrorCode2NvStatusMap_GH100
     NvU32      errorCode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1652);
     switch (errorCode)
     {
         case FSP_OK:
@@ -1231,6 +1258,7 @@ kfspGetExtraReservedMemorySize_GH100
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1653);
     // Bug: 3763996
     return 4 * 1024;
 }
@@ -1242,6 +1270,7 @@ kfspRequiresBug3957833WAR_GH100
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1654);
     const NvU32 FSP_BUG_3957833_FIX_VERSION = 0x44C;
     const NvU32 fspUcodeVersion = GPU_REG_RD_DRF(pGpu, _GFW, _FSP_UCODE_VERSION, _FULL);
     return fspUcodeVersion < FSP_BUG_3957833_FIX_VERSION;

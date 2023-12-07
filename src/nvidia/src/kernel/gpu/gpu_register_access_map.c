@@ -43,6 +43,7 @@
 NV_STATUS
 gpuSetUserRegisterAccessPermissions_IMPL(OBJGPU *pGpu, NvU32 offset, NvU32 size, NvBool bAllow)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1892);
     NvU32 mapSize = pGpu->userRegisterAccessMapSize * 8;  // total number of bits
     NvU32 bitOffset;
     NvU32 bitSize;
@@ -136,6 +137,7 @@ gpuSetUserRegisterAccessPermissionsInBulk_IMPL(OBJGPU *pGpu, const NvU32 *pOffse
 NvBool
 gpuGetUserRegisterAccessPermissions_IMPL(OBJGPU *pGpu, NvU32 offset)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1893);
     NvU32 bitOffset = offset / sizeof(NvU32);
 
     if (!pGpu->pUserRegisterAccessMap)
@@ -174,6 +176,7 @@ gpuGetUserRegisterAccessPermissions_IMPL(OBJGPU *pGpu, NvU32 offset)
 
 static NvBool _getIsProfilingPrivileged(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1894);
     // On a vGPU Host, RmProfilingAdminOnly is always set to 1
     if (hypervisorIsVgxHyper())
     {
@@ -207,6 +210,7 @@ static NvBool _getIsProfilingPrivileged(OBJGPU *pGpu)
 NV_STATUS
 gpuConstructUserRegisterAccessMap_IMPL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1895);
     NV2080_CTRL_INTERNAL_GPU_GET_USER_REGISTER_ACCESS_MAP_PARAMS *pParams = NULL;
     NV_STATUS    status              = NV_OK;
     NvU32        compressedSize      = 0;
@@ -329,6 +333,7 @@ done:
 NV_STATUS
 gpuInitRegisterAccessMap_IMPL(OBJGPU *pGpu, NvU8 *pAccessMap, NvU32 accessMapSize, const NvU8 *pComprData, const NvU32 comprDataSize)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1896);
     PGZ_INFLATE_STATE pGzState = NULL;
     NvU32 inflatedBytes        = 0;
 

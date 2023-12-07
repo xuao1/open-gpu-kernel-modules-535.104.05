@@ -75,6 +75,7 @@ _virtmemQueryVirtAllocParams
     NvU64                       *pPageSizeLockMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4734);
     MemoryManager          *pMemoryManager     = GPU_GET_MEMORY_MANAGER(pGpu);
     RsClient               *pClient;
     FB_ALLOC_INFO          *pFbAllocInfo       = NULL;
@@ -159,6 +160,7 @@ _virtmemCopyConstruct
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4735);
     RsClient      *pDstClient = pCallContext->pClient;
     RsClient      *pSrcClient = pParams->pSrcClient;
     RsResourceRef *pSrcRef    = pParams->pSrcRef;
@@ -293,6 +295,7 @@ virtmemConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4736);
     Memory                      *pMemory               = staticCast(pVirtualMemory, Memory);
     NV_MEMORY_ALLOCATION_PARAMS *pAllocData            = pParams->pAllocParams;
     MEMORY_ALLOCATION_REQUEST    allocRequest          = {0};
@@ -661,6 +664,7 @@ virtmemDestruct_IMPL
     VirtualMemory *pVirtualMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4737);
     Memory             *pMemory         = staticCast(pVirtualMemory, Memory);
     OBJGPU             *pGpu            = pMemory->pGpu;
     MemoryManager      *pMemoryManager  = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -728,6 +732,7 @@ virtmemAllocResources
     FB_ALLOC_INFO               *pFbAllocInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4738);
     NV_STATUS                    status          = NV_OK;
     MEMORY_DESCRIPTOR           *pMemDesc        = NULL;
     RsClient                    *pRsClient       = NULL;
@@ -949,6 +954,7 @@ NV_STATUS virtmemReserveMempool_IMPL
     NvU64          pageSizeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4739);
     RsClient   *pClient = RES_GET_CLIENT(pVirtualMemory);
     OBJVASPACE *pVAS    = NULL;
     NvU32       mempoolFlags = VASPACE_RESERVE_FLAGS_NONE;
@@ -986,6 +992,7 @@ virtmemMatchesVASpace_IMPL
     NvHandle hVASpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4740);
     return (RES_GET_CLIENT_HANDLE(pVirtualMemory) == hClient) && (pVirtualMemory->hVASpace == hVASpace);
 }
 
@@ -1001,6 +1008,7 @@ virtmemGetByHandleAndDevice_IMPL
     VirtualMemory    **ppVirtualMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4741);
     Memory *pMemory;
 
     NV_CHECK_OK_OR_RETURN(LEVEL_SILENT,
@@ -1025,6 +1033,7 @@ _virtmemAllocKernelMapping
     Memory               *pMemoryInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4742);
     NV_STATUS  status              = NV_OK;
     NvBool     bCoherentCpuMapping = pGpu->getProperty(pGpu, PDB_PROP_GPU_COHERENT_CPU_MAPPING);
     NvU32      gpuSubDevInst;
@@ -1148,6 +1157,7 @@ _virtmemFreeKernelMapping
     CLI_DMA_MAPPING_INFO *pDmaMappingInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4743);
     NvU32    gpuSubDevInst;
     NvBool   bCoherentCpuMapping = pGpu->getProperty(pGpu, PDB_PROP_GPU_COHERENT_CPU_MAPPING);
 
@@ -1212,6 +1222,7 @@ virtmemMapTo_IMPL
     RS_RES_MAP_TO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4744);
     NV_STATUS   status                = NV_ERR_NOT_SUPPORTED;
     Memory         *pMemory           = staticCast(pVirtualMemory, Memory);
     OBJGPU         *pGpu              = pParams->pGpu;
@@ -1651,6 +1662,7 @@ virtmemUnmapFrom_IMPL
     RS_RES_UNMAP_FROM_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4745);
     OBJGPU     *pGpu              = pParams->pGpu;
     Memory     *pMemory           = staticCast(pVirtualMemory, Memory);
     RsClient   *pClient           = RES_GET_CLIENT(pVirtualMemory);
@@ -1804,6 +1816,7 @@ void virtmemGetAddressAndSize_IMPL
     NvU64 *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4746);
     MEMORY_DESCRIPTOR *pMemDesc = staticCast(pVirtualMemory, Memory)->pMemDesc;
 
     *pVAddr = memdescGetPhysAddr(pMemDesc, AT_GPU_VA, 0);

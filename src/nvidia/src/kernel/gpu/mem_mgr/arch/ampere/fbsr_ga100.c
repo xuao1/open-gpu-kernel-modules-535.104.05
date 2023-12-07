@@ -34,6 +34,7 @@ fbsrSendMemsysProgramRawCompressionMode_GA100
     NvBool   bRawMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2577);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_INTERNAL_MEMSYS_PROGRAM_RAW_COMPRESSION_MODE_PARAMS params = {0};
 
@@ -56,6 +57,7 @@ fbsrSendMemsysProgramRawCompressionMode_GA100
 NV_STATUS
 fbsrBegin_GA100(OBJGPU *pGpu, OBJFBSR *pFbsr, FBSR_OP_TYPE op)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2578);
     if (op == FBSR_OP_RESTORE)
     {
         const MEMORY_SYSTEM_STATIC_CONFIG *pMemorySystemConfig =
@@ -89,6 +91,7 @@ fbsrBegin_GA100(OBJGPU *pGpu, OBJFBSR *pFbsr, FBSR_OP_TYPE op)
 NV_STATUS
 fbsrEnd_GA100(OBJGPU *pGpu, OBJFBSR *pFbsr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2579);
     NV_STATUS status = fbsrEnd_GM107(pGpu, pFbsr);
 
     if (pFbsr->op == FBSR_OP_RESTORE && pFbsr->bRawModeWasEnabled)

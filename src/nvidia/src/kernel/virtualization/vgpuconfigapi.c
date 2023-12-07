@@ -31,6 +31,7 @@ vgpuconfigapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5826);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -40,6 +41,7 @@ vgpuconfigapiDestruct_IMPL
     VgpuConfigApi *pVgpuConfigApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5827);
 }
 
 void
@@ -49,6 +51,7 @@ CliNotifyVgpuConfigEvent
     NvU32       notifyIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5828);
 }
 
 NV_STATUS
@@ -58,6 +61,7 @@ vgpuconfigapiCtrlCmdVgpuConfigSetInfo_IMPL
     NVA081_CTRL_VGPU_CONFIG_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5829);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -68,6 +72,7 @@ vgpuconfigapiCtrlCmdVgpuConfigGetVgpuFbUsage_IMPL
     NVA081_CTRL_VGPU_CONFIG_GET_VGPU_FB_USAGE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5830);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -78,6 +83,7 @@ vgpuconfigapiCtrlCmdVgpuConfigEnumerateVgpuPerPgpu_IMPL
     NVA081_CTRL_VGPU_CONFIG_ENUMERATE_VGPU_PER_PGPU_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5831);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -88,6 +94,7 @@ vgpuconfigapiCtrlCmdVgpuConfigGetVgpuTypeInfo_IMPL
     NVA081_CTRL_VGPU_CONFIG_GET_VGPU_TYPE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5832);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -98,6 +105,7 @@ vgpuconfigapiCtrlCmdVgpuConfigGetSupportedVgpuTypes_IMPL
     NVA081_CTRL_VGPU_CONFIG_GET_VGPU_TYPES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5833);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -108,6 +116,7 @@ vgpuconfigapiCtrlCmdVgpuConfigGetCreatableVgpuTypes_IMPL
     NVA081_CTRL_VGPU_CONFIG_GET_VGPU_TYPES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5834);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -118,6 +127,7 @@ vgpuconfigapiCtrlCmdVgpuConfigEventSetNotification_IMPL
     NVA081_CTRL_VGPU_CONFIG_EVENT_SET_NOTIFICATION_PARAMS *pSetEventParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5835);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -128,6 +138,7 @@ vgpuconfigapiCtrlCmdVgpuConfigNotifyStart_IMPL
     NVA081_CTRL_VGPU_CONFIG_NOTIFY_START_PARAMS *pNotifyParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5836);
     return NV_ERR_OBJECT_NOT_FOUND;
 }
 
@@ -137,6 +148,7 @@ vgpuconfigapiCtrlCmdVgpuConfigMdevRegister_IMPL
     VgpuConfigApi *pVgpuConfigApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5837);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -147,6 +159,7 @@ vgpuconfigapiCtrlCmdVgpuConfigSetVgpuInstanceEncoderCapacity_IMPL
     NVA081_CTRL_VGPU_CONFIG_VGPU_INSTANCE_ENCODER_CAPACITY_PARAMS *pEncoderParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5838);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -157,6 +170,7 @@ vgpuconfigapiCtrlCmdVgpuConfigGetMigrationCap_IMPL
     NVA081_CTRL_CMD_VGPU_CONFIG_GET_MIGRATION_CAP_PARAMS *pMigrationCapParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5839);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -167,6 +181,7 @@ vgpuconfigapiCtrlCmdVgpuConfigGetPgpuMetadataString_IMPL
     NVA081_CTRL_VGPU_CONFIG_GET_PGPU_METADATA_STRING_PARAMS *pGpuMetadataStringParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5840);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -177,6 +192,7 @@ vgpuconfigapiCtrlCmdVgpuConfigGetHostFbReservation_IMPL
     NVA081_CTRL_VGPU_CONFIG_GET_HOST_FB_RESERVATION_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5841);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -187,6 +203,7 @@ vgpuconfigapiCtrlCmdVgpuConfigGetDoorbellEmulationSupport_IMPL
     NVA081_CTRL_VGPU_CONFIG_GET_DOORBELL_EMULATION_SUPPORT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5842);
 
     return NV_ERR_NOT_SUPPORTED;
 }
@@ -198,6 +215,7 @@ vgpuconfigapiCtrlCmdVgpuConfigGetFreeSwizzId_IMPL
     NVA081_CTRL_VGPU_CONFIG_GET_FREE_SWIZZID_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5843);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -208,6 +226,7 @@ vgpuconfigapiCtrlCmdPgpuGetMultiVgpuSupportInfo_IMPL
     NVA081_CTRL_PGPU_GET_MULTI_VGPU_SUPPORT_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5844);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -218,6 +237,7 @@ vgpuconfigapiCtrlCmdGetVgpuDriversCaps_IMPL
     NVA081_CTRL_GET_VGPU_DRIVER_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5845);
     pParams->heterogeneousMultiVgpuSupported = NV_FALSE;
     return NV_ERR_NOT_SUPPORTED;
 }
@@ -229,6 +249,7 @@ vgpuconfigapiCtrlCmdVgpuConfigSetPgpuInfo_IMPL
     NVA081_CTRL_VGPU_CONFIG_SET_PGPU_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5846);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -239,6 +260,7 @@ vgpuconfigapiCtrlCmdVgpuConfigValidateSwizzId_IMPL
     NVA081_CTRL_VGPU_CONFIG_VALIDATE_SWIZZID_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5847);
     return NV_ERR_NOT_SUPPORTED;
 }
 

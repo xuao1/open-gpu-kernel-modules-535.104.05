@@ -48,6 +48,7 @@ kfifoEngineInfoXlate_GA100
     NvU32           *pOutVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1344);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
 
     // We no longer store ENGINE_INFO_TYPE_INTR on Ampere+ (bug 24110055)
@@ -125,6 +126,7 @@ kfifoChannelGroupGetLocalMaxSubcontext_GA100
     NvBool              bLegacyMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1345);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
 
     NV_ASSERT_OR_RETURN(pKernelChannelGroup != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -160,6 +162,7 @@ kfifoUpdateUsermodeDoorbell_GA100
     NvU32       runlistId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1346);
     //
     // Updating the usermode doorbell is different for CPU vs. GSP.
     //
@@ -195,6 +198,7 @@ kfifoGenerateWorkSubmitToken_GA100
     NvBool         bUsedForHost
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1347);
     NvU32          chId;
     NvU32          gfId;
     NvU32          runlistId;
@@ -268,6 +272,7 @@ kfifoRunlistGetBaseShift_GA100
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1348);
     return NV_RAMRL_ENTRY_BASE_SHIFT;
 }
 
@@ -282,6 +287,7 @@ kfifoGetMaxCeChannelGroups_GA100
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1349);
     ENGDESCRIPTOR eng = 0;
     NvU32 deviceIndex;
     const ENGINE_INFO *pEngineInfo = kfifoGetEngineInfo(pKernelFifo);

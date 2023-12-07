@@ -50,6 +50,7 @@
 static NV_STATUS
 _sec2GetClass(OBJGPU *pGpu, NvU32 *pClass)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3250);
     NV_STATUS status;
     NvU32 numClasses = 0;
     NvU32 *pClassList = NULL;
@@ -87,6 +88,7 @@ _sec2AllocAndMapBuffer
     SEC2UTILS_BUFFER_INFO *pSec2Buf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3251);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     NV_MEMORY_ALLOCATION_PARAMS memAllocParams;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pSec2Utils->pGpu);
@@ -159,6 +161,7 @@ _sec2InitBuffers
     Sec2Utils *pSec2Utils
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3252);
     NV_ASSERT_OK_OR_RETURN(serverutilGenResourceHandle(pSec2Utils->hClient, &pSec2Utils->scrubMthdAuthTagBuf.hPhysMem));
     NV_ASSERT_OK_OR_RETURN(serverutilGenResourceHandle(pSec2Utils->hClient, &pSec2Utils->scrubMthdAuthTagBuf.hVirtMem));
     NV_ASSERT_OK_OR_RETURN(_sec2AllocAndMapBuffer(pSec2Utils, RM_PAGE_SIZE_64K, &pSec2Utils->scrubMthdAuthTagBuf));
@@ -177,6 +180,7 @@ sec2utilsConstruct_IMPL
     KERNEL_MIG_GPU_INSTANCE      *pKernelMIGGPUInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3253);
     NV_STATUS status = NV_OK;
     NV_ASSERT_OR_RETURN(pGpu, NV_ERR_INVALID_STATE);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -285,6 +289,7 @@ sec2utilsDestruct_IMPL
     Sec2Utils *pSec2Utils
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3254);
     OBJCHANNEL *pChannel = pSec2Utils->pChannel;
     OBJGPU *pGpu = pSec2Utils->pGpu;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -368,6 +373,7 @@ sec2utilsDestruct_IMPL
 void
 sec2utilsServiceInterrupts_IMPL(Sec2Utils *pSec2Utils)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3255);
     OBJCHANNEL *pChannel = pSec2Utils->pChannel;
 
     //
@@ -398,6 +404,7 @@ _sec2utilsUpdateGetPtr
     Sec2Utils *pSec2Utils
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3256);
     return channelReadChannelMemdesc(pSec2Utils->pChannel, pSec2Utils->pChannel->authTagBufSemaOffset);
 }
 
@@ -407,6 +414,7 @@ _sec2utilsGetNextAuthTagSlot
     Sec2Utils *pSec2Utils
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3257);
     NvU32 totalSlots = pSec2Utils->scrubMthdAuthTagBuf.size / SHA_256_HASH_SIZE_BYTES;
     NvU32 nextPut = (pSec2Utils->authTagPutIndex + 1) % totalSlots;
 
@@ -441,6 +449,7 @@ _sec2utilsSubmitPushBuffer
     CHANNEL_PB_INFO  *pChannelPbInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3258);
     NV_STATUS status = NV_OK;
     NvU32 methodsLength = 0;
     NvU32 putIndex = 0;
@@ -517,6 +526,7 @@ sec2utilsMemset_IMPL
     SEC2UTILS_MEMSET_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3259);
     OBJCHANNEL *pChannel = pSec2Utils->pChannel;
     NV_STATUS   status = NV_OK;
     RMTIMEOUT   timeout;
@@ -624,6 +634,7 @@ sec2utilsUpdateProgress_IMPL
     Sec2Utils *pSec2Utils
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3260);
     NV_ASSERT((pSec2Utils != NULL) && (pSec2Utils->pChannel != NULL));
 
     NvU32 hwCurrentCompletedPayload = 0;

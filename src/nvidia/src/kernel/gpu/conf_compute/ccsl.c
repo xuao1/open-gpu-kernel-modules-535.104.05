@@ -42,6 +42,7 @@
 static void
 ccslSplit32(NvU8 *dst, NvU32 num)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 818);
     dst[3] = (NvU8) (num >> 24);
     dst[2] = (NvU8) (num >> 16);
     dst[1] = (NvU8) (num >> 8);
@@ -51,6 +52,7 @@ ccslSplit32(NvU8 *dst, NvU32 num)
 static void
 ccslSplit64(NvU8 *dst, NvU64 num)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 819);
     dst[7] = (NvU8) (num >> 56);
     dst[6] = (NvU8) (num >> 48);
     dst[5] = (NvU8) (num >> 40);
@@ -68,6 +70,7 @@ writeKmbToContext
     CC_KMB       *kmb
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 820);
     for (NvU32 index = 0; index < CC_AES_256_GCM_KEY_SIZE_DWORD; index++)
     {
         ccslSplit32(pCtx->keyOut + 4 * index, kmb->encryptBundle.key[index]);
@@ -114,6 +117,7 @@ ccslIncrementCounter_IMPL
     NvU64         increment
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 821);
     NvU32 msgCounterLo = NvU32_BUILD(ctr[3], ctr[2], ctr[1], ctr[0]);
 
     switch (pCtx->msgCounterSize)
@@ -159,6 +163,7 @@ ccslContextInitViaChannel_IMPL
     NvHandle      hChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 822);
     CC_KMB *kmb;
 
     OBJSYS    *pSys        = SYS_GET_INSTANCE();
@@ -249,6 +254,7 @@ ccslContextInitViaKeyId_KERNEL
     NvU32                globalKeyId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 823);
     NV_STATUS  status;
     CC_KMB     kmb;
     OBJSYS    *pSys    = SYS_GET_INSTANCE();
@@ -304,6 +310,7 @@ ccslContextClear_IMPL
     pCcslContext pCtx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 824);
     NV_PRINTF(LEVEL_INFO, "Clearing the CCSL context.\n");
 
     if (pCtx == NULL)
@@ -322,6 +329,7 @@ ccslRotateIv_IMPL
     NvU8         direction
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 825);
     OBJGPU *pGpu;
     NvU32   gpuMask;
     NvU32   gpuInstance = 0;
@@ -407,6 +415,7 @@ ccslEncryptWithIv_IMPL
     NvU8         *authTagBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 826);
     NvU8   iv[CC_AES_256_GCM_IV_SIZE_BYTES] = {0};
     size_t outputBufferSize                 = bufferSize;
 
@@ -447,6 +456,7 @@ ccslEncrypt_KERNEL
     NvU8         *authTagBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 827);
     NvU8   iv[CC_AES_256_GCM_IV_SIZE_BYTES] = {0};
     size_t outputBufferSize                 = bufferSize;
 
@@ -485,6 +495,7 @@ ccslDecrypt_KERNEL
     NvU8 const   *authTagBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 828);
     NvU8   iv[CC_AES_256_GCM_IV_SIZE_BYTES] = {0};
     size_t outputBufferSize = bufferSize;
 
@@ -527,6 +538,7 @@ ccslDecrypt_KERNEL
 
 static NV_STATUS ccslIncrementCounter192(NvU8 *ctr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 829);
     NvU8 carry = 1;
     NvU64 i;
     NvBool overflow = NV_TRUE;
@@ -562,6 +574,7 @@ ccslSign_IMPL
     NvU8         *authTagBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 830);
     void *hmac_ctx;
 
     if (bufferSize == 0)
@@ -617,6 +630,7 @@ getMessageCounterAndLimit
     NvU64        *limit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 831);
     NvU32 msgCounterLo = NvU32_BUILD(iv[3], iv[2], iv[1], iv[0]);
     NvU32 msgCounterHi = NvU32_BUILD(iv[7], iv[6], iv[5], iv[4]);
 
@@ -641,6 +655,7 @@ ccslQueryMessagePool_IMPL
     NvU64        *messageNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 832);
     NvU64 limit;
     NvU64 messageCounter;
 
@@ -670,6 +685,7 @@ ccslIncrementIv_IMPL
     NvU8         *iv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 833);
     NV_STATUS status;
     void *ivPtr;
 

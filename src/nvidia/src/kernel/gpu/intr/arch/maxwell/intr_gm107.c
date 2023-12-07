@@ -46,6 +46,7 @@ intrGetPendingStall_GM107
     THREAD_STATE_NODE   *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2431);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU8 i;
 

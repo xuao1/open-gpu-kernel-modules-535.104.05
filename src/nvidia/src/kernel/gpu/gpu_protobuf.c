@@ -41,6 +41,7 @@ _gpuDumpEngine_CommonFields
     NVD_STATE   *pNvDumpState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1889);
     NV_STATUS rmStatus    = NV_OK;
 
     prbEncAddUInt32(pPrbEnc,
@@ -103,6 +104,7 @@ _gpuDumpEngineFunc
     void        *pvData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1890);
     NV_STATUS nvStatus = NV_OK;
     NvU8 startingDepth = prbEncNestingLevel(pPrbEnc);
 
@@ -127,6 +129,7 @@ gpuDumpCallbackRegister_IMPL
     OBJGPU   *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1891);
     NvDebugDump *pNvd = GPU_GET_NVD(pGpu);
     if (pNvd != NULL)
     {

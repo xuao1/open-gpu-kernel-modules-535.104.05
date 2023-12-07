@@ -47,6 +47,7 @@ dmaAllocBar1P2PMapping_GH100
     DMA_BAR1P2P_MAPPING_PRARAMS *params
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2594);
     MEMORY_DESCRIPTOR *pBar1P2PVirtMemDesc = NULL;           // The peer GPU BAR1 region mapped for BAR1 P2P
     MEMORY_DESCRIPTOR *pBar1P2PPhysMemDesc = NULL;           // The peer GPU vidmem sub region
     NvU64 phyAddr = 0;                                       // BAR1 offset of SPA addresses
@@ -176,6 +177,7 @@ dmaFreeBar1P2PMapping_GH100
     CLI_DMA_MAPPING_INFO *pDmaMappingInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2595);
     if (pDmaMappingInfo == NULL)
         return;
 

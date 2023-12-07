@@ -52,6 +52,7 @@ _memMulticastFabricValidateAllocParams
     NV00FD_ALLOCATION_PARAMETERS *pAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4628);
     // Only page size 512MB is supported
     if (pAllocParams->pageSize != NV_MEMORY_MULTICAST_FABRIC_PAGE_SIZE_512M)
     {
@@ -102,6 +103,7 @@ _memMulticastFabricDescriptorAllocUnderLock
     NV00FD_ALLOCATION_PARAMETERS *pAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4629);
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc;
 
     pMulticastFabricDesc = portMemAllocNonPaged(sizeof(MEM_MULTICAST_FABRIC_DESCRIPTOR));
@@ -134,6 +136,7 @@ _memMulticastFabricDescriptorFlushClientsUnderLock
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4630);
     MEM_MULTICAST_FABRIC_CLIENT_INFO *pNode;
 
     while ((pNode = listHead(&pMulticastFabricDesc->waitingClientsList)) != NULL)
@@ -159,6 +162,7 @@ _memMulticastFabricDescriptorEnqueueWaitUnderLock
     Memory                          *pMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4631);
     MEM_MULTICAST_FABRIC_CLIENT_INFO *pNode;
     NvP64                             pValidatedOsEvent = NULL;
     NV_STATUS                         status;
@@ -196,6 +200,7 @@ _memMulticastFabricDescriptorDequeueWaitUnderLock
     Memory                          *pMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4632);
     MEM_MULTICAST_FABRIC_CLIENT_INFO *pNode;
     MEM_MULTICAST_FABRIC_CLIENT_INFO *pNodeNext;
 
@@ -225,6 +230,7 @@ _memMulticastFabricGpuInfoAddUnderLock
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4633);
     NV00FD_CTRL_ATTACH_GPU_PARAMS *pAttachParams = pParams->pParams;
     Subdevice *pSubdevice = NULL;
     MEM_MULTICAST_FABRIC_GPU_INFO *pNode;
@@ -272,6 +278,7 @@ _memMulticastFabricGpuInfoRemoveUnderLock
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4634);
     MEM_MULTICAST_FABRIC_GPU_INFO *pNode = NULL;
     THREAD_STATE_NODE *pThreadNode = NULL;
     THREAD_STATE_FREE_CALLBACK freeCallback;
@@ -298,6 +305,7 @@ _memMulticastFabricSendInbandTeamSetupRequestV1UnderLock
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4635);
     Fabric *pFabric = SYS_GET_FABRIC(SYS_GET_INSTANCE());
     NV2080_CTRL_NVLINK_INBAND_SEND_DATA_PARAMS *sendDataParams;
     nvlink_inband_mc_team_setup_req_msg_t *pMcTeamSetupReqMsg = NULL;
@@ -381,6 +389,7 @@ _memMulticastFabricSendInbandTeamReleaseRequestV1UnderLock
     NvU64   mcTeamHandle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4636);
     NV2080_CTRL_NVLINK_INBAND_SEND_DATA_PARAMS *sendDataParams;
     nvlink_inband_mc_team_release_req_msg_t *pMcTeamReleaseReqMsg = NULL;
     nvlink_inband_mc_team_release_req_t *pMcTeamReleaseReq = NULL;
@@ -431,6 +440,7 @@ _memMulticastFabricSendInbandTeamSetupRequestUnderlock
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4637);
     NvU64 fmCaps;
     NV_STATUS status = NV_OK;
 
@@ -452,6 +462,7 @@ _memMulticastFabricSendInbandTeamReleaseRequestUnderLock
     NvU64   mcTeamHandle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4638);
     NvU64 fmCaps;
     NV_STATUS status = NV_OK;
 
@@ -474,6 +485,7 @@ _memMulticastFabricSendInbandRequestUnderLock
     MEM_MULTICAST_FABRIC_REQUEST_TYPE  requestType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4639);
     NV_STATUS status = NV_OK;
 
     // If pGpu is NULL, pick the first one attached to the object.
@@ -506,6 +518,7 @@ _memorymulticastfabricDetachMem
     NODE               *pMemNode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4640);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     MEMORY_DESCRIPTOR *pPhysMemDesc;
     MEM_MULTICAST_FABRIC_ATTACH_MEM_INFO_NODE *pAttachMemInfoNode;
@@ -529,6 +542,7 @@ _memorymulticastfabricBatchDetachMem
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4641);
     MEMORY_DESCRIPTOR *pFabricMemDesc;
     MEM_MULTICAST_FABRIC_GPU_INFO *pGpuNode;
     NODE *pMemNode;
@@ -575,6 +589,7 @@ _memMulticastFabricDescriptorFreeUnderLock
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4642);
     if (pMulticastFabricDesc == NULL)
         return;
 
@@ -644,6 +659,7 @@ _memMulticastFabricConstructUnderLock
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4643);
     Memory                           *pMemory       = staticCast(pMemoryMulticastFabric, Memory);
     NV00FD_ALLOCATION_PARAMETERS     *pAllocParams  = pParams->pAllocParams;
     MEM_MULTICAST_FABRIC_DESCRIPTOR  *pMulticastFabricDesc;
@@ -680,6 +696,7 @@ _memMulticastFabricCreateMemDescUnderLock
     MEMORY_DESCRIPTOR               **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4644);
     NV_STATUS status;
     MEMORY_DESCRIPTOR *pTempMemDesc = NULL;
 
@@ -717,6 +734,7 @@ _memMulticastFabricInstallMemDescUnderLock
     NV_STATUS                        status
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4645);
     NV_ASSERT(pMulticastFabricDesc->pMemDesc == NULL);
 
     pMulticastFabricDesc->pMemDesc = pMemDesc;
@@ -734,6 +752,7 @@ _memorymulticastFabricAllocVasUnderLock
     MEMORY_DESCRIPTOR               *pFabricMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4646);
     NV_STATUS status = NV_OK;
     FABRIC_VASPACE *pFabricVAS;
     MEM_MULTICAST_FABRIC_GPU_INFO *pGpuInfo;
@@ -814,6 +833,7 @@ _memMulticastFabricAttachGpuPostProcessorUnderLock
     NvU64                            mcAddressSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4647);
     NV_STATUS status = mcTeamStatus;
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
 
@@ -879,6 +899,7 @@ _memorymulticastfabricDestructUnderLock
     MemoryMulticastFabric *pMemoryMulticastFabric
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4648);
     Memory *pMemory = staticCast(pMemoryMulticastFabric, Memory);
 
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc = \
@@ -898,6 +919,7 @@ memorymulticastfabricTeamSetupResponseCallback
     NV2080_CTRL_NVLINK_INBAND_RECEIVED_DATA_PARAMS *pInbandRcvParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4649);
     Fabric *pFabric = SYS_GET_FABRIC(SYS_GET_INSTANCE());
     nvlink_inband_mc_team_setup_rsp_msg_t *pMcTeamSetupRspMsg;
     nvlink_inband_mc_team_setup_rsp_t *pMcTeamSetupRsp;
@@ -1003,6 +1025,7 @@ memorymulticastfabricConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4650);
     Fabric                       *pFabric      = SYS_GET_FABRIC(SYS_GET_INSTANCE());
     NV00FD_ALLOCATION_PARAMETERS *pAllocParams = pParams->pAllocParams;
     NV_STATUS                     status       = NV_OK;
@@ -1034,6 +1057,7 @@ memorymulticastfabricCtrlAttachGpu_IMPL
     NV00FD_CTRL_ATTACH_GPU_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4651);
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc = \
                                 pMemoryMulticastFabric->pMulticastFabricDesc;
     NV_STATUS status = NV_OK;
@@ -1126,6 +1150,7 @@ _memorymulticastfabricGetAttchedGpuInfo
     NvHandle                hSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4652);
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc = \
                                 pMemoryMulticastFabric->pMulticastFabricDesc;
     MEM_MULTICAST_FABRIC_GPU_INFO *pNodeItr;
@@ -1155,6 +1180,7 @@ memorymulticastfabricCtrlDetachMem_IMPL
     NV00FD_CTRL_DETACH_MEM_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4653);
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc = \
                                 pMemoryMulticastFabric->pMulticastFabricDesc;
     MEM_MULTICAST_FABRIC_GPU_INFO *pGpuInfo;
@@ -1198,6 +1224,7 @@ _memorymulticastfabricValidatePhysMem
     MEMORY_DESCRIPTOR    **ppPhysMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4654);
     RsResourceRef *pPhysmemRef;
     MEMORY_DESCRIPTOR *pPhysMemDesc;
     NvU64 physPageSize;
@@ -1244,6 +1271,7 @@ memorymulticastfabricCtrlAttachMem_IMPL
     NV00FD_CTRL_ATTACH_MEM_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4655);
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc = \
                                 pMemoryMulticastFabric->pMulticastFabricDesc;
     MEM_MULTICAST_FABRIC_GPU_INFO *pGpuInfo;
@@ -1348,6 +1376,7 @@ memorymulticastfabricDestruct_IMPL
     MemoryMulticastFabric *pMemoryMulticastFabric
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4656);
     Fabric *pFabric = SYS_GET_FABRIC(SYS_GET_INSTANCE());
 
     fabricMulticastFabricOpsMutexAcquire(pFabric);
@@ -1363,6 +1392,7 @@ memorymulticastfabricCanCopy_IMPL
     MemoryMulticastFabric *pMemoryMulticastFabric
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4657);
     return NV_TRUE;
 }
 
@@ -1374,6 +1404,7 @@ memorymulticastfabricCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4658);
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc;
     Fabric *pFabric = SYS_GET_FABRIC(SYS_GET_INSTANCE());
 
@@ -1400,6 +1431,7 @@ memorymulticastfabricCtrlGetInfo_IMPL
     NV00FD_CTRL_GET_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4659);
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc;
 
     pMulticastFabricDesc = pMemoryMulticastFabric->pMulticastFabricDesc;
@@ -1420,6 +1452,7 @@ memorymulticastfabricIsReady_IMPL
     NvBool                 bCopyConstructorContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4660);
     Fabric *pFabric = SYS_GET_FABRIC(SYS_GET_INSTANCE());
     Memory *pMemory = staticCast(pMemoryMulticastFabric, Memory);
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc;
@@ -1458,6 +1491,7 @@ memorymulticastfabricCtrlRegisterEvent_IMPL
     NV00FD_CTRL_REGISTER_EVENT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4661);
     Memory    *pMemory = staticCast(pMemoryMulticastFabric, Memory);
     NvHandle   hClient = RES_GET_CLIENT_HANDLE(pMemoryMulticastFabric);
 
@@ -1474,6 +1508,7 @@ memorymulticastfabricControl_Prologue_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4662);
     RmResource *pResource = staticCast(pMemoryMulticastFabric, RmResource);
 
     // Other control calls, nothing to be validated.
@@ -1491,6 +1526,7 @@ memorymulticastfabricControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4663);
     Fabric *pFabric = SYS_GET_FABRIC(SYS_GET_INSTANCE());
     NV_STATUS status = NV_OK;
 
@@ -1539,6 +1575,7 @@ memorymulticastfabricIsGpuMapAllowed_IMPL
     OBJGPU                *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4664);
     Fabric *pFabric = SYS_GET_FABRIC(SYS_GET_INSTANCE());
     MEM_MULTICAST_FABRIC_DESCRIPTOR *pMulticastFabricDesc;
     NvU32 attachedGpusMask;
@@ -1563,6 +1600,7 @@ memorymulticastfabricGetMapAddrSpace_IMPL
     NV_ADDRESS_SPACE      *pAddrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4665);
     *pAddrSpace = ADDR_FABRIC_MC;
     return NV_OK;
 }

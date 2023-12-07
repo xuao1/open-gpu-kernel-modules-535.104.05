@@ -34,6 +34,7 @@ ofactxConstructHal_KERNEL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3878);
     ChannelDescendant *pChannelDescendant = staticCast(pOfaContext, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     KernelFalcon      *pKernelFalcon = kflcnGetKernelFalconForEngine(pGpu, pChannelDescendant->resourceDesc.engDesc);
@@ -49,6 +50,7 @@ void ofactxDestructHal_KERNEL
     OfaContext *pOfaContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3879);
     ChannelDescendant *pChannelDescendant = staticCast(pOfaContext, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     KernelFalcon      *pKernelFalcon = kflcnGetKernelFalconForEngine(pGpu, pChannelDescendant->resourceDesc.engDesc);

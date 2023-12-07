@@ -52,6 +52,7 @@ kbifIsMSIEnabledInHW_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 360);
     NvU32 data32;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_MSI_64_HEADER,
@@ -80,6 +81,7 @@ kbifIsMSIXEnabledInHW_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 361);
     NvU32 data32;
 
     if (IS_VIRTUAL(pGpu))
@@ -115,6 +117,7 @@ kbifIsPciIoAccessEnabled_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 362);
     NvU32   data = 0;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu,
@@ -144,6 +147,7 @@ kbifIs3dController_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 363);
     NvU32   data = 0;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu,
@@ -172,6 +176,7 @@ kbifEnableExtendedTagSupport_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 364);
     NvU32   reg;
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl  = SYS_GET_CL(pSys);
@@ -229,6 +234,7 @@ kbifEnableNoSnoop_GH100
     NvBool     bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 365);
     NvU8  fieldVal;
     NvU32 regVal;
     NvU32 status = NV_OK;
@@ -271,6 +277,7 @@ kbifPcieConfigEnableRelaxedOrdering_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 366);
     NvU32 xveDevCtrlStatus;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu,
@@ -300,6 +307,7 @@ kbifPcieConfigDisableRelaxedOrdering_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 367);
     NvU32 xtlDevCtrlStatus;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS,
@@ -337,6 +345,7 @@ kbifGetXveStatusBits_GH100
     NvU32     *pStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 368);
     // control/status reg 0x68
     NvU32 xtlDevCtrlStatus;
 
@@ -416,6 +425,7 @@ kbifClearXveStatus_GH100
     NvU32     *pStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 369);
     NvU32 xtlDevCtrlStatus;
 
     if (pStatus)
@@ -458,6 +468,7 @@ kbifGetXveAerBits_GH100
     NvU32     *pBits
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 370);
     NvU32 xtlAerUncorr;
     NvU32 xtlAerCorr;
 
@@ -533,6 +544,7 @@ kbifClearXveAer_GH100
     NvU32      bits
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 371);
     NvU32 xtlAerUncorr = 0;
     NvU32 xtlAerCorr   = 0;
 
@@ -605,6 +617,7 @@ kbifGetPciConfigSpacePriMirror_GH100
     NvU32     *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 372);
     *pBase = DEVICE_BASE(NV_EP_PCFGM);
     *pSize = DEVICE_EXTENT(NV_EP_PCFGM) - DEVICE_BASE(NV_EP_PCFGM) + 1;
     return NV_OK;
@@ -630,6 +643,7 @@ kbifProbePcieReqAtomicCaps_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 373);
     NvU32   osAtomicsMask    = 0;
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl  = SYS_GET_CL(pSys);
@@ -670,6 +684,7 @@ kbifEnablePcieAtomics_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 374);
     NvU32 regVal;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS_2, &regVal) != NV_OK)
@@ -710,6 +725,7 @@ kbifGetBusOptionsAddr_GH100
     NvU32      *pAddrReg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 375);
     NV_STATUS  status = NV_OK;
 
     switch (options)
@@ -753,6 +769,7 @@ _kbifGetBarInfo_GH100
     NvBool    *pIs64BitBar
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 376);
     NV_STATUS status         = NV_OK;
     NvBool    barIs64Bit     = NV_FALSE;
     NvU32     barAddrLow     = 0;
@@ -823,6 +840,7 @@ kbifCacheVFInfo_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 377);
     NV_STATUS status     = NV_OK;
     NvU32     regVal     = 0;
     NvU64     barAddr    = 0;

@@ -38,6 +38,7 @@ kgraphicsInitFecsRegistryOverrides_GP100
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1972);
     NvU32 data;
 
     // init the FECS buffer attributes before allocating buffer
@@ -100,6 +101,7 @@ kgraphicsAllocGrGlobalCtxBuffers_GP100
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1973);
     extern NV_STATUS kgraphicsAllocGrGlobalCtxBuffers_GM200(OBJGPU *pGpu, KernelGraphics *pKernelGraphics, NvU32 gfid, KernelGraphicsContext *pKernelGraphicsContext);
     GR_GLOBALCTX_BUFFERS         *pCtxBuffers;
     NV_STATUS                     status;
@@ -149,6 +151,7 @@ kgraphicsAllocGlobalCtxBuffers_GP100
     NvU32 gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1974);
     CTX_BUF_POOL_INFO *pCtxBufPool = NULL;
     NvU64 allocFlags = 0;
     NvU32 fecsBufferSize = 0;
@@ -244,6 +247,7 @@ kgraphicsServiceInterrupt_GP100
     IntrServiceServiceInterruptArguments *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1975);
     NvU32 grIdx = pKernelGraphics->instance;
 
     NV_ASSERT_OR_RETURN(pParams != NULL, 0);
@@ -283,6 +287,7 @@ kgraphicsClearInterrupt_GP100
     IntrServiceClearInterruptArguments *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1976);
     NvU32 grIdx = pKernelGraphics->instance;
 
     NV_ASSERT_OR_RETURN(pParams != NULL, NV_FALSE);

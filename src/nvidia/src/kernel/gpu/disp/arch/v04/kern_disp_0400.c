@@ -50,6 +50,7 @@ kdispGetVgaWorkspaceBase_v04_00
     NvU64 *pOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 918);
     NvU32 vgaReg = GPU_REG_RD32(pGpu, NV_PDISP_VGA_WORKSPACE_BASE);
 
     if (FLD_TEST_DRF(_PDISP, _VGA_WORKSPACE_BASE, _STATUS, _VALID, vgaReg))
@@ -89,6 +90,7 @@ static NV_STATUS setSliLinkGpioSwControl(OBJGPU *pGpu,
 
 static NV_STATUS programGpioDirection(OBJGPU *pGpu, NvU32 gpioPin, NvBool bInput)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 919);
     NV_STATUS status = NV_OK;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -107,6 +109,7 @@ static NV_STATUS programGpioDirection(OBJGPU *pGpu, NvU32 gpioPin, NvBool bInput
 
 static NV_STATUS programGpioOutput(OBJGPU *pGpu, NvU32 gpioPin, NvU32 value)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 920);
     NV_STATUS status = NV_OK;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -125,6 +128,7 @@ static NV_STATUS programGpioOutput(OBJGPU *pGpu, NvU32 gpioPin, NvU32 value)
 
 static NV_STATUS readGpioInput(OBJGPU *pGpu, NvU32 gpioPin, NvU32 *value)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 921);
     NV_STATUS status = NV_OK;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -146,6 +150,7 @@ static NV_STATUS readGpioInput(OBJGPU *pGpu, NvU32 gpioPin, NvU32 *value)
 
 static NV_STATUS activateHwFunction(OBJGPU *pGpu, NvU32 gpioPin, NvU32 function)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 922);
     NV_STATUS status = NV_OK;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -167,6 +172,7 @@ static NV_STATUS activateHwFunction(OBJGPU *pGpu, NvU32 gpioPin, NvU32 function)
 
 NV_STATUS kdispDetectSliLink_v04_00(KernelDisplay *pKernelDisplay, OBJGPU *pParentGpu, OBJGPU *pChildGpu, NvU32 parentPinSet, NvU32 childPinSet)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 923);
     // Sanity check, this function should be called with pDisp of Parent GPU
     NV_ASSERT(pKernelDisplay == GPU_GET_KERNEL_DISPLAY(pParentGpu));
 

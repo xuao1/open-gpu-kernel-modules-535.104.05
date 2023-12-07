@@ -38,6 +38,7 @@ memmgrGetMaxContextSize_GM200
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2633);
     NvU64  size = 0;
 
     //

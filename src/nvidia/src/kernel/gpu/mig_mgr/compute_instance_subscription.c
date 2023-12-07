@@ -56,6 +56,7 @@ cisubscriptionConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pRmAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3381);
     NVC638_ALLOCATION_PARAMETERS *pUserParams = pRmAllocParams->pAllocParams;
     RsClient *pRsClient = pCallContext->pClient;
     RsResourceRef *pResourceRef = pCallContext->pResourceRef;
@@ -125,6 +126,7 @@ cisubscriptionCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3382);
     RsResourceRef *pSrcRef = pParams->pSrcRef;
     ComputeInstanceSubscription *pComputeInstanceSubscriptionSrc = dynamicCast(pSrcRef->pResource, ComputeInstanceSubscription);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pComputeInstanceSubscription);
@@ -163,6 +165,7 @@ cisubscriptionDestruct_IMPL
     ComputeInstanceSubscription *pComputeInstanceSubscription
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3383);
     CALL_CONTEXT *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
 
@@ -184,6 +187,7 @@ cisubscriptionGetComputeInstanceSubscription_IMPL
     ComputeInstanceSubscription **ppComputeInstanceSubscription
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3384);
     RsResourceRef *pResourceRef;
 
     NV_ASSERT_OR_RETURN(ppComputeInstanceSubscription != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -205,6 +209,7 @@ cisubscriptionCanCopy_IMPL
     ComputeInstanceSubscription *pComputeInstanceSubscription
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3385);
     return NV_TRUE;
 }
 
@@ -215,6 +220,7 @@ cisubscriptionCtrlCmdGetUuid_IMPL
     NVC638_CTRL_GET_UUID_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3386);
     ct_assert(NV_UUID_LEN == NVC638_UUID_LEN);
     ct_assert(NV_UUID_STR_LEN == NVC638_UUID_STR_LEN);
 

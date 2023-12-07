@@ -48,6 +48,7 @@ static NV_STATUS _vaspaceapiManagePageLevelsForSplitVaSpace(OBJGPU *pGpu, NvHand
 NvBool
 vaspaceapiCanCopy_IMPL(VaSpaceApi *pResource)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3285);
     return NV_TRUE;
 }
 
@@ -59,6 +60,7 @@ vaspaceapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3286);
     NvHandle                          hClient               = pCallContext->pClient->hClient;
     RsResourceRef                    *pResourceRef          = pCallContext->pResourceRef;
     NvHandle                          hParent               = pResourceRef->pParentRef->hResource;
@@ -426,6 +428,7 @@ vaspaceapiCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3287);
     RsClient                   *pSrcClient = pParams->pSrcClient;
     RsResourceRef                 *pSrcRef = pParams->pSrcRef;
     VaSpaceApi             *pSrcVaspaceApi = dynamicCast(pSrcRef->pResource, VaSpaceApi);
@@ -488,6 +491,7 @@ vaspaceapiCopyConstruct_IMPL
 void
 vaspaceapiDestruct_IMPL(VaSpaceApi *pVaspaceApi)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3288);
     NV_STATUS           status       = NV_OK;
     OBJGPU             *pGpu         = GPU_RES_GET_GPU(pVaspaceApi);
     OBJVMM             *pVmm         = SYS_GET_VMM(SYS_GET_INSTANCE());
@@ -585,6 +589,7 @@ skip_destroy:
  **/
 static NV_STATUS translateAllocFlagsToVASpaceFlags(NvU32 allocFlags, NvU32 *translatedFlags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3289);
     NV_STATUS status = NV_OK;
     NvU32     flags  = 0;
 
@@ -681,6 +686,7 @@ static NV_STATUS translateAllocFlagsToVASpaceFlags(NvU32 allocFlags, NvU32 *tran
  **/
 static NvU32 translatePageSizeToVASpaceFlags(NV_VASPACE_ALLOCATION_PARAMETERS *pNvVASpaceAllocParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3290);
     NvU32 flags = 0;
 
     switch (pNvVASpaceAllocParams->bigPageSize)
@@ -720,6 +726,7 @@ _vaspaceapiManagePageLevelsForSplitVaSpace
     VASPACEAPI_MANAGE_PAGE_LEVELS_ACTION action
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3291);
     NV_STATUS status = NV_OK;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvBool bCallingContextPlugin;

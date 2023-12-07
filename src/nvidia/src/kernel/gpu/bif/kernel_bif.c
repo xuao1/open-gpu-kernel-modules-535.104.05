@@ -64,6 +64,7 @@ kbifConstructEngine_IMPL
     ENGDESCRIPTOR  engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 399);
     // Initialize registry overrides
     _kbifInitRegistryOverrides(pGpu, pKernelBif);
 
@@ -98,6 +99,7 @@ kbifStateInitLocked_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 400);
     OBJSYS    *pSys   = SYS_GET_INSTANCE();
     OBJOS     *pOS    = SYS_GET_OS(pSys);
     OBJCL     *pCl    = SYS_GET_CL(pSys);
@@ -151,6 +153,7 @@ kbifStateLoad_IMPL
     NvU32      flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 401);
     NV_PRINTF(LEVEL_INFO, "BIF DMA Caps: %08x\n", kbifGetDmaCaps(pGpu, pKernelBif));
 
     // Apply C73 chipset WAR
@@ -187,6 +190,7 @@ _kbifSetPcieRelaxedOrdering
     NvBool    enableRo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 402);
     NV2080_CTRL_INTERNAL_BIF_SET_PCIE_RO_PARAMS pcieRo;
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS  status;
@@ -220,6 +224,7 @@ kbifStatePostLoad_IMPL
     NvU32       flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 403);
     NV_STATUS status;
 
     kbifInitRelaxedOrderingFromEmulatedConfigSpace(pGpu, pKernelBif);
@@ -251,6 +256,7 @@ kbifStateUnload_IMPL
     NvU32      flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 404);
 
     return NV_OK;
 }
@@ -268,6 +274,7 @@ kbifInitDmaCaps_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 405);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl  = SYS_GET_CL(pSys);
 
@@ -288,6 +295,7 @@ kbifGetDmaCaps_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 406);
     NvU32 retval;
 
     // Start out with system specific DMA caps
@@ -315,6 +323,7 @@ kbifStaticInfoInit_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 407);
     NV2080_CTRL_INTERNAL_BIF_GET_STATIC_INFO_PARAMS *pStaticInfo;
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS  status = NV_OK;
@@ -359,6 +368,7 @@ kbifInitPcieDeviceControlStatus
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 408);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl  = SYS_GET_CL(pSys);
 
@@ -420,6 +430,7 @@ kbifCheckAndRearmMSI_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 409);
     Intr *pIntr = GPU_GET_INTR(pGpu);
 
     if (kbifIsMSIEnabled(pGpu, pKernelBif))
@@ -460,6 +471,7 @@ kbifIsMSIEnabled_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 410);
     //
     // Bug 418883: We shall rely upon value cached at boot, for the value
     // should not change during execution. If however, we must ever change
@@ -506,6 +518,7 @@ kbifIsMSIXEnabled_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 411);
     if (!pKernelBif->getProperty(pKernelBif, PDB_PROP_KBIF_IS_MSIX_CACHED))
     {
         if (kbifIsMSIXEnabledInHW_HAL(pGpu, pKernelBif))
@@ -537,6 +550,7 @@ kbifClearConfigErrors_IMPL
     NvU32      xveAerFlagsMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 412);
     NvU32 xveStatusFlags = 0;
     NvU32 xveStatus      = 0;
     NvU32 xveAerFlags    = 0;
@@ -665,6 +679,7 @@ kbifIsPciBusFamily_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 413);
     NvU32 busType = kbifGetBusIntfType_HAL(pKernelBif);
 
     return ((busType == NV2080_CTRL_BUS_INFO_TYPE_PCI) ||
@@ -685,6 +700,7 @@ _kbifInitRegistryOverrides
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 414);
     NvU32 data32;
 
     // P2P Override
@@ -727,6 +743,7 @@ _kbifCheckIfGpuExists
     void   *rsvd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 415);
     if (FULL_GPU_SANITY_CHECK(pGpu))
     {
         if (gpuVerifyExistence_HAL(pGpu) != NV_OK)
@@ -743,6 +760,7 @@ kbifGetGpuLinkCapabilities_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 416);
     NvU32 addrLinkCap = 0;
     NvU32 data        = 0;
 
@@ -767,6 +785,7 @@ kbifGetGpuLinkControlStatus_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 417);
     NvU32 addrLinkControlStatus = 0;
     NvU32 data                  = 0;
 
@@ -787,6 +806,7 @@ kbifGetGpuLinkControlStatus_IMPL
 static NvBool
 _doesBoardHaveMultipleGpusAndSwitch(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 418);
     if (((gpuIsMultiGpuBoard(pGpu)) ||
         (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_GEMINI)))&&
         ((pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_PLX_PRESENT))  ||
@@ -809,6 +829,7 @@ kbifControlGetPCIEInfo_IMPL
     NV2080_CTRL_BUS_INFO *pBusInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 419);
     OBJSYS *pSys  = SYS_GET_INSTANCE();
     OBJCL  *pCl   = SYS_GET_CL(pSys);
     NvU32   index = pBusInfo->index;
@@ -1138,6 +1159,7 @@ kbifPollDeviceOnBus_IMPL
     KernelBif  *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 420);
     RMTIMEOUT timeout;
 
     gpuSetTimeout(pGpu, GPU_TIMEOUT_DEFAULT, &timeout, 0);

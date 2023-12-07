@@ -41,6 +41,7 @@ _getMappingPageSize
     RsResourceRef *pMappableRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5518);
     Memory *pMemory = dynamicCast(pMappableRef->pResource, Memory);
     if (pMemory != NULL)
     {
@@ -59,6 +60,7 @@ serverInterMap_Prologue
     NvU32 *pReleaseFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5519);
     OBJGPU     *pGpu;
     Device     *pDevice;
     Subdevice  *pSubdevice;
@@ -187,6 +189,7 @@ serverInterMap_Epilogue
     NvU32 *pReleaseFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5520);
     serverResLock_Epilogue(pServer, LOCK_ACCESS_WRITE, pParams->pLockInfo, pReleaseFlags);
 }
 
@@ -197,6 +200,7 @@ serverInterUnmap_Prologue
     RS_INTER_UNMAP_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5521);
     OBJGPU       *pGpu        = NULL;
     Device       *pDevice     = NULL;
     Subdevice    *pSubdevice  = NULL;
@@ -257,6 +261,7 @@ serverInterUnmap_Epilogue
     RS_INTER_UNMAP_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5522);
     RS_INTER_UNMAP_PRIVATE *pPrivate = pParams->pPrivate;
     OBJGPU *pGpu;
 
@@ -290,6 +295,7 @@ _rmapiRmUnmapMemoryDma
     API_SECURITY_INFO  *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5523);
     RsClient           *pRsClient   = NULL;
     MEMORY_DESCRIPTOR  *pMemDesc    = NULL;
     Memory             *pMemory     = NULL;
@@ -336,6 +342,7 @@ rmapiMap
     NvU64    *pDmaOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5524);
     if (!pRmApi->bHasDefaultSecInfo)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -358,6 +365,7 @@ rmapiMapWithSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5525);
     NV_STATUS status;
     RM_API_CONTEXT rmApiContext = {0};
     RS_INTER_MAP_PARAMS params;
@@ -436,6 +444,7 @@ rmapiMapWithSecInfoTls
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5526);
     THREAD_STATE_NODE threadState;
     NV_STATUS         status;
 
@@ -461,6 +470,7 @@ rmapiUnmap
     NvU64     dmaOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5527);
     if (!pRmApi->bHasDefaultSecInfo)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -481,6 +491,7 @@ rmapiUnmapWithSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5528);
     NV_STATUS                     status;
     RM_API_CONTEXT                rmApiContext   = {0};
     RS_LOCK_INFO                  lockInfo;
@@ -535,6 +546,7 @@ rmapiUnmapWithSecInfoTls
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5529);
     THREAD_STATE_NODE threadState;
     NV_STATUS         status;
 
@@ -556,6 +568,7 @@ serverInterMapLookupLockFlags
     LOCK_ACCESS_TYPE *pAccess
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5530);
     NV_ASSERT_OR_RETURN(pAccess != NULL, NV_ERR_INVALID_ARGUMENT);
 
     *pAccess = (serverSupportsReadOnlyLock(pServer, lock, RS_API_INTER_MAP))
@@ -573,6 +586,7 @@ serverInterUnmapLookupLockFlags
     LOCK_ACCESS_TYPE *pAccess
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5531);
     NV_ASSERT_OR_RETURN(pAccess != NULL, NV_ERR_INVALID_ARGUMENT);
 
     *pAccess = (serverSupportsReadOnlyLock(pServer, lock, RS_API_INTER_UNMAP))
@@ -588,6 +602,7 @@ serverUpdateLockFlagsForInterAutoUnmap
     RS_INTER_UNMAP_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5532);
     pParams->pLockInfo->flags |= RM_LOCK_FLAGS_NO_GPUS_LOCK |
                                  RM_LOCK_FLAGS_GPU_GROUP_LOCK;
 

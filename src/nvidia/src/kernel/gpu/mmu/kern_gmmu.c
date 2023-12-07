@@ -61,6 +61,7 @@ static void _kgmmuInitRegistryOverrides(OBJGPU *pGpu, KernelGmmu *pKernelGmmu);
 NV_STATUS
 kgmmuConstructEngine_IMPL(OBJGPU *pGpu, KernelGmmu *pKernelGmmu, ENGDESCRIPTOR engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3629);
     NvU32  v;
 
     kgmmuDetermineMaxVASize_HAL(pGpu, pKernelGmmu);
@@ -130,6 +131,7 @@ _kgmmuInitStaticInfo
     KernelGmmu *pKernelGmmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3630);
     NV2080_CTRL_INTERNAL_GMMU_GET_STATIC_INFO_PARAMS *pStaticInfo;
     NV_STATUS status;
 
@@ -175,6 +177,7 @@ NV_STATUS kgmmuStateInitLocked_IMPL
     KernelGmmu *pKernelGmmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3631);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
     NV_STATUS  status;
 
@@ -201,6 +204,7 @@ _kgmmuCreateGlobalVASpace
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3632);
     NvU32       constructFlags = VASPACE_FLAGS_NONE;
     OBJVASPACE *pGlobalVAS     = NULL;
     NV_STATUS   rmStatus;
@@ -245,6 +249,7 @@ _kgmmuDestroyGlobalVASpace
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3633);
     OBJGPUGRP *pGpuGrp = NULL;
 
     if (flags & GPU_STATE_FLAGS_PRESERVING)
@@ -265,6 +270,7 @@ kgmmuEnableComputePeerAddressing_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3634);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     NV_STATUS status = NV_OK;
@@ -307,6 +313,7 @@ NV_STATUS kgmmuStatePostLoad_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3635);
     NV_STATUS status = NV_OK;
 
     status = _kgmmuCreateGlobalVASpace(pGpu, pKernelGmmu, flags);
@@ -343,6 +350,7 @@ kgmmuStatePreUnload_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3636);
     NV_STATUS status = NV_OK;
 
     status = _kgmmuDestroyGlobalVASpace(pGpu, pKernelGmmu, flags);
@@ -365,6 +373,7 @@ kgmmuStatePreUnload_IMPL
 void
 kgmmuDestruct_IMPL(KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3637);
     NvU32       v;
     NvU32       b;
 
@@ -386,6 +395,7 @@ kgmmuDestruct_IMPL(KernelGmmu *pKernelGmmu)
 void
 kgmmuStateDestroy_IMPL(OBJGPU *pGpu, KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3638);
     if (NULL != pKernelGmmu->pStaticInfo)
     {
         portMemFree((void *)pKernelGmmu->pStaticInfo);
@@ -414,6 +424,7 @@ kgmmuStateDestroy_IMPL(OBJGPU *pGpu, KernelGmmu *pKernelGmmu)
 static void
 _kgmmuInitRegistryOverrides(OBJGPU *pGpu, KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3639);
     NvU32 data;
 
     memdescOverrideInstLoc(DRF_VAL(_REG_STR_RM, _INST_LOC, _PDE, pGpu->instLocOverrides),
@@ -503,6 +514,7 @@ kgmmuGetMemAperture_IMPL
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3640);
     switch (memdescGetAddressSpace(pMemDesc))
     {
         case ADDR_FBMEM:
@@ -525,6 +537,7 @@ kgmmuGetMemAperture_IMPL
 NV_STATUS
 kgmmuFmtInit_IMPL(KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3641);
     NvU32       v;
     NvU32       b;
 
@@ -574,6 +587,7 @@ kgmmuFmtInit_IMPL(KernelGmmu *pKernelGmmu)
 const GMMU_FMT_FAMILY *
 kgmmuFmtGetFamily_IMPL(KernelGmmu *pKernelGmmu, NvU32 version)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3642);
     NvU32       v;
 
     // Find a matching format.
@@ -607,6 +621,7 @@ kgmmuGetStaticInfo_IMPL
     KernelGmmu *pKernelGmmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3643);
     // check if state Init has not completed.
     NV_ASSERT_OR_ELSE(pKernelGmmu != NULL, return NULL);
 
@@ -628,6 +643,7 @@ kgmmuInitStaticInfo_KERNEL
     NV2080_CTRL_INTERNAL_GMMU_GET_STATIC_INFO_PARAMS *pStaticInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3644);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS status;
 
@@ -644,6 +660,7 @@ kgmmuInitStaticInfo_KERNEL
 const GMMU_FMT *
 kgmmuFmtGet_IMPL(KernelGmmu *pKernelGmmu, NvU32 version, NvU64 bigPageSize)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3645);
     const GMMU_FMT_FAMILY *pFmtFamily  = kgmmuFmtGetFamily(pKernelGmmu, version);
 
     if (NULL != pFmtFamily)
@@ -680,6 +697,7 @@ kgmmuFmtGet_IMPL(KernelGmmu *pKernelGmmu, NvU32 version, NvU64 bigPageSize)
 NvBool
 kgmmuFmtIsBigPageSizeSupported_IMPL(KernelGmmu *pKernelGmmu, NvU64 bigPageSize)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3646);
     if (kgmmuIsPerVaspaceBigPageEn(pKernelGmmu))
     {
         return NV_TRUE;
@@ -698,6 +716,7 @@ kgmmuFmtIsBigPageSizeSupported_IMPL(KernelGmmu *pKernelGmmu, NvU64 bigPageSize)
 const GMMU_FMT*
 kgmmuFmtGetLatestSupportedFormat_IMPL(OBJGPU *pGpu, KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3647);
     NvU32       v;
     NvU32       maxFmtVersionSupported = 0;
 
@@ -737,6 +756,7 @@ kgmmuGetSizeOfPageTables_IMPL
     NvU64           pageSizeLockMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3648);
     const MMU_FMT_LEVEL *pPgTbl         = NULL;
     NvU64                pgTblSize      = 0;
     NvU64                numPgTblsCeil;
@@ -802,6 +822,7 @@ kgmmuGetSizeOfPageDirs_IMPL
     NvU64           pageSizeLockMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3649);
     const MMU_FMT_LEVEL *pLevel = NULL;
     NvU64                size   = 0;
     NvU16                i;
@@ -874,6 +895,7 @@ void kgmmuFieldSetKindCompTags_IMPL
     NvU8                *pEntries
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3650);
     OBJGPU                            *pGpu                = ENG_GET_GPU(pGmmu);
     GMMU_COMPR_INFO                    comprInfo           = {0};
 
@@ -929,6 +951,7 @@ kgmmuFaultBufferGetAddressSpace_IMPL
     NvU32                *pFaultBufferAttr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3651);
     NvU32 faultBufferAddrSpace = ADDR_UNKNOWN;
     NvU32 faultBufferAttr = 0;
     NvBool bAllocInVidmem = NV_FALSE;
@@ -987,6 +1010,7 @@ kgmmuFaultBufferCreateMemDesc_IMPL
     MEMORY_DESCRIPTOR   **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3652);
     NV_STATUS status;
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
     NvU32 faultBufferAddrSpace = ADDR_UNKNOWN;
@@ -1047,6 +1071,7 @@ kgmmuFaultBufferUnregister_IMPL
     NvU32                 index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3653);
     struct HW_FAULT_BUFFER *pFaultBuffer;
     MEMORY_DESCRIPTOR      *pMemDesc;
 
@@ -1070,6 +1095,7 @@ kgmmuFaultBufferAlloc_IMPL
     NvU32           faultBufferSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3654);
     NV_STATUS status;
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
     struct HW_FAULT_BUFFER *pFaultBuffer;
@@ -1112,6 +1138,7 @@ kgmmuFaultBufferFree_IMPL
     NvU32                 index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3655);
     struct HW_FAULT_BUFFER *pFaultBuffer;
 
     NV_ASSERT_OR_RETURN((index < NUM_FAULT_BUFFERS), NV_ERR_INVALID_ARGUMENT);
@@ -1137,6 +1164,7 @@ kgmmuFaultBufferReplayableAllocate_IMPL
     NvHandle              hObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3656);
     NV_STATUS               status;
     struct HW_FAULT_BUFFER *pFaultBuffer;
     NvU32                   faultBufferSize;
@@ -1222,6 +1250,7 @@ kgmmuFaultBufferReplayableDestroy_IMPL
     KernelGmmu  *pKernelGmmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3657);
     NV_STATUS               status = NV_OK;
     struct HW_FAULT_BUFFER *pFaultBuffer;
 
@@ -1293,6 +1322,7 @@ _kgmmuEncodePeerAddrs
     NvU64               count
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3658);
     NvU64 i;
 
     //
@@ -1320,6 +1350,7 @@ kgmmuEncodePhysAddrs_IMPL
     NvU64               count
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3659);
     NV_ASSERT(aperture != GMMU_APERTURE_INVALID);
 
     if (aperture == GMMU_APERTURE_SYS_COH ||
@@ -1346,6 +1377,7 @@ kgmmuEncodePhysAddr_IMPL
     NvU64               fabricBaseAddress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3660);
     kgmmuEncodePhysAddrs(pKernelGmmu, aperture, &physAddr, fabricBaseAddress, 1);
     return physAddr;
 }
@@ -1361,6 +1393,7 @@ _kgmmuClientShadowBufferQueueCopyData
     NvBool        bCopyIn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3661);
     NvLength size;
     GMMU_CLIENT_SHADOW_FAULT_BUFFER *pClientShadowFaultBuffer = pCtx->pData;
     NvU8 *pQueueData, *pClientData = pData;
@@ -1386,6 +1419,7 @@ _kgmmuClientShadowFaultBufferQueueAllocate
     FAULT_BUFFER_TYPE index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3662);
     NV_STATUS status;
     GMMU_CLIENT_SHADOW_FAULT_BUFFER *pClientShadowFaultBuffer;
     MEMORY_DESCRIPTOR *pQueueMemDesc;
@@ -1452,6 +1486,7 @@ kgmmuClientShadowFaultBufferQueueDestroy_IMPL
     FAULT_BUFFER_TYPE index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3663);
     GMMU_CLIENT_SHADOW_FAULT_BUFFER *pClientShadowFaultBuffer;
     MEMORY_DESCRIPTOR *pQueueMemDesc;
 
@@ -1487,6 +1522,7 @@ _kgmmuClientShadowFaultBufferPagesAllocate
     FAULT_BUFFER_TYPE index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3664);
     NV_STATUS status;
     GMMU_CLIENT_SHADOW_FAULT_BUFFER *pClientShadowFaultBuffer;
     MEMORY_DESCRIPTOR *pMemDesc;
@@ -1550,6 +1586,7 @@ kgmmuClientShadowFaultBufferPagesDestroy_IMPL
     FAULT_BUFFER_TYPE index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3665);
     MEMORY_DESCRIPTOR *pMemDesc;
     GMMU_CLIENT_SHADOW_FAULT_BUFFER *pClientShadowFaultBuffer;
     GMMU_FAULT_BUFFER_PAGE *pBufferPage;
@@ -1589,6 +1626,7 @@ kgmmuClientShadowFaultBufferRegister_IMPL
     FAULT_BUFFER_TYPE index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3666);
     NV_STATUS status = NV_OK;
     struct GMMU_FAULT_BUFFER *pFaultBuffer;
     GMMU_CLIENT_SHADOW_FAULT_BUFFER *pClientShadowFaultBuffer;
@@ -1734,6 +1772,7 @@ kgmmuClientShadowFaultBufferUnregister_IMPL
     FAULT_BUFFER_TYPE index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3667);
     NV_STATUS status = NV_OK;
     GMMU_CLIENT_SHADOW_FAULT_BUFFER *pClientShadowFaultBuffer;
     GMMU_SHADOW_FAULT_BUF *pQueue;
@@ -1802,6 +1841,7 @@ kgmmuClientShadowFaultBufferAllocate_IMPL
     FAULT_BUFFER_TYPE  index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3668);
     NV_STATUS   status;
     const NV2080_CTRL_INTERNAL_GMMU_GET_STATIC_INFO_PARAMS *pStaticInfo = kgmmuGetStaticInfo(pGpu, pKernelGmmu);
     NvU32 faultBufferSize;
@@ -1886,6 +1926,7 @@ kgmmuClientShadowFaultBufferDestroy_IMPL
     FAULT_BUFFER_TYPE index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3669);
     GMMU_CLIENT_SHADOW_FAULT_BUFFER *pClientShadowFaultBuffer;
     NvBool bFreeMemory = !RMCFG_FEATURE_PLATFORM_GSP;
 
@@ -1918,6 +1959,7 @@ kgmmuClientShadowFaultBufferDestroy_IMPL
 NvU64
 kgmmuGetMinBigPageSize_IMPL(KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3670);
     //
     // Set the minimum size in the heap that we will round up to a big page instead
     // just 4KB. HW doesn't like 4KB pages in video memory, but SW wants to pack
@@ -1951,6 +1993,7 @@ kgmmuInstBlkInit_IMPL
     INST_BLK_INIT_PARAMS *pInstBlkParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3671);
     OBJGPU   *pGpu   = ENG_GET_GPU(pKernelGmmu);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     NvU8     *pInstBlk;      // CPU VA of instance block.
@@ -2072,6 +2115,7 @@ kgmmuGetExternalAllocAperture_IMPL
     NvU32 addressSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3672);
     switch (addressSpace)
     {
         case ADDR_FBMEM:
@@ -2105,6 +2149,7 @@ kgmmuAccessCntrChangeIntrOwnership_IMPL
     NvBool      bOwnedByRm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3673);
     //
     // Disable the interrupt when RM loses the ownership and enable it back when
     // RM regains it. nvUvmInterfaceOwnAccessCntIntr() will rely on this behavior.
@@ -2126,6 +2171,7 @@ kgmmuRegisterIntrService_IMPL
     IntrServiceRecord   pRecords[MC_ENGINE_IDX_MAX]
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3674);
     NvU32 engineIdx;
     NvU16 *pEngineIdxList;
     NvU32 listSize;
@@ -2173,6 +2219,7 @@ kgmmuServiceInterrupt_IMPL
     IntrServiceServiceInterruptArguments *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3675);
     NV_STATUS status;
 
     NV_ASSERT_OR_RETURN(pParams != NULL, 0);
@@ -2245,6 +2292,7 @@ kgmmuExtractPteInfo_IMPL
     const MMU_FMT_LEVEL                 *pLevelFmt
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3676);
     OBJGPU             *pGpu = ENG_GET_GPU(pKernelGmmu);
     MemoryManager      *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     const GMMU_FMT_PTE *pFmtPte = pFmt->pPte;
@@ -2429,6 +2477,7 @@ kgmmuGetFatalFaultIntrPendingState_IMPL
     NvU8 gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3677);
     return &pKernelGmmu->mmuFaultBuffer[gfid].fatalFaultIntrPending;
 }
 
@@ -2440,6 +2489,7 @@ kgmmuGetHwFaultBufferPtr_IMPL
     NvU8 faultBufferIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3678);
     return &pKernelGmmu->mmuFaultBuffer[gfid].hwFaultBuffers[faultBufferIndex];
 }
 
@@ -2451,6 +2501,7 @@ kgmmuGetFaultBufferGenCnt_IMPL
     NvU8        gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3679);
     return pKernelGmmu->mmuFaultBuffer[gfid].faultBufferGenerationCounter;
 }
 
@@ -2462,6 +2513,7 @@ kgmmuGetShadowFaultBufferCslContext_IMPL
     FAULT_BUFFER_TYPE type
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3680);
     ConfidentialCompute *pConfCompute = GPU_GET_CONF_COMPUTE(pGpu);
 
     if (!gpuIsCCFeatureEnabled(pGpu))

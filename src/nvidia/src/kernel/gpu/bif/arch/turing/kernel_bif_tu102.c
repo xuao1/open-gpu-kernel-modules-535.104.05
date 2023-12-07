@@ -53,6 +53,7 @@ kbifIsMSIXEnabledInHW_TU102
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 395);
     NvU32 data32;
 
     if (IS_VIRTUAL(pGpu))
@@ -84,6 +85,7 @@ kbifDisableP2PTransactions_TU102
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 396);
     if (IS_VIRTUAL_WITH_SRIOV(pGpu))
     {
         pKernelBif->setProperty(pKernelBif, PDB_PROP_KBIF_P2P_READS_DISABLED, NV_TRUE);
@@ -103,6 +105,7 @@ kbifGetVFSparseMmapRegions_TU102
     NvU64                   *pSizes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 397);
     NvU64 offsetStart = 0;
     NvU64 offsetEnd = 0;
     NvU32 idx = 0;
@@ -213,6 +216,7 @@ kbifCacheVFInfo_TU102
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 398);
     NV_STATUS status = NV_OK;
     NvU32     regVal = 0;
     NvU32     saveLo = 0;

@@ -39,6 +39,7 @@
 // Return smallest integer greater than mask with the same number of bits set.
 static NvU32 rmSliNextMask(NvU32 mask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5232);
     NvU32 r, l;
 
     r = mask & -(NvS32)mask; // lowest set bit
@@ -64,6 +65,7 @@ static NvU32 rmSliNextMask(NvU32 mask)
 static NV_INLINE NvU32
 rmSliSearchForSliCombination(OBJGPU *pGpu, NvU32 nWay, NvU32 numFoundValidConfigs, NvU32 *pGpuSliStatus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5233);
     NvU32                   gpuAttachCnt;
     NvU32                   gpuAttachMask;
     NvU32                   gpuMask;
@@ -181,6 +183,7 @@ static NvU32 RmRunSLISupportCheck
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5234);
     NvU32      gpuSliStatus         = NV0000_CTRL_SLI_STATUS_OK;
     NvU32      gpuAttachCnt;
     NvU32      gpuAttachMask;
@@ -249,6 +252,7 @@ void RmInitScalability
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5235);
     NvU32 numValidConfigs;
     NvU32 gpuMask;
     NvU32 idx = 0;
@@ -283,5 +287,6 @@ NV_STATUS RmShutdownScalability
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5236);
     return NV_OK;
 }

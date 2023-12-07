@@ -51,6 +51,7 @@
 
 static void rpcRmApiSetup(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5731);
     //
     // Physical RMAPI is already initialized for monolithic, and this function
     // just needs to overwrite individual methods as needed
@@ -73,6 +74,7 @@ static void rpcRmApiSetup(OBJGPU *pGpu)
 
 OBJRPC *initRpcObject(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5732);
     OBJRPC   *pRpc     = NULL;
 
     pRpc = portMemAllocNonPaged(sizeof(OBJRPC));
@@ -99,6 +101,7 @@ OBJRPC *initRpcObject(OBJGPU *pGpu)
 
 NV_STATUS rpcWriteCommonHeader(OBJGPU *pGpu, OBJRPC *pRpc, NvU32 func, NvU32 paramLength)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5733);
     NV_STATUS status = NV_OK;
 
     if (!pRpc)

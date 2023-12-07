@@ -34,6 +34,7 @@
 NV_STATUS
 vaListInitMap(VA_LIST *pVaList)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4705);
     NV_STATUS status;
     VADDR_LIST_INFO *pVaListInfo;
     VA_INFO *pVaInfo;
@@ -112,6 +113,7 @@ vaListInitMap(VA_LIST *pVaList)
 NvU32
 vaListMapCount(VA_LIST *pVaList)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4706);
     NvU32 count;
 
     NV_ASSERT_OR_RETURN(pVaList != NULL, 0);
@@ -151,6 +153,7 @@ vaListMapCount(VA_LIST *pVaList)
 NV_STATUS
 vaListInit(VA_LIST *pVaList)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4707);
     NV_ASSERT_OR_RETURN(pVaList != NULL, NV_ERR_INVALID_ARGUMENT);
 
     portMemSet(pVaList, 0, sizeof(*pVaList));
@@ -165,6 +168,7 @@ vaListInit(VA_LIST *pVaList)
 void
 vaListClear(VA_LIST *pVaList)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4708);
     NvBool bManaged = vaListGetManaged(pVaList);
 
     NV_ASSERT_OR_RETURN_VOID(pVaList != NULL);
@@ -201,6 +205,7 @@ vaListClear(VA_LIST *pVaList)
 void
 vaListDestroy(VA_LIST *pVaList)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4709);
     NV_ASSERT_OR_RETURN_VOID(pVaList != NULL);
 
     //
@@ -261,6 +266,7 @@ vaListDestroy(VA_LIST *pVaList)
 NV_STATUS
 vaListSetManaged(VA_LIST *pVaList, NvBool bManaged)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4710);
     NV_ASSERT_OR_RETURN(pVaList != NULL, NV_ERR_INVALID_ARGUMENT);
 
     // We can change the prop only when no active maps
@@ -297,6 +303,7 @@ vaListSetManaged(VA_LIST *pVaList, NvBool bManaged)
 NvBool
 vaListGetManaged(VA_LIST *pVaList)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4711);
     NvBool bRelease = NV_TRUE;
     NV_ASSERT_OR_RETURN(pVaList != NULL, NV_FALSE);
 
@@ -334,6 +341,7 @@ vaListGetManaged(VA_LIST *pVaList)
 NV_STATUS
 vaListAddVa(VA_LIST *pVaList, OBJVASPACE *pVAS, NvU64 vAddr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4712);
     NV_STATUS status = NV_OK;
     NV_ASSERT_OR_RETURN(pVaList != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(pVAS != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -429,6 +437,7 @@ vaListAddVa(VA_LIST *pVaList, OBJVASPACE *pVAS, NvU64 vAddr)
 NV_STATUS
 vaListRemoveVa(VA_LIST *pVaList, OBJVASPACE *pVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4713);
     NV_STATUS status = NV_OK;
 
     NV_ASSERT_OR_RETURN(pVaList != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -505,6 +514,7 @@ vaListRemoveVa(VA_LIST *pVaList, OBJVASPACE *pVAS)
 NV_STATUS
 vaListFindVa(VA_LIST *pVaList, OBJVASPACE *pVAS, NvU64 *pVaddr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4714);
     NV_STATUS status = NV_OK;
 
     NV_ASSERT_OR_RETURN(pVaList != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -564,6 +574,7 @@ vaListFindVa(VA_LIST *pVaList, OBJVASPACE *pVAS, NvU64 *pVaddr)
 NV_STATUS
 vaListGetRefCount(VA_LIST *pVaList, OBJVASPACE *pVAS, NvU64 *pRefCount)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4715);
     NV_STATUS status = NV_OK;
 
     NV_ASSERT_OR_RETURN(pVaList != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -623,6 +634,7 @@ vaListGetRefCount(VA_LIST *pVaList, OBJVASPACE *pVAS, NvU64 *pRefCount)
 NV_STATUS
 vaListSetRefCount(VA_LIST *pVaList, OBJVASPACE *pVAS, NvU64 refCount)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4716);
     NV_STATUS status = NV_OK;
 
     NV_ASSERT_OR_RETURN(pVaList != NULL, NV_ERR_INVALID_ARGUMENT);

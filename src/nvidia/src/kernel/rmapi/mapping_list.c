@@ -48,6 +48,7 @@ CliFindMappingInClient
     NvP64    cpuAddress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5554);
     RsClient *pRsClient;
     RsResourceRef *pDeviceRef;
     RS_ORDERED_ITERATOR it;
@@ -115,6 +116,7 @@ intermapCreateDmaMapping
     NvU32                  flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5555);
     Memory                *pMemory  = NULL;
     PCLI_DMA_MAPPING_INFO  pDmaMapping;
     OBJVASPACE            *pVAS = NULL;
@@ -170,6 +172,7 @@ intermapRegisterDmaMapping
     NvU32                  gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5556);
     NV_STATUS             rmStatus = NV_OK;
     PNODE                 pNode;
     NvU64 alignment = 0;
@@ -294,6 +297,7 @@ intermapDelDmaMapping
     NvU32    gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5557);
     PNODE                   pNode;
     CLI_DMA_MAPPING_INFO   *pDmaMapping;
     CLI_DMA_MAPPING_INFO   *pDmaMappingPrev = NULL;
@@ -343,6 +347,7 @@ intermapFreeDmaMapping
     PCLI_DMA_MAPPING_INFO pDmaMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5558);
     NV_ASSERT(pDmaMapping != NULL);
 
     // free the list element
@@ -360,6 +365,7 @@ intermapGetDmaMapping
     NvU32                  gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5559);
     PNODE pNode;
     CLI_DMA_MAPPING_INFO *pDmaMapping;
 
@@ -396,6 +402,7 @@ CliGetDmaMappingInfo
     PCLI_DMA_MAPPING_INFO *ppDmaMappingInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5560);
     VirtualMemory      *pVirtualMemory;
     Device             *pDevice;
     NODE               *pNode;
@@ -452,6 +459,7 @@ CliGetDmaMappingIterator
     PNODE                          pDmaMappingList          // [IN]  the two level pDmaMapping list to iterate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5561);
     // don't iterate if we didn't get a empty list
     *ppFirstDmaMapping = NULL;
     portMemSet(pIt, 0, sizeof(*pIt));
@@ -477,6 +485,7 @@ CliGetDmaMappingNext
     PCLI_DMA_MAPPING_INFO_ITERATOR pIt
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5562);
     PCLI_DMA_MAPPING_INFO pDmaMapping = NULL;
 
     if (pIt->pNextDmaMapping != NULL)

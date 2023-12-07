@@ -70,6 +70,7 @@
 
 static NvBool _i2cTransactionCopyIn(RMAPI_PARAM_COPY *paramCopies, RmCtrlParams *pRmCtrlParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5447);
     NV402C_CTRL_I2C_TRANSACTION_PARAMS *pParams = (NV402C_CTRL_I2C_TRANSACTION_PARAMS*)pRmCtrlParams->pParams;
     NvBool bCopyInitDone = NV_FALSE;
 
@@ -157,6 +158,7 @@ static NvBool _i2cTransactionCopyIn(RMAPI_PARAM_COPY *paramCopies, RmCtrlParams 
 
 static NV_STATUS i2cTransactionCopyOut(RMAPI_PARAM_COPY *paramCopies, RmCtrlParams *pRmCtrlParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5448);
     NV_STATUS status = NV_OK;
     NV402C_CTRL_I2C_TRANSACTION_PARAMS *pParams = (NV402C_CTRL_I2C_TRANSACTION_PARAMS*)pRmCtrlParams->pParams;
 
@@ -212,6 +214,7 @@ static NV_STATUS i2cTransactionCopyOut(RMAPI_PARAM_COPY *paramCopies, RmCtrlPara
  */
 NV_STATUS embeddedParamCopyIn(RMAPI_PARAM_COPY *paramCopies, RmCtrlParams *pRmCtrlParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5449);
     NV_STATUS status        = NV_OK;
     NV_STATUS statusCleanUp = NV_OK;
     void* pParams = pRmCtrlParams->pParams;
@@ -763,6 +766,7 @@ NV_STATUS embeddedParamCopyIn(RMAPI_PARAM_COPY *paramCopies, RmCtrlParams *pRmCt
 
 NV_STATUS embeddedParamCopyOut(RMAPI_PARAM_COPY *paramCopies, RmCtrlParams *pRmCtrlParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5450);
     NV_STATUS status = NV_OK;
     void* pParams = pRmCtrlParams->pParams;
 

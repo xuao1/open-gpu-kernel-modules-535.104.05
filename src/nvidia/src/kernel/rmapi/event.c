@@ -50,6 +50,7 @@ eventConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5472);
     NV0005_ALLOC_PARAMETERS *pNv0050AllocParams = pParams->pAllocParams;
     RsClient *pRsClient = pCallContext->pClient;
     RsResourceRef *pClientRef;
@@ -212,6 +213,7 @@ void eventDestruct_IMPL
     Event *pEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5473);
     CALL_CONTEXT *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
 
@@ -255,6 +257,7 @@ NV_STATUS notifyUnregisterEvent_IMPL
     NvHandle            hEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5474);
     NV_STATUS status = NV_OK;
     PEVENTNOTIFICATION *ppEventNotification;
 
@@ -351,6 +354,7 @@ eventInit_IMPL
     PEVENTNOTIFICATION **pppEventNotification
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5475);
     NV_STATUS        rmStatus = NV_OK;
     RsClient        *pRsClient = pCallContext->pClient;
     RsClient        *pNotifierClient;
@@ -419,6 +423,7 @@ notifyGetOrAllocNotifShare_IMPL
     NotifShare **ppNotifierShare
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5476);
     NV_STATUS status;
     NotifShare *pNotifierShare;
 
@@ -457,6 +462,7 @@ CliGetEventNotificationList
     PEVENTNOTIFICATION **pppEventNotification
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5477);
     NV_STATUS                     status = NV_OK;
     RsResourceRef                *pResourceRef;
     RsClient                     *pRsClient;
@@ -494,6 +500,7 @@ CliGetEventInfo
     Event          **ppEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5478);
     RsClient       *pRsClient;
     RsResourceRef  *pResourceRef;
     RmClient       *pClient = serverutilGetClientUnderLock(hClient);
@@ -522,6 +529,7 @@ CliDelObjectEvents
     NvHandle hResource
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5479);
     NotifShare    *pNotifierShare;
     INotifier     *pNotifier;
     RsClient      *pRsClient;
@@ -570,6 +578,7 @@ void CliAddSystemEvent(
     NvU32 status
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5480);
     NvU32 temp;
     PEVENTNOTIFICATION pEventNotification = NULL;
     RmClient **ppClient;
@@ -645,6 +654,7 @@ void CliAddSystemEvent(
 static NV_STATUS
 _eventRpcForType(NvHandle hClient, NvHandle hObject)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5481);
     NV_STATUS status;
     RsResourceRef *pResourceRef;
 

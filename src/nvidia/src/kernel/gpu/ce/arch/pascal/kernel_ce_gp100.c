@@ -31,6 +31,7 @@
 
 NV_STATUS kceStateLoad_GP100(OBJGPU *pGpu, KernelCE *pKCe, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 764);
     KernelCE *pKCeShim;
 
     // Mark first CE to load as the owner
@@ -91,6 +92,7 @@ kceIsCeSysmemRead_GP100
     KernelCE *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 765);
     NvU32 sysmemReadCE;
     NvU32 sysmemWriteCE;
     NvU32 nvlinkP2PCeMask;
@@ -121,6 +123,7 @@ kceIsCeSysmemWrite_GP100
     KernelCE  *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 766);
     NvU32 sysmemReadCE;
     NvU32 sysmemWriteCE;
     NvU32 nvlinkP2PCeMask;
@@ -151,6 +154,7 @@ kceIsCeNvlinkP2P_GP100
     KernelCE  *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 767);
     NvU32 sysmemReadCE;
     NvU32 sysmemWriteCE;
     NvU32 nvlinkP2PCeMask = 0;
@@ -191,6 +195,7 @@ kceGetNvlinkMaxTopoForTable_GP100
     NvU32                   *pLargestTopoIdx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 768);
     NvU32  cachedTopoIdx  = 0;
     NvU32  currentTopoIdx = 0;
     NvBool bCachedIdxExists, bCurrentIdxExists;

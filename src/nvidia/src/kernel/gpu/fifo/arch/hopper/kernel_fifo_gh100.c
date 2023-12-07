@@ -46,6 +46,7 @@ kfifoCheckChannelAllocAddrSpaces_GH100
     NV_ADDRESS_SPACE  gpFifoAddrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1352);
     if ((userdAddrSpace == ADDR_SYSMEM) &&
         ((pushBuffAddrSpace == ADDR_FBMEM || gpFifoAddrSpace == ADDR_FBMEM)))
     {
@@ -72,6 +73,7 @@ kfifoGetCtxBufferMapFlags_GH100
     NvU32       *pflags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1353);
     if (IS_GR(engine))
         *pflags |= DMA_VA_LIMIT_57B;
 
@@ -91,6 +93,7 @@ kfifoConstructUsermodeMemdescs_GH100
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1354);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU32 attr                    = 0;
     NvU32 attr2                   = 0;

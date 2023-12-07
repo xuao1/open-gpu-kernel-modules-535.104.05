@@ -56,6 +56,7 @@ intrGetUvmSharedLeafEnDisableMask_GA100
     Intr *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2422);
     NvU32 intrVectorNonReplayableFault;
     NvU32 intrVectorTimerSwrl = NV_INTR_VECTOR_INVALID;
     NvU64 mask = 0;
@@ -143,6 +144,7 @@ intrSanityCheckEngineIntrStallVector_GA100
     NvU16    mcEngine
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2423);
     //
     // The leafIndex must be within the engine stall tree: leaf 6 on Ampere.
     // Try to catch this on pre-release drivers. Don't need this on release drivers since this
@@ -171,6 +173,7 @@ intrSanityCheckEngineIntrNotificationVector_GA100
     NvU16    mcEngine
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2424);
     //
     // The leafIndex must be within the engine notification tree: leaf 0 on Ampere.
     // Try to catch this on pre-release drivers. Don't need this on release drivers since this

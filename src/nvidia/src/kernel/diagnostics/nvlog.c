@@ -95,6 +95,7 @@ static NvlogFlushCb nvlogFlushCbs[NVLOG_MAX_FLUSH_CBS];
 NV_STATUS
 nvlogInit(void *pData)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 239);
     NV_STATUS status = NV_OK;
 
     nvlogRegRoot = pData;
@@ -126,6 +127,7 @@ void nvlogUpdate(void) {
 NV_STATUS
 nvlogDestroy(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 240);
     NV_STATUS status = NV_OK;
     NvU32 i;
 
@@ -166,6 +168,7 @@ _allocateNvlogBuffer
     NVLOG_BUFFER **ppBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 241);
     NVLOG_BUFFER          *pBuffer;
     NVLOG_BUFFER_PUSHFUNC  pushfunc;
 
@@ -234,6 +237,7 @@ _deallocateNvlogBuffer
     NVLOG_BUFFER *pBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 242);
     if (FLD_TEST_DRF(LOG_BUFFER, _FLAGS, _OCA, _YES, pBuffer->flags))
         osDeleteRecordForCrashLog(pBuffer);
 
@@ -250,6 +254,7 @@ nvlogAllocBuffer
     ...
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 243);
     NVLOG_BUFFER *pBuffer;
     NV_STATUS     status;
 
@@ -308,6 +313,7 @@ nvlogDeallocBuffer
     NvBool bDeallocPreserved
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 244);
     NVLOG_BUFFER *pBuffer;
 
     if ((hBuffer == 0) || !NVLOG_IS_VALID_BUFFER_HANDLE(hBuffer))
@@ -344,6 +350,7 @@ nvlogWriteToBuffer
     NvU32 size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 245);
     NvBool status;
     NVLOG_BUFFER *pBuffer;
 
@@ -378,6 +385,7 @@ nvlogExtractBufferChunk
     NvU8               *pDest
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 246);
     NVLOG_BUFFER *pBuffer;
     NvU32 index;
 
@@ -408,6 +416,7 @@ nvlogGetBufferSize
     NvU32 *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 247);
     NV_ASSERT_OR_RETURN(pSize != NULL, NV_ERR_INVALID_POINTER);
 
     NV_ASSERT_OR_RETURN(NVLOG_IS_VALID_BUFFER_HANDLE(hBuffer),
@@ -424,6 +433,7 @@ nvlogGetBufferTag
     NvU32 *pTag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 248);
     NV_ASSERT_OR_RETURN(pTag != NULL, NV_ERR_INVALID_POINTER);
 
     NV_ASSERT_OR_RETURN(NVLOG_IS_VALID_BUFFER_HANDLE(hBuffer),
@@ -440,6 +450,7 @@ nvlogGetBufferFlags
     NvU32 *pFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 249);
     NV_ASSERT_OR_RETURN(pFlags != NULL, NV_ERR_INVALID_POINTER);
 
     NV_ASSERT_OR_RETURN(NVLOG_IS_VALID_BUFFER_HANDLE(hBuffer),
@@ -457,6 +468,7 @@ nvlogPauseLoggingToBuffer
     NvBool bPause
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 250);
     NVLOG_BUFFER *pBuffer;
 
     NV_ASSERT_OR_RETURN(NVLOG_IS_VALID_BUFFER_HANDLE(hBuffer),
@@ -478,6 +490,7 @@ nvlogPauseAllLogging
     NvBool bPause
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 251);
     return NV_OK;
 }
 
@@ -488,6 +501,7 @@ nvlogGetBufferHandleFromTag
     NVLOG_BUFFER_HANDLE *pBufferHandle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 252);
     NvU32 i;
 
     NV_ASSERT_OR_RETURN(pBufferHandle != NULL, NV_ERR_INVALID_POINTER);
@@ -514,6 +528,7 @@ nvlogGetBufferSnapshot
     NvU32               destSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 253);
     NVLOG_BUFFER *pBuffer;
 
     NV_ASSERT_OR_RETURN(NVLOG_IS_VALID_BUFFER_HANDLE(hBuffer),
@@ -543,6 +558,7 @@ nvlogRingBufferPush
     NvU32        dataSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 254);
     NvU32 writeSize;
     NvU32 oldPos;
     NvU32 lock = DRF_VAL(LOG, _BUFFER_FLAGS, _LOCKING, pBuffer->flags);
@@ -581,6 +597,7 @@ nvlogNowrapBufferPush
     NvU32 dataSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 255);
     NvU32 oldPos;
     NvU32 lock = DRF_VAL(LOG, _BUFFER_FLAGS, _LOCKING, pBuffer->flags);
 
@@ -673,6 +690,7 @@ nvlogStringBufferPush
     NvU32         dataSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 256);
     return NV_TRUE;
 }
 
@@ -683,6 +701,7 @@ nvlogStringBufferPush
 //
 static void _printBase64(NvU8 *pData, NvU32 dataSize)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 257);
     const NvU8 base64_key[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     NvU8 output[64+1]; // 64 bas64 characters per line of output
     NvU32 i;
@@ -724,6 +743,7 @@ static void _printBase64(NvU8 *pData, NvU32 dataSize)
 
 NvBool nvlogKernelLogPush(NVLOG_BUFFER *unused, NvU8 *pData, NvU32 dataSize)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 258);
     PORT_UNREFERENCED_VARIABLE(unused);
     _printBase64(pData, dataSize);
     return NV_TRUE;
@@ -731,6 +751,7 @@ NvBool nvlogKernelLogPush(NVLOG_BUFFER *unused, NvU8 *pData, NvU32 dataSize)
 
 void nvlogDumpToKernelLog(NvBool bDumpUnchangedBuffersOnlyOnce)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 259);
     NvU32 i;
     static NvU32 lastDumpPos[NVLOG_MAX_BUFFERS];
 
@@ -761,6 +782,7 @@ void nvlogDumpToKernelLog(NvBool bDumpUnchangedBuffersOnlyOnce)
 
 void nvlogDumpToKernelLogIfEnabled(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 260);
     NvU32 dumpNvlogValue;
 
     // Debug and develop builds already dump everything as it happens.
@@ -780,6 +802,7 @@ void nvlogDumpToKernelLogIfEnabled(void)
 
 NV_STATUS nvlogRegisterFlushCb(void (*pCb)(void*), void *pData)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 261);
     NV_STATUS status = NV_ERR_INSUFFICIENT_RESOURCES;
     portSyncRwLockAcquireWrite(NvLogLogger.flushCbsLock);
 
@@ -805,6 +828,7 @@ done:
 
 void nvlogDeregisterFlushCb(void (*pCb)(void*), void *pData)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 262);
     portSyncRwLockAcquireWrite(NvLogLogger.flushCbsLock);
 
     for (NvU32 i = 0; i < NV_ARRAY_ELEMENTS(nvlogFlushCbs); i++)
@@ -822,6 +846,7 @@ done:
 
 void nvlogRunFlushCbs(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 263);
     portSyncRwLockAcquireRead(NvLogLogger.flushCbsLock);
     for (NvU32 i = 0; i < NV_ARRAY_ELEMENTS(nvlogFlushCbs); i++)
         if (nvlogFlushCbs[i].pCb != NULL)

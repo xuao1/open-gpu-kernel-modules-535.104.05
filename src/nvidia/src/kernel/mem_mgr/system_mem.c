@@ -69,6 +69,7 @@ sysmemConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4700);
     Memory *pMemory = staticCast(pSystemMemory, Memory);
     NV_MEMORY_ALLOCATION_PARAMS *pAllocData = pParams->pAllocParams;
     MEMORY_ALLOCATION_REQUEST allocRequest = {0};
@@ -386,6 +387,7 @@ sysmemCtrlCmdGetSurfaceNumPhysPages_IMPL
     NV003E_CTRL_GET_SURFACE_NUM_PHYS_PAGES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4701);
     Memory *pMemory = staticCast(pSystemMemory, Memory);
     NV_STATUS status;
 
@@ -408,6 +410,7 @@ sysmemCtrlCmdGetSurfacePhysPages_IMPL
     NV003E_CTRL_GET_SURFACE_PHYS_PAGES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4702);
     Memory *pMemory = staticCast(pSystemMemory, Memory);
     NV_STATUS status;
 
@@ -432,6 +435,7 @@ sysmemInitAllocRequest_HMM
     MEMORY_ALLOCATION_REQUEST *pAllocRequest
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4703);
     MemoryManager               *pMemoryManager     = GPU_GET_MEMORY_MANAGER(pGpu);
     FB_ALLOC_INFO               *pFbAllocInfo       = NULL;
     FB_ALLOC_PAGE_FORMAT        *pFbAllocPageFormat = NULL;
@@ -474,6 +478,7 @@ sysmemAllocResources
     SystemMemory                *pSystemMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4704);
     NV_STATUS                    status          = NV_OK;
     NV_MEMORY_ALLOCATION_PARAMS *pVidHeapAlloc   = pAllocRequest->pUserParams;
     MEMORY_DESCRIPTOR           *pMemDesc        = NULL;

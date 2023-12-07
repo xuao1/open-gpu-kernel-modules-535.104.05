@@ -49,6 +49,7 @@ migconfigsessionConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pRmAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3532);
     NVC639_ALLOCATION_PARAMETERS *pUserParams = pRmAllocParams->pAllocParams;
     OBJSYS *pSys = SYS_GET_INSTANCE();
     NvHandle hClient = pCallContext->pClient->hClient;
@@ -90,6 +91,7 @@ migconfigsessionDestruct_IMPL
     MIGConfigSession *pMIGConfigSession
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3533);
     osRmCapRelease(pMIGConfigSession->dupedCapDescriptor);
 }
 

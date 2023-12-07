@@ -59,6 +59,7 @@ _ctxdmaDestroyFBMappings
     OBJGPU     *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2735);
     NvU32 gpuSubDevInst;
 
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY)
@@ -128,6 +129,7 @@ ctxdmaConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL    *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2736);
     NV_STATUS                         status;
     NV_CONTEXT_DMA_ALLOCATION_PARAMS *pAllocParams = pParams->pAllocParams;
     NvU32                             cachesnoop, type, i;
@@ -244,6 +246,7 @@ ctxdmaDestruct_IMPL
     ContextDma *pContextDma
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2737);
     _ctxdmaDestruct(pContextDma, RES_GET_CLIENT_HANDLE(pContextDma));
 }
 
@@ -257,6 +260,7 @@ ctxdmaCtrlCmdUpdateContextdma_IMPL
     NV0002_CTRL_UPDATE_CONTEXTDMA_PARAMS *pUpdateCtxDmaParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2738);
     RsClient  *pClient = RES_GET_CLIENT(pContextDma);
     OBJGPU    *pGpu;
     KernelDisplay *pKernelDisplay;
@@ -326,6 +330,7 @@ _ctxdmaDestruct
     NvHandle    hClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2739);
     NV_STATUS  rmStatus = NV_OK;
     OBJGPU    *pGpu = NULL;
 
@@ -391,6 +396,7 @@ ctxdmaCtrlCmdBindContextdma_IMPL
     NV0002_CTRL_BIND_CONTEXTDMA_PARAMS *pBindCtxDmaParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2740);
     NvHandle       hChannel     = pBindCtxDmaParams->hChannel;
 
     gpuSetThreadBcState(pContextDma->pGpu, !pContextDma->bUnicast);
@@ -426,6 +432,7 @@ ctxdmaCtrlCmdUnbindContextdma_IMPL
     NV0002_CTRL_UNBIND_CONTEXTDMA_PARAMS *pUnbindCtxDmaParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2741);
     gpuSetThreadBcState(pContextDma->pGpu, !pContextDma->bUnicast);
 
     API_GPU_FULL_POWER_SANITY_CHECK(pContextDma->pGpu, NV_TRUE, NV_FALSE);
@@ -446,6 +453,7 @@ _ctxdmaConstruct
     NvU64          limit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2742);
     NV_STATUS           rmStatus        = NV_OK;
     Memory             *pMemory         = NULL;
     OBJGPU             *pGpu            = NULL;
@@ -696,6 +704,7 @@ ctxdmaGetByHandle
     ContextDma   **ppContextDma
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2743);
     RsResourceRef *pResourceRef;
     NV_STATUS status;
 
@@ -724,6 +733,7 @@ ctxdmaValidate_IMPL
     NvU64         Length
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2744);
     if (pContextDma == NULL)
     {
         NV_PRINTF(LEVEL_ERROR, "Invalid DMA context in ctxdmaValidate\n");
@@ -751,6 +761,7 @@ ctxdmaGetKernelVA_IMPL
     NvU32       VA_idx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2745);
     NV_STATUS status;
 
     if (pContextDma == NULL)
@@ -780,6 +791,7 @@ ctxdmaMapTo_IMPL
     RS_RES_MAP_TO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2746);
     OBJGPU            *pGpu = pParams->pGpu;
     MEMORY_DESCRIPTOR *pSrcMemDesc = pParams->pSrcMemDesc;
     NvU64              offset = pParams->offset;
@@ -816,6 +828,7 @@ ctxdmaUnmapFrom_IMPL
     RS_RES_UNMAP_FROM_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2747);
     //
     // With ContextDmas only supporting physical (or IOMMU VA) there is
     // nothing to unmap. We silently allow this call for compatibility.
@@ -838,6 +851,7 @@ ctxdmaIsBound_IMPL
     ContextDma *pContextDma
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2748);
     NvU32 refs = 0;
     NvU32 i;
 

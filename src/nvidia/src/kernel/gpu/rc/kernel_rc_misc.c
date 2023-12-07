@@ -42,6 +42,7 @@ NV_STATUS krcReadVirtMem_IMPL
     NvU32          bufSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3932);
     VirtMemAllocator  *pDma = GPU_GET_DMA(pGpu);
     MemoryManager     *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     MEMORY_DESCRIPTOR  memDesc;

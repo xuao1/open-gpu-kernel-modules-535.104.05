@@ -43,6 +43,7 @@ kperfGpuBoostSyncStateInit_IMPL
     KernelPerf *pKernelPerf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3894);
     NV_STATUS  status = NV_OK;
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32      i;
@@ -88,6 +89,7 @@ kperfGpuBoostSyncActivate_IMPL
     NvBool       bActivate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3895);
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS  status = NV_OK;
     NV2080_CTRL_INTERNAL_PERF_GPU_BOOST_SYNC_CONTROL_PARAMS ctrlParams = { 0 };
@@ -124,6 +126,7 @@ kperfDoSyncGpuBoostLimits_IMPL
     NV2080_CTRL_INTERNAL_PERF_GPU_BOOST_SYNC_SET_LIMITS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3896);
     OBJSYS                 *pSys                = SYS_GET_INSTANCE();
     OBJGPUMGR              *pGpuMgr             = SYS_GET_GPUMGR(pSys);
     OBJGPUBOOSTMGR         *pBoostMgr           = SYS_GET_GPUBOOSTMGR(pSys);
@@ -282,6 +285,7 @@ kPerfGpuBoostSyncBridgelessUpdateInfo
     NvBool  bBridgeless
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3897);
     KernelPerf *pKernelPerf = GPU_GET_KERNEL_PERF(pGpu);
 
     if (pKernelPerf != NULL)
@@ -304,6 +308,7 @@ kperfGpuBoostSyncStateUpdate
    NvBool          bActivate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3898);
     OBJSYS        *pSys         = SYS_GET_INSTANCE();
     KernelPerf    *pKernelPerf  = NULL;
     NV_STATUS      status       = NV_OK;

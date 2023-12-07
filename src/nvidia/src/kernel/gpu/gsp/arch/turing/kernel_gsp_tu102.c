@@ -65,6 +65,7 @@ kgspConfigureFalcon_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2252);
     KernelFalconEngineConfig falconConfig;
 
     portMemSet(&falconConfig, 0, sizeof(falconConfig));
@@ -97,6 +98,7 @@ kgspIsDebugModeEnabled_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2253);
     NvU32 data;
 
     data = GPU_REG_RD32(pGpu, NV_FUSE_OPT_SECURE_GSP_DEBUG_DIS);
@@ -111,6 +113,7 @@ kgspAllocBootArgs_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2254);
     NvP64 pVa = NvP64_NULL;
     NvP64 pPriv = NvP64_NULL;
     NV_STATUS nvStatus = NV_OK;
@@ -204,6 +207,7 @@ kgspFreeBootArgs_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2255);
     // release wpr meta data resources
     if (pKernelGsp->pWprMeta != NULL)
     {
@@ -282,6 +286,7 @@ _kgspIsReloadCompleted
     void    *pVoid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2256);
     NvU32 reg;
 
     reg = GPU_REG_RD32(pGpu, NV_PGC6_BSI_SECURE_SCRATCH_14);
@@ -308,6 +313,7 @@ kgspSetCmdQueueHead_TU102
     NvU32   value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2257);
     NV_ASSERT_OR_RETURN(queueIdx < NV_PGSP_QUEUE_HEAD__SIZE_1, NV_ERR_INVALID_ARGUMENT);
 
     // Write the value to the correct queue head.
@@ -326,6 +332,7 @@ kgspProgramLibosBootArgsAddr_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2258);
     NvU64 addr =
         memdescGetPhysAddr(pKernelGsp->pLibosInitArgumentsDescriptor, AT_GPU, 0);
 
@@ -341,6 +348,7 @@ kgspBootstrapRiscvOSEarly_TU102
     GSP_FIRMWARE   *pGspFw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2259);
     NV_STATUS               status          = NV_OK;
     KernelFalcon           *pKernelFalcon   = staticCast(pKernelGsp, KernelFalcon);
 
@@ -461,6 +469,7 @@ kgspGetGspRmBootUcodeStorage_TU102
     BINDATA_STORAGE **ppBinStorageDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2260);
     const BINDATA_ARCHIVE *pBinArchive = kgspGetBinArchiveGspRmBoot_HAL(pKernelGsp);
 
     *ppBinStorageImage = (BINDATA_STORAGE *) bindataArchiveGetStorage(pBinArchive, "ucode_image");
@@ -506,6 +515,7 @@ kgspCalculateFbLayout_TU102
     GSP_FIRMWARE   *pGspFw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2261);
     KernelMemorySystem  *pKernelMemorySystem  = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     KernelDisplay       *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     MemoryManager       *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -682,6 +692,7 @@ kgspExecuteSequencerCommand_TU102
     NvU32           payloadSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2262);
     NV_STATUS       status        = NV_OK;
     KernelFalcon   *pKernelFalcon = staticCast(pKernelGsp, KernelFalcon);
     NvU32           secMailbox0   = 0;
@@ -749,6 +760,7 @@ kgspResetHw_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2263);
     GPU_FLD_WR_DRF_DEF(pGpu, _PGSP, _FALCON_ENGINE, _RESET, _TRUE);
 
     // Reg read cycles needed for signal propagation.
@@ -775,6 +787,7 @@ kgspHealthCheck_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2264);
     NvBool bHealthy = NV_TRUE;
 
     // If enabled, CrashCat is the primary reporting interface for GSP issues
@@ -861,6 +874,7 @@ kgspService_TU102
     KernelGsp  *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2265);
     NvU32         intrStatus;
     KernelFalcon *pKernelFalcon = staticCast(pKernelGsp, KernelFalcon);
 
@@ -926,6 +940,7 @@ _kgspIsProcessorSuspended
     void    *pVoid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2266);
     KernelGsp *pKernelGsp = reinterpretCast(pVoid, KernelGsp *);
     NvU32 mailbox;
 
@@ -942,6 +957,7 @@ kgspWaitForProcessorSuspend_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2267);
     return gpuTimeoutCondWait(pGpu, _kgspIsProcessorSuspended, pKernelGsp, NULL);
 }
 
@@ -952,6 +968,7 @@ kgspIsWpr2Up_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2268);
     NvU32 data = GPU_REG_RD32(pGpu, NV_PFB_PRI_MMU_WPR2_ADDR_HI);
     NvU32 wpr2HiVal = DRF_VAL(_PFB, _PRI_MMU_WPR2_ADDR_HI, _VAL, data);
     return (wpr2HiVal != 0);
@@ -967,6 +984,7 @@ kgspWaitForGfwBootOk_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2269);
     NvU32 timeoutUs = FWSECLIC_PROG_START_TIMEOUT + FWSECLIC_PROG_COMPLETE_TIMEOUT;
     RMTIMEOUT timeout;
     NV_STATUS status = NV_OK;
@@ -1022,6 +1040,7 @@ kgspFreeSuspendResumeData_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2270);
     // release sr meta data resources
     if (pKernelGsp->pSRMetaDescriptor != NULL)
     {
@@ -1046,6 +1065,7 @@ kgspSavePowerMgmtState_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2271);
     GspFwSRMeta gspfwSRMeta;
     NvP64 pVa = NvP64_NULL;
     NvP64 pPriv = NvP64_NULL;
@@ -1122,6 +1142,7 @@ kgspRestorePowerMgmtState_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2272);
     NV_STATUS nvStatus = NV_OK;
 
     NV_ASSERT_TRUE_OR_GOTO(nvStatus, pKernelGsp->pSRMetaDescriptor != NULL, NV_ERR_INVALID_STATE, exit_cleanup);

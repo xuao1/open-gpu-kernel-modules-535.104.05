@@ -38,6 +38,7 @@ faultbufConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3681);
     NV_STATUS   status;
     OBJGPU     *pGpu = GPU_RES_GET_GPU(pMmuFaultBuffer);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
@@ -76,6 +77,7 @@ faultbufDestruct_IMPL
     MmuFaultBuffer *pMmuFaultBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3682);
     OBJGPU     *pGpu  = GPU_RES_GET_GPU(pMmuFaultBuffer);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
 
@@ -91,6 +93,7 @@ faultbufMap_IMPL
     RsCpuMapping *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3683);
     // This only maps the replayable fault buffer
     RmClient               *pClient = dynamicCast(pCallContext->pClient, RmClient);
     OBJGPU                 *pGpu;
@@ -136,6 +139,7 @@ faultbufUnmap_IMPL
     RsCpuMapping *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3684);
     // This only unmaps the replayable fault buffer
 
     NV_STATUS               rmStatus;
@@ -177,6 +181,7 @@ faultbufGetMapAddrSpace_IMPL
     NV_ADDRESS_SPACE *pAddrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3685);
     OBJGPU  *pGpu = GPU_RES_GET_GPU(pMmuFaultBuffer);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     NV_ADDRESS_SPACE addrSpace;

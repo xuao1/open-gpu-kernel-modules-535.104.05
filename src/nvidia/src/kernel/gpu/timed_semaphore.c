@@ -85,6 +85,7 @@ _9074TimedSemReleaseNow
     NvU16                      *notifierStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4109);
     if (waitTimestamp <= currentTime)
     {
         *notifierStatus = NV9074_NOTIFICATION_STATUS_DONE;
@@ -113,6 +114,7 @@ _9074TimedSemRelease
     NvU32       notifyAction
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4110);
     NV_STATUS status;
     NV_STATUS overallStatus = NV_OK;
 
@@ -166,6 +168,7 @@ _9074TimedSemRequest
     NvU32       notifyAction
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4111);
     OBJTMR                    *pTmr           = GPU_GET_TIMER(pGpu);
     PGF100_TIMED_SEM_SW_OBJECT pTimedSemSw    = dynamicCast(pObject, TimedSemaSwObject);
     NvU64                      currentTime;
@@ -234,6 +237,7 @@ tsemaConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4112);
     listInit(&pTimedSemSw->entryList, portMemAllocatorGetGlobalNonPaged());
 
     return NV_OK;
@@ -245,6 +249,7 @@ tsemaDestruct_IMPL
     TimedSemaSwObject *pTimedSemSw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4113);
     ChannelDescendant      *pChannelDescendant = staticCast(pTimedSemSw, ChannelDescendant);
     OBJTMR                 *pTmr = GPU_GET_TIMER(GPU_RES_GET_GPU(pChannelDescendant));
 
@@ -269,6 +274,7 @@ tsemaCtrlCmdFlush_IMPL
     NV9074_CTRL_CMD_FLUSH_PARAMS *pFlushParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4114);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pTimedSemaSwObject);
     ChannelDescendant *pObject = staticCast(pTimedSemaSwObject, ChannelDescendant);
 
@@ -300,6 +306,7 @@ tsemaCtrlCmdGetTime_IMPL
     NV9074_CTRL_CMD_GET_TIME_PARAMS *pGetTimeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4115);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pTimedSemaSwObject);
     OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
 
@@ -315,6 +322,7 @@ tsemaCtrlCmdRelease_IMPL
     NV9074_CTRL_CMD_RELEASE_PARAMS *pReleaseParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4116);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pTimedSemaSwObject);
     ChannelDescendant *pObject = staticCast(pTimedSemaSwObject, ChannelDescendant);
 
@@ -343,6 +351,7 @@ static NV_STATUS _class9074SetNotifierHi
     NvU32   Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4117);
     PGF100_TIMED_SEM_SW_OBJECT pTimedSemSw = dynamicCast(pObject, TimedSemaSwObject);
 
     NV_PRINTF(LEVEL_INFO, "\n");
@@ -361,6 +370,7 @@ static NV_STATUS _class9074SetNotifierLo
     NvU32   Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4118);
     PGF100_TIMED_SEM_SW_OBJECT pTimedSemSw = dynamicCast(pObject, TimedSemaSwObject);
     NvU64                      notifier;
 
@@ -396,6 +406,7 @@ static NV_STATUS _class9074SetSemaphoreHi
     NvU32   Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4119);
     PGF100_TIMED_SEM_SW_OBJECT pTimedSemSw = dynamicCast(pObject, TimedSemaSwObject);
 
     NV_PRINTF(LEVEL_INFO, "\n");
@@ -414,6 +425,7 @@ static NV_STATUS _class9074SetSemaphoreLo
     NvU32   Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4120);
     PGF100_TIMED_SEM_SW_OBJECT pTimedSemSw = dynamicCast(pObject, TimedSemaSwObject);
     NvU64                      semaphore;
 
@@ -449,6 +461,7 @@ static NV_STATUS _class9074SetWaitTimestampHi
     NvU32   Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4121);
     PGF100_TIMED_SEM_SW_OBJECT pTimedSemSw = dynamicCast(pObject, TimedSemaSwObject);
 
     NV_PRINTF(LEVEL_INFO, "\n");
@@ -467,6 +480,7 @@ static NV_STATUS _class9074SetWaitTimestampLo
     NvU32   Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4122);
     PGF100_TIMED_SEM_SW_OBJECT pTimedSemSw = dynamicCast(pObject, TimedSemaSwObject);
 
     NV_PRINTF(LEVEL_INFO, "\n");
@@ -495,6 +509,7 @@ static NV_STATUS _class9074SetSemaphoreReleaseValue
     NvU32   Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4123);
     PGF100_TIMED_SEM_SW_OBJECT pTimedSemSw = dynamicCast(pObject, TimedSemaSwObject);
 
     NV_PRINTF(LEVEL_INFO, "\n");
@@ -513,6 +528,7 @@ static NV_STATUS _class9074ScheduleSemaphoreRelease
     NvU32   Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4124);
     PGF100_TIMED_SEM_SW_OBJECT pTimedSemSw = dynamicCast(pObject, TimedSemaSwObject);
 
     NV_PRINTF(LEVEL_INFO, "\n");
@@ -541,6 +557,7 @@ static NV_STATUS _class9074TimerCallback
     void    *pContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4125);
     ChannelDescendant *pObject = pContext;
     PGF100_TIMED_SEM_SW_OBJECT pTimedSemSw = dynamicCast(pObject, TimedSemaSwObject);
     PGF100_TIMED_SEM_ENTRY     pTimedSemEntry = NULL;
@@ -611,6 +628,7 @@ NV_STATUS tsemaGetSwMethods_IMPL
     NvU32             *pNumMethods
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4126);
     *ppMethods = GF100TimedSemSwMethods;
     *pNumMethods = NV_ARRAY_ELEMENTS(GF100TimedSemSwMethods);
     return NV_OK;
@@ -628,6 +646,7 @@ tsemaRelease_KERNEL
     RsClient *pClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4127);
     OBJTMR   *pTmr = GPU_GET_TIMER(pGpu);
     NvU64     currentTime;
     NV_STATUS status;

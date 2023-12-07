@@ -33,31 +33,37 @@
 #else
 static NvU64 osGetPageRefcount(NvU64 sysPagePhysAddr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3193);
     return 0;
 }
 
 static NvU64 osCountTailPages(NvU64 sysPagePhysAddr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3194);
     return 0;
 }
 
 static void osAllocReleasePage(NvU64 sysPagePhysAddr, NvU32 pageCount)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3195);
     return;
 }
 
 static NV_STATUS osOfflinePageAtAddress(NvU64 address)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3196);
     return NV_ERR_GENERIC;
 }
 
 static NvU8 osGetPageShift(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3197);
     return 0;
 }
 
 NV_STATUS scrubCheck(OBJMEMSCRUB *pScrubber, PSCRUB_NODE *ppList, NvU64 *size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3198);
     return NV_ERR_GENERIC;
 }
 
@@ -69,6 +75,7 @@ NV_STATUS scrubSubmitPages(OBJMEMSCRUB *pScrubber, NvU64 chunkSize, NvU64* pages
 
 NV_STATUS scrubWaitPages(OBJMEMSCRUB *pScrubber, NvU64 chunkSize, NvU64* pages, NvU32 pageCount)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3199);
     return NV_ERR_GENERIC;
 }
 
@@ -83,6 +90,7 @@ NV_STATUS scrubCheckAndWaitForSize (OBJMEMSCRUB *pScrubber, NvU64 numPages,
 NvU32
 findRegionID(PMA *pPma, NvU64 address)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3200);
     NvU32 i;
 
     for (i = 0; i < pPma->regSize; i++)
@@ -105,6 +113,7 @@ findRegionID(PMA *pPma, NvU64 address)
 void
 pmaPrintBlockStatus(PMA_PAGESTATUS blockStatus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3201);
     // Use DBG_PRINTF so as not to prepend "NVRM:" everytime, as NV_PRINTF does
     if ((blockStatus & STATE_MASK) == STATE_FREE) {
         NV_PRINTF_EX(NV_PRINTF_MODULE, LEVEL_INFO, "STATE_FREE         ");
@@ -153,6 +162,7 @@ pmaPrintBlockStatus(PMA_PAGESTATUS blockStatus)
 void
 pmaRegionPrint(PMA *pPma, PMA_REGION_DESCRIPTOR *pRegion, void *pMap)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3202);
     NvU32 i;
     PMA_PAGESTATUS currStatus, blockStatus = STATE_FREE;
     NvU64 addrBase, addrLimit, numFrames, blockStart = 0;
@@ -194,6 +204,7 @@ pmaRegionPrint(PMA *pPma, PMA_REGION_DESCRIPTOR *pRegion, void *pMap)
 NvBool
 pmaStateCheck(PMA *pPma)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3203);
     NvU32 size, i;
     PMA_REGION_DESCRIPTOR *pState;
     void *pMap = NULL;
@@ -238,6 +249,7 @@ pmaSetBlockStateAttribUnderPmaLock
     PMA_PAGESTATUS pmaStateWriteMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3204);
     NvU64 numFrames, baseFrame, i;
     NvS32 regId;
     void *pMap;
@@ -268,6 +280,7 @@ pmaSetBlockStateAttrib
     PMA_PAGESTATUS pmaStateWriteMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3205);
     NV_ASSERT(pPma != NULL);
 
     portSyncSpinlockAcquire(pPma->pPmaLock);
@@ -287,6 +300,7 @@ pmaStatsUpdateState
     PMA_PAGESTATUS newState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3206);
     NV_ASSERT(pNumFree != NULL);
 
     oldState &= STATE_MASK;
@@ -306,6 +320,7 @@ pmaStatsUpdateState
 
 NvBool pmaIsEvictionPending(PMA *pPma)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3207);
     NvU32 i;
     void *pMap = NULL;
 
@@ -321,6 +336,7 @@ NvBool pmaIsEvictionPending(PMA *pPma)
 
 void pmaOsSchedule(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3208);
     // TODO Move osSchedule() to nvport?
 #if !defined(SRT_BUILD)
     osSchedule();
@@ -343,6 +359,7 @@ _pmaCleanupNumaReusePages
     NvBool       bEvictionSucceeded
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3209);
     NvU32 regId;
     NvU64 sysPhysAddr = 0, sysPagePhysAddr = 0;
     NvU64 frameNum, addrBase, i;
@@ -423,6 +440,7 @@ _pmaEvictContiguous
     MEMORY_PROTECTION prot
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3210);
     NV_STATUS status;
     NvU64 numFramesToEvict;
     NvU64 evictSize;
@@ -539,6 +557,7 @@ _pmaEvictPages
     MEMORY_PROTECTION prot
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3211);
     NvU64 i;
     NV_STATUS status;
     NvU64 numFramesToEvict = evictPageCount * (pageSize >> PMA_PAGE_SHIFT);
@@ -632,6 +651,7 @@ pmaSelector
     NvS32                   *regionList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3212);
     // regSize never decreases + registered states don't change, so lock-free
     NvU32     i;
     NvU32     flags = allocationOptions->flags;
@@ -767,6 +787,7 @@ _pmaClearScrubBit
     NvU64       count
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3213);
     NvU32 i;
     NvU64 base;
     NvU64 size;
@@ -807,6 +828,7 @@ _pmaCheckScrubbedPages
     NvU32   pageCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3214);
     PSCRUB_NODE pPmaScrubList = NULL;
     NvU64 count = 0;
     NV_STATUS status = NV_OK;
@@ -842,6 +864,7 @@ _pmaPredictOutOfMemory
     PMA_ALLOCATION_OPTIONS *allocationOptions
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3215);
     NvU32 alignFlag, partialFlag;
     NvU64 alignment;
     NvU64 free2mbPages = 0;
@@ -923,6 +946,7 @@ _pmaFreeBlacklistPages
     NvU64  rangeSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3216);
     NvU32 blacklistCount = 0;
     NvU32 chunk;
     NvU64 alignedBlacklistAddr;
@@ -978,6 +1002,7 @@ void _pmaReallocBlacklistPages
     NvU64 rangeSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3217);
     NvU32 blacklistCount = 0;
     NvU32 chunk;
     NvU64 alignedBlacklistAddr;
@@ -1037,6 +1062,7 @@ _pmaLookupBlacklistFrame
     NvU64  frameNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3218);
     NvU32 blacklistCount;
     NvU64 addrBase;
     NvU32 chunk;
@@ -1088,6 +1114,7 @@ pmaBuildList
     PMA_PAGESTATUS   pageStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3219);
     NvU32 regionIdx, frameNum;
     NvU64 addrBase, addrLimit, numFrames;
     NvU64 blockStart = 0, blockEnd = 0;
@@ -1196,6 +1223,7 @@ pmaFreeList
     PRANGELISTTYPE  *ppList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3220);
     PRANGELISTTYPE pRangeCurr = *ppList;
     PRANGELISTTYPE pRangeNext;
 
@@ -1218,6 +1246,7 @@ pmaRegisterBlacklistInfo
     NvU32                   blacklistCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3221);
     NvU32 i;
     NvU64 alignedBlacklistAddr;
     PMA_BLACKLIST_CHUNK *pBlacklistChunk = NULL;
@@ -1296,6 +1325,7 @@ pmaSetClientManagedBlacklist
     NvBool bClientManagedBlacklist
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3222);
     pPma->bClientManagedBlacklist = bClientManagedBlacklist;
 }
 
@@ -1308,6 +1338,7 @@ pmaQueryBlacklistInfo
     PMA_BLACKLIST_CHUNK **ppBlacklistChunks
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3223);
     if (pBlacklistCount)
     {
         *pBlacklistCount = pPma->blacklistCount;
@@ -1331,6 +1362,7 @@ pmaIsBlacklistingAddrUnique
     NvU64 physAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3224);
     NvU32 count = 0;
     PMA_BLACKLIST_CHUNK *pBlacklistChunk = NULL;
     if (pPma->blacklistCount == 0)

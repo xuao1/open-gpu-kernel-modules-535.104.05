@@ -58,6 +58,7 @@ kbifGetPcieConfigAccessTestRegisters_GM107
     NvU32     *pcieStart
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 378);
    *pciStart  = NV_XVE_ID;
    *pcieStart = NV_XVE_VCCAP_HDR;
 }
@@ -79,6 +80,7 @@ kbifVerifyPcieConfigAccessTestRegisters_GM107
     NvU32      nvXveVccapHdr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 379);
     NvU32 data;
 
     GPU_BUS_CFG_RD32(pGpu, NV_XVE_ID, &data);
@@ -114,6 +116,7 @@ kbifRearmMSI_GM107
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 380);
     NV_STATUS status = gpuSanityCheckRegisterAccess(pGpu, 0, NULL);
 
     if (status != NV_OK)
@@ -140,6 +143,7 @@ kbifIsMSIEnabledInHW_GM107
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 381);
     NvU32 data32;
     if (NV_OK != GPU_BUS_CFG_RD32(pGpu, NV_XVE_MSI_CTRL, &data32))
     {
@@ -164,6 +168,7 @@ kbifIsPciIoAccessEnabled_GM107
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 382);
     NvU32   data = 0;
 
     if (NV_OK == GPU_BUS_CFG_RD32(pGpu, NV_XVE_DEV_CTRL, &data))
@@ -192,6 +197,7 @@ kbifIs3dController_GM107
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 383);
     NvU32   data = 0;
 
     if (NV_OK == GPU_BUS_CFG_RD32(pGpu, NV_XVE_REV_ID, &data))
@@ -222,6 +228,7 @@ kbifEnableNoSnoop_GM107
     NvBool     bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 384);
     NvU8  fieldVal;
     NvU32 regVal;
 
@@ -249,6 +256,7 @@ kbifPcieConfigEnableRelaxedOrdering_GM107
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 385);
     NvU32 xveDevCtrlStatus;
 
     if(NV_ERR_GENERIC  == GPU_BUS_CFG_RD32(pGpu, NV_XVE_DEVICE_CONTROL_STATUS, &xveDevCtrlStatus))
@@ -277,6 +285,7 @@ kbifPcieConfigDisableRelaxedOrdering_GM107
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 386);
     NvU32 xveDevCtrlStatus;
 
     if(NV_ERR_GENERIC  == GPU_BUS_CFG_RD32(pGpu, NV_XVE_DEVICE_CONTROL_STATUS, &xveDevCtrlStatus))
@@ -312,6 +321,7 @@ kbifGetXveStatusBits_GM107
     NvU32     *pStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 387);
     // control/status reg
     NvU32 xveDevCtrlStatus;
 
@@ -373,6 +383,7 @@ kbifClearXveStatus_GM107
     NvU32     *pStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 388);
     NvU32 xveDevCtrlStatus;
 
     if (pStatus)
@@ -414,6 +425,7 @@ kbifGetXveAerBits_GM107
     NvU32     *pBits
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 389);
     NvU32 xveAerUncorr;
     NvU32 xveAerCorr;
 
@@ -487,6 +499,7 @@ kbifClearXveAer_GM107
     NvU32      bits
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 390);
     NvU32 xveAerUncorr = 0;
     NvU32 xveAerCorr   = 0;
 
@@ -547,6 +560,7 @@ kbifGetPciConfigSpacePriMirror_GM107
     NvU32     *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 391);
     *pBase = DEVICE_BASE(NV_PCFG);
     *pSize = DEVICE_EXTENT(NV_PCFG) - DEVICE_BASE(NV_PCFG) + 1;
     return NV_OK;
@@ -565,6 +579,7 @@ kbifExecC73War_GM107
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 392);
     OBJSYS  *pSys = SYS_GET_INSTANCE();
     OBJOS   *pOS  = SYS_GET_OS(pSys);
     OBJCL   *pCl  = SYS_GET_CL(pSys);
@@ -610,6 +625,7 @@ kbifGetBusOptionsAddr_GM107
     NvU32      *addrReg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 393);
     NV_STATUS status = NV_OK;
 
     switch (options)
@@ -640,6 +656,7 @@ kbifDisableSysmemAccess_GM107
     NvBool      bDisable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 394);
     NV_STATUS status = NV_OK;
     RM_API   *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_INTERNAL_BIF_DISABLE_SYSTEM_MEMORY_ACCESS_PARAMS params = {0};

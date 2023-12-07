@@ -32,6 +32,7 @@ serverutilGetResourceRef
     RsResourceRef          **ppResourceRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5734);
     RsResourceRef    *pResourceRef;
     RsClient         *pRsClient;
     NV_STATUS         status;
@@ -60,6 +61,7 @@ serverutilGetResourceRefWithType
     RsResourceRef     **ppResourceRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5735);
     if (serverutilGetResourceRef(hClient, hObject, ppResourceRef) != NV_OK)
     {
         return NV_ERR_OBJECT_NOT_FOUND;
@@ -83,6 +85,7 @@ serverutilGetResourceRefWithParent
     RsResourceRef     **ppResourceRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5736);
     NvHandle hFoundParent;
 
     if (serverutilGetResourceRef(hClient, hObject, ppResourceRef) != NV_OK)
@@ -107,6 +110,7 @@ RmClient
     NvHandle hClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5737);
     NV_STATUS status;
     RsClient *pRsClient;
 
@@ -123,6 +127,7 @@ RmClient
     void
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5738);
     RmClient **ppClient;
 
     //
@@ -144,6 +149,7 @@ RmClient
     RmClient **ppClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5739);
     //
     // Resource server's client list is not protected by any RM locks
     // so, as a WAR, we access a lock-protected shadow client list. This avoids
@@ -166,6 +172,7 @@ serverutilFindChildRefByType
     NvBool bExactMatch
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5740);
     NV_STATUS status;
     RsClient *pRsClient;
     RsResourceRef *pResourceRef;
@@ -200,6 +207,7 @@ serverutilRefIter
     NvBool bExactMatch
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5741);
     NV_STATUS      status;
     RsClient      *pRsClient;
     RsResourceRef *pScopedRef = NULL;
@@ -230,6 +238,7 @@ serverutilValidateNewResourceHandle
     NvHandle hObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5742);
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
 
     return ((pClient != NULL) &&
@@ -243,6 +252,7 @@ serverutilGenResourceHandle
     NvHandle   *returnHandle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5743);
     NV_STATUS status;
     RmClient *pClient;
 
@@ -264,6 +274,7 @@ serverutilShareIter
     NvU32 internalClassId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5744);
     return serverShareIter(&g_resServ, internalClassId);
 }
 
@@ -273,6 +284,7 @@ serverutilShareIterNext
     RS_SHARE_ITERATOR* pIt
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5745);
     return serverShareIterNext(pIt);
 }
 
@@ -284,6 +296,7 @@ serverutilGetClientHandlesFromPid
     ClientHandlesList   *pClientList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5746);
     RmClient **ppClient;
     RmClient  *pClient;
 
@@ -324,6 +337,7 @@ serverutilMappingFilterCurrentUserProc
     RsCpuMapping *pMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5747);
     return (!pMapping->pPrivate->bKernel &&
             (pMapping->processId == osGetCurrentProcess()));
 }
@@ -334,6 +348,7 @@ serverutilMappingFilterKernel
     RsCpuMapping *pMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5748);
     return pMapping->pPrivate->bKernel;
 }
 
@@ -346,6 +361,7 @@ serverutilAcquireClient
     RmClient **ppClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5749);
     RsClient *pRsClient;
     RmClient *pClient;
 
@@ -373,5 +389,6 @@ serverutilReleaseClient
     RmClient *pClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5750);
     serverReleaseClient(&g_resServ, access, staticCast(pClient, RsClient));
 }

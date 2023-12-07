@@ -55,6 +55,7 @@ subdeviceCtrlCmdPerfRatedTdpSetControl_KERNEL
     NV2080_CTRL_PERF_RATED_TDP_CONTROL_PARAMS *pControlParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3901);
     OBJGPU   *pGpu     = GPU_RES_GET_GPU(pSubdevice);
     NvHandle  hClient  = RES_GET_CLIENT_HANDLE(pSubdevice);
     NV_STATUS status   = NV_OK;
@@ -109,6 +110,7 @@ _kperfSendPostPowerStateCallback
     KernelPerf *pKernelPerf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3902);
     NvU32     inOutData    = 0;
     NvU16     outDataSize  = sizeof(inOutData);
     NV_STATUS status       = NV_OK;
@@ -156,6 +158,7 @@ subdeviceCtrlCmdPerfSetAuxPowerState_KERNEL
     NV2080_CTRL_PERF_SET_AUX_POWER_STATE_PARAMS *pPowerStateParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3903);
     OBJGPU   *pGpu   = GPU_RES_GET_GPU(pSubdevice);
     RM_API   *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     KernelPerf *pKernelPerf = GPU_GET_KERNEL_PERF(pGpu);
@@ -191,6 +194,7 @@ subdeviceCtrlCmdPerfSetPowerstate_KERNEL
     NV2080_CTRL_PERF_SET_POWERSTATE_PARAMS *pPowerInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3904);
     OBJGPU     *pGpu        = GPU_RES_GET_GPU(pSubdevice);
     RM_API     *pRmApi      = GPU_GET_PHYSICAL_RMAPI(pGpu);
     KernelPerf *pKernelPerf = GPU_GET_KERNEL_PERF(pGpu);

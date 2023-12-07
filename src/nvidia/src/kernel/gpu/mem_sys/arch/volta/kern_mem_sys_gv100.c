@@ -51,6 +51,7 @@ kmemsysGetFbNumaInfo_GV100
     NvS32              *numaNodeId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3329);
     NV_STATUS     status;
 
     status = osGetFbNumaInfo(pGpu, physAddr, numaNodeId);
@@ -82,6 +83,7 @@ kmemsysNeedInvalidateGpuCacheOnMap_GV100
     NvU32                aperture
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3330);
     //
     // Only need to invalidate L2 for cached (vol=0) mapping to sys/peer memory
     // because GPU's L2 is not coherent with CPU updates to sysmem
@@ -114,6 +116,7 @@ _kmemsysConfigureAtsPeers
     NvU32               peerId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3331);
     RM_API *pLocalRmApi = GPU_GET_PHYSICAL_RMAPI(pLocalGpu);
     RM_API *pRemoteRmApi = GPU_GET_PHYSICAL_RMAPI(pRemoteGpu);
     NV2080_CTRL_INTERNAL_MEMSYS_GET_LOCAL_ATS_CONFIG_PARAMS getParams = { 0 };
@@ -160,6 +163,7 @@ _kmemsysResetAtsPeerConfiguration
     NvU32               peerId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3332);
     RM_API *pLocalRmApi = GPU_GET_PHYSICAL_RMAPI(pLocalGpu);
     NV2080_CTRL_INTERNAL_MEMSYS_GET_LOCAL_ATS_CONFIG_PARAMS getParams = { 0 };
     NV2080_CTRL_INTERNAL_MEMSYS_SET_PEER_ATS_CONFIG_PARAMS setParams = { 0 };
@@ -205,6 +209,7 @@ _kmemsysSetupAtsPeers
     OBJGPU             *pRemoteGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3333);
     NvU32         peer1         = BUS_INVALID_PEER;
     NvU32         peer2         = BUS_INVALID_PEER;
     NV_STATUS     status        = NV_OK;
@@ -277,6 +282,7 @@ _kmemsysRemoveAtsPeers
     OBJGPU             *pRemoteGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3334);
     NvU32         peer1         = BUS_INVALID_PEER;
     NvU32         peer2         = BUS_INVALID_PEER;
     NV_STATUS     status        = NV_OK;
@@ -339,6 +345,7 @@ kmemsysSetupAllAtsPeers_GV100
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3335);
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
     NvU32 gpuAttachCnt, gpuAttachMask, gpuInstance = 0;
 
@@ -381,6 +388,7 @@ kmemsysRemoveAllAtsPeers_GV100
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3336);
     NvU32 gpuAttachCnt, gpuAttachMask, gpuInstance = 0;
 
     NV_STATUS status     = NV_OK;

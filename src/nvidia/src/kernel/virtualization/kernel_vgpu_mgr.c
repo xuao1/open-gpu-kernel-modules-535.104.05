@@ -32,12 +32,14 @@
 NV_STATUS
 kvgpumgrConstruct_IMPL(KernelVgpuMgr *pKernelVgpuMgr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5803);
     return NV_OK;
 }
 
 void
 kvgpumgrDestruct_IMPL(KernelVgpuMgr *pKernelVgpuMgr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5804);
 }
 
 //
@@ -46,42 +48,49 @@ kvgpumgrDestruct_IMPL(KernelVgpuMgr *pKernelVgpuMgr)
 NV_STATUS
 kvgpumgrGetMaxInstanceOfVgpu(NvU32 vgpuTypeId, NvU32 *maxInstanceVgpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5805);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 NV_STATUS
 kvgpumgrGetPgpuIndex(KernelVgpuMgr *pKernelVgpuMgr, NvU32 gpuPciId, NvU32* index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5806);
     return NV_ERR_OBJECT_NOT_FOUND;
 }
 
 NvBool
 kvgpumgrIsHeterogeneousVgpuSupported(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5807);
     return NV_FALSE;
 }
 
 NV_STATUS
 kvgpumgrCheckVgpuTypeCreatable(KERNEL_PHYS_GPU_INFO *pPhysGpuInfo, VGPU_TYPE *vgpuTypeInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5808);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 NV_STATUS
 kvgpumgrGetCreatableVgpuTypes(OBJGPU *pGpu, KernelVgpuMgr *pKernelVgpuMgr, NvU32 pgpuIndex, NvU32* numVgpuTypes, NvU32* vgpuTypes)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5809);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 NV_STATUS
 kvgpumgrGetVgpuTypeInfo(NvU32 vgpuTypeId, VGPU_TYPE **vgpuType)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5810);
     return NV_ERR_OBJECT_NOT_FOUND;
 }
 
 NV_STATUS
 kvgpumgrSendAllVgpuTypesToGsp(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5811);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -93,18 +102,21 @@ kvgpumgrPgpuAddVgpuType
     NVA081_CTRL_VGPU_INFO *pVgpuInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5812);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 NV_STATUS
 kvgpumgrAttachGpu(NvU32 gpuPciId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5813);
     return NV_OK;
 }
 
 NV_STATUS
 kvgpumgrDetachGpu(NvU32 gpuPciId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5814);
     return NV_OK;
 }
 
@@ -145,6 +157,7 @@ kvgpumgrGuestRegister(OBJGPU *pGpu,
 NV_STATUS
 kvgpumgrGuestUnregister(OBJGPU *pGpu, KERNEL_HOST_VGPU_DEVICE *pKernelHostVgpuDevice)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5815);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -154,6 +167,7 @@ kvgpumgrGuestUnregister(OBJGPU *pGpu, KERNEL_HOST_VGPU_DEVICE *pKernelHostVgpuDe
 NvBool
 kvgpumgrCheckPgpuMigrationSupport(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5816);
     return NV_FALSE;
 }
 
@@ -182,6 +196,7 @@ NvU32 kvgpumgrGetPgpuFSEncoding(OBJGPU *pGpu, NvU8 *pgpuString,
 //
 NvU32 kvgpumgrGetPgpuCapEncoding(OBJGPU *pGpu, NvU8 *pgpuString, NvU32 strSize)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5817);
     return NV_U32_MAX;
 }
 
@@ -225,6 +240,7 @@ kvgpumgrValidateSwizzId(OBJGPU *pGpu,
 NV_STATUS
 kvgpumgrGetPartitionFlag(NvU32 vgpuTypeId, NvU32 *partitionFlag)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5818);
     return NV_ERR_INVALID_ARGUMENT;
 }
 
@@ -244,30 +260,35 @@ kvgpumgrGetPartitionFlag(NvU32 vgpuTypeId, NvU32 *partitionFlag)
 NV_STATUS
 kvgpumgrProcessVfInfo(NvU32 gpuPciId, NvU8 cmd, NvU32 domain, NvU32 bus, NvU32 slot, NvU32 function, NvBool isMdevAttached, vgpu_vf_pci_info *vfPciInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5819);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 NV_STATUS
 kvgpumgrEnumerateVgpuPerPgpu(OBJGPU *pGpu, NV2080_CTRL_VGPU_MGR_INTERNAL_ENUMERATE_VGPU_PER_PGPU_PARAMS *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5820);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 NV_STATUS
 kvgpumgrClearGuestVmInfo(OBJGPU *pGpu, KERNEL_HOST_VGPU_DEVICE *pKernelHostVgpuDevice)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5821);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 NV_STATUS
 kvgpumgrGetVgpuFbUsage(OBJGPU *pGpu, NVA081_CTRL_VGPU_CONFIG_GET_VGPU_FB_USAGE_PARAMS *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5822);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 NV_STATUS
 kvgpumgrSetVgpuEncoderCapacity(OBJGPU *pGpu, NvU8 *vgpuUuid, NvU32 encoderCapacity)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5823);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -300,6 +321,7 @@ kvgpumgrCreateRequestVgpu(NvU32 gpuPciId, const NvU8 *pMdevUuid,
 NV_STATUS
 kvgpumgrDeleteRequestVgpu(const NvU8 *pMdevUuid, NvU16 vgpuId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5824);
     return NV_ERR_OBJECT_NOT_FOUND;
 }
 
@@ -334,5 +356,6 @@ kvgpuMgrRestoreSmcExecPart
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5825);
     return NV_ERR_NOT_SUPPORTED;
 }

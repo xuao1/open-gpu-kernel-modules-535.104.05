@@ -39,6 +39,7 @@ genapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4005);
     RS_ITERATOR it;
     OBJGPU     *pGpu = GPU_RES_GET_GPU(pGenericEngineApi);
 
@@ -72,6 +73,7 @@ genapiDestruct_IMPL
     GenericEngineApi *pGenericEngineApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4006);
 }
 
 NV_STATUS
@@ -82,6 +84,7 @@ genapiControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4007);
 
     return gpuresControl_IMPL(staticCast(pGenericEngineApi, GpuResource),
                               pCallContext, pParams);
@@ -96,6 +99,7 @@ genapiMap_IMPL
     RsCpuMapping *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4008);
     OBJGPU *pGpu;
     NvU32 engineOffset, regSize, regBase;
     NvU32 protect;
@@ -162,6 +166,7 @@ genapiGetMapAddrSpace_IMPL
     NV_ADDRESS_SPACE *pAddrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4009);
     if (pAddrSpace)
         *pAddrSpace = ADDR_REGMEM;
 

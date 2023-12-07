@@ -82,6 +82,7 @@ const NV_ADDRESS_SPACE ADDRLIST_SYSMEM_ONLY[] = {ADDR_SYSMEM, ADDR_UNKNOWN};
 // XXX These could probably encode the whole list in the u32 bits.
 NvU32 memdescAddrSpaceListToU32(const NV_ADDRESS_SPACE *addrlist)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2832);
     if (addrlist == ADDRLIST_FBMEM_PREFERRED)
         return 1;
     else if (addrlist == ADDRLIST_SYSMEM_PREFERRED)
@@ -96,6 +97,7 @@ NvU32 memdescAddrSpaceListToU32(const NV_ADDRESS_SPACE *addrlist)
 
 const NV_ADDRESS_SPACE *memdescU32ToAddrSpaceList(NvU32 index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2833);
     switch (index)
     {
         case 1: return ADDRLIST_FBMEM_PREFERRED;
@@ -118,6 +120,7 @@ static NV_STATUS _memdescSetSubAllocatorFlag
     NvBool  bSet
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2834);
     NV_ASSERT_OR_RETURN(pGpu != NULL, NV_ERR_INVALID_ARGUMENT);
 
     if (!bSet)
@@ -167,6 +170,7 @@ static NV_STATUS _memdescSetGuestAllocatedFlag
     NvBool  bSet
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2835);
 // for VGPU header scrubbing in Open Orin package
 
     NV_ASSERT_OR_RETURN(pGpu != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -223,6 +227,7 @@ memdescCreate
     NvU64 Flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2836);
     MEMORY_DESCRIPTOR *pMemDesc;
     NvU64              allocSize, MdSize, PageCount;
     NvU32              gpuCacheAttrib = NV_MEMORY_UNCACHED;
@@ -453,6 +458,7 @@ memdescCreateExisting
     NvU64 Flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2837);
     NV_STATUS status;
     status = memdescCreate(&pMemDesc, pGpu, Size, 0, NV_TRUE, AddressSpace,
                            CpuCacheAttrib,
@@ -469,6 +475,7 @@ void memdescAddRef
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2838);
     NV_ASSERT(pMemDesc != NULL);
     ++(pMemDesc->RefCount);
 }
@@ -481,6 +488,7 @@ void memdescRemoveRef
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2839);
     NV_ASSERT_OR_RETURN_VOID(pMemDesc != NULL);
     --(pMemDesc->RefCount);
 }
@@ -494,6 +502,7 @@ void memdescRemoveRef
 static void
 _memdescFreeIommuMappings(PMEMORY_DESCRIPTOR pMemDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2840);
 #if (RMCFG_FEATURE_PLATFORM_UNIX || RMCFG_FEATURE_PLATFORM_MODS) && !NVCPU_IS_ARM
     PIOVAMAPPING pIovaMapping = pMemDesc->_pIommuMappings;
 
@@ -534,6 +543,7 @@ memdescDestroy
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2841);
     // Allow null frees
     if (!pMemDesc)
     {
@@ -651,6 +661,7 @@ _memSubDeviceFreeAndDestroy
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2842);
     MEMORY_DESCRIPTOR *pSubDevMemDesc = pMemDesc->_pNext;
     MEMORY_DESCRIPTOR *pNextMemDesc;
     OBJGPU            *pGpu           = pMemDesc->pGpu;
@@ -692,6 +703,7 @@ _memdescAllocVprRegion
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2843);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -709,6 +721,7 @@ _memdescAllocInternal
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2844);
     OBJGPU                      *pGpu               = pMemDesc->pGpu;
     NV_STATUS                    status             = NV_OK;
     FB_ALLOC_INFO               *pFbAllocInfo       = NULL;
@@ -1053,6 +1066,7 @@ memdescAlloc
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2845);
     OBJGPU             *pGpu        = pMemDesc->pGpu;
     NV_STATUS           status      = NV_OK;
     NvBool              bcState     = NV_FALSE;
@@ -1374,6 +1388,7 @@ memdescAllocList
     const NV_ADDRESS_SPACE *pList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2846);
     NV_STATUS status = NV_ERR_INVALID_ARGUMENT;
     NvU32 i = 0;
 
@@ -1428,6 +1443,7 @@ _memdescFreeInternal
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2847);
     MEM_DESC_DESTROY_CALLBACK *pCb, *pNext;
     NvU64 oldSize;
 
@@ -1569,6 +1585,7 @@ memdescFree
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2848);
     // Allow null frees
     if (!pMemDesc)
     {
@@ -1686,6 +1703,7 @@ memdescLock
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2849);
 
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     if (!(pMemDesc->_flags & MEMDESC_FLAGS_PAGED_SYSMEM))
@@ -1709,6 +1727,7 @@ memdescUnlock
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2850);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     if (!(pMemDesc->_flags & MEMDESC_FLAGS_PAGED_SYSMEM))
     {
@@ -1747,6 +1766,7 @@ memdescMapOld
     void **pPriv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2851);
     NvP64 pAddressP64 = NV_PTR_TO_NvP64(*pAddress);
     NvP64 pPrivP64 = NV_PTR_TO_NvP64(*pPriv);
     NV_STATUS status;
@@ -1781,6 +1801,7 @@ memdescMap
     NvP64 *pPriv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2852);
     NV_STATUS status     = NV_OK;
     NvU64     rootOffset = 0;
 
@@ -1947,6 +1968,7 @@ memdescUnmapOld
     void *Priv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2853);
     memdescUnmap(pMemDesc,
                  Kernel,
                  ProcessId,
@@ -1975,6 +1997,7 @@ memdescUnmap
     NvP64 Priv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2854);
     // Allow null unmaps
     if (!Address)
         return;
@@ -2061,6 +2084,7 @@ memdescGetMapInternalType
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2855);
     if (RMCFG_FEATURE_PLATFORM_GSP)
     {
         return MEMDESC_MAP_INTERNAL_TYPE_GSP;
@@ -2096,6 +2120,7 @@ memdescFlushGpuCaches
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2856);
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
 
     if (memdescGetGpuCacheAttrib(pMemDesc) == NV_MEMORY_CACHED)
@@ -2115,6 +2140,7 @@ memdescFlushCpuCaches
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2857);
     // Flush WC to get the data written to this mapping out to memory
     osFlushCpuWriteCombineBuffer();
 
@@ -2143,6 +2169,7 @@ memdescMapInternal
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2858);
     MEMDESC_MAP_INTERNAL_TYPE  mapType;
     NV_STATUS                  status;
 
@@ -2215,6 +2242,7 @@ void memdescUnmapInternal
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2859);
     MEMDESC_MAP_INTERNAL_TYPE  mapType;
 
     NV_ASSERT_OR_RETURN_VOID(pMemDesc != NULL);
@@ -2301,6 +2329,7 @@ memdescDescribe
     NvU64 Size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2860);
     // Some sanity checks to see if we went through MemCreate*() first
     NV_ASSERT((pMemDesc->RefCount == 1) &&
               (memdescGetDestroyCallbackList(pMemDesc) == NULL) &&
@@ -2379,6 +2408,7 @@ _memdescFillPagesAtNativeGranularity
     NvU64                pageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2861);
     NV_STATUS status;
 
     NV_ASSERT(pageIndex + pageCount < pMemDesc->PageCount);
@@ -2426,6 +2456,7 @@ memdescFillPages
     NvU64                pageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2862);
     OBJGPU *pGpu = gpumgrGetSomeGpu();
     NvU32 i, j, k;
     NvU32 numChunks4k = pageSize / RM_PAGE_SIZE;
@@ -2486,6 +2517,7 @@ memdescAcquireRmExclusiveUse
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2863);
     NV_CHECK_OR_RETURN(LEVEL_ERROR, pMemDesc->_pParentDescriptor == NULL &&
                                     !pMemDesc->bRmExclusiveUse &&
                                     pMemDesc->DupCount == 1,
@@ -2546,6 +2578,7 @@ memdescCreateSubMem
     NvU64 Size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2864);
     NV_STATUS status;
     MEMORY_DESCRIPTOR *pMemDescNew;
     NvU32 subDevInst;
@@ -2761,6 +2794,7 @@ _memIsSriovMappingsEnabled
     PMEMORY_DESCRIPTOR   pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2865);
     return gpuIsSriovEnabled(pMemDesc->pGpu) &&
            (((pMemDesc->_flags & MEMDESC_FLAGS_OWNED_BY_CURRENT_DEVICE) && pMemDesc->bUsingSuballocator) ||
             (pMemDesc->_flags & MEMDESC_FLAGS_GUEST_ALLOCATED));
@@ -2780,6 +2814,7 @@ _memdescFillGpaEntriesForSpaTranslation
     NvU32                numEntries
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2866);
     if (pMemDesc->_flags & MEMDESC_FLAGS_PHYSICALLY_CONTIGUOUS)
     {
         NvU32 i;
@@ -2806,6 +2841,7 @@ _memdescUpdateSpaArray
     PMEMORY_DESCRIPTOR   pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2867);
     NV_STATUS   status   = NV_OK;
     RM_API     *pRmApi   = GPU_GET_PHYSICAL_RMAPI(pMemDesc->pGpu);
     NvU32       allocCnt;
@@ -2966,6 +3002,7 @@ memdescGetPhysAddr
     NvU64 offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2868);
     RmPhysAddr addr;
     memdescGetPhysAddrs(pMemDesc, addressTranslation, offset, 0, 1, &addr);
     return addr;
@@ -2988,6 +3025,7 @@ memdescGetPte
     NvU32               PteIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2869);
     //
     // Get the PTE array that we should use for phys addr lookups based on the
     // MMU context. (see bug 1625121)
@@ -3028,6 +3066,7 @@ memdescSetPte
     RmPhysAddr          PhysAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2870);
     //
     // Get the PTE array that we should use for phys addr lookups based on the
     // MMU context. (see bug 1625121)
@@ -3060,6 +3099,7 @@ memdescSetPte
  */
 NvU32 memdescGetPteArraySize(MEMORY_DESCRIPTOR *pMemDesc, ADDRESS_TRANSLATION addressTranslation)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2871);
     // Contiguous allocations in SPA domain can be non-contiguous at vmmusegment granularity.
     // Hence treat SPA domain allocations as non-contiguous by default.
     if (!(pMemDesc->_flags & MEMDESC_FLAGS_PHYSICALLY_CONTIGUOUS) ||
@@ -3087,6 +3127,7 @@ memdescGetPteArrayForGpu
     ADDRESS_TRANSLATION addressTranslation
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2872);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
 
     switch (AT_VALUE(addressTranslation))
@@ -3163,6 +3204,7 @@ memdescGetApertureString
     NV_ADDRESS_SPACE addressSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2873);
     static NV_PRINTF_STRING_SECTION const char ADDR_FBMEM_STR[]  = "VIDEO MEMORY";
     static NV_PRINTF_STRING_SECTION const char ADDR_SYSMEM_STR[] = "SYSTEM MEMORY";
 
@@ -3194,6 +3236,7 @@ memdescDescIsEqual
     MEMORY_DESCRIPTOR *pMemDescTwo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2874);
     if ((pMemDescOne == NULL) || (pMemDescTwo == NULL))
         return NV_FALSE;
 
@@ -3235,6 +3278,7 @@ memdescAddDestroyCallback
     MEM_DESC_DESTROY_CALLBACK *pCb
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2875);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pCb->pNext = memdescGetDestroyCallbackList(pMemDesc);
     memdescSetDestroyCallbackList(pMemDesc, pCb);
@@ -3255,6 +3299,7 @@ memdescRemoveDestroyCallback
     MEM_DESC_DESTROY_CALLBACK *pRemoveCb
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2876);
     MEM_DESC_DESTROY_CALLBACK *pCb = memdescGetDestroyCallbackList(pMemDesc);
     MEM_DESC_DESTROY_CALLBACK *pPrev = NULL;
 
@@ -3308,6 +3353,7 @@ memdescRemoveDestroyCallback
 MEMORY_DESCRIPTOR *
 memdescGetMemDescFromSubDeviceInst(MEMORY_DESCRIPTOR *pMemDesc, NvU32 subDeviceInst)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2877);
     if (!memdescHasSubDeviceMemDescs(pMemDesc))
     {
         return pMemDesc;
@@ -3333,6 +3379,7 @@ memdescGetMemDescFromSubDeviceInst(MEMORY_DESCRIPTOR *pMemDesc, NvU32 subDeviceI
 MEMORY_DESCRIPTOR *
 memdescGetMemDescFromGpu(MEMORY_DESCRIPTOR *pMemDesc, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2878);
     NvU32 subDeviceInst = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
 
     return memdescGetMemDescFromSubDeviceInst(pMemDesc, subDeviceInst);
@@ -3353,6 +3400,7 @@ memdescGetMemDescFromGpu(MEMORY_DESCRIPTOR *pMemDesc, OBJGPU *pGpu)
 MEMORY_DESCRIPTOR *
 memdescGetMemDescFromIndex(MEMORY_DESCRIPTOR *pMemDesc, NvU32 index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2879);
     if (!memdescHasSubDeviceMemDescs(pMemDesc))
     {
         return pMemDesc;
@@ -3396,6 +3444,7 @@ memdescSetHeapOffset
     RmPhysAddr fbOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2880);
     NV_ASSERT(pMemDesc->_addressSpace == ADDR_FBMEM);
     NV_ASSERT(pMemDesc->Allocated == NV_FALSE);
 
@@ -3420,6 +3469,7 @@ void memdescSetGpuCacheAttrib
     NvU32 cacheAttrib
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2881);
     NV_ASSERT(pMemDesc->Allocated == NV_FALSE);
 
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
@@ -3438,6 +3488,7 @@ NvU32 memdescGetGpuP2PCacheAttrib
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2882);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     return pMemDesc->_gpuP2PCacheAttrib;
 }
@@ -3458,6 +3509,7 @@ void memdescSetGpuP2PCacheAttrib
     NvU32 cacheAttrib
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2883);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pMemDesc->_gpuP2PCacheAttrib = cacheAttrib;
 }
@@ -3478,6 +3530,7 @@ void memdescSetCpuCacheAttrib
     NvU32 cpuCacheAttrib
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2884);
     //
     // When running 64-bit MODS on ARM v8, we need to force all CPU mappings as WC.
     // This seems to be an issue with glibc. See bug 1556221.
@@ -3515,6 +3568,7 @@ void memdescPrintMemdesc
     const char        *pPrefixMessage
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2885);
 #if 0
     NvU32 i;
 
@@ -3583,6 +3637,7 @@ NvU64 memdescGetPageOffset
     NvU64 pageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2886);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     return  (pMemDesc->PteAdjust + pMemDesc->_pteArray[0]) & (pageSize-1);
 }
@@ -3602,6 +3657,7 @@ NvU32 memdescGetPteKindForGpu
     OBJGPU             *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2887);
     return memmgrGetHwPteKindFromSwPteKind_HAL(pGpu, GPU_GET_MEMORY_MANAGER(pGpu), pMemDesc->_pteKind);
 }
 
@@ -3622,6 +3678,7 @@ void memdescSetPteKindForGpu
     NvU32               pteKind
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2888);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pMemDesc->_pteKind = memmgrGetSwPteKindFromHwPteKind_HAL(pGpu, GPU_GET_MEMORY_MANAGER(pGpu), pteKind);
     memdescSetFlag(pMemDesc, MEMDESC_FLAGS_SET_KIND, NV_TRUE);
@@ -3641,6 +3698,7 @@ void memdescSetPteKindCompressed
     NvU32               pteKindCmpr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2889);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pMemDesc->_pteKindCompressed = pteKindCmpr;
 }
@@ -3658,6 +3716,7 @@ NvU32 memdescGetPteKindCompressed
     PMEMORY_DESCRIPTOR  pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2890);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     return pMemDesc->_pteKindCompressed;
 }
@@ -3674,6 +3733,7 @@ NvP64 memdescGetKernelMapping
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2891);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     return pMemDesc->_kernelMapping;
 }
@@ -3692,6 +3752,7 @@ void memdescSetKernelMapping
     NvP64 kernelMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2892);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pMemDesc->_kernelMapping = kernelMapping;
 }
@@ -3708,6 +3769,7 @@ NvP64 memdescGetKernelMappingPriv
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2893);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     return pMemDesc->_kernelMappingPriv;
 }
@@ -3726,6 +3788,7 @@ void memdescSetKernelMappingPriv
     NvP64 kernelMappingPriv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2894);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pMemDesc->_kernelMappingPriv = kernelMappingPriv;
 }
@@ -3743,6 +3806,7 @@ MEMORY_DESCRIPTOR *memdescGetStandbyBuffer
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2895);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     return pMemDesc->_pStandbyBuffer;
 }
@@ -3761,6 +3825,7 @@ void memdescSetStandbyBuffer
     MEMORY_DESCRIPTOR *pStandbyBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2896);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pMemDesc->_pStandbyBuffer = pStandbyBuffer;
 }
@@ -3779,6 +3844,7 @@ void memdescSetDestroyCallbackList
     MEM_DESC_DESTROY_CALLBACK *pCb
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2897);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pMemDesc->_pMemDestroyCallbackList = pCb;
 }
@@ -3795,6 +3861,7 @@ NvU64 memdescGetGuestId
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2898);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     return pMemDesc->_guestId;
 }
@@ -3813,6 +3880,7 @@ void memdescSetGuestId
     NvU64 guestId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2899);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pMemDesc->_guestId = guestId;
 }
@@ -3831,6 +3899,7 @@ NvBool memdescGetFlag
     NvU64 flag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2900);
     // For checking contiguity, use the memdescGetContiguity() api
     NV_ASSERT(flag != MEMDESC_FLAGS_PHYSICALLY_CONTIGUOUS);
     // GPU_IN_RESET is set/got from top level memdesc always.
@@ -3857,6 +3926,7 @@ void memdescSetFlag
     NvBool bValue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2901);
     // For setting contiguity, use the memdescSetContiguity() api
     NV_ASSERT(flag != MEMDESC_FLAGS_PHYSICALLY_CONTIGUOUS);
 
@@ -3897,6 +3967,7 @@ NvP64 memdescGetAddress
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2902);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     return pMemDesc->_address;
 }
@@ -3917,6 +3988,7 @@ void memdescSetAddress
     NvP64 pAddress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2903);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pMemDesc->_address = pAddress;
 }
@@ -3935,6 +4007,7 @@ void *memdescGetMemData
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2904);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     return pMemDesc->_pMemData;
 }
@@ -3958,6 +4031,7 @@ void memdescSetMemData
     MEM_DATA_RELEASE_CALL_BACK *pMemDataReleaseCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2905);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pMemDesc->_pMemData = pMemData;
     pMemDesc->_pMemDataReleaseCallback = pMemDataReleaseCallback;
@@ -3975,6 +4049,7 @@ NvBool memdescGetVolatility
     PMEMORY_DESCRIPTOR pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2906);
     NvBool bVolatile = NV_FALSE;
 
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
@@ -4000,6 +4075,7 @@ NvBool memdescGetVolatility
  */
 NvBool memdescGetContiguity(PMEMORY_DESCRIPTOR pMemDesc, ADDRESS_TRANSLATION addressTranslation)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2907);
     return !!(pMemDesc->_flags & MEMDESC_FLAGS_PHYSICALLY_CONTIGUOUS);
 }
 
@@ -4013,6 +4089,7 @@ NvBool memdescGetContiguity(PMEMORY_DESCRIPTOR pMemDesc, ADDRESS_TRANSLATION add
  */
 NvBool memdescCheckContiguity(PMEMORY_DESCRIPTOR pMemDesc, ADDRESS_TRANSLATION addressTranslation)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2908);
     NvU32 i;
 
     if (!(pMemDesc->_flags & MEMDESC_FLAGS_PHYSICALLY_CONTIGUOUS))
@@ -4039,6 +4116,7 @@ NvBool memdescCheckContiguity(PMEMORY_DESCRIPTOR pMemDesc, ADDRESS_TRANSLATION a
  */
 void memdescSetContiguity(PMEMORY_DESCRIPTOR pMemDesc, ADDRESS_TRANSLATION addressTranslation, NvBool isContiguous)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2909);
     NV_ASSERT_OR_RETURN_VOID(pMemDesc);
 
     if (isContiguous)
@@ -4057,6 +4135,7 @@ void memdescSetContiguity(PMEMORY_DESCRIPTOR pMemDesc, ADDRESS_TRANSLATION addre
  */
 NV_ADDRESS_SPACE memdescGetAddressSpace(PMEMORY_DESCRIPTOR pMemDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2910);
     NV_ASSERT_OR_RETURN(pMemDesc != NULL, 0);
     return pMemDesc->_addressSpace;
 }
@@ -4075,6 +4154,7 @@ NvU64 memdescGetPageSize
     ADDRESS_TRANSLATION addressTranslation
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2911);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     return pMemDesc->_pageSize;
 }
@@ -4095,6 +4175,7 @@ void memdescSetPageSize
     NvU64               pageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2912);
     NV_ASSERT(!memdescHasSubDeviceMemDescs(pMemDesc));
     pMemDesc->_pageSize = pageSize;
 }
@@ -4118,6 +4199,7 @@ PMEMORY_DESCRIPTOR memdescGetRootMemDesc
     NvU64              *pRootOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2913);
     NvU64 offset = 0;
 
     // Find the top-level parent descriptor
@@ -4152,6 +4234,7 @@ memdescSetCustomHeap
     PMEMORY_DESCRIPTOR  pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2914);
     NV_ASSERT(0);
 }
 
@@ -4169,6 +4252,7 @@ memdescGetCustomHeap
     PMEMORY_DESCRIPTOR pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2915);
     return NV_FALSE;
 }
 
@@ -4178,6 +4262,7 @@ PIOVAMAPPING memdescGetIommuMap
     NvU32 iovaspaceId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2916);
     PIOVAMAPPING pIommuMap = pMemDesc->_pIommuMappings;
     while (pIommuMap != NULL)
     {
@@ -4198,6 +4283,7 @@ NV_STATUS memdescAddIommuMap
     PIOVAMAPPING pIommuMap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2917);
     NV_ASSERT_OR_RETURN((pMemDesc->_pIommuMappings == NULL) ||
         (!memdescIsSubMemoryMemDesc(pMemDesc)), NV_ERR_INVALID_ARGUMENT);
 
@@ -4223,6 +4309,7 @@ void memdescRemoveIommuMap
     PIOVAMAPPING pIommuMap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2918);
     //
     // Only root physical memdescs can have multiple IOMMU mappings.
     // Submemdescs can only have one, and the list linkage is used
@@ -4267,6 +4354,7 @@ NV_STATUS memdescMapIommu
     NvU32 iovaspaceId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2919);
 #if (RMCFG_FEATURE_PLATFORM_UNIX || RMCFG_FEATURE_PLATFORM_MODS) && !NVCPU_IS_ARM
     if (iovaspaceId != NV_IOVA_DOMAIN_NONE)
     {
@@ -4346,6 +4434,7 @@ void memdescUnmapIommu
     NvU32 iovaspaceId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2920);
 #if (RMCFG_FEATURE_PLATFORM_UNIX || RMCFG_FEATURE_PLATFORM_MODS) && !NVCPU_IS_ARM
     PIOVAMAPPING pIovaMapping;
     OBJIOVASPACE *pIOVAS;
@@ -4370,6 +4459,7 @@ void memdescCheckSubDevicePageSizeConsistency
     NvU64                pageOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2921);
     NvU64 tempPageSize, tempPageOffset;
     PMEMORY_DESCRIPTOR pTempMemDesc = NULL;
 
@@ -4392,6 +4482,7 @@ void memdescCheckSubDeviceMemContiguityConsistency
     NvBool               bIsMemContiguous
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2922);
     NvBool bTempIsMemContiguous = NV_FALSE;
 
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY)
@@ -4410,6 +4501,7 @@ NV_STATUS memdescCheckSubDeviceKindComprConsistency
     COMPR_INFO         *pComprInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2923);
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY)
     {
         MemoryManager    *MemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -4454,6 +4546,7 @@ NV_STATUS memdescGetNvLinkGpa
     RmPhysAddr        *pGpa
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2924);
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
 
     NV_ASSERT_OR_RETURN(pGpa, NV_ERR_INVALID_ARGUMENT);
@@ -4475,6 +4568,7 @@ memdescSetCtxBufPool
     CTX_BUF_POOL_INFO *pCtxBufPool
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2925);
 
     NV_ASSERT_OR_RETURN(!pMemDesc->Allocated, NV_ERR_INVALID_STATE);
     NV_ASSERT_OR_RETURN(!memdescHasSubDeviceMemDescs(pMemDesc), NV_ERR_INVALID_ARGUMENT);
@@ -4489,6 +4583,7 @@ memdescGetCtxBufPool
     PMEMORY_DESCRIPTOR pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2926);
     NV_ASSERT_OR_RETURN(!memdescHasSubDeviceMemDescs(pMemDesc), NULL);
     return pMemDesc->pCtxBufPool;
 }
@@ -4507,6 +4602,7 @@ memdescOverrideInstLocList
     NvU32                   *pCpuMappingAttr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2927);
     switch (instLoc)
     {
         case NV_REG_STR_RM_INST_LOC_COH:
@@ -4543,6 +4639,7 @@ memdescOverrideInstLoc
     NvU32            *pCpuMappingAttr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2928);
     const NV_ADDRESS_SPACE *pAllocList = NULL;
 
     memdescOverrideInstLocList(instLoc, name, &pAllocList, pCpuMappingAttr);
@@ -4567,6 +4664,7 @@ memdescOverridePhysicalAddressWidthWindowsWAR
     NvU32 addressWidth
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2929);
     return;
 }
 
@@ -4592,6 +4690,7 @@ memdescRegisterToGSP
     NvHandle           hMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2930);
     NV_STATUS          status     = NV_OK;
     Memory            *pMemory    = NULL;
     RsResourceRef     *pMemoryRef = NULL;
@@ -4677,6 +4776,7 @@ memdescDeregisterFromGSP
     NvHandle           hMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2931);
     NV_STATUS status = NV_OK;
     Memory            *pMemory    = NULL;
     RsResourceRef     *pMemoryRef = NULL;
@@ -4721,12 +4821,14 @@ memdescDeregisterFromGSP
 void
 memdescSetName(OBJGPU *pGpu, MEMORY_DESCRIPTOR *pMemDesc, const char *name, const char* suffix)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2932);
     return;
 }
 
 NV_STATUS
 memdescSendMemDescToGSP(OBJGPU *pGpu, MEMORY_DESCRIPTOR *pMemDesc, NvHandle *pHandle)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2933);
     NV_STATUS                         status          = NV_OK;
     MemoryManager                    *pMemoryManager  = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU32                             flags           = 0;
@@ -4822,6 +4924,7 @@ memdescSetPageArrayGranularity
     NvU64 pageArrayGranularity
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2934);
     // Make sure pageArrayGranularity is a power of 2 value.
     NV_ASSERT_OR_RETURN((pageArrayGranularity & (pageArrayGranularity - 1)) == 0, NV_ERR_INVALID_ARGUMENT);
 

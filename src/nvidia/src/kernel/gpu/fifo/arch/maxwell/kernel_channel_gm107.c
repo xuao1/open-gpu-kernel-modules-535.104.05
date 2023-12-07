@@ -56,6 +56,7 @@ kchannelGetClassEngineID_GM107
     RM_ENGINE_TYPE *pRmEngineID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1355);
     NV_STATUS          status = NV_OK;
     NvU32              halEngineTag;
     NvU32              classID;
@@ -93,6 +94,7 @@ kchannelEnableVirtualContext_GM107
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1356);
     pKernelChannel->bSkipCtxBufferAlloc = NV_TRUE;
 
     return NV_OK;
@@ -109,6 +111,7 @@ _kchannelCreateRMUserdMemDesc
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1357);
     NV_STATUS            status = NV_OK;
     NvU32                userdSize;
     KernelFifo          *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
@@ -135,6 +138,7 @@ _kchannelDestroyRMUserdMemDesc
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1358);
     MEMORY_DESCRIPTOR  **ppUserdSubdevMemDesc =
                          &pKernelChannel->pUserdSubDeviceMemDesc[gpumgrGetSubDeviceInstanceFromGpu(pGpu)];
     if ((ppUserdSubdevMemDesc != NULL) && (*ppUserdSubdevMemDesc != NULL))
@@ -166,6 +170,7 @@ NV_STATUS kchannelAllocMem_GM107
     NvU32               verifFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1359);
     KernelFifo             *pKernelFifo     = GPU_GET_KERNEL_FIFO(pGpu);
     NV_STATUS               status          = NV_OK;
     NvU32                   CpuCacheAttrib;
@@ -354,6 +359,7 @@ kchannelDestroyMem_GM107
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1360);
     FIFO_INSTANCE_BLOCK *pInstanceBlock  = NULL;
     NvU32                subdevInst;
 
@@ -423,6 +429,7 @@ kchannelAllocHwID_GM107
     NvU32     ChID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1361);
     NV_STATUS status;
     KernelFifo              *pKernelFifo       = GPU_GET_KERNEL_FIFO(pGpu);
     CHID_MGR                *pChidMgr          = NULL;
@@ -504,6 +511,7 @@ kchannelFreeHwID_GM107
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1362);
     NV_STATUS   status;
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     CHID_MGR   *pChidMgr = kfifoGetChidMgr(pGpu, pKernelFifo,
@@ -539,6 +547,7 @@ kchannelGetUserdInfo_GM107
     NvU64          *length
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1363);
     NV_STATUS              status;
     NvU64                  bar1MapOffset;
     NvU32                  bar1MapSize;
@@ -611,6 +620,7 @@ kchannelGetUserdBar1MapOffset_GM107
     NvU32         *bar1MapSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1364);
     KernelFifo        *pKernelFifo     = GPU_GET_KERNEL_FIFO(pGpu);
     const PREALLOCATED_USERD_INFO *pUserdInfo = kfifoGetPreallocatedUserdInfo(pKernelFifo);
 
@@ -656,6 +666,7 @@ kchannelCreateUserMemDesc_GM107
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1365);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelFifo    *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);
     NV_STATUS status;
@@ -710,6 +721,7 @@ kchannelGetEngine_GM107
     NvU32         *pEngDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1366);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
 
     if (pEngDesc == NULL)

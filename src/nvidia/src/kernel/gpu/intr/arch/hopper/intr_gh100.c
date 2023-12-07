@@ -42,6 +42,7 @@ intrInitSubtreeMap_GH100
     Intr   *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2425);
     NV2080_INTR_CATEGORY_SUBTREE_MAP *pCategoryEngine =
         &pIntr->subtreeMap[NV2080_INTR_CATEGORY_ESCHED_DRIVEN_ENGINE];
     pCategoryEngine->subtreeStart = NV_CPU_INTR_STALL_SUBTREE_START;
@@ -82,6 +83,7 @@ intrInitSubtreeMap_GH100
 NvU32
 intrGetNumLeaves_GH100(OBJGPU *pGpu, Intr *pIntr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2426);
     ct_assert((NV_CTRL_INTR_SUBTREE_TO_LEAF_IDX_END(NV_CPU_INTR_STALL_SUBTREE_LAST) + 1) <= NV_MAX_INTR_LEAVES);
     return (NV_CTRL_INTR_SUBTREE_TO_LEAF_IDX_END(NV_CPU_INTR_STALL_SUBTREE_LAST) + 1);
 }
@@ -92,6 +94,7 @@ intrGetNumLeaves_GH100(OBJGPU *pGpu, Intr *pIntr)
 NvU32
 intrGetLeafSize_GH100(OBJGPU *pGpu, Intr *pIntr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2427);
     return NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_LEAF__SIZE_1;
 }
 
@@ -103,6 +106,7 @@ intrGetIntrTopNonStallMask_GH100
     Intr   *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2428);
     // TODO Bug 3823562 Remove all these asserts
     // Compile-time assert against the highest set bit that will be returned
     #define NV_CPU_INTR_NOSTALL_SUBTREE_HIGHEST NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_TOP_SUBTREE(5)
@@ -144,6 +148,7 @@ intrSanityCheckEngineIntrStallVector_GH100
     NvU16    mcEngine
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2429);
     //
     // The leafIndex must be within the engine stall tree: leaf 6 and 7 on Hopper.
     // Try to catch this on pre-release drivers. Don't need this on release drivers since this
@@ -173,6 +178,7 @@ intrSanityCheckEngineIntrNotificationVector_GH100
     NvU16    mcEngine
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2430);
     //
     // The leafIndex must be within the engine notification tree: leaf 0 and 1 on Hopper.
     // Try to catch this on pre-release drivers. Don't need this on release drivers since this

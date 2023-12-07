@@ -29,6 +29,7 @@
 void
 vgpuMgrFillVgpuType(NVA081_CTRL_VGPU_INFO *pVgpuInfo, VGPU_TYPE *pVgpuTypeNode)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5763);
 }
 
 NV_STATUS
@@ -45,6 +46,7 @@ vgpuMgrReserveSystemChannelIDs
     FIFO_ENGINE_LIST *engineFifoList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5764);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -60,4 +62,5 @@ vgpuMgrFreeSystemChannelIDs
     FIFO_ENGINE_LIST *engineFifoList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5765);
 }

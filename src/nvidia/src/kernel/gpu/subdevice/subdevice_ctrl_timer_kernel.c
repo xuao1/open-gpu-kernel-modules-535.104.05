@@ -51,6 +51,7 @@ subdeviceCtrlCmdTimerCancel_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4094);
     OBJGPU *pGpu;
     OBJTMR *pTmr;
 
@@ -75,6 +76,7 @@ subdeviceCtrlCmdTimerCancel_IMPL
 static NV_STATUS
 gpuControlTimerCallback(OBJGPU *pGpu, OBJTMR *pTmr, void * pData)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4095);
     Subdevice *pSubDevice = (Subdevice *) pData;
     PEVENTNOTIFICATION pNotifyEvent = inotifyGetNotificationList(staticCast(pSubDevice, INotifier));
 
@@ -121,6 +123,7 @@ timerSchedule
     NV2080_CTRL_CMD_TIMER_SCHEDULE_PARAMS *pTimerScheduleParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4096);
     OBJGPU *pGpu;
     OBJTMR *pTmr;
     PEVENTNOTIFICATION pNotifyEvent;
@@ -193,6 +196,7 @@ subdeviceCtrlCmdTimerSchedule_IMPL
     NV2080_CTRL_CMD_TIMER_SCHEDULE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4097);
     CALL_CONTEXT *pCallContext  = resservGetTlsCallContext();
     RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams;
 
@@ -222,6 +226,7 @@ subdeviceCtrlCmdTimerGetTime_IMPL
     NV2080_CTRL_TIMER_GET_TIME_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4098);
     CALL_CONTEXT *pCallContext  = resservGetTlsCallContext();
     RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams;
 
@@ -260,6 +265,7 @@ subdeviceCtrlCmdTimerGetRegisterOffset_IMPL
     NV2080_CTRL_TIMER_GET_REGISTER_OFFSET_PARAMS *pTimerRegOffsetParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4099);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
@@ -284,6 +290,7 @@ subdeviceCtrlCmdTimerGetGpuCpuTimeCorrelationInfo_IMPL
     NV2080_CTRL_TIMER_GET_GPU_CPU_TIME_CORRELATION_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4100);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
     NV_STATUS status = NV_OK;
@@ -468,6 +475,7 @@ subdeviceCtrlCmdTimerSetGrTickFreq_IMPL
     NV2080_CTRL_CMD_TIMER_SET_GR_TICK_FREQ_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4101);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pSubdevice);
     OBJTMR   *pTmr = GPU_GET_TIMER(pGpu);
     NvHandle  hClient = RES_GET_CLIENT_HANDLE(pSubdevice);

@@ -41,6 +41,7 @@ kbusGetUnusedPciePeerId_TU102
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 575);
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
     NvU32         nvlinkIdMask  = 0;
     NvU32         peerId;

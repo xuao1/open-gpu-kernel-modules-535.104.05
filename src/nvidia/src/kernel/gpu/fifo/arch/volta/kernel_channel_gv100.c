@@ -46,6 +46,7 @@ kchannelIsUserdAddrSizeValid_GV100
     NvU32          userdAddrHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1408);
     return ((userdAddrLo & DRF_MASK(NV_PPBDMA_USERD_ADDR)) == userdAddrLo) &&
            ((userdAddrHi & DRF_MASK(NV_PPBDMA_USERD_HI_ADDR)) == userdAddrHi);
 }
@@ -73,6 +74,7 @@ kchannelCreateUserdMemDescBc_GV100
     NvU64          *pUserdOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1409);
     NV_STATUS rmStatus = NV_OK;
 
     if (phUserdMemory[0] != 0)
@@ -158,6 +160,7 @@ kchannelCreateUserdMemDesc_GV100
     NvU32          *pUserdAper
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1410);
     KernelFifo             *pKernelFifo            = GPU_GET_KERNEL_FIFO(pGpu);
     RsResourceRef          *pUserdMemoryRef;
     Memory                 *pUserdMemory           = NULL;
@@ -285,6 +288,7 @@ kchannelDestroyUserdMemDesc_GV100
     KernelChannel    *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1411);
     NvU32 subdevInst = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
 
     memdescDestroy(pKernelChannel->pUserdSubDeviceMemDesc[subdevInst]);

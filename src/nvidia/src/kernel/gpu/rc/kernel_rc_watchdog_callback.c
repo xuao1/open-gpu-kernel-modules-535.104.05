@@ -52,6 +52,7 @@ _krcThwapChannel
     NvU32     chid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3946);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
 
     KernelChannel *pKernelChannel = kfifoChidMgrGetKernelChannel(
@@ -101,6 +102,7 @@ _krcTestChannelRecovery
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3947);
     NvU32 chid;
 
     for (chid = 0; chid < 32; chid++)
@@ -134,6 +136,7 @@ void krcWatchdogTimerProc
     void   *data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3948);
     //
     // These calls shouldn't occur during a hibernate/standby enter or resume
     // sequence or if the GPU is lost, which will cause a system hang.
@@ -161,6 +164,7 @@ krcWatchdog_IMPL
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3949);
     NvU32 usec, sec;
     NvU64 currentTime;
     NvBool allNotifiersWritten = NV_TRUE;
@@ -346,6 +350,7 @@ krcWatchdogRecovery_KERNEL
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3950);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
     pRmApi->Control(pRmApi,
@@ -366,6 +371,7 @@ void krcWatchdogCallbackVblankRecovery_IMPL
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3951);
     NvU32           head;
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
 

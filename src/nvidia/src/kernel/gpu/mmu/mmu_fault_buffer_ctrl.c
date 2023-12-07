@@ -38,6 +38,7 @@ faultbufCtrlCmdMmuFaultBufferRegisterNonReplayBuf_IMPL
     NVC369_CTRL_MMU_FAULT_BUFFER_REGISTER_NON_REPLAY_BUF_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3686);
     NV_STATUS status;
     OBJGPU   *pGpu    = GPU_RES_GET_GPU(pMmuFaultBuffer);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
@@ -93,6 +94,7 @@ faultbufCtrlCmdMmuFaultBufferUnregisterNonReplayBuf_IMPL
     NVC369_CTRL_MMU_FAULT_BUFFER_UNREGISTER_NON_REPLAY_BUF_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3687);
     NV_STATUS status;
     OBJGPU   *pGpu  = GPU_RES_GET_GPU(pMmuFaultBuffer);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
@@ -139,6 +141,7 @@ faultbufCtrlCmdMmuFaultBufferRegisterReplayBuf_IMPL
     NVC369_CTRL_MMU_FAULT_BUFFER_REGISTER_REPLAY_BUF_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3688);
     NV_STATUS status;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pMmuFaultBuffer);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
@@ -185,6 +188,7 @@ faultbufCtrlCmdMmuFaultBufferUnregisterReplayBuf_IMPL
     NVC369_CTRL_MMU_FAULT_BUFFER_UNREGISTER_REPLAY_BUF_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3689);
     NV_STATUS status;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pMmuFaultBuffer);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);

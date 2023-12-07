@@ -50,6 +50,7 @@ memlistConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4626);
 #define CLEAR_HAL_ATTR(a) \
     a = (a & ~(DRF_SHIFTMASK(NVOS32_ATTR_COMPR) | \
                DRF_SHIFTMASK(NVOS32_ATTR_TILED) | \
@@ -801,5 +802,6 @@ memlistCanCopy_IMPL
     MemoryList *pMemoryList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4627);
     return NV_TRUE;
 }

@@ -54,6 +54,7 @@ _gpuFabricProbeFullSanityCheck
     GPU_FABRIC_PROBE_INFO_KERNEL *pGpuFabricProbeInfoKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1843);
     if (pGpuFabricProbeInfoKernel == NULL)
     {
         return NV_ERR_NOT_SUPPORTED;
@@ -82,6 +83,7 @@ gpuFabricProbeGetGpuFabricHandle
     NvU64 *pHandle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1844);
     NV_STATUS status;
 
     status = _gpuFabricProbeFullSanityCheck(pGpuFabricProbeInfoKernel);
@@ -100,6 +102,7 @@ gpuFabricProbeGetGfId
     NvU32 *pGfId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1845);
     NV_STATUS status;
 
     status = _gpuFabricProbeFullSanityCheck(pGpuFabricProbeInfoKernel);
@@ -118,6 +121,7 @@ gpuFabricProbeGetfmCaps
     NvU64 *pFmCaps
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1846);
     NV_STATUS status;
 
     status = _gpuFabricProbeFullSanityCheck(pGpuFabricProbeInfoKernel);
@@ -136,6 +140,7 @@ gpuFabricProbeGetClusterUuid
     NvUuid *pClusterUuid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1847);
     NV_STATUS status;
 
     status = _gpuFabricProbeFullSanityCheck(pGpuFabricProbeInfoKernel);
@@ -157,6 +162,7 @@ gpuFabricProbeGetFabricPartitionId
     NvU16 *pFabricPartitionId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1848);
     NV_STATUS status;
 
     status = _gpuFabricProbeFullSanityCheck(pGpuFabricProbeInfoKernel);
@@ -175,6 +181,7 @@ gpuFabricProbeGetGpaAddress
     NvU64 *pGpaAddress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1849);
     NV_STATUS status;
 
     status = _gpuFabricProbeFullSanityCheck(pGpuFabricProbeInfoKernel);
@@ -193,6 +200,7 @@ gpuFabricProbeGetGpaAddressRange
     NvU64 *pGpaAddressRange
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1850);
     NV_STATUS status;
 
     status = _gpuFabricProbeFullSanityCheck(pGpuFabricProbeInfoKernel);
@@ -211,6 +219,7 @@ gpuFabricProbeGetFlaAddress
     NvU64 *pFlaAddress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1851);
     NV_STATUS status;
 
     status = _gpuFabricProbeFullSanityCheck(pGpuFabricProbeInfoKernel);
@@ -229,6 +238,7 @@ gpuFabricProbeGetFlaAddressRange
     NvU64 *pFlaAddressRange
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1852);
     NV_STATUS status;
 
     status = _gpuFabricProbeFullSanityCheck(pGpuFabricProbeInfoKernel);
@@ -247,6 +257,7 @@ gpuFabricProbeGetNumProbeReqs
     NvU64 *numProbes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1853);
     NV2080_CTRL_CMD_INTERNAL_GET_GPU_FABRIC_PROBE_INFO_PARAMS params = { 0 };
     RM_API *pRmApi;
     OBJGPU *pGpu;
@@ -281,6 +292,7 @@ gpuFabricProbeIsReceived
     GPU_FABRIC_PROBE_INFO_KERNEL *pGpuFabricProbeInfoKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1854);
     if (pGpuFabricProbeInfoKernel == NULL)
     {
         return NV_FALSE;
@@ -299,6 +311,7 @@ gpuFabricProbeIsSuccess
     GPU_FABRIC_PROBE_INFO_KERNEL *pGpuFabricProbeInfoKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1855);
     nvlink_inband_gpu_probe_rsp_msg_t *pProbeResponseMsg;
     nvlink_inband_msg_header_t *pProbeRespMsgHdr;
 
@@ -323,6 +336,7 @@ gpuFabricProbeGetFmStatus
     GPU_FABRIC_PROBE_INFO_KERNEL *pGpuFabricProbeInfoKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1856);
     if (pGpuFabricProbeInfoKernel == NULL)
     {
         return NV_ERR_NOT_SUPPORTED;
@@ -341,6 +355,7 @@ _gpuFabricProbeSetupGpaRange
     GPU_FABRIC_PROBE_INFO_KERNEL *pGpuFabricProbeInfoKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1857);
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
     // setup GPA based system
     if (pKernelNvlink != NULL)
@@ -369,6 +384,7 @@ _gpuFabricProbeSetupFlaRange
     GPU_FABRIC_PROBE_INFO_KERNEL   *pGpuFabricProbeInfoKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1858);
     if (pGpu->pFabricVAS != NULL)
     {
         NvU64 flaBaseAddress;
@@ -395,6 +411,7 @@ _gpuFabricProbeReceiveKernel
     NV2080_CTRL_NVLINK_INBAND_RECEIVED_DATA_PARAMS *pInbandRcvParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1859);
     OBJGPU *pGpu;
     NvU32 gpuMaskUnused;
     nvlink_inband_gpu_probe_rsp_msg_t *pProbeRespMsg;
@@ -454,6 +471,7 @@ gpuFabricProbeSuspend
     GPU_FABRIC_PROBE_INFO_KERNEL *pGpuFabricProbeInfoKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1860);
     OBJGPU *pGpu;
     RM_API *pRmApi;
     NV_STATUS status;
@@ -482,6 +500,7 @@ gpuFabricProbeResume
     GPU_FABRIC_PROBE_INFO_KERNEL *pGpuFabricProbeInfoKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1861);
     OBJGPU *pGpu;
     RM_API *pRmApi;
     NV2080_CTRL_CMD_INTERNAL_RESUME_GPU_FABRIC_PROBE_INFO_PARAMS params = { 0 };
@@ -515,6 +534,7 @@ gpuFabricProbeStart
     GPU_FABRIC_PROBE_INFO_KERNEL **ppGpuFabricProbeInfoKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1862);
     NV_STATUS status;
     GPU_FABRIC_PROBE_INFO_KERNEL *pGpuFabricProbeInfoKernel;
     NVLINK_INBAND_MSG_CALLBACK inbandMsgCbParams;
@@ -581,6 +601,7 @@ gpuFabricProbeStop
     GPU_FABRIC_PROBE_INFO_KERNEL *pGpuFabricProbeInfoKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1863);
     OBJGPU *pGpu;
     KernelNvlink *pKernelNvlink;
     RM_API *pRmApi;
@@ -619,6 +640,7 @@ gpuFabricProbeIsSupported
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1864);
     if (pGpu->fabricProbeRetryDelay == 0)
     {
         NV_PRINTF(LEVEL_INFO, "GPU%u Probe handling is disabled\n",
@@ -640,6 +662,7 @@ _gpuFabricProbeInvalidate
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1865);
     GPU_FABRIC_PROBE_INFO_KERNEL *pGpuFabricProbeInfoKernel =
                                     pGpu->pGpuFabricProbeInfoKernel;
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
@@ -668,6 +691,7 @@ _gpuFabricProbeUpdateBwMode
     NvU8 mode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1866);
     GPU_FABRIC_PROBE_INFO_KERNEL *pGpuFabricProbeInfoKernel =
                                                 pGpu->pGpuFabricProbeInfoKernel;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -696,6 +720,7 @@ gpuFabricProbeSetBwMode
     NvU8 mode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1867);
     NvU32 attachedGpuCount;
     NvU32 attachedGpuMask;
     NV_STATUS status;
@@ -795,6 +820,7 @@ gpuFabricProbeGetlinkMaskToBeReduced
     NvU32 *linkMaskToBeReduced
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1868);
     NV_STATUS status;
 
     status = _gpuFabricProbeFullSanityCheck(pGpuFabricProbeInfoKernel);

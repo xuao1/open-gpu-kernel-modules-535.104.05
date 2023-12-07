@@ -37,6 +37,7 @@ _registerRgLineCallback
     NvBool          bEnableRgLineIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1042);
     NV_STATUS      status         = NV_OK;
     OBJGPU        *pGpu           = NULL;
     KernelDisplay *pKernelDisplay;
@@ -96,6 +97,7 @@ rglcbConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1043);
     NV0092_RG_LINE_CALLBACK_ALLOCATION_PARAMETERS *pAllocParams = pParams->pAllocParams;
 
     pRgLineCallback->subDeviceInstance = pAllocParams->subDeviceInstance;
@@ -117,6 +119,7 @@ rglcbDestruct_IMPL
     RgLineCallback *pRgLineCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1044);
     _registerRgLineCallback(pRgLineCallback, NV_FALSE);
 }
 
@@ -127,5 +130,6 @@ rglcbInvoke_IMPL
     NvBool bIsIrqlIsr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1045);
     (pRgLineCallback->pCallbkFn)(pRgLineCallback->rgIntrLine, pRgLineCallback->pCallbkParams, bIsIrqlIsr);
 }

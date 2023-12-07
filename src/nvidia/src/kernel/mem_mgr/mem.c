@@ -47,6 +47,7 @@ memConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4584);
     RsResourceRef *pResourceRef = pCallContext->pResourceRef;
     RsResourceRef *pParentRef = pResourceRef->pParentRef;
 
@@ -110,6 +111,7 @@ memGetMapAddrSpace_IMPL
     NV_ADDRESS_SPACE *pAddrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4585);
     NV_ADDRESS_SPACE   addrSpace;
     OBJGPU            *pGpu = pMemory->pGpu;
     NvBool             bBcResource = pMemory->bBcResource;
@@ -148,6 +150,7 @@ memDestruct_IMPL
     Memory *pMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4586);
     OBJGPU             *pGpu            = pMemory->pGpu;
     NvHandle            hClient         = RES_GET_CLIENT_HANDLE(pMemory);
     NvHandle            hParent         = RES_GET_PARENT_HANDLE(pMemory);
@@ -186,6 +189,7 @@ memCreateMemDesc_IMPL
     NvU32               attr2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4587);
     NV_STATUS          status = NV_OK;
     NvU32              CpuCacheAttrib, gpuCacheAttrib;
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
@@ -254,6 +258,7 @@ memCreateKernelMapping_IMPL
     NvBool   bClear
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4588);
     NV_STATUS status;
 
     NV_CHECK_OK_OR_RETURN(LEVEL_INFO, memIsReady(pMemory, NV_FALSE));
@@ -294,6 +299,7 @@ dmaNvos32ToPageSizeAttr
     NvU32 attr2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4589);
     switch (DRF_VAL(OS32, _ATTR, _PAGE_SIZE, attr))
     {
         case NVOS32_ATTR_PAGE_SIZE_DEFAULT:
@@ -335,6 +341,7 @@ memConstructCommon_IMPL
     HWRESOURCE_INFO    *pHwResource
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4590);
     OBJGPU            *pGpu           = NULL;
     NV_STATUS          status         = NV_OK;
 
@@ -497,6 +504,7 @@ _memCheckHostVgpuDeviceExists
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4591);
     NV_STATUS status;
 
     KERNEL_HOST_VGPU_DEVICE *pKernelHostVgpuDevice = NULL;
@@ -512,6 +520,7 @@ _memDestructCommonWithDevice
     Memory *pMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4592);
     NvHandle               hMemory = RES_GET_HANDLE(pMemory);
     OBJGPU                *pGpu = pMemory->pGpu;
     Device                *pDevice = pMemory->pDevice;
@@ -632,6 +641,7 @@ memDestructCommon_IMPL
     Memory *pMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4593);
     OBJGPU             *pGpu            = pMemory->pGpu;
     RsResourceRef      *pResourceRef    = RES_GET_REF(pMemory);
     RsResourceRef      *pParentRef      = pResourceRef->pParentRef;
@@ -673,6 +683,7 @@ memGetByHandleAndDevice_IMPL
     Memory    **ppMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4594);
     NV_STATUS status;
 
     status = memGetByHandle(pClient, hMemory, ppMemory);
@@ -696,6 +707,7 @@ memGetByHandle_IMPL
     Memory   **ppMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4595);
     RsResourceRef  *pResourceRef;
     NV_STATUS       status;
 
@@ -724,6 +736,7 @@ memGetByHandleAndGroupedGpu_IMPL
     Memory   **ppMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4596);
     Device      *pDevice;
     NV_STATUS    status;
 
@@ -742,6 +755,7 @@ memIsReady_IMPL
     NvBool  bCopyConstructorContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4597);
     if (pMemory->pMemDesc == NULL)
         return NV_ERR_INVALID_OBJECT;
 
@@ -756,6 +770,7 @@ memControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4598);
     RmCtrlParams *pRmCtrlParams = pParams->pLegacyParams;
 
     NV_CHECK_OK_OR_RETURN(LEVEL_INFO, memIsReady(pMemory, NV_FALSE));
@@ -784,6 +799,7 @@ memCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4599);
     RsClient          *pDstClient = pCallContext->pClient;
     RsClient          *pSrcClient = pParams->pSrcClient;
     RsResourceRef     *pDstRef = pCallContext->pResourceRef;
@@ -949,6 +965,7 @@ memGetMemInterMapParams_IMPL
     RMRES_MEM_INTER_MAP_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4600);
     OBJGPU             *pGpu = pParams->pGpu;
     RsResourceRef      *pMemoryRef = pParams->pMemoryRef;
 
@@ -1032,6 +1049,7 @@ memGetMemoryMappingDescriptor_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4601);
     NV_CHECK_OK_OR_RETURN(LEVEL_INFO, memIsReady(pMemory, NV_FALSE));
     if (pMemory->pGpu != NULL)
     {
@@ -1052,6 +1070,7 @@ memIsDuplicate_IMPL
     NvBool   *pDuplicate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4602);
     RsClient *pClient = RES_GET_CLIENT(pMemory);
     Memory *pMemory1;
 

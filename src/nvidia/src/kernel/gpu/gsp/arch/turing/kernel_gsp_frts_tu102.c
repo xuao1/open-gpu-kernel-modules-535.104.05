@@ -52,6 +52,7 @@ kgspGetFrtsSize_TU102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2247);
     NvU32 sizeIn4k = NV_PGC6_AON_FRTS_INPUT_WPR_SIZE_SECURE_SCRATCH_GROUP_03_0_WPR_SIZE_1MB_IN_4K;
     return sizeIn4k * 0x1000;
 }
@@ -164,6 +165,7 @@ s_vbiosPatchInterfaceData
     const NvU32 interfaceOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2248);
     FALCON_APPLICATION_INTERFACE_HEADER_V1 *pIntFaceHdr = NULL;
     FALCON_APPLICATION_INTERFACE_ENTRY_V1 *pIntFaceEntry = NULL;
     FALCON_APPLICATION_INTERFACE_DMEM_MAPPER_V3 *pDmemMapper = NULL;
@@ -279,6 +281,7 @@ s_executeFwsec_TU102
     const NvU64 frtsOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2249);
     NV_STATUS status;
 
     FWSECLIC_READ_VBIOS_DESC readVbiosDesc;
@@ -538,6 +541,7 @@ kgspExecuteFwsecFrts_TU102
     const NvU64 frtsOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2250);
     return s_executeFwsec_TU102(pGpu, pKernelGsp, pFwsecUcode,
                                 FALCON_APPLICATION_INTERFACE_DMEM_MAPPER_V3_CMD_FRTS, frtsOffset);
 }
@@ -557,6 +561,7 @@ kgspExecuteFwsecSb_TU102
     KernelGspFlcnUcode *pFwsecUcode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2251);
     return s_executeFwsec_TU102(pGpu, pKernelGsp, pFwsecUcode,
                                 FALCON_APPLICATION_INTERFACE_DMEM_MAPPER_V3_CMD_SB, 0);
 }

@@ -44,6 +44,7 @@ _RmDupObject
     RS_LOCK_INFO      *pLockInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5751);
     NV_STATUS rmStatus;
     RS_RES_DUP_PARAMS params;
 
@@ -80,6 +81,7 @@ rmapiDupObject
     NvU32     flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5752);
     if (!pRmApi->bHasDefaultSecInfo)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -100,6 +102,7 @@ rmapiDupObjectWithSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5753);
     NV_STATUS status;
     RM_API_CONTEXT rmApiContext = {0};
     RS_LOCK_INFO lockInfo;
@@ -173,6 +176,7 @@ rmapiDupObjectWithSecInfoTls
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5754);
     THREAD_STATE_NODE threadState;
     NV_STATUS         status;
 
@@ -196,6 +200,7 @@ _RmShare
     RS_LOCK_INFO      *pLockInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5755);
     RS_RES_SHARE_PARAMS params;
     portMemSet(&params, 0, sizeof(params));
     params.hClient = hClient;
@@ -216,6 +221,7 @@ rmapiShare
     RS_SHARE_POLICY *pSharePolicy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5756);
     if (!pRmApi->bHasDefaultSecInfo)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -233,6 +239,7 @@ rmapiShareWithSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5757);
     NV_STATUS status;
     RM_API_CONTEXT rmApiContext = {0};
     RS_LOCK_INFO lockInfo;
@@ -289,6 +296,7 @@ rmapiShareWithSecInfoTls
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5758);
     THREAD_STATE_NODE threadState;
     NV_STATUS         status;
 
@@ -310,6 +318,7 @@ serverCopyResourceLookupLockFlags
     LOCK_ACCESS_TYPE *pAccess
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5759);
     NV_ASSERT_OR_RETURN(pAccess != NULL, NV_ERR_INVALID_ARGUMENT);
 
     *pAccess = (serverSupportsReadOnlyLock(pServer, lock, RS_API_COPY))
@@ -327,6 +336,7 @@ serverShareResourceLookupLockFlags
     LOCK_ACCESS_TYPE *pAccess
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5760);
     NV_ASSERT_OR_RETURN(pAccess != NULL, NV_ERR_INVALID_ARGUMENT);
 
     *pAccess = (serverSupportsReadOnlyLock(pServer, lock, RS_API_SHARE))
@@ -341,6 +351,7 @@ serverInitGlobalSharePolicies
     RsServer *pServer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5761);
     RS_SHARE_POLICY sharePolicy;
 
     // Global default policies, these can be overridden by clients/objects
@@ -378,6 +389,7 @@ serverInitGlobalSharePolicies
 
 NV_STATUS serverUpdateLockFlagsForCopy(RsServer *pServer, RS_RES_DUP_PARAMS *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5762);
     RS_RESOURCE_DESC  *pResDesc;
     RS_LOCK_INFO *pLockInfo = pParams->pLockInfo;
 

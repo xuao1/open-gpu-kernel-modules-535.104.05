@@ -35,6 +35,7 @@ nvjpgctxConstructHal_KERNEL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3713);
     ChannelDescendant *pChannelDescendant = staticCast(pNvjpgContext, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     KernelFalcon      *pKernelFalcon = kflcnGetKernelFalconForEngine(pGpu, pChannelDescendant->resourceDesc.engDesc);
@@ -50,6 +51,7 @@ void nvjpgctxDestructHal_KERNEL
     NvjpgContext *pNvjpgContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3714);
     ChannelDescendant *pChannelDescendant = staticCast(pNvjpgContext, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     KernelFalcon      *pKernelFalcon = kflcnGetKernelFalconForEngine(pGpu, pChannelDescendant->resourceDesc.engDesc);

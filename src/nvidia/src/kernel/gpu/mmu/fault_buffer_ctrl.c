@@ -38,6 +38,7 @@ faultbufCtrlCmdFaultbufferGetSize_IMPL
     NVB069_CTRL_FAULTBUFFER_GET_SIZE_PARAMS *pGetParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3601);
     OBJGPU  *pGpu  = GPU_RES_GET_GPU(pMmuFaultBuffer);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
 
@@ -54,6 +55,7 @@ faultbufCtrlCmdFaultbufferGetRegisterMappings_IMPL
     NVB069_CTRL_CMD_FAULTBUFFER_GET_REGISTER_MAPPINGS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3602);
     OBJGPU  *pGpu  = GPU_RES_GET_GPU(pMmuFaultBuffer);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
 

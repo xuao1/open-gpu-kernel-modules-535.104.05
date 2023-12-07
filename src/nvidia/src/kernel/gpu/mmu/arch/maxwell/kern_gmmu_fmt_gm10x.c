@@ -168,6 +168,7 @@ void kgmmuFmtInitPdeApertures_GM10X
     NV_FIELD_ENUM_ENTRY *pEntries
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3552);
     nvFieldEnumEntryInit(pEntries + GMMU_APERTURE_INVALID,
                          NV_MMU_PDE_APERTURE_BIG_INVALID);
 
@@ -187,6 +188,7 @@ void kgmmuFmtInitPteApertures_GM10X
     NV_FIELD_ENUM_ENTRY *pEntries
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3553);
     nvFieldEnumEntryInit(pEntries + GMMU_APERTURE_VIDEO,
                          NV_MMU_PTE_APERTURE_VIDEO_MEMORY);
 

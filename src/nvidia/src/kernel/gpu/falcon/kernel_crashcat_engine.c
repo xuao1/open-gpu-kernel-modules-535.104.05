@@ -33,6 +33,7 @@ NV_STATUS kcrashcatEngineConfigure_IMPL
     KernelCrashCatEngineConfig *pEngConfig
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1314);
     if (!pEngConfig->bEnable)
         return NV_OK;
 
@@ -87,16 +88,19 @@ memdescCleanup:
 
 NvBool kcrashcatEngineConfigured_IMPL(KernelCrashCatEngine *pKernelCrashCatEng)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1315);
     return pKernelCrashCatEng->bConfigured;
 }
 
 MEMORY_DESCRIPTOR *kcrashcatEngineGetQueueMemDesc_IMPL(KernelCrashCatEngine *pKernelCrashCatEng)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1316);
     return pKernelCrashCatEng->pQueueMemDesc;
 }
 
 void kcrashcatEngineUnload_IMPL(KernelCrashCatEngine *pKernelCrashCatEng)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1317);
     if (pKernelCrashCatEng->pQueueMemDesc != NULL)
     {
         kcrashcatEngineUnregisterCrashBuffer(pKernelCrashCatEng, pKernelCrashCatEng->pQueueMemDesc);
@@ -114,6 +118,7 @@ NvU32 kcrashcatEnginePriRead_IMPL
     NvU32 offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1318);
     return kcrashcatEngineRegRead(pKernelCrashCatEng->pGpu, pKernelCrashCatEng, offset);
 }
 
@@ -124,6 +129,7 @@ void kcrashcatEnginePriWrite_IMPL
     NvU32 data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1319);
     kcrashcatEngineRegWrite(pKernelCrashCatEng->pGpu, pKernelCrashCatEng, offset, data);
 }
 
@@ -135,6 +141,7 @@ void kcrashcatEngineVprintf_IMPL
     va_list args
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1320);
     //
     // The first line logs an Xid - subsequent crash report lines are printed via
     // portDbgPrintString() so that they are in dmesg, but don't cause additional Xid "events".
@@ -181,6 +188,7 @@ void kcrashcatEngineVprintf_IMPL
 static NV_INLINE
 NV_CRASHCAT_MEM_APERTURE _addressSpaceToCrashcatAperture(NV_ADDRESS_SPACE addrSpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1321);
     switch (addrSpace)
     {
         case ADDR_SYSMEM: return NV_CRASHCAT_MEM_APERTURE_SYSGPA;
@@ -195,6 +203,7 @@ NV_STATUS kcrashcatEngineRegisterCrashBuffer_IMPL
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1322);
     return crashcatEngineRegisterCrashBuffer(staticCast(pKernelCrashCatEng, CrashCatEngine),
         _addressSpaceToCrashcatAperture(memdescGetAddressSpace(pMemDesc)),
         memdescGetPhysAddr(pMemDesc, AT_GPU, 0), memdescGetSize(pMemDesc),
@@ -207,6 +216,7 @@ void kcrashcatEngineUnregisterCrashBuffer_IMPL
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1323);
     crashcatEngineUnregisterCrashBuffer(staticCast(pKernelCrashCatEng, CrashCatEngine),
         _addressSpaceToCrashcatAperture(memdescGetAddressSpace(pMemDesc)),
         memdescGetPhysAddr(pMemDesc, AT_GPU, 0), memdescGetSize(pMemDesc));
@@ -214,6 +224,7 @@ void kcrashcatEngineUnregisterCrashBuffer_IMPL
 
 static NV_INLINE NV_ADDRESS_SPACE _crashcatApertureToAddressSpace(NV_CRASHCAT_MEM_APERTURE aper)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1324);
     switch (aper)
     {
         case NV_CRASHCAT_MEM_APERTURE_FBGPA: return ADDR_FBMEM;
@@ -228,6 +239,7 @@ static MEMORY_DESCRIPTOR *_kcrashcatEngineCreateBufferMemDesc
     CrashCatBufferDescriptor *pBufDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1325);
     // Convert the buffer descriptor to a set of memdesc parameters
     MEMORY_DESCRIPTOR *pMemDesc;
     NV_STATUS status;
@@ -247,6 +259,7 @@ void *kcrashcatEngineMapBufferDescriptor_IMPL
     CrashCatBufferDescriptor *pBufDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1326);
     MEMORY_DESCRIPTOR *pMemDesc;
 
     if (pBufDesc->bRegistered)
@@ -281,6 +294,7 @@ void kcrashcatEngineUnmapBufferDescriptor_IMPL
     CrashCatBufferDescriptor *pBufDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1327);
     MEMORY_DESCRIPTOR *pMemDesc = pBufDesc->pEngPriv;
     NvP64 pBuf = memdescGetKernelMapping(pMemDesc);
     NvP64 pPriv = memdescGetKernelMappingPriv(pMemDesc);
@@ -301,6 +315,7 @@ void kcrashcatEngineSyncBufferDescriptor_IMPL
     NvU32 size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1328);
     //
     // The buffers which support the "sync" operation don't have a memdesc - they are accessed
     // through ports, so we copy the data out into a local buffer instead of direct map.

@@ -50,6 +50,7 @@ deviceKPerfCudaLimitCliDisable
     OBJGPU  *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3880);
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS  status = NV_OK;
 
@@ -92,6 +93,7 @@ deviceCtrlCmdKPerfCudaLimitSetControl_IMPL
     NV0080_CTRL_PERF_CUDA_LIMIT_CONTROL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3881);
     OBJGPU    *pGpu   = GPU_RES_GET_GPU(pDevice);
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvBool     bCudaLimitBefore;
@@ -140,6 +142,7 @@ kperfCudaLimitCliGet
     NvBool *pbCudaLimit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3882);
     NV_ASSERT_OR_RETURN((pbCudaLimit != NULL), NV_ERR_INVALID_POINTER);
 
     *pbCudaLimit = (pDevice->nCudaLimitRefCnt != 0);
@@ -164,6 +167,7 @@ kperfCudaLimitCliSet
     NvBool  bCudaLimit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3883);
     if (bCudaLimit)
     {
         pDevice->nCudaLimitRefCnt++;

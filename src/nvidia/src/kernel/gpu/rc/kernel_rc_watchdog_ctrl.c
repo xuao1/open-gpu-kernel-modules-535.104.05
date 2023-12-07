@@ -33,6 +33,7 @@ subdeviceCtrlCmdRcGetWatchdogInfo_IMPL
     NV2080_CTRL_RC_GET_WATCHDOG_INFO_PARAMS *pWatchdogInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3952);
     OBJGPU   *pGpu      = GPU_RES_GET_GPU(pSubdevice);
     KernelRc *pKernelRc = GPU_GET_KERNEL_RC(pGpu);
 
@@ -67,6 +68,7 @@ subdeviceCtrlCmdRcDisableWatchdog_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3953);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     // Watchdog not supported while SMC is active
     NV_CHECK_OR_RETURN(LEVEL_INFO, !IS_MIG_ENABLED(pGpu), NV_ERR_NOT_SUPPORTED);
@@ -82,6 +84,7 @@ subdeviceCtrlCmdRcSoftDisableWatchdog_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3954);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     // Watchdog not supported while SMC is active
     NV_CHECK_OR_RETURN(LEVEL_INFO, !IS_MIG_ENABLED(pGpu), NV_ERR_NOT_SUPPORTED);
@@ -97,6 +100,7 @@ subdeviceCtrlCmdRcEnableWatchdog_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3955);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     // Watchdog not supported while SMC is active
     NV_CHECK_OR_RETURN(LEVEL_INFO, !IS_MIG_ENABLED(pGpu), NV_ERR_NOT_SUPPORTED);
@@ -112,6 +116,7 @@ subdeviceCtrlCmdRcReleaseWatchdogRequests_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3956);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     // Watchdog not supported while SMC is active
     NV_CHECK_OR_RETURN(LEVEL_INFO, !IS_MIG_ENABLED(pGpu), NV_ERR_NOT_SUPPORTED);
@@ -127,6 +132,7 @@ NV_STATUS subdeviceCtrlCmdInternalRcWatchdogTimeout_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3957);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     krcWatchdogRecovery_HAL(pGpu, GPU_GET_KERNEL_RC(pGpu));
     return NV_OK;

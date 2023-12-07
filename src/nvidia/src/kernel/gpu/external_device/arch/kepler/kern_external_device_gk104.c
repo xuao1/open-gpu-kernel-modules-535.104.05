@@ -32,6 +32,7 @@
 NV_STATUS
 gpuExtdevConstruct_GK104(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1078);
     NvU32    index;
     NvBool   foundDevice = NV_FALSE;
 

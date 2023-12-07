@@ -42,6 +42,7 @@ kfifoConstructEngine_IMPL
     ENGDESCRIPTOR  engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1613);
     NvU32 i;
 
     _kfifoPreConstructRegistryOverrides(pGpu, pKernelFifo);
@@ -75,6 +76,7 @@ _kfifoPreConstructRegistryOverrides
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1614);
     NvU32 data32;
 
     pKernelFifo->bNumChannelsOverride = 0;
@@ -102,6 +104,7 @@ kfifoDestruct_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1615);
     ENGINE_INFO *pEngineInfo = &pKernelFifo->engineInfo;
 
     // Free all outstanding callback entries
@@ -124,6 +127,7 @@ kfifoStateInitLocked_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1616);
     KernelRc *pKernelRc = GPU_GET_KERNEL_RC(pGpu);
 
     // Check if per runlist channel ram should be enabled
@@ -166,6 +170,7 @@ kfifoStateDestroy_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1617);
     KernelChannel *pKernelChannel;
     CHANNEL_ITERATOR chanIt;
 

@@ -41,6 +41,7 @@ ksec2ConfigureFalcon_TU102
     KernelSec2 *pKernelSec2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3962);
     KernelFalconEngineConfig falconConfig;
 
     portMemSet(&falconConfig, 0, sizeof(falconConfig));
@@ -66,6 +67,7 @@ ksec2ResetHw_TU102
     KernelSec2 *pKernelSec2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3963);
     GPU_FLD_WR_DRF_DEF(pGpu, _PSEC, _FALCON_ENGINE, _RESET, _TRUE);
 
     // Reg read cycles needed for signal propagation.
@@ -94,6 +96,7 @@ s_allocateGenericBlUcode
     const NvU8 **ppImg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3964);
     NV_STATUS status = NV_OK;
 
     const BINDATA_ARCHIVE *pBinArchive;
@@ -177,6 +180,7 @@ ksec2GetGenericBlUcode_TU102
     const NvU8 **ppImg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3965);
     NV_STATUS status = NV_OK;
 
     NV_ASSERT_OR_RETURN(ppDesc != NULL, NV_ERR_INVALID_ARGUMENT);

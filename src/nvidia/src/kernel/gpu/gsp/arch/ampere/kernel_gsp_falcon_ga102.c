@@ -47,6 +47,7 @@ s_dmaTransfer_GA102
     NvU32 dmaCmd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2214);
     NV_STATUS status = NV_OK;
     RMTIMEOUT timeout;
     NvU32 data;
@@ -118,6 +119,7 @@ kgspExecuteHsFalcon_GA102
     NvU32 *pMailbox1
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2215);
     NV_STATUS status;
     KernelGspFlcnUcodeBootFromHs *pUcode;
 

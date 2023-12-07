@@ -111,6 +111,7 @@ NV_STATUS gpuEngineEventNotificationListCreate
     GpuEngineEventNotificationList **ppEventNotificationList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5491);
     NV_STATUS status = NV_OK;
 
     PORT_MEM_ALLOCATOR *pAllocator = portMemAllocatorGetGlobalNonPaged();
@@ -146,6 +147,7 @@ void gpuEngineEventNotificationListDestroy
     GpuEngineEventNotificationList *pEventNotificationList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5492);
     if (pEventNotificationList == NULL)
         return;
 
@@ -168,6 +170,7 @@ static void _gpuEngineEventNotificationListLockPreemptible
     GpuEngineEventNotificationList *pEventNotificationList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5493);
     do
     {
         portSyncSpinlockAcquire(pEventNotificationList->pSpinlock);
@@ -199,6 +202,7 @@ static inline void _gpuEngineEventNotificationListUnlockPreemptible
     GpuEngineEventNotificationList *pEventNotificationList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5494);
     portSyncSpinlockRelease(pEventNotificationList->pSpinlock);
 }
 
@@ -209,6 +213,7 @@ static NV_STATUS _gpuEngineEventNotificationInsert
     Memory *pMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5495);
     NV_CHECK_OR_RETURN(LEVEL_ERROR, pEventNotify != NULL,
                        NV_ERR_INVALID_ARGUMENT);
 
@@ -241,6 +246,7 @@ static void _gpuEngineEventNotificationRemove
     EVENTNOTIFICATION *pEventNotify
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5496);
     ENGINE_EVENT_NOTIFICATION *pEngineEventNotification = NULL;
 
     _gpuEngineEventNotificationListLockPreemptible(pEventNotificationList);
@@ -271,6 +277,7 @@ static NV_STATUS _gpuEngineEventNotificationListNotify
     NvHandle hEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5497);
     NV_STATUS status = NV_OK;
     PendingEventNotifyList *pPending =
         &pEventNotificationList->pendingEventNotifyList;
@@ -389,6 +396,7 @@ static NV_STATUS _gpuEngineEventNotificationListNotify
 NV_STATUS
 engineNonStallIntrNotify(OBJGPU *pGpu, RM_ENGINE_TYPE rmEngineId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5498);
     NV_ASSERT_OR_RETURN(rmEngineId < NV_ARRAY_ELEMENTS(pGpu->engineNonstallIntrEventNotifications),
                         NV_ERR_INVALID_ARGUMENT);
     return _gpuEngineEventNotificationListNotify(pGpu,
@@ -398,6 +406,7 @@ engineNonStallIntrNotify(OBJGPU *pGpu, RM_ENGINE_TYPE rmEngineId)
 NV_STATUS
 engineNonStallIntrNotifyEvent(OBJGPU *pGpu, RM_ENGINE_TYPE rmEngineId, NvHandle hEvent)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5499);
     NV_ASSERT_OR_RETURN(rmEngineId < NV_ARRAY_ELEMENTS(pGpu->engineNonstallIntrEventNotifications),
                         NV_ERR_INVALID_ARGUMENT);
     return _gpuEngineEventNotificationListNotify(pGpu,
@@ -411,6 +420,7 @@ eventGetEngineTypeFromSubNotifyIndex
     RM_ENGINE_TYPE *pRmEngineId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5500);
     NV_ASSERT_OR_RETURN(pRmEngineId, NV_ERR_INVALID_ARGUMENT);
 
     *pRmEngineId = RM_ENGINE_TYPE_NULL;
@@ -568,6 +578,7 @@ NV_STATUS registerEventNotification
     NvBool              bUserOsEventHandle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5501);
     NvHandle hEventClient = pEventClient->hClient;
     Subdevice *pSubDevice;
     PEVENTNOTIFICATION pTargetEvent = NULL;
@@ -674,6 +685,7 @@ static NV_STATUS _insertEventNotification
 
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5502);
     PEVENTNOTIFICATION EventNotify;
 
     //
@@ -764,6 +776,7 @@ NV_STATUS unregisterEventNotification
     NvHandle            hEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5503);
     return unregisterEventNotificationWithData(ppEventNotification,
                                                hEventClient,
                                                hNotifier,
@@ -782,6 +795,7 @@ NV_STATUS unregisterEventNotificationWithData
     NvP64               Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5504);
     NV_STATUS               rmStatus        = NV_OK;
     PEVENTNOTIFICATION      pTargetEvent    = NULL;
     Subdevice              *pSubDevice;
@@ -860,6 +874,7 @@ static NV_STATUS _removeEventNotification
     PEVENTNOTIFICATION *ppOldEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5505);
     PEVENTNOTIFICATION nextEvent, lastEvent;
     NvBool found = NV_FALSE;
 
@@ -921,6 +936,7 @@ NV_STATUS notifyEvents
     NvU32     Action
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5506);
     NV_STATUS rmStatus = NV_OK;
     PEVENTNOTIFICATION NotifyEvent;
 
@@ -992,6 +1008,7 @@ bindEventNotificationToSubdevice
     NvU32              subdeviceInst
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5507);
     PEVENTNOTIFICATION pEventNotify;
     NvU32 count = 0;
 
@@ -1018,6 +1035,7 @@ bindEventNotificationToSubdevice
 NV_STATUS
 inotifyConstruct_IMPL(INotifier *pNotifier, CALL_CONTEXT *pCallContext)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5508);
     if (dynamicCast(pNotifier, RsResource) == NULL)
         return NV_ERR_INVALID_OBJECT;
 
@@ -1026,6 +1044,7 @@ inotifyConstruct_IMPL(INotifier *pNotifier, CALL_CONTEXT *pCallContext)
 
 void inotifyDestruct_IMPL(INotifier* pNotifier)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5509);
     return;
 }
 
@@ -1035,6 +1054,7 @@ inotifyGetNotificationList_IMPL
     INotifier *pNotifier
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5510);
     PEVENTNOTIFICATION *ppEventNotifications = inotifyGetNotificationListPtr(pNotifier);
     if (ppEventNotifications != NULL)
         return *ppEventNotifications;
@@ -1045,11 +1065,13 @@ inotifyGetNotificationList_IMPL
 NV_STATUS
 notifyConstruct_IMPL(Notifier *pNotifier, CALL_CONTEXT *pCallContext)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5511);
     return NV_OK;
 }
 
 void notifyDestruct_IMPL(Notifier* pNotifier)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5512);
     NotifShare *pNotifierShare = inotifyGetNotificationShare(staticCast(pNotifier, INotifier));
     if (pNotifierShare != NULL)
     {
@@ -1064,6 +1086,7 @@ PEVENTNOTIFICATION
     Notifier *pNotifier
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5513);
     NotifShare *pNotifierShare = pNotifier->pNotifierShare;
     if (pNotifierShare == NULL)
         return NULL;
@@ -1077,6 +1100,7 @@ NotifShare
     Notifier *pNotifier
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5514);
     return pNotifier->pNotifierShare;
 }
 
@@ -1087,6 +1111,7 @@ notifySetNotificationShare_IMPL
     NotifShare *pNotifierShare
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5515);
     pNotifier->pNotifierShare = pNotifierShare;
 }
 
@@ -1096,6 +1121,7 @@ shrnotifConstruct_IMPL
     NotifShare *pNotifShare
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5516);
     return NV_OK;
 }
 
@@ -1105,4 +1131,5 @@ shrnotifDestruct_IMPL
     NotifShare *pNotifShare
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5517);
 }

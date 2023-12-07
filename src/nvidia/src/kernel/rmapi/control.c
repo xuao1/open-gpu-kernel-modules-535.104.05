@@ -53,6 +53,7 @@
 static NV_STATUS
 releaseDeferRmCtrlBuffer(RmCtrlDeferredCmd* pRmCtrlDeferredCmd)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5426);
     portMemSet(&pRmCtrlDeferredCmd->paramBuffer, 0, RMCTRL_DEFERRED_MAX_PARAM_SIZE);
 
     portAtomicSetS32(&pRmCtrlDeferredCmd->pending, RMCTRL_DEFERRED_FREE);
@@ -68,6 +69,7 @@ releaseDeferRmCtrlBuffer(RmCtrlDeferredCmd* pRmCtrlDeferredCmd)
 NV_STATUS
 rmControl_Deferred(RmCtrlDeferredCmd* pRmCtrlDeferredCmd)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5427);
     RmCtrlParams rmCtrlParams;
     NvU8 paramBuffer[RMCTRL_DEFERRED_MAX_PARAM_SIZE];
     NV_STATUS status;
@@ -129,6 +131,7 @@ exit:
 static NV_STATUS
 _rmControlDeferred(RmCtrlParams *pRmCtrlParams, NvP64 pUserParams, NvU32 paramsSize)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5428);
     // Schedule a deferred rmctrl call
     OBJGPU     *pGpu;
     NvBool      bBcResource;
@@ -247,6 +250,7 @@ serverControlApiCopyIn
     RS_CONTROL_COOKIE               *pCookie
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5429);
     NV_STATUS rmStatus;
     API_STATE *pParamCopy;
     API_STATE *pEmbeddedParamCopies;
@@ -289,6 +293,7 @@ serverControlApiCopyOut
     NV_STATUS                       rmStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5430);
     NV_STATUS  cpStatus;
     API_STATE *pParamCopy;
     API_STATE *pEmbeddedParamCopies;
@@ -351,6 +356,7 @@ serverControlApiCopyOut
 
 static NvBool _rmapiRmControlCanBeRaisedIrql(NvU32 cmd)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5431);
     switch (cmd)
     {
         case NV2080_CTRL_CMD_TIMER_SCHEDULE:
@@ -368,6 +374,7 @@ static NvBool _rmapiRmControlCanBeRaisedIrql(NvU32 cmd)
 
 static NvBool _rmapiRmControlCanBeBypassLock(NvU32 cmd)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5432);
     switch (cmd)
     {
         case NV2080_CTRL_CMD_RC_READ_VIRTUAL_MEM:
@@ -389,6 +396,7 @@ static NvBool _rmapiRmControlCanBeBypassLock(NvU32 cmd)
 static NV_STATUS
 _rmapiRmControl(NvHandle hClient, NvHandle hObject, NvU32 cmd, NvP64 pUserParams, NvU32 paramsSize, NvU32 flags, RM_API *pRmApi, API_SECURITY_INFO *pSecInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5433);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     RmCtrlParams rmCtrlParams;
     RS_CONTROL_COOKIE rmCtrlExecuteCookie = {0};
@@ -641,6 +649,7 @@ serverControl_ValidateVgpu
     const NvU32 cookieFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5434);
     NvBool bPermissionGranted = NV_FALSE;
 
     // Check if context is already sufficiently admin privileged
@@ -680,6 +689,7 @@ NV_STATUS serverControl_ValidateCookie
     RS_CONTROL_COOKIE *pRmCtrlExecuteCookie
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5435);
     NV_STATUS status;
     OBJGPU *pGpu;
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
@@ -835,6 +845,7 @@ serverControlLookupLockFlags
     LOCK_ACCESS_TYPE *pAccess
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5436);
     //
     // Calls with LOCK_TOP doesn't fill in the cookie param correctly.
     // This is just a WAR for this. Since the optimisation that depends on this
@@ -947,6 +958,7 @@ rmapiControl
     NvU32     paramsSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5437);
     if (!pRmApi->bHasDefaultSecInfo)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -967,6 +979,7 @@ rmapiControlWithSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5438);
     NV_STATUS status;
 
     NV_PRINTF(LEVEL_INFO,
@@ -1010,6 +1023,7 @@ _rmapiControlWithSecInfoTlsIRQL
     API_SECURITY_INFO* pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5439);
     NV_STATUS           status;
     THREAD_STATE_NODE   threadState;
 
@@ -1048,6 +1062,7 @@ rmapiControlWithSecInfoTls
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5440);
     NV_STATUS           status;
     THREAD_STATE_NODE   threadState;
 

@@ -45,6 +45,7 @@ static void clDestructHWBC(OBJHWBC *pHWBC);
 NV_STATUS
 clConstruct_IMPL(OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4897);
     // Used to track when the link has gone into Recovery, which can cause CEs.
     pCl->EnteredRecoverySinceErrorsLastChecked = NV_FALSE;
 
@@ -64,6 +65,7 @@ clConstruct_IMPL(OBJCL *pCl)
 void
 clInitPropertiesFromRegistry_IMPL(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4898);
     NvU32  data32;
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS *pOS = SYS_GET_OS(pSys);
@@ -88,6 +90,7 @@ clInitPropertiesFromRegistry_IMPL(OBJGPU *pGpu, OBJCL *pCl)
 static void
 clDestructHWBC(OBJHWBC *pHWBC)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4899);
     if (pHWBC->pSibling)
     {
         clDestructHWBC(pHWBC->pSibling);
@@ -105,6 +108,7 @@ clDestructHWBC(OBJHWBC *pHWBC)
 void
 clDestruct_IMPL(OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4900);
     if (pCl->pHWBC)
     {
         clDestructHWBC(pCl->pHWBC);
@@ -126,6 +130,7 @@ clInitMappingPciBusDevice_IMPL
     OBJCL        *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4901);
     void *handle;
     NvU32 domain;
     NvU16 bus;
@@ -217,6 +222,7 @@ static void getSubsystemFromPCIECapabilities
     NvU16 *subdeviceID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4902);
     void *handle;
     NvU32 PCIECapPtr;
     NvU32 PCIECap;
@@ -262,6 +268,7 @@ clFindFHBAndGetChipsetInfoIndex_IMPL
     NvU16 *pChipsetInfoIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4903);
     void     *handle;
     NvU32     domain;
     NvU8      revisionID = 0;
@@ -561,6 +568,7 @@ clIsL1MaskEnabledForUpstreamPort_IMPL
     OBJCL  *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4904);
     NvU32  linkCtrl;
     NvBool bEnable = NV_FALSE;
 
@@ -620,6 +628,7 @@ clIsL0sMaskEnabledForUpstreamPort_IMPL
     OBJCL  *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4905);
     NvU32  linkCtrl;
     NvBool bEnable = NV_FALSE;
 
@@ -670,6 +679,7 @@ clInit_IMPL(
     OBJCL  *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4906);
     //
     // Common code for all buses
     //
@@ -691,6 +701,7 @@ clUpdateConfig_IMPL
     OBJCL  *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4907);
     // Common code for all buses
     clInitMappingPciBusDevice(pGpu, pCl);
 
@@ -710,6 +721,7 @@ clTeardown_IMPL(
     OBJCL  *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4908);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
 
     if (pKernelBif == NULL)
@@ -740,6 +752,7 @@ subdeviceCtrlCmdBusGetBFD_IMPL
     NV2080_CTRL_BUS_GET_BFD_PARAMSARR *pBusGetBFDParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4909);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl = SYS_GET_CL(pSys);
     BUSTOPOLOGYINFO *pBusTopologyInfo = pCl->pBusTopologyInfo;
@@ -768,6 +781,7 @@ subdeviceCtrlCmdBusGetBFD_IMPL
 
 void clSyncWithGsp_IMPL(OBJCL *pCl, GspSystemInfo *pGSI)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4910);
     NvU32 idx = 0;
 #define CL_SYNC_PDB(prop)                                                       \
     do {                                                                        \

@@ -37,6 +37,7 @@ accesscntrCtrlCmdAccessCntrBufferReadGet_IMPL
     NVC365_CTRL_ACCESS_CNTR_BUFFER_READ_GET_PARAMS *pGetParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4229);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
 
@@ -50,6 +51,7 @@ accesscntrCtrlCmdAccessCntrBufferWriteGet_IMPL
     NVC365_CTRL_ACCESS_CNTR_BUFFER_WRITE_GET_PARAMS *pGetParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4230);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
 
@@ -63,6 +65,7 @@ accesscntrCtrlCmdAccessCntrBufferReadPut_IMPL
     NVC365_CTRL_ACCESS_CNTR_BUFFER_READ_PUT_PARAMS *pGetParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4231);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
 
@@ -76,6 +79,7 @@ accesscntrCtrlCmdAccessCntrBufferGetSize_IMPL
     NVC365_CTRL_ACCESS_CNTR_BUFFER_GET_SIZE_PARAMS *pGetParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4232);
     pGetParams->accessCntrBufferSize = pAccessCounterBuffer->pUvmAccessCntrAllocMemDesc->Size;
 
     return NV_OK;
@@ -88,6 +92,7 @@ accesscntrCtrlCmdAccessCntrBufferEnable_IMPL
     NVC365_CTRL_ACCESS_CNTR_BUFFER_ENABLE_PARAMS *pGetParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4233);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
@@ -126,6 +131,7 @@ accesscntrCtrlCmdAccessCntrBufferEnableIntr_IMPL
     NVC365_CTRL_ACCESS_CNTR_BUFFER_ENABLE_INTR_PARAMS *pGetParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4234);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
     NV_STATUS status = uvmEnableAccessCntrIntr_HAL(pGpu, pUvm, intr_notify);
@@ -148,6 +154,7 @@ accesscntrCtrlCmdAccessCntrBufferGetRegisterMappings_IMPL
     NVC365_CTRL_ACCESS_CNTR_BUFFER_GET_REGISTER_MAPPINGS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4235);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
 
@@ -169,6 +176,7 @@ accesscntrCtrlCmdAccessCntrBufferGetFullInfo_IMPL
     NVC365_CTRL_ACCESS_CNTR_BUFFER_GET_FULL_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4236);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
 
@@ -182,6 +190,7 @@ accesscntrCtrlCmdAccessCntrBufferResetCounters_IMPL
     NVC365_CTRL_ACCESS_CNTR_BUFFER_RESET_COUNTERS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4237);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
 
@@ -205,6 +214,7 @@ accesscntrCtrlCmdAccessCntrSetConfig_IMPL
     NVC365_CTRL_ACCESS_CNTR_SET_CONFIG_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4238);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
     NvU32 cmd = pParams->cmd;
@@ -235,6 +245,7 @@ subdeviceCtrlCmdInternalUvmRegisterAccessCntrBuffer_IMPL
     NV2080_CTRL_INTERNAL_UVM_REGISTER_ACCESS_CNTR_BUFFER_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4239);
     NV_STATUS status;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
@@ -260,6 +271,7 @@ subdeviceCtrlCmdInternalUvmUnregisterAccessCntrBuffer_IMPL
     NV2080_CTRL_INTERNAL_UVM_UNREGISTER_ACCESS_CNTR_BUFFER_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4240);
     NV_STATUS status;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);

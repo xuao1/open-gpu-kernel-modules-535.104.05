@@ -41,6 +41,7 @@ s_executeBooterUcode_TU102
     const NvU32 mailbox1Arg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2239);
     NV_STATUS status;
     NvU32 mailbox0, mailbox1;
 
@@ -90,6 +91,7 @@ kgspExecuteBooterLoad_TU102
     const NvU64 sysmemAddrOfData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2240);
     NV_STATUS status;
     NvU32 mailbox0 = 0, mailbox1 = 0;
 
@@ -133,6 +135,7 @@ kgspExecuteBooterUnloadIfNeeded_TU102
     const NvU64 sysmemAddrOfSuspendResumeData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2241);
     NV_STATUS status;
     KernelSec2 *pKernelSec2 = GPU_GET_KERNEL_SEC2(pGpu);
     NvU32 mailbox0 = 0xFF, mailbox1 = 0xFF;

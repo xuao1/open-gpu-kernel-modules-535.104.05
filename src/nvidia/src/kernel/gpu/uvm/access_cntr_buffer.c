@@ -40,6 +40,7 @@ accesscntrConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4224);
     NV_ACCESS_COUNTER_NOTIFY_BUFFER_ALLOC_PARAMS *pAllocParams = pParams->pAllocParams;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
@@ -81,6 +82,7 @@ accesscntrDestruct_IMPL
     AccessCounterBuffer *pAccessCounterBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4225);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     OBJUVM *pUvm = GPU_GET_UVM(pGpu);
 
@@ -100,6 +102,7 @@ accesscntrMap_IMPL
     RsCpuMapping *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4226);
     RmClient               *pClient = dynamicCast(pCallContext->pClient, RmClient);
     OBJGPU                 *pGpu;
     NV_STATUS               rmStatus = NV_OK;
@@ -137,6 +140,7 @@ accesscntrUnmap_IMPL
     RsCpuMapping *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4227);
     NV_STATUS               rmStatus;
     RmClient               *pClient = dynamicCast(pCallContext->pClient, RmClient);
     OBJGPU                 *pGpu;
@@ -171,6 +175,7 @@ accesscntrGetMapAddrSpace_IMPL
     NV_ADDRESS_SPACE *pAddrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4228);
     NV_ADDRESS_SPACE addrSpace;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pAccessCounterBuffer);
     PMEMORY_DESCRIPTOR pMemDesc = pAccessCounterBuffer->pUvmAccessCntrAllocMemDesc;

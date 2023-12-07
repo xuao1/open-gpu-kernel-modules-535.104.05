@@ -52,6 +52,7 @@ gpuDetectNvlinkLinkFromGpus_GP100
     NvU32  *pVidLinkCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 347);
     OBJGPU       *pGpuLoop            = NULL;
     KernelNvlink *pKernelNvlink       = NULL;
     KernelNvlink *pKernelNvlinkChild  = NULL;

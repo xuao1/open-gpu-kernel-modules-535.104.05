@@ -34,6 +34,7 @@ nodevicememConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4666);
     NV_STATUS                    status;
     MEMORY_DESCRIPTOR           *pMemDesc;
     NV_MEMORY_ALLOCATION_PARAMS *pAllocParams = pParams->pAllocParams;
@@ -104,6 +105,7 @@ cleanup:
 
 void nodevicememDestruct_IMPL(NoDeviceMemory *pNoDeviceMemory)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4667);
     Memory *pMemory = staticCast(pNoDeviceMemory, Memory);
 
     if (pMemory->KernelVAddr != NvP64_NULL)
@@ -129,6 +131,7 @@ NV_STATUS nodevicememGetMapAddrSpace_IMPL
     NV_ADDRESS_SPACE *pAddrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4668);
     *pAddrSpace = ADDR_SYSMEM;
     return NV_OK;
 }

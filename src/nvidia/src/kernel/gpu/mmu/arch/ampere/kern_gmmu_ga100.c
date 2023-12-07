@@ -51,6 +51,7 @@ kgmmuSetTlbInvalidationScope_GA100
     TLB_INVALIDATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3536);
     switch(flags)
     {
         case NV_GMMU_INVAL_SCOPE_ALL_TLBS:
@@ -88,6 +89,7 @@ kgmmuValidateFabricBaseAddress_GA100
     NvU64       fabricBaseAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3537);
     OBJGPU        *pGpu = ENG_GET_GPU(pKernelGmmu);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64 fbSizeBytes;
@@ -132,6 +134,7 @@ kgmmuSetupWarForBug2720120_GA100
     GMMU_FMT_FAMILY *pFam
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3538);
     NV_STATUS            status      = NV_OK;
     OBJGPU              *pGpu        = ENG_GET_GPU(pKernelGmmu);
     KernelBus           *pKernelBus  = GPU_GET_KERNEL_BUS(pGpu);

@@ -32,6 +32,7 @@ uvmswInitSwMethodState_IMPL
     UvmSwObject *pUvmSw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3702);
     pUvmSw->methodA = 0;
     pUvmSw->methodB = 0;
     pUvmSw->bCancelMethodASet = NV_FALSE;
@@ -47,6 +48,7 @@ uvmswConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3703);
     NvHandle hClient = pCallContext->pClient->hClient;
     RmClient *pRmClient = dynamicCast(pCallContext->pClient, RmClient);
     RS_PRIV_LEVEL privLevel = pCallContext->secInfo.privLevel;
@@ -65,6 +67,7 @@ uvmswDestruct_IMPL
     UvmSwObject *pUvmSw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3704);
     ChannelDescendant *pChannelDescendant = staticCast(pUvmSw, ChannelDescendant);
 
     chandesIsolateOnDestruct(pChannelDescendant);

@@ -47,6 +47,7 @@ confComputeIsDebugModeEnabled_GH100
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 799);
    NvU32 fuseStat = GPU_REG_RD32(pGpu, NV_FUSE_OPT_SECURE_GSP_DEBUG_DIS);
 
    return !FLD_TEST_DRF(_FUSE_OPT, _SECURE_GSP_DEBUG_DIS, _DATA, _YES, fuseStat);
@@ -66,6 +67,7 @@ confComputeIsGpuCcCapable_GH100
     ConfidentialCompute  *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 800);
     NvU32 reg;
 
     if (confComputeIsDebugModeEnabled_HAL(pGpu, pConfCompute))

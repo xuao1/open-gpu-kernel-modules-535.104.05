@@ -66,6 +66,7 @@ intrGetSubtreeRange_IMPL
     NV2080_INTR_CATEGORY_SUBTREE_MAP *pRange
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2490);
     NV_ASSERT_OR_RETURN(pRange != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(category < NV2080_INTR_CATEGORY_ENUM_COUNT,
                         NV_ERR_INVALID_ARGUMENT);
@@ -77,6 +78,7 @@ intrGetSubtreeRange_IMPL
 void
 intrServiceStall_IMPL(OBJGPU *pGpu, Intr *pIntr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2491);
     MC_ENGINE_BITVECTOR pendingEngines;
     NV_STATUS status;
     NvBool bPending;
@@ -152,6 +154,7 @@ subdeviceCtrlCmdMcServiceInterrupts_IMPL
     NV2080_CTRL_MC_SERVICE_INTERRUPTS_PARAMS *pServiceInterruptParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2492);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     Intr *pIntr  = GPU_GET_INTR(pGpu);
     MC_ENGINE_BITVECTOR engines;
@@ -261,6 +264,7 @@ intrGetGmmuInterrupts_IMPL
     THREAD_STATE_NODE   *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2493);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     bitVectorClrAll(pEngines);
 
@@ -296,6 +300,7 @@ intrGetGmmuInterrupts_IMPL
 void
 intrSetDefaultIntrEn_IMPL(Intr *pIntr, NvU32 intrEn0)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2494);
     NV_ASSERT(intrEn0 <= INTERRUPT_TYPE_MAX);
     pIntr->intrEn0 = pIntr->intrEn0Orig = intrEn0;
 }
@@ -303,12 +308,14 @@ intrSetDefaultIntrEn_IMPL(Intr *pIntr, NvU32 intrEn0)
 NvU32
 intrGetDefaultIntrEn_IMPL(Intr *pIntr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2495);
     return (pIntr->intrEn0Orig);
 }
 
 void
 intrSetIntrEn_IMPL(Intr *pIntr, NvU32 intrEn0)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2496);
     if ( pIntr->halIntrEnabled == NV_FALSE )
     {
         // Interrupts cannot be enabled as long as the freeze is true
@@ -324,6 +331,7 @@ intrSetIntrEn_IMPL(Intr *pIntr, NvU32 intrEn0)
 NvU32
 intrGetIntrEn_IMPL(Intr *pIntr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2497);
     if ( pIntr->halIntrEnabled == NV_FALSE )
     {
         NV_PRINTF(LEVEL_INFO,
@@ -337,6 +345,7 @@ intrGetIntrEn_IMPL(Intr *pIntr)
 void
 intrSetIntrMaskUnblocked_IMPL(Intr *pIntr, MC_ENGINE_BITVECTOR *pUnblockedEngines)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2498);
     NV_ASSERT(pUnblockedEngines);
     bitVectorCopy(&pIntr->intrMask.engMaskUnblocked, pUnblockedEngines);
 }
@@ -344,6 +353,7 @@ intrSetIntrMaskUnblocked_IMPL(Intr *pIntr, MC_ENGINE_BITVECTOR *pUnblockedEngine
 void
 intrGetIntrMaskUnblocked_IMPL(Intr *pIntr, MC_ENGINE_BITVECTOR *pUnblockedEngines)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2499);
     NV_ASSERT(pUnblockedEngines);
     bitVectorCopy(pUnblockedEngines, &pIntr->intrMask.engMaskUnblocked);
 }
@@ -351,18 +361,21 @@ intrGetIntrMaskUnblocked_IMPL(Intr *pIntr, MC_ENGINE_BITVECTOR *pUnblockedEngine
 NvU32
 intrGetIntrMaskFlags_IMPL(Intr *pIntr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2500);
     return pIntr->intrMask.flags;
 }
 
 void
 intrSetIntrMaskFlags_IMPL(Intr *pIntr, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2501);
     pIntr->intrMask.flags = flags;
 }
 
 void
 intrQueueDpc_IMPL(OBJGPU *pGpu, Intr *pIntr, DPCQUEUE *pDPCQueue, DPCNODE *pNode)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2502);
     if (pDPCQueue->pFront == NULL)
     {
         pDPCQueue->pFront = pDPCQueue->pRear = pNode;
@@ -378,6 +391,7 @@ intrQueueDpc_IMPL(OBJGPU *pGpu, Intr *pIntr, DPCQUEUE *pDPCQueue, DPCNODE *pNode
 DPCNODE *
 intrDequeueDpc_IMPL(OBJGPU *pGpu, Intr *pIntr, DPCQUEUE *pDPCQueue)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2503);
     DPCNODE  *pNode;
 
     pNode = pDPCQueue->pFront;
@@ -395,11 +409,13 @@ intrDequeueDpc_IMPL(OBJGPU *pGpu, Intr *pIntr, DPCQUEUE *pDPCQueue)
 NvBool
 intrIsDpcQueueEmpty_IMPL(OBJGPU *pGpu, Intr *pIntr, DPCQUEUE *pDPCQueue)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2504);
     return (NULL == pDPCQueue->pFront);
 }
 
 void intrQueueInterruptBasedDpc_IMPL(OBJGPU *pGpu, Intr *pIntr, NvU16 engine)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2505);
     DPCNODE  *pNode;
     DPCQUEUE *pDPCQueue = &pIntr->dpcQueue;
 
@@ -440,6 +456,7 @@ intrServiceStallListAllGpusCond_IMPL
     NvBool checkIntrEnabled
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2506);
     NvU32  gpuAttachCnt, gpuAttachMask, gpuInstance;
     NvBool bBCState = NV_FALSE;
 
@@ -513,6 +530,7 @@ intrServiceStallListDevice_IMPL
     NvBool checkIntrEnabled
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2507);
     NvBool bBCState = NV_FALSE;
 
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY);
@@ -553,6 +571,7 @@ intrGetVectorFromEngineId_IMPL
     NvBool    bNonStall
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2508);
     InterruptTable    *pIntrTable;
     InterruptTableIter iter;
     NV_STATUS          status;
@@ -595,6 +614,7 @@ intrConvertEngineMaskToPmcIntrMask_IMPL
     PMC_ENGINE_BITVECTOR engineMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2509);
     InterruptTable    *pIntrTable;
     InterruptTableIter iter;
     NvU32              pmcIntrMask = 0;
@@ -634,6 +654,7 @@ intrConvertPmcIntrMaskToEngineMask_IMPL
     PMC_ENGINE_BITVECTOR pEngines
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2510);
     InterruptTable    *pIntrTable;
     InterruptTableIter iter;
 
@@ -670,6 +691,7 @@ intrGetSmallestNotificationVector_IMPL
     NvU32  *pSmallestVector
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2511);
     InterruptTable    *pIntrTable;
     InterruptTableIter iter;
     NvU32              val = NV_INTR_VECTOR_INVALID;
@@ -714,6 +736,7 @@ intrGetHubLeafIntrPending_STUB
     THREAD_STATE_NODE   *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2512);
     bitVectorClrAll(pEngines);
 }
 
@@ -727,6 +750,7 @@ intrConstructEngine_IMPL
     ENGDESCRIPTOR engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2513);
     pIntr->dpcQueue.pFront = NULL;
     pIntr->dpcQueue.pRear  = NULL;
     pIntr->bDpcStarted     = NV_FALSE;
@@ -746,6 +770,7 @@ intrDestruct_IMPL
     Intr *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2514);
     OBJGPU   *pGpu = ENG_GET_GPU(pIntr);
     DPCQUEUE *pDPCQueue = &pIntr->dpcQueue;
     DPCNODE  *pNode = NULL;
@@ -766,6 +791,7 @@ intrStateInitUnlocked_IMPL
     Intr   *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2515);
     NvU32 data = 0;
     NvU32 i;
 
@@ -799,6 +825,7 @@ intrStateInitLocked_IMPL
     Intr     *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2516);
     NV_STATUS status = NV_OK;
     // Enable interrupts in the HAL
     pIntr->halIntrEnabled = NV_TRUE;
@@ -848,6 +875,7 @@ intrStateDestroy_IMPL
     Intr     *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2517);
     intrStateDestroyPhysical_HAL(pGpu, pIntr);
 
     // Disable interrupts in the HAL
@@ -875,6 +903,7 @@ intrServiceNonStallBottomHalf_IMPL
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2518);
     NV_STATUS status = NV_OK;
     NV_STATUS tmpStatus;
 
@@ -896,6 +925,7 @@ _intrInitRegistryOverrides
     Intr *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2519);
     OBJGPU  *pGpuLoop;
     Intr *pIntrLoop;
     NvU32    gpuInstance;
@@ -971,6 +1001,7 @@ intrSaveIntrEn0FromHw_IMPL
     Intr     *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2520);
     pIntr->saveIntrEn0 = intrGetIntrEnFromHw_HAL(pGpu, pIntr, NULL /* threadState */);
 }
 
@@ -981,6 +1012,7 @@ intrInitInterruptTable_KERNEL
     Intr   *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2521);
     RM_API   *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS status = NV_OK;
     NvU32     i;
@@ -1039,6 +1071,7 @@ _intrInitServiceTable
     Intr *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2522);
     ENGSTATE_ITER iter = gpuGetEngstateIter(pGpu);
     OBJENGSTATE *pEngstate;
 
@@ -1064,6 +1097,7 @@ NvU32 intrServiceInterruptRecords_IMPL
     NvBool  *pServiced
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2523);
     IntrService *pIntrService = pIntr->intrServiceTable[engineIdx].pInterruptService;
     NvU32 ret = 0;
     NvBool bShouldService;
@@ -1101,6 +1135,7 @@ NV_STATUS intrServiceNotificationRecords_IMPL
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2524);
     NV_STATUS status;
     IntrService *pIntrService = pIntr->intrServiceTable[engineIdx].pNotificationService;
     IntrServiceServiceNotificationInterruptArguments params = {pThreadState, engineIdx};
@@ -1149,6 +1184,7 @@ NV_STATUS intrCheckFecsEventbufferPending_IMPL
     NvBool *pbCtxswLog
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2525);
     NvU8 i;
 
     NV_ASSERT_OR_RETURN(pbCtxswLog != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -1190,6 +1226,7 @@ intrCheckAndServiceFecsEventbuffer_IMPL
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2526);
     NvU8 i;
 
     if (bitVectorTestAllCleared(pIntrPending))
@@ -1224,6 +1261,7 @@ intrGetInterruptTable_IMPL
     InterruptTable **ppTable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2527);
     NV_ASSERT_OR_RETURN(ppTable != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(!vectIsEmpty(&pIntr->intrTable), NV_ERR_INVALID_STATE);
     *ppTable = &pIntr->intrTable;
@@ -1238,6 +1276,7 @@ intrDestroyInterruptTable_IMPL
     Intr   *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2528);
     vectDestroy(&pIntr->intrTable);
     return NV_OK;
 }
@@ -1248,6 +1287,7 @@ void intrProcessDPCQueue_IMPL
     Intr *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2529);
     DPCQUEUE *pDPCQueue = &pIntr->dpcQueue;
     MC_ENGINE_BITVECTOR pendingEngines;
     NvU16 nextEngine;
@@ -1316,6 +1356,7 @@ _intrEnterCriticalSection
     INTR_MASK_CTX     *pIntrMaskCtx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2530);
     NvU64 oldIrql;
     NvU32 intrMaskFlags;
     MC_ENGINE_BITVECTOR engines;
@@ -1376,6 +1417,7 @@ _intrExitCriticalSection
     INTR_MASK_CTX     *pIntrMaskCtx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2531);
     NvU64 oldIrql;
     NvU32 intrMaskFlags;
 
@@ -1409,6 +1451,7 @@ _intrServiceStallExactList
     MC_ENGINE_BITVECTOR *pEngines
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2532);
     NV_STATUS status;
 
     NvU32  engineIdx;
@@ -1539,6 +1582,7 @@ intrServiceStallList_IMPL
     NvBool               bLoop
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2533);
     NV_STATUS           status;
     INTR_MASK_CTX       intrMaskCtx;
     MC_ENGINE_BITVECTOR exactEngines;
@@ -1621,6 +1665,7 @@ intrServiceStallSingle_IMPL
     NvBool    bLoop
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2534);
     MC_ENGINE_BITVECTOR engines;
     bitVectorClrAll(&engines);
     bitVectorSet(&engines, engIdx);
@@ -1645,6 +1690,7 @@ intrIsIntrEnabled_IMPL
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2535);
     NvU32 intrEn;
 
     intrEn = intrGetIntrEnFromHw_HAL(pGpu, pIntr, pThreadState);
@@ -1665,6 +1711,7 @@ intrGetIntrTopCategoryMask_IMPL
     NV2080_INTR_CATEGORY category
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2536);
     NvU32 subtreeStart = pIntr->subtreeMap[category].subtreeStart;
     NvU32 subtreeEnd   = pIntr->subtreeMap[category].subtreeStart;
     NvU64 ret = 0x0;
@@ -1691,6 +1738,7 @@ intrGetIntrTopLegacyStallMask_IMPL
     Intr   *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2537);
     OBJGPU *pGpu = ENG_GET_GPU(pIntr);
     NvU64 ret =
         intrGetIntrTopCategoryMask(pIntr, NV2080_INTR_CATEGORY_ESCHED_DRIVEN_ENGINE) |
@@ -1717,6 +1765,7 @@ intrGetIntrTopLockedMask_IMPL
     Intr   *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2538);
     NvU64 ret =
         intrGetIntrTopCategoryMask(pIntr, NV2080_INTR_CATEGORY_ESCHED_DRIVEN_ENGINE) |
         intrGetIntrTopCategoryMask(pIntr, NV2080_INTR_CATEGORY_RUNLIST);

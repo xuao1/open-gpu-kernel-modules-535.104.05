@@ -116,6 +116,7 @@ krcWatchdogChangeState_IMPL
     RC_CHANGE_WATCHDOG_STATE_OPERATION_TYPE operation
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3938);
     //
     // Provide automatic management of RC watchdog enabling and disabling.
     // Provide for cooperation between RM clients, and allow for independent
@@ -356,6 +357,7 @@ krcWatchdogDisable_IMPL
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3939);
     pKernelRc->watchdog.flags |= WATCHDOG_FLAGS_DISABLED;
 }
 
@@ -367,6 +369,7 @@ krcWatchdogEnable_IMPL
     NvBool    bOverRide
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3940);
     //
     // Make sure no operations are pending from before
     // if bOverRide is NV_TRUE then we are enabling from a modeswitch
@@ -385,6 +388,7 @@ krcWatchdogShutdown_IMPL
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3941);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
     if (!(pKernelRc->watchdog.flags & WATCHDOG_FLAGS_INITIALIZED))
@@ -420,6 +424,7 @@ void krcWatchdogGetReservationCounts_IMPL
     NvS32    *pSoftDisable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3942);
     if (pEnable != NULL)
         *pEnable = pKernelRc->watchdogPersistent.enableRequestsRefCount;
 
@@ -438,6 +443,7 @@ krcWatchdogInit_IMPL
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3943);
     NvHandle        hClient;
     NvU32           subDeviceInstance;
     NvU32           grObj;
@@ -1192,6 +1198,7 @@ krcWatchdogInitPushbuffer_IMPL
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3944);
     NvU32 *ptr, *ptrbase, *ptrbase1;
     NvU32  pbOffset;
 
@@ -1356,6 +1363,7 @@ krcWatchdogWriteNotifierToGpfifo_IMPL
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3945);
     NvU32  GPPut;
 
     // Write a second entry to the GPFIFO  (notifier)

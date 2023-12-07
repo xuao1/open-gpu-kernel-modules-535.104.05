@@ -238,6 +238,7 @@ _calcX509CertSize
     NvU32 *pCertLength
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3972);
     // The cert is in TLV format.
     NvU32 certSize       = pCert[1];
 
@@ -309,6 +310,7 @@ pem_write_buffer
     NvU64      *bufferUsed
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3973);
     static const NvU8 base64[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     NvU64 i, tmp, size;
     NvU64 printed = 0;
@@ -400,6 +402,7 @@ _spdmBuildCertChainDer
     size_t *outBufferSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3974);
     NvU64      remainingOutBufferSize = 0;
     NvU64      totalSize              = 0;
     void      *pPortMemCopyStatus     = NULL;
@@ -520,6 +523,7 @@ _spdmBuildCertChainPem
     size_t *outBufferSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3975);
     NvU64              firstCertOutputSize      = 0;
     NvU64              secondCertOutputSize     = 0;
     NvU64              remainingOutBufferSize   = 0;
@@ -635,6 +639,7 @@ spdmGetCertificates_GH100
     Spdm   *pSpdm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3976);
     NV_STATUS          status = NV_OK;
     NvU8              *pIkCertificate          = NULL;
     NvU32              ikCertificateSize       = 0;
@@ -797,6 +802,7 @@ spdmGetCertChains_GH100
     NvU32  *pAttestationCertChainSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3977);
     if (pGpu == NULL || pSpdm == NULL || pAttestationCertChain == NULL ||
         pAttestationCertChainSize == NULL)
     {

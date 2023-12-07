@@ -51,6 +51,7 @@ kccuConstructEngine_IMPL
    ENGDESCRIPTOR engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 709);
     NV_PRINTF(LEVEL_INFO, "KernelCcu: Constructor\n");
 
     return NV_OK;
@@ -67,6 +68,7 @@ kccuDestruct_IMPL
     KernelCcu *pKernelCcu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 710);
     NV_PRINTF(LEVEL_INFO, "KernelCcu: Destructor\n");
 
     return;
@@ -94,6 +96,7 @@ _kccuAllocMemory
    NvU64      counterBlockSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 711);
     NV_STATUS status            = NV_OK;
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
 
@@ -195,6 +198,7 @@ kccuShrBufIdxCleanup_IMPL
     NvU32      idx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 712);
     MEMORY_DESCRIPTOR *pMemDesc = pKernelCcu->pMemDesc[idx];
 
     NV_PRINTF(LEVEL_INFO, "Shared buffer unmap & free for idx(%u).\n", idx);
@@ -227,6 +231,7 @@ _kccuUnmapAndFreeMemory
     KernelCcu  *pKernelCcu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 713);
     NvU32 i = 0;
     NV_STATUS status = NV_OK;
     NV2080_CTRL_INTERNAL_CCU_UNMAP_INFO_PARAMS params = { 0 };
@@ -276,6 +281,7 @@ kccuShrBufInfoToCcu_IMPL
     NvU32      shrBufStartIdx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 714);
     NV2080_CTRL_INTERNAL_CCU_MAP_INFO_PARAMS inParams = { 0 };
     NV_STATUS status = NV_OK;
     NvU32     idx    = 0;
@@ -322,6 +328,7 @@ _kccuInitDevSharedBuffer
     KernelCcu  *pKernelCcu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 715);
     NV_STATUS status = NV_OK;
 
     NV_PRINTF(LEVEL_INFO, "Init shared buffer for device counters.\n");
@@ -352,6 +359,7 @@ kccuInitMigSharedBuffer_IMPL
     KernelCcu  *pKernelCcu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 716);
     NV_STATUS status = NV_OK;
     NvU32 idx;
 
@@ -394,6 +402,7 @@ NV_STATUS kccuStateLoad_IMPL
     NvU32      flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 717);
     NV_STATUS status = NV_OK;
 
     NV_PRINTF(LEVEL_INFO, "KernelCcu: State load \n");
@@ -444,6 +453,7 @@ NV_STATUS kccuStateUnload_IMPL
     NvU32      flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 718);
     NV_STATUS status = NV_OK;
     NV_PRINTF(LEVEL_INFO, "KernelCcu: State unload \n");
 
@@ -477,6 +487,7 @@ NV_STATUS kccuMemDescGetForShrBufId_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 719);
     NV_PRINTF(LEVEL_INFO, "KernelCcu: Get memdesc for idx(%u) \n", idx);
 
     if (IS_VIRTUAL(pGpu))
@@ -516,6 +527,7 @@ NV_STATUS kccuMemDescGetForSwizzId_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 720);
     NvU32 idx = 0;
 
     if (IS_VIRTUAL(pGpu))
@@ -559,6 +571,7 @@ NvU32 kccuCounterBlockSizeGet_IMPL
     NvBool     bDevCounter
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 721);
     NV_PRINTF(LEVEL_INFO, "KernelCcu: Get counter block size \n");
     // For device counter block
     if (bDevCounter)
@@ -586,6 +599,7 @@ NV_STATUS kccuStreamStateSet_IMPL
     NV_COUNTER_COLLECTION_UNIT_STREAM_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 722);
     NV_STATUS status = NV_OK;
     NV2080_CTRL_INTERNAL_CCU_STREAM_STATE_PARAMS ccuParams = { 0 };
 
@@ -656,6 +670,7 @@ NvBool kccuStreamStateGet_IMPL
     KernelCcu   *pKernelCcu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 723);
     NV_PRINTF(LEVEL_INFO, "KernelCcu: Get ccu stream \n");
 
     return pKernelCcu->bStreamState;
@@ -684,6 +699,7 @@ NV_STATUS kccuMemDescGetForComputeInst_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 724);
     NvU32 idx;
 
     if (IS_VIRTUAL(pGpu))

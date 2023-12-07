@@ -53,6 +53,7 @@ vmmCreateVaspace_IMPL
     OBJVASPACE **ppVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4747);
     NV_STATUS              status   = NV_OK;
     const NVOC_CLASS_INFO *pClassInfo;
     Dynamic               *pNewObj;
@@ -147,6 +148,7 @@ vmmDestroyVaspace_IMPL
     OBJVASPACE *pVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4748);
     OBJVASPACE *pTargetVAS  = pVAS;
 
     vaspaceDecRefCnt(pTargetVAS);
@@ -171,6 +173,7 @@ vmmGetVaspaceFromId_IMPL
     OBJVASPACE   **ppVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4749);
     Object          *pIter      = NULL;
     OBJVASPACE      *pVAS       = NULL;
     OBJIOVASPACE    *pIOVAS     = NULL;

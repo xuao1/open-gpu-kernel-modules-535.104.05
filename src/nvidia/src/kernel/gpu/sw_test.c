@@ -31,6 +31,7 @@ swtestConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4106);
     return NV_OK;
 }
 
@@ -40,6 +41,7 @@ swtestDestruct_IMPL
     SoftwareMethodTest           *pSwTest
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4107);
     ChannelDescendant *pChannelDescendant = staticCast(pSwTest, ChannelDescendant);
 
     chandesIsolateOnDestruct(pChannelDescendant);
@@ -57,6 +59,7 @@ NV_STATUS swtestGetSwMethods_IMPL
     NvU32              *pNumMethods
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4108);
     *ppMethods = Nv04SoftwareTestMethods;
     *pNumMethods = NV_ARRAY_ELEMENTS(Nv04SoftwareTestMethods);
     return NV_OK;

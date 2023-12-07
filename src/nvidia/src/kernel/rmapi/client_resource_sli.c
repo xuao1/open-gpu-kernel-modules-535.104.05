@@ -46,6 +46,7 @@ cliresCtrlCmdGpuGetVideoLinks_IMPL
     NV0000_CTRL_GPU_GET_VIDEO_LINKS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5425);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
 
     return gpumgrGetSliLinks(pParams);

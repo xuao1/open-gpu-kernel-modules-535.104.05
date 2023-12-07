@@ -37,6 +37,7 @@ hostengHaltEngine_IMPL
     OBJHOSTENG *pHosteng
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2394);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -51,6 +52,7 @@ hostengHaltAndReset_IMPL
     RMTIMEOUT  *pTimeout
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2395);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -67,5 +69,6 @@ hostengReset_IMPL
     KernelChannel **ppCurrentKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2396);
     return NV_ERR_NOT_SUPPORTED;
 }

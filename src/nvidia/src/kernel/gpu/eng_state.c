@@ -41,6 +41,7 @@ engstateConstructBase_IMPL
     ENGDESCRIPTOR       engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1053);
     pEngstate->pGpu         = pGpu;
     pEngstate->engDesc      = engDesc;
     pEngstate->currentState = ENGSTATE_STATE_UNDEFINED;
@@ -60,6 +61,7 @@ engstateLogStateTransitionPre_IMPL
     ENGSTATE_TRANSITION_DATA *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1054);
     ENGSTATE_STATS *stats = &pEngstate->stats[targetState];
     NV_ASSERT_OR_RETURN_VOID(targetState < ENGSTATE_STATE_COUNT);
 
@@ -70,6 +72,7 @@ engstateLogStateTransitionPre_IMPL
 
 #if PORT_IS_FUNC_SUPPORTED(portMemExTrackingGetActiveStats)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1055);
         PORT_MEM_TRACK_ALLOCATOR_STATS memstats = {0};
         portMemExTrackingGetActiveStats(NULL, &memstats);
 
@@ -87,6 +90,7 @@ engstateLogStateTransitionPost_IMPL
     ENGSTATE_TRANSITION_DATA *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1056);
     ENGSTATE_STATS *stats = &pEngstate->stats[targetState];
     NvU64 endTimeNs;
 
@@ -127,6 +131,7 @@ engstateLogStateTransitionPost_IMPL
 
 #if PORT_IS_FUNC_SUPPORTED(portMemExTrackingGetActiveStats)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1057);
         PORT_MEM_TRACK_ALLOCATOR_STATS memstats = {0};
         portMemExTrackingGetActiveStats(NULL, &memstats);
 
@@ -147,6 +152,7 @@ engstateGetName_IMPL
     OBJENGSTATE *pEngstate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1058);
 #if NV_PRINTF_STRINGS_ALLOWED
     return pEngstate->name;
 #else
@@ -165,6 +171,7 @@ engstateConstructEngine_IMPL
     ENGDESCRIPTOR engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1059);
     return NV_OK;
 }
 
@@ -177,6 +184,7 @@ engstateDestruct_IMPL
     OBJENGSTATE *pEngstate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1060);
 }
 
 /*!
@@ -189,6 +197,7 @@ engstateInitMissing_IMPL
     OBJENGSTATE *pEngstate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1061);
     return;
 }
 
@@ -198,6 +207,7 @@ engstateInitMissing_IMPL
 NV_STATUS
 engstateStatePreInit_IMPL(OBJGPU *pGpu, OBJENGSTATE *pEngstate)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1062);
     LOCK_ASSERT_AND_RETURN(rmGpuLockIsOwner());
 
     /* Check if we overrode the unlocked variant */
@@ -228,6 +238,7 @@ engstateStatePreInit_IMPL(OBJGPU *pGpu, OBJENGSTATE *pEngstate)
 NV_STATUS
 engstateStatePreInitLocked_IMPL(OBJGPU *pGpu, OBJENGSTATE *pEngstate)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1063);
     return NV_OK;
 }
 
@@ -237,6 +248,7 @@ engstateStatePreInitLocked_IMPL(OBJGPU *pGpu, OBJENGSTATE *pEngstate)
 NV_STATUS
 engstateStatePreInitUnlocked_IMPL(OBJGPU *pGpu, OBJENGSTATE *pEngstate)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1064);
     return NV_OK;
 }
 
@@ -246,6 +258,7 @@ engstateStatePreInitUnlocked_IMPL(OBJGPU *pGpu, OBJENGSTATE *pEngstate)
 NV_STATUS
 engstateStateInit_IMPL(OBJGPU *pGpu, OBJENGSTATE *pEngstate)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1065);
     LOCK_ASSERT_AND_RETURN(rmGpuLockIsOwner());
 
     /* Check if we overrode the unlocked variant */
@@ -274,6 +287,7 @@ engstateStateInit_IMPL(OBJGPU *pGpu, OBJENGSTATE *pEngstate)
 NV_STATUS
 engstateStateInitLocked_IMPL(OBJGPU *pGpu, OBJENGSTATE *pEngstate)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1066);
     return NV_OK;
 }
 
@@ -283,6 +297,7 @@ engstateStateInitLocked_IMPL(OBJGPU *pGpu, OBJENGSTATE *pEngstate)
 NV_STATUS
 engstateStateInitUnlocked_IMPL(OBJGPU *pGpu, OBJENGSTATE *pEngstate)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1067);
     return NV_OK;
 }
 
@@ -297,6 +312,7 @@ engstateStatePreLoad_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1068);
     return NV_OK;
 }
 
@@ -311,6 +327,7 @@ engstateStateLoad_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1069);
     return NV_OK;
 }
 
@@ -325,6 +342,7 @@ engstateStatePostLoad_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1070);
     return NV_OK;
 }
 
@@ -339,6 +357,7 @@ engstateStateUnload_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1071);
     return NV_OK;
 }
 
@@ -353,6 +372,7 @@ engstateStatePreUnload_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1072);
     return NV_OK;
 }
 
@@ -367,6 +387,7 @@ engstateStatePostUnload_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1073);
     return NV_OK;
 }
 
@@ -380,6 +401,7 @@ engstateStateDestroy_IMPL
     OBJENGSTATE *pEngstate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1074);
 }
 
 /*!
@@ -393,6 +415,7 @@ engstateGetDescriptor_IMPL
     OBJENGSTATE *pEngstate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1075);
     return pEngstate->engDesc;
 }
 
@@ -409,6 +432,7 @@ engstateIsPresent_IMPL
     OBJENGSTATE *pEngstate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1076);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
 
     NV_ASSERT(pEngstate != NULL);
@@ -427,6 +451,7 @@ engstateGetFifo_IMPL
     OBJENGSTATE *pEngstate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1077);
     OBJGPU         *pGpu = ENG_GET_GPU(pEngstate);
 
     return GPU_GET_FIFO(pGpu);

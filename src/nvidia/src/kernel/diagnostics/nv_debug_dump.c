@@ -37,12 +37,14 @@ static NV_STATUS prbAppendSubMsg(PRB_ENCODER *pPrbEnc, NvU32 tag, NvU8 *buffer, 
 
 NV_STATUS nvdConstructEngine_IMPL(OBJGPU *pGpu, NvDebugDump *pNvd, ENGDESCRIPTOR engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 286);
     pNvd->pHeadDebugBuffer = NULL;
     return NV_OK;
 }
 
 void nvdDestruct_IMPL(NvDebugDump *pNvd)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 287);
     OBJGPU *pGpu = ENG_GET_GPU(pNvd);
 
     //
@@ -71,6 +73,7 @@ nvdEngineSignUp_IMPL
     void                *pvData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 288);
     NVD_ENGINE_CALLBACK *pEngineCallback;
     NVD_ENGINE_CALLBACK *pWalk;
     NVD_ENGINE_CALLBACK *pBack;
@@ -125,6 +128,7 @@ nvdEngineRelease_IMPL
     NvDebugDump         *pNvd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 289);
     NVD_ENGINE_CALLBACK *pEngineCallback;
     NVD_ENGINE_CALLBACK *pWalk;
 
@@ -147,6 +151,7 @@ nvdFindEngine_IMPL
     NVD_ENGINE_CALLBACK **ppEngineCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 290);
     NVD_ENGINE_CALLBACK *pEngineCallback;
     NV_STATUS            rmStatus = NV_ERR_MISSING_TABLE_ENTRY;
 
@@ -175,6 +180,7 @@ nvdEngineDumpCallbackHelper
     NVD_ENGINE_CALLBACK *pEngineCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 291);
     NV_STATUS   nvStatus      = NV_OK;
     NvU8        startingDepth = prbEncNestingLevel(pPrbEnc);
 
@@ -216,6 +222,7 @@ nvdDoEngineDump_IMPL
     NvU32        engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 292);
     NVD_ENGINE_CALLBACK *pEngineCallback;
     NV_STATUS            nvStatus = NV_OK;
 
@@ -259,6 +266,7 @@ nvdDumpAllEngines_IMPL
     NVD_STATE      *pNvDumpState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 293);
     NVD_ENGINE_CALLBACK    *pEngineCallback;
     NV_STATUS               nvStatus = NV_OK;
 
@@ -310,6 +318,7 @@ nvdDumpComponent_IMPL
     PrbBufferCallback *pBufferCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 294);
     OBJSYS      *pSys           = SYS_GET_INSTANCE();
     Journal     *pRcDB          = SYS_GET_RCDB(pSys);
     PRB_ENCODER  encoder;
@@ -442,6 +451,7 @@ nvdDumpDebugBuffers_IMPL
     PRB_ENCODER *pPrbEnc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 295);
     NVD_DEBUG_BUFFER *pCurrent = pNvd->pHeadDebugBuffer;
     NV_STATUS status = NV_OK;
     NV_STATUS endStatus = NV_OK;
@@ -503,6 +513,7 @@ prbAppendSubMsg
     NvU32 size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 296);
     NVDUMP_SUB_ALLOC_HEADER *header = NULL;
     NvU8 *pCurrent = buffer;
     NvU8 *subAlloc = NULL;
@@ -595,6 +606,7 @@ _nvdDumpEngineFunc
     void        *pvData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 297);
     switch (DRF_VAL(_NVD, _ERROR_CODE, _MAJOR, pNvDumpState->internalCode))
     {
     case NVD_GPU_GENERATED:
@@ -619,6 +631,7 @@ nvdStateInitLocked_IMPL
     NvDebugDump *pNvd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 298);
 
     OBJSYS  *pSys  = SYS_GET_INSTANCE();
     Journal *pRcDB = SYS_GET_RCDB(pSys);
@@ -655,6 +668,7 @@ nvdAllocDebugBuffer_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 299);
     MEMORY_DESCRIPTOR   *pMemDesc;
     NVD_DEBUG_BUFFER    *pNewDebugBuffer;
     NV_STATUS            status = NV_OK;
@@ -735,6 +749,7 @@ nvdFreeDebugBuffer_IMPL
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 300);
     NVD_DEBUG_BUFFER *pCurrDebugBuffer = pNvd->pHeadDebugBuffer;
     NVD_DEBUG_BUFFER *pPrevDebugBuffer = NULL;
 
@@ -786,6 +801,7 @@ nvDumpGetDumpBufferSizeEnum
     NVD_STATE  *pNvDumpState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 301);
     if (pNvDumpState->nvDumpType == NVD_DUMP_TYPE_JOURNAL)   // Check Journal first
     {
         return NVD_DUMP_SIZE_JOURNAL_WRITE;

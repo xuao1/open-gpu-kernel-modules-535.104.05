@@ -43,6 +43,7 @@ kioctrlConstructEngine_IMPL
     NvU32          publicId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3761);
     NV_STATUS    status = NV_OK;
     OBJENGSTATE *pEngstate;
 
@@ -70,5 +71,6 @@ kioctrlDestructEngine_IMPL
     KernelIoctrl *pKernelIoctrl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3762);
     return;
 }

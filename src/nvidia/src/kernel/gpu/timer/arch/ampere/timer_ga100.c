@@ -47,6 +47,7 @@ tmrGetGpuPtimerOffset_GA100
     NvU32   *pGpuTimestampOffsetHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4128);
     {
         *pGpuTimestampOffsetLo = GPU_GET_VREG_OFFSET(pGpu, NV_VIRTUAL_FUNCTION_TIME_0);
         *pGpuTimestampOffsetHi = GPU_GET_VREG_OFFSET(pGpu, NV_VIRTUAL_FUNCTION_TIME_1);

@@ -46,6 +46,7 @@ knvlinkIsAliSupported_GH100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3720);
     NvU32 status = NV_OK;
 
     NV2080_CTRL_NVLINK_GET_ALI_ENABLED_PARAMS params;
@@ -87,6 +88,7 @@ knvlinkValidateFabricBaseAddress_GH100
     NvU64         fabricBaseAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3721);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64          fbSizeBytes;
 
@@ -123,6 +125,7 @@ knvlinkPostSetupNvlinkPeer_GH100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3722);
     NvU32 status = NV_OK;
     NV2080_CTRL_NVLINK_POST_SETUP_NVLINK_PEER_PARAMS postSetupNvlinkPeerParams;
 
@@ -162,6 +165,7 @@ knvlinkDiscoverPostRxDetLinks_GH100
     OBJGPU       *pPeerGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3723);
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
 
 #if defined(INCLUDE_NVLINK_LIB)
@@ -264,6 +268,7 @@ ioctrlFaultUpTmrHandler
     TMR_EVENT *pEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3724);
     //NvU32 linkId = *(NvU32*)pData;
     NV_STATUS    status = NV_OK;
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
@@ -297,6 +302,7 @@ knvlinkHandleFaultUpInterrupt_GH100
     NvU32        linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3725);
     OBJTMR    *pTmr = GPU_GET_TIMER(pGpu);
     PNVLINK_ID pFaultLink;
     NV_STATUS status = NV_OK;
@@ -323,6 +329,7 @@ knvlinkLogAliDebugMessages_GH100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3726);
     NV2080_CTRL_NVLINK_GET_ERR_INFO_PARAMS *nvlinkErrInfoParams = portMemAllocNonPaged(sizeof(NV2080_CTRL_NVLINK_GET_ERR_INFO_PARAMS));
     portMemSet(nvlinkErrInfoParams, 0, sizeof(NV2080_CTRL_NVLINK_GET_ERR_INFO_PARAMS));
     nvlinkErrInfoParams->ErrInfoFlags |= NV2080_CTRL_NVLINK_ERR_INFO_FLAGS_ALI_STATUS;
@@ -387,6 +394,7 @@ knvlinkIsBandwidthModeOff_GH100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3727);
     return (gpumgrGetGpuNvlinkBwMode() == GPU_NVLINK_BW_MODE_OFF);
 }
 
@@ -402,6 +410,7 @@ knvlinkGetNumLinksToBeReducedPerIoctrl_GH100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3728);
     NvU32 numlinks = 0;
     NvU8 mode;
 
@@ -456,6 +465,7 @@ knvlinkGetEffectivePeerLinkMask_GH100
     NvU32  *pPeerLinkMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3729);
     NvU32 peerLinkMask, remotePeerLinkMask, effectivePeerLinkMask, peerLinkMaskPerIoctrl;
     NvU32 gpuInstance, remoteGpuInstance;
     NvU32 numLinksPerIoctrl, numIoctrls;
@@ -591,6 +601,7 @@ knvlinkSetUniqueFabricBaseAddress_GH100
     NvU64         fabricBaseAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3730);
     NV_STATUS status = NV_OK;
 
     status = knvlinkValidateFabricBaseAddress_HAL(pGpu, pKernelNvlink,
@@ -646,6 +657,7 @@ knvlinkClearUniqueFabricBaseAddress_GH100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3731);
     pKernelNvlink->fabricBaseAddr = NVLINK_INVALID_FABRIC_ADDR;
 }
 
@@ -664,6 +676,7 @@ knvlinkDirectConnectCheck_GH100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3732);
     NV2080_CTRL_NVLINK_DIRECT_CONNECT_CHECK_PARAMS params = {0};
 
     if (knvlinkExecGspRmRpc(pGpu, pKernelNvlink,
@@ -693,6 +706,7 @@ knvlinkIsFloorSweepingNeeded_GH100
     NvU32         numLinksPerIoctrl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3733);
 
     //
     // Only floorsweep down the given GPU if the following conditions are met:

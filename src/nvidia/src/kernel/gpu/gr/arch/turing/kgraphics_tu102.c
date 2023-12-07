@@ -45,6 +45,7 @@ kgraphicsAllocGrGlobalCtxBuffers_TU102
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1977);
     extern NV_STATUS kgraphicsAllocGrGlobalCtxBuffers_GP100(OBJGPU *pGpu, KernelGraphics *pKernelGraphics, NvU32 gfid, KernelGraphicsContext *pKernelGraphicsContext);
     MEMORY_DESCRIPTOR           **ppMemDesc;
     GR_GLOBALCTX_BUFFERS         *pCtxBuffers;

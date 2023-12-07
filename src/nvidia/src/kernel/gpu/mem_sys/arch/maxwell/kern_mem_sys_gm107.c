@@ -46,6 +46,7 @@ kmemsysDoCacheOp_GM107
     PRMTIMEOUT          pTimeout
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3314);
     NV_STATUS        rmStatus = NV_OK;
     NvU32            cnt = 0;
     NV_STATUS        timeoutStatus = NV_OK;
@@ -151,6 +152,7 @@ kmemsysWriteL2SysmemInvalidateReg_GM107
     NvU32               value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3315);
     GPU_REG_WR32(pGpu, NV_UFLUSH_L2_SYSMEM_INVALIDATE, value);
 }
 
@@ -161,6 +163,7 @@ kmemsysReadL2SysmemInvalidateReg_GM107
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3316);
     return GPU_REG_RD32(pGpu, NV_UFLUSH_L2_SYSMEM_INVALIDATE);
 }
 
@@ -172,6 +175,7 @@ kmemsysWriteL2PeermemInvalidateReg_GM107
     NvU32               value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3317);
     GPU_REG_WR32(pGpu, NV_UFLUSH_L2_PEERMEM_INVALIDATE, value);
 }
 
@@ -182,6 +186,7 @@ kmemsysReadL2PeermemInvalidateReg_GM107
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3318);
     return GPU_REG_RD32(pGpu, NV_UFLUSH_L2_PEERMEM_INVALIDATE);
 }
 
@@ -202,6 +207,7 @@ kmemsysInitFlushSysmemBuffer_GM107
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3319);
     NV_STATUS              status;
     NvBool                bTryAgain = NV_FALSE;
 
@@ -385,6 +391,7 @@ kmemsysProgramSysmemFlushBuffer_GM107
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3320);
     //
     // Q: Why are we writing this twice, both in fbInit and fbLoad?
     // A: fbLoad is preceded by busLoad which can do sysmem writes.
@@ -412,6 +419,7 @@ kmemsysAssertSysmemFlushBufferValid_GM107
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3321);
     NV_ASSERT(GPU_REG_RD_DRF(pGpu, _PFB, _NISO_FLUSH_SYSMEM_ADDR, _ADR_39_08) != 0);
 }
 
@@ -422,5 +430,6 @@ kmemsysGetFlushSysmemBufferAddrShift_GM107
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3322);
     return NV_PFB_NISO_FLUSH_SYSMEM_ADDR_SHIFT;
 }

@@ -48,6 +48,7 @@ subdeviceCtrlCmdCeGetCaps_IMPL
     NV2080_CTRL_CE_GET_CAPS_PARAMS *pCeCapsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 794);
     OBJGPU     *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelCE    *pKCe;
     NvU32       ceNumber;

@@ -38,6 +38,7 @@ kgspFreeVbiosImg
     KernelGspVbiosImg *pVbiosImg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2365);
     if (pVbiosImg == NULL)
     {
         return;
@@ -60,6 +61,7 @@ kgspFreeFlcnUcode
     KernelGspFlcnUcode *pFlcnUcode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2366);
     if (pFlcnUcode == NULL)
     {
         return;
@@ -111,6 +113,7 @@ s_bindataWriteToFixedSizeBuffer
     NvU32 bufSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2367);
     NV_STATUS status = NV_OK;
 
     if (bindataGetBufferSize(pBinStorage) != bufSize)
@@ -141,6 +144,7 @@ s_patchBooterUcodeSignature
     NvU32 numSigs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2368);
     NvU32 sigIndex = 0;
     NvU32 sigSize = signaturesTotalSize / numSigs;
     NvU32 fuseVer;
@@ -178,6 +182,7 @@ s_allocateUcodeFromBinArchive
     KernelGspFlcnUcode **ppFlcnUcode  // out
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2369);
     NV_STATUS status;
     KernelGspFlcnUcode *pFlcnUcode;
 
@@ -439,6 +444,7 @@ kgspAllocateBooterLoadUcodeImage_IMPL
     KernelGspFlcnUcode **ppBooterLoadUcode  // out
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2370);
     const BINDATA_ARCHIVE *pBinArchive;
 
     NV_ASSERT_OR_RETURN(ppBooterLoadUcode != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -457,6 +463,7 @@ kgspAllocateBooterUnloadUcodeImage_IMPL
     KernelGspFlcnUcode **ppBooterUnloadUcode  // out
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2371);
     const BINDATA_ARCHIVE *pBinArchive;
 
     NV_ASSERT_OR_RETURN(ppBooterUnloadUcode != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -480,6 +487,7 @@ kgspAllocateScrubberUcodeImage_IMPL
     KernelGspFlcnUcode **ppScrubberUcode  // out
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2372);
     KernelSec2 *pKernelSec2 = GPU_GET_KERNEL_SEC2(pGpu);
     const BINDATA_ARCHIVE *pBinArchive;
 

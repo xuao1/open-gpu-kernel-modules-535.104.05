@@ -48,6 +48,7 @@ dispswConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 309);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pDispSw);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     RM_API *pRmApi   = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -109,6 +110,7 @@ dispswDestruct_IMPL
     DispSwObject *pDispSw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 310);
     ChannelDescendant *pChannelDescendant = staticCast(pDispSw, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
@@ -138,6 +140,7 @@ NV_STATUS dispswReleaseSemaphoreAndNotifierFill
     NvHandle  hEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 311);
     CLI_DMA_MAPPING_INFO *pDmaMappingInfo;
     NvBool     bFound = NV_FALSE;
     NV_STATUS  status;

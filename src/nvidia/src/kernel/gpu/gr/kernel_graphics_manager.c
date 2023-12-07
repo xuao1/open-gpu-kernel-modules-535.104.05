@@ -69,6 +69,7 @@ _kgrmgrGPUInstanceHasComputeInstances
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2144);
     NV_ASSERT_OR_RETURN(pKernelMIGGpuInstance != NULL, NV_FALSE);
     NvU32 computeInstanceIdx;
 
@@ -96,6 +97,7 @@ kgrmgrGetGrObjectType_IMPL
     NvU32 *pObjectType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2145);
     switch (classNum)
     {
         case MAXWELL_COMPUTE_A:
@@ -147,6 +149,7 @@ kgrmgrIsCtxBufSupported_IMPL
     NvBool bClassSupported2D
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2146);
     NvBool bSupported = NV_FALSE;
 
     NV_ASSERT_OR_RETURN(NV_ENUM_IS(GR_CTX_BUFFER, bufId), NV_FALSE);
@@ -199,6 +202,7 @@ kgrmgrIsGlobalCtxBufSupported_IMPL
     NvBool bClassSupported2D
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2147);
     NvBool bSupported = NV_FALSE;
 
     NV_ASSERT_OR_RETURN(NV_ENUM_IS(GR_GLOBALCTX_BUFFER, bufId), NV_FALSE);
@@ -254,6 +258,7 @@ kgrmgrCtrlSetEngineID_IMPL
     NV2080_CTRL_GR_ROUTE_INFO *pRouteInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2148);
     if (NULL == pRouteInfo)
     {
         return;
@@ -279,6 +284,7 @@ kgrmgrCtrlSetChannelHandle_IMPL
     NV2080_CTRL_GR_ROUTE_INFO *pRouteInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2149);
     if (NULL == pRouteInfo)
     {
         return;
@@ -299,6 +305,7 @@ kgrmgrConstructEngine_IMPL
     ENGDESCRIPTOR          engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2150);
     return NV_OK;
 }
 
@@ -308,6 +315,7 @@ kgrmgrDestruct_IMPL
     KernelGraphicsManager *pKernelGraphicsManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2151);
     portMemSet(&pKernelGraphicsManager->legacyKgraphicsStaticInfo.floorsweepingMasks, 0,
                sizeof(pKernelGraphicsManager->legacyKgraphicsStaticInfo.floorsweepingMasks));
     portMemFree(pKernelGraphicsManager->legacyKgraphicsStaticInfo.pPpcMasks);
@@ -328,6 +336,7 @@ kgrmgrSetLegacyKgraphicsStaticInfo_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2152);
     NV_CHECK_OR_RETURN_VOID(LEVEL_INFO, !pKernelGraphicsManager->legacyKgraphicsStaticInfo.bInitialized);
     NV_ASSERT_OR_RETURN_VOID((pKernelGraphics != NULL) && (kgraphicsGetInstance(pGpu, pKernelGraphics) == 0));
     const KGRAPHICS_STATIC_INFO *pKernelGraphicsStaticInfo = kgraphicsGetStaticInfo(pGpu, pKernelGraphics);
@@ -383,6 +392,7 @@ kgrmgrCtrlRouteKGR_IMPL
     KernelGraphics **ppKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2153);
     RsClient *pClient;
     Device *pDevice;
 
@@ -427,6 +437,7 @@ kgrmgrCtrlRouteKGRWithDevice_IMPL
     KernelGraphics **ppKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2154);
     MIG_INSTANCE_REF ref;
     KernelGraphics *pKernelGraphics;
     NvU32 type;
@@ -583,6 +594,7 @@ kgrmgrGetLegacyGpcMask_IMPL
     KernelGraphicsManager *pKernelGraphicsManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2155);
     NV_ASSERT_OR_RETURN(pKernelGraphicsManager->legacyKgraphicsStaticInfo.bInitialized, 0);
 
     return pKernelGraphicsManager->legacyKgraphicsStaticInfo.floorsweepingMasks.gpcMask;
@@ -598,6 +610,7 @@ kgrmgrGetLegacyPhysGfxGpcMask_IMPL
     KernelGraphicsManager *pKernelGraphicsManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2156);
     NV_ASSERT_OR_RETURN(pKernelGraphicsManager->legacyKgraphicsStaticInfo.bInitialized, 0);
 
     return pKernelGraphicsManager->legacyKgraphicsStaticInfo.floorsweepingMasks.physGfxGpcMask;
@@ -619,6 +632,7 @@ kgrmgrGetLegacyTpcMask_IMPL
     NvU32 gpcId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2157);
     NvU32 maxNumGpcs;
 
     NV_ASSERT_OR_RETURN(pKernelGraphicsManager->legacyKgraphicsStaticInfo.bInitialized, 0);
@@ -642,6 +656,7 @@ kgrmgrGetLegacyPpcMask_IMPL
     NvU32 *pPpcMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2158);
     NvU32 maxNumGpcs;
 
     NV_ASSERT_OR_RETURN(pKernelGraphicsManager->legacyKgraphicsStaticInfo.bInitialized, NV_ERR_INVALID_STATE);
@@ -667,6 +682,7 @@ kgrmgrGetLegacyZcullMask_IMPL
     NvU32 physGpcId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2159);
     NvU32 maxNumGpcs;
 
     NV_ASSERT_OR_RETURN(pKernelGraphicsManager->legacyKgraphicsStaticInfo.bInitialized, 0);
@@ -698,6 +714,7 @@ kgrmgrAllocVeidsForGrIdx_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGPUInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2160);
     NvU32 maxVeidsPerGpc;
     NvU32 veidStart = 0;
     NvU32 veidEnd = 0;
@@ -762,6 +779,7 @@ kgrmgrClearVeidsForGrIdx_IMPL
     NvU32 grIdx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2161);
     NvU64 veidMask = pKernelGraphicsManager->grIdxVeidMask[grIdx];
 
     // mark all VEIDs of this GR engine as "not in use"
@@ -781,6 +799,7 @@ kgrmgrGetMaxVeidsPerGpc_IMPL
     NvU32 *pMaxVeidsPerGpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2162);
     NvU32 maxVeids;
     NvU32 maxGpcCount;
 
@@ -810,6 +829,7 @@ kgrmgrGetVeidBaseForGrIdx_IMPL
     NvU32 *pVeidStart
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2163);
     NvU64 veidMask;
     NV_ASSERT_OR_RETURN(pVeidStart != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(grIdx != KGRMGR_MAX_GR, NV_ERR_INVALID_ARGUMENT);
@@ -840,6 +860,7 @@ kgrmgrGetGrIdxForVeid_IMPL
     NvU32 *pGrIdx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2164);
     NvU32 i;
     NvU64 veidMask = NVBIT64(veid);
 
@@ -866,6 +887,7 @@ kgrmgrDiscoverMaxLocalCtxBufInfo_IMPL
     NvU32 swizzId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2165);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
 
     //
@@ -893,6 +915,7 @@ kgrmgrGetGlobalCtxBufInfo_IMPL
     GR_GLOBALCTX_BUFFER buf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2166);
     NV_ASSERT_OR_RETURN(NV_ENUM_IS(GR_GLOBALCTX_BUFFER, buf), NULL);
     return &pKernelGraphicsManager->globalCtxBufInfo[buf];
 }
@@ -912,6 +935,7 @@ kgrmgrSetGlobalCtxBufInfo_IMPL
     NvBool bContiguous
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2167);
     CTX_BUF_INFO *pInfo;
     NV_ASSERT_OR_RETURN_VOID(NV_ENUM_IS(GR_GLOBALCTX_BUFFER, buf));
 
@@ -936,6 +960,7 @@ kgrmgrDiscoverMaxGlobalCtxBufSizes_IMPL
     NvBool bMemoryPartitioningNeeded
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2168);
     const KGRAPHICS_STATIC_INFO *pKernelGraphicsStaticInfo;
     GR_GLOBALCTX_BUFFER bufId;
 
@@ -1006,6 +1031,7 @@ kgrmgrGetLegacyGpcTpcCount_IMPL
     NvU32 gpcId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2169);
     NvU32 maxNumGpcs;
 
     NV_ASSERT_OR_RETURN(pKernelGraphicsManager->legacyKgraphicsStaticInfo.bInitialized, 0);
@@ -1039,6 +1065,7 @@ kgrmgrCheckVeidsRequest_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGPUInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2170);
     NvU32 maxVeidsPerGpc;
     NvU32 veidStart = 0;
     NvU32 veidEnd = 0;

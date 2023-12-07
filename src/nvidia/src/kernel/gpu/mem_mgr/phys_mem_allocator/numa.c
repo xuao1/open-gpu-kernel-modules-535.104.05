@@ -60,6 +60,7 @@ static NV_STATUS _pmaNumaAvailableEvictablePage
     NvS32   *validRegionList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3148);
     NvU32           regionIdx;
     PMA_PAGESTATUS  frameState;
     void           *pMap   = NULL;
@@ -121,6 +122,7 @@ NV_STATUS _pmaNumaAvailableEvictableRange
     NvU64    *evictEnd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3149);
     void     *pMap  = NULL;
     NvU32     regionIdx;
     NV_STATUS status = NV_ERR_NO_MEMORY;
@@ -163,6 +165,7 @@ NV_STATUS _pmaNumaAvailableEvictableRange
  */
 static NvBool _pmaCheckFreeFramesToSkipReclaim(PMA *pPma)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3150);
     return (100 * pPma->pmaStats.numFreeFrames <
              (pPma->pmaStats.num2mbPages * (_PMA_2MB >> PMA_PAGE_SHIFT) * pPma->numaReclaimSkipThreshold));
 }
@@ -184,6 +187,7 @@ NV_STATUS _pmaNumaAllocateRange
     NvU64   *allocatedCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3151);
     NV_STATUS   status = NV_ERR_NO_MEMORY;
     NvU64  sysPhysAddr = 0, gpaPhysAddr = 0, evictStart = 0, evictEnd = 0;
     NvU32 flags = OS_ALLOC_PAGES_NODE_NONE;
@@ -328,6 +332,7 @@ static NV_STATUS _pmaNumaAllocatePages
     NvU64   *allocatedPages
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3152);
     NV_STATUS status = NV_ERR_NO_MEMORY;
     NvU64     sysPhysAddr;
     NvU64     i = 0;
@@ -469,6 +474,7 @@ NV_STATUS pmaNumaAllocate
     NvU64                  *pPages
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3153);
     NvU32    i;
     NV_STATUS  status     = NV_OK;
     NvU32    numaNodeId   = pPma->numaNodeId;
@@ -656,6 +662,7 @@ void pmaNumaFreeInternal
     NvU32  flag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3154);
     NvU64 i, j;
     NvU8 osPageShift = osGetPageShift();
 
@@ -714,6 +721,7 @@ void pmaNumaFreeInternal
 
 void pmaNumaSetReclaimSkipThreshold(PMA *pPma, NvU32 skipReclaimPercent)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3155);
     portSyncSpinlockAcquire(pPma->pPmaLock);
     pPma->numaReclaimSkipThreshold = skipReclaimPercent;
     portSyncSpinlockRelease(pPma->pPmaLock);

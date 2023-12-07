@@ -40,6 +40,7 @@ tmrGetTimeEx_OSTIMER
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4209);
     NvU32   seconds;                // Time since 1970 in seconds
     NvU32   useconds;               //  and uSeconds.
     NvU64 timeNs; // Time since 1970 in ns.
@@ -73,6 +74,7 @@ NV_STATUS tmrEventCreateOSTimer_OSTIMER
     PTMR_EVENT  pEventPublic
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4210);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = ENG_GET_GPU(pTmr);
     PTMR_EVENT_PVT pEvent = (PTMR_EVENT_PVT)pEventPublic;
@@ -104,6 +106,7 @@ NV_STATUS tmrEventScheduleRelOSTimer_OSTIMER
     NvU64       timeRelNs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4211);
     NV_STATUS status= NV_OK;
     OBJGPU *pGpu = ENG_GET_GPU(pTmr);
     PTMR_EVENT_PVT pEvent = (PTMR_EVENT_PVT) pPublicEvent;
@@ -141,6 +144,7 @@ NV_STATUS tmrEventServiceOSTimerCallback_OSTIMER
     PTMR_EVENT          pPublicEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4212);
     PTMR_EVENT_PVT  pEvent = (PTMR_EVENT_PVT)pPublicEvent;
     NV_STATUS status = NV_OK;
 
@@ -172,6 +176,7 @@ NV_STATUS tmrEventCancelOSTimer_OSTIMER
     PTMR_EVENT          pPublicEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4213);
     NV_STATUS status= NV_OK;
     OBJGPU *pGpu = ENG_GET_GPU(pTmr);
     PTMR_EVENT_PVT  pTmrEvent = (PTMR_EVENT_PVT) pPublicEvent;
@@ -206,6 +211,7 @@ NV_STATUS tmrEventDestroyOSTimer_OSTIMER
     PTMR_EVENT          pPublicEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4214);
     NV_STATUS status= NV_OK;
     OBJGPU *pGpu = ENG_GET_GPU(pTmr);
     PTMR_EVENT_PVT  pTmrEvent = (PTMR_EVENT_PVT) pPublicEvent;
@@ -235,6 +241,7 @@ tmrGetIntrStatus_OSTIMER
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4215);
     *pStatus = 0;
     return NV_OK;
 }
@@ -251,6 +258,7 @@ tmrGetTimeLo_OSTIMER
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4216);
     return NvU64_LO32(tmrGetTimeEx_HAL(pGpu, pTmr, NULL));
 }
 
@@ -261,6 +269,7 @@ tmrGetTime_OSTIMER
     OBJTMR             *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4217);
     return tmrGetTimeEx_HAL(pGpu, pTmr, NULL);
 }
 
@@ -272,6 +281,7 @@ tmrReadTimeLoReg_OSTIMER
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4218);
     return NvU64_LO32(tmrGetTimeEx_HAL(pGpu, pTmr, pThreadState));
 }
 
@@ -283,6 +293,7 @@ tmrReadTimeHiReg_OSTIMER
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4219);
     return NvU64_HI32(tmrGetTimeEx_HAL(pGpu, pTmr, pThreadState));
 }
 
@@ -295,6 +306,7 @@ tmrGetGpuAndCpuTimestampPair_OSTIMER
     NvU64   *pCpuTime
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4220);
 #if PORT_IS_FUNC_SUPPORTED(portUtilExReadTimestampCounter)
     *pGpuTime = tmrGetTimeEx_HAL(pGpu, pTmr, NULL);
     *pCpuTime = portUtilExReadTimestampCounter();
@@ -311,6 +323,7 @@ tmrDelay_OSTIMER
      NvU32      nsec
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4221);
     if (nsec > 50000000)    // 50 ms.
     {
         osDelay(nsec / 1000000);

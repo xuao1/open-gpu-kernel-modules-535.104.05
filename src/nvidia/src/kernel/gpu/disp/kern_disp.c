@@ -131,6 +131,7 @@ kdispDestruct_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1022);
     // Destroy children
     kdispDestructInstMem_HAL(pKernelDisplay);
     kdispDestructKhead(pKernelDisplay);
@@ -143,6 +144,7 @@ kdispConstructInstMem_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1023);
     NV_STATUS status;
     DisplayInstanceMemory *pInst;
 
@@ -163,6 +165,7 @@ kdispDestructInstMem_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1024);
     objDelete(pKernelDisplay->pInst);
     pKernelDisplay->pInst = NULL;
 }
@@ -174,6 +177,7 @@ kdispConstructKhead_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1025);
     NV_STATUS   status;
     KernelHead *pKernelHead;
     NvU8        headIdx;
@@ -199,6 +203,7 @@ kdispDestructKhead_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1026);
     NvU8      headIdx;
 
     for (headIdx = 0; headIdx < OBJ_MAX_HEADS; headIdx++)
@@ -215,6 +220,7 @@ kdispAllocateCommonHandle_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1027);
     NV_STATUS rmStatus;
     NvHandle  hClient;
     NvHandle  hDevice;
@@ -245,6 +251,7 @@ kdispDestroyCommonHandle_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1028);
     NV_STATUS rmStatus;
     RM_API   *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
@@ -340,6 +347,7 @@ kdispSetupAcpiEdid_IMPL
     KernelDisplay *pKernelDisplay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1029);
     NV2080_CTRL_CMD_INTERNAL_SET_STATIC_EDID_DATA_PARAMS *pEdidParams = NULL;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32 status = NV_ERR_GENERIC;
@@ -509,6 +517,7 @@ kdispStateLoad_IMPL
     NvU32         flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1030);
     NV_STATUS status = NV_OK;
 
     if (pKernelDisplay->pInst != NULL)
@@ -525,6 +534,7 @@ kdispStateUnload_IMPL
     NvU32         flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1031);
     NV_STATUS status = NV_OK;
 
     if (pKernelDisplay->pInst != NULL)
@@ -537,6 +547,7 @@ kdispStateUnload_IMPL
 NV_STATUS
 kdispImportImpData_IMPL(KernelDisplay *pKernelDisplay)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1032);
     OBJGPU *pGpu = ENG_GET_GPU(pKernelDisplay);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32   hClient = pGpu->hInternalClient;
@@ -574,6 +585,7 @@ kdispGetIntChnClsForHwCls_IMPL
     DISPCHNCLASS  *pDispChnClass
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1033);
     // sanity check
     if (pDispChnClass == NULL)
         return NV_ERR_INVALID_ARGUMENT;
@@ -648,6 +660,7 @@ kdispNotifyEvent_IMPL
     NvV16          info16
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1034);
     PEVENTNOTIFICATION pEventNotifications;
     NvU32             *pNotifyActions;
     NvU32              disableCmd, singleCmd;
@@ -731,6 +744,7 @@ kdispSetWarPurgeSatellitesOnCoreFree_IMPL
     NvBool value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1035);
     pKernelDisplay->bWarPurgeSatellitesOnCoreFree = value;
 }
 
@@ -744,6 +758,7 @@ kdispRegisterRgLineCallback_IMPL
     NvBool bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1036);
     NV_ASSERT_OR_RETURN(head < OBJ_MAX_HEADS, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(rgIntrLine < MAX_RG_LINE_CALLBACKS_PER_HEAD, NV_ERR_INVALID_ARGUMENT);
 
@@ -783,6 +798,7 @@ kdispInvokeRgLineCallback_KERNEL
     NvBool bIsIrqlIsr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1037);
     NV_ASSERT_OR_RETURN_VOID(head < OBJ_MAX_HEADS);
     NV_ASSERT_OR_RETURN_VOID(rgIntrLine < MAX_RG_LINE_CALLBACKS_PER_HEAD);
 
@@ -845,6 +861,7 @@ kdispServiceVblank_KERNEL
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1038);
     NvU32      pending, check_pending, pending_checked;
     NvU32      Head;
     NvU32      maskNonEmptyQueues[OBJ_MAX_HEADS];  // array of masks of VBLANK_STATE_PROCESS_XXX_LATENCY bits, indicating which queues are non-empty
@@ -1111,6 +1128,7 @@ kdispServiceVblank_KERNEL
 
 NvU32 kdispReadPendingVblank_IMPL(OBJGPU *pGpu, KernelDisplay *pKernelDisplay, THREAD_STATE_NODE *pThreadState)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1039);
     KernelHead *pKernelHead;
     NvU32       headIdx, pending = 0;
 
@@ -1138,6 +1156,7 @@ kdispRegisterIntrService_IMPL
     IntrServiceRecord pRecords[MC_ENGINE_IDX_MAX]
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1040);
     NvU32 engineIdx = MC_ENGINE_IDX_DISP;
     NV_ASSERT(pRecords[engineIdx].pInterruptService == NULL);
     pRecords[engineIdx].pInterruptService = staticCast(pKernelDisplay, IntrService);
@@ -1172,6 +1191,7 @@ kdispInvokeDisplayModesetCallback_KERNEL
     NvU32 minRequiredFloorBandwidthKBPS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1041);
     NV_STATUS   status;
 
     NV_PRINTF(LEVEL_INFO,

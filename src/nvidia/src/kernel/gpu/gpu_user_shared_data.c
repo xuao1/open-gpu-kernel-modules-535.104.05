@@ -38,6 +38,7 @@ gpushareddataConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1958);
     NV_STATUS            status   = NV_OK;
     Memory              *pMemory  = staticCast(pData, Memory);
 
@@ -88,21 +89,25 @@ err:
 NvBool
 gpushareddataCanCopy_IMPL(GpuUserSharedData *pData)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1959);
     return NV_TRUE;
 }
 
 NV00DE_SHARED_DATA * gpushareddataWriteStart(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1960);
     return &pGpu->userSharedData.data;
 }
 
 void gpushareddataWriteFinish(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1961);
     gpuUpdateUserSharedData_HAL(pGpu);
 }
 
 void gpuUpdateUserSharedData_KERNEL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1962);
     NV00DE_SHARED_DATA *pSharedData = (NV00DE_SHARED_DATA*)(pGpu->userSharedData.pMapBuffer);
     const NvU32 data_offset = sizeof(pSharedData->seq);
     const NvU32 data_size = sizeof(NV00DE_SHARED_DATA) - data_offset;

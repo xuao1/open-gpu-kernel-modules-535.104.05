@@ -50,6 +50,7 @@ memmgrChooseKindZ_TU102
     FB_ALLOC_PAGE_FORMAT   *pFbAllocPageFormat
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2687);
     NvU32 kind      = NV_MMU_PTE_KIND_INVALID;
     NvU32 zformat   = DRF_VAL(OS32, _ATTR, _Z_TYPE, pFbAllocPageFormat->attr);
     NvU32 zspacking = DRF_VAL(OS32, _ATTR, _ZS_PACKING, pFbAllocPageFormat->attr);
@@ -121,6 +122,7 @@ memmgrChooseKindCompressZ_TU102
     FB_ALLOC_PAGE_FORMAT   *pFbAllocPageFormat
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2688);
     NvU32 kind      = NV_MMU_PTE_KIND_INVALID;
     NvU32 zformat   = DRF_VAL(OS32, _ATTR, _Z_TYPE, pFbAllocPageFormat->attr);
     NvU32 zspacking = DRF_VAL(OS32, _ATTR, _ZS_PACKING, pFbAllocPageFormat->attr);
@@ -196,6 +198,7 @@ memmgrChooseKind_TU102
     NvU32                  *pKind
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2689);
     NvU32     kind            = NV_MMU_PTE_KIND_INVALID;
     NvBool    bRmToChooseKind = NV_TRUE;
     NV_STATUS status          = NV_OK;
@@ -309,6 +312,7 @@ memmgrGetUncompressedKind_TU102
     NvBool         bReleaseReacquire
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2690);
     //
     // This check is to return GENERIC_MEMORY if mods want to bypass uncompression
     // But it doesn't work for S8 surfaces, so returning the uncompressed kind for
@@ -362,6 +366,7 @@ memmgrGetMessageKind_TU102
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2691);
     return NV_MMU_PTE_KIND_SMSKED_MESSAGE;
 }
 
@@ -377,6 +382,7 @@ memmgrGetDefaultPteKindForNoHandle_TU102
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2692);
     return NV_MMU_PTE_KIND_GENERIC_MEMORY;
 }
 
@@ -395,6 +401,7 @@ memmgrIsKindCompressible_TU102
     NvU32          kind
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2693);
     return memmgrIsKind_HAL(pMemoryManager, FB_IS_KIND_COMPRESSIBLE, kind);
 }
 
@@ -414,6 +421,7 @@ memmgrGetCtagOffsetFromParams_TU102
     FB_ALLOC_INFO   *pFbAllocInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2694);
     // Ensure max possible size of ctagOffset fits in comptagline
     ct_assert(DRF_VAL(OS32, _ALLOC, _COMPTAG_OFFSET_START, NV_U32_MAX) <
               NVBIT32(GPU_DRF_WIDTH(NV_MMU_PTE_COMPTAGLINE)));
@@ -438,6 +446,7 @@ memmgrSetCtagOffsetInParams_TU102
     NvU32          comptagOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2695);
     if (comptagOffset < (NVBIT32(GPU_DRF_WIDTH(NV_MMU_PTE_COMPTAGLINE))))
     {
         pFbAllocInfo->ctagOffset =  FLD_SET_DRF_NUM(OS32, _ALLOC, _COMPTAG_OFFSET_START, comptagOffset,
@@ -468,6 +477,7 @@ memmgrDetermineComptag_TU102
     RmPhysAddr     physAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2696);
     return 1 + NvU64_LO32(DRF_VAL64(_MMU, _PTE_COMPTAGLINE, _BITS_FROM_SPA, physAddr));
 }
 
@@ -487,6 +497,7 @@ memmgrGetHwPteKindFromSwPteKind_TU102
     NvU32          pteKind
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2697);
     if (pteKind == RM_DEFAULT_PTE_KIND)
         return NV_MMU_PTE_KIND_GENERIC_MEMORY;
     else
@@ -509,6 +520,7 @@ memmgrGetSwPteKindFromHwPteKind_TU102
     NvU32          pteKind
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2698);
     if (pteKind == NV_MMU_PTE_KIND_GENERIC_MEMORY)
         return RM_DEFAULT_PTE_KIND;
     else
@@ -530,6 +542,7 @@ memmgrGetPteKindForScrubber_TU102
     NvU32          *pteKind
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2699);
     if (pteKind == NULL)
         return;
 
@@ -548,6 +561,7 @@ memmgrGetMaxContextSize_TU102
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2700);
     extern NvU64 memmgrGetMaxContextSize_GV100(OBJGPU *pGpu, MemoryManager *pMemoryManager);
 
     NvU64  size = memmgrGetMaxContextSize_GV100(pGpu, pMemoryManager);
@@ -605,6 +619,7 @@ memmgrCalculateHeapOffsetWithGSP_TU102
     NvU32         *offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2701);
     // The heap will be located after the Console and CBC regions if they are
     // present. Zero, one, or both of them may be present. If Console and
     // CBC regions are present, they are guaranteed to be in Regions 0 and 1.

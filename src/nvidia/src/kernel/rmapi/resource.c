@@ -38,6 +38,7 @@ rmrescmnConstruct_IMPL
     RmResourceCommon *pResourceCommmon
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5644);
     return NV_OK;
 }
 
@@ -49,6 +50,7 @@ rmresConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5645);
     if (RS_IS_COPY_CTOR(pParams))
     {
         RmResource *pSrcResource = dynamicCast(pParams->pSrcRef->pResource, RmResource);
@@ -74,6 +76,7 @@ rmresAccessCallback_IMPL
     RsAccessRight accessRight
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5646);
     NV_STATUS status;
     RsResourceRef *pCliResRef;
 
@@ -101,6 +104,7 @@ rmresShareCallback_IMPL
     RS_SHARE_POLICY *pSharePolicy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5647);
     NV_STATUS status;
     RsResourceRef *pCliResRef;
 
@@ -165,6 +169,7 @@ void serverControl_InitCookie
     RmCtrlExecuteCookie                     *pRmCtrlExecuteCookie
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5648);
     // Copy from NVOC exportedEntry
     pRmCtrlExecuteCookie->cmd       = exportedEntry->methodId;
     pRmCtrlExecuteCookie->ctrlFlags = exportedEntry->flags;
@@ -186,6 +191,7 @@ NV_STATUS rmresControlLookup_IMPL
     const struct NVOC_EXPORTED_METHOD_DEF **ppEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5649);
     NvU32 cmd = pRsParams->cmd;
 
     if (RMCTRL_IS_NULL_CMD(cmd))
@@ -201,6 +207,7 @@ rmresGetMemInterMapParams_IMPL
     RMRES_MEM_INTER_MAP_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5650);
     return NV_ERR_INVALID_OBJECT_HANDLE;
 }
 
@@ -211,6 +218,7 @@ rmresCheckMemInterUnmap_IMPL
     NvBool      bSubdeviceHandleProvided
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5651);
     return NV_ERR_INVALID_OBJECT_HANDLE;
 }
 
@@ -221,6 +229,7 @@ rmresGetMemoryMappingDescriptor_IMPL
     struct MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5652);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -232,6 +241,7 @@ rmresControlSerialization_Prologue_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5653);
     OBJGPU *pGpu = gpumgrGetGpu(pResource->rpcGpuInstance);
 
     if (pGpu != NULL &&
@@ -256,6 +266,7 @@ rmresControlSerialization_Epilogue_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5654);
     OBJGPU *pGpu = gpumgrGetGpu(pResource->rpcGpuInstance);
 
     if (pGpu != NULL &&
@@ -277,6 +288,7 @@ rmresControl_Prologue_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5655);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = gpumgrGetGpu(pResource->rpcGpuInstance);
 
@@ -327,4 +339,5 @@ rmresControl_Epilogue_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5656);
 }

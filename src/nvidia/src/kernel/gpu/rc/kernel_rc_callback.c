@@ -51,6 +51,7 @@ _vgpuRcResetCallback
     RC_ERROR_CONTEXT *pRcErrorContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3920);
     OBJSYS   *pSys   = SYS_GET_INSTANCE();
     NV_STATUS status = NV_OK;
 
@@ -118,6 +119,7 @@ krcResetCallback
     NvBool   bClearRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3921);
     THREAD_STATE_NODE threadState;
     RC_ERROR_CONTEXT *pRcErrorContext = (RC_ERROR_CONTEXT *)pContext;
     OBJSYS           *pSys            = SYS_GET_INSTANCE();
@@ -230,6 +232,7 @@ krcErrorInvokeCallback_IMPL
     NvU32                    rcDiagRecStart
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3922);
     OBJSYS             *pSys              = SYS_GET_INSTANCE();
     Journal            *pRcDB             = SYS_GET_RCDB(pSys);
     OBJOS              *pOS               = SYS_GET_OS(pSys);

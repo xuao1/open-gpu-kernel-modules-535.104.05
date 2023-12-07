@@ -41,6 +41,7 @@ rmapiutilAllocClientAndDeviceHandles
     NvHandle *phSubDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5727);
     NV_STATUS rmStatus;
     NV0080_ALLOC_PARAMETERS nv0080AllocParams;
     NV2080_ALLOC_PARAMETERS nv2080AllocParams;
@@ -120,6 +121,7 @@ rmapiutilFreeClientAndDeviceHandles
     NvHandle *phSubDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5728);
     NV_ASSERT_OR_RETURN_VOID(phClient != NULL);
     NV_CHECK_OR_RETURN_VOID(LEVEL_ERROR, *phClient != NV01_NULL_OBJECT);
 
@@ -145,6 +147,7 @@ rmapiutilIsExternalClassIdInternalOnly
     NvU32 externalClassId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5729);
     RS_RESOURCE_DESC *pResDesc = RsResInfoByExternalClassId(externalClassId);
     NV_ASSERT_OR_RETURN(pResDesc != NULL, NV_FALSE);
     return (pResDesc->flags & RS_FLAGS_INTERNAL_ONLY) != 0x0;
@@ -158,6 +161,7 @@ rmapiutilGetControlInfo
     NvU32 *pAccessRight
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5730);
     RS_RESOURCE_DESC *pResourceDesc = RsResInfoByExternalClassId(DRF_VAL(XXXX, _CTRL_CMD, _CLASS, cmd));
 
     if (pResourceDesc != NULL)

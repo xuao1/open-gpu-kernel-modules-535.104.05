@@ -48,6 +48,7 @@ kccuMigShrBufHandler_GH100
     NvBool    bMigEnabled
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 708);
     NV_STATUS status = NV_OK;
 
     NV_PRINTF(LEVEL_INFO, "Create/delete CCU shared buffers for mig (migEnabled:%u)\n",

@@ -28,6 +28,7 @@
 NV_STATUS
 kheadConstruct_IMPL(KernelHead *pKernelHead)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 982);
     pKernelHead->Vblank.IntrState = NV_HEAD_VBLANK_INTR_UNAVAILABLE;
     return NV_OK;
 }
@@ -38,6 +39,7 @@ kheadGetVblankTotalCounter_IMPL
     KernelHead *pKernelHead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 983);
     return pKernelHead->Vblank.Counters.Total;
 }
 
@@ -48,6 +50,7 @@ kheadSetVblankTotalCounter_IMPL
     NvU32    counter
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 984);
     pKernelHead->Vblank.Counters.Total = counter;
 }
 
@@ -57,6 +60,7 @@ kheadGetVblankLowLatencyCounter_IMPL
     KernelHead *pKernelHead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 985);
     return pKernelHead->Vblank.Counters.LowLatency;
 }
 
@@ -67,6 +71,7 @@ kheadSetVblankLowLatencyCounter_IMPL
     NvU32    counter
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 986);
     pKernelHead->Vblank.Counters.LowLatency = counter;
 }
 
@@ -76,6 +81,7 @@ kheadGetVblankNormLatencyCounter_IMPL
     KernelHead *pKernelHead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 987);
     return pKernelHead->Vblank.Counters.NormLatency;
 }
 
@@ -86,6 +92,7 @@ kheadSetVblankNormLatencyCounter_IMPL
     NvU32    counter
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 988);
     pKernelHead->Vblank.Counters.NormLatency = counter;
 }
 
@@ -98,6 +105,7 @@ kheadIsVblankCallbackDue
     NvU32           vblankCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 989);
     if (pCallback->Flags & VBLANK_CALLBACK_FLAG_SPECIFIED_TIMESTAMP)
     {
         //
@@ -157,6 +165,7 @@ kheadCheckVblankCallbacksQueued_IMPL
     NvU32   *expiring
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 990);
     OBJTMR           *pTmr;
     NvU64             time;
     NvU32             queues = 0;
@@ -234,6 +243,7 @@ kheadReadVblankIntrState_IMPL
     KernelHead *pKernelHead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 991);
     // Check to make sure that our SW state grooves with the HW state
     if (kheadReadVblankIntrEnable_HAL(pGpu, pKernelHead))
     {
@@ -296,6 +306,7 @@ kheadWriteVblankIntrState_IMPL
     NvU32    newstate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 992);
     NvU32 previous;
     NvBool enablehw = NV_FALSE; // Dont update the hw by default
     NvBool updatehw = NV_FALSE; // Dont enable the hw by default

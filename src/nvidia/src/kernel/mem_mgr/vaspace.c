@@ -38,12 +38,14 @@
 void
 vaspaceIncRefCnt_IMPL(OBJVASPACE *pVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4717);
     pVAS->refCnt++;
 }
 
 void
 vaspaceDecRefCnt_IMPL(OBJVASPACE *pVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4718);
     NV_ASSERT_OR_RETURN_VOID(pVAS->refCnt != 0);
     pVAS->refCnt--;
 }
@@ -61,6 +63,7 @@ vaspaceFillAllocParams_IMPL
     VAS_ALLOC_FLAGS *pFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4719);
     NvBool bRestrictedVaRange = NV_FALSE;
     NvBool bEnforce32bitPtr = NV_FALSE;
     NvU32 vasFlags =  vaspaceGetFlags(pVAS);
@@ -203,12 +206,14 @@ vaspaceFillAllocParams_IMPL
 NvU64
 vaspaceGetVaStart_IMPL(OBJVASPACE *pVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4720);
     return pVAS->vasStart;
 }
 
 NvU64
 vaspaceGetVaLimit_IMPL(OBJVASPACE *pVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4721);
     return pVAS->vasLimit;
 }
 
@@ -220,12 +225,14 @@ vaspaceInvalidateTlb_IMPL
     VAS_PTE_UPDATE_TYPE  type
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4722);
     NV_ASSERT(0);
 }
 
 NvBool
 vaspaceIsInternalVaRestricted_IMPL(OBJVASPACE *pVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4723);
     return NV_FALSE;
 }
 
@@ -238,6 +245,7 @@ vaspaceGetByHandleOrDeviceDefault_IMPL
     OBJVASPACE **ppVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4724);
     NV_STATUS      status = NV_OK;
     NvHandle       _hDeviceOrSubDevice;
     Device        *pDevice    = NULL;

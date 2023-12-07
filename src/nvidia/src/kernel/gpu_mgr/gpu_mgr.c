@@ -54,6 +54,7 @@ static NvBool _gpumgrGetPcieP2PCapsFromCache(NvU32 gpuMask, NvU8* pP2PWriteCapsS
 static void
 _gpumgrUnregisterRmCapsForGpuUnderLock(NvU64 gpuDomainBusDevice)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4305);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -77,6 +78,7 @@ _gpumgrUnregisterRmCapsForGpuUnderLock(NvU64 gpuDomainBusDevice)
 static void
 _gpumgrUnregisterRmCapsForGpu(NvU64 gpuDomainBusDevice)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4306);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
 
@@ -88,6 +90,7 @@ _gpumgrUnregisterRmCapsForGpu(NvU64 gpuDomainBusDevice)
 static NV_STATUS
 _gpumgrRegisterRmCapsForGpu(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4307);
     NV_STATUS status = NV_ERR_INVALID_STATE;
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
@@ -132,6 +135,7 @@ _gpumgrDetermineConfComputeCapabilities
     OBJGPU    *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4308);
     NvBool bCCFeatureEnabled = NV_FALSE;
     ConfidentialCompute *pCC = GPU_GET_CONF_COMPUTE(pGpu);
     bCCFeatureEnabled = (pCC != NULL) &&
@@ -185,6 +189,7 @@ _gpumgrDetermineConfComputeCapabilities
 NV_STATUS
 gpumgrConstruct_IMPL(OBJGPUMGR *pGpuMgr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4309);
     NvU32 i;
 
     NV_PRINTF(LEVEL_INFO, "gpumgrConstruct\n");
@@ -225,6 +230,7 @@ gpumgrConstruct_IMPL(OBJGPUMGR *pGpuMgr)
 void
 gpumgrDestruct_IMPL(OBJGPUMGR *pGpuMgr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4310);
     NV_PRINTF(LEVEL_INFO, "gpumgrDestruct\n");
 
     portSyncMutexDestroy(pGpuMgr->probedGpusLock);
@@ -241,6 +247,7 @@ gpumgrDestruct_IMPL(OBJGPUMGR *pGpuMgr)
 NV_STATUS
 gpumgrAllocGpuInstance(NvU32 *pGpuInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4311);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
 
@@ -278,6 +285,7 @@ gpumgrAllocGpuInstance(NvU32 *pGpuInstance)
 static void
 _gpumgrShiftDownGpuHandles(NvU32 startIndex)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4312);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i, lastMovedIndex = startIndex;
@@ -303,6 +311,7 @@ _gpumgrShiftDownGpuHandles(NvU32 startIndex)
 static void
 _gpumgrDestroyGpu(NvU32 gpuInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4313);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     OBJGPU    *pGpu;
@@ -331,6 +340,7 @@ _gpumgrDestroyGpu(NvU32 gpuInstance)
 POBJGPU
 gpumgrGetGpu(NvU32 gpuInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4314);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -346,6 +356,7 @@ gpumgrGetGpu(NvU32 gpuInstance)
 POBJGPU
 gpumgrGetSomeGpu(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4315);
     OBJGPU *pGpu        = NULL;
     NvU32   gpuMask     = 0;
     NvU32   gpuIndex    = 0;
@@ -379,6 +390,7 @@ gpumgrGetSomeGpu(void)
 NV_STATUS
 gpumgrAllocDeviceInstance(NvU32 *pDeviceInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4316);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -406,6 +418,7 @@ gpumgrAllocDeviceInstance(NvU32 *pDeviceInstance)
 NV_STATUS
 gpumgrGetGpuAttachInfo(NvU32 *pGpuCnt, NvU32 *pGpuMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4317);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
 
@@ -419,6 +432,7 @@ gpumgrGetGpuAttachInfo(NvU32 *pGpuCnt, NvU32 *pGpuMask)
 NvU32
 gpumgrGetDeviceGpuMask(NvU32 deviceInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4318);
     OBJGPUGRP  *pGpuGrp = gpumgrGetGpuGrpFromInstance(deviceInstance);
 
     if (pGpuGrp == NULL)
@@ -435,6 +449,7 @@ gpumgrGetDeviceGpuMask(NvU32 deviceInstance)
 NV_STATUS
 gpumgrIsDeviceInstanceValid(NvU32 deviceInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4319);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     OBJGPUGRP *pGpuGrp = NULL;
@@ -455,6 +470,7 @@ gpumgrIsDeviceInstanceValid(NvU32 deviceInstance)
 NvBool
 gpumgrIsSubDeviceInstanceValid(NvU32 subDeviceInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4320);
     if (subDeviceInstance >= NV2080_MAX_SUBDEVICES)
         return NV_FALSE;
 
@@ -463,6 +479,7 @@ gpumgrIsSubDeviceInstanceValid(NvU32 subDeviceInstance)
 
 NvU32 gpumgrGetPrimaryForDevice(NvU32 deviceInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4321);
     NvU32 gpuMask, gpuInstance = 0;
     OBJGPU *pGpu = NULL;
 
@@ -496,6 +513,7 @@ NvU32 gpumgrGetPrimaryForDevice(NvU32 deviceInstance)
 NvBool
 gpumgrIsDeviceEnabled(NvU32 deviceInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4322);
     NvU32   gpuMask, gpuInstance = 0;
     NvBool  bEnabled;
 
@@ -536,6 +554,7 @@ gpumgrIsDeviceEnabled(NvU32 deviceInstance)
 NV_STATUS
 gpumgrRegisterGpuId(NvU32 gpuId, NvU64 gpuDomainBusDevice)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4323);
     NV_STATUS status = NV_ERR_INSUFFICIENT_RESOURCES;
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
@@ -583,6 +602,7 @@ done:
 NV_STATUS
 gpumgrUnregisterGpuId(NvU32 gpuId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4324);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -621,6 +641,7 @@ done:
 NV_STATUS
 gpumgrExcludeGpuId(NvU32 gpuId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4325);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -652,6 +673,7 @@ done:
 NV_STATUS
 gpumgrSetUuid(NvU32 gpuId, NvU8 *uuid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4326);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -686,6 +708,7 @@ done:
 static NV_STATUS
 gpumgrGetCachedUuid(NvU32 gpuId, NvU8 *uuid, unsigned int len)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4327);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -721,6 +744,7 @@ done:
 NV_STATUS
 gpumgrGetGpuUuidInfo(NvU32 gpuId, NvU8 **ppUuidStr, NvU32 *pUuidStrLen, NvU32 uuidFlags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4328);
     NvU8 *pUuid;
     NV_STATUS status;
 
@@ -762,6 +786,7 @@ gpumgrGetGpuUuidInfo(NvU32 gpuId, NvU8 **ppUuidStr, NvU32 *pUuidStrLen, NvU32 uu
 static void
 gpumgrGetGpuHalFactorOfVirtual(NvBool *pIsVirtual, GPUATTACHARG *pAttachArg)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4329);
     *pIsVirtual = NV_FALSE;
 }
 
@@ -770,6 +795,7 @@ NvBool gpumgrGetRmFirmwareLogsEnabled
     NvU32   enableFirmwareLogsRegVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4330);
     // Check for logs
     if ((enableFirmwareLogsRegVal == NV_REG_ENABLE_GPU_FIRMWARE_LOGS_ENABLE)
 #if defined(DEBUG) || defined(DEVELOP)
@@ -793,6 +819,7 @@ void gpumgrGetRmFirmwarePolicy
     NvBool *pbAllowFallbackToMonolithicRm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4331);
     NvBool bFirmwareCapable = NV_FALSE;
     NvBool bEnableByDefault = NV_FALSE;
     NvU32  regkeyFirmwareMode;
@@ -814,22 +841,26 @@ void gpumgrGetRmFirmwarePolicy
 
 static NvBool _gpumgrIsRmFirmwareCapableChip(NvU32 pmcBoot42)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4332);
     return (DRF_VAL(_PMC, _BOOT_42, _ARCHITECTURE, pmcBoot42) >= NV_PMC_BOOT_42_ARCHITECTURE_TU100);
 }
 
 static NvBool _gpumgrIsVgxRmFirmwareCapableChip(NvU32 pmcBoot42)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4333);
     return (DRF_VAL(_PMC, _BOOT_42, _ARCHITECTURE, pmcBoot42) >= NV_PMC_BOOT_42_ARCHITECTURE_GA100) &&
            (DRF_VAL(_PMC, _BOOT_42, _CHIP_ID, pmcBoot42) > NV_PMC_BOOT_42_CHIP_ID_GA100);
 }
 
 static NvBool _gpumgrIsRmFirmwareDefaultChip(NvU32 pmcBoot42)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4334);
     return (DRF_VAL(_PMC, _BOOT_42, _ARCHITECTURE, pmcBoot42) == NV_PMC_BOOT_42_ARCHITECTURE_GH100);
 }
 
 static NvBool _gpumgrIsVgxRmFirmwareDefaultChip(NvU32 pmcBoot42)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4335);
     if (DRF_VAL(_PMC, _BOOT_42, _ARCHITECTURE, pmcBoot42) == NV_PMC_BOOT_42_ARCHITECTURE_GH100)
         return NV_TRUE;
 
@@ -847,6 +878,7 @@ NvBool gpumgrIsDeviceRmFirmwareCapable
     NvBool *pbEnabledByDefault
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4336);
     NvBool bEnabledByDefault = NV_FALSE;
     NvBool bFirmwareCapable  = NV_TRUE;
 
@@ -950,6 +982,7 @@ static NvBool gpumgrCheckRmFirmwarePolicy
     NvU32  pmcBoot42
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4337);
 
     if (!bRequestFwClientRm)
         return NV_FALSE;
@@ -980,6 +1013,7 @@ gpumgrGetGpuHalFactor
     GPUATTACHARG *pAttachArg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4338);
     NvBool isVirtual;
     NvBool isFwClient;
 
@@ -1051,6 +1085,7 @@ gpumgrGetGpuHalFactor
 static NV_STATUS
 _gpumgrCreateGpu(NvU32 gpuInstance, GPUATTACHARG *pAttachArg)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4339);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     OBJGPU    *pGpu;
@@ -1111,6 +1146,7 @@ _gpumgrCreateGpu(NvU32 gpuInstance, GPUATTACHARG *pAttachArg)
 static void
 _gpumgrGetEncSessionStatsReportingState(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4340);
 }
 
 //
@@ -1124,6 +1160,7 @@ _gpumgrGetEncSessionStatsReportingState(OBJGPU *pGpu)
 NV_STATUS
 gpumgrAttachGpu(NvU32 gpuInstance, GPUATTACHARG *pAttachArg)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4341);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     OBJGPU    *pGpu = NULL;
@@ -1240,6 +1277,7 @@ gpumgrAttach_error_and_exit:
 NV_STATUS
 gpumgrDetachGpu(NvU32 gpuInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4342);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     OBJGPU *pGpu = gpumgrGetGpu(gpuInstance);
@@ -1284,6 +1322,7 @@ gpumgrDetachGpu(NvU32 gpuInstance)
 NV_STATUS
 gpumgrCreateDevice(NvU32 *pDeviceInstance, NvU32 gpuMask, NvU32 *pGpuIdsOrdinal)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4343);
     OBJSYS    *pSys       = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr    = SYS_GET_GPUMGR(pSys);
     OBJGPU    *pParentGpu = NULL;
@@ -1350,6 +1389,7 @@ gpumgrCreateDevice_exit:
 NV_STATUS
 gpumgrDestroyDevice(NvU32 deviceInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4344);
     OBJSYS    *pSys    = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NV_STATUS  status  = NV_OK;
@@ -1386,6 +1426,7 @@ gpumgrDestroyDevice_exit:
 NvU32
 gpumgrGetDeviceInstanceMask(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4345);
     NvU32 i, deviceInstanceMask = 0;
 
     // for every broadcast device...
@@ -1402,6 +1443,7 @@ gpumgrGetDeviceInstanceMask(void)
 NvU32
 gpumgrGetGpuMask(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4346);
     NvU32 deviceInstance = gpuGetDeviceInstance(pGpu);
 
     NV_ASSERT(deviceInstance < NV_MAX_DEVICES);
@@ -1415,6 +1457,7 @@ gpumgrGetGpuMask(OBJGPU *pGpu)
 NvU32
 gpumgrGetSubDeviceCount(NvU32 gpuMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4347);
     NvU32 subDeviceCount = 0;
 
     // tally # of gpus in the set
@@ -1440,6 +1483,7 @@ gpumgrGetSubDeviceCount(NvU32 gpuMask)
 NvU32
 gpumgrGetSubDeviceCountFromGpu(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4348);
     NvU32 gpuMask = gpumgrGetGpuMask(pGpu);
     NvU32 subDeviceCount = gpumgrGetSubDeviceCount(gpuMask);
 
@@ -1457,6 +1501,7 @@ gpumgrGetSubDeviceCountFromGpu(OBJGPU *pGpu)
 NvU32
 gpumgrGetSubDeviceMaxValuePlus1(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4349);
     if (!IsSLIEnabled(pGpu))
     {
         // SLI disabled: return 1 as all GPU subdevice instances are 0
@@ -1473,6 +1518,7 @@ gpumgrGetSubDeviceMaxValuePlus1(OBJGPU *pGpu)
 static void
 gpumgrSetAttachInfo(OBJGPU *pGpu, GPUATTACHARG *pAttachArg)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4350);
     NvU32 gpuId = NV0000_CTRL_GPU_INVALID_ID;
 
     if (pAttachArg->socDeviceArgs.specified)
@@ -1596,6 +1642,7 @@ gpumgrSetAttachInfo(OBJGPU *pGpu, GPUATTACHARG *pAttachArg)
 NV_STATUS
 gpumgrStatePreInitGpu(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4351);
     NV_STATUS status;
 
     // LOCK: acquire GPUs lock
@@ -1625,6 +1672,7 @@ gpumgrStatePreInitGpu(OBJGPU *pGpu)
 NV_STATUS
 gpumgrStateInitGpu(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4352);
     NV_STATUS status;
 
     // LOCK: acquire GPUs lock
@@ -1647,6 +1695,7 @@ gpumgrStateInitGpu(OBJGPU *pGpu)
 NV_STATUS
 gpumgrStateLoadGpu(OBJGPU *pGpu, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4353);
     NV_STATUS status;
 
     // LOCK: acquire GPUs lock
@@ -1681,6 +1730,7 @@ gpumgrStateLoadGpu_exit:
 POBJGPU
 gpumgrGetNextGpu(NvU32 subDeviceMask, NvU32 *pStartIndex)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4354);
     NvU32 i;
 
     if (*pStartIndex > NV_MAX_DEVICES)
@@ -1709,6 +1759,7 @@ gpumgrGetNextGpu(NvU32 subDeviceMask, NvU32 *pStartIndex)
 NvBool
 gpumgrIsGpuPointerValid(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4355);
     OBJGPU    *pTempGpu       = NULL;
     NvU32      gpuMask        = 0;
     NvU32      gpuCount       = 0;
@@ -1735,6 +1786,7 @@ gpumgrIsGpuPointerValid(OBJGPU *pGpu)
 
 NvBool gpumgrIsGpuDisplayParent(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4356);
     OBJGPUGRP *pGpuGrp = gpumgrGetGpuGrpFromGpu(pGpu);
     NvBool     rc      = NV_FALSE;
     NvU32      gpuMask;
@@ -1762,6 +1814,7 @@ NvBool gpumgrIsGpuDisplayParent(OBJGPU *pGpu)
 
 OBJGPU *gpumgrGetDisplayParent(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4357);
     OBJGPUGRP *pGpuGrp = gpumgrGetGpuGrpFromGpu(pGpu);
     NvU32      gpuCount;
     NvU32      gpuMask;
@@ -1793,6 +1846,7 @@ OBJGPU *gpumgrGetDisplayParent(OBJGPU *pGpu)
 NV_STATUS
 gpumgrGetProbedGpuIds(NV0000_CTRL_GPU_GET_PROBED_IDS_PARAMS *pGpuIdsParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4358);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i, j, k;
@@ -1834,6 +1888,7 @@ gpumgrGetProbedGpuIds(NV0000_CTRL_GPU_GET_PROBED_IDS_PARAMS *pGpuIdsParams)
 NV_STATUS
 gpumgrGetAttachedGpuIds(NV0000_CTRL_GPU_GET_ATTACHED_IDS_PARAMS *pGpuIdsParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4359);
     OBJGPU *pGpu;
     NvU32 gpuAttachCnt, gpuAttachMask, i, cnt;
     NvU32 *pGpuIds = &pGpuIdsParams->gpuIds[0];
@@ -1864,6 +1919,7 @@ gpumgrGetAttachedGpuIds(NV0000_CTRL_GPU_GET_ATTACHED_IDS_PARAMS *pGpuIdsParams)
 NvU32
 gpumgrGetSubDeviceInstanceFromGpu(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4360);
     return pGpu->subdeviceInstance;
 }
 
@@ -1873,6 +1929,7 @@ gpumgrGetSubDeviceInstanceFromGpu(OBJGPU *pGpu)
 POBJGPU
 gpumgrGetParentGPU(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4361);
     OBJGPUGRP *pGpuGrp = gpumgrGetGpuGrpFromGpu(pGpu);
     NvU32      gpuMask;
 
@@ -1895,6 +1952,7 @@ gpumgrGetParentGPU(OBJGPU *pGpu)
 void
 gpumgrSetParentGPU(OBJGPU *pGpu, OBJGPU *pParentGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4362);
     OBJGPUGRP *pGpuGrp = gpumgrGetGpuGrpFromGpu(pGpu);
 
     NV_ASSERT_OR_RETURN_VOID(pGpuGrp != NULL);
@@ -1909,6 +1967,7 @@ gpumgrSetParentGPU(OBJGPU *pGpu, OBJGPU *pParentGpu)
 POBJGPU
 gpumgrGetGpuFromId(NvU32 gpuId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4363);
     OBJGPU *pGpu;
     NvU32 gpuAttachCnt, gpuAttachMask;
     NvU32 i;
@@ -1939,6 +1998,7 @@ gpumgrGetGpuFromId(NvU32 gpuId)
 POBJGPU
 gpumgrGetGpuFromUuid(const NvU8 *pGpuUuid, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4364);
      OBJGPU *pGpu;
      NvU32 attachedGpuCount;
      NvU32 attachedGpuMask;
@@ -1990,6 +2050,7 @@ gpumgrGetGpuFromUuid(const NvU8 *pGpuUuid, NvU32 flags)
 POBJGPU
 gpumgrGetGpuFromBusInfo(NvU32 domain, NvU8 bus, NvU8 device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4365);
     NV_STATUS status;
     OBJGPU *pGpu;
     NvU32 attachedGpuCount;
@@ -2022,6 +2083,7 @@ gpumgrGetGpuFromBusInfo(NvU32 domain, NvU8 bus, NvU8 device)
 void
 gpumgrSetGpuId(OBJGPU *pGpu, NvU32 gpuId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4366);
     pGpu->gpuId = gpuId;
 
     // if boardId is unassigned then give it a default value now
@@ -2042,6 +2104,7 @@ gpumgrSetGpuId(OBJGPU *pGpu, NvU32 gpuId)
 NV_STATUS
 gpumgrGetGpuIdInfoV2(NV0000_CTRL_GPU_GET_ID_INFO_V2_PARAMS *pGpuInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4367);
     OBJGPU *pGpu;
     NvU32 deviceInstance, subDeviceInstance;
 
@@ -2146,6 +2209,7 @@ gpumgrGetGpuIdInfoV2(NV0000_CTRL_GPU_GET_ID_INFO_V2_PARAMS *pGpuInfo)
 NV_STATUS
 gpumgrGetGpuIdInfo(NV0000_CTRL_GPU_GET_ID_INFO_PARAMS *pGpuInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4368);
     NV_STATUS status;
     NV0000_CTRL_GPU_GET_ID_INFO_V2_PARAMS pGpuInfoV2 = {0};
     pGpuInfoV2.gpuId = pGpuInfo->gpuId;
@@ -2176,6 +2240,7 @@ gpumgrGetGpuIdInfo(NV0000_CTRL_GPU_GET_ID_INFO_PARAMS *pGpuInfo)
 NV_STATUS
 gpumgrGetGpuInitStatus(NV0000_CTRL_GPU_GET_INIT_STATUS_PARAMS *pGpuInitStatus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4369);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -2214,6 +2279,7 @@ done:
 NV_STATUS
 gpumgrGetProbedGpuDomainBusDevice(NvU32 gpuId, NvU64 *gpuDomainBusDevice)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4370);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -2256,6 +2322,7 @@ done:
 void
 gpumgrSetGpuInitStatus(NvU32 gpuId, NV_STATUS status)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4371);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -2286,6 +2353,7 @@ gpumgrSetGpuInitStatus(NvU32 gpuId, NV_STATUS status)
 void
 gpumgrUpdateBoardId_IMPL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4372);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL *pCl = SYS_GET_CL(pSys);
     void *handleUp;
@@ -2331,6 +2399,7 @@ gpumgrGetDefaultPrimaryGpu
     NvU32 gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4373);
     OBJGPU     *pGpu = NULL;
     NvU32       gpuInstance;
 
@@ -2398,6 +2467,7 @@ gpumgrGetDefaultPrimaryGpu
 void
 gpumgrServiceInterrupts_IMPL(NvU32 gpuMask, MC_ENGINE_BITVECTOR *engineMask, NvBool bExhaustive)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4374);
     OBJGPU *pGpu;
     NvU32 gpuInstance = 0;
 
@@ -2439,6 +2509,7 @@ gpumgrGetGpuLockAndDrPorts
     NvU32 *pPinsetIn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4375);
 
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
@@ -2517,6 +2588,7 @@ gpumgrGetGpuLockAndDrPorts
 NV_STATUS
 gpumgrGetBootPrimary(OBJGPU **ppGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4376);
     NvU32 gpuCount, gpuMask, idx1;
     OBJGPU *pGpu = NULL;
 
@@ -2544,6 +2616,7 @@ gpumgrGetBootPrimary(OBJGPU **ppGpu)
 //
 OBJGPU *gpumgrGetMGpu (void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4377);
     OBJGPU *pGpu;
     NvU32 gpuCount, gpuMask, gpuIndex = 0;
     // Parse through all the GPUs
@@ -2569,6 +2642,7 @@ OBJGPU *gpumgrGetMGpu (void)
 //
 RmPhysAddr gpumgrGetGpuPhysFbAddr(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4378);
     RmPhysAddr physFbAddr;
 
     physFbAddr = pGpu->busInfo.gpuPhysFbAddr;
@@ -2584,6 +2658,7 @@ RmPhysAddr gpumgrGetGpuPhysFbAddr(OBJGPU *pGpu)
 POBJGPU
 gpumgrGetGpuFromSubDeviceInst(NvU32 deviceInst, NvU32 subDeviceInst)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4379);
     OBJGPU    *pGpu     = NULL;
     OBJGPUGRP *pGpuGrp  = NULL;
     NvU32 gpuInst = 0;
@@ -2627,6 +2702,7 @@ gpumgrGetGpuFromSubDeviceInst(NvU32 deviceInst, NvU32 subDeviceInst)
 NV_STATUS
 gpumgrAddDeviceInstanceToGpus(NvU32 gpuMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4380);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NV_STATUS rmStatus = NV_ERR_OBJECT_NOT_FOUND;
@@ -2670,6 +2746,7 @@ gpumgrGetGpuGrpFromInstance
     NvU32      gpugrpInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4381);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NV_ASSERT_OR_RETURN(gpugrpInstance < NV_MAX_DEVICES, NULL);
@@ -2690,6 +2767,7 @@ gpumgrGetGpuGrpFromGpu
     OBJGPU    *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4382);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 gpugrpInstance = gpuGetDeviceInstance(pGpu);
@@ -2716,6 +2794,7 @@ gpumgrConstructGpuGrpObject
     OBJGPUGRP **ppGpuGrp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4383);
     NV_STATUS  status;
 
     status = objCreate(ppGpuGrp, pGpuMgr, OBJGPUGRP);
@@ -2755,6 +2834,7 @@ gpumgrModifyGpuDrainState
     NvBool  bLinkDisable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4384);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR  *pGpuMgr = SYS_GET_GPUMGR(pSys);
     OBJGPU     *pGpu;
@@ -2837,6 +2917,7 @@ gpumgrQueryGpuDrainState
     NvBool *pBRemove
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4385);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR  *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32       i;
@@ -2889,6 +2970,7 @@ gpumgrGetGrpMaskFromGpuInst
     NvU32      gpuInst
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4386);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
 
@@ -2909,6 +2991,7 @@ gpumgrAddDeviceMaskToGpuInstTable
     NvU32 gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4387);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR  *pGpuMgr = SYS_GET_GPUMGR(pSys);
     int gpuInst;
@@ -2935,6 +3018,7 @@ gpumgrClearDeviceMaskFromGpuInstTable
     NvU32 gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4388);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR  *pGpuMgr = SYS_GET_GPUMGR(pSys);
     int gpuInst;
@@ -2961,6 +3045,7 @@ gpumgrAddSystemNvlinkTopo_IMPL
     NvU64 DomainBusDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4389);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -2999,6 +3084,7 @@ gpumgrGetSystemNvlinkTopo_IMPL
     PNVLINK_TOPOLOGY_PARAMS pTopoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4390);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i, idx;
@@ -3058,6 +3144,7 @@ gpumgrUpdateSystemNvlinkTopo_IMPL
     PNVLINK_TOPOLOGY_PARAMS pTopoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4391);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i, idx;
@@ -3111,6 +3198,7 @@ gpumgrCheckIndirectPeer_IMPL
     OBJGPU *pRemoteGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4392);
 #if defined(NVCPU_PPC64LE)
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
 
@@ -3155,6 +3243,7 @@ gpumgrSetGpuInitDisabledNvlinks_IMPL
     NvBool  bSkipHwNvlinkDisable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4393);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR  *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NV_STATUS   status = NV_ERR_INVALID_DEVICE;
@@ -3200,6 +3289,7 @@ gpumgrGetGpuInitDisabledNvlinks_IMPL
     NvBool  *pbSkipHwNvlinkDisable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4394);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR  *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NV_STATUS   status = NV_ERR_INVALID_DEVICE;
@@ -3231,6 +3321,7 @@ gpumgrGetGpuInitDisabledNvlinks_IMPL
 NvU8
 gpumgrGetGpuNvlinkBwMode_IMPL(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4395);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR  *pGpuMgr = SYS_GET_GPUMGR(pSys);
 
@@ -3249,6 +3340,7 @@ gpumgrSetGpuNvlinkBwModeFromRegistry_IMPL
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4396);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR  *pGpuMgr = SYS_GET_GPUMGR(pSys);
     const char *pStrChar;
@@ -3299,6 +3391,7 @@ out:
 static NvBool
 _gpumgrIsP2PObjectPresent(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4397);
     NvU32 attachedGpuCount;
     NvU32 attachedGpuMask;
     KernelBus *pKernelBus;
@@ -3340,6 +3433,7 @@ gpumgrSetGpuNvlinkBwMode_IMPL
     NvU8 mode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4398);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR  *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NV_STATUS  status;
@@ -3381,6 +3475,7 @@ gpumgrAddSystemMIGInstanceTopo_IMPL
     NvU64 domainBusDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4399);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -3428,6 +3523,7 @@ gpumgrGetSystemMIGInstanceTopo_IMPL
     GPUMGR_SAVE_MIG_INSTANCE_TOPOLOGY **ppTopology
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4400);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -3469,6 +3565,7 @@ gpumgrIsSystemMIGEnabled_IMPL
     NvU64 domainBusDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4401);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -3507,6 +3604,7 @@ gpumgrSetSystemMIGEnabled_IMPL
     NvBool bMIGEnabled
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4402);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 i;
@@ -3529,6 +3627,7 @@ gpumgrSetSystemMIGEnabled_IMPL
 static void
 _gpumgrUnregisterRmCapsForMIGCI(GPUMGR_SAVE_GPU_INSTANCE *pGPUInstanceSave)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4403);
     GPUMGR_SAVE_COMPUTE_INSTANCE *pComputeInstanceSave;
     NvU32 i;
 
@@ -3552,6 +3651,7 @@ _gpumgrUnregisterRmCapsForMIGCI(GPUMGR_SAVE_GPU_INSTANCE *pGPUInstanceSave)
 void
 gpumgrUnregisterRmCapsForMIGGI_IMPL(NvU64 gpuDomainBusDevice)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4404);
     GPUMGR_SAVE_MIG_INSTANCE_TOPOLOGY *pTopologySave;
     GPUMGR_SAVE_GPU_INSTANCE *pGPUInstanceSave;
     NvU32 i;
@@ -3590,6 +3690,7 @@ gpumgrUnregisterRmCapsForMIGGI_IMPL(NvU64 gpuDomainBusDevice)
 NvBool
 gpumgrSetGpuAcquire(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4405);
     NvU32 **ppGpuInstance;
     ppGpuInstance = (NvU32 **)tlsEntryAcquire
                     (TLS_ENTRY_ID_CURRENT_GPU_INSTANCE);
@@ -3607,6 +3708,7 @@ gpumgrSetGpuAcquire(OBJGPU *pGpu)
 void
 gpumgrSetGpuRelease(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4406);
     tlsEntryRelease(TLS_ENTRY_ID_CURRENT_GPU_INSTANCE);
 }
 
@@ -3616,6 +3718,7 @@ gpumgrSetGpuRelease(void)
 NvU8
 gpumgrGetGpuBridgeType(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4407);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
 
@@ -3628,6 +3731,7 @@ gpumgrGetGpuBridgeType(void)
 NV_STATUS
 gpumgrInitPcieP2PCapsCache_IMPL(OBJGPUMGR* pGpuMgr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4408);
     listInitIntrusive(&pGpuMgr->pcieP2PCapsInfoCache);
     pGpuMgr->pcieP2PCapsInfoLock = portSyncMutexCreate(portMemAllocatorGetGlobalNonPaged());
     if (pGpuMgr->pcieP2PCapsInfoLock == NULL)
@@ -3643,6 +3747,7 @@ gpumgrInitPcieP2PCapsCache_IMPL(OBJGPUMGR* pGpuMgr)
 void
 gpumgrDestroyPcieP2PCapsCache_IMPL(OBJGPUMGR* pGpuMgr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4409);
     PCIEP2PCAPSINFO *pPcieCapsInfo, *pPcieCapsInfoNext;
 
     portSyncMutexAcquire(pGpuMgr->pcieP2PCapsInfoLock);
@@ -3678,6 +3783,7 @@ gpumgrStorePcieP2PCapsCache_IMPL
     NvU8   p2pReadCapsStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4410);
     OBJSYS          *pSys     = SYS_GET_INSTANCE();
     OBJGPUMGR       *pGpuMgr  = SYS_GET_GPUMGR(pSys);
     PCIEP2PCAPSINFO *pPcieCapsInfo;
@@ -3814,6 +3920,7 @@ gpumgrGetPcieP2PCapsFromCache_IMPL
     NvU8   *pP2PReadCapsStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4411);
     OBJSYS    *pSys    = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvBool     bFound;
@@ -3839,6 +3946,7 @@ gpumgrRemovePcieP2PCapsFromCache_IMPL
    NvU32 gpuId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4412);
     OBJSYS          *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR       *pGpuMgr = SYS_GET_GPUMGR(pSys);
     PCIEP2PCAPSINFO *pPcieCapsInfo, *pPcieCapsInfoNext;
@@ -3871,6 +3979,7 @@ gpumgrRemovePcieP2PCapsFromCache_IMPL
 
 NvBool gpumgrAreAllGpusInOffloadMode(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4413);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
 
@@ -3879,6 +3988,7 @@ NvBool gpumgrAreAllGpusInOffloadMode(void)
 
 NvBool gpumgrIsSafeToReadGpuInfo(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4414);
     //
     // A thread that tears down the GPU must own both the API lock for WRITE
     // and all GPU locks.

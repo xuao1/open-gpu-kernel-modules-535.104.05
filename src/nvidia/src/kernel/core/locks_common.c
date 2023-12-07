@@ -34,6 +34,7 @@ static NvBool s_bRmLocksAllocated = NV_FALSE;
 NV_STATUS
 rmLocksAlloc(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 83);
     NV_STATUS status;
 
     s_bRmLocksAllocated = NV_FALSE;
@@ -60,6 +61,7 @@ rmLocksAlloc(OBJSYS *pSys)
 void
 rmLocksFree(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 84);
     if (s_bRmLocksAllocated)
     {
         rmDestroyLockMetering();
@@ -83,6 +85,7 @@ rmLocksFree(OBJSYS *pSys)
 NV_STATUS
 rmLocksAcquireAll(NvU32 module)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 85);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
 
     if (osAcquireRmSemaForced(pSys->pSema) != NV_OK)
@@ -115,6 +118,7 @@ rmLocksAcquireAll(NvU32 module)
 void
 rmLocksReleaseAll(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 86);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
 
     rmGpuLocksRelease(GPUS_LOCK_FLAGS_NONE, NULL);
@@ -126,6 +130,7 @@ rmLocksReleaseAll(void)
 NV_STATUS
 workItemLocksAcquire(NvU32 gpuInstance, NvU32 flags, NvU32 *pReleaseLocks, NvU32 *pGpuMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 87);
     OBJSYS   *pSys = SYS_GET_INSTANCE();
     OBJGPU   *pGpu;
     NvU32     grp;
@@ -241,6 +246,7 @@ done:
 void
 workItemLocksRelease(NvU32 releaseLocks, NvU32 gpuMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 88);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     if (releaseLocks & OS_QUEUE_WORKITEM_FLAGS_LOCK_GPUS_RW)
@@ -274,6 +280,7 @@ workItemLocksRelease(NvU32 releaseLocks, NvU32 gpuMask)
 NV_STATUS
 rmGpuGroupLockGetMask(NvU32 gpuInst, GPU_LOCK_GRP_ID gpuGrpId, GPU_MASK *pGpuMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 89);
     switch (gpuGrpId)
     {
         case GPU_LOCK_GRP_SUBDEVICE:

@@ -57,6 +57,7 @@
 ENGDESCRIPTOR
 kceGetEngineDescFromAllocParams(OBJGPU *pGpu, NvU32 externalClassId, void *pAllocParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 791);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     NvU32 engineIndex = 0;
     RsResourceRef *pDeviceRef;
@@ -191,6 +192,7 @@ kcectxConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 792);
     // stub, initialization done in chandesConstruct
     return NV_OK;
 }
@@ -201,6 +203,7 @@ kcectxDestruct_IMPL
     KernelCeContext *pKCeContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 793);
     ChannelDescendant *pChannelDescendant = staticCast(pKCeContext, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
 

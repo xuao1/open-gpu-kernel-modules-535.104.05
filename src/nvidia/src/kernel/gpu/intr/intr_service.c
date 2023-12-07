@@ -37,6 +37,7 @@
 void
 intrservRegisterIntrService_IMPL(OBJGPU *pGpu, IntrService *pIntrService, IntrServiceRecord pRecords[MC_ENGINE_IDX_MAX])
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2539);
     return;
 }
 
@@ -53,6 +54,7 @@ intrservRegisterIntrService_IMPL(OBJGPU *pGpu, IntrService *pIntrService, IntrSe
 NvBool
 intrservClearInterrupt_IMPL(OBJGPU *pGpu, IntrService *pIntrService, IntrServiceClearInterruptArguments *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2540);
     NV_ASSERT_OR_RETURN(pParams != NULL, NV_FALSE);
 
     Intr *pIntr = GPU_GET_INTR(pGpu);
@@ -75,6 +77,7 @@ intrservClearInterrupt_IMPL(OBJGPU *pGpu, IntrService *pIntrService, IntrService
 NvU32
 intrservServiceInterrupt_IMPL(OBJGPU *pGpu, IntrService *pIntrService, IntrServiceServiceInterruptArguments *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2541);
     NV_ASSERT_FAILED("intrservServiceInterrupt called but not implemented");
     // Return 0; no need to redundantly report stuck interrupt.
     return 0;
@@ -91,6 +94,7 @@ intrservServiceInterrupt_IMPL(OBJGPU *pGpu, IntrService *pIntrService, IntrServi
 NV_STATUS
 intrservServiceNotificationInterrupt_IMPL(OBJGPU *pGpu, IntrService *pIntrService, IntrServiceServiceNotificationInterruptArguments *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2542);
     NV_ASSERT_FAILED("intrservServiceNotificationInterrupt called but not implemented");
     return NV_ERR_INVALID_STATE;
 }

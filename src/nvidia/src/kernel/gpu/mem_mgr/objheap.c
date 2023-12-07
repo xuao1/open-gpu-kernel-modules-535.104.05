@@ -36,6 +36,7 @@
 NV_STATUS
 heapInit_IMPL(OBJGPU *pGpu, Heap *pHeap, NvU64 base, NvU64 size, HEAP_TYPE_INTERNAL heapType, NvU32 gfid, void *pPtr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3101);
     NV_STATUS   status;
 
     status = memmgrGetBlackListPagesForHeap_HAL(pGpu, GPU_GET_MEMORY_MANAGER(pGpu), pHeap);
@@ -124,6 +125,7 @@ heapInitRegistryOverrides_IMPL
     Heap   *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3102);
 
     return NV_OK;
 }
@@ -140,6 +142,7 @@ heapFilterBlackListPages_IMPL
     NvU64 size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3103);
     NvU32 blIndex   = 0;
     NvU32 blCount   = 0;
     NvU64 blAddress = 0;

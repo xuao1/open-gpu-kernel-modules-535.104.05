@@ -31,6 +31,7 @@
 NV_STATUS
 kgmmuFmtFamiliesInit_GM200(OBJGPU *pGpu, KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3561);
     NvU32       i;
     NvU32       v;
 

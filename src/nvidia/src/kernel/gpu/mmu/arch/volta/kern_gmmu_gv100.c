@@ -41,6 +41,7 @@
 NV_STATUS
 kgmmuFmtFamiliesInit_GV100(OBJGPU *pGpu, KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3585);
     extern NV_STATUS kgmmuFmtFamiliesInit_GM200(OBJGPU *pGpu, KernelGmmu *pKernelGmmu);
     NvU32            v;
     NV_STATUS        result;
@@ -67,6 +68,7 @@ kgmmuFmtFamiliesInit_GV100(OBJGPU *pGpu, KernelGmmu *pKernelGmmu)
 NV_STATUS
 kgmmuChangeReplayableFaultOwnership_GV100(OBJGPU *pGpu, KernelGmmu *pKernelGmmu, NvBool bOwnedByRm)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3586);
     //
     // Disable the interrupt when RM loses the ownership and enable it back when
     // RM regains it. At least nvUvmInterfaceOwnPageFaultIntr() relies on that behavior.
@@ -104,6 +106,7 @@ kgmmuClientShadowFaultBufferAlloc_GV100
     FAULT_BUFFER_TYPE index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3587);
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu))
         return NV_OK;
 
@@ -132,6 +135,7 @@ kgmmuClientShadowFaultBufferFree_GV100
     FAULT_BUFFER_TYPE index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3588);
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu))
         return NV_OK;
 
@@ -158,6 +162,7 @@ kgmmuInstBlkAtsGet_GV100
     NvU32               *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3589);
     NvU32 pasid = 0;
 
     if (subctxId == FIFO_PDB_IDX_BASE)
@@ -256,6 +261,7 @@ kgmmuInstBlkVaLimitGet_GV100
     NvU64                *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3590);
     extern NV_STATUS kgmmuInstBlkVaLimitGet_GP100(KernelGmmu *pKernelGmmu, OBJVASPACE *pVAS, NvU32 subctxId, INST_BLK_INIT_PARAMS *pParams, NvU32 *pOffset, NvU64 *pData);
 
     if (subctxId == FIFO_PDB_IDX_BASE)
@@ -299,6 +305,7 @@ kgmmuInstBlkPageDirBaseGet_GV100
     NvU32                *pDataHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3591);
     extern NV_STATUS kgmmuInstBlkPageDirBaseGet_GP100(OBJGPU *pGpu, KernelGmmu *pKernelGmmu, OBJVASPACE *pVAS, INST_BLK_INIT_PARAMS *pParams, NvU32 subctxid, NvU32 *pOffsetLo, NvU32 *pDataLo, NvU32 *pOffsetHi, NvU32 *pDataHi);
 
     if (subctxId == FIFO_PDB_IDX_BASE)
@@ -391,6 +398,7 @@ kgmmuReportFaultBufferOverflow_GV100
     KernelGmmu  *pKernelGmmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3592);
     NV_STATUS rmStatus = NV_OK;
     NvU32   faultStatus = kgmmuReadMmuFaultStatus_HAL(pGpu, pKernelGmmu, GPU_GFID_PF);
     NvU32   faultBufferGet;
@@ -502,6 +510,7 @@ kgmmuGetGraphicsEngineId_GV100
     KernelGmmu *pKernelGmmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3593);
     return NV_PFAULT_MMU_ENG_ID_GRAPHICS;
 }
 
@@ -515,6 +524,7 @@ kgmmuGetGraphicsEngineId_GV100
 NV_STATUS
 kgmmuEnableNvlinkComputePeerAddressing_GV100(KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3594);
     NvU32       v;
 
     //

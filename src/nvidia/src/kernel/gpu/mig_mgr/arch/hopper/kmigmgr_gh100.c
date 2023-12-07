@@ -46,6 +46,7 @@ kmigmgrIsGPUInstanceFlagValid_GH100
     NvU32 gpuInstanceFlag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3379);
     NvU32 memSizeFlag = DRF_VAL(2080_CTRL_GPU, _PARTITION_FLAG,
                                 _MEMORY_SIZE, gpuInstanceFlag);
     NvU32 computeSizeFlag = DRF_VAL(2080_CTRL_GPU, _PARTITION_FLAG,
@@ -92,6 +93,7 @@ kmigmgrIsGPUInstanceCombinationValid_GH100
     NvU32 gpuInstanceFlag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3380);
     NvU32 memSizeFlag = DRF_VAL(2080_CTRL_GPU, _PARTITION_FLAG, _MEMORY_SIZE, gpuInstanceFlag);
     NvU32 computeSizeFlag = DRF_VAL(2080_CTRL_GPU, _PARTITION_FLAG, _COMPUTE_SIZE, gpuInstanceFlag);
 

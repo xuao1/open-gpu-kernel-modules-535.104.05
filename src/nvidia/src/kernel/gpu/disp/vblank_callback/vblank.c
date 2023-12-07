@@ -38,6 +38,7 @@ kheadAddVblankCallback_IMPL
     VBLANKCALLBACK *pCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1046);
     NvBool           OktoAdd = NV_TRUE;
     VBLANKCALLBACK  *pCheck  = NULL;
     VBLANKCALLBACK  *pNext   = NULL;
@@ -269,6 +270,7 @@ kheadDeleteVblankCallback_IMPL
     VBLANKCALLBACK *pCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1047);
     VBLANKCALLBACK  *pList   = NULL;
     NvBool           enabled = NV_FALSE;
     NvU32            Count;
@@ -409,6 +411,7 @@ kheadProcessVblankCallbacks_IMPL
     NvU32     state
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1048);
     OBJTMR           *pTmr      = GPU_GET_TIMER(pGpu);
     VBLANKCALLBACK   *pCallback = NULL;
     VBLANKCALLBACK   *pNext     = NULL;

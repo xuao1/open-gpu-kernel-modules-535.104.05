@@ -44,6 +44,7 @@ memmgrChooseKindCompressC_GP100
     FB_ALLOC_PAGE_FORMAT   *pFbAllocPageFormat
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2675);
     extern NvU32 memmgrChooseKindCompressC_GM107(OBJGPU *pGpu, MemoryManager *pMemoryManager, FB_ALLOC_PAGE_FORMAT *pFbAllocPageFormat);
     NvU32  kind         = NV_MMU_PTE_KIND_PITCH;
     NvU32  attrdepth    = DRF_VAL(OS32, _ATTR, _DEPTH, pFbAllocPageFormat->attr);
@@ -81,6 +82,7 @@ memmgrHandleSizeOverrides_GP100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2676);
     // If the fbOverrideSizeMb is set, insert a reserved region to "remove" the memory
     if (pMemoryManager->Ram.fbTotalMemSizeMb > pMemoryManager->Ram.fbOverrideSizeMb)
     {
@@ -125,6 +127,7 @@ memmgrFinishHandleSizeOverrides_GP100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2677);
     NV_STATUS rmStatus = NV_OK;
 
     if (pMemoryManager->overrideInitHeapMin > 0)
@@ -192,6 +195,7 @@ memmgrChannelPushSemaphoreMethodsBlock_GP100
     NvU32        **pPtr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2678);
     NvU32 *ptr  = *pPtr;
     PUSH_PAIR(subCh, NVC0B5_SET_SEMAPHORE_A, DRF_NUM(C0B5, _SET_SEMAPHORE_A,
               _UPPER, NvU64_HI32(data)));
@@ -219,6 +223,7 @@ memmgrChannelPushAddressMethodsBlock_GP100
     NvU32        **pPtr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2679);
     NvU32 *ptr  = *pPtr;
     if (bSrc == NV_TRUE)
     {
@@ -249,6 +254,7 @@ memmgrGetMaxContextSize_GP100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2680);
     extern NvU64 memmgrGetMaxContextSize_GM200(OBJGPU *pGpu, MemoryManager *pMemoryManager);
 
     NvU64 size = memmgrGetMaxContextSize_GM200(pGpu, pMemoryManager);

@@ -65,6 +65,7 @@
 
 static void DecodeAarch64Cache(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5072);
     NvU32 val, field, numsets, assoc, linesize;
 
     // Select level 1 data cache
@@ -104,6 +105,7 @@ static void DecodeAarch64Cache(OBJSYS *pSys)
  */
 void RmInitCpuInfo(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5073);
 #define AARCH64_VENDOR_PART_NUMBER(v, p) \
         (((v)<<16)|(p))
 #define AARCH64_VENDOR_PART(v, p) \
@@ -252,6 +254,7 @@ void RmInitCpuInfo(void)
  */
 static void DecodeCortexA9Cache(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5074);
     NvU32 val, field;
 
     // Select data cache
@@ -298,6 +301,7 @@ static void DecodeCortexA9Cache(OBJSYS *pSys)
 
 static NvU32 DecodeCortexA15CacheSize(NvU32 field)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5075);
     switch(field)
     {
         case CP_CCSIDR_CACHE_NUM_SETS_A15_32KB:
@@ -318,6 +322,7 @@ static NvU32 DecodeCortexA15CacheSize(NvU32 field)
 
 static void DecodeCortexA15Cache(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5076);
     NvU32 val, field;
 
     // Select level 1 data cache
@@ -354,6 +359,7 @@ static void DecodeCortexA15Cache(OBJSYS *pSys)
  */
 void RmInitCpuInfo(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5077);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     if (pSys->cpuInfo.bInitialized)
@@ -435,6 +441,7 @@ void RmInitCpuInfo(void)
  */
 void RmInitCpuInfo(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5078);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
 
     pSys->cpuInfo.type = NV0000_CTRL_SYSTEM_CPU_TYPE_POWERN;
@@ -475,6 +482,7 @@ void RmInitCpuInfo(
     void
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5079);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
 
     // XXX
@@ -589,6 +597,7 @@ static void cpuidInfoTransmeta(OBJSYS *pSys, PCPUIDINFO pCpuidInfo);
 
 void RmInitCpuInfo(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5080);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     CPUIDINFO  cpuinfo;
     NvU32      eax, ebx, ecx, edx;
@@ -837,6 +846,7 @@ void RmInitCpuInfo(void)
 static void
 getCpuCounts(OBJSYS *pSys, PCPUIDINFO pCpuidInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5081);
     OBJOS *pOS = SYS_GET_OS(pSys);
     NvU32  numPhysicalCpus, numLogicalCpus, maxLogicalCpus;
     NvU32  eax = 0;
@@ -953,6 +963,7 @@ getCpuCounts(OBJSYS *pSys, PCPUIDINFO pCpuidInfo)
 //
 static NvBool getEmbeddedProcessorName(char *pName, NvU32 size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5082);
     NvU32       op, eax, ebx, ecx, edx;
     char       *p       = pName;
     OBJSYS     *pSys    = SYS_GET_INSTANCE();
@@ -990,6 +1001,7 @@ static NvBool getEmbeddedProcessorName(char *pName, NvU32 size)
 //
 static NvBool DecodePrescottCache(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5083);
     NvU32   eax, ebx, ecx, edx;
     OBJOS  *pOS = SYS_GET_OS(pSys);
 
@@ -1059,6 +1071,7 @@ static NvBool DecodePrescottCache(OBJSYS *pSys)
 #if defined(_M_IX86) || defined(NVCPU_X86)
 static void DecodeIntelCacheEntry(OBJSYS *pSys, NvU8 cacheEntry)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5084);
     // From Intel's AP-485 (11/03).
     //
     // 00h Null
@@ -1230,6 +1243,7 @@ static void DecodeIntelCacheEntry(OBJSYS *pSys, NvU8 cacheEntry)
 
 static void DecodeIntelCacheRegister(OBJSYS *pSys, NvU32 cacheRegister /* punny, huh? */)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5085);
     if ((cacheRegister & NVBIT(31)) == 0)  // If bit 31 is set, it is reserved.
     {
         DecodeIntelCacheEntry(pSys, (NvU8)(cacheRegister >> 24));
@@ -1242,6 +1256,7 @@ static void DecodeIntelCacheRegister(OBJSYS *pSys, NvU32 cacheRegister /* punny,
 
 static void cpuidInfoIntel(OBJSYS *pSys, PCPUIDINFO pCpuidInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5086);
     NvU32   eax, ebx, ecx, edx;
     OBJOS  *pOS = SYS_GET_OS(pSys);
 
@@ -1369,6 +1384,7 @@ static void cpuidInfoIntel(OBJSYS *pSys, PCPUIDINFO pCpuidInfo)
 
 static void cpuidInfoAMD(OBJSYS *pSys, PCPUIDINFO pCpuidInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5087);
     NvU32   eax = 0;
     NvU32   ebx = 0;
     NvU32   ecx = 0;
@@ -1477,6 +1493,7 @@ static void cpuidInfoAMD(OBJSYS *pSys, PCPUIDINFO pCpuidInfo)
 
 static void cpuidInfoWinChip(OBJSYS *pSys, PCPUIDINFO pCpuidInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5088);
     if (pCpuidInfo->Family == 5)                // Winchip C6, Winchip2 w/ 3DNow
     {
         if (pCpuidInfo->Model == 4)
@@ -1491,6 +1508,7 @@ static void cpuidInfoWinChip(OBJSYS *pSys, PCPUIDINFO pCpuidInfo)
 
 static void cpuidInfoCyrix(OBJSYS *pSys, PCPUIDINFO pCpuidInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5089);
     if (pCpuidInfo->Family == 4)                // MediaGX
         pSys->cpuInfo.type = NV0000_CTRL_SYSTEM_CPU_TYPE_GX;
     if (pCpuidInfo->Family == 5)                // Cyrix 6x86 or MediaGX w/ MMX
@@ -1509,6 +1527,7 @@ static void cpuidInfoCyrix(OBJSYS *pSys, PCPUIDINFO pCpuidInfo)
 
 static void cpuidInfoTransmeta(OBJSYS *pSys, PCPUIDINFO pCpuidInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5090);
     NvU32 eax, ebx, ecx, edx;
     OBJOS *pOS = SYS_GET_OS(pSys);
 

@@ -34,6 +34,7 @@ hypervisorCheckForObjectAccess_IMPL
     NvHandle hClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5778);
     NvBool bGrantAccess = NV_FALSE;
 
     return bGrantAccess;

@@ -51,6 +51,7 @@ kmemsysCacheOp_GM200
     FB_CACHE_OP         cacheOp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3323);
     NV_STATUS status  = NV_OK;
     RMTIMEOUT timeout;
     NvU32     reg;

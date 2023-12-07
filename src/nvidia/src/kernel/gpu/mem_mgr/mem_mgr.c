@@ -71,6 +71,7 @@ memmgrConstructEngine_IMPL
     ENGDESCRIPTOR  engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2937);
     NV_STATUS rmStatus;
 
     pMemoryManager->overrideInitHeapMin = 0;
@@ -95,6 +96,7 @@ memmgrDestruct_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2938);
     NvU32 i;
 
     for (i = 0; i < NUM_FBSR_TYPES; i++)
@@ -112,6 +114,7 @@ memmgrDestruct_IMPL
 static void
 _memmgrInitRegistryOverrides(OBJGPU *pGpu, MemoryManager *pMemoryManager)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2939);
     NvU32 data32;
 
     // Check for ram size override.
@@ -273,6 +276,7 @@ memmgrStatePreInitLocked_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2940);
     if (IS_GSP_CLIENT(pGpu))
     {
         //
@@ -296,6 +300,7 @@ memmgrStateInitLocked_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2941);
     NV_STATUS status = NV_OK;
     NvU32     i;
     NvBool    bDynamicPageOffliningDisable = NV_FALSE;
@@ -410,6 +415,7 @@ memmgrVerifyGspDmaOps_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2942);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     NV_STATUS status = NV_OK;
     MEMORY_DESCRIPTOR *pMemDesc;
@@ -481,6 +487,7 @@ memmgrStateLoad_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2943);
     // If fbOverrideSizeMb is set, finish setting up the FB parameters now that state init has finished
     memmgrFinishHandleSizeOverrides_HAL(pGpu, pMemoryManager);
 
@@ -521,6 +528,7 @@ memmgrStatePreUnload_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2944);
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
 
     NV_ASSERT((flags & GPU_STATE_FLAGS_PRESERVING) || pMemoryManager->zbcSurfaces == 0);
@@ -544,6 +552,7 @@ memmgrStateUnload_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2945);
     if ((flags & GPU_STATE_FLAGS_PRESERVING) &&
         !(flags & GPU_STATE_FLAGS_GC6_TRANSITION))
     {
@@ -564,6 +573,7 @@ memmgrStateDestroy_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2946);
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     Heap               *pHeap               = MEMORY_MANAGER_GET_HEAP(pMemoryManager);
     NvU32               i;
@@ -635,6 +645,7 @@ _memmgrCreateChildObjects
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2947);
     NV_STATUS status = NV_OK;
 
     // RMCONFIG: only if FBSR engine is enabled
@@ -662,6 +673,7 @@ memmgrCreateHeap_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2948);
     Heap               *newHeap;
     OBJGPU             *pGpu                = ENG_GET_GPU(pMemoryManager);
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
@@ -773,6 +785,7 @@ memmgrGetDeviceSuballocator_IMPL
     NvBool         bForceSubheap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2949);
 
     if (!bForceSubheap)
     {
@@ -790,6 +803,7 @@ _memmgrCreateFBSR
     NvU32          type
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2950);
     OBJFBSR *pFbsr;
     NV_STATUS status;
 
@@ -813,6 +827,7 @@ _memmgrFreeInternalClientObjects
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2951);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
     if (pMemoryManager->hThirdPartyP2P != 0)
@@ -838,6 +853,7 @@ _memmgrAllocInternalClientObjects
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2952);
     NV_STATUS status;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
@@ -911,6 +927,7 @@ memmgrGetUsedRamSize_IMPL
     NvU64         *pFbUsedSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2953);
     Heap   *pHeap = GPU_GET_HEAP(pGpu);
     NvU64   heapFreeSpace, heapTotalSpace, pmaFreeSpace;
 
@@ -955,6 +972,7 @@ memmgrAllocHwResources_IMPL
     FB_ALLOC_INFO *pFbAllocInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2954);
     MemoryManager  *pMemoryManagerLoop;
     FB_ALLOC_INFO  *pTempInfo = NULL;
     NvU32           skipFlag  = (pFbAllocInfo->pageFormat->flags & NVOS32_ALLOC_FLAGS_SKIP_RESOURCE_ALLOC);
@@ -998,6 +1016,7 @@ memmgrFreeHwResources_IMPL
     FB_ALLOC_INFO *pFbAllocInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2955);
     MemoryManager  *pMemoryManagerLoop;
     NV_STATUS       rmStatus = NV_OK;
     RMTIMEOUT       timeout;
@@ -1040,6 +1059,7 @@ memmgrLargePageSupported_IMPL
     NV_ADDRESS_SPACE  addrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2956);
     NvBool isSupported = NV_FALSE;
 
     if (addrSpace == ADDR_FBMEM || addrSpace == ADDR_VIRTUAL)
@@ -1065,6 +1085,7 @@ memmgrComprSupported_IMPL
     NV_ADDRESS_SPACE  addrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2957);
     OBJGPU *pGpu        = ENG_GET_GPU(pMemoryManager);
     NvBool  isSupported = NV_FALSE;
 
@@ -1103,6 +1124,7 @@ memmgrAllocGetAddrSpace_IMPL
     NvU32          attr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2958);
    NV_ADDRESS_SPACE addrSpace = ADDR_UNKNOWN;
 
    if (flags & NVOS32_ALLOC_FLAGS_VIRTUAL)
@@ -1132,6 +1154,7 @@ memmgrAllocGetAddrSpace_IMPL
 NvU32
 memmgrGetMappableRamSizeMb_IMPL(MemoryManager *pMemoryManager)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2959);
     return NvU64_LO32(pMemoryManager->Ram.mapRamSizeMb);
 }
 //
@@ -1154,6 +1177,7 @@ memmgrFillMemdescForPhysAttr_IMPL
     NvU64 *contigSegmentSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2960);
     NvU64 surfOffset = *pOffset, surfBase, surfLimit;
     NvU32 zcbitmap;
 
@@ -1236,6 +1260,7 @@ memmgrDeterminePageSize_IMPL
     NvU32         *pRetAttr2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2961);
     OBJGPU           *pGpu  = ENG_GET_GPU(pMemoryManager);
     KernelGmmu       *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     NV_ADDRESS_SPACE  addrSpace;
@@ -1406,6 +1431,7 @@ memmgrSetPlatformPmaSupport_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2962);
     //
     // KMD in WDDM mode will not support pma managed client page tables as
     // in both cases client / OS manges it.
@@ -1461,6 +1487,7 @@ memmgrAllocateConsoleRegion_IMPL
     FB_REGION_DESCRIPTOR *pConsoleFbRegion
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2963);
 
     NV_STATUS status     = NV_OK;
     NvU32     consoleRegionId = 0x0;
@@ -1507,6 +1534,7 @@ memmgrReleaseConsoleRegion_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2964);
     memdescDestroy(pMemoryManager->Ram.pReservedConsoleMemDesc);
     pMemoryManager->Ram.pReservedConsoleMemDesc = NULL;
 }
@@ -1518,6 +1546,7 @@ memmgrGetReservedConsoleMemDesc_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2965);
     return pMemoryManager->Ram.pReservedConsoleMemDesc;
 }
 
@@ -1532,6 +1561,7 @@ memmgrReserveBar2BackingStore_IMPL
     NvU64         *pAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2966);
     NvU64             tmpAddr = *pAddr;
     KernelBus        *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
 
@@ -1573,6 +1603,7 @@ memmgrCalcReservedFbSpace_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2967);
     NvU64   rsvdFastSize  = 0;
     NvU64   rsvdSlowSize  = 0;
     NvU64   rsvdISOSize   = 0;
@@ -1702,6 +1733,7 @@ memmgrMemUtilsSetupChannelBufferSizes_IMPL
     NvU32          numCopyBlocks
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2968);
     // set channel specific sizes
     pChannel->channelPbSize            = numCopyBlocks * MEMUTILS_SIZE_PER_BLOCK_INBYTES;
     pChannel->channelNotifierSize      = MEMUTILS_CHANNEL_NOTIFIER_SIZE;
@@ -1724,6 +1756,7 @@ NV_STATUS memmgrFree_IMPL
     MEMORY_DESCRIPTOR  *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2969);
     NvU64       offsetAlign;
     NV_STATUS   status;
     NvU32       pmaFreeFlag       = 0;
@@ -1871,6 +1904,7 @@ memmgrSetPartitionableMem_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2970);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_INTERNAL_MEMSYS_SET_PARTITIONABLE_MEM_PARAMS params = {0};
     Heap *pHeap = GPU_GET_HEAP(pGpu);
@@ -2094,6 +2128,7 @@ memmgrFillComprInfo_IMPL
     COMPR_INFO    *pComprInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2971);
     const MEMORY_SYSTEM_STATIC_CONFIG *pMemorySystemConfig =
         kmemsysGetStaticConfig(pGpu, GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu));
 
@@ -2127,6 +2162,7 @@ memmgrGetKindComprForGpu_KERNEL
     COMPR_INFO         *pComprInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2972);
     NvU32               ctagId = FB_HWRESID_CTAGID_VAL_FERMI(memdescGetHwResId(pMemDesc));
     NvU32               kind   = memdescGetPteKindForGpu(pMemDesc, pMappingGpu);
     const MEMORY_SYSTEM_STATIC_CONFIG *pMappingMemSysConfig =
@@ -2172,6 +2208,7 @@ memmgrGetKindComprFromMemDesc_IMPL
     COMPR_INFO        *pComprInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2973);
     return memmgrGetKindComprForGpu_HAL(pMemoryManager, pMemDesc, pMemDesc->pGpu,
                                         offset, kind, pComprInfo);
 }
@@ -2184,6 +2221,7 @@ memmgrSetMIGPartitionableMemoryRange_IMPL
     NV_RANGE range
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2974);
     pMemoryManager->MIGMemoryPartitioningInfo.partitionableMemoryRange = range;
 }
 
@@ -2194,6 +2232,7 @@ memmgrGetMIGPartitionableMemoryRange_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2975);
     return pMemoryManager->MIGMemoryPartitioningInfo.partitionableMemoryRange;
 }
 
@@ -2207,6 +2246,7 @@ memmgrSetMIGPartitionableBAR1Range_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2976);
     KernelBus  *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     OBJVASPACE *pBar1VAS   = kbusGetBar1VASpace_HAL(pGpu, pKernelBus);
     OBJEHEAP   *pVASHeap;
@@ -2244,6 +2284,7 @@ memmgrGetMIGPartitionableBAR1Range_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2977);
     return pMemoryManager->MIGMemoryPartitioningInfo.partitionableBar1Range;
 }
 
@@ -2258,6 +2299,7 @@ memmgrAllocMIGGPUInstanceMemory_VF
     Heap         **ppMemoryPartitionHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2978);
     // For vGpu we have a static memory allocation
     *phMemory = NV01_NULL_OBJECT;
     *pAddrRange = pMemoryManager->MIGMemoryPartitioningInfo.partitionableMemoryRange;
@@ -2278,6 +2320,7 @@ memmgrAllocMIGGPUInstanceMemory_PF
     Heap         **ppMemoryPartitionHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2979);
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     NV_STATUS rmStatus = NV_OK;
@@ -2417,6 +2460,7 @@ _memmgrInitMIGMemoryPartitionHeap
     Heap         **ppMemoryPartitionHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2980);
     NV_STATUS status = NV_OK;
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     Heap *pMemoryPartitionHeap = NULL;
@@ -2535,6 +2579,7 @@ memmgrFreeMIGGPUInstanceMemory_IMPL
     Heap **ppMemoryPartitionHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2981);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
@@ -2587,6 +2632,7 @@ void memmgrComprInfoDisableCompression_IMPL
     COMPR_INFO    *pComprInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2982);
     memmgrFillComprInfoUncompressed(pMemoryManager, pComprInfo->kind, pComprInfo);
 }
 
@@ -2597,6 +2643,7 @@ void memmgrFillComprInfoUncompressed_IMPL
     COMPR_INFO *pComprInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2983);
     if (memmgrIsKind_HAL(pMemoryManager, FB_IS_KIND_COMPRESSIBLE, kind))
         kind = memmgrGetUncompressedKind_HAL(ENG_GET_GPU(pMemoryManager), pMemoryManager, kind, NV_FALSE);
 
@@ -2620,6 +2667,7 @@ memmgrPageLevelPoolsCreate_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2984);
     NV_STATUS status = NV_OK;
 
     if (RMCFG_FEATURE_PMA &&
@@ -2666,6 +2714,7 @@ memmgrPageLevelPoolsDestroy_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2985);
     if (RMCFG_FEATURE_PMA &&
         memmgrIsPmaInitialized(pMemoryManager) &&
         memmgrAreClientPageTablesPmaManaged(pMemoryManager))
@@ -2695,6 +2744,7 @@ memmgrPageLevelPoolsGetInfo_IMPL
     RM_POOL_ALLOC_MEM_RESERVE_INFO **ppMemPoolInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2986);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     NvBool bMemPartitioningEnabled = (pKernelMIGManager != NULL) && kmigmgrIsMIGMemPartitioningEnabled(pGpu, pKernelMIGManager);
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pMemPool = NULL;
@@ -2742,6 +2792,7 @@ memmgrPmaInitialize_IMPL
     PMA           *pPma
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2987);
     NvU32 pmaInitFlags = PMA_INIT_NONE;
     NV_STATUS status = NV_OK;
     NvBool bNumaEnabled = osNumaOnliningEnabled(pGpu->pOsGpuInfo);
@@ -2824,6 +2875,7 @@ memmgrInitFbRegions_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2988);
     NV_ASSERT_OR_RETURN(pMemoryManager->Ram.numFBRegions == 0, NV_ERR_INVALID_STATE);
 
     // Dont setup regions if FB is broken and we aren't using L2 cache as "FB".
@@ -2882,6 +2934,7 @@ memmgrPmaRegisterRegions_IMPL
     PMA           *pPma
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2989);
     HEAP_TYPE_INTERNAL heapType = pHeap->heapType;
     PMA_REGION_DESCRIPTOR pmaRegion;
     NvU32 pmaRegionIdx = 0;
@@ -3066,6 +3119,7 @@ memmgrAllocMIGMemoryAllocationInternalHandles_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2990);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
     NV_ASSERT_OR_RETURN(pMemoryManager->MIGMemoryPartitioningInfo.hClient == NV01_NULL_OBJECT, NV_ERR_INVALID_STATE);
@@ -3088,6 +3142,7 @@ memmgrFreeMIGMemoryAllocationInternalHandles_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2991);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
     rmapiutilFreeClientAndDeviceHandles(pRmApi,
@@ -3107,6 +3162,7 @@ memmgrGetFreeMemoryForAllMIGGPUInstances_IMPL
     NvU64 *pBytes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2992);
     NvU64 val = 0;
     Heap *pHeap = NULL;
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -3145,6 +3201,7 @@ memmgrGetTotalMemoryForAllMIGGPUInstances_IMPL
     NvU64 *pBytes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2993);
     NvU64 val = 0;
     Heap *pHeap = NULL;
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -3176,6 +3233,7 @@ memmgrGetTopLevelScrubberStatus_IMPL
     NvBool *pbTopLevelScrubberConstructed
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2994);
     NvBool bTopLevelScrubberEnabled = NV_FALSE;
     NvBool bTopLevelScrubberConstructed = NV_FALSE;
     NvU32 pmaConfigs = PMA_QUERY_SCRUB_ENABLED | PMA_QUERY_SCRUB_VALID;
@@ -3204,6 +3262,7 @@ memmgrSaveAndDestroyTopLevelScrubber_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2995);
     // Save the pre-MIG top-level scrubber status for later
     memmgrGetTopLevelScrubberStatus(pGpu, pMemoryManager, NULL, &pMemoryManager->MIGMemoryPartitioningInfo.bNonMIGTopLevelScrubber);
 
@@ -3227,6 +3286,7 @@ memmgrInitSavedTopLevelScrubber_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2996);
     if (!pMemoryManager->MIGMemoryPartitioningInfo.bNonMIGTopLevelScrubber)
         return NV_OK;
 
@@ -3252,6 +3312,7 @@ _memmgrGetFullMIGAddrRange
     NvU64 *size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2997);
     NvU32 i;
     NvU64 lo, hi;
 
@@ -3293,6 +3354,7 @@ memmgrDiscoverMIGPartitionableMemoryRange_VF
     NV_RANGE *pMemoryRange
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2998);
     NvU64 size;
     NvU64 base;
 
@@ -3337,6 +3399,7 @@ memmgrReserveMemoryForFsp_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2999);
     KernelFsp *pKernelFsp = GPU_GET_KERNEL_FSP(pGpu);
 
     //
@@ -3365,6 +3428,7 @@ memmgrGetVgpuHostRmReservedFb_KERNEL
     NvU32           vgpuTypeId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3000);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_INTERNAL_MEMMGR_GET_VGPU_CONFIG_HOST_RESERVED_FB_PARAMS params = {0};
 
@@ -3397,6 +3461,7 @@ memmgrStatePostLoad_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3001);
     if (memmgrIsLocalEgmSupported(pMemoryManager))
     {
         NvU64 egmPhysAddr, egmSize;
@@ -3491,6 +3556,7 @@ memmgrInitCeUtils_IMPL
     NvBool         bFifoLite
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3002);
     NV0050_ALLOCATION_PARAMETERS ceUtilsParams = {0};
 
     NV_ASSERT_OR_RETURN(pMemoryManager->pCeUtils == NULL, NV_ERR_INVALID_STATE);
@@ -3505,6 +3571,7 @@ memmgrDestroyCeUtils_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3003);
     objDelete(pMemoryManager->pCeUtils);
     pMemoryManager->pCeUtils = NULL;
 }

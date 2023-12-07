@@ -42,6 +42,7 @@ intrReadRegLeafEnSet_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2439);
     return GPU_VREG_RD32_EX(pGpu,
                             NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_LEAF_EN_SET(regIndex),
                             pThreadState);
@@ -56,6 +57,7 @@ intrReadRegLeaf_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2440);
     return GPU_VREG_RD32_EX(pGpu,
                             NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_LEAF(regIndex),
                             pThreadState);
@@ -70,6 +72,7 @@ intrReadRegTopEnSet_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2441);
     // SW assumptions that there are two top-levels.
     ct_assert(NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_TOP_EN_SET__SIZE_1 <= 2);
     if (regIndex >= NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_TOP_EN_SET__SIZE_1)
@@ -90,6 +93,7 @@ intrReadRegTop_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2442);
     // SW assumptions that there are two top-levels.
     ct_assert(NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_TOP__SIZE_1 <= 2);
     if (regIndex >= NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_TOP__SIZE_1)
@@ -111,6 +115,7 @@ intrWriteRegLeafEnSet_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2443);
     GPU_VREG_WR32_EX(pGpu,
                      NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_LEAF_EN_SET(regIndex),
                      value,
@@ -127,6 +132,7 @@ intrWriteRegLeafEnClear_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2444);
     GPU_VREG_WR32_EX(pGpu,
                      NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_LEAF_EN_CLEAR(regIndex),
                      value,
@@ -143,6 +149,7 @@ intrWriteRegLeaf_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2445);
     GPU_VREG_WR32_EX(pGpu,
                      NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_LEAF(regIndex),
                      value,
@@ -159,6 +166,7 @@ intrWriteRegTopEnSet_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2446);
     // SW assumptions that there are two top-levels.
     ct_assert(NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_TOP_EN_SET__SIZE_1 <= 2);
     if (regIndex >= NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_TOP_EN_SET__SIZE_1)
@@ -181,6 +189,7 @@ intrWriteRegTopEnClear_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2447);
     // SW assumptions that there are two top-levels.
     ct_assert(NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_TOP_EN_CLEAR__SIZE_1 <= 2);
     if (regIndex >= NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_TOP_EN_CLEAR__SIZE_1)

@@ -49,6 +49,7 @@ kchangrpapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1516);
     NvBool                                  bTsgAllocated       = NV_FALSE;
     RsResourceRef                          *pResourceRef        = pCallContext->pResourceRef;
     NV_STATUS                               rmStatus;
@@ -552,6 +553,7 @@ kchangrpapiControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1517);
     RsResourceRef *pResourceRef = RES_GET_REF(pKernelChannelGroupApi);
 
     (void)pResourceRef;
@@ -569,6 +571,7 @@ kchangrpapiDestruct_IMPL
     KernelChannelGroupApi *pKernelChannelGroupApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1518);
     CALL_CONTEXT           *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
     RsResourceRef          *pResourceRef;
@@ -646,6 +649,7 @@ kchangrpapiCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1519);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     RsClient *pDstClient = pCallContext->pClient;
     RsResourceRef *pDstRef = pCallContext->pResourceRef;
@@ -774,6 +778,7 @@ kchangrpapiCanCopy_IMPL
     KernelChannelGroupApi *pKernelChannelGroupApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1520);
     return NV_TRUE;
 }
 
@@ -786,6 +791,7 @@ CliGetChannelGroup
     NvHandle                *phDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1521);
     NV_STATUS status;
     RsClient *pRsClient;
     RsResourceRef *pResourceRef;
@@ -856,6 +862,7 @@ kchangrpapiSetLegacyMode_IMPL
     NvHandle               hClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1522);
     KernelChannelGroup *pKernelChannelGroup = pKernelChannelGroupApi->pKernelChannelGroup;
     NvHandle hTsg = RES_GET_HANDLE(pKernelChannelGroupApi);
     NvHandle hkCtxShare = 0;
@@ -1038,6 +1045,7 @@ kchangrpapiCtrlCmdGpFifoSchedule_IMPL
     NVA06C_CTRL_GPFIFO_SCHEDULE_PARAMS *pSchedParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1523);
     OBJGPU              *pGpu         = GPU_RES_GET_GPU(pKernelChannelGroupApi);
     RsResourceRef       *pResourceRef = RES_GET_REF(pKernelChannelGroupApi);
     KernelChannelGroup  *pKernelChannelGroup = NULL;
@@ -1182,6 +1190,7 @@ kchangrpapiCtrlCmdBind_IMPL
     NVA06C_CTRL_BIND_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1524);
     NV_STATUS     rmStatus = NV_OK;
     OBJGPU       *pGpu     = GPU_RES_GET_GPU(pKernelChannelGroupApi);
     Device       *pDevice  = GPU_RES_GET_DEVICE(pKernelChannelGroupApi);
@@ -1251,6 +1260,7 @@ kchangrpapiCtrlCmdGetTimeslice_IMPL
     NVA06C_CTRL_TIMESLICE_PARAMS *pTsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1525);
     KernelChannelGroup *pKernelChannelGroup = NULL;
 
     if (pKernelChannelGroupApi->pKernelChannelGroup == NULL)
@@ -1269,6 +1279,7 @@ kchangrpapiCtrlCmdSetTimeslice_IMPL
     NVA06C_CTRL_TIMESLICE_PARAMS *pTsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1526);
     OBJGPU             *pGpu                = GPU_RES_GET_GPU(pKernelChannelGroupApi);
     RsResourceRef      *pResourceRef        = RES_GET_REF(pKernelChannelGroupApi);
     KernelChannelGroup *pKernelChannelGroup = NULL;
@@ -1333,6 +1344,7 @@ kchangrpapiCtrlCmdGetInfo_IMPL
     NVA06C_CTRL_GET_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1527);
     KernelChannelGroup *pKernelChannelGroup = NULL;
 
     if (pKernelChannelGroupApi->pKernelChannelGroup == NULL)
@@ -1351,6 +1363,7 @@ kchangrpapiCtrlCmdSetInterleaveLevel_IMPL
     NVA06C_CTRL_INTERLEAVE_LEVEL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1528);
     OBJGPU          *pGpu         = GPU_RES_GET_GPU(pKernelChannelGroupApi);
     RsResourceRef   *pResourceRef = RES_GET_REF(pKernelChannelGroupApi);
     KernelChannelGroup *pKernelChannelGroup =
@@ -1394,6 +1407,7 @@ kchangrpapiCtrlCmdGetInterleaveLevel_IMPL
     NVA06C_CTRL_INTERLEAVE_LEVEL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1529);
     KernelChannelGroup *pKernelChannelGroup = NULL;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelChannelGroupApi);
     NvU32 subdevInst = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
@@ -1419,6 +1433,7 @@ kchangrpapiCtrlCmdInternalPromoteFaultMethodBuffers_IMPL
     NVA06C_CTRL_INTERNAL_PROMOTE_FAULT_METHOD_BUFFERS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1530);
     NV_PRINTF(LEVEL_INFO,
         "bug 200691429: kchangrpapiCtrlCmdInternalPromoteFaultMethodBuffers_IMPL received\n");
     return NV_OK;

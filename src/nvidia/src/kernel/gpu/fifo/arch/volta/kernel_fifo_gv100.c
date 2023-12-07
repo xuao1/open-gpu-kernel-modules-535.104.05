@@ -46,6 +46,7 @@ kfifoChannelGroupGetDefaultTimeslice_GV100
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1412);
     return NV_RAMRL_ENTRY_TSG_TIMESLICE_TIMEOUT_128 << NV_RAMRL_ENTRY_TSG_TIMESLICE_SCALE_3;
 }
 
@@ -69,6 +70,7 @@ kfifoRmctrlGetWorkSubmitToken_GV100
     NvU32 *pWorkSubmitToken
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1413);
     NV_STATUS rmStatus;
     NVC36F_CTRL_CMD_GPFIFO_GET_WORK_SUBMIT_TOKEN_PARAMS params;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
@@ -104,6 +106,7 @@ kfifoEngineInfoXlate_GV100
     NvU32           *pOutVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1414);
     extern NV_STATUS kfifoEngineInfoXlate_GM107(OBJGPU *pGpu, KernelFifo *pKernelFifo, ENGINE_INFO_TYPE inType, NvU32 inVal, ENGINE_INFO_TYPE outType, NvU32 *pOutVal);
 
     // GR supports a range of faults ids
@@ -135,6 +138,7 @@ kfifoGetMaxChannelGroupSize_GV100
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1415);
     return NV_RAMRL_ENTRY_TSG_LENGTH_MAX;
 }
 
@@ -155,6 +159,7 @@ kfifoGetUsermodeMapInfo_GV100
     NvU32      *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1416);
     NvU32 offset;
 
     NV_ASSERT_OK_OR_RETURN(gpuGetRegBaseOffset_HAL(pGpu, NV_REG_BASE_USERMODE, &offset));
@@ -180,6 +185,7 @@ kfifoGetMaxSubcontext_GV100
     NvBool      bLegacyMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1417);
     extern NvU32 kfifoGetMaxSubcontext_GM200(OBJGPU *pGpu, KernelFifo *pKernelFifo, NvBool bLegacyMode);
 
     if (bLegacyMode ||
@@ -220,6 +226,7 @@ kfifoGetSubctxType_GV100
     NvU32            *pSubctxType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1418);
     NvU32 subctxType;
     KernelCtxShare *pKernelCtxShare = NULL;
 
@@ -273,6 +280,7 @@ kfifoRunlistGetEntrySize_GV100
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1419);
     return NV_RAMRL_ENTRY_SIZE;
 }
 /*!
@@ -292,6 +300,7 @@ kfifoCalcTotalSizeOfFaultMethodBuffers_GV100
     NvBool      bCalcForFbRsvd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1420);
     NvU32   maxChannelGroups = 0;
     NvU32   runQueues        = 0;
     NvU32   totalSize        = 0;
@@ -330,6 +339,7 @@ kfifoGetMaxCeChannelGroups_GV100
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1421);
     NvU32 numChannels = kfifoRunlistQueryNumChannels_HAL(pGpu, pKernelFifo, 0);
 
     if (pKernelFifo->bNumChannelsOverride)
@@ -351,6 +361,7 @@ kfifoConstructUsermodeMemdescs_GV100
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1422);
     NvU32          attr           = 0;
     NvU32          attr2          = 0;
     NvU64          offset         = 0;

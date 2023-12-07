@@ -204,6 +204,7 @@ pfmreqhndlrControl_IMPL
     NvU32    *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5186);
     PFM_REQ_HNDLR_CONTROL_ENTRY *pPfmreqhndlrCtrlTableEntry = NULL;
 
     if (!pPlatformRequestHandler)
@@ -252,6 +253,7 @@ pfmreqhndlrOperatingLimitUpdate_IMPL
     NvBool  bSet
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5187);
     NV_STATUS status = NV_OK;
     OBJGPU   *pGpu   = pfmreqhndlrGetGpu(pPlatformRequestHandler);
     OBJOS    *pOs    = GPU_GET_OS(pGpu);
@@ -367,6 +369,7 @@ cliresCtrlCmdSystemPfmreqhndlrCtrl_IMPL
     NV0000_CTRL_SYSTEM_PFM_REQ_HNDLR_CTRL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5188);
     OBJSYS                     *pSys                    = SYS_GET_INSTANCE();
     PlatformRequestHandler     *pPlatformRequestHandler = SYS_GET_PFM_REQ_HNDLR(pSys);
     OBJGPU                     *pGpu                    = NULL;
@@ -751,6 +754,7 @@ cliresCtrlCmdSystemPfmreqhndlrGetFrmData_IMPL
     NV0000_CTRL_SYSTEM_PFM_REQ_HNDLR_GET_FRM_DATA_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5189);
     OBJSYS    *pSys    = SYS_GET_INSTANCE();
     PlatformRequestHandler       *pPlatformRequestHandler    = SYS_GET_PFM_REQ_HNDLR(pSys);
     NvU8       logicalBufferStart;
@@ -790,6 +794,7 @@ cliresCtrlCmdSystemPfmreqhndlrSetFrmData_IMPL
     NV0000_CTRL_SYSTEM_PFM_REQ_HNDLR_SET_FRM_DATA_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5190);
     OBJSYS    *pSys         = SYS_GET_INSTANCE();
     PlatformRequestHandler       *pPlatformRequestHandler         = SYS_GET_PFM_REQ_HNDLR(pSys);
     NvU8       sampleNumber = 0;
@@ -814,6 +819,7 @@ cliresCtrlCmdSystemPfmreqhndlrCallAcpi_IMPL
     NV0000_CTRL_SYSTEM_PFM_REQ_HNDLR_CALL_ACPI_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5191);
     NV_STATUS                                status;
     OBJSYS                                  *pSys    = SYS_GET_INSTANCE();
     PlatformRequestHandler                                     *pPlatformRequestHandler    = SYS_GET_PFM_REQ_HNDLR(pSys);
@@ -884,6 +890,7 @@ pfmreqhndlrCallACPI
     NV0000_CTRL_PFM_REQ_HNDLR_CALL_ACPI_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5192);
     OBJSYS   *pSys   = SYS_GET_INSTANCE();
     PlatformRequestHandler      *pPlatformRequestHandler   = SYS_GET_PFM_REQ_HNDLR(pSys);
     NV_STATUS status = NV_OK;
@@ -1052,6 +1059,7 @@ pfmreqhndlrCallACPI_EX
     NV0000_CTRL_PFM_REQ_HNDLR_CALL_ACPI_PARAMS_EX *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5193);
     NvU32     idx;
     NvU16     paramSize;
     NV_STATUS status;
@@ -1087,6 +1095,7 @@ pfmreqhndlrInitSensors
     PlatformRequestHandler *pPlatformRequestHandler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5194);
     NV_STATUS                           status          = NV_OK;
     OBJGPU                             *pGpu            = NULL;
     NvU32                               timeStamp       = 0;
@@ -1244,6 +1253,7 @@ pfmreqhndlrUpdatePerfCounter
     NvU32   value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5195);
     OBJGPU          *pGpu      = NULL;
     PFM_REQ_HNDLR_SENSOR_DATA *pPfmreqhndlrData;
     NvU32            timeStamp;
@@ -1289,6 +1299,7 @@ pfmreqhndlrSampleCounter
     NvU32   timeStamp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5196);
     NV_STATUS                     status           = NV_ERR_NOT_SUPPORTED;
     PFM_REQ_HNDLR_SENSOR_DATA    *pPfmreqhndlrData = &(pPlatformRequestHandler->sensorData);
     PFM_REQ_HNDLR_SENSOR_COUNTER *pCounter         = &(pPfmreqhndlrData->PFMREQHNDLRSensorCache[id]);
@@ -1371,6 +1382,7 @@ pfmreqhndlrGetPerfSensorCounterById_IMPL
     NvU32  *pCounterVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5197);
     OBJSYS          *pSys     = SYS_GET_INSTANCE();
     OBJGPU          *pGpu     = NULL;
     OBJOS           *pOs      = NULL;
@@ -1473,6 +1485,7 @@ pfmreqhndlrHandleStatusChangeEvent
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5198);
     NV_STATUS status              = NV_OK;
     NvU32     data                = 0;
     NvBool    bIsPctrlSupported   = NV_TRUE;
@@ -1542,6 +1555,7 @@ pfmreqhndlrHandleCheckPM1Available_IMPL
     NvBool                 *pbPM1Available
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5199);
     NV_STATUS                                                         status = NV_ERR_GENERIC;
     NV2080_CTRL_CMD_INTERNAL_PERF_PFM_REQ_HNDLR_GET_PM1_STATE_PARAMS  params = { 0 };
     RM_API                                                           *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -1583,6 +1597,7 @@ pfmreqhndlrHandleEdppeakLimitUpdate_IMPL
     NvBool  bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5200);
     RM_API     *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS   status = NV_OK;
 
@@ -1633,6 +1648,7 @@ pfmreqhndlrHandlePlatformEdppLimitUpdate_IMPL
     NvU32   platformEdppLimit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5201);
     RM_API     *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS   status = NV_OK;
 
@@ -1683,6 +1699,7 @@ pfmreqhndlrHandlePlatformGetEdppLimit_IMPL
     NvU32   *pPlatformEdppLimit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5202);
     NV0000_CTRL_PFM_REQ_HNDLR_CALL_ACPI_PARAMS acpiParams;
     NV_STATUS status = NV_OK;
 
@@ -1723,6 +1740,7 @@ pfmreqhndlrHandlePlatformSetEdppLimitInfo_IMPL
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5203);
 
     RM_API                  *pRmApi      = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS                status      = NV_OK;
@@ -1796,6 +1814,7 @@ pfmreqhndlrHandleUserConfigurableTgpMode_IMPL
     NvBool  bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5204);
     NV_STATUS                                                              status = NV_ERR_GENERIC;
     NV2080_CTRL_CMD_INTERNAL_PMGR_PFM_REQ_HNDLR_CONFIGURE_TGP_MODE_PARAMS  params = { 0 };
     RM_API                                                                *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -1828,6 +1847,7 @@ _handleCmdSystemPfmreqhndlrGetSupportedFunctions
     NvU32   *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5205);
     OBJGPU* pGpu = NULL;
 
     *pData = 0;
@@ -1860,6 +1880,7 @@ _handleCmdSystemPfmreqhndlrDataInitUsingSbiosAndAck
     NvU32   *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5206);
     OBJGPU    *pGpu;
     NV_STATUS  status  = NV_OK;
 
@@ -1898,6 +1919,7 @@ _pfmreqhndlrGetTimeStamp
     PlatformRequestHandler    *pPlatformRequestHandler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5207);
     OBJGPU *pGpu      = pfmreqhndlrGetGpu(pPlatformRequestHandler);
     OBJTMR *pTmr      = GPU_GET_TIMER(pGpu);
     NvU32   timeStamp = 0;
@@ -1927,6 +1949,7 @@ _pfmreqhndlrOverrideCounter
     NvU32            timeStamp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5208);
     // update the counter with the new value.
     _pfmreqhndlrUpdateCounter(pPfmreqhndlrData, id, NV_TRUE, value, timeStamp);
 
@@ -1952,6 +1975,7 @@ _pfmreqhndlrCancelCounterOverride
     NvU32            timeStamp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5209);
     if (pPfmreqhndlrData->PFMREQHNDLRSensorCache[id].bOverridden)
     {
         pPfmreqhndlrData->PFMREQHNDLRSensorCache[id].bOverridden = NV_FALSE;
@@ -1978,6 +2002,7 @@ _pfmreqhndlrResetCounter
     NvU32            timeStamp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5210);
     if (!pPfmreqhndlrData->PFMREQHNDLRSensorCache[id].bOverridden)
     {
         pPfmreqhndlrData->PFMREQHNDLRSensorCache[id].bInvalid    = NV_TRUE;
@@ -2012,6 +2037,7 @@ _pfmreqhndlrUpdateCounter
     NvU32            timeStamp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5211);
     if (bValid || pPfmreqhndlrData->PFMREQHNDLRSensorCache[id].bOverridden)
     {
         // only update the value if the current value is not an override.
@@ -2046,6 +2072,7 @@ _pfmreqhndlrEnablePM1
     NvBool  bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5212);
     NV2080_CTRL_CMD_INTERNAL_PERF_PFM_REQ_HNDLR_SET_PM1_STATE_PARAMS  params = { 0 };
     RM_API                                                           *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -2078,6 +2105,7 @@ _pfmreqhndlrUpdatePpmdLimit
     NvBool  bInit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5213);
     NV_STATUS     status     = NV_OK;
     PFM_REQ_HNDLR_PPM_DATA *pPpmData   = NULL;
     NvU32         counterVal = 0;
@@ -2134,6 +2162,7 @@ _pfmreqhndlrUpdateTgpuLimit
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5214);
     NvU32      counterVal;
     NvTemp     targetTemp = PFM_REQ_HNDLR_TEMP_0_C;
     NV_STATUS  status     = NV_ERR_NOT_SUPPORTED;
@@ -2187,6 +2216,7 @@ _pfmreqhndlrUpdateTgpuLimit
 static NV_STATUS
 _pfmreqhndlrUpdateSystemParamLimit(PlatformRequestHandler *pPlatformRequestHandler, NvU32 id)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5215);
     NV_STATUS status;
     OBJGPU   *pGpu = pfmreqhndlrGetGpu(pPlatformRequestHandler);
 
@@ -2220,6 +2250,7 @@ _pfmreqhndlrUpdatePlatformPowerModeWorkItem
     void  *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5216);
     OBJSYS                             *pSys           = SYS_GET_INSTANCE();
     PlatformRequestHandler                                *pPlatformRequestHandler           = SYS_GET_PFM_REQ_HNDLR(pSys);
     OBJGPU                             *pGpu           = pfmreqhndlrGetGpu(pPlatformRequestHandler);
@@ -2293,6 +2324,7 @@ _pfmreqhndlrUpdateSystemParamLimitWorkItem
     void  *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5217);
     OBJSYS    *pSys    = SYS_GET_INSTANCE();
     PlatformRequestHandler       *pPlatformRequestHandler    = SYS_GET_PFM_REQ_HNDLR(pSys);
     NvU32      id;
@@ -2340,6 +2372,7 @@ _pfmreqhndlrCallPshareStatus
     NvBool  bInit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5218);
     OBJGPU                    *pGpu             = NULL;
     PFM_REQ_HNDLR_SENSOR_DATA *pPfmreqhndlrData = NULL;
     NV_STATUS                  status           = NV_OK;
@@ -2527,6 +2560,7 @@ _pfmreqhndlrInitSupportedCounter
     NvU32            timeStamp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5219);
     pPfmreqhndlrData->PFMREQHNDLRSensorCache[id].bSupported  = NV_TRUE;
     pPfmreqhndlrData->PFMREQHNDLRSensorCache[id].bVolatile   = bVolatile;
     pPfmreqhndlrData->PFMREQHNDLRSensorCache[id].minInterval = PFM_REQ_HNDLR_DEFAULT_COUNTER_HOLD_PERIOD_MS;
@@ -2545,6 +2579,7 @@ pfmreqhndlrGetPerfSensorCounters
     NvU16                                                             mapFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5220);
     OBJSYS                  *pSys                    = SYS_GET_INSTANCE();
     PlatformRequestHandler  *pPlatformRequestHandler = SYS_GET_PFM_REQ_HNDLR(pSys);
     NvU32            counterMask;
@@ -2595,6 +2630,7 @@ _pfmreqhndlrIsCacheEntryStale
     NvU32            timeStamp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5221);
     NvU32   age;
     NvBool  bStale = NV_FALSE;
 
@@ -2623,6 +2659,7 @@ _pfmreqhndlrSampleSensorLimit
     NvU32   timeStamp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5222);
     NV_STATUS        status   = NV_ERR_NOT_SUPPORTED;
 
     if (!PFM_REQ_HNDLR_VALID_LIMIT_ID(id))
@@ -2644,6 +2681,7 @@ _pfmreqhndlrSampleSensorLimit_ACPI
     NvU32   timeStamp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5223);
     PFM_REQ_HNDLR_SENSOR_DATA                   *pPfmreqhndlrData      = &pPlatformRequestHandler->sensorData;
     OBJGPU                            *pGpu          = pfmreqhndlrGetGpu(pPlatformRequestHandler);
     NV0000_CTRL_PFM_REQ_HNDLR_CALL_ACPI_PARAMS   acpiParams    = {{ 0 }};
@@ -2710,6 +2748,7 @@ _pfmreqhndlrSetSupportedStatesFromAcpiParams
 
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5224);
     PFM_REQ_HNDLR_SENSOR_DATA    *pPfmreqhndlrData = &(pPlatformRequestHandler->sensorData);
 
     pPfmreqhndlrData->PFMREQHNDLRACPIData.bPfmReqHndlrSupported =
@@ -2735,6 +2774,7 @@ _pfmreqhndlrHandleUserConfigurableTgpModePlatformCustomization
     OBJGPU                    *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5225);
     NV_STATUS                                  status      = NV_OK;
     NV0000_CTRL_PFM_REQ_HNDLR_CALL_ACPI_PARAMS acpiParams;
     PFM_REQ_HNDLR_PSHAREDATA                   pshareParams;
@@ -2793,6 +2833,7 @@ _pfmreqhndlrPlatformPowerModeStateReset
     PlatformRequestHandler *pPlatformRequestHandler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5226);
     PFM_REQ_HNDLR_PPM_DATA    *pPpmData = NULL;
 
     pPpmData =  &(pPlatformRequestHandler->ppmData);
@@ -2817,6 +2858,7 @@ _pfmreqhndlrHandlePlatformSetEdppLimitInfoWorkItem
     void  *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5227);
     OBJSYS                  *pSys                    = SYS_GET_INSTANCE();
     PlatformRequestHandler  *pPlatformRequestHandler = SYS_GET_PFM_REQ_HNDLR(pSys);
     OBJGPU                  *pGpu                    =
@@ -2898,6 +2940,7 @@ cliresCtrlCmdSystemGpsCtrl_IMPL
     NV0000_CTRL_SYSTEM_GPS_CTRL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5228);
     return NV_OK;
 }
 
@@ -2908,6 +2951,7 @@ cliresCtrlCmdSystemGpsGetFrmData_IMPL
     NV0000_CTRL_SYSTEM_GPS_GET_FRM_DATA_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5229);
     return NV_OK;
 }
 
@@ -2918,6 +2962,7 @@ cliresCtrlCmdSystemGpsSetFrmData_IMPL
     NV0000_CTRL_SYSTEM_GPS_SET_FRM_DATA_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5230);
     return NV_OK;
 }
 
@@ -2928,5 +2973,6 @@ cliresCtrlCmdSystemGpsCallAcpi_IMPL
     NV0000_CTRL_SYSTEM_GPS_CALL_ACPI_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5231);
     return NV_OK;
 }

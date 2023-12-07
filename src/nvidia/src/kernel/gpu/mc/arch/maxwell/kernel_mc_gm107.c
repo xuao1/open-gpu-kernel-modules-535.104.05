@@ -46,6 +46,7 @@ kmcGetMcBar0MapInfo_GK104
     NvU32   *pBar0MapSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2562);
     *pBar0MapOffset = DRF_BASE(NV_PMC);
     *pBar0MapSize = DRF_SIZE(NV_PMC);
     return NV_OK;
@@ -62,6 +63,7 @@ kmcPrepareForXVEReset_GK104
     KernelMc *pKernelMc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2563);
     // FERMI-TODO
     return NV_OK;
 }
@@ -90,6 +92,7 @@ kmcWritePmcEnableReg_GK104
     NvBool bIsPmcDeviceEngine
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2564);
     NvU32 newPmc;
 
     // NV_PMC_DEVICE_ENABLE register is supported on Ampere and later only.
@@ -137,6 +140,7 @@ kmcReadPmcEnableReg_GK104
     NvBool bIsPmcDeviceEngine
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2565);
     // Ensure that caller never sets bIsPmcDeviceEngine = NV_TRUE for pre-Ampere.
     NV_ASSERT(bIsPmcDeviceEngine == NV_FALSE);
 

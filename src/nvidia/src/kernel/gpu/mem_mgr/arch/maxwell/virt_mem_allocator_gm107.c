@@ -204,6 +204,7 @@ dmaAllocMapping_GM107
     NvU32               swizzId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2658);
     NV_STATUS           status            = NV_OK;
     MemoryManager      *pMemoryManager    = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelMIGManager   *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -1165,6 +1166,7 @@ dmaFreeMapping_GM107
     CLI_DMA_ALLOC_MAP_INFO *pCliMapInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2659);
     VirtualMemory *pVirtualMemory = NULL;
     NvU32          p2p = NVOS46_FLAGS_P2P_ENABLE_NONE;
     NvU64          vaLo;
@@ -1395,6 +1397,7 @@ _gmmuWalkCBMapNextEntries_Direct
     NvU32                    *pProgress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2660);
     NvU32                i;
     const MMU_FMT_LEVEL *pLevelFmt = pTarget->pLevelFmt;
     MMU_MAP_ITERATOR    *pIter     = pTarget->pIter;
@@ -1598,6 +1601,7 @@ _gmmuWalkCBMapNextEntries_RmAperture
     NvU32                    *pProgress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2661);
     OBJGPU              *pGpu           = pUserCtx->pGpu;
     MemoryManager       *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     MMU_MAP_ITERATOR    *pIter          = pTarget->pIter;
@@ -1637,6 +1641,7 @@ static NV_STATUS _dmaGetFabricAddress
     NvU64           *fabricAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2662);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelNvlink  *pKernelNvlink  = GPU_GET_KERNEL_NVLINK(pGpu);
 
@@ -1697,6 +1702,7 @@ dmaUpdateVASpace_GF100
     NvU64       pageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2663);
     KernelBus     *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvBool      readPte = NV_FALSE;
@@ -2142,6 +2148,7 @@ dmaUpdateVASpace_GF100
 NV_STATUS
 dmaInit_GM107(OBJGPU *pGpu, VirtMemAllocator *pDma)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2664);
     DMAHALINFO_FERMI   *pDHPI = NULL;
     NvU32               data;
 
@@ -2177,6 +2184,7 @@ dmaInit_GM107(OBJGPU *pGpu, VirtMemAllocator *pDma)
 void
 dmaDestruct_GM107(VirtMemAllocator *pDma)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2665);
     deleteInfoPtr(&pDma->infoList, HAL_IMPL_GF100);
 }
 
@@ -2184,6 +2192,7 @@ dmaDestruct_GM107(VirtMemAllocator *pDma)
 NV_STATUS
 dmaStatePostLoad_GM107(OBJGPU *pGpu, VirtMemAllocator *pDma, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2666);
 #ifdef DEBUG
     DMAHALINFO_FERMI *pDHPI = DMA_GET_FERMI_INFOBLK(pDma);
     DMAHALINFO_FERMI *pDHPIPeer;
@@ -2216,6 +2225,7 @@ dmaMapBuffer_GM107
     NvU32       flagsForUpdate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2667);
     MemoryManager    *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
@@ -2405,6 +2415,7 @@ dmaMapBuffer_GM107
 
 void dmaUnmapBuffer_GM107(OBJGPU *pGpu, VirtMemAllocator *pDma, OBJVASPACE *pVAS, NvU64 vaddr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2668);
     NV_ASSERT_OR_RETURN_VOID(NULL != pVAS);
 
     vaspaceFree(pVAS, vaddr);
@@ -2420,6 +2431,7 @@ void _mmuWriteFb32(OBJGPU *pGpu, RmPhysAddr addr, NvU32 data, NvU32 aperture);
 
 NvU32 _mmuReadFb32(OBJGPU *pGpu, RmPhysAddr addr, NvU32 aperture)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2669);
     MEMORY_DESCRIPTOR   memDesc = {0};
     NvU8                *pOffset = NULL;
     NvU32               data = 0;
@@ -2446,6 +2458,7 @@ _mmuReadFb32_failed:
 
 void _mmuWriteFb32(OBJGPU *pGpu, RmPhysAddr addr, NvU32 data, NvU32 aperture)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2670);
     MEMORY_DESCRIPTOR   memDesc = {0};
     NvU8                *pOffset = NULL;
 
@@ -2492,6 +2505,7 @@ dmaXlateVAtoPAforChannel_GM107
     NvU32            *memType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2671);
     NV_ASSERT_OR_RETURN(pKernelChannel != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(pAddr != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(memType != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -2524,6 +2538,7 @@ _dmaApplyWarForBug2720120
     const NvU64  vaHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2672);
     KernelGmmu            *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     KernelBus             *pKernelBus  = GPU_GET_KERNEL_BUS(pGpu);
     GVAS_GPU_STATE        *pGpuState   = gvaspaceGetGpuState(pGVAS, pGpu);
@@ -2570,6 +2585,7 @@ _dmaApplyWarForBug2720120
 NV_STATUS
 dmaInitGart_GM107(OBJGPU *pGpu, VirtMemAllocator *pDma)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2673);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
     pDma->gpuGartCaps = DMA_GPU_GART_CAPS_NOSNOOP;
 
@@ -2592,5 +2608,6 @@ dmaInitGart_GM107(OBJGPU *pGpu, VirtMemAllocator *pDma)
 NvU32
 dmaGetPTESize_GM107(OBJGPU *pGpu, VirtMemAllocator *pDma)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2674);
     return NV_MMU_PTE__SIZE;
 }

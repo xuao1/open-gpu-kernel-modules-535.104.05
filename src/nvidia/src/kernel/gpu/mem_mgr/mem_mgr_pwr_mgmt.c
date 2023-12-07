@@ -43,6 +43,7 @@ memmgrSavePowerMgmtState_KERNEL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3020);
     NvU32     fbsrStartMode = pMemoryManager->fbsrStartMode;
     NvU32     i;
     OBJFBSR  *pFbsr;
@@ -210,6 +211,7 @@ memmgrRestorePowerMgmtState_KERNEL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3021);
     OBJFBSR     *pFbsr         = pMemoryManager->pActiveFbsr;
     NV_STATUS    status        = NV_OK;
     NvBool       bIsGpuLost    = NV_FALSE;
@@ -267,6 +269,7 @@ _memmgrGetFbEndExcludingLostOnSuspendRegions
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3022);
     NvU32 i = 0;
 
     for (i = 0; i < pMemoryManager->Ram.numFBRegions; i++)
@@ -287,6 +290,7 @@ _memmgrAllocFbsrReservedRanges
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3023);
     NvU64      size       = 0;
     NV_STATUS  status     = NV_OK;
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
@@ -423,6 +427,7 @@ fail:
 static NV_STATUS
 _memmgrWalkHeap(OBJGPU *pGpu, MemoryManager *pMemoryManager, OBJFBSR *pFbsr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3024);
     KernelBus   *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     FB_MEM_NODE *pMemNode   = pMemoryManager->pMemHeadNode;
     NvU64        size       = 0;
@@ -532,6 +537,7 @@ memmgrAddMemNode
     NvBool             bFreeDescriptor
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3025);
     FB_MEM_NODE *pNode = NULL;
     NV_STATUS    rmStatus = NV_OK;
 
@@ -580,6 +586,7 @@ memmgrIsGspOwnedMemory_KERNEL
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3026);
 
     GspStaticConfigInfo *pGSCI        = GPU_GET_GSP_STATIC_INFO(pGpu);
     RmPhysAddr           physAddr     = memdescGetPhysAddr(pMemDesc, AT_GPU, 0);
@@ -614,6 +621,7 @@ memmgrAddMemNodes_IMPL
     NvBool         bSaveAllRmAllocations
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3027);
     NV_STATUS           status    = NV_OK;
     Heap               *pHeap     = GPU_GET_HEAP(pGpu);
     MEMORY_DESCRIPTOR  *pAllocMemDesc;
@@ -687,6 +695,7 @@ void memmgrRemoveMemNodes_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3028);
     FB_MEM_NODE *pMemNode    = pMemoryManager->pMemHeadNode;
     FB_MEM_NODE *pMemNodeTmp = NULL;
 
@@ -725,6 +734,7 @@ memmgrFreeFbsrMemory_KERNEL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3029);
     OBJFBSR *pFbsr = pMemoryManager->pActiveFbsr;
 
     // Cleanup memory list

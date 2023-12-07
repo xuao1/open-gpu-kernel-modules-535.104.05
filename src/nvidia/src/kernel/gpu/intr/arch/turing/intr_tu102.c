@@ -54,6 +54,7 @@ intrGetNonStallBaseVector_TU102
     Intr       *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2463);
     NvU32 base = 0;
 
     if (!IS_VIRTUAL(pGpu))
@@ -114,6 +115,7 @@ intrStateLoad_TU102
     NvU32    flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2464);
     NV_STATUS status = NV_OK;
     InterruptTable    *pIntrTable;
     InterruptTableIter iter;
@@ -183,6 +185,7 @@ intrStateUnload_TU102
     NvU32    flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2465);
     // Disable all interrupts since we're unloading
 
     intrWriteRegTopEnClear_HAL(pGpu, pIntr, 0, 0xFFFFFFFF, NULL);
@@ -206,6 +209,7 @@ intrCacheIntrFields_TU102
     Intr              *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2466);
     NV_STATUS status = NV_OK;
 
     {
@@ -327,6 +331,7 @@ intrGetStallBaseVector_TU102
     Intr       *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2467);
     NvU32 base = GPU_REG_RD32(pGpu, NV_CTRL_LEGACY_ENGINE_STALL_INTR_BASE_VECTORID);
     return base;
 }
@@ -346,6 +351,7 @@ intrEnableLeaf_TU102
     NvU32       intrVector
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2468);
     NvU32 reg = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_REG(intrVector);
     NvU32 leafBit = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_BIT(intrVector);
     NvU32 intrLeafEnSetSize = intrGetLeafSize_HAL(pGpu, pIntr);
@@ -376,6 +382,7 @@ intrDisableLeaf_TU102
     NvU32       intrVector
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2469);
     NvU32 reg = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_REG(intrVector);
     NvU32 leafBit = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_BIT(intrVector);
     NvU32 intrLeafEnClearSize = intrGetLeafSize_HAL(pGpu, pIntr);
@@ -407,6 +414,7 @@ intrSetStall_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2470);
     // dev_ctrl tree is not used for legacy-vGPU
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu))
     {
@@ -435,6 +443,7 @@ static void _intrClearLeafEnables_TU102
     Intr *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2471);
     NvU32 i;
     NvU32 intrLeafSize = intrGetLeafSize_HAL(pGpu, pIntr);
 
@@ -459,6 +468,7 @@ _intrEnableStall_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2472);
     NvU32 idx;
 
     //
@@ -549,6 +559,7 @@ _intrDisableStall_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2473);
     NvU32 idx;
 
     NvU32 val;
@@ -668,6 +679,7 @@ intrClearLeafVector_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2474);
     NvU32 reg = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_REG(intrVector);
     NvU32 bit = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_BIT(intrVector);
 
@@ -691,6 +703,7 @@ intrIsVectorPending_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2475);
     NvU32 reg = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_REG(intrVector);
     NvU32 bit = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_BIT(intrVector);
     NvU32 val = intrReadRegLeaf_HAL(pGpu, pIntr, reg, pThreadState);
@@ -715,6 +728,7 @@ _intrGetUvmLeafMask_TU102
     Intr *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2476);
     NvU32 val = 0;
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     if (pKernelGmmu != NULL)
@@ -753,6 +767,7 @@ intrGetUvmSharedLeafEnDisableMask_TU102
     Intr *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2477);
     NvU32 intrVectorNonReplayableFault;
     NvU32 intrVectorFifoNonstall = NV_INTR_VECTOR_INVALID;
     NvU64 mask = 0;
@@ -834,6 +849,7 @@ intrGetPendingStallEngines_TU102
     THREAD_STATE_NODE   *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2478);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     InterruptTable    *pIntrTable;
     InterruptTableIter iter;
@@ -960,6 +976,7 @@ intrCheckAndServiceNonReplayableFault_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2479);
     NV_STATUS status = NV_OK;
     return status;
 }
@@ -979,6 +996,7 @@ intrRetriggerTopLevel_TU102
     Intr *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2480);
     NvU64 mask = 0;
 
     // We use the assumption that 1 == DISABLE below
@@ -1061,6 +1079,7 @@ intrGetLeafStatus_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2481);
     NvU32 subtreeIndex;
     NvU32 leafIndex;
 
@@ -1110,6 +1129,7 @@ intrGetPendingDisplayIntr_TU102
     THREAD_STATE_NODE   *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2482);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
 
     bitVectorClrAll(pEngines);
@@ -1172,6 +1192,7 @@ intrSetDisplayInterruptEnable_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2483);
     if (pIntr->displayIntrVector == NV_INTR_VECTOR_INVALID)
     {
         return;
@@ -1203,6 +1224,7 @@ intrDumpState_TU102
     Intr *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2484);
     InterruptTable    *pIntrTable;
     InterruptTableIter iter;
     NvU32              i;
@@ -1246,6 +1268,7 @@ intrInitSubtreeMap_TU102
     Intr   *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2485);
     NV2080_INTR_CATEGORY_SUBTREE_MAP *pCategoryEngine =
         &pIntr->subtreeMap[NV2080_INTR_CATEGORY_ESCHED_DRIVEN_ENGINE];
     pCategoryEngine->subtreeStart = NV_CPU_INTR_STALL_SUBTREE_START;
@@ -1276,6 +1299,7 @@ intrInitSubtreeMap_TU102
 NvU32
 intrGetNumLeaves_TU102(OBJGPU *pGpu, Intr *pIntr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2486);
     ct_assert((NV_CTRL_INTR_SUBTREE_TO_LEAF_IDX_END(NV_CPU_INTR_STALL_SUBTREE_LAST) + 1) <= NV_MAX_INTR_LEAVES);
     return (NV_CTRL_INTR_SUBTREE_TO_LEAF_IDX_END(NV_CPU_INTR_STALL_SUBTREE_LAST) + 1);
 }
@@ -1286,6 +1310,7 @@ intrGetNumLeaves_TU102(OBJGPU *pGpu, Intr *pIntr)
 NvU32
 intrGetLeafSize_TU102(OBJGPU *pGpu, Intr *pIntr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2487);
     return NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_LEAF__SIZE_1;
 }
 
@@ -1297,6 +1322,7 @@ intrGetIntrTopNonStallMask_TU102
     Intr   *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2488);
     // TODO Bug 3823562 Remove these asserts
     // Compile-time assert against the highest set bit that will be returned
     #define NV_CPU_INTR_NOSTALL_SUBTREE_HIGHEST NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_TOP_SUBTREE(0)
@@ -1336,6 +1362,7 @@ intrDecodeStallIntrEn_TU102
     NvU32    intrEn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2489);
     // mask with interrupts that RM owns
     if (pGpu->pmcRmOwnsIntrMask != 0)
     {

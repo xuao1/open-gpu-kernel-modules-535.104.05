@@ -56,6 +56,7 @@ void notifyMethodComplete
     NV_STATUS CompletionStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3086);
     if (pObject->bNotifyTrigger)
     {
         pObject->bNotifyTrigger = NV_FALSE;
@@ -83,6 +84,7 @@ static NV_STATUS notifyWriteNotifier
     NvU64      Time
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3087);
     NV_STATUS status;
     NOTIFICATION *pNotifyBuffer;
 
@@ -115,6 +117,7 @@ notifyFillNOTIFICATION
     NvU64         Time
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3088);
     INFO16_STATUS infoStatus;
     NvU32         TimeHi, TimeLo;
 
@@ -159,6 +162,7 @@ notifyFillNvNotification
     NvU64           Time
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3089);
     NvU32 TimeHi, TimeLo;
 
     if (!TimeSupplied)
@@ -191,6 +195,7 @@ NV_STATUS notifyFillNotifier
     NV_STATUS  CompletionStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3090);
     return notifyWriteNotifier(pGpu, NotifyXlate, Info32,
                                Info16, CompletionStatus,
                                0, NV_FALSE, 0);
@@ -207,6 +212,7 @@ NV_STATUS notifyFillNotifierOffsetTimestamp
     NvU64      Time
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3091);
     return notifyWriteNotifier(pGpu, NotifyXlate, Info32,
                                Info16, CompletionStatus,
                                Offset,
@@ -223,6 +229,7 @@ NV_STATUS notifyFillNotifierOffset
     NvU64      Offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3092);
     return notifyWriteNotifier(pGpu, NotifyXlate, Info32,
                                Info16, CompletionStatus,
                                Offset,
@@ -240,6 +247,7 @@ NV_STATUS notifyFillNotifierArrayTimestamp
     NvU64      Time
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3093);
     return notifyWriteNotifier(pGpu, NotifyXlate, Info32,
                                Info16, CompletionStatus,
                                Index * sizeof(NOTIFICATION),
@@ -256,6 +264,7 @@ NV_STATUS notifyFillNotifierArray
     NvU32      Index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3094);
     return notifyWriteNotifier(pGpu, NotifyXlate, Info32,
                                Info16, CompletionStatus,
                                Index * sizeof(NOTIFICATION),
@@ -296,6 +305,7 @@ NV_STATUS notifyFillNotifierGPUVATimestamp
     NvU64      Time
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3095);
     NvU64                 notifyGPUVA;
     NvBool                bFound;
     CLI_DMA_MAPPING_INFO *pDmaMappingInfo;
@@ -399,6 +409,7 @@ NV_STATUS notifyFillNotifierGPUVA
     NvU32      Index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3096);
     OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
     NvU64   Time;
 
@@ -443,6 +454,7 @@ NV_STATUS notifyFillNotifierMemoryTimestamp
     NvU64         Time
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3097);
     NvNotification * pDebugNotifier = NULL;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
@@ -517,6 +529,7 @@ NV_STATUS notifyFillNotifierMemory
     NvU32      Index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3098);
     OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
     NvU64   Time;
 
@@ -561,6 +574,7 @@ NV_STATUS semaphoreFillGPUVATimestamp
     NvU64      Time
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3099);
     NvU64                 semaphoreGPUVA;
     NvU64                 semaphoreGPUVAOffset;
     CLI_DMA_MAPPING_INFO *pDmaMappingInfo;
@@ -678,6 +692,7 @@ NV_STATUS semaphoreFillGPUVA
     NvBool     bBroadcast
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3100);
     OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
     NvU64   Time;
 

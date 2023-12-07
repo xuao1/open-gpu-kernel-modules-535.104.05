@@ -48,6 +48,7 @@ timeoutInitializeGpuDefault
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1951);
     NvU32               timeoutDefault;
 
     pTD->pGpu = pGpu;
@@ -103,6 +104,7 @@ timeoutRegistryOverride
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1952);
     NvU32 data32 = 0;
 
     // Override timeout value
@@ -170,6 +172,7 @@ timeoutOverride
     NvU32   timeoutMs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1953);
     pTD->bDefaultOverridden = bOverride;
 
     pTD->defaultus = bOverride ? (timeoutMs * 1000) : pTD->defaultResetus;
@@ -187,6 +190,7 @@ timeoutSet
     NvU32         flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1954);
     OBJTMR             *pTmr;
     NvU64               timeInNs;
     NvU64               timeoutNs;
@@ -304,6 +308,7 @@ _checkTimeout
     RMTIMEOUT  *pTimeout
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1955);
     NV_STATUS status = NV_OK;
     OBJTMR   *pTmr;
     NvU64     current;
@@ -420,6 +425,7 @@ timeoutCheck
     NvU32         lineNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1956);
     OBJGPU    *pGpu = pTD->pGpu;
     NV_STATUS  status = NV_OK;
 
@@ -523,6 +529,7 @@ timeoutCondWait
     NvU32                   lineNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1957);
     OBJGPU    *pGpu = pTD->pGpu;
     NV_STATUS  status = NV_OK;
     RMTIMEOUT  timeout;

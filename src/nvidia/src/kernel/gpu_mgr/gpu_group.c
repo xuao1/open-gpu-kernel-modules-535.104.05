@@ -52,6 +52,7 @@ gpugrpCreate_IMPL
     NvU32      gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4290);
     pGpuGrp->gpuMask = gpuMask;
     //
     // Add the gpugrp instance to the GPU objects in the mask
@@ -78,6 +79,7 @@ gpugrpDestroy_IMPL
     OBJGPUGRP *pGpuGrp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4291);
     NV_STATUS rmStatus = NV_ERR_OBJECT_NOT_FOUND;
     OBJGPU   *pGpu = NULL;
     NvU32     gpuIndex = 0;
@@ -104,6 +106,7 @@ gpugrpDestroy_IMPL
 NvU32
 gpugrpGetGpuMask_IMPL(OBJGPUGRP *pGpuGrp)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4292);
     return pGpuGrp->gpuMask;
 }
 
@@ -117,6 +120,7 @@ gpugrpGetGpuMask_IMPL(OBJGPUGRP *pGpuGrp)
 void
 gpugrpSetGpuMask_IMPL(OBJGPUGRP *pGpuGrp, NvU32 gpuMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4293);
     pGpuGrp->gpuMask = gpuMask;
 }
 /*!
@@ -129,6 +133,7 @@ gpugrpSetGpuMask_IMPL(OBJGPUGRP *pGpuGrp, NvU32 gpuMask)
 NvBool
 gpugrpGetBcEnabledState_IMPL(OBJGPUGRP *pGpuGrp)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4294);
     return pGpuGrp->bcEnabled;
 }
 
@@ -142,6 +147,7 @@ gpugrpGetBcEnabledState_IMPL(OBJGPUGRP *pGpuGrp)
 void
 gpugrpSetBcEnabledState_IMPL(OBJGPUGRP *pGpuGrp, NvBool bcState)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4295);
     pGpuGrp->bcEnabled = bcState;
 }
 
@@ -159,6 +165,7 @@ gpugrpSetParentGpu_IMPL
     OBJGPU    *pParentGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4296);
     pGpuGrp->parentGpu = pParentGpu;
 }
 
@@ -172,6 +179,7 @@ gpugrpSetParentGpu_IMPL
 POBJGPU
 gpugrpGetParentGpu_IMPL(OBJGPUGRP *pGpuGrp)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4297);
     return pGpuGrp->parentGpu;
 }
 
@@ -205,6 +213,7 @@ gpugrpCreateGlobalVASpace_IMPL
     OBJVASPACE **ppGlobalVASpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4298);
     NV_STATUS rmStatus;
     NvU32      gpuMask              = pGpuGrp->gpuMask;
     OBJSYS    *pSys                 = SYS_GET_INSTANCE();
@@ -241,6 +250,7 @@ gpugrpCreateGlobalVASpace_IMPL
 NV_STATUS
 gpugrpDestroyGlobalVASpace_IMPL(OBJGPUGRP *pGpuGrp, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4299);
     NV_STATUS  rmStatus = NV_OK;
     OBJSYS    *pSys     = SYS_GET_INSTANCE();
     OBJVMM    *pVmm     = SYS_GET_VMM(pSys);
@@ -271,6 +281,7 @@ gpugrpDestroyGlobalVASpace_IMPL(OBJGPUGRP *pGpuGrp, OBJGPU *pGpu)
 NV_STATUS
 gpugrpGetGlobalVASpace_IMPL(OBJGPUGRP *pGpuGrp, OBJVASPACE **ppVASpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4300);
     NV_ASSERT_OR_RETURN(ppVASpace != NULL, NV_ERR_INVALID_ARGUMENT);
 
     if (pGpuGrp->pGlobalVASpace == NULL)
@@ -298,6 +309,7 @@ gpugrpGetGlobalVASpace_IMPL(OBJGPUGRP *pGpuGrp, OBJVASPACE **ppVASpace)
 NV_STATUS
 gpugrpGetGpuFromSubDeviceInstance_IMPL(OBJGPUGRP *pGpuGrp, NvU32 subDeviceInst, OBJGPU **ppGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4301);
     OBJGPU     *pGpu        = NULL;
     NvU32       gpuInst     = 0;
     NvU32       gpuMask;

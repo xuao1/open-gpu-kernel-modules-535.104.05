@@ -46,6 +46,7 @@ uvmchanrtnrConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1624);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pUvmChannelRetainer);
     KernelFifo  *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NV_STATUS rmStatus = NV_OK;
@@ -101,6 +102,7 @@ uvmchanrtnrDestruct_IMPL
     UvmChannelRetainer *pUvmChannelRetainer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1625);
     OBJGPU     *pGpu = GPU_RES_GET_GPU(pUvmChannelRetainer);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     CHID_MGR   *pChidMgr = NULL;

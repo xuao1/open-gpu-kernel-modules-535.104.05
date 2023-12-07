@@ -32,6 +32,7 @@
 PMODULEDESCRIPTOR
 objhalGetModuleDescriptor_IMPL(OBJHAL *thisHal)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 36);
     return &thisHal->moduleDescriptor;
 }
 
@@ -43,6 +44,7 @@ objhalGetModuleDescriptor_IMPL(OBJHAL *thisHal)
 NV_STATUS
 registerHalModule(NvU32 halImpl, const HAL_IFACE_SETUP *pHalSetIfaces)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 37);
     OBJSYS           *pSys = SYS_GET_INSTANCE();
     OBJHALMGR        *pHalMgr = SYS_GET_HALMGR(pSys);
     OBJHAL           *pHal;

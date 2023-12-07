@@ -45,6 +45,7 @@ kgspGetSignatureSectionNamePrefix_GH100
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2224);
     ConfidentialCompute *pCC = GPU_GET_CONF_COMPUTE(pGpu);
     if (pCC != NULL && pCC->getProperty(pCC, PDB_PROP_CONFCOMPUTE_CC_FEATURE_ENABLED))
         return GSP_CC_SIGNATURE_SECTION_NAME_PREFIX;
@@ -67,6 +68,7 @@ _kgspWaitForAsserted
     void   *pVoid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2225);
     return GPU_FLD_TEST_DRF_DEF(pGpu, _PGSP, _FALCON_ENGINE, _RESET_STATUS,
                                 _ASSERTED);
 }
@@ -87,6 +89,7 @@ _kgspWaitForDeasserted
     void   *pVoid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2226);
     return GPU_FLD_TEST_DRF_DEF(pGpu, _PGSP, _FALCON_ENGINE, _RESET_STATUS,
                                 _DEASSERTED);
 }
@@ -103,6 +106,7 @@ kgspResetHw_GH100
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2227);
     NV_STATUS status = NV_OK;
     RMTIMEOUT timeout;
 
@@ -143,6 +147,7 @@ kgspAllocBootArgs_GH100
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2228);
     NvP64 pVa = NvP64_NULL;
     NvP64 pPriv = NvP64_NULL;
     NV_STATUS nvStatus = NV_OK;
@@ -186,6 +191,7 @@ kgspFreeBootArgs_GH100
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2229);
     kgspFreeBootArgs_TU102(pGpu, pKernelGsp);
 
     // release wpr meta data resources
@@ -213,6 +219,7 @@ kgspIsWpr2Up_GH100
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2230);
     ConfidentialCompute *pCC = GPU_GET_CONF_COMPUTE(pGpu);
     if (pCC != NULL && pCC->getProperty(pCC, PDB_PROP_CONFCOMPUTE_CC_FEATURE_ENABLED))
     {
@@ -233,6 +240,7 @@ kgspWaitForGfwBootOk_GH100
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2231);
     KernelFsp *pKernelFsp = GPU_GET_KERNEL_FSP(pGpu);
 
     if (pKernelFsp != NULL)
@@ -285,6 +293,7 @@ kgspCalculateFbLayout_GH100
     GSP_FIRMWARE   *pGspFw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2232);
     GspFwWprMeta        *pWprMeta = pKernelGsp->pWprMeta;
     RM_RISCV_UCODE_DESC *pRiscvDesc = pKernelGsp->pGspRmBootUcodeDesc;
 
@@ -367,6 +376,7 @@ static GSP_DMA_TARGET _kgspMemdescToDmaTarget
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2233);
     switch (memdescGetAddressSpace(pMemDesc))
     {
         case ADDR_SYSMEM:
@@ -390,6 +400,7 @@ kgspSetupGspFmcArgs_GH100
     GSP_FIRMWARE *pGspFw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2234);
     NV_ASSERT_OR_RETURN(IS_GSP_CLIENT(pGpu), NV_ERR_NOT_SUPPORTED);
     NV_ASSERT_OR_RETURN(pKernelGsp->pGspFmcArgumentsCached != NULL, NV_ERR_INVALID_STATE);
 
@@ -422,6 +433,7 @@ _kgspIsLockdownReleased
     void    *pVoid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2235);
     KernelGsp *pKernelGsp = reinterpretCast(pVoid, KernelGsp *);
     NvU32 reg;
 
@@ -441,6 +453,7 @@ _kgspBootstrapGspFmc_GH100
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2236);
     KernelFalcon *pKernelFalcon = staticCast(pKernelGsp, KernelFalcon);
     RmPhysAddr physAddr;
 
@@ -521,6 +534,7 @@ kgspBootstrapRiscvOSEarly_GH100
     GSP_FIRMWARE   *pGspFw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2237);
     KernelFalcon *pKernelFalcon = staticCast(pKernelGsp, KernelFalcon);
     KernelFsp *pKernelFsp = GPU_GET_KERNEL_FSP(pGpu);
     NV_STATUS     status        = NV_OK;
@@ -654,6 +668,7 @@ kgspGetGspRmBootUcodeStorage_GH100
     BINDATA_STORAGE **ppBinStorageDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2238);
         ConfidentialCompute *pCC = GPU_GET_CONF_COMPUTE(pGpu);
         if (pCC != NULL && pCC->getProperty(pCC, PDB_PROP_CONFCOMPUTE_CC_FEATURE_ENABLED))
         {

@@ -57,6 +57,7 @@ _spdmClearContext
     Spdm *pSpdm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3995);
     NvU32 index = 0;
 
     if (pSpdm == NULL)
@@ -127,6 +128,7 @@ _spdmAcquireTransportBuffer
     void   **msg_buf_ptr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3996);
     if (context == NULL || max_msg_size == NULL || msg_buf_ptr == NULL)
     {
         return LIBSPDM_STATUS_INVALID_PARAMETER;
@@ -150,6 +152,7 @@ _spdmReleaseTransportBuffer
     const void *msg_buf_ptr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3997);
     portMemFree((void *)msg_buf_ptr);
 }
 
@@ -164,6 +167,7 @@ _spdmVerifyCertChain
     size_t       *trust_anchor_size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3998);
     return NV_TRUE;
 }
 
@@ -177,6 +181,7 @@ spdmConstruct_IMPL
     Spdm *pSpdm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3999);
 
     if (pSpdm == NULL)
     {
@@ -212,6 +217,7 @@ spdmDestruct_IMPL
     Spdm * pSpdm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4000);
     _spdmClearContext(pSpdm);
 }
 
@@ -222,6 +228,7 @@ spdmContextInit_IMPL
     Spdm   *pSpdm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4001);
     NV_STATUS                status = NV_OK;
     libspdm_data_parameter_t parameter;
     uint8_t                  ctExponent;
@@ -364,6 +371,7 @@ spdmContextDeinit_IMPL
     NvBool  bForceClear
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4002);
     NV_STATUS status = NV_OK;
 
     if (pGpu == NULL || pSpdm == NULL)
@@ -400,6 +408,7 @@ spdmStart_IMPL
     Spdm   *pSpdm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4003);
     NV_STATUS status = NV_OK;
 
     if (pGpu == NULL || pSpdm == NULL)
@@ -496,6 +505,7 @@ spdmRetrieveExportSecret_IMPL
     NvU8   *pKeyOut
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4004);
     size_t                             keySizeSizeT    = 0;
     libspdm_secured_message_context_t *pSessionContext = NULL;
 

@@ -47,6 +47,7 @@ intrServiceVirtual_TU102
     Intr    *pIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2456);
     NvU32 i;
 
     // For now, servicing only involves clearing interrupts from all GFIDs
@@ -75,6 +76,7 @@ intrTriggerPrivDoorbell_TU102
     NvU32    handle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2457);
     if (!gpuIsSriovEnabled(pGpu))
         return NV_ERR_NOT_SUPPORTED;
 

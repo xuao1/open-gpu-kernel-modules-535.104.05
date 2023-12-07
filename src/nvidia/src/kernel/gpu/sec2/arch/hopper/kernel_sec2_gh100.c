@@ -35,6 +35,7 @@ ksec2StateLoad_GH100
     NvU32 unused
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3961);
     ConfidentialCompute *pConfCompute = GPU_GET_CONF_COMPUTE(pGpu);
 
     if ((pConfCompute != NULL) &&

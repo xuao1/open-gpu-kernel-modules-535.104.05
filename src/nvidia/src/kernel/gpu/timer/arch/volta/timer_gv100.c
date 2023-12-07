@@ -50,6 +50,7 @@ tmrSetCurrentTime_GV100
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4148);
     NV_STATUS status;
 
     // We can only set the time if level 0 is allowed to write
@@ -97,6 +98,7 @@ tmrGetGpuPtimerOffset_GV100
     NvU32   *pGpuTimestampOffsetHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4149);
     extern NV_STATUS tmrGetGpuPtimerOffset_GM107(OBJGPU *pGpu, OBJTMR *pTmr, NvU32 *pGpuTimestampOffsetLo, NvU32 *pGpuTimestampOffsetHi);
 
     if (pGpu->getProperty(pGpu, PDB_PROP_GPU_NV_USERMODE_ENABLED))

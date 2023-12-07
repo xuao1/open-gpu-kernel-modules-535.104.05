@@ -31,6 +31,7 @@
 
 static NvBool _dummyXenIsP2PSupported(NvU32 gpuMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5783);
     return NV_FALSE;
 }
 
@@ -42,6 +43,7 @@ static NvBool _dummyXenIsP2PSupported(NvU32 gpuMask)
 //
 static NV_STATUS _dummyXenPostDetection(OBJOS *pOS, NvBool *result)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5784);
     *result = NV_TRUE;
     return NV_OK;
 }

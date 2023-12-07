@@ -49,6 +49,7 @@
 void
 pmaRegmapPrint(PMA_REGMAP *pMap)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3225);
     NvU32 i, j;
 
     NV_ASSERT(pMap != NULL);
@@ -71,6 +72,7 @@ pmaRegmapPrint(PMA_REGMAP *pMap)
 static NvU32
 maxZerosGet(NvU64 bits)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3226);
     NvU32 y = 0;
 
     bits = ~bits;
@@ -85,6 +87,7 @@ maxZerosGet(NvU64 bits)
 static NvS64
 _checkOne(NvU64 *bits, NvU64 start, NvU64 end)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3227);
     NvS32 firstSetBit;
     NvU64 startMapIdx, startBitIdx, endMapIdx, endBitIdx, mapIdx;
     NvU64 startMask, endMask, handle;
@@ -159,6 +162,7 @@ _checkOne(NvU64 *bits, NvU64 start, NvU64 end)
 
 static NvU64 alignUpToMod(NvU64 frame, NvU64 alignment, NvU64 mod)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3228);
     if ((frame & (alignment - 1)) <= mod)
         return NV_ALIGN_DOWN(frame, alignment) + mod;
     else
@@ -171,6 +175,7 @@ static NvU64 alignUpToMod(NvU64 frame, NvU64 alignment, NvU64 mod)
 //
 static NvBool _pmaRegmapAllFree2mb(PMA_REGMAP *pRegmap, NvU64 frameNum)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3229);
     NvU64 baseFrame = (NV_ALIGN_DOWN((frameNum << PMA_PAGE_SHIFT), _PMA_2MB)) >> PMA_PAGE_SHIFT;
     NvU32 numFrames = _PMA_2MB >> PMA_PAGE_SHIFT;
 
@@ -215,6 +220,7 @@ _pmaRegmapScanNumaUnevictable
     NvU64       frameEnd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3230);
     NvS64    unevictableFrameIndex = -1;
     NvU32    unevictableIndex = 0;
     NvU64   *unpinBitmap = pRegmap->map[MAP_IDX_ALLOC_UNPIN];
@@ -312,6 +318,7 @@ pmaRegMapScanContiguousNumaEviction
     NvU64   *evictEnd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3231);
     NV_STATUS status = NV_ERR_NO_MEMORY;
     PMA_REGMAP *pRegmap = (PMA_REGMAP *)pMap;
 
@@ -403,6 +410,7 @@ pmaRegMapScanContiguousNumaEviction
 static NV_STATUS
 _pmaRegmapStatus(PMA_REGMAP *pRegmap, NvU64 start, NvU64 end, NvU64 *frameIndex)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3232);
     NvS64 diff;
 
     if ((diff = _checkOne(pRegmap->map[MAP_IDX_ALLOC_PIN], start, end)) != -1)
@@ -463,6 +471,7 @@ _pmaRegmapStatus(PMA_REGMAP *pRegmap, NvU64 start, NvU64 end, NvU64 *frameIndex)
 static NvS64
 _pmaRegmapAvailable(PMA_REGMAP *pRegmap, NvU64 start, NvU64 end)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3233);
     NvU64 unavailableFrameIndex;
     NV_STATUS frameStatus = _pmaRegmapStatus(pRegmap, start, end, &unavailableFrameIndex);
 
@@ -483,6 +492,7 @@ _pmaRegmapAvailable(PMA_REGMAP *pRegmap, NvU64 start, NvU64 end)
 static NvS64
 _pmaRegmapEvictable(PMA_REGMAP *pRegmap, NvU64 start, NvU64 end)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3234);
     NvU64 unavailableFrameIndex;
     NvS64 frameStatus = _pmaRegmapStatus(pRegmap, start, end, &unavailableFrameIndex);
 
@@ -507,6 +517,7 @@ pmaRegmapInit
     NvBool     bProtected
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3235);
     NvU32 i;
     PMA_REGMAP *newMap;
     NvU64 num2mbPages;
@@ -559,6 +570,7 @@ pmaRegmapInit
 void
 pmaRegmapDestroy(void *pMap)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3236);
     NvU32 i;
     NvU64 num2mbPages;
     PMA_REGMAP *pRegmap = (PMA_REGMAP *)pMap;
@@ -606,6 +618,7 @@ pmaRegmapChangeStateAttribEx
     PMA_PAGESTATUS newStateMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3237);
     NvU64 mapIndex, mapOffset, bits, newVal, mask;
     NvU32 i, bitWriteCount;
     PMA_PAGESTATUS oldState, updatedState;
@@ -682,6 +695,7 @@ pmaRegmapChangeStateAttrib
     NvBool writeAttrib
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3238);
     NvU64 mapIndex, mapOffset, bits, newVal, mask;
     NvU32 i;
     NvU32 bitWriteCount;
@@ -752,6 +766,7 @@ pmaRegmapChangeStateAttrib
 void
 pmaRegmapChangeState(void *pMap, NvU64 frameNum, PMA_PAGESTATUS newState)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3239);
     NV_ASSERT(newState <= STATE_PIN);
     // Write state bits, but not attrib bits
     pmaRegmapChangeStateAttrib((PMA_REGMAP *)pMap, frameNum, newState, NV_FALSE);
@@ -767,6 +782,7 @@ pmaRegmapChangePageStateAttrib
     NvBool writeAttrib
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3240);
     NvU32 framesPerPage = (NvU32)(pageSize >> PMA_PAGE_SHIFT);
     NvU64 frame;
     for (frame = startFrame; frame < startFrame + framesPerPage; frame++)
@@ -778,6 +794,7 @@ pmaRegmapChangePageStateAttrib
 PMA_PAGESTATUS
 pmaRegmapRead(void *pMap, NvU64 frameNum, NvBool readAttrib)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3241);
     NvU64 mapIndex, mapOffset, bits, mask, val;
     NvU32 i;
     NvU32 bitReadCount;
@@ -811,6 +828,7 @@ static NvS64 _scanContiguousSearchLoop
     NvBool bSearchEvictable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3242);
     NvU64 freeStart;
     PMA_PAGESTATUS startStatus, endStatus, state;
     NvS64 checkDiff;
@@ -889,6 +907,7 @@ static NvS64 _scanContiguousSearchLoopReverse
     NvBool bSearchEvictable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3243);
     NvU64 freeStart;
     PMA_PAGESTATUS startStatus, endStatus, state;
     NvS64 checkDiff;
@@ -975,6 +994,7 @@ pmaRegmapScanContiguous
     NvBool bReverseAlloc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3244);
     NvU64 numFrames, localStart, localEnd, framesPerPage;
     NvU64 frameAlignment, alignedAddrBase, frameAlignmentPadding;
     NvS64 frameFound;
@@ -1069,6 +1089,7 @@ pmaRegmapScanDiscontiguous
     NvBool bReverseAlloc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3245);
     NvU64 freeStart, found, framesPerPage, localStart, localEnd;
     NvU64 alignedAddrBase, frameAlignmentPadding;
     PMA_PAGESTATUS startStatus, endStatus;
@@ -1202,6 +1223,7 @@ pmaRegmapGetSize
     NvU64 *pBytesTotal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3246);
     PMA_REGMAP *pRegmap = (PMA_REGMAP *)pMap;
     *pBytesTotal = (pRegmap->totalFrames << PMA_PAGE_SHIFT);
 }
@@ -1213,6 +1235,7 @@ pmaRegmapGetLargestFree
     NvU64 *pLargestFree
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3247);
     NvU64 mapIndex       = 0;
     NvU32 mapMaxZeros    = 0;
     NvU32 mapTrailZeros  = 0;
@@ -1253,11 +1276,13 @@ pmaRegmapGetLargestFree
 
 NvU64 pmaRegmapGetEvictingFrames(void *pMap)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3248);
     return ((PMA_REGMAP *)pMap)->frameEvictionsInProcess;
 }
 
 void pmaRegmapSetEvictingFrames(void *pMap, NvU64 frameEvictionsInProcess)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3249);
     ((PMA_REGMAP *)pMap)->frameEvictionsInProcess = frameEvictionsInProcess;
 }
 

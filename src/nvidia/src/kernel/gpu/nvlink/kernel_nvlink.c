@@ -53,6 +53,7 @@ knvlinkIsForcedConfig_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3763);
     return (pKernelNvlink->bChiplibConfig);
 }
 
@@ -71,6 +72,7 @@ knvlinkIsNvlinkDefaultEnabled_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3764);
     //
     // Currently it is critical that the following lib check be present.
     // Burying this in the hal below it may get lost as the stub is all
@@ -103,6 +105,7 @@ knvlinkIsP2pLoopbackSupported_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3765);
 #if defined(INCLUDE_NVLINK_LIB)
 
     NvU32 i;
@@ -149,6 +152,7 @@ knvlinkIsP2pLoopbackSupportedPerLink_IMPL
     NvU32         link
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3766);
 #if defined(INCLUDE_NVLINK_LIB)
 
    if ((pGpu == NULL) || (pKernelNvlink == NULL))
@@ -202,6 +206,7 @@ knvlinkIsNvlinkP2pSupported_IMPL
     OBJGPU       *pPeerGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3767);
     NV_STATUS status = NV_OK;
 
     if (pKernelNvlink == NULL)
@@ -243,6 +248,7 @@ knvlinkCheckNvswitchP2pConfig_IMPL
     OBJGPU       *pPeerGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3768);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64          rangeStart     = knvlinkGetUniqueFabricBaseAddress(pGpu, pKernelNvlink);
     NvU64          rangeEnd       = rangeStart + (pMemoryManager->Ram.fbTotalMemSizeMb << 20);
@@ -309,6 +315,7 @@ knvlinkGetP2pConnectionStatus_IMPL
     OBJGPU       *pPeerGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3769);
     NV_STATUS     status         = NV_OK;
     OBJGPU       *pGpu0          = pGpu;
     OBJGPU       *pGpu1          = pPeerGpu;
@@ -475,6 +482,7 @@ knvlinkUpdateCurrentConfig_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3770);
     OBJSYS    *pSys      = SYS_GET_INSTANCE();
     KernelCE  *pKCe      = NULL;
     NvBool     bOwnsLock = NV_FALSE;
@@ -573,6 +581,7 @@ knvlinkRegisterInbandCallback_IMPL
     NVLINK_INBAND_MSG_CALLBACK *params
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3771);
     if (params->messageType >= NVLINK_INBAND_MSG_TYPE_MAX)
     {
         NV_PRINTF(LEVEL_ERROR, "Wrong msgType. Not registering\n");
@@ -607,6 +616,7 @@ knvlinkUnregisterInbandCallback_IMPL
     NvU16 msgType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3772);
     if (msgType >= NVLINK_INBAND_MSG_TYPE_MAX)
     {
         NV_PRINTF(LEVEL_ERROR, "Wrong msgType. Not unregistering\n");
@@ -626,6 +636,7 @@ knvlinkInbandMsgCallbackDispatcher_WORKITEM
     void *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3773);
     OBJGPU *pGpu    = NULL;
     nvlink_inband_msg_header_t *pHeader;
     KernelNvlink *pKernelNvlink;
@@ -673,6 +684,7 @@ knvlinkInbandMsgCallbackDispatcher_IMPL
     NvU8  *pMessage
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3774);
     NV_STATUS status;
     nvlink_inband_msg_header_t *pHeader;
     NVLINK_INBAND_MSG_CALLBACK *pParams;
@@ -723,6 +735,7 @@ knvlinkSendInbandData_IMPL
     NV2080_CTRL_NVLINK_INBAND_SEND_DATA_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3775);
     NV_STATUS status;
 
     status = knvlinkExecGspRmRpc(pGpu, pKernelNvlink,
@@ -745,6 +758,7 @@ knvlinkGetEnabledLinkMask_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3776);
     return pKernelNvlink->enabledLinks;
 }
 
@@ -761,6 +775,7 @@ knvlinkGetDiscoveredLinkMask_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3777);
     return pKernelNvlink->discoveredLinks;
 }
 
@@ -779,6 +794,7 @@ knvlinkGetNumLinksToSystem_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3778);
     NvU32 numSysmemLinks = pKernelNvlink->sysmemLinkMask;
 
     if (numSysmemLinks != 0)
@@ -806,6 +822,7 @@ knvlinkGetNumLinksToPeer_IMPL
     OBJGPU       *pRemoteGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3779);
     NvU32 numPeerLinks =
         knvlinkGetLinkMaskToPeer(pGpu, pKernelNvlink, pRemoteGpu);
 
@@ -834,6 +851,7 @@ knvlinkGetLinkMaskToPeer_IMPL
     OBJGPU       *pGpu1
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3780);
     NvU32 peerLinkMask = 0;
     KernelNvlink *pKernelNvlink1 = NULL;
 
@@ -889,6 +907,7 @@ knvlinkSetLinkMaskToPeer_IMPL
     NvU32         peerLinkMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3781);
     NV_STATUS status = NV_OK;
 
     // Return early if no update needed to the peer link mask
@@ -937,6 +956,7 @@ knvlinkGetPeersNvlinkMaskFromHshub_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3782);
     NV_STATUS status       = NV_OK;
     NvU32     peerLinkMask = 0;
     NvU32     i;
@@ -980,6 +1000,7 @@ knvlinkPrepareForXVEReset_IMPL
     NvBool        bForceShutdown
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3783);
     OBJSYS    *pSys      = SYS_GET_INSTANCE();
     NV_STATUS  retStatus = NV_OK;
     OBJGPU    *pRemoteGpu;
@@ -1193,6 +1214,7 @@ knvlinkSetPowerFeatures_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3784);
     // Get the Ip Verion from the First available IOCTRL.
     switch (pKernelNvlink->ipVerNvlink)
     {
@@ -1225,6 +1247,7 @@ knvlinkDetectNvswitchProxy_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3785);
     OBJSYS    *pSys   = SYS_GET_INSTANCE();
     NV_STATUS  status = NV_OK;
     NvU32      i;
@@ -1316,6 +1339,7 @@ knvlinkSetNvswitchFlaAddr_IMPL
     NvU64         addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3786);
     return NV_OK;
 }
 
@@ -1334,6 +1358,7 @@ knvlinkGetNvswitchFlaAddr_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3787);
     return 0;
 }
 
@@ -1352,6 +1377,7 @@ knvlinkIsNvswitchProxyPresent_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3788);
     return pKernelNvlink->bNvswitchProxy;
 }
 
@@ -1376,6 +1402,7 @@ knvlinkSetUniqueFlaBaseAddress_IMPL
     NvU64         flaBaseAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3789);
     NV_STATUS  status     = NV_OK;
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
 
@@ -1443,6 +1470,7 @@ knvlinkSyncLinkMasksAndVbiosInfo_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3790);
     NV_STATUS status = NV_OK;
 
     NV2080_CTRL_NVLINK_SYNC_LINK_MASKS_AND_VBIOS_INFO_PARAMS params;
@@ -1488,6 +1516,7 @@ knvlinkUpdateLinkConnectionStatus_IMPL
     NvU32         linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3791);
     NV_STATUS status = NV_OK;
 
     NV2080_CTRL_NVLINK_UPDATE_LINK_CONNECTION_PARAMS params;
@@ -1547,6 +1576,7 @@ knvlinkPreTrainLinksToActiveAli_IMPL
     NvBool        bSync
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3792);
     NV_STATUS status = NV_OK;
 
     NV2080_CTRL_NVLINK_PRE_LINK_TRAIN_ALI_PARAMS params;
@@ -1592,6 +1622,7 @@ knvlinkTrainLinksToActiveAli_IMPL
     NvBool        bSync
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3793);
     NV_STATUS status = NV_OK;
 
     NV2080_CTRL_NVLINK_PRE_LINK_TRAIN_ALI_PARAMS params;
@@ -1633,6 +1664,7 @@ knvlinkUpdatePostRxDetectLinkMask_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3794);
     NV_STATUS status = NV_OK;
 
     NV2080_CTRL_NVLINK_GET_LINK_MASK_POST_RX_DET_PARAMS params;
@@ -1666,6 +1698,7 @@ knvlinkCopyNvlinkDeviceInfo_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3795);
     NV_STATUS status = NV_OK;
     NvU32     i;
 
@@ -1726,6 +1759,7 @@ knvlinkCopyIoctrlDeviceInfo_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3796);
     KernelIoctrl *pKernelIoctrl = NULL;
     NV_STATUS     status        = NV_OK;
     NvU32         ioctrlIdx;
@@ -1790,6 +1824,7 @@ knvlinkSetupTopologyForForcedConfig_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3797);
     NV_STATUS status  = NV_OK;
     NvU32     i, physLink;
 
@@ -1881,6 +1916,7 @@ knvlinkSyncLaneShutdownProps_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3798);
     NV_STATUS status = NV_OK;
 
     NV2080_CTRL_NVLINK_SYNC_NVLINK_SHUTDOWN_PROPS_PARAMS params;
@@ -1920,6 +1956,7 @@ knvlinkGetNumActiveLinksPerIoctrl_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3799);
     NV_STATUS status;
     NV2080_CTRL_INTERNAL_NVLINK_GET_NUM_ACTIVE_LINK_PER_IOCTRL_PARAMS params;
     portMemSet(&params, 0, sizeof(params));
@@ -1950,6 +1987,7 @@ knvlinkGetTotalNumLinksPerIoctrl_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3800);
     NV_STATUS status;
     NV2080_CTRL_INTERNAL_NVLINK_GET_TOTAL_NUM_LINK_PER_IOCTRL_PARAMS params;
     portMemSet(&params, 0, sizeof(params));
@@ -1977,6 +2015,7 @@ knvlinkProcessInitDisabledLinks_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3801);
     NvU32     mask                 = 0;
     NvBool    bSkipHwNvlinkDisable = 0;
     NV_STATUS status               = NV_OK;
@@ -2020,6 +2059,7 @@ knvlinkExecGspRmRpc_IMPL
     NvU32         paramSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3802);
     NvU32     gpuMaskRelease = 0;
     NvU32     gpuMaskInitial = rmGpuLocksGetOwnedMask();
     NvU32     gpuMask        = gpuMaskInitial | NVBIT(pGpu->gpuInstance);
@@ -2060,6 +2100,7 @@ knvlinkExecGspRmRpc_IMPL
 void
 knvlinkUtoa(NvU8 *str, NvU64 length, NvU64 val)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3803);
     NvU8  temp[NV2080_GPU_MAX_NAME_STRING_LENGTH];
     NvU8 *ptr = temp;
     NvU64 i = 0;

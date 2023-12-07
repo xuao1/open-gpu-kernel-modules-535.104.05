@@ -63,16 +63,19 @@ ct_assert(sizeof(NvHandle) <= 4);
 
 static NvBool _isCmdSystemWide(NvU32 cmd)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5681);
     return DRF_VAL(XXXX, _CTRL_CMD, _CLASS, cmd) == NV01_ROOT;
 }
 
 static NvHandle _gpuInstKeyToClient(NvU64 key)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5682);
     return (key >> CLIENT_KEY_SHIFT);
 }
 
 static NvU64 _handlesToGpuInstKey(NvHandle hClient, NvHandle hObject)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5683);
     return ((NvU64)hClient << CLIENT_KEY_SHIFT) | hObject;
 }
 
@@ -92,6 +95,7 @@ enum CACHE_LOCK_TYPE
 
 static void _cacheLockAcquire(enum CACHE_LOCK_TYPE lockType)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5684);
     if (lockType == LOCK_EXCLUSIVE)
         portSyncRwLockAcquireWrite(RmapiControlCache.pLock);
     else
@@ -100,6 +104,7 @@ static void _cacheLockAcquire(enum CACHE_LOCK_TYPE lockType)
 
 static void _cacheLockRelease(enum CACHE_LOCK_TYPE lockType)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5685);
     if (lockType == LOCK_EXCLUSIVE)
         portSyncRwLockReleaseWrite(RmapiControlCache.pLock);
     else
@@ -111,6 +116,7 @@ static RmapiControlCacheEntry* _getOrInitCacheEntry(NvU64 key1, NvU64 key2, NvBo
 
 NvBool rmapiControlIsCacheable(NvU32 flags, NvU32 accessRight, NvBool bAllowInternal)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5686);
     if (RmapiControlCache.mode == NV0000_CTRL_SYSTEM_RMCTRL_CACHE_MODE_CTRL_MODE_DISABLE)
         return NV_FALSE;
 
@@ -144,6 +150,7 @@ NvBool rmapiControlIsCacheable(NvU32 flags, NvU32 accessRight, NvBool bAllowInte
 
 NvBool rmapiCmdIsCacheable(NvU32 cmd, NvBool bAllowInternal)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5687);
     NvU32 flags;
     NvU32 accessRight;
 
@@ -155,6 +162,7 @@ NvBool rmapiCmdIsCacheable(NvU32 cmd, NvBool bAllowInternal)
 
 NV_STATUS rmapiControlCacheInit(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5688);
 #if defined(DEBUG)
     RmapiControlCache.mode = NV0000_CTRL_SYSTEM_RMCTRL_CACHE_MODE_CTRL_MODE_VERIFY_ONLY;
 #else
@@ -189,6 +197,7 @@ NV_STATUS rmapiControlCacheSetGpuInstForObject
     NvU32 gpuInst
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5689);
     NV_STATUS status = NV_OK;
     NvU64 *entry;
 
@@ -233,6 +242,7 @@ static NV_STATUS _rmapiControlCacheGetGpuInstForObject
     NvU32 *pGpuInst
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5690);
     NV_STATUS status = NV_ERR_OBJECT_NOT_FOUND;
     NvU64* entry = mapFind(&RmapiControlCache.objectToGpuInstMap, _handlesToGpuInstKey(hClient, hObject));
 
@@ -255,6 +265,7 @@ static void _rmapiControlCacheFreeGpuInstForObject
     NvHandle hObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5691);
     const NvU64 key = _handlesToGpuInstKey(hClient, hObject);
     NvU64* entry = mapFind(&RmapiControlCache.objectToGpuInstMap, key);
 
@@ -268,6 +279,7 @@ static void _rmapiControlCacheFreeGpuInstForObject
 // Need to hold rmapi control cache write lock
 static void _rmapiControlCacheFreeGpuInstForClient(NvHandle hClient)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5692);
     while (NV_TRUE)
     {
         NvU64* entry = mapFindGEQ(&RmapiControlCache.objectToGpuInstMap, _handlesToGpuInstKey(hClient, 0));
@@ -295,6 +307,7 @@ static NV_STATUS _rmapiControlCacheGet
     NvU32 paramsSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5693);
     RmapiControlCacheEntry *entry;
     NvU32 gpuInst;
     NV_STATUS status = NV_OK;
@@ -341,6 +354,7 @@ static NV_STATUS _rmapiControlCacheSet
     NvU32 paramsSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5694);
     NV_STATUS status = NV_OK;
     RmapiControlCacheEntry* entry = NULL;
     NvU32 gpuInst;
@@ -429,6 +443,7 @@ _getOrInitCacheEntry
     NvBool *pbParamsAllocated
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5695);
     RmapiControlCacheEntry *entry = NULL;
     GpusControlCacheSubmap *insertedSubmap = NULL;
 
@@ -484,6 +499,7 @@ failed:
 
 static NvBool _isGpuGetInfoIndexCacheable(NvU32 index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5696);
     switch (index)
     {
         case NV2080_CTRL_GPU_INFO_INDEX_MINOR_REVISION_EXT:
@@ -511,6 +527,7 @@ static NvBool _isGpuGetInfoIndexCacheable(NvU32 index)
 
 static NvBool _isFifoGetInfoIndexCacheable(NvU32 index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5697);
     switch (index)
     {
         case NV2080_CTRL_FIFO_INFO_INDEX_INSTANCE_TOTAL:
@@ -527,6 +544,7 @@ static NvBool _isFifoGetInfoIndexCacheable(NvU32 index)
 
 static NvBool _isBusGetInfoIndexCacheable(NvU32 index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5698);
     switch (index)
     {
         case NV2080_CTRL_BUS_INFO_INDEX_TYPE:
@@ -548,6 +566,7 @@ static NvBool _isBusGetInfoIndexCacheable(NvU32 index)
 
 static NvBool _isGetInfoIndexCacheable(NvU32 cmd, NvU32 index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5699);
     switch (cmd)
     {
         case NV2080_CTRL_CMD_GPU_GET_INFO_V2:
@@ -589,6 +608,7 @@ static NV_STATUS _getInfoCacheHandler
     NvBool bSet
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5700);
     NV_STATUS status = NV_OK;
     NvU32 i = 0;
     NvU32 gpuInst;
@@ -698,6 +718,7 @@ NV_STATUS _gpuNameStringGet
     NV2080_CTRL_GPU_GET_NAME_STRING_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5701);
     NvU32 gpuInst;
     NV_STATUS status = NV_OK;
     RmapiControlCacheEntry *entry = NULL;
@@ -769,6 +790,7 @@ NV_STATUS _gpuNameStringSet
     const NV2080_CTRL_GPU_GET_NAME_STRING_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5702);
     NvU32 gpuInst;
     NV_STATUS status;
     RmapiControlCacheEntry *entry = NULL;
@@ -865,6 +887,7 @@ NV_STATUS _rmapiControlCacheGetByInput
     NvU32 paramsSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5703);
     switch (cmd)
     {
         case NV2080_CTRL_CMD_GPU_GET_INFO_V2:
@@ -905,6 +928,7 @@ NV_STATUS _rmapiControlCacheSetByInput
     NvU32 paramsSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5704);
     switch (cmd)
     {
         case NV2080_CTRL_CMD_GPU_GET_INFO_V2:
@@ -945,6 +969,7 @@ NV_STATUS rmapiControlCacheGet
     NvU32 paramsSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5705);
     NV_STATUS status = NV_OK;
     NvU32 flags = 0;
 
@@ -983,6 +1008,7 @@ NV_STATUS rmapiControlCacheSet
     NvU32 paramsSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5706);
     NV_STATUS status = NV_OK;
     NvU32 flags = 0;
 
@@ -1012,6 +1038,7 @@ done:
 // Need to hold rmapi control cache write lock
 static void _freeSubmap(GpusControlCacheSubmap* submap)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5707);
     /* (Sub)map modification invalidates the iterator, so we have to restart */
     while (NV_TRUE)
     {
@@ -1036,6 +1063,7 @@ void rmapiControlCacheFreeAllCacheForGpu
     NvU32 gpuInst
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5708);
     GpusControlCacheSubmap* submap;
 
     _cacheLockAcquire(LOCK_EXCLUSIVE);
@@ -1050,6 +1078,7 @@ void rmapiControlCacheFreeAllCacheForGpu
 
 void rmapiControlCacheFreeClientEntry(NvHandle hClient)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5709);
     _cacheLockAcquire(LOCK_EXCLUSIVE);
     _rmapiControlCacheFreeGpuInstForClient(hClient);
     _cacheLockRelease(LOCK_EXCLUSIVE);
@@ -1057,6 +1086,7 @@ void rmapiControlCacheFreeClientEntry(NvHandle hClient)
 
 void rmapiControlCacheFreeObjectEntry(NvHandle hClient, NvHandle hObject)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5710);
     if (hClient == hObject)
     {
         rmapiControlCacheFreeClientEntry(hClient);
@@ -1070,6 +1100,7 @@ void rmapiControlCacheFreeObjectEntry(NvHandle hClient, NvHandle hObject)
 
 void rmapiControlCacheFree(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5711);
     GpusControlCacheIter it;
 
     it = multimapItemIterAll(&RmapiControlCache.gpusControlCache);
@@ -1086,6 +1117,7 @@ void rmapiControlCacheFree(void)
 
 void rmapiControlCacheSetMode(NvU32 mode)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5712);
     NV_PRINTF(LEVEL_INFO, "Set rmapi control cache mode to 0x%x\n", mode);
 
     _cacheLockAcquire(LOCK_EXCLUSIVE);
@@ -1095,5 +1127,6 @@ void rmapiControlCacheSetMode(NvU32 mode)
 
 NvU32 rmapiControlCacheGetMode(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5713);
     return RmapiControlCache.mode;
 }

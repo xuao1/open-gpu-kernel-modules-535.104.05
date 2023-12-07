@@ -94,6 +94,7 @@ static NV_STATUS addHwbcToList(OBJGPU *, OBJHWBC *);
 NV_STATUS
 clInitDeviceInfo_IMPL(OBJCL *pCl, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4976);
     NvU32 gpuId;
 
     // Find our NV device on the PCI bus and save it's pci bus/device address.
@@ -111,6 +112,7 @@ clInitDeviceInfo_IMPL(OBJCL *pCl, OBJGPU *pGpu)
 static void
 _objClPostSetupFuncRegkeyOverrides(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4977);
     NvU32 data;
 
     if (osReadRegistryDword(pGpu, NV_REG_STR_CL_ASLM_CFG, &data) == NV_OK)
@@ -168,6 +170,7 @@ _objClPostSetupFuncRegkeyOverrides(OBJGPU *pGpu, OBJCL *pCl)
 NV_STATUS
 addHwbcToList (OBJGPU *pGpu, OBJHWBC *pHWBC)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4978);
     HWBC_LIST *pHWBCList;
     HWBC_LIST *pGpuHWBCList;
 
@@ -210,6 +213,7 @@ static
 void
 objClBuildPcieAtomicsAllowList(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4979);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     // For non-x86 CPUs, allow list is built during chipset discovery.
@@ -250,6 +254,7 @@ objClBuildPcieAtomicsAllowList(OBJGPU *pGpu, OBJCL *pCl)
 NV_STATUS
 objClInitPcieChipset(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4980);
     OBJSYS   *pSys = SYS_GET_INSTANCE();
     OBJOS    *pOS  = SYS_GET_OS(pSys);
     OBJPFM   *pPfm = SYS_GET_PFM(pSys);
@@ -534,6 +539,7 @@ clCheckUpstreamLtrSupport_IMPL
     NvBool  *pTempLtrSupported
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4981);
     NvU32      portCaps   = 0;
     NvU32      domain     = gpuGetDomain(pGpu);
     NvU8       bus        = gpuGetBus(pGpu);
@@ -627,6 +633,7 @@ clGetAtomicTypesSupported_IMPL
     NvU32 *pAtomicMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4982);
     NvU32      portCaps    = 0;
     NvBool     bRoutingCap = NV_TRUE;
     NV_STATUS  status      = NV_OK;
@@ -711,6 +718,7 @@ _objClGetDownstreamAtomicsEnabledMask
     NvU32 *pAtomicMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4983);
     NvU32 devCap2;
 
     devCap2  = osPciReadDword(pHandle,
@@ -745,6 +753,7 @@ _objClGetUpstreamAtomicRoutingCap
     NvBool *pbRoutingCap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4984);
     NvU32 devCap2;
     NvU32 devCtrl2;
 
@@ -775,6 +784,7 @@ _objClGetDownstreamAtomicRoutingCap
     NvBool *pbRoutingCap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4985);
     NvU32 devCap2;
 
     devCap2  = osPciReadDword(pHandle,
@@ -789,6 +799,7 @@ _objClGetDownstreamAtomicRoutingCap
 static void
 _objClAdjustTcVcMap(OBJGPU *pGpu, OBJCL *pCl, PORTDATA *pPort)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4986);
     NvU32 epVcCtrl0, epTcVcMap, upTcVcMap, upVcCtrl0, subsetTcVcMap;
 
     // read port TC/VC map
@@ -870,6 +881,7 @@ gpuDevIdIsMultiGpuBoard
     NvU16   gpuSubDevId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4987);
     NvU32 i, j;
     NvBool bFound = NV_FALSE, bInvalidSubIds = NV_FALSE;
 
@@ -925,6 +937,7 @@ gpuDevIdIsMultiGpuBoard
 void
 clUpdatePcieConfig_IMPL(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4988);
     OBJSYS    *pSys       = SYS_GET_INSTANCE();
     OBJPFM    *pPfm       = SYS_GET_PFM(pSys);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
@@ -1084,6 +1097,7 @@ NV_STATUS clInitPcie_IMPL
     OBJCL  *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4989);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
     NvU32   busIntfType;
 
@@ -1117,6 +1131,7 @@ clTeardownPcie_IMPL
     OBJCL        *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4990);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS *pOS = SYS_GET_OS(pSys);
     if (!pOS->getProperty(pOS, PDB_PROP_OS_DOES_NOT_ALLOW_DIRECT_PCIE_MAPPINGS))
@@ -1137,6 +1152,7 @@ objClInitGpuPortData
     OBJCL  *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4991);
     void *handle;
     NvU16 vendorID;
     NvU16 deviceID;
@@ -1426,6 +1442,7 @@ clFindP2PBrdg_IMPL
     NvU16 *deviceID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4992);
     PBUSTOPOLOGYINFO pBusTopologyInfo;
     OBJGPU *pGpu;
     NvU32 gpuAttachCnt, gpuAttachMask, gpuInstance;
@@ -1488,6 +1505,7 @@ objClGpuMapRootPort
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4993);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS  *pOS = SYS_GET_OS(pSys);
     NBADDR *pRoot = &pGpu->gpuClData.rootPort.addr;
@@ -1532,6 +1550,7 @@ objClGpuUnmapRootPort
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4994);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS  *pOS = SYS_GET_OS(pSys);
 
@@ -1551,6 +1570,7 @@ objClGpuMapEnhCfgSpace
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4995);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS *pOS = SYS_GET_OS(pSys);
     NvU8 bus;
@@ -1597,6 +1617,7 @@ objClGpuUnmapEnhCfgSpace
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4996);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS *pOS = SYS_GET_OS(pSys);
 
@@ -1616,6 +1637,7 @@ objClSetPortCapsOffsets
     PORTDATA     *pPort
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4997);
     clSetPortPcieCapOffset(pCl, pPort->addr.handle,
                            &pPort->PCIECapPtr);
     objClSetPortPcieEnhancedCapsOffsets(pCl, pPort);
@@ -1635,6 +1657,7 @@ clSetPortPcieCapOffset_IMPL
     NvU32 *cap_offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4998);
     NvU8   cap_next;
     NvU32  pcie_caps;
 
@@ -1677,6 +1700,7 @@ objClSetPortPcieEnhancedCapsOffsets
     PORTDATA     *pPort
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4999);
     NvU32  cap_next, cap_type, value;
 
     // make sure we can access the enhanced configuration space
@@ -1725,6 +1749,7 @@ clPcieReadPortConfigReg_IMPL
     NvU32    *value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5000);
     if ((kbifGetBusIntfType_HAL(GPU_GET_KERNEL_BIF(pGpu)) !=
          NV2080_CTRL_BUS_INFO_TYPE_PCI_EXPRESS) ||
         !pPort->addr.valid)
@@ -1793,6 +1818,7 @@ objClBR03Exists
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5001);
     void *handle;
     NvU8 dummy8, gpuBus;
     NvU32 gpuDomain;
@@ -1832,6 +1858,7 @@ objClBR04Exists
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5002);
     void *handle;
     NvU8 dummy8, gpuBus;
     NvU32 gpuDomain;
@@ -1878,6 +1905,7 @@ clFindBrdgUpstreamPort_IMPL
     NvU8 *pbusBrdg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5003);
     void *handleBrdg, *handleUpstream;
     NvU8 bus = 0, dev = 0, func = 0, gpuBus;
     NvU32 domain = 0;
@@ -1947,6 +1975,7 @@ objClFindRootPort
     NvU16 *pdeviceIDRp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5004);
     NvU32 PCIECapPtr;
     NvU32 portCaps = 0;
     void *handleUp;
@@ -2001,6 +2030,7 @@ clCountBR_IMPL
     NvU8 *pBR04Count
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5005);
     void *handleUp;
     NvU16 vendorIDUp, deviceIDUp;
     NvU8 bus = 0xff, busUp, deviceUp, funcUp;
@@ -2057,6 +2087,7 @@ clSearchBR04_IMPL
     NvU8  *pBR04Count
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5006);
     PBUSTOPOLOGYINFO pBusTopologyInfo = pCl->pBusTopologyInfo;
     PBUSTOPOLOGYINFO pBusTopologyInfoBR04DS, pBusTopologyInfoBR04GPU;
     NvU16 vendorID, deviceID;
@@ -2171,6 +2202,7 @@ clFindCommonBR_IMPL
     NvBool  bScanAll
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5007);
     void *handleUp1, *handleUp2;
     NvU16 vendorIDUp1, deviceIDUp1, vendorIDUp2, deviceIDUp2;
     NvU8 bus1 = 0xff, busUp1, deviceUp1, funcUp1, bus2 = 0xff, busUp2, deviceUp2, funcUp2;
@@ -2268,6 +2300,7 @@ clFindCommonDownstreamBR_IMPL
     NvU8   *pPciSwitchBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5008);
     void *handleUp1, *handleUp2;
     NvU16 vendorIDUp1, deviceIDUp1, vendorIDUp2, deviceIDUp2;
     NvU8 bus1 = 0xff, busUp1, deviceUp1, funcUp1;
@@ -2369,6 +2402,7 @@ clFindBR_IMPL
     NvBool *pNoOnboardBR04
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5009);
     void *handleUp, *br04handle = NULL;
     NvU16 vendorIDUp, deviceIDUp;
     NvU8 bus = 0xff, busUp, deviceUp, funcUp;
@@ -2477,6 +2511,7 @@ clFindBR_IMPL
 void
 clFreeBusTopologyCache_IMPL(OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5010);
     PBUSTOPOLOGYINFO pBusTopologyInfo = pCl->pBusTopologyInfo, pBusTopologyInfoNext;
 
     while (pBusTopologyInfo)
@@ -2502,6 +2537,7 @@ clStoreBusTopologyCache_IMPL
     NvU16  secBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5011);
     void *handle;
     NvU16 vendorID, deviceID;
     NvS16 bus = 0;
@@ -2635,6 +2671,7 @@ clPcieWriteRootPortConfigReg_IMPL
     NvU32   value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5012);
     if ((kbifGetBusIntfType_HAL(GPU_GET_KERNEL_BIF(pGpu)) !=
          NV2080_CTRL_BUS_INFO_TYPE_PCI_EXPRESS) ||
         !pGpu->gpuClData.rootPort.addr.valid)
@@ -2702,6 +2739,7 @@ clPcieReadAerCapability_IMPL
     PcieAerCapability *pAER
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5013);
     NV_STATUS status = NV_ERR_GENERIC;
 
     if ( pAER )
@@ -2740,6 +2778,7 @@ clPcieReadL1SsCapability_IMPL
     PPexL1SubstateCapability pL1Ss
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5014);
     NV_STATUS status = NV_ERR_GENERIC;
 
     if (pL1Ss)
@@ -2768,6 +2807,7 @@ clPcieReadDevCtrlStatus_IMPL
     NvU32*  pDevCtrlStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5015);
     NV_STATUS status = NV_ERR_GENERIC;
     NvU32 clDevCtrlStatus = 0;
 
@@ -2811,6 +2851,7 @@ clPcieClearDevCtrlStatus_IMPL
     NvU32*  pDevCtrlStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5016);
     NV_STATUS status = NV_ERR_GENERIC;
     NvU32 clDevCtrlStatus = 0;
 
@@ -2842,6 +2883,7 @@ clUpstreamVgaDecodeEnabled_IMPL
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5017);
     NvU32 domain;
     NvU8 bus;
     NvU32 PCIECapPtr;
@@ -2909,6 +2951,7 @@ objClPcieMapEnhCfgSpace
     NvU8 func
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5018);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS  *pOS     = SYS_GET_OS(pSys);
     OBJGPU *pGpu    = NULL;
@@ -2963,6 +3006,7 @@ objClPcieUnmapEnhCfgSpace
     void *addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5019);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS  *pOS = SYS_GET_OS(pSys);
     OBJGPU *pGpu = NULL;
@@ -2996,6 +3040,7 @@ clPcieReadWord_IMPL
     NvU32  offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5020);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS *pOS   = SYS_GET_OS(pSys);
     NvU16 *pData = NULL, value = 0;
@@ -3039,6 +3084,7 @@ clPcieReadDword_IMPL
     NvU32  offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5021);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS *pOS   = SYS_GET_OS(pSys);
     NvU32 *pData = NULL, value = 0;
@@ -3083,6 +3129,7 @@ clPcieWriteWord_IMPL
     NvU16  value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5022);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS *pOS   = SYS_GET_OS(pSys);
     NvU16 *pData = NULL;
@@ -3126,6 +3173,7 @@ clPcieWriteDword_IMPL
     NvU32  value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5023);
 
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS *pOS   = SYS_GET_OS(pSys);
@@ -3162,12 +3210,14 @@ clPcieWriteDword_IMPL
 
 NV_STATUS Broadcom_HT2100_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5024);
     pCl->setProperty(pCl, PDB_PROP_CL_EXTENDED_TAG_FIELD_NOT_CAPABLE, NV_TRUE);
     return NV_OK;
 }
 
 NV_STATUS Intel_RP25XX_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5025);
     // This root port has an AER cap, but it is not advertised.
     // We need to enable it for some bug workarounds.
     if (pCl->getProperty(pCl, PDB_PROP_CL_PCIE_CONFIG_ACCESSIBLE))
@@ -3184,6 +3234,7 @@ NV_STATUS Intel_RP25XX_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 
 NV_STATUS Intel_RP81XX_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5026);
     pCl->setProperty(pCl, PDB_PROP_CL_NOSNOOP_NOT_CAPABLE, NV_TRUE);
     pCl->setProperty(pCl, PDB_PROP_CL_RELAXED_ORDERING_NOT_CAPABLE, NV_TRUE);
     return NV_OK;
@@ -3191,6 +3242,7 @@ NV_STATUS Intel_RP81XX_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 
 NV_STATUS Intel_RP3C0X_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5027);
     pCl->setProperty(pCl, PDB_PROP_CL_ROOTPORT_NEEDS_NOSNOOP_WAR, NV_TRUE);
 
     return NV_OK;
@@ -3198,6 +3250,7 @@ NV_STATUS Intel_RP3C0X_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 
 NV_STATUS Intel_RP0C0X_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5028);
     pCl->setProperty(pCl, PDB_PROP_CL_ROOTPORT_NEEDS_NOSNOOP_WAR, NV_TRUE);
 
     return NV_OK;
@@ -3205,6 +3258,7 @@ NV_STATUS Intel_RP0C0X_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 
 NV_STATUS Intel_RP2F0X_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5029);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS *pOS = SYS_GET_OS(pSys);
     OBJHYPERVISOR *pHypervisor = SYS_GET_HYPERVISOR(pSys);
@@ -3288,6 +3342,7 @@ NV_STATUS Intel_RP2F0X_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 // Intel Broadwell Setup Function
 NV_STATUS Intel_Broadwell_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5030);
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IN_ASPM_POR_LIST, NV_TRUE);
 
     switch (pCl->FHBBusInfo.deviceID)
@@ -3319,6 +3374,7 @@ NV_STATUS Intel_Broadwell_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 // Intel Skylake Setup Function
 NV_STATUS Intel_Skylake_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5031);
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IN_ASPM_POR_LIST, NV_TRUE);
 
     pCl->setProperty(pCl, PDB_PROP_CL_ROOTPORT_NEEDS_NOSNOOP_WAR, NV_TRUE);
@@ -3365,6 +3421,7 @@ NV_STATUS Intel_Skylake_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 // Intel PCH (0x9D18) Setup Function
 NV_STATUS Intel_Skylake_U_Pch_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5032);
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IN_ASPM_POR_LIST, NV_TRUE);
 
     // Set ASPM L0S\L1 properties
@@ -3383,6 +3440,7 @@ NV_STATUS Intel_Skylake_U_Pch_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 // Intel PCH (0xA117, 0xA118) Setup Function
 NV_STATUS Intel_Skylake_H_Pch_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5033);
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IN_ASPM_POR_LIST, NV_TRUE);
 
     // Set ASPM L0S\L1 properties
@@ -3398,6 +3456,7 @@ NV_STATUS Intel_Skylake_H_Pch_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 // Intel Kabylake Setup Function
 NV_STATUS Intel_Kabylake_Y_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5034);
     pCl->setProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IN_ASPM_POR_LIST, NV_TRUE);
 
     // Set ASPM L0S\L1 properties
@@ -3414,6 +3473,7 @@ NV_STATUS Intel_Kabylake_Y_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 // Setup function to disable L0s for AMD root port 1483
 NV_STATUS AMD_RP1483_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5035);
     //
     // Set ASPM L0S\L1 properties
     // Bug id: 200533783
@@ -3429,6 +3489,7 @@ NV_STATUS AMD_RP1483_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 //
 NV_STATUS AMD_RP1480_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5036);
     //
     // Set ASPM L0S\L1 properties
     // Bug id: 200533783
@@ -3444,6 +3505,7 @@ NV_STATUS AMD_RP1480_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 //
 NV_STATUS AMD_RP1630_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5037);
     //
     // Set ASPM L0S\L1 properties
     // Bug id: 200533783
@@ -3457,6 +3519,7 @@ NV_STATUS AMD_RP1630_setupFunc(OBJGPU *pGpu, OBJCL *pCl)
 static NV_STATUS
 objClGpuIs3DController(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5038);
     NvU8 bus, dev;
     NvU32 domain;
     NvU16 vendorID, deviceID;
@@ -3490,6 +3553,7 @@ clPcieGetMaxCapableLinkWidth_IMPL
     NvU32  *result
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5039);
     NvU32 linkCap;
 
     //
@@ -3523,6 +3587,7 @@ clPcieIsRelaxedOrderingSafe_IMPL
     NvBool  *result
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5040);
     //
     // TODO. This is left for a follow-on change. The first change allows the
     // force-enable option, and establishes all the plumbing for topology
@@ -3546,6 +3611,7 @@ gpuIsMultiGpuBoard
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5041);
 
     return pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_PLX_PRESENT) ||
         gpuDevIdIsMultiGpuBoard(
@@ -3650,6 +3716,7 @@ clGetRsdtXsdtTablesAddr_IMPL
     NvU64 *pXsdtAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5042);
     OBJSYS         *pSys      = SYS_GET_INSTANCE();
     OBJOS          *pOS       = SYS_GET_OS(pSys);
     volatile NvU16 *edbaSeg   = NULL;
@@ -3765,6 +3832,7 @@ clGetMcfgTableFromOS_IMPL
     NvU32   *pTableSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5043);
     NvU32 retSize       = 0;
 
     NV_ASSERT_OR_RETURN (!pOS->getProperty(pOS, PDB_PROP_OS_DOES_NOT_ALLOW_DIRECT_PCIE_MAPPINGS), NV_FALSE);
@@ -3831,6 +3899,7 @@ clScanForTable_IMPL
     NvU32  tableSignature
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5044);
     NvU8 *pData = NULL, *pHeader = NULL;
     NvU64 i, c, step;
     NvU32 len = 0;
@@ -3983,6 +4052,7 @@ typedef struct
  */
 static NV_STATUS storePcieGetConfigSpaceBaseFromMcfgTable(OBJOS *pOS, OBJCL *pCl, NvU8 *pMcfgTable, NvU32 len)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5045);
     MCFG_ADDRESS_ALLOCATION_STRUCTURE *pMcfgAddressAllocationStructure;
     MCFG_ADDRESS_ALLOCATION_STRUCTURE mcfgAddressAllocationStructure;
     NvU8 EndBusNumber;
@@ -4079,6 +4149,7 @@ static NV_STATUS storePcieGetConfigSpaceBaseFromMcfgTable(OBJOS *pOS, OBJCL *pCl
 NV_STATUS
 clStorePcieConfigSpaceBaseFromMcfg_IMPL(OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5046);
     OBJSYS    *pSys       = SYS_GET_INSTANCE();
     OBJOS     *pOS        = SYS_GET_OS(pSys);
     NvU64      rsdtAddr   = 0;
@@ -4189,6 +4260,7 @@ clInsertPcieConfigSpaceBase_IMPL
     NvU8       endBusNumber
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5047);
     PPCIECONFIGSPACEBASE pPcieConfigSpaceBase;
 
     pPcieConfigSpaceBase = portMemAllocNonPaged(sizeof(PCIECONFIGSPACEBASE));
@@ -4222,6 +4294,7 @@ clFindPcieConfigSpaceBase_IMPL
     NvU8   bus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5048);
     PPCIECONFIGSPACEBASE pPcieConfigSpaceBase = pCl->pPcieConfigSpaceBase;
 
     while (pPcieConfigSpaceBase)
@@ -4240,6 +4313,7 @@ clFindPcieConfigSpaceBase_IMPL
 void
 clFreePcieConfigSpaceBase_IMPL(OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5049);
     PPCIECONFIGSPACEBASE pPcieConfigSpaceBase = pCl->pPcieConfigSpaceBase;
     PPCIECONFIGSPACEBASE pPcieConfigSpaceBaseNext;
 
@@ -4261,6 +4335,7 @@ clFreePcieConfigSpaceBase_IMPL(OBJCL *pCl)
 static void
 objClLoadPcieVirtualP2PApproval(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5050);
     void *handle;
     NvU32 data32;
     NvU8  version;
@@ -4345,6 +4420,7 @@ objClCheckForExternalGpu
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5051);
     NvU8 bus;
     NvU32 domain;
     void *handleUp;
@@ -4420,6 +4496,7 @@ clControlL0sL1LinkControlUpstreamPort_IMPL
     NvBool  bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5052);
     void  *handle              = pGpu->gpuClData.upstreamPort.addr.handle;
     NvU32 PCIECapPtr           = pGpu->gpuClData.upstreamPort.PCIECapPtr;
     NvU32 linkControlRegOffset = PCIECapPtr + 0x10;
@@ -4466,6 +4543,7 @@ clChipsetAspmPublicControl_IMPL
     NvU32   aspmState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5053);
     void  *pHandle             = pGpu->gpuClData.upstreamPort.addr.handle;
     NvU32 PCIECapPtr           = pGpu->gpuClData.upstreamPort.PCIECapPtr;
     NvU32 linkControlRegOffset = PCIECapPtr + 0x10;
@@ -4506,6 +4584,7 @@ clPcieGetRootGenSpeed_IMPL
     NvU8    *genSpeed
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5054);
     void  *handle;
     NvU32 PCIECapPtr;
     NvU32 linkCaps;
@@ -4538,6 +4617,7 @@ clGetChipsetL1ClockPMSupport_IMPL
     OBJCL   *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5055);
     void  *handle;
     NvU32  PCIECapPtr;
     NvU32  linkCaps;
@@ -4575,6 +4655,7 @@ clPcieGetDownstreamPortLinkCap2_IMPL
     NvU32   *pLinkCaps2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5056);
     void  *pHandle;
     NvU32 PCIECapPtr;
 
@@ -4608,6 +4689,7 @@ clPcieGetDownstreamPortLinkCap2_IMPL
 
 NvBool clRootportNeedsNosnoopWAR_FWCLIENT(OBJGPU *pGpu, OBJCL *pCl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5057);
     const GspStaticConfigInfo *pSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
 
     NV_ASSERT_OR_RETURN(pSCI != NULL, NV_FALSE);
@@ -4627,6 +4709,7 @@ NvBool clRootportNeedsNosnoopWAR_FWCLIENT(OBJGPU *pGpu, OBJCL *pCl)
  */
 static NvU16 _clPcieGetPcieCapSize(void *deviceHandle, NvU16 capType, NvU16 capId, NvU16 capOffset)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5058);
     NvU16 capSize = 0;
     NvU32 tempDword;
     NvU16 count;
@@ -4950,6 +5033,7 @@ static NvU16 _clPcieGetPcieCapSize(void *deviceHandle, NvU16 capType, NvU16 capI
  */
 static NvU16 _clPciePopulateCapMap(void * pDeviceHandle, NvU16 type, CL_PCIE_DC_CAPABILITY_MAP * pCapMap)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5059);
     NvU32 tempDword;
     NvU16 blkOffset = 0;
 
@@ -5036,6 +5120,7 @@ static NvU16 _clPciePopulateCapMap(void * pDeviceHandle, NvU16 type, CL_PCIE_DC_
  */
 static NvU16 _clPcieCopyConfigSpaceDiagData(NvU8* pBuffer, NvU32 bufferSz, void *pDeviceHandle, NvU32 base, NvU32 blockSz)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5060);
     NvU32   offset = base;
     NvU16   dataSz = 0;
 
@@ -5136,6 +5221,7 @@ static NvU16 _clPcieCopyConfigSpaceDiagData(NvU8* pBuffer, NvU32 bufferSz, void 
  */
 NvU16 _clPcieSavePcieDiagnosticBlock(void *pDeviceHandle, CL_PCIE_DC_DIAGNOSTIC_COLLECTION_ENTRY *pScriptEntry, NvU16 blkOffset, NvU16 blkSize, void * pBuffer, NvU32 size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5061);
     CL_PCIE_DC_DIAGNOSTIC_COLLECTION_ENTRY *pBlkHeader;
     NvU16 collectedDataSize = 0;
 
@@ -5178,6 +5264,7 @@ NvU16 _clPcieSavePcieDiagnosticBlock(void *pDeviceHandle, CL_PCIE_DC_DIAGNOSTIC_
  */
 NvU16 _clPcieGetDiagnosticData(OBJGPU *pGpu, CL_PCIE_DC_DIAGNOSTIC_COLLECTION_ENTRY *pScript, NvU16 count, NvU8 * pBuffer, NvU32 size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5062);
     static volatile NvS32   capMapWriteLock = 0;
     static volatile NvBool  capMapInitialized = NV_FALSE;
     static CL_PCIE_DC_CAPABILITY_MAP
@@ -5371,6 +5458,7 @@ NvU16 _clPcieGetDiagnosticData(OBJGPU *pGpu, CL_PCIE_DC_DIAGNOSTIC_COLLECTION_EN
  */
 NvU16 clPcieGetGpuLostDiagnosticData_IMPL(OBJGPU *pGpu, OBJCL *pCl, NvU8 * pBuffer, NvU32 size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5063);
     static CL_PCIE_DC_DIAGNOSTIC_COLLECTION_ENTRY gpuLostCollectionScript[] =
     {
         { RM_PCIE_ACTION_COLLECT_CONFIG_SPACE,     RM_PCIE_DEVICE_TYPE_UPSTREAM_BRIDGE, 0x000,                        0x40 },

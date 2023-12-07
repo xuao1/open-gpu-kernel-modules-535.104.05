@@ -59,6 +59,7 @@ kbusSetupMailboxes_GM200
     NvU32      remote2Local
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 548);
     PMEMORY_DESCRIPTOR *ppMemDesc    = NULL;
     RmPhysAddr          localP2PDomainRemoteAddr;
     RmPhysAddr          remoteP2PDomainLocalAddr;
@@ -156,6 +157,7 @@ kbusWriteP2PWmbTag_GM200
     NvU64      p2pWmbTag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 549);
     // See bug 3558208 comment 34 and 50
     GPU_REG_RD32(pGpu, NV_P2P_WREQMB_L(remote2Local));
     GPU_REG_WR32(pGpu, NV_P2P_WREQMB_L(remote2Local), NvU64_LO32(p2pWmbTag));
@@ -171,6 +173,7 @@ kbusSetupP2PDomainAccess_GM200
     PMEMORY_DESCRIPTOR *ppP2PDomMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 550);
     return kbusSetupPeerBarAccess(pGpu0, pGpu1,
                 pGpu0->busInfo.gpuPhysAddr + DRF_BASE(NV_P2P),
                 DRF_SIZE(NV_P2P), ppP2PDomMemDesc);
@@ -197,6 +200,7 @@ kbusSetupMailboxAccess_GM200
     PMEMORY_DESCRIPTOR *ppWMBoxMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 551);
     return kbusSetupPeerBarAccess(pGpu0, pGpu1,
                 gpumgrGetGpuPhysFbAddr(pGpu0) +
                     pKernelBus0->p2pPcie.writeMailboxBar1Addr +
@@ -212,6 +216,7 @@ kbusDestroyPeerAccess_GM200
     NvU32      peerNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 552);
     memdescDestroy(pKernelBus->p2pPcie.busPeer[peerNum].pRemoteWMBoxMemDesc);
     pKernelBus->p2pPcie.busPeer[peerNum].pRemoteWMBoxMemDesc = NULL;
 
@@ -245,6 +250,7 @@ kbusGetP2PMailboxAttributes_GM200
     NvU32*     pMailboxBar1MaxOffset64KB
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 553);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
 
     // Initialize null values by default
@@ -317,6 +323,7 @@ kbusCreateP2PMapping_GM200
     NvU32      attributes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 554);
     if (FLD_TEST_DRF(_P2PAPI, _ATTRIBUTES, _CONNECTION_TYPE, _PCIE, attributes))
     {
         return kbusCreateP2PMappingForMailbox_HAL(pGpu0, pKernelBus0, pGpu1, pKernelBus1, peer0, peer1, attributes);
@@ -352,6 +359,7 @@ kbusCreateP2PMappingForMailbox_GM200
     NvU32      attributes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 555);
     RM_API *pRmApi;
     NV2080_CTRL_INTERNAL_HSHUB_PEER_CONN_CONFIG_PARAMS params;
     NvU32 gpuInst0, gpuInst1;
@@ -585,6 +593,7 @@ kbusNeedWarForBug999673_GM200
     OBJGPU    *pRemoteGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 556);
     OBJCL  *pCl = SYS_GET_CL(SYS_GET_INSTANCE());
     NvU8    pciSwitchBus = 0;
 
@@ -630,6 +639,7 @@ kbusRemoveP2PMapping_GM200
     NvU32      attributes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 557);
     if (FLD_TEST_DRF(_P2PAPI, _ATTRIBUTES, _CONNECTION_TYPE, _PCIE, attributes))
     {
         return kbusRemoveP2PMappingForMailbox_HAL(pGpu0, pKernelBus0, pGpu1, pKernelBus1, peer0, peer1, attributes);
@@ -665,6 +675,7 @@ kbusRemoveP2PMappingForMailbox_GM200
     NvU32      attributes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 558);
     NvU32 gpuInst0 = gpuGetInstance(pGpu0);
     NvU32 gpuInst1 = gpuGetInstance(pGpu1);
 
@@ -751,6 +762,7 @@ kbusReserveP2PPeerIds_GM200
     NvU32      peerMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 559);
     NvU32 peerId = 0;
 
     FOR_EACH_INDEX_IN_MASK(32, peerId, peerMask)
@@ -789,6 +801,7 @@ kbusSetP2PMailboxBar1Area_GM200
     NvU32      mailboxTotalSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 560);
     NvU32 mailboxAreaSizeReq;
     NvU32 mailboxAlignmentSizeReq;
     NvU32 mailboxBar1MaxOffset64KBReq;
@@ -846,6 +859,7 @@ kbusUnsetP2PMailboxBar1Area_GM200
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 561);
     NvU32 i;
 
     if (!kbusIsP2pMailboxClientAllocated(pKernelBus))
@@ -879,6 +893,7 @@ kbusAllocP2PMailboxBar1_GM200
     NvU64      vaRangeMax
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 562);
     OBJGPU           *pParentGpu;
     NvU64             vaAllocMax;
     NV_STATUS         status = NV_OK;

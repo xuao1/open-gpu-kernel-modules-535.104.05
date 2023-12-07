@@ -37,6 +37,7 @@
 void *
 getInfoPtr(PENG_INFO_LINK_NODE head, NvU32 dataId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 38);
     PENG_INFO_LINK_NODE curNode = head;
 
     while (curNode && (curNode->dataId != dataId))
@@ -56,6 +57,7 @@ getInfoPtr(PENG_INFO_LINK_NODE head, NvU32 dataId)
 NvBool
 testInfoPtr(PENG_INFO_LINK_NODE head, NvU32 dataId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 39);
     PENG_INFO_LINK_NODE curNode = head;
 
     while (curNode && (curNode->dataId != dataId))
@@ -75,6 +77,7 @@ testInfoPtr(PENG_INFO_LINK_NODE head, NvU32 dataId)
 static PENG_INFO_LINK_NODE
 createLinkNode(NvU32 dataId, NvU32 size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 40);
     PENG_INFO_LINK_NODE newNode;
     NV_STATUS rmStatus;
 
@@ -112,6 +115,7 @@ createLinkNode(NvU32 dataId, NvU32 size)
 void *
 addInfoPtr(PENG_INFO_LINK_NODE *head, NvU32 dataId, NvU32 size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 41);
     PENG_INFO_LINK_NODE curNode = *head;
     PENG_INFO_LINK_NODE newNode = createLinkNode(dataId, size);
 
@@ -137,6 +141,7 @@ addInfoPtr(PENG_INFO_LINK_NODE *head, NvU32 dataId, NvU32 size)
 void
 deleteInfoPtr(PENG_INFO_LINK_NODE *head, NvU32 dataId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 42);
     PENG_INFO_LINK_NODE curNode = *head;
 
     if (!curNode)

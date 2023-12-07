@@ -57,6 +57,7 @@ kPerfPerfmonClientDeviceSet
     NvBool    bRmHandlesIdleSlow
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3899);
     RsResourceRef      *pDeviceRef;
     Subdevice          *pSubdevice;
     OBJGPU             *pGpu;
@@ -256,6 +257,7 @@ subdeviceCtrlCmdPerfReservePerfmonHw_KERNEL
     NV2080_CTRL_PERF_RESERVE_PERFMON_HW_PARAMS *pPerfmonParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3900);
     OBJGPU   *pGpu   = GPU_RES_GET_GPU(pSubdevice);
     RM_API   *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS status;

@@ -43,6 +43,7 @@ memmgrLookupFbRegionByOffset_IMPL
     RmPhysAddr     fbLimit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3030);
     NvU32       i = 0;
     PFB_REGION_DESCRIPTOR pFbRegion = NULL;
 
@@ -80,6 +81,7 @@ memmgrRegenerateFbRegionPriority_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3031);
     NvU32   i, j, temp;
 
     // Re-build a list of allocatable regions, sorted by preference (highest to lowest)
@@ -125,6 +127,7 @@ _memmgrShiftFbRegions
     NvU32          regionId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3032);
     NvU32  fbRegion;
 
     NV_ASSERT(pMemoryManager->Ram.numFBRegions < MAX_FB_REGIONS);
@@ -148,6 +151,7 @@ _memmgrCheckForLostOnSuspendContiguity
     NvU32          newRegionId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3033);
     NvU32    i              = 0;
     NvBool   bLostOnSuspend = NV_FALSE;
 
@@ -186,6 +190,7 @@ memmgrInsertFbRegion_IMPL
     PFB_REGION_DESCRIPTOR   pInsertRegion
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3034);
     NvU32   insertRegion = 0;
     PFB_REGION_DESCRIPTOR pFbRegion;
     //
@@ -320,6 +325,7 @@ memmgrRegionSetupCommon_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3035);
     FB_REGION_DESCRIPTOR    rsvdFbRegion;
     NvU32                   i;
     Heap                   *pHeap     = GPU_GET_HEAP(pGpu);
@@ -495,6 +501,7 @@ memmgrRegionSetupForPma_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3036);
     memmgrCalcReservedFbSpace(pGpu, pMemoryManager);
     memmgrRegionSetupCommon(pGpu, pMemoryManager);
 }
@@ -509,6 +516,7 @@ memmgrDumpFbRegions_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3037);
     NvU32  i;
 
     NV_PRINTF(LEVEL_INFO, "FB region table: numFBRegions = %u.\n",
@@ -551,6 +559,7 @@ memmgrClearFbRegions_IMPL
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3038);
     pMemoryManager->Ram.fbAddrSpaceSizeMb = 0;
     pMemoryManager->Ram.numFBRegions = 0;
     pMemoryManager->Ram.numFBRegionPriority = 0;

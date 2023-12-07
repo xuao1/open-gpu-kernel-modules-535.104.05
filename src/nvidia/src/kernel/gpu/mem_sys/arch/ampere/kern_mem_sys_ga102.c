@@ -41,6 +41,7 @@ kmemsysReadUsableFbSize_GA102
     NvU64              *pFbSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3304);
      //
      // VBIOS Devinit calculates the usable FB size calculated and published in
      // NV_USABLE_FB_SIZE_IN_MB.
@@ -60,6 +61,7 @@ kmemsysIsPagePLCable_GA102
     NvU64               pageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3305);
     const MEMORY_SYSTEM_STATIC_CONFIG *pMemorySystemConfig = kmemsysGetStaticConfig(pGpu, pKernelMemorySystem);
     NvBool bPageSize2M = (pageSize == (2 << 20));
 

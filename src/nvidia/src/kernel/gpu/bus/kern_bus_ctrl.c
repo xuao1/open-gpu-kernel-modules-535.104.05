@@ -46,6 +46,7 @@ kbusControlGetCaps
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 608);
     NvU32 caps = 0;
 
     // if the Chip is integrated.
@@ -60,6 +61,7 @@ kbusControlGetCaps
 static NV_STATUS
 _kbusGetHostCaps(OBJGPU *pGpu, NvU8 *pHostCaps)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 609);
     NV_STATUS  status           = NV_OK;
     NvBool     bCapsInitialized = NV_FALSE;
 
@@ -88,6 +90,7 @@ _getAspmL1FlagsSendRpc
     NvBool *bEnableAspmDtL1
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 610);
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS  rmStatus;
     NV2080_CTRL_INTERNAL_BIF_GET_ASPM_L1_FLAGS_PARAMS *pBifAspmL1Flags;
@@ -134,6 +137,7 @@ deviceCtrlCmdHostGetCaps_IMPL
     NV0080_CTRL_HOST_GET_CAPS_PARAMS *pHostCapsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 611);
     OBJGPU     *pGpu        = GPU_RES_GET_GPU(pDevice);
 
     // sanity check array size
@@ -158,6 +162,7 @@ deviceCtrlCmdHostGetCapsV2_IMPL
     NV0080_CTRL_HOST_GET_CAPS_V2_PARAMS *pHostCapsParamsV2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 612);
     OBJGPU     *pGpu        = GPU_RES_GET_GPU(pDevice);
     NvU8       *pHostCaps   = pHostCapsParamsV2->capsTbl;
     NV_STATUS   rmStatus    = NV_OK;
@@ -177,6 +182,7 @@ subdeviceCtrlCmdBusGetPciInfo_IMPL
     NV2080_CTRL_BUS_GET_PCI_INFO_PARAMS *pPciInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 613);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
 
@@ -204,6 +210,7 @@ subdeviceCtrlCmdBusGetAspmDisableFlags_IMPL
     NV2080_CTRL_BUS_GET_ASPM_DISABLE_FLAGS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 614);
     OBJGPU    *pGpu   = GPU_RES_GET_GPU(pSubdevice);
     OBJSYS    *pSys   = SYS_GET_INSTANCE();
     OBJCL     *pCl    = SYS_GET_CL(pSys);
@@ -238,6 +245,7 @@ subdeviceCtrlCmdBusGetNvlinkPeerIdMask_IMPL
     NV2080_CTRL_BUS_GET_NVLINK_PEER_ID_MASK_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 615);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     if (IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pGpu) && RMCFG_FEATURE_PLATFORM_GSP)
     {
@@ -269,6 +277,7 @@ subdeviceCtrlCmdBusGetNvlinkPeerIdMask_IMPL
 static NV_STATUS
 getBusInfos(OBJGPU *pGpu, NV2080_CTRL_BUS_INFO *pBusInfos, NvU32 busInfoListSize)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 616);
     KernelBif        *pKernelBif  = GPU_GET_KERNEL_BIF(pGpu);
     VirtMemAllocator *pDma        = GPU_GET_DMA(pGpu);
     KernelGmmu       *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
@@ -571,6 +580,7 @@ subdeviceCtrlCmdBusGetInfo_IMPL
     NV2080_CTRL_BUS_GET_INFO_PARAMS *pBusInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 617);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     if ((pBusInfoParams->busInfoListSize == 0) ||
@@ -589,6 +599,7 @@ subdeviceCtrlCmdBusGetInfoV2_IMPL
     NV2080_CTRL_BUS_GET_INFO_V2_PARAMS *pBusInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 618);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     if ((pBusInfoParams->busInfoListSize > NV2080_CTRL_BUS_INFO_MAX_LIST_SIZE) ||
@@ -607,6 +618,7 @@ subdeviceCtrlCmdBusGetPciBarInfo_IMPL
     NV2080_CTRL_BUS_GET_PCI_BAR_INFO_PARAMS *pBarInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 619);
     OBJGPU    *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     NvU32 i;
@@ -649,6 +661,7 @@ diagapiCtrlCmdBusIsBar1Virtual_IMPL
     NV208F_CTRL_BUS_IS_BAR1_VIRTUAL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 620);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDiagApi);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
 
@@ -663,6 +676,7 @@ subdeviceCtrlCmdBusSysmemAccess_IMPL
     NV2080_CTRL_BUS_SYSMEM_ACCESS_PARAMS* pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 621);
     OBJGPU      *pGpu       = GPU_RES_GET_GPU(pSubdevice);
     KernelBif   *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
 

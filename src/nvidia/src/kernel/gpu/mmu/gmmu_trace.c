@@ -67,6 +67,7 @@ _gmmuIsPte
     NvBool              *pValid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3603);
     const GMMU_FMT         *pFmtGmmu   = (GMMU_FMT*)pFmt;
     const GMMU_ENTRY_VALUE *pGmmuEntry = (GMMU_ENTRY_VALUE*)pEntry;
 
@@ -93,6 +94,7 @@ _gmmuGetFmtPde
     NvU32                sublevel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3604);
     return gmmuFmtGetPde((GMMU_FMT*)pFmt, pFmtLevel, sublevel);
 }
 
@@ -102,6 +104,7 @@ _gmmuGetFmtPte
     const void *pFmt
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3605);
     const GMMU_FMT *pFmtGmmu = (GMMU_FMT*)pFmt;
 
     return pFmtGmmu->pPte;
@@ -115,6 +118,7 @@ _gmmuGetPdePa
     const MMU_ENTRY *pPde
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3606);
     const GMMU_FMT_PDE     *pFmt       = (GMMU_FMT_PDE*)pFmtPde;
     const GMMU_ENTRY_VALUE *pGmmuEntry = (GMMU_ENTRY_VALUE*)pPde;
     GMMU_APERTURE           aperture   = gmmuFieldGetAperture(&pFmt->fldAperture,
@@ -147,6 +151,7 @@ _gmmuGetPtePa
     const MMU_ENTRY *pPte
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3607);
     const GMMU_FMT_PTE     *pFmt       = (GMMU_FMT_PTE*)pFmtPte;
     const GMMU_ENTRY_VALUE *pGmmuEntry = (GMMU_ENTRY_VALUE*)pPte;
     GMMU_APERTURE           aperture   = gmmuFieldGetAperture(&pFmt->fldAperture,
@@ -179,6 +184,7 @@ _gmmuPrintPa
     NvU32         peerIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3608);
     NV_PRINTF_EX(NV_PRINTF_MODULE, LEVEL_INFO, "%s", _decodeAperture[aperture]);
     if (GMMU_APERTURE_PEER == aperture)
     {
@@ -205,6 +211,7 @@ _gmmuPrintPdb
     NvU64       vaLimit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3609);
 #if NV_PRINTF_LEVEL_ENABLED(LEVEL_INFO)
     PMEMORY_DESCRIPTOR pPDB        = vaspaceGetPageDirBase(pVAS, pGpu);
     KernelGmmu        *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
@@ -227,6 +234,7 @@ _gmmuPrintPde
     const MMU_ENTRY     *pPde
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3610);
 #if NV_PRINTF_LEVEL_ENABLED(LEVEL_INFO)
     const GMMU_FMT           *pFmtGmmu   = (GMMU_FMT*)pFmt;
     const GMMU_FMT_PDE_MULTI *pPdeMulti  = pFmtGmmu->pPdeMulti;
@@ -312,6 +320,7 @@ _gmmuPrintPt
     const MMU_ENTRY     *pPde
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3611);
 #if NV_PRINTF_LEVEL_ENABLED(LEVEL_INFO)
     const GMMU_FMT_PDE     *pFmtPde    = (GMMU_FMT_PDE*)pFmt;
     const GMMU_ENTRY_VALUE *pGmmuEntry = (GMMU_ENTRY_VALUE*)pPde;
@@ -357,6 +366,7 @@ _gmmuPrintPte
     NvU32                index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3612);
 #if NV_PRINTF_LEVEL_ENABLED(LEVEL_INFO)
     const GMMU_FMT_PTE     *pFmt       = (GMMU_FMT_PTE*)pFmtPte;
     const GMMU_ENTRY_VALUE *pGmmuEntry = (GMMU_ENTRY_VALUE*)pPte;
@@ -441,6 +451,7 @@ _gmmuIsInvalidPdeOk
     NvU32            sublevel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3613);
     const GMMU_FMT         *pFmtGmmu    = (GMMU_FMT*)pFmt;
     const GMMU_FMT_PDE     *pFmtPde     = (GMMU_FMT_PDE*)pFmtEntry;
     const GMMU_ENTRY_VALUE *pGmmuEntry  = (GMMU_ENTRY_VALUE*)pPde;
@@ -477,6 +488,7 @@ _gmmuPdeAddrSpace
     const MMU_ENTRY *pPde
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3614);
     const GMMU_FMT_PDE     *pFmtPde    = (GMMU_FMT_PDE*)pFmtEntry;
     const GMMU_ENTRY_VALUE *pGmmuEntry = (GMMU_ENTRY_VALUE*)pPde;
 
@@ -502,6 +514,7 @@ _gmmuPteAddrSpace
     const MMU_ENTRY *pPte
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3615);
     const GMMU_FMT_PTE     *pFmtPte    = (GMMU_FMT_PTE*)pFmtEntry;
     const GMMU_ENTRY_VALUE *pGmmuEntry = (GMMU_ENTRY_VALUE*)pPte;
 
@@ -528,6 +541,7 @@ _gmmuSwToHwLevel
     NvU32       level
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3616);
     const GMMU_FMT *pFmtGmmu = (GMMU_FMT*)pFmt;
     NvU32 maxV3Levels        = 0;
 

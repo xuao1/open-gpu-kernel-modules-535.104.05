@@ -52,6 +52,7 @@ static NvBool osWaitForInterrupt(
     NvBool *serviced
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4777);
     Intr *pIntr = GPU_GET_INTR(pGpu);
     NvU32 intAMode;
     NvBool swPending;
@@ -105,6 +106,7 @@ NV_STATUS osSanityTestIsr(
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4778);
     NvBool serviced = NV_FALSE;
 
     osWaitForInterrupt(pGpu, &serviced);
@@ -121,6 +123,7 @@ static NV_STATUS _osVerifyInterrupts(
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4779);
     Intr *pIntr = GPU_GET_INTR(pGpu);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
     OBJGPU *pGpuSaved = pGpu;
@@ -298,6 +301,7 @@ NV_STATUS osVerifySystemEnvironment(
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4780);
     NV_STATUS status = NV_OK;
 
     // PCIE GEN4 fmodel MSI is broken as per bug 2076928 comment 42 and will not be fixed

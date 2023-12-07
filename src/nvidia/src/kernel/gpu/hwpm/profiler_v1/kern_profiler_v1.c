@@ -33,6 +33,7 @@ profilerConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2397);
     if (profilerIsProfilingPermitted_HAL(pProfiler))
     {
         return profilerConstructState_HAL(pProfiler, pCallContext, pParams);
@@ -47,6 +48,7 @@ profilerIsProfilingPermitted_IMPL
     Profiler *pProfiler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2398);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pProfiler);
 
     if (gpuIsRmProfilingPrivileged(pGpu) && !osIsAdministrator())
@@ -64,6 +66,7 @@ NV_STATUS profilerControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2399);
     NV_CHECK_OK_OR_RETURN(LEVEL_ERROR, profilerControlHwpmSupported_HAL(pProfiler, pParams));
 
     return gpuresControl_IMPL(staticCast(pProfiler, GpuResource),

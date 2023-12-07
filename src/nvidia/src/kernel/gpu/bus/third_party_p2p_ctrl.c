@@ -37,6 +37,7 @@ thirdpartyp2pCtrlCmdRegisterVaSpace_IMPL
     NV503C_CTRL_REGISTER_VA_SPACE_PARAMS *pRegisterVaSpaceParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 703);
     NvU32     vaSpaceToken;
     NV_STATUS status;
     OBJGPU *pGpu;
@@ -66,6 +67,7 @@ thirdpartyp2pCtrlCmdUnregisterVaSpace_IMPL
     NV503C_CTRL_UNREGISTER_VA_SPACE_PARAMS *pUnregisterVaSpaceParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 704);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu;
 
@@ -86,6 +88,7 @@ thirdpartyp2pCtrlCmdRegisterVidmem_IMPL
     NV503C_CTRL_REGISTER_VIDMEM_PARAMS *pRegisterVidmemParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 705);
     Memory    *pMemory;
     RsClient  *pClient = RES_GET_CLIENT(pThirdPartyP2P);
     NvHandle   hDevice;
@@ -155,6 +158,7 @@ thirdpartyp2pCtrlCmdUnregisterVidmem_IMPL
     NV503C_CTRL_UNREGISTER_VIDMEM_PARAMS *pUnregisterVidmemParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 706);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu;
 
@@ -174,6 +178,7 @@ thirdpartyp2pCtrlCmdRegisterPid_IMPL
     NV503C_CTRL_REGISTER_PID_PARAMS *pRegisterPidParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 707);
     NvHandle  hClient = RES_GET_CLIENT_HANDLE(pThirdPartyP2P);
     NvHandle  hObject = RES_GET_HANDLE(pThirdPartyP2P);
     RmClient *pClient;

@@ -45,6 +45,7 @@ memmgrIsKind_TU102
     NvU32          kind
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2702);
     switch (op)
     {
         case FB_IS_KIND_Z:
@@ -84,6 +85,7 @@ memmgrIsSurfaceBlockLinear_TU102
     NvU32              dmaFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2703);
     if (FLD_TEST_DRF(OS03, _FLAGS, _PTE_KIND, _BL, dmaFlags))
     {
         return NV_TRUE;

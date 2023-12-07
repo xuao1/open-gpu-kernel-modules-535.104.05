@@ -67,6 +67,7 @@ gpuGc6Exit_IMPL(
     NV2080_CTRL_GC6_EXIT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2545);
     NV_STATUS status = NV_OK;
 
     // Check if we need to execute GPU_ON step
@@ -139,6 +140,7 @@ gpuGc6Entry_IMPL(
     NV2080_CTRL_GC6_ENTRY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2546);
     NV_STATUS status    = NV_OK;
 
     // Check if we need to execute GPU_OFF step
@@ -203,6 +205,7 @@ gpuGc6Entry_IMPL_exit:
 NV_STATUS
 gpuGc6EntryGpuPowerOff(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2547);
     NV_STATUS status = NV_OK;
 
     // SW pre-settings before calling power off.
@@ -248,6 +251,7 @@ _gpuGc6EntryGpuPowerOff_EXIT:
 NV_STATUS
 gpuPowerOff_KERNEL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2548);
 
     NvU32 deferCmd = 0x134c02;
 
@@ -282,6 +286,7 @@ gpuPowerOff_KERNEL(OBJGPU *pGpu)
 NV_STATUS
 gpuPowerOn_KERNEL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2549);
     NV_STATUS status;
     NvU32     powerStatus;
     RMTIMEOUT timeout;
@@ -381,6 +386,7 @@ gpuPowerOn_KERNEL(OBJGPU *pGpu)
 NvBool
 gpuIsOnTheBus_IMPL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2550);
     NvU32   domain = gpuGetDomain(pGpu);
     NvU8    bus    = gpuGetBus(pGpu);
     NvU8    device = gpuGetDevice(pGpu);
@@ -404,6 +410,7 @@ gpuIsOnTheBus_IMPL(OBJGPU *pGpu)
 static NV_STATUS
 _gpuGc6EntrySanityCheck(OBJGPU *pGpu, NV2080_CTRL_GC6_ENTRY_PARAMS *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2551);
     NV_STATUS status = NV_OK;
 
     //
@@ -448,6 +455,7 @@ _gpuGc6EntrySanityCheck(OBJGPU *pGpu, NV2080_CTRL_GC6_ENTRY_PARAMS *pParams)
 static void
 _gpuGc6EntrySwStateUpdate(OBJGPU *pGpu, NV2080_CTRL_GC6_ENTRY_PARAMS *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2552);
 
     // set state if we are doing an MsHybrid GC6 cycle OR Fast GC6 cycle
     if (pParams->flavorId == NV2080_CTRL_GC6_FLAVOR_ID_MSHYBRID)
@@ -471,6 +479,7 @@ _gpuGc6EntrySwStateUpdate(OBJGPU *pGpu, NV2080_CTRL_GC6_ENTRY_PARAMS *pParams)
 static void
 _gpuGc6EntryFailed(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2553);
     SET_GPU_GC6_STATE_AND_LOG(pGpu, GPU_GC6_STATE_ENTERING_FAILED);
 
     pGpu->setProperty(pGpu, PDB_PROP_GPU_MSHYBRID_GC6_ACTIVE, NV_FALSE);
@@ -490,6 +499,7 @@ _gpuGc6EntryFailed(OBJGPU *pGpu)
 static NV_STATUS
 _gpuGc6EntryStateUnload(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2554);
     NV_STATUS status;
 
     pGpu->setProperty(pGpu, PDB_PROP_GPU_FORCE_PERF_BIOS_LEVEL, NV_TRUE);
@@ -519,6 +529,7 @@ _gpuGc6EntryStateUnload(OBJGPU *pGpu)
 static NV_STATUS
 _gpuGc6ExitSanityCheck(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2555);
     NV_STATUS status = NV_OK;
 
 
@@ -546,6 +557,7 @@ _gpuGc6ExitSanityCheck(OBJGPU *pGpu)
 static NV_STATUS
 _gpuGc6ExitGpuPowerOn(OBJGPU *pGpu, NV2080_CTRL_GC6_EXIT_PARAMS *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2556);
     NV_STATUS status = NV_OK;
 
     return status;
@@ -559,6 +571,7 @@ _gpuGc6ExitGpuPowerOn(OBJGPU *pGpu, NV2080_CTRL_GC6_EXIT_PARAMS *pParams)
 static void
 _gpuGc6ExitSwStateRestore(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2557);
     pGpu->setProperty(pGpu, PDB_PROP_GPU_MSHYBRID_GC6_ACTIVE, NV_FALSE);
     pGpu->setProperty(pGpu, PDB_PROP_GPU_FAST_GC6_ACTIVE, NV_FALSE);
     pGpu->setProperty(pGpu, PDB_PROP_GPU_RTD3_GC6_ACTIVE, NV_FALSE);
@@ -572,6 +585,7 @@ _gpuGc6ExitSwStateRestore(OBJGPU *pGpu)
 static void
 _gpuForceGc6inD3Hot(OBJGPU *pGpu, NV2080_CTRL_GC6_EXIT_PARAMS *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2558);
 
     pParams->params.bIsRTD3HotTransition = NV_FALSE;
     //
@@ -642,6 +656,7 @@ _gpuForceGc6inD3Hot(OBJGPU *pGpu, NV2080_CTRL_GC6_EXIT_PARAMS *pParams)
 static NV_STATUS
 _gpuGc6ExitStateLoad(OBJGPU *pGpu, NV2080_CTRL_GC6_EXIT_PARAMS *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2559);
     NV_STATUS status = NV_OK;
 
     pGpu->setProperty(pGpu, PDB_PROP_GPU_FORCE_PERF_BIOS_LEVEL, NV_TRUE);

@@ -68,6 +68,7 @@ kbusAllocateLegacyFlaVaspace_GA100
     NvU64      size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 421);
     NV0080_ALLOC_PARAMETERS nv0080AllocParams = {0};
     NV2080_ALLOC_PARAMETERS nv2080AllocParams = {0};
     NV_VASPACE_ALLOCATION_PARAMETERS vaParams = {0};
@@ -203,6 +204,7 @@ kbusAllocateFlaVaspace_GA100
     NvU64      size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 422);
     NV_STATUS    status = NV_OK;
     OBJVMM      *pVmm   = SYS_GET_VMM(SYS_GET_INSTANCE());
     KernelGmmu  *pKernelGmmu  = GPU_GET_KERNEL_GMMU(pGpu);
@@ -432,6 +434,7 @@ kbusAllocateHostManagedFlaVaspace_GA100
     NvU32      gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 423);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     OBJVMM     *pVmm        = SYS_GET_VMM(SYS_GET_INSTANCE());
     INST_BLK_INIT_PARAMS pInstblkParams = {0};
@@ -568,6 +571,7 @@ kbusCheckFlaSupportedAndInit_GA100
     NvU64      size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 424);
 
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
 
@@ -627,6 +631,7 @@ kbusDetermineFlaRangeAndAllocate_GA100
     NvU64      size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 425);
     OBJSYS           *pSys              = SYS_GET_INSTANCE();
     NV_STATUS         status            = NV_OK;
     KernelNvlink     *pKernelNvlink     = GPU_GET_KERNEL_NVLINK(pGpu);
@@ -698,6 +703,7 @@ kbusDestroyFla_GA100
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 426);
     OBJSYS *pSys   = SYS_GET_INSTANCE();
     OBJVMM *pVmm   = SYS_GET_VMM(pSys);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
@@ -779,6 +785,7 @@ kbusDestroyHostManagedFlaVaspace_GA100
     NvU32      gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 427);
     OBJSYS *pSys   = SYS_GET_INSTANCE();
     OBJVMM *pVmm   = SYS_GET_VMM(pSys);
 
@@ -833,6 +840,7 @@ kbusGetFlaVaspace_GA100
     OBJVASPACE **ppVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 428);
     NV_STATUS         status  = NV_OK;
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     KernelNvlink     *pKernelNvlink     = GPU_GET_KERNEL_NVLINK(pGpu);
@@ -898,6 +906,7 @@ kbusConstructFlaInstBlk_GA100
     NvU32      gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 429);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_STATUS      status = NV_OK;
     NvU32          aperture;
@@ -950,6 +959,7 @@ kbusDestructFlaInstBlk_GA100
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 430);
     // Free the FLA Inst Blk MemDesc
    if (pKernelBus->flaInfo.pInstblkMemDesc != NULL)
    {
@@ -979,6 +989,7 @@ kbusIsDirectMappingAllowed_GA100
     NvBool            *bDirectSysMappingAllowed
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 431);
     *bDirectSysMappingAllowed = NV_FALSE;
 
     if (DRF_VAL(OS33, _FLAGS, _MAPPING, mapFlags) == NVOS33_FLAGS_MAPPING_REFLECTED)
@@ -1020,6 +1031,7 @@ kbusGetNvlinkP2PPeerId_GA100
     NvU32      attributes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 432);
     KernelNvlink *pKernelNvlink0 = GPU_GET_KERNEL_NVLINK(pGpu0);
     NV_STATUS     status         = NV_OK;
     NvBool        bEgmPeer = FLD_TEST_DRF(_P2PAPI, _ATTRIBUTES, _REMOTE_EGM, _YES, attributes);
@@ -1153,6 +1165,7 @@ kbusUseDirectSysmemMap_GA100
     NvBool            *pbAllowDirectMap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 433);
     *pbAllowDirectMap = NV_FALSE;
 
     if((memdescGetAddressSpace(pMemDesc) != ADDR_FBMEM))
@@ -1179,6 +1192,7 @@ kbusValidateFlaBaseAddress_GA100
     NvU64              flaBaseAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 434);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64 fbSizeBytes;
 
@@ -1250,6 +1264,7 @@ kbusGetNvSwitchPeerId_GA100
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 435);
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
     NvU32 peerId = BUS_INVALID_PEER;
     NvU32 i;
@@ -1291,6 +1306,7 @@ kbusSetupBindFla_GA100
     NvU32      gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 436);
     NV_STATUS status = NV_OK;
     NV2080_CTRL_FLA_SETUP_INSTANCE_MEM_BLOCK_PARAMS params = {0};
 
@@ -1349,6 +1365,7 @@ kbusSetupUnbindFla_GA100
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 437);
     NV_STATUS status = NV_OK;
     NV2080_CTRL_FLA_SETUP_INSTANCE_MEM_BLOCK_PARAMS params = { 0 };
 
@@ -1378,6 +1395,7 @@ kbusGetFlaRange_GA100
     NvBool     bIsConntectedToNvswitch
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 438);
     if (gpuIsSriovEnabled(pGpu) && bIsConntectedToNvswitch)
     {
         if (pKernelBus->flaInfo.bFlaRangeRegistered)
@@ -1413,6 +1431,7 @@ kbusGetNvlinkPeerId_GA100
     OBJGPU    *pGpuPeer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 439);
     NvU32 gpuPeerInst = gpuGetInstance(pGpuPeer);
     NvU32 peerId = pKernelBus->p2p.busNvlinkPeerNumberMask[gpuPeerInst];
 

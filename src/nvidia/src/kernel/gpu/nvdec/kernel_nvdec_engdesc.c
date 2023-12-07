@@ -57,6 +57,7 @@ nvdecGetEngineDescFromAllocParams
     void    *pAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3708);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     NvU32                        engineInstance    = 0;
     NV_BSP_ALLOCATION_PARAMETERS *pNvdecAllocParams = pAllocParams;

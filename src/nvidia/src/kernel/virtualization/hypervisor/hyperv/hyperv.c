@@ -31,6 +31,7 @@
 
 static NvBool _dummyHypervIsP2PSupported(NvU32 gpuMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5766);
     return NV_FALSE;
 }
 
@@ -43,6 +44,7 @@ static NvBool _dummyHypervIsP2PSupported(NvU32 gpuMask)
 #define IMPLEMENTATION_RECOMMENDATIONS_LEAF  0x40000004
 static NV_STATUS _childPartitionDetection(OBJOS *pOS, NvBool *result)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5767);
     NvU32 eax = 0, ebx = 0;
     NvU32 dummyRegister = 0;    // This is placeholder reg to pass as an argument
                                 // to read registers values we don't care

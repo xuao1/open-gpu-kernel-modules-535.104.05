@@ -41,6 +41,7 @@
 NvBool
 kgmmuFmtIsVersionSupported_GH10X(KernelGmmu *pKernelGmmu, NvU32 version)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3539);
     return (version == GMMU_FMT_VERSION_3);
 }
 
@@ -50,6 +51,7 @@ kgmmuFmtIsVersionSupported_GH10X(KernelGmmu *pKernelGmmu, NvU32 version)
 NV_STATUS
 kgmmuFmtFamiliesInit_GH100(OBJGPU *pGpu, KernelGmmu* pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3540);
     NvU32            i;
     NvU32            pdePcfHw = 0;
     NvU32            pdePcfSw = 0;
@@ -160,6 +162,7 @@ kgmmuTranslatePtePcfFromSw_GH100
     NvU32   *pPtePcfHw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3541);
     switch (ptePcfSw)
     {
         PTE_PCF_INVALID_LIST(PTE_PCF_HW_FROM_SW)
@@ -184,6 +187,7 @@ kgmmuTranslatePtePcfFromHw_GH100
     NvU32      *pPtePcfSw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3542);
     if (!bPteValid)
     {
         switch (ptePcfHw)
@@ -248,6 +252,7 @@ kgmmuTranslatePdePcfFromSw_GH100
     NvU32      *pPdePcfHw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3543);
     switch (pdePcfSw)
     {
         PDE_PCF_INVALID_LIST(PDE_PCF_HW_FROM_SW)
@@ -272,6 +277,7 @@ kgmmuTranslatePdePcfFromHw_GH100
     NvU32          *pPdePcfSw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3544);
     if (!aperture)
     {
         switch (pdePcfHw)
@@ -310,6 +316,7 @@ kgmmuValidateFabricBaseAddress_GH100
     NvU64       fabricBaseAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3545);
     OBJGPU        *pGpu = ENG_GET_GPU(pKernelGmmu);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64 fbSizeBytes;
@@ -343,6 +350,7 @@ kgmmuGetGraphicsEngineId_GH100
     KernelGmmu *pKernelGmmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3546);
     return NV_PFAULT_MMU_ENG_ID_GRAPHICS;
 }
 
@@ -362,6 +370,7 @@ kgmmuGetFaultRegisterMappings_GH100
     NvP64      *pPrefetchCtrl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3547);
     DEVICE_MAPPING *pMapping    = gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0);
     NvP64           bar0Mapping = NV_PTR_TO_NvP64(pMapping->gpuNvAddr);
 
@@ -449,6 +458,7 @@ kgmmuFaultBufferAllocSharedMemory_GH100
     FAULT_BUFFER_TYPE index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3548);
     NV_STATUS status;
     GMMU_CLIENT_SHADOW_FAULT_BUFFER *pClientShadowFaultBuffer;
     MEMORY_DESCRIPTOR *pMemDesc;
@@ -524,6 +534,7 @@ kgmmuFaultBufferFreeSharedMemory_GH100
     FAULT_BUFFER_TYPE index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3549);
     MEMORY_DESCRIPTOR *pMemDesc;
     GMMU_CLIENT_SHADOW_FAULT_BUFFER *pClientShadowFaultBuffer;
 
@@ -561,6 +572,7 @@ kgmmuIssueReplayableFaultBufferFlush_GH100
     KernelGmmu *pKernelGmmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3550);
     GMMU_CLIENT_SHADOW_FAULT_BUFFER *pClientShadowFaultBuffer;
     FAULT_BUFFER_SHARED_MEMORY *pFaultBufSharedMem;
     NvU32 gfid;
@@ -619,6 +631,7 @@ kgmmuReadShadowBufPutIndex_GH100
     FAULT_BUFFER_TYPE  type
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3551);
     NvU32 val;
     if (type == REPLAYABLE_FAULT_BUFFER)
     {

@@ -46,6 +46,7 @@ kmemsysProgramSysmemFlushBuffer_GA100
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3296);
     NvU64 alignedSysmemFlushBufferAddr = 0x0;
     NvU32 alignedSysmemFlushBufferAddrHi = 0x0;
 
@@ -82,6 +83,7 @@ kmemsysInitFlushSysmemBuffer_GA100
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3297);
     NV_STATUS status;
 
     //
@@ -142,6 +144,7 @@ kmemsysAssertSysmemFlushBufferValid_GA100
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3298);
     NV_ASSERT((GPU_REG_RD_DRF(pGpu, _PFB, _NISO_FLUSH_SYSMEM_ADDR, _ADR_39_08) != 0)
                || (GPU_REG_RD_DRF(pGpu, _PFB,  _NISO_FLUSH_SYSMEM_ADDR_HI, _ADR_63_40) != 0));
 }
@@ -156,6 +159,7 @@ kmemsysReadMIGMemoryCfg_GA100
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3299);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_INTERNAL_MEMSYS_GET_MIG_MEMORY_CONFIG_PARAMS params = {0};
 
@@ -184,6 +188,7 @@ kmemsysInitMIGMemoryPartitionTable_GA100
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3300);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     const MEMORY_SYSTEM_STATIC_CONFIG *pMemorySystemConfig = kmemsysGetStaticConfig(pGpu, pKernelMemorySystem);
 
@@ -215,6 +220,7 @@ _kmemsysSwizzIdToFbMemRange_GA100
     NV_RANGE *pAddrRange
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3301);
     NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
         kmemsysSwizzIdToMIGMemRange(pGpu, pKernelMemorySystem, swizzId, totalRange, pAddrRange));
 
@@ -246,6 +252,7 @@ kmemsysSwizzIdToVmmuSegmentsRange_GA100
     NvU32 totalVmmuSegments
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3302);
     //
     // This parameter represents the number of boundaries drawn when a
     // specific GPU instance type is created
@@ -318,6 +325,7 @@ kmemsysIsPagePLCable_GA100
     NvU64               pageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3303);
     const MEMORY_SYSTEM_STATIC_CONFIG *pMemorySystemConfig = kmemsysGetStaticConfig(pGpu, pKernelMemorySystem);
     NvU64 topAddr       = ((pKernelMemorySystem->memBoundaryCfgTable.memBoundaryCfgB + pKernelMemorySystem->memBoundaryCfgTable.memBoundaryCfgA) *
                           pMemorySystemConfig->ltcCount * pMemorySystemConfig->ltsPerLtcCount) >> 4;

@@ -45,6 +45,7 @@ memmgrGetMaxContextSize_AD102
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2576);
     NvU64  size = memmgrGetMaxContextSize_GA100(pGpu, pMemoryManager);
 
 

@@ -64,6 +64,7 @@ rmapiMapGpuCommon
     NvU32 regionSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5533);
     NV_STATUS rmStatus;
     RmClient *pClient = dynamicCast(pCallContext->pClient, RmClient);
     NvU64 offset;
@@ -102,6 +103,7 @@ rmapiGetEffectiveAddrSpace
     NV_ADDRESS_SPACE *pAddrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5534);
     NV_ADDRESS_SPACE addrSpace;
     NvBool bDirectSysMappingAllowed = NV_TRUE;
 
@@ -174,6 +176,7 @@ memMap_IMPL
     RsCpuMapping *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5535);
     OBJGPU *pGpu = NULL;
     KernelBus *pKernelBus = NULL;
     MemoryManager *pMemoryManager = NULL;
@@ -680,6 +683,7 @@ memUnmap_IMPL
     RsCpuMapping *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5536);
     RmClient           *pClient             = dynamicCast(pCallContext->pClient, RmClient);
     OBJGPU             *pGpu                = pCpuMapping->pPrivate->pGpu;
     MEMORY_DESCRIPTOR  *pMemDesc            = pMemory->pMemDesc;
@@ -808,6 +812,7 @@ rmapiValidateKernelMapping
     NvBool *pbKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5537);
     NvBool bKernel;
     NV_STATUS status = NV_OK;
     if (privLevel < RS_PRIV_LEVEL_KERNEL)
@@ -842,6 +847,7 @@ serverMap_Prologue
     RsServer *pServer, RS_CPU_MAP_PARAMS *pMapParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5538);
     NV_STATUS           rmStatus;
     RmClient           *pClient;
     RsResourceRef      *pMemoryRef;
@@ -943,6 +949,7 @@ serverUnmap_Prologue
     RS_CPU_UNMAP_PARAMS *pUnmapParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5539);
     OBJGPU *pGpu = NULL;
     NV_STATUS rmStatus;
     RmClient *pClient;
@@ -1056,6 +1063,7 @@ serverUnmap_Epilogue
     RS_CPU_UNMAP_PARAMS *pUnmapParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5540);
     // do we need to detach?
     if (pUnmapParams->pProcessHandle != NULL)
     {
@@ -1073,6 +1081,7 @@ void RmUnmapBusAperture
     NvP64   pPrivateData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5541);
     if (bKernel)
     {
         osUnmapPciMemoryKernel64(pGpu, pCpuVirtualAddress);
@@ -1096,6 +1105,7 @@ rmapiMapToCpu
     NvU32     flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5542);
     NvP64     pCpuVirtAddrNvP64 = NvP64_NULL;
     NV_STATUS status;
 
@@ -1138,6 +1148,7 @@ rmapiMapToCpuWithSecInfoV2
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5543);
     NV_STATUS  status;
     RM_API_CONTEXT rmApiContext = {0};
     RmMapParams rmMapParams;
@@ -1212,6 +1223,7 @@ rmapiMapToCpuWithSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5544);
     return rmapiMapToCpuWithSecInfoV2(pRmApi, hClient,
         hDevice, hMemory, offset, length, ppCpuVirtAddr,
         &flags, pSecInfo);
@@ -1231,6 +1243,7 @@ rmapiMapToCpuWithSecInfoTls
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5545);
     THREAD_STATE_NODE threadState;
     NV_STATUS         status;
 
@@ -1256,6 +1269,7 @@ rmapiMapToCpuWithSecInfoTlsV2
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5546);
     THREAD_STATE_NODE threadState;
     NV_STATUS         status;
 
@@ -1280,6 +1294,7 @@ rmapiUnmapFromCpu
     NvU32     ProcessId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5547);
     if (!pRmApi->bHasDefaultSecInfo)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -1313,6 +1328,7 @@ rmapiUnmapFromCpuWithSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5548);
     NV_STATUS status;
     RM_API_CONTEXT rmApiContext = {0};
     RmUnmapParams rmUnmapParams;
@@ -1372,6 +1388,7 @@ rmapiUnmapFromCpuWithSecInfoTls
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5549);
     THREAD_STATE_NODE threadState;
     NV_STATUS         status;
 
@@ -1394,6 +1411,7 @@ serverMapLookupLockFlags
     LOCK_ACCESS_TYPE *pAccess
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5550);
     NV_ASSERT_OR_RETURN(pAccess != NULL, NV_ERR_INVALID_ARGUMENT);
 
     *pAccess = (serverSupportsReadOnlyLock(pServer, lock, RS_API_MAP))
@@ -1411,6 +1429,7 @@ serverUnmapLookupLockFlags
     LOCK_ACCESS_TYPE *pAccess
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5551);
     NV_ASSERT_OR_RETURN(pAccess != NULL, NV_ERR_INVALID_ARGUMENT);
 
     *pAccess = (serverSupportsReadOnlyLock(pServer, lock, RS_API_UNMAP))
@@ -1426,6 +1445,7 @@ refAllocCpuMappingPrivate
     RsCpuMapping *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5552);
     pCpuMapping->pPrivate = portMemAllocNonPaged(sizeof(RS_CPU_MAPPING_PRIVATE));
     if (pCpuMapping->pPrivate == NULL)
         return NV_ERR_NO_MEMORY;
@@ -1442,5 +1462,6 @@ refFreeCpuMappingPrivate
     RsCpuMapping *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5553);
     portMemFree(pCpuMapping->pPrivate);
 }

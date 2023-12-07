@@ -44,6 +44,7 @@ kmigmgrIsDevinitMIGBitSet_GA100
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3372);
     NvU32 regVal;
 
     regVal = GPU_REG_RD32(pGpu, NV_PBUS_SW_SCRATCH(1));
@@ -64,6 +65,7 @@ kmigmgrCreateGPUInstanceCheck_GA100
     NvBool bMemoryPartitioningNeeded
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3373);
     Heap             *pHeap;
     KernelFifo       *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     RM_ENGINE_TYPE    engines[RM_ENGINE_TYPE_LAST];
@@ -165,6 +167,7 @@ kmigmgrIsGPUInstanceFlagValid_GA100
     NvU32 gpuInstanceFlag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3374);
     NvU32 memSizeFlag = DRF_VAL(2080_CTRL_GPU, _PARTITION_FLAG,
                                 _MEMORY_SIZE, gpuInstanceFlag);
     NvU32 computeSizeFlag = DRF_VAL(2080_CTRL_GPU, _PARTITION_FLAG,
@@ -213,6 +216,7 @@ kmigmgrIsGPUInstanceCombinationValid_GA100
     NvU32 gpuInstanceFlag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3375);
     NvU32 memSizeFlag = DRF_VAL(2080_CTRL_GPU, _PARTITION_FLAG, _MEMORY_SIZE, gpuInstanceFlag);
     NvU32 computeSizeFlag = DRF_VAL(2080_CTRL_GPU, _PARTITION_FLAG, _COMPUTE_SIZE, gpuInstanceFlag);
 
@@ -295,6 +299,7 @@ kmigmgrMemSizeFlagToSwizzIdRange_GA100
     NvU32 memSizeFlag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3376);
     NV_RANGE ret;
 
     switch (DRF_VAL(2080_CTRL_GPU, _PARTITION_FLAG, _MEMORY_SIZE, memSizeFlag))
@@ -349,6 +354,7 @@ kmigmgrIsMemoryPartitioningRequested_GA100
     NvU32 partitionFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3377);
     NvU32 memSizeFlag = DRF_VAL(2080_CTRL_GPU, _PARTITION_FLAG, _MEMORY_SIZE, partitionFlags);
     return (memSizeFlag != NV2080_CTRL_GPU_PARTITION_FLAG_MEMORY_SIZE_FULL);
 }
@@ -364,6 +370,7 @@ kmigmgrIsMemoryPartitioningNeeded_GA100
     NvU32 swizzId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3378);
     // Memory partitioning is needed for non-zero swizzIds
     return (swizzId != 0);
 }

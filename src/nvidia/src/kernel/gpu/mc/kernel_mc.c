@@ -51,6 +51,7 @@ subdeviceCtrlCmdMcGetArchInfo_IMPL
     NV2080_CTRL_MC_GET_ARCH_INFO_PARAMS *pArchInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2566);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     if (IsTEGRA_NVDISP_GPUS(pGpu))
@@ -77,6 +78,7 @@ subdeviceCtrlCmdMcGetManufacturer_IMPL
     NV2080_CTRL_MC_GET_MANUFACTURER_PARAMS *pManufacturerParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2567);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     pManufacturerParams->manufacturer = pGpu->idInfo.Manufacturer;
@@ -91,6 +93,7 @@ subdeviceCtrlCmdMcQueryHostclkSlowdownStatus_IMPL
     NV2080_CTRL_MC_QUERY_HOSTCLK_SLOWDOWN_STATUS_PARAMS *pGetStatusParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2568);
     pGetStatusParams->bDisabled = NV_FALSE;
 
     return NV_OK;
@@ -103,6 +106,7 @@ subdeviceCtrlCmdMcSetHostclkSlowdownStatus_IMPL
     NV2080_CTRL_MC_SET_HOSTCLK_SLOWDOWN_STATUS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2569);
     return NV_OK;
 }
 
@@ -113,6 +117,7 @@ subdeviceCtrlCmdMcChangeReplayableFaultOwnership_IMPL
     NV2080_CTRL_MC_CHANGE_REPLAYABLE_FAULT_OWNERSHIP_PARAMS *pReplayableFaultOwnrshpParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2570);
     OBJGPU     *pGpu        = GPU_RES_GET_GPU(pSubdevice);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
 
@@ -134,6 +139,7 @@ subdeviceCtrlCmdMcChangeReplayableFaultOwnership_IMPL
 static NV_STATUS
 _kmcDumpEngineFunc(OBJGPU *pGpu, PRB_ENCODER *pPrbEnc, NVD_STATE *pNvDumpState, void *pvData)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2571);
     NV_STATUS rmStatus = NV_OK;
     NvU8  startingDepth = prbEncNestingLevel(pPrbEnc);
 
@@ -198,6 +204,7 @@ kmcStateInitLocked_IMPL
     KernelMc *pKernelMc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2572);
     _kmcInitPciRegistryOverrides(pGpu, pKernelMc);
 
     NvDebugDump *pNvd = GPU_GET_NVD(pGpu);
@@ -223,6 +230,7 @@ kmcStateLoad_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2573);
     if (!RMCFG_FEATURE_PLATFORM_GSP &&
         kbifGetBusIntfType_HAL(GPU_GET_KERNEL_BIF(pGpu)) !=
         NV2080_CTRL_BUS_INFO_TYPE_AXI)
@@ -241,6 +249,7 @@ _kmcInitPciRegistryOverrides
     KernelMc *pKernelMc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2574);
     NvU32 data32;
 
     // Initialize pci latency timer control state
@@ -269,6 +278,7 @@ _kmcSetPciLatencyTimer
     KernelMc *pKernelMc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2575);
     NvU32 data;
 
     // Should we skip the set?

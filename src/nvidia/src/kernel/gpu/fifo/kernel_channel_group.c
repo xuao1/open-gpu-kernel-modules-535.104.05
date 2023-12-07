@@ -32,12 +32,14 @@ static void _kchangrpFreeAllEngCtxDescs(OBJGPU *pGpu, KernelChannelGroup *pKerne
 NV_STATUS
 kchangrpConstruct_IMPL(KernelChannelGroup *pKernelChannelGroup)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1503);
     return NV_OK;
 }
 
 void
 kchangrpDestruct_IMPL(KernelChannelGroup *pKernelChannelGroup)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1504);
     return;
 }
 
@@ -49,6 +51,7 @@ kchangrpSetState_IMPL
     CHANNELGROUP_STATE  state
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1505);
     ct_assert(CHANNELGROUP_STATE_COUNT <= 8 * sizeof(NvU32));
     pKernelChannelGroup->pStateMask[subdevice] |= NVBIT(state);
 }
@@ -61,6 +64,7 @@ kchangrpClearState_IMPL
     CHANNELGROUP_STATE  state
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1506);
     ct_assert(CHANNELGROUP_STATE_COUNT <= 8 * sizeof(NvU32));
     pKernelChannelGroup->pStateMask[subdevice] &= ~NVBIT(state);
 }
@@ -73,6 +77,7 @@ kchangrpIsStateSet_IMPL
     CHANNELGROUP_STATE  state
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1507);
     ct_assert(CHANNELGROUP_STATE_COUNT <= 8 * sizeof(NvU32));
     return !!(pKernelChannelGroup->pStateMask[subdevice] & NVBIT(state));
 }
@@ -106,6 +111,7 @@ kchangrpInit_IMPL
     NvU32                  gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1508);
     NV_STATUS         status       = NV_OK;
     KernelFifo       *pKernelFifo  = GPU_GET_KERNEL_FIFO(pGpu);
     CHID_MGR         *pChidMgr     = NULL;
@@ -354,6 +360,7 @@ kchangrpDestroy_IMPL
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1509);
     NV_STATUS           status;
     KernelFifo         *pKernelFifo  = GPU_GET_KERNEL_FIFO(pGpu);
     CHID_MGR           *pChidMgr;
@@ -490,6 +497,7 @@ kchangrpAddChannel_IMPL
     KernelChannel      *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1510);
     NV_STATUS       status;
     KernelFifo     *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NvU32           maxChanCount;
@@ -564,6 +572,7 @@ kchangrpRemoveChannel_IMPL
     KernelChannel      *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1511);
     NV_STATUS status = NV_OK;
 
     NV_ASSERT_OR_RETURN(pKernelChannelGroup != NULL, NV_ERR_INVALID_POINTER);
@@ -634,6 +643,7 @@ kchangrpSetInterleaveLevel_IMPL
     NvU32               value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1512);
     switch (value)
     {
         case NVA06C_CTRL_INTERLEAVE_LEVEL_LOW:
@@ -664,6 +674,7 @@ _kchangrpFreeAllEngCtxDescs
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1513);
     ENGINE_CTX_DESCRIPTOR *pEngCtxDescriptor;
 
     // Nothing to do
@@ -697,6 +708,7 @@ kchangrpAllocEngineContextDescriptor_IMPL
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1514);
     NvU32 subdeviceInstance = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
     NV_STATUS status;
 
@@ -723,6 +735,7 @@ kchangrpGetEngineContextMemDesc_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1515);
     ENGINE_CTX_DESCRIPTOR *pEngCtxDesc;
     NvU32                  subDevInst = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
 

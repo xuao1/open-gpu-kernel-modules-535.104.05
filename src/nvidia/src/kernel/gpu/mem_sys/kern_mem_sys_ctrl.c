@@ -43,6 +43,7 @@
 static NV_STATUS
 _fbGetFbInfos(OBJGPU *pGpu, RsClient *pClient, Device *pDevice, NvHandle hObject, NV2080_CTRL_FB_INFO *pFbInfos, NvU32 fbInfoListSize)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3359);
     KernelMemorySystem *pKernelMemorySystem  = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     MemoryManager      *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     Heap               *pHeap = GPU_GET_HEAP(pGpu);
@@ -815,6 +816,7 @@ subdeviceCtrlCmdFbGetInfo_IMPL
     NV2080_CTRL_FB_GET_INFO_PARAMS *pFbInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3360);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     RsClient *pClient = RES_GET_CLIENT(pSubdevice);
     NvHandle hObject = RES_GET_HANDLE(pSubdevice);
@@ -844,6 +846,7 @@ subdeviceCtrlCmdFbGetInfoV2_IMPL
     NV2080_CTRL_FB_GET_INFO_V2_PARAMS *pFbInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3361);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     RsClient *pClient = RES_GET_CLIENT(pSubdevice);
     NvHandle hObject = RES_GET_HANDLE(pSubdevice);
@@ -873,6 +876,7 @@ subdeviceCtrlCmdFbGetCarveoutAddressInfo_IMPL
     NV2080_CTRL_FB_GET_SYSTEM_CARVEOUT_ADDRESS_SPACE_INFO *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3362);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
 
@@ -896,6 +900,7 @@ subdeviceCtrlCmdFbSetGpuCacheAllocPolicy_IMPL
     NV2080_CTRL_FB_GPU_CACHE_ALLOC_POLICY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3363);
     LOCK_ASSERT_AND_RETURN(rmGpuLockIsOwner());
 
     // Map engine to FBBA client
@@ -915,6 +920,7 @@ subdeviceCtrlCmdFbGetGpuCacheAllocPolicy_IMPL
     NV2080_CTRL_FB_GPU_CACHE_ALLOC_POLICY_PARAMS *pGpuCacheAllocPolicyParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3364);
 
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
@@ -939,6 +945,7 @@ subdeviceCtrlCmdFbSetGpuCacheAllocPolicyV2_IMPL
     NV2080_CTRL_FB_GPU_CACHE_ALLOC_POLICY_V2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3365);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams;
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
@@ -963,6 +970,7 @@ subdeviceCtrlCmdFbGetGpuCacheAllocPolicyV2_IMPL
     NV2080_CTRL_FB_GPU_CACHE_ALLOC_POLICY_V2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3366);
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
 
     NV_ASSERT_OR_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner(), NV_ERR_INVALID_LOCK_STATE);
@@ -985,6 +993,7 @@ subdeviceCtrlCmdFbGetCliManagedOfflinedPages_IMPL
     NV2080_CTRL_FB_GET_CLI_MANAGED_OFFLINED_PAGES_PARAMS *pOsOfflinedParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3367);
     OBJGPU             *pGpu                = GPU_RES_GET_GPU(pSubdevice);
     Heap               *pHeap               = GPU_GET_HEAP(pGpu);
     MemoryManager      *pMemoryManager      = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -1055,6 +1064,7 @@ subdeviceCtrlCmdFbUpdateNumaStatus_IMPL
     NV2080_CTRL_FB_UPDATE_NUMA_STATUS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3368);
     OBJGPU             *pGpu                = GPU_RES_GET_GPU(pSubdevice);
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     Heap               *pHeap               = GPU_GET_HEAP(pGpu);
@@ -1099,6 +1109,7 @@ subdeviceCtrlCmdFbGetNumaInfo_IMPL
     NV2080_CTRL_FB_GET_NUMA_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3369);
     OBJGPU              *pGpu                 = GPU_RES_GET_GPU(pSubdevice);
     KernelMemorySystem  *pKernelMemorySystem  = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     MemoryManager       *pMemoryManager       = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -1218,6 +1229,7 @@ subdeviceCtrlCmdFbSetZbcReferenced_IMPL
     NV2080_CTRL_INTERNAL_MEMSYS_SET_ZBC_REFERENCED_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3370);
     OBJGPU       *pGpu = GPU_RES_GET_GPU(pSubdevice);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     NvU32         gfid;
@@ -1274,6 +1286,7 @@ subdeviceCtrlCmdFbFlushGpuCache_IMPL
     NV2080_CTRL_FB_FLUSH_GPU_CACHE_PARAMS *pCacheFlushParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3371);
     OBJGPU             *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     NV_STATUS           status = NV_OK;

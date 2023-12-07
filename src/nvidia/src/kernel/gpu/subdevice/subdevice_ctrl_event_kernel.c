@@ -48,6 +48,7 @@ subdeviceCtrlCmdEventSetTrigger_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4022);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     gpuNotifySubDeviceEvent(pGpu, NV2080_NOTIFIERS_SW, NULL, 0, 0, 0);
@@ -67,6 +68,7 @@ subdeviceCtrlCmdEventSetTriggerFifo_IMPL
     NV2080_CTRL_EVENT_SET_TRIGGER_FIFO_PARAMS *pTriggerFifoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4023);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     engineNonStallIntrNotifyEvent(pGpu, RM_ENGINE_TYPE_HOST,
@@ -82,6 +84,7 @@ subdeviceCtrlCmdEventSetNotification_IMPL
     NV2080_CTRL_EVENT_SET_NOTIFICATION_PARAMS *pSetEventParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4024);
     OBJGPU  *pGpu    = GPU_RES_GET_GPU(pSubdevice);
     NV_STATUS status = NV_OK;
 
@@ -166,6 +169,7 @@ subdeviceCtrlCmdEventSetMemoryNotifies_IMPL
     NV2080_CTRL_EVENT_SET_MEMORY_NOTIFIES_PARAMS *pSetMemoryNotifiesParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4025);
     Memory   *pMemory;
     RsClient *pClient = RES_GET_CLIENT(pSubdevice);
     NvU32     i;
@@ -210,6 +214,7 @@ subdeviceCtrlCmdEventSetSemaphoreMemory_IMPL
     NV2080_CTRL_EVENT_SET_SEMAPHORE_MEMORY_PARAMS *pSetSemMemoryParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4026);
     RsClient *pClient = RES_GET_CLIENT(pSubdevice);
     Memory   *pMemory;
     NvU32     i;
@@ -253,6 +258,7 @@ subdeviceCtrlCmdEventSetSemaMemValidation_IMPL
     NV2080_CTRL_EVENT_SET_SEMA_MEM_VALIDATION_PARAMS *pSetSemaMemValidationParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4027);
     Memory   *pMemory;
     RsClient *pClient = RES_GET_CLIENT(pSubdevice);
     NvU32    *pSemValue;

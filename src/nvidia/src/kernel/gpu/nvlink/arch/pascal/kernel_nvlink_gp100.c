@@ -42,6 +42,7 @@ knvlinkOverrideConfig_GP100
     NvU32         phase
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3734);
     NV_STATUS status = NV_OK;
 
     NV2080_CTRL_NVLINK_PROCESS_FORCED_CONFIGS_PARAMS forcedConfigParams;
@@ -85,6 +86,7 @@ knvlinkGetUniquePeerIdMask_GP100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3735);
     NvU32 uniqueIdMask = 0;
     NvU32 i;
 
@@ -123,6 +125,7 @@ knvlinkGetUniquePeerId_GP100
     OBJGPU       *pRemoteGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3736);
     NvU32 peerLinkMask;
 
     peerLinkMask = pKernelNvlink->peerLinkMasks[gpuGetInstance(pRemoteGpu)];
@@ -157,6 +160,7 @@ knvlinkRemoveMapping_GP100
     NvBool        bL2Entry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3737);
     NV_STATUS status = NV_OK;
 
     NV2080_CTRL_NVLINK_REMOVE_NVLINK_MAPPING_PARAMS params;
@@ -205,6 +209,7 @@ knvlinkGetP2POptimalCEs_GP100
     NvU32        *p2pOptimalWriteCEs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3738);
     KernelCE *pKCe            = NULL;
     NvU32     sysmemReadCE    = 0;
     NvU32     sysmemWriteCE   = 0;
@@ -258,6 +263,7 @@ knvlinkSetupPeerMapping_GP100
     NvU32         peerId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3739);
     NV_STATUS status = NV_OK;
     NvU32     peerLinkMask;
 
@@ -321,6 +327,7 @@ knvlinkGetConnectedLinksMask_GP100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3740);
     //
     // Connected links are already filtered against the
     // enabled links. Hence, enabledLinks has final say
@@ -341,6 +348,7 @@ knvlinkProgramLinkSpeed_GP100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3741);
     NV_STATUS status = NV_OK;
 
     NV2080_CTRL_NVLINK_PROGRAM_LINK_SPEED_PARAMS programLinkSpeedParams;

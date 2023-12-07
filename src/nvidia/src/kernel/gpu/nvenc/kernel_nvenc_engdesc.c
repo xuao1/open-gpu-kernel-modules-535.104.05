@@ -49,6 +49,7 @@
 ENGDESCRIPTOR
 msencGetEngineDescFromAllocParams(OBJGPU *pGpu, NvU32 externalClassId, void *pAllocParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3712);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     NvU32                           engineInstance = 0;
     NV_MSENC_ALLOCATION_PARAMETERS *pMsencAllocParms = pAllocParams;

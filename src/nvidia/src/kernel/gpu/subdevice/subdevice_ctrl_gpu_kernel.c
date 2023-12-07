@@ -68,6 +68,7 @@
 static NV_STATUS
 getGpuInfos(Subdevice *pSubdevice, NV2080_CTRL_GPU_GET_INFO_V2_PARAMS *pParams, NvBool bCanAccessHw)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4034);
     OBJGPU *pGpu         = GPU_RES_GET_GPU(pSubdevice);
     NV_STATUS status     = NV_OK;
     NvU32 i              = 0;
@@ -427,6 +428,7 @@ subdeviceCtrlCmdGpuGetInfoV2_IMPL
     NV2080_CTRL_GPU_GET_INFO_V2_PARAMS *pGpuInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4035);
     return getGpuInfos(pSubdevice, pGpuInfoParams, NV_TRUE);
 }
 
@@ -441,12 +443,14 @@ subdeviceCtrlCmdGpuGetCachedInfo_IMPL
     NV2080_CTRL_GPU_GET_INFO_V2_PARAMS *pGpuInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4036);
     return getGpuInfos(pSubdevice, pGpuInfoParams, NV_FALSE);
 }
 
 static POBJHWBC
 getBridgeObject(OBJHWBC *pHWBC, NvU32 hwbcId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4037);
     OBJHWBC *pBridgeObject = NULL;
     if (NULL != pHWBC)
     {
@@ -480,6 +484,7 @@ getPlxFirmwareAndBusInfo
     NvU8  *bcRes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4038);
     if (NULL == pHWBC)
     {
         return NV_ERR_INVALID_ARGUMENT;
@@ -514,6 +519,7 @@ getPlxFirmwareVersion
     NvU8  *bcRes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4039);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL *pCl  = SYS_GET_CL(pSys);
     OBJHWBC *pHWBC = getBridgeObject(pCl->pHWBC, hwbcId);
@@ -525,6 +531,7 @@ getPlxFirmwareVersion
 static NvU8
 getBridgeCountAndId(OBJHWBC *pHWBC, NvU32 pBridgeId[], NvU32 *bridgeIndex)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4040);
     NvU8 count = 0;
     if ((NULL == bridgeIndex) ||
         (*bridgeIndex >= NV2080_CTRL_MAX_PHYSICAL_BRIDGE))
@@ -552,6 +559,7 @@ getBridgeData
     NvU32 pBridgeId[]
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4041);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL *pCl  = SYS_GET_CL(pSys);
     NvU32 bridgeIndex = 0;
@@ -575,6 +583,7 @@ getUpstreamBridgeIds
     NvU32 pBridgeId[]
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4042);
     HWBC_LIST *pGpuHWBCList;
     NvU8 bridgeIndex = 0;
 
@@ -605,6 +614,7 @@ subdeviceCtrlCmdGpuGetPhysicalBridgeVersionInfo_IMPL
     NV2080_CTRL_GPU_GET_PHYSICAL_BRIDGE_VERSION_INFO_PARAMS *pBridgeInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4043);
     NV_STATUS status = NV_OK;
     NvU8      bridgeIndex;
     status = getBridgeData(&pBridgeInfoParams->bridgeCount,
@@ -639,6 +649,7 @@ subdeviceCtrlCmdGpuGetAllBridgesUpstreamOfGpu_IMPL
     NV2080_CTRL_GPU_GET_ALL_BRIDGES_UPSTREAM_OF_GPU_PARAMS *pBridgeInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4044);
     OBJGPU    *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NV_STATUS  status = NV_OK;
     NvU8       bridgeIndex;
@@ -688,6 +699,7 @@ subdeviceCtrlCmdGpuSetOptimusInfo_IMPL
     NV2080_CTRL_GPU_OPTIMUS_INFO_PARAMS *pGpuOptimusInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4045);
     NvU32   status  =   NV_OK;
     OBJGPU *pGpu    =   GPU_RES_GET_GPU(pSubdevice);
 
@@ -728,6 +740,7 @@ subdeviceCtrlCmdGpuGetEncoderCapacity_IMPL
     NV2080_CTRL_GPU_GET_ENCODER_CAPACITY_PARAMS *pEncoderCapacityParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4046);
     NV_STATUS rmStatus = NV_OK;
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
@@ -756,6 +769,7 @@ subdeviceCtrlCmdGpuGetNvencSwSessionStats_IMPL
     NV2080_CTRL_GPU_GET_NVENC_SW_SESSION_STATS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4047);
     pParams->encoderSessionCount = 0;
     pParams->averageEncodeFps = 0;
     pParams->averageEncodeLatency = 0;
@@ -772,6 +786,7 @@ _subdeviceCtrlCmdGpuGetNvencSwSessionInfo
     NvU32                               *entryCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4048);
 
     return NV_OK;
 }
@@ -790,6 +805,7 @@ subdeviceCtrlCmdGpuGetNvencSwSessionInfo_IMPL
     NV2080_CTRL_GPU_GET_NVENC_SW_SESSION_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4049);
     NV_STATUS               status = NV_OK;
     pParams->sessionInfoTblEntry = 0;
 
@@ -803,6 +819,7 @@ subdeviceCtrlCmdGpuGetNvencSwSessionInfoV2_IMPL
     NV2080_CTRL_GPU_GET_NVENC_SW_SESSION_INFO_V2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4050);
     NV_STATUS               status = NV_OK;
     pParams->sessionInfoTblEntry = 0;
 
@@ -822,6 +839,7 @@ subdeviceCtrlCmdGpuGetNvfbcSwSessionStats_IMPL
     NV2080_CTRL_GPU_GET_NVFBC_SW_SESSION_STATS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4051);
     pParams->sessionCount   = 0;
     pParams->averageFPS     = 0;
     pParams->averageLatency = 0;
@@ -843,6 +861,7 @@ subdeviceCtrlCmdGpuGetNvfbcSwSessionInfo_IMPL
     NV2080_CTRL_GPU_GET_NVFBC_SW_SESSION_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4052);
     pParams->sessionInfoCount = 0;
 
     return NV_OK;
@@ -861,6 +880,7 @@ subdeviceCtrlCmdGpuGetSdm_IMPL
     NV2080_CTRL_GPU_GET_SDM_PARAMS *pSdmParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4053);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
@@ -883,6 +903,7 @@ subdeviceCtrlCmdGpuSetSdm_IMPL
     NV2080_CTRL_GPU_SET_SDM_PARAMS* pSdmParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4054);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvU32   subdeviceInstance;
 
@@ -924,6 +945,7 @@ subdeviceCtrlCmdGpuGetSimulationInfo_IMPL
     NV2080_CTRL_GPU_GET_SIMULATION_INFO_PARAMS *pGpuSimulationInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4055);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
@@ -953,6 +975,7 @@ subdeviceCtrlCmdGpuGetEngines_IMPL
     NV2080_CTRL_GPU_GET_ENGINES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4056);
     NV2080_CTRL_GPU_GET_ENGINES_V2_PARAMS getEngineParamsV2;
     NvU32    *pKernelEngineList = NvP64_VALUE(pParams->engineList);
     NV_STATUS status = NV_OK;
@@ -992,6 +1015,7 @@ subdeviceCtrlCmdGpuGetEnginesV2_IMPL
     NV2080_CTRL_GPU_GET_ENGINES_V2_PARAMS *pEngineParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4057);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NV_STATUS status = NV_OK;
 
@@ -1050,6 +1074,7 @@ subdeviceCtrlCmdGpuGetEngineClasslist_IMPL
     NV2080_CTRL_GPU_GET_ENGINE_CLASSLIST_PARAMS *pClassParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4058);
     OBJGPU       *pGpu = GPU_RES_GET_GPU(pSubdevice);
     ENGDESCRIPTOR engDesc;
     NV_STATUS     status = NV_OK;
@@ -1110,6 +1135,7 @@ subdeviceCtrlCmdGpuGetEnginePartnerList_IMPL
     NV2080_CTRL_GPU_GET_ENGINE_PARTNERLIST_PARAMS *pPartnerListParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4059);
     OBJGPU          *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     ENGDESCRIPTOR    engDesc;
@@ -1236,6 +1262,7 @@ subdeviceCtrlCmdGpuGetEngineFaultInfo_IMPL
     NV2080_CTRL_GPU_GET_ENGINE_FAULT_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4060);
     OBJGPU     *pGpu        = GPU_RES_GET_GPU(pSubdevice);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NV_STATUS   status      = NV_OK;
@@ -1297,6 +1324,7 @@ subdeviceCtrlCmdGpuGetFermiGpcInfo_IMPL
     NV2080_CTRL_GPU_GET_FERMI_GPC_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4061);
     NV2080_CTRL_GR_GET_GPC_MASK_PARAMS gpcMaskParams;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     NvHandle  hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
@@ -1332,6 +1360,7 @@ subdeviceCtrlCmdGpuGetFermiTpcInfo_IMPL
     NV2080_CTRL_GPU_GET_FERMI_TPC_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4062);
     NV2080_CTRL_GR_GET_TPC_MASK_PARAMS tpcMaskParams;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     NvHandle  hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
@@ -1370,6 +1399,7 @@ subdeviceCtrlCmdGpuGetFermiZcullInfo_IMPL
     NV2080_CTRL_GPU_GET_FERMI_ZCULL_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4063);
     NV2080_CTRL_GR_GET_ZCULL_MASK_PARAMS zcullMaskParams;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     NvHandle  hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
@@ -1407,6 +1437,7 @@ subdeviceCtrlCmdGpuGetPesInfo_IMPL
     NV2080_CTRL_GPU_GET_PES_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4064);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvHandle hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
     KernelGraphics *pKernelGraphics;
@@ -1461,6 +1492,7 @@ subdeviceCtrlCmdGpuQueryMode_IMPL
     NV2080_CTRL_GPU_QUERY_MODE_PARAMS *pQueryMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4065);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
@@ -1499,6 +1531,7 @@ subdeviceCtrlCmdGpuHandleGpuSR_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4066);
     return NV_OK;
 }
 
@@ -1515,6 +1548,7 @@ subdeviceCtrlCmdGpuSetComputeModeRules_IMPL
     NV2080_CTRL_GPU_SET_COMPUTE_MODE_RULES_PARAMS *pSetRulesParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4067);
     OBJGPU           *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
@@ -1592,6 +1626,7 @@ subdeviceCtrlCmdGpuQueryComputeModeRules_IMPL
     NV2080_CTRL_GPU_QUERY_COMPUTE_MODE_RULES_PARAMS *pQueryRulesParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4068);
     OBJGPU           *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
@@ -1609,6 +1644,7 @@ subdeviceCtrlCmdGpuAcquireComputeModeReservation_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4069);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvHandle  hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
 
@@ -1672,6 +1708,7 @@ subdeviceCtrlCmdGpuReleaseComputeModeReservation_IMPL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4070);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvHandle  hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
 
@@ -1710,6 +1747,7 @@ subdeviceCtrlCmdGpuGetId_IMPL
     NV2080_CTRL_GPU_GET_ID_PARAMS *pIdParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4071);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
@@ -1732,6 +1770,7 @@ subdeviceCtrlCmdGpuGetPids_IMPL
     NV2080_CTRL_GPU_GET_PIDS_PARAMS *pGetPidsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4072);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvU32 internalClassId;
     NV_STATUS status;
@@ -1816,6 +1855,7 @@ subdeviceCtrlCmdGpuGetPidInfo_IMPL
     NV2080_CTRL_GPU_GET_PID_INFO_PARAMS *pGetPidInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4073);
     NV2080_CTRL_GPU_PID_INFO_DATA *pPidInfoData;
     NV2080_CTRL_SMC_SUBSCRIPTION_INFO *pSmcInfo;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
@@ -1903,6 +1943,7 @@ subdeviceCtrlCmdGpuGetEngineRunlistPriBase_IMPL
     NV2080_CTRL_GPU_GET_ENGINE_RUNLIST_PRI_BASE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4074);
     NV_STATUS   status      = NV_OK;
     NV_STATUS   tmpStatus   = NV_OK;
     NvU32       i;
@@ -1974,6 +2015,7 @@ subdeviceCtrlCmdGpuGetHwEngineId_IMPL
     NV2080_CTRL_GPU_GET_HW_ENGINE_ID_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4075);
     NV_STATUS   status      = NV_OK;
     NV_STATUS   tmpStatus   = NV_OK;
     NvU32       i;
@@ -2045,6 +2087,7 @@ subdeviceCtrlCmdGpuGetMaxSupportedPageSize_IMPL
     NV2080_CTRL_GPU_GET_MAX_SUPPORTED_PAGE_SIZE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4076);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NV_STATUS status  = NV_OK;
 
@@ -2091,6 +2134,7 @@ subdeviceCtrlCmdGpuGetNumMmusPerGpc_IMPL
     NV2080_CTRL_GPU_GET_NUM_MMUS_PER_GPC_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4077);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     KernelGraphics *pKernelGraphics;
@@ -2143,6 +2187,7 @@ subdeviceCtrlCmdGpuSetComputePolicyConfig_IMPL
     NV2080_CTRL_GPU_SET_COMPUTE_POLICY_CONFIG_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4078);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pSubdevice);
     GPU_COMPUTE_POLICY_INFO policyInfo;
     NvU32 gidFlags;
@@ -2213,6 +2258,7 @@ subdeviceCtrlCmdGpuGetComputePolicyConfig_IMPL
     NV2080_CTRL_GPU_GET_COMPUTE_POLICY_CONFIG_PARAMS  *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4079);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pSubdevice);
     GPU_COMPUTE_POLICY_INFO policyInfo;
     NvU32 policyId;
@@ -2277,6 +2323,7 @@ static NvBool isAddressWithinLimits
     NvU64 limitLength
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4080);
     NvU64 addrEnd  = 0;
     NvU64 limitEnd = 0;
 
@@ -2314,6 +2361,7 @@ NV_STATUS subdeviceCtrlCmdValidateMemMapRequest_IMPL
     NV2080_CTRL_GPU_VALIDATE_MEM_MAP_REQUEST_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4081);
     OBJGPU       *pGpu     = GPU_RES_GET_GPU(pSubdevice);
     NvU64         start    = pParams->addressStart;
     NvU64         length   = pParams->addressLength;
@@ -2412,6 +2460,7 @@ subdeviceCtrlCmdGpuGetGfid_IMPL
     NV2080_CTRL_GPU_GET_GFID_PARAMS     *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4082);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvU32  pciFunction, gfid;
@@ -2478,6 +2527,7 @@ subdeviceCtrlCmdUpdateGfidP2pCapability_IMPL
     NV2080_CTRL_CMD_GPU_UPDATE_GFID_P2P_CAPABILITY_PARAMS   *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4083);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     PSRIOV_P2P_INFO pP2PInfo = pGpu->sriovState.pP2PInfo;
@@ -2559,6 +2609,7 @@ subdeviceCtrlCmdGpuSetEgmGpaFabricAddr_IMPL
     NV2080_CTRL_GPU_SET_EGM_GPA_FABRIC_BASE_ADDR_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4084);
     return NV_OK;
 }
 
@@ -2579,6 +2630,7 @@ subdeviceCtrlCmdGpuGetEngineLoadTimes_IMPL
     NV2080_CTRL_GPU_GET_ENGINE_LOAD_TIMES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4085);
     OBJGPU        *pGpu              = GPU_RES_GET_GPU(pSubdevice);
     PENGDESCRIPTOR engDescriptorList = gpuGetInitEngineDescriptors(pGpu);
     NvU32          numEngDescriptors = gpuGetNumEngDescriptors(pGpu);
@@ -2619,6 +2671,7 @@ subdeviceCtrlCmdGpuSetFabricAddr_IMPL
     NV2080_CTRL_GPU_SET_FABRIC_BASE_ADDR_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4086);
     OBJGPU       *pGpu         = GPU_RES_GET_GPU(pSubdevice);
     NvHandle      hClient      = RES_GET_CLIENT_HANDLE(pSubdevice);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
@@ -2650,6 +2703,7 @@ _convertGpuFabricProbeInfoCaps
     NvU64 fmCaps
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4087);
     NvU64 fabricCaps = 0;
     NvU32 i = 0;
 
@@ -2681,6 +2735,7 @@ subdeviceCtrlCmdGetGpuFabricProbeInfo_IMPL
     NV2080_CTRL_CMD_GET_GPU_FABRIC_PROBE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4088);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NV_STATUS status;
     NvU64 numProbeReqs = 0;

@@ -35,6 +35,7 @@
 
 NvBool ceIsCeGrce(OBJGPU *pGpu, RM_ENGINE_TYPE rmCeEngineType)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 795);
     NV2080_CTRL_GPU_GET_ENGINE_PARTNERLIST_PARAMS partnerParams = {0};
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
 
@@ -101,6 +102,7 @@ NvBool ceIsCeGrce(OBJGPU *pGpu, RM_ENGINE_TYPE rmCeEngineType)
 
 NvU32 ceCountGrCe(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 796);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     NvU32      engIdx;
     NvU32      grCeCount;
@@ -137,6 +139,7 @@ subdeviceCtrlCmdCeGetCapsV2_IMPL
     NV2080_CTRL_CE_GET_CAPS_V2_PARAMS *pCeCapsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 797);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvU32 ceNumber;
     RM_ENGINE_TYPE rmEngineType = gpuGetRmEngineType(pCeCapsParams->ceEngineType);
@@ -177,6 +180,7 @@ subdeviceCtrlCmdCeGetAllCaps_IMPL
     NV2080_CTRL_CE_GET_ALL_CAPS_PARAMS *pCeCapsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 798);
     RM_API *pRmApi;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     Device *pDevice = GPU_RES_GET_DEVICE(pSubdevice);

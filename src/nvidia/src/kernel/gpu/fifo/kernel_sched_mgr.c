@@ -53,6 +53,7 @@ _kschedmgrGetSchedulerPolicy
     NvU32           *pSchedPolicy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1620);
     NvU32   schedPolicy         = SCHED_POLICY_DEFAULT;
 
     *pSchedPolicy = schedPolicy;
@@ -73,6 +74,7 @@ void kschedmgrSetConfigPolicyFromUser_IMPL
     NvU32              schedSwPolicy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1621);
     NvU32 schedSwPolicyLocal = SCHED_POLICY_DEFAULT;
     pKernelSchedMgr->configSchedPolicy = schedSwPolicyLocal;
     pKernelSchedMgr->bIsSchedSwEnabled = (schedSwPolicyLocal != SCHED_POLICY_DEFAULT);
@@ -88,6 +90,7 @@ kschedmgrConstructPolicy_IMPL
     OBJGPU             *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1622);
     const char         *schedPolicyName;
     NvU32               domain          = gpuGetDomain(pGpu);
     NvU32               bus             = gpuGetBus(pGpu);

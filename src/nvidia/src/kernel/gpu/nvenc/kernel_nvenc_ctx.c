@@ -35,6 +35,7 @@ msencctxConstructHal_KERNEL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3709);
     ChannelDescendant *pChannelDescendant = staticCast(pMsencContext, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     KernelFalcon      *pKernelFalcon = kflcnGetKernelFalconForEngine(pGpu, pChannelDescendant->resourceDesc.engDesc);
@@ -50,6 +51,7 @@ void msencctxDestructHal_KERNEL
     MsencContext *pMsencContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3710);
     ChannelDescendant *pChannelDescendant = staticCast(pMsencContext, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     KernelFalcon      *pKernelFalcon = kflcnGetKernelFalconForEngine(pGpu, pChannelDescendant->resourceDesc.engDesc);
@@ -71,6 +73,7 @@ deviceCtrlCmdMsencGetCaps_IMPL
     NV0080_CTRL_MSENC_GET_CAPS_PARAMS *pMsencCapsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3711);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
     NV2080_CTRL_INTERNAL_MSENC_GET_CAPS_PARAMS params;
 

@@ -32,6 +32,7 @@ gpuGetNameString_KERNEL
     void *nameStringBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1887);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_GPU_GET_NAME_STRING_PARAMS params;
 
@@ -61,6 +62,7 @@ gpuGetShortNameString_KERNEL
     NvU8 *nameStringBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1888);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_GPU_GET_SHORT_NAME_STRING_PARAMS params;
 

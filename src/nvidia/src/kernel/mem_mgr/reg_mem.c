@@ -37,6 +37,7 @@ regmemConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4691);
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
     NV_STATUS          status = NV_OK;
     NvU64              trueLength;
@@ -69,5 +70,6 @@ regmemCanCopy_IMPL
     RegisterMemory *pRegisterMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4692);
     return NV_TRUE;
 }

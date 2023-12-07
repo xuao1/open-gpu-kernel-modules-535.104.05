@@ -30,12 +30,14 @@
 
 void kgmmuFmtInitPteComptagLine_TU10X(KernelGmmu *pKernelGmmu, GMMU_FMT_PTE *pPte, const NvU32 version)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3567);
     NV_ASSERT_OR_RETURN_VOID(version == GMMU_FMT_VERSION_2);
     INIT_FIELD_DESC32(&pPte->fldCompTagLine, NV_MMU_VER2_PTE_COMPTAGLINE);
 }
 
 void kgmmuFmtInitPeerPteFld_TU10X(KernelGmmu *pKernelGmmu, GMMU_FMT_PTE *pPte, const NvU32 version)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3568);
     NV_ASSERT_OR_RETURN_VOID(version == GMMU_FMT_VERSION_2);
 
     NV_FIELD_DESC64 *pField = &pPte->fldAddrPeer.desc;

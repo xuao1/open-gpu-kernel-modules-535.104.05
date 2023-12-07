@@ -223,6 +223,7 @@ _gvaspaceBar1VaSpaceConstructFW
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4471);
     NV_STATUS status = NV_OK;
 
     if (!RMCFG_FEATURE_PLATFORM_GSP)
@@ -243,6 +244,7 @@ _gvaspaceBar1VaSpaceConstructClient
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4472);
     NV_STATUS         status  = NV_OK;
     OBJVASPACE       *pVAS    = staticCast(pGVAS, OBJVASPACE);
     MMU_WALK_USER_CTX userCtx = {0};
@@ -268,6 +270,7 @@ _gvaspaceBar1VaSpaceConstruct
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4473);
     NV_STATUS status = NV_OK;
 
     status = _gvaspaceBar1VaSpaceConstructFW(pGVAS, pGpu);
@@ -286,6 +289,7 @@ _gvaspaceReserveVaForServerRm
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4474);
     NV_STATUS   status = NV_OK;
     OBJVASPACE *pVAS   = staticCast(pGVAS, OBJVASPACE);
 
@@ -315,6 +319,7 @@ _gvaspaceReserveVaForClientRm
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4475);
     NV_STATUS   status = NV_OK;
     OBJVASPACE *pVAS   = staticCast(pGVAS, OBJVASPACE);
 
@@ -416,6 +421,7 @@ gvaspaceReserveSplitVaSpace_IMPL
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4476);
     NV_STATUS status    = NV_OK;
     NvBool    bClientRm = NV_FALSE;
     NvBool    bServerRm = NV_FALSE;
@@ -497,6 +503,7 @@ gvaspaceConstruct__IMPL
     NvU32        flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4477);
     OBJVASPACE      *pVAS  = staticCast(pGVAS, OBJVASPACE);
     OBJGPU          *pGpu  = gpumgrGetGpu(gpumgrGetDefaultPrimaryGpu(pVAS->gpuMask));
     NvU64            reqBigPageSize;
@@ -820,6 +827,7 @@ _gvaspaceBar1VaSpaceDestructFW
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4478);
     if (!RMCFG_FEATURE_PLATFORM_GSP)
     {
         return;
@@ -835,6 +843,7 @@ _gvaspaceBar1VaSpaceDestructClient
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4479);
     NV_STATUS         status  = NV_OK;
     OBJVASPACE       *pVAS    = staticCast(pGVAS, OBJVASPACE);
     MMU_WALK_USER_CTX userCtx = {0};
@@ -860,6 +869,7 @@ _gvaspaceBar1VaSpaceDestruct
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4480);
     NV_STATUS status = NV_OK;
 
     _gvaspaceBar1VaSpaceDestructFW(pGVAS, pGpu);
@@ -877,6 +887,7 @@ _gvaspaceFlaVaspaceDestruct
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4481);
     NV_STATUS status = NV_OK;
     MMU_WALK_USER_CTX userCtx = {0};
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
@@ -908,6 +919,7 @@ _gvaspaceReleaseVaForServerRm
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4482);
     NV_STATUS         status   = NV_OK;
     MMU_WALK_USER_CTX userCtx  = {0};
     gvaspaceWalkUserCtxAcquire(pGVAS, pGpu, NULL, &userCtx);
@@ -934,6 +946,7 @@ _gvaspaceReleaseVaForServerRm
 void
 gvaspaceDestruct_IMPL(OBJGVASPACE *pGVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4483);
     // Destroy BC state.
     if (NULL != pGVAS->pHeap)
     {
@@ -1041,6 +1054,7 @@ _gvaspaceAddPartialPtRange
     const NvU64  va
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4484);
     NV_ASSERT_OR_RETURN_VOID(pGVAS->numPartialPtRanges <
                           GVAS_MAX_PARTIAL_PAGE_TABLE_RANGES);
 
@@ -1075,6 +1089,7 @@ _gvaspaceGpuStateConstruct
     NvU32          *pPartialPdeExpMax
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4485);
     OBJVASPACE          *pVAS  = staticCast(pGVAS, OBJVASPACE);
     KernelGmmu          *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     NvU64                pageSizeMask;
@@ -1256,6 +1271,7 @@ _gvaspaceGpuStateDestruct
     GVAS_GPU_STATE *pGpuState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4486);
     NV_ASSERT_OR_RETURN_VOID(!gpumgrGetBcEnabledStatus(pGpu));
     if (NULL != pGpuState->pRootInternal)
     {
@@ -1288,6 +1304,7 @@ _gvaspaceCleanupFlaDummyPagesForFlaRange
     GVAS_GPU_STATE *pGpuState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4487);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_API_LOCK_INTERNAL);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
 
@@ -1307,6 +1324,7 @@ _gvaspaceAllocateFlaDummyPagesForFlaRange
     GVAS_GPU_STATE *pGpuState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4488);
     NV_STATUS                   status;
     KernelGmmu                 *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     KernelBus                  *pKernelBus  = GPU_GET_KERNEL_BUS(pGpu);
@@ -1415,6 +1433,7 @@ gvaspaceAlloc_IMPL
     NvU64           *pAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4489);
     OBJVASPACE *pVAS       = staticCast(pGVAS, OBJVASPACE);
     OBJGPU     *pGpu       = gpumgrGetGpu(gpumgrGetDefaultPrimaryGpu(pVAS->gpuMask));
     KernelBus  *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
@@ -1753,6 +1772,7 @@ _gvaspaceInternalFree
     EMEMBLOCK    *pMemBlock
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4490);
     PGVAS_BLOCK   pVASBlock;
     GVAS_MAPPING *pMapNode;
     OBJVASPACE   *pVAS   = staticCast(pGVAS, OBJVASPACE);
@@ -1855,6 +1875,7 @@ gvaspaceFree_IMPL
     NvU64         vAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4491);
     EMEMBLOCK *pMemBlock = pGVAS->pHeap->eheapGetBlock(pGVAS->pHeap, vAddr, 0);
     NV_ASSERT_OR_RETURN(NULL != pMemBlock, NV_ERR_INVALID_ARGUMENT);
 
@@ -1871,6 +1892,7 @@ gvaspaceApplyDefaultAlignment_IMPL
     NvU64               *pPageSizeLockMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4492);
     OBJVASPACE *pVAS = staticCast(pGVAS, OBJVASPACE);
     OBJGPU     *pGpu = gpumgrGetGpu(gpumgrGetDefaultPrimaryGpu(pVAS->gpuMask));
     NvU64       bigPageSize  = pGVAS->bigPageSize;
@@ -1971,6 +1993,7 @@ gvaspaceIncAllocRefCnt_IMPL
     NvU64        vAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4493);
     EMEMBLOCK  *pVASpaceBlock;
 
     pVASpaceBlock = pGVAS->pHeap->eheapGetBlock(pGVAS->pHeap, vAddr, 0);
@@ -1987,6 +2010,7 @@ gvaspaceIncAllocRefCnt_IMPL
 POBJEHEAP
 gvaspaceGetHeap_IMPL(OBJGVASPACE *pGVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4494);
     return pGVAS->pHeap;
 }
 
@@ -1998,6 +2022,7 @@ gvaspaceGetMapPageSize_IMPL
     EMEMBLOCK   *pMemBlock
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4495);
     GVAS_GPU_STATE      *pGpuState    = gvaspaceGetGpuState(pGVAS, pGpu);
     const MMU_FMT_LEVEL *pRootFmtLvl  = pGpuState->pFmt->pRoot;
     const NvU64          pageSizeMask = mmuFmtAllPageSizes(pRootFmtLvl);
@@ -2028,30 +2053,35 @@ gvaspaceGetMapPageSize_IMPL
 NvU64
 gvaspaceGetBigPageSize_IMPL(OBJGVASPACE *pGVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4496);
     return pGVAS->bigPageSize;
 }
 
 NvBool
 gvaspaceIsMirrored_IMPL(OBJGVASPACE *pGVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4497);
     return pGVAS->bIsMirrored;
 }
 
 NvBool
 gvaspaceIsFaultCapable_IMPL(OBJGVASPACE *pGVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4498);
     return pGVAS->bIsFaultCapable;
 }
 
 NvBool
 gvaspaceIsExternallyOwned_IMPL(OBJGVASPACE *pGVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4499);
     return pGVAS->bIsExternallyOwned;
 }
 
 NvBool
 gvaspaceIsAtsEnabled_IMPL(OBJGVASPACE *pGVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4500);
     NvBool bAtsEnabled = pGVAS->bIsAtsEnabled;
 
     // ATS is supported with MIG memory partitioning only when VA Space has it enabled.
@@ -2073,6 +2103,7 @@ gvaspaceIsAtsEnabled_IMPL(OBJGVASPACE *pGVAS)
 NV_STATUS
 gvaspaceGetPasid_IMPL(OBJGVASPACE *pGVAS, NvU32 *pPasid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4501);
     NV_ASSERT_OR_RETURN(pPasid != NULL, NV_ERR_INVALID_ARGUMENT);
 
     NV_PRINTF(LEVEL_INFO, "ATS enabled: %u PASID: %u\n",
@@ -2087,12 +2118,14 @@ gvaspaceGetPasid_IMPL(OBJGVASPACE *pGVAS, NvU32 *pPasid)
 NvU32
 gvaspaceGetFlags_IMPL(OBJGVASPACE *pGVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4502);
     return pGVAS->flags;
 }
 
 MEMORY_DESCRIPTOR*
 gvaspaceGetPageDirBase_IMPL(OBJGVASPACE *pGVAS, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4503);
     GVAS_GPU_STATE    *pGpuState = gvaspaceGetGpuState(pGVAS, pGpu);
     MEMORY_DESCRIPTOR *pRootMem  = NULL;
     NvU32              rootSize  = 0;
@@ -2113,6 +2146,7 @@ gvaspaceGetPageDirBase_IMPL(OBJGVASPACE *pGVAS, OBJGPU *pGpu)
 MEMORY_DESCRIPTOR*
 gvaspaceGetKernelPageDirBase_IMPL(OBJGVASPACE *pGVAS, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4504);
     NV_ASSERT_OR_RETURN(!gpumgrGetBcEnabledStatus(pGpu), NULL);
 
     GVAS_GPU_STATE *pGpuState = gvaspaceGetGpuState(pGVAS, pGpu);
@@ -2122,6 +2156,7 @@ gvaspaceGetKernelPageDirBase_IMPL(OBJGVASPACE *pGVAS, OBJGPU *pGpu)
 const GMMU_FMT *
 gvaspaceGetGmmuFmt_IMPL(OBJGVASPACE *pGVAS, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4505);
     GVAS_GPU_STATE *pGpuState = gvaspaceGetGpuState(pGVAS, pGpu);
     NV_ASSERT_OR_RETURN(NULL != pGpuState, NULL);
     return pGpuState->pFmt;
@@ -2130,6 +2165,7 @@ gvaspaceGetGmmuFmt_IMPL(OBJGVASPACE *pGVAS, OBJGPU *pGpu)
 GVAS_GPU_STATE *
 gvaspaceGetGpuState_IMPL(OBJGVASPACE *pGVAS, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4506);
     OBJVASPACE *pVAS = staticCast(pGVAS, OBJVASPACE);
     NV_ASSERT_OR_RETURN(NULL != pGVAS->pGpuStates, NULL);
     NV_ASSERT_OR_RETURN(pVAS->gpuMask & NVBIT32(pGpu->gpuInstance), NULL);
@@ -2139,6 +2175,7 @@ gvaspaceGetGpuState_IMPL(OBJGVASPACE *pGVAS, OBJGPU *pGpu)
 NV_STATUS
 gvaspacePinRootPageDir_IMPL(OBJGVASPACE *pGVAS, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4507);
     MMU_WALK_USER_CTX    userCtx = {0};
     const MMU_FMT_LEVEL *pLevelFmt;
     NV_STATUS            status;
@@ -2179,6 +2216,7 @@ done:
 void
 gvaspaceUnpinRootPageDir_IMPL(OBJGVASPACE *pGVAS, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4508);
     MMU_WALK_USER_CTX    userCtx = {0};
     const MMU_FMT_LEVEL *pLevelFmt;
     NV_STATUS            status;
@@ -2225,6 +2263,7 @@ gvaspaceMap_IMPL
     const VAS_MAP_FLAGS   flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4509);
     NV_STATUS         status    = NV_OK;
     EMEMBLOCK        *pMemBlock = NULL;
     GVAS_BLOCK       *pVASBlock = NULL;
@@ -2289,6 +2328,7 @@ gvaspaceUnmap_IMPL
     const NvU64  vaHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4510);
     NV_STATUS         status    = NV_OK;
     EMEMBLOCK        *pMemBlock = NULL;
     GVAS_BLOCK       *pVASBlock = NULL;
@@ -2341,6 +2381,7 @@ gvaspaceInvalidateTlb_IMPL
     VAS_PTE_UPDATE_TYPE  update_type
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4511);
     OBJVASPACE *pVAS = staticCast(pGVAS, OBJVASPACE);
     NvU32      gfid  = GPU_GFID_PF;
 
@@ -2396,6 +2437,7 @@ gvaspaceGetVasInfo_IMPL
     NV0080_CTRL_DMA_ADV_SCHED_GET_VA_CAPS_PARAMS  *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4512);
     OBJVASPACE          *pVAS  = staticCast(pGVAS, OBJVASPACE);
     OBJGPU              *pGpu  = gpumgrGetGpu(gpumgrGetDefaultPrimaryGpu(pVAS->gpuMask));
     KernelGmmu          *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
@@ -2458,6 +2500,7 @@ gvaspaceGetPageTableInfo_IMPL
     NV0080_CTRL_DMA_GET_PDE_INFO_PARAMS   *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4513);
     OBJVASPACE              *pVAS = staticCast(pGVAS, OBJVASPACE);
     OBJGPU                  *pGpu = gpumgrGetGpu(gpumgrGetDefaultPrimaryGpu(pVAS->gpuMask));
     GVAS_GPU_STATE          *pGpuState;
@@ -2621,6 +2664,7 @@ gvaspaceGetPteInfo_IMPL
     RmPhysAddr         *pPhysAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4514);
     KernelGmmu     *pKernelGmmu;
     MemoryManager  *pMemoryManager;
     GVAS_GPU_STATE *pGpuState;
@@ -2729,6 +2773,7 @@ gvaspaceGetPteInfo_IMPL
 static inline
 NvBool isPteDowngrade(KernelGmmu *pKernelGmmu, const GMMU_FMT *pFmt, NvU32 pteInputFlags, GMMU_ENTRY_VALUE curPte)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4515);
     NvBool bReadOnly      = NV_FALSE;
     NvBool curPteReadOnly = NV_FALSE;
 
@@ -2765,6 +2810,7 @@ gvaspaceSetPteInfo_IMPL
     NV0080_CTRL_DMA_SET_PTE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4516);
     OBJVASPACE              *pVAS = staticCast(pGVAS, OBJVASPACE);
     MemoryManager           *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU8                     i;
@@ -2992,6 +3038,7 @@ _gmmuWalkCBFillEntries_SkipExternal
     NvU32                     *pProgress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4517);
     OBJGVASPACE *pGVAS = pUserCtx->pGVAS;
     OBJVASPACE  *pVAS  = staticCast(pGVAS, OBJVASPACE);
 
@@ -3027,6 +3074,7 @@ _gmmuWalkCBCopyEntries_SkipExternal
     NvU32                     *pProgress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4518);
     OBJGVASPACE *pGVAS = pUserCtx->pGVAS;
     OBJVASPACE  *pVAS  = staticCast(pGVAS, OBJVASPACE);
 
@@ -3063,6 +3111,7 @@ gvaspaceExternalRootDirCommit_IMPL
     NV0080_CTRL_DMA_SET_PAGE_DIRECTORY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4519);
     OBJVASPACE               *pVAS               = staticCast(pGVAS, OBJVASPACE);
     MEMORY_DESCRIPTOR        *pRootMemNew        = NULL;
     NvU64                     rootSizeNew;
@@ -3304,6 +3353,7 @@ gvaspaceExternalRootDirRevoke_IMPL
     NV0080_CTRL_DMA_UNSET_PAGE_DIRECTORY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4520);
     OBJVASPACE               *pVAS        = staticCast(pGVAS, OBJVASPACE);
     NV_STATUS                 status      = NV_OK;
     MEMORY_DESCRIPTOR        *pRootMemNew = NULL;
@@ -3387,6 +3437,7 @@ gvaspaceResize_IMPL
     NV0080_CTRL_DMA_SET_VA_SPACE_SIZE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4521);
     OBJGPU         *pGpu = NULL;
     OBJVASPACE     *pVAS = staticCast(pGVAS, OBJVASPACE);
     NvU64           vaLimitNew;
@@ -3537,6 +3588,7 @@ _gmmuWalkCBMapSingleEntry
     NvU32                    *pProgress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4522);
     OBJGPU              *pGpu           = pUserCtx->pGpu;
     MemoryManager       *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     MMU_MAP_ITERATOR    *pIter          = pTarget->pIter;
@@ -3569,6 +3621,7 @@ gvaspaceUpdatePde2_IMPL
     NV0080_CTRL_DMA_UPDATE_PDE_2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4523);
     MMU_WALK_USER_CTX    userCtx   = {0};
     MMU_MAP_TARGET       mapTarget = {0};
     MMU_MAP_ITERATOR     mapIter;
@@ -3777,6 +3830,7 @@ gvaspaceWalkUserCtxAcquire_IMPL
     MMU_WALK_USER_CTX *pUserCtx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4524);
     // Must be UC.
     NV_ASSERT(!gpumgrGetBcEnabledStatus(pGpu));
 
@@ -3801,6 +3855,7 @@ gvaspaceWalkUserCtxRelease_IMPL
     MMU_WALK_USER_CTX *pUserCtx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4525);
     // If current context doesn't match, must have nested acquires (not allowed).
     NV_ASSERT_OR_RETURN_VOID(pUserCtx->pGpuState);
     NV_ASSERT_OR_RETURN_VOID(pUserCtx->pGpuState->pWalk);
@@ -3815,6 +3870,7 @@ gvaspaceIncChanGrpRefCnt_IMPL
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4526);
     NvU32 *pChanGrpRefCnt;
 
     NV_ASSERT_OR_RETURN(pGVAS != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -3853,6 +3909,7 @@ gvaspaceDecChanGrpRefCnt_IMPL
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4527);
     NvU32 *pChanGrpRefCnt;
 
     NV_ASSERT_OR_RETURN(pGVAS != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -3889,6 +3946,7 @@ gvaspaceGetChanGrpRefCnt_IMPL
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4528);
     NvU32 refCnt = 0;
     NvU32 *pChanGrpRefCnt;
 
@@ -3920,6 +3978,7 @@ gvaspaceCheckChanGrpRefCnt_IMPL
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4529);
     // @todo Implement
     return NV_OK;
 }
@@ -3931,6 +3990,7 @@ gvaspaceUnregisterAllChanGrps_IMPL
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4530);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
 
     // TODO: This function should be made Physcial only
@@ -3955,6 +4015,7 @@ gvaspaceGetPageLevelInfo_IMPL
     NV90F1_CTRL_VASPACE_GET_PAGE_LEVEL_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4531);
     OBJVASPACE          *pVAS       = staticCast(pGVAS, OBJVASPACE);
     MMU_WALK            *pWalk      = NULL;
     const MMU_FMT_LEVEL *pLevelFmt  = NULL;
@@ -4041,6 +4102,7 @@ gvaspaceCopyServerRmReservedPdesToServerRm_IMPL
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4532);
     CALL_CONTEXT *pContext = resservGetTlsCallContext();
     NV_STATUS     status   = NV_OK;
 
@@ -4165,6 +4227,7 @@ _gvaspaceControl_Prolog
     OBJGPU      **ppGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4533);
     OBJVASPACE *pVAS = NULL;
 
     NV_ASSERT_OK_OR_RETURN(
@@ -4210,6 +4273,7 @@ vaspaceapiCtrlCmdVaspaceGetGmmuFormat_IMPL
     NV90F1_CTRL_VASPACE_GET_GMMU_FORMAT_PARAMS *pGmmuFormatParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4534);
     OBJGVASPACE *pGVAS = NULL;
     OBJGPU      *pGpu  = NULL;
 
@@ -4230,6 +4294,7 @@ vaspaceapiCtrlCmdVaspaceGetPageLevelInfo_IMPL
     NV90F1_CTRL_VASPACE_GET_PAGE_LEVEL_INFO_PARAMS *pPageLevelInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4535);
     OBJGVASPACE *pGVAS = NULL;
     OBJGPU      *pGpu  = NULL;
 
@@ -4273,6 +4338,7 @@ vaspaceapiCtrlCmdVaspaceGetPageLevelInfoVerif_IMPL
     NV90F1_CTRL_VASPACE_GET_PAGE_LEVEL_INFO_PARAMS *pPageLevelInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4536);
     return vaspaceapiCtrlCmdVaspaceGetPageLevelInfo_IMPL(pVaspaceApi, pPageLevelInfoParams);
 }
 #endif
@@ -4284,6 +4350,7 @@ vaspaceapiCtrlCmdVaspaceReserveEntries_IMPL
     NV90F1_CTRL_VASPACE_RESERVE_ENTRIES_PARAMS *pReserveEntriesParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4537);
     OBJGVASPACE    *pGVAS  = NULL;
     OBJGPU         *pGpu   = NULL;
     NV_STATUS       status = NV_OK;
@@ -4338,6 +4405,7 @@ vaspaceapiCtrlCmdVaspaceReleaseEntries_IMPL
     NV90F1_CTRL_VASPACE_RELEASE_ENTRIES_PARAMS *pReleaseEntriesParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4538);
     OBJGVASPACE *pGVAS  = NULL;
     OBJGPU      *pGpu   = NULL;
     NV_STATUS    status = NV_OK;
@@ -4388,6 +4456,7 @@ vaspaceapiCtrlCmdVaspaceCopyServerReservedPdes_IMPL
     NV90F1_CTRL_VASPACE_COPY_SERVER_RESERVED_PDES_PARAMS *pCopyServerReservedPdesParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4539);
     OBJGVASPACE      *pGVAS   = NULL;
     OBJGPU           *pGpu    = NULL;
 
@@ -4406,6 +4475,7 @@ gvaspaceCopyServerReservedPdes_IMPL
     NV90F1_CTRL_VASPACE_COPY_SERVER_RESERVED_PDES_PARAMS *pCopyServerReservedPdesParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4540);
 
     OBJVASPACE       *pVAS = NULL;
     KernelGmmu       *pKernelGmmu   = NULL;
@@ -4526,6 +4596,7 @@ _gvaspaceReserveTopForGrowth
     OBJGVASPACE *pGVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4541);
     if (pGVAS->vaLimitInternal < pGVAS->vaLimitMax)
     {
         EMEMBLOCK *pBlock;
@@ -4555,6 +4626,7 @@ _gvaspaceReserveRange
     NvU64 rangeHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4542);
     if (rangeLo <= rangeHi)
     {
         EMEMBLOCK *pBlock;
@@ -4585,6 +4657,7 @@ _gvaspacePinLazyPageTables
     const NvU64        va
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4543);
     NV_STATUS     status = NV_OK;
     PEMEMBLOCK    pMemBlock;
     PGVAS_BLOCK   pVASBlock;
@@ -4662,6 +4735,7 @@ _gvaspaceFreeVASBlock
     NvU32     *pInvalCursor
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4544);
     OBJGVASPACE *pGVAS = pEnv;
 
     if (NVOS32_BLOCK_TYPE_FREE != pMemBlock->owner && VAS_EHEAP_OWNER_RSVD != pMemBlock->owner)
@@ -4691,6 +4765,7 @@ _gvaspaceMappingInsert
     const VAS_MAP_FLAGS flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4545);
     NV_STATUS     status    = NV_OK;
     OBJVASPACE   *pVAS      = staticCast(pGVAS, OBJVASPACE);
     GVAS_MAPPING *pMapNode  = NULL;
@@ -4757,6 +4832,7 @@ _gvaspaceSetExternalPageDirBase
     MEMORY_DESCRIPTOR *pPDB
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4546);
     NV_ASSERT_OR_RETURN(!gpumgrGetBcEnabledStatus(pGpu), NV_ERR_INVALID_STATE);
 
     if (pGVAS->bIsExternallyOwned)
@@ -4779,6 +4855,7 @@ _gvaspaceMappingRemove
     const NvU64        vaHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4547);
     NV_STATUS     status    = NV_OK;
     GVAS_MAPPING *pMapNode  = NULL;
     const NvU32   gpuMask   = NVBIT(pGpu->gpuInstance);
@@ -4813,6 +4890,7 @@ _gvaspaceMappingRemove
 NvBool
 gvaspaceIsInternalVaRestricted_IMPL(OBJGVASPACE *pGVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4548);
     return pGVAS->bRMInternalRestrictedVaRange;
 }
 
@@ -4826,6 +4904,7 @@ gvaspaceReservePageTableEntries_IMPL
     const NvU64  pageSizeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4549);
     GVAS_GPU_STATE *pGpuState;
     VA_RANGE_GPU   *pIter;
     VA_RANGE_GPU    newReservedPageTableEntry;
@@ -4858,6 +4937,7 @@ gvaspaceReleasePageTableEntries_IMPL
     const NvU64  pageSizeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4550);
     GVAS_GPU_STATE *pGpuState;
     VA_RANGE_GPU   *pIter;
 
@@ -4892,6 +4972,7 @@ _gvaspaceReservePageTableEntries
     const NvU64  pageSizeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4551);
     NV_STATUS         status = NV_OK;
     NvU32             pageShift;
     MMU_WALK_USER_CTX userCtx = {0};
@@ -4940,6 +5021,7 @@ _gvaspaceReleasePageTableEntries
     const NvU64  pageSizeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4552);
     GVAS_GPU_STATE *pGpuState = gvaspaceGetGpuState(pGVAS, pGpu);
     NvU32 pageShift;
 
@@ -4972,6 +5054,7 @@ _gvaspaceReleaseUnreservedPTEs
     const MMU_FMT_LEVEL *pLevelFmt
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4553);
     NV_STATUS   status = NV_OK;
 
     MMU_WALK_USER_CTX userCtx = {0};
@@ -5051,6 +5134,7 @@ _gvaspaceCopyServerRmReservedPdesToServerRm
     NV90F1_CTRL_VASPACE_COPY_SERVER_RESERVED_PDES_PARAMS *pPdeCopyParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4554);
     NV_STATUS    status = NV_OK;
     RmCtrlParams rmCtrlParams;
 
@@ -5082,6 +5166,7 @@ _gvaspaceForceFreePageLevelInstances
     GVAS_GPU_STATE *pGpuState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4555);
     VA_RANGE_GPU      *pIter   = NULL;
     MMU_WALK_USER_CTX  userCtx = {0};
 
@@ -5107,6 +5192,7 @@ _gvaspacePopulatePDEentries
     NV90F1_CTRL_VASPACE_COPY_SERVER_RESERVED_PDES_PARAMS *pPdeCopyParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4556);
     NV90F1_CTRL_VASPACE_GET_PAGE_LEVEL_INFO_PARAMS pdeInfo;
     NvU32                                          i;
     NV_STATUS                                      status = NV_OK;
@@ -5162,6 +5248,7 @@ gvaspaceReserveMempool_IMPL
     NvU32        flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4557);
     NV_STATUS               status           = NV_OK;
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pMemPool = NULL;
 
@@ -5254,6 +5341,7 @@ gvaspaceGetFreeHeap_IMPL
     NvU64       *pFreeSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4558);
     NV_ASSERT_OR_RETURN(pFreeSize != NULL, NV_ERR_INVALID_ARGUMENT);
 
     return pGVAS->pHeap->eheapGetFree(pGVAS->pHeap, pFreeSize);
@@ -5265,6 +5353,7 @@ gvaspaceIsInUse_IMPL
     OBJGVASPACE *pGVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4559);
     NvU64 freeSize  = 0;
     NvU64 totalSize = 0;
 
@@ -5286,6 +5375,7 @@ gvaspaceFreeV2_IMPL
     NvU64       *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4560);
     EMEMBLOCK *pMemBlock = pGVAS->pHeap->eheapGetBlock(pGVAS->pHeap, vAddr, 0);
     NV_ASSERT_OR_RETURN(NULL != pMemBlock, NV_ERR_INVALID_ARGUMENT);
 

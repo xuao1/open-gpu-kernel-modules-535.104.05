@@ -41,6 +41,7 @@
 static void
 initRegStatus(NV2080_CTRL_GPU_REG_OP *pRegOps, NvU32 regOpCount)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4089);
     NvU32 i;
 
     for (i=0; i < regOpCount; i++)
@@ -65,6 +66,7 @@ gpuValidateRegOps
     NvBool isClientGspPlugin
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4090);
     NvU8   regStatus;
     NvU32  i;
 
@@ -114,6 +116,7 @@ subdeviceCtrlCmdGpuExecRegOps_cmn
     NvBool        isClientGspPlugin
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4091);
     OBJGPU           *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NV_STATUS         status = NV_OK;
     CALL_CONTEXT     *pCallContext = resservGetTlsCallContext();
@@ -209,6 +212,7 @@ subdeviceCtrlCmdGpuExecRegOps_IMPL
     NV2080_CTRL_GPU_EXEC_REG_OPS_PARAMS *pRegParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4092);
     return subdeviceCtrlCmdGpuExecRegOps_cmn(pSubdevice,
                                              pRegParams->hClientTarget,
                                              pRegParams->hChannelTarget,
@@ -233,6 +237,7 @@ subdeviceCtrlCmdGpuMigratableOps_IMPL
     NV2080_CTRL_GPU_MIGRATABLE_OPS_PARAMS *pRegParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4093);
     if (pRegParams->regOpCount > NV2080_CTRL_MIGRATABLE_OPS_ARRAY_MAX)
     {
         NV_PRINTF(LEVEL_ERROR, "Invalid regOpCount: %ud\n",

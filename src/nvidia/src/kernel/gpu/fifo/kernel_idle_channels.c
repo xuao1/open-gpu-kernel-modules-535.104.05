@@ -41,6 +41,7 @@ kfifoIdleChannelsPerDevice_KERNEL
     NvU32       timeout
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1618);
     NV_STATUS rmStatus = NV_OK;
     NV_RM_RPC_IDLE_CHANNELS(pGpu, phClients, phDevices, phChannels,
                             numChannels, flags, timeout, rmStatus);
@@ -63,6 +64,7 @@ RmIdleChannels
     NvBool      bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1619);
     OBJGPU          *pGpu;
     KernelFifo      *pKernelFifo;
     NV_STATUS        rmStatus = NV_OK;

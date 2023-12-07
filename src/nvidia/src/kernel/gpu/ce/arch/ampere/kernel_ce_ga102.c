@@ -53,6 +53,7 @@ kceGetPce2lceConfigSize1_GA102
     KernelCE *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 749);
     return NV_CE_PCE2LCE_CONFIG__SIZE_1;
 }
 
@@ -83,6 +84,7 @@ kceMapPceLceForSysmemLinks_GA102
     NvU32   fbPceMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 750);
     NvU32   lceMask      = 0;
     NvU32   tempFbPceMask;
     NvU32   lceIndex, pceIndex;
@@ -152,6 +154,7 @@ kceGetSysmemSupportedLceMask_GA102
     KernelCE   *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 751);
     return (NV_CE_SYS_ALLOWED_LCE_MASK & NV_CE_MAX_LCE_MASK);
 }
 
@@ -172,6 +175,7 @@ kceGetNvlinkPeerSupportedLceMask_GA102
     NvU32   peerAvailableLceMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 752);
     // There is no odd async LCE on GA10X - only LCE 4
     return (NV_CE_EVEN_ASYNC_LCE_MASK & NV_CE_MAX_LCE_MASK);
 }
@@ -192,5 +196,6 @@ kceGetGrceSupportedLceMask_GA102
     KernelCE   *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 753);
     return (NV_CE_GRCE_ALLOWED_LCE_MASK & NV_CE_MAX_LCE_MASK);
 }

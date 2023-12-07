@@ -65,6 +65,7 @@ deviceSetClientShare_IMPL
     NvU32      deviceAllocFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 903);
     pDevice->pVASpace = NULL;
     pDevice->hClientShare = hClientShare;
     pDevice->deviceAllocFlags = deviceAllocFlags;
@@ -98,6 +99,7 @@ deviceInitClientShare
     NvU32       deviceAllocInternalFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 904);
     Device      *pShareDevice;
     RsClient    *pClientShare;
     OBJVASPACE  *pVAS        = NULL;
@@ -312,6 +314,7 @@ deviceRemoveFromClientShare_IMPL
     Device *pDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 905);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJVMM *pVmm = SYS_GET_VMM(pSys);
 
@@ -329,6 +332,7 @@ deviceGetDefaultVASpace_IMPL
     OBJVASPACE **ppVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 906);
     NV_STATUS status = NV_OK;
 
     //
@@ -368,6 +372,7 @@ deviceSetDefaultVASpace_IMPL
     NvHandle   hVASpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 907);
     NV_STATUS         status     = NV_OK;
     VaSpaceApi       *pVaSpaceApi  = NULL;
     RsResourceRef    *pResourceRef;

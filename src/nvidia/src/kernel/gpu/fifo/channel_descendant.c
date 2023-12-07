@@ -39,6 +39,7 @@ chandesConstruct_IMPL
     PARAM_TO_ENGDESC_FUNCTION *pParamToEngDescFn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1423);
     OBJGPU           *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     NV_STATUS         status = NV_OK;
     RsResourceRef    *pResourceRef = pCallContext->pResourceRef;
@@ -267,6 +268,7 @@ chandesDestruct_IMPL
     ChannelDescendant *pChannelDescendant
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1424);
     NV_STATUS          status;
 
     // scrub event references for this object
@@ -286,6 +288,7 @@ chandesGetSwMethods_IMPL
     NvU32             *pNumMethods
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1425);
     // Default behavior is SW methods not supported. Subclasses can implement
     // handlers if required.
     return NV_ERR_NOT_SUPPORTED;
@@ -305,6 +308,7 @@ NV_STATUS mthdNoOperation
     NvU32   Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1426);
     NV_PRINTF(LEVEL_INFO, "Method NoOperation: Class=0x%x Data=0x%x\n",
               Object->resourceDesc.externalClassId, Data);
     return (NV_OK);
@@ -316,6 +320,7 @@ NV_STATUS mthdNoOperation
  */
 NvBool chandesIsSwMethodStalling_IMPL(ChannelDescendant *pChannelDescendant, NvU32 hHandle)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1427);
     return NV_TRUE;
 }
 
@@ -326,6 +331,7 @@ chandesCheckMemInterUnmap_IMPL
     NvBool bSubdeviceHandleProvided
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1428);
     if (bSubdeviceHandleProvided)
     {
         NV_PRINTF(LEVEL_ERROR, "Unicast DMA mappings of non-memory objects not supported.\n");

@@ -31,6 +31,7 @@
 
 NV_STATUS kceGetP2PCes_GV100(KernelCE *pKCe, OBJGPU *pGpu, NvU32 gpuMask, NvU32 *nvlinkP2PCeMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 772);
     NvU32         gpuCount      = gpumgrGetSubDeviceCount(gpuMask);
     NvU32         maxPces = 0;
 
@@ -189,6 +190,7 @@ NV_STATUS kceGetP2PCes_GV100(KernelCE *pKCe, OBJGPU *pGpu, NvU32 gpuMask, NvU32 
 
 void kceGetSysmemRWLCEs_GV100(KernelCE* pKCe, NvU32 *rd, NvU32 *wr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 773);
     *rd = NVLINK_SYSMEM_READ_LCE;
     *wr = NVLINK_SYSMEM_WRITE_LCE;
 }
@@ -219,6 +221,7 @@ kceGetAutoConfigTableEntry_GV100
     NvU32                   *pExposeCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 774);
     NvU32 i;
 
     for (i = 0; i < autoConfigNumEntries; i++)
@@ -250,6 +253,7 @@ kceClearAssignedNvlinkPeerMasks_GV100
     KernelCE  *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 775);
     KernelCE *pKCeLoop = NULL;
 
     KCE_ITER_ALL_BEGIN(pGpu, pKCeLoop, NVLINK_MIN_P2P_LCE)

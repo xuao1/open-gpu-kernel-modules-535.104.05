@@ -36,6 +36,7 @@ void kcrashcatEngineReadDmem_TU102
     void *pBuf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1294);
     // This implementation only supports 32-bit-aligned accesses
     NV_CHECK_OR_RETURN_VOID(LEVEL_ERROR, (offset & (sizeof(NvU32) - 1)) == 0);
     NV_CHECK_OR_RETURN_VOID(LEVEL_ERROR, (size & (sizeof(NvU32) - 1)) == 0);
@@ -54,6 +55,7 @@ void kcrashcatEngineReadDmem_TU102
 
 NvU32 kcrashcatEngineGetWFL0Offset_TU102(KernelCrashCatEngine *pKernelCrashCatEng)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1295);
     return NV_PFALCON_FALCON_DEBUGINFO;
 }
 
@@ -63,6 +65,7 @@ const NvU32 *kcrashcatEngineGetScratchOffsets_TU102
     NV_CRASHCAT_SCRATCH_GROUP_ID scratchId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1296);
     NV_CRASHCAT_DEF_SCRATCH_GROUP_V1_REGMAP_TABLE(scratchOffsetTable);
 
     if (scratchId <= NV_CRASHCAT_SCRATCH_GROUP_ID_LAST)

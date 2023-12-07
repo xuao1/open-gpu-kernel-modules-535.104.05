@@ -56,6 +56,7 @@ _p2papiReservePeerID
     NvBool                   bSpaAccessOnly
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 671);
     NvU32 gpu0Instance = gpuGetInstance(pLocalGpu);
     NvU32 gpu1Instance = gpuGetInstance(pRemoteGpu);
 
@@ -247,6 +248,7 @@ p2papiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 672);
     Subdevice               *pSubDevice;
     Subdevice               *pPeerSubDevice;
     NvU32                    subDevicePeerIdMask;
@@ -693,6 +695,7 @@ p2papiDestruct_IMPL
     P2PApi *pP2PApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 673);
     CALL_CONTEXT                *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
     NvHandle                     hClient;

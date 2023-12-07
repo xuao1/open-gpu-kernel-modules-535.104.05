@@ -54,6 +54,7 @@ static NV_STATUS gpuPowerManagementResume(OBJGPU *, NvU32 oldLevel, NvU32 flags)
 static NV_STATUS
 gpuPowerManagementEnter(OBJGPU *pGpu, NvU32 newLevel, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1945);
     NV_STATUS  status = NV_OK;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
@@ -140,6 +141,7 @@ int g_BreakOnResume = 0;
 static NV_STATUS
 gpuPowerManagementResume(OBJGPU *pGpu, NvU32 oldLevel, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1946);
     NV_STATUS       status = NV_OK;
     OBJSYS         *pSys   = SYS_GET_INSTANCE();
     OBJCL          *pCl    = SYS_GET_CL(pSys);
@@ -266,6 +268,7 @@ done:
 NV_STATUS
 gpuEnterStandby_IMPL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1947);
     OBJSYS       *pSys    = SYS_GET_INSTANCE();
     OBJPFM       *pPfm    = SYS_GET_PFM(pSys);
     NV_STATUS     suspendStatus;
@@ -309,6 +312,7 @@ gpuEnterStandby_IMPL(OBJGPU *pGpu)
 NV_STATUS
 gpuResumeFromStandby_IMPL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1948);
     OBJSYS    *pSys    = SYS_GET_INSTANCE();
     OBJPFM    *pPfm    = SYS_GET_PFM(pSys);
     NV_STATUS  resumeStatus;
@@ -356,6 +360,7 @@ gpuResumeFromStandby_IMPL(OBJGPU *pGpu)
 
 NV_STATUS gpuEnterHibernate_IMPL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1949);
     OBJSYS    *pSys    = SYS_GET_INSTANCE();
     OBJPFM    *pPfm    = SYS_GET_PFM(pSys);
     NV_STATUS  suspendStatus;
@@ -389,6 +394,7 @@ NV_STATUS gpuEnterHibernate_IMPL(OBJGPU *pGpu)
 
 NV_STATUS gpuResumeFromHibernate_IMPL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1950);
     OBJSYS    *pSys   = SYS_GET_INSTANCE();
     OBJPFM    *pPfm   = SYS_GET_PFM(pSys);
     NV_STATUS  resumeStatus;

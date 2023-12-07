@@ -72,6 +72,7 @@ static NvU32 setNbsiOSstring
     NvU8 maxNbsiOS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5119);
     NBSI_OBJ *pNbsiObj = getNbsiObject();
     NvU32 hash;
     NvU8 i;
@@ -144,6 +145,7 @@ static NV_STATUS testObjectHash
     PNBSI_GEN_OBJ pNbsiGenObj
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5120);
     NV_STATUS   status;
     NvU64       tableHash;
     NvU8      * hashStart;
@@ -195,6 +197,7 @@ static NV_STATUS isGlobTypeInNbsiDir
     NvU8            * pNumGlobs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5121);
     NvU8              curGlob;
     NvU16           * pGlobType = NULL;
 
@@ -260,6 +263,7 @@ static NV_STATUS getNbsiDirSize
     NvU16           tblSource
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5122);
     NvU8            nbsiDirVer;
 
     NV_ASSERT(pNbsiDir);
@@ -323,6 +327,7 @@ static NV_STATUS testNbsiDir
     NvU16           tblSource
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5123);
     NvU32            testDirSize;
     NV_STATUS        status;
 
@@ -410,6 +415,7 @@ static NV_STATUS testNbsiTable
     NvBool          bGlobTypeCk
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5124);
     NV_STATUS        status = NV_ERR_GENERIC;
     PNBSI_DRIVER_OBJ pNbsiDriverObj = (PNBSI_DRIVER_OBJ) pNbsiGenObj;
 
@@ -542,6 +548,7 @@ static NvU8 checkUidMatch
     NvU32          * pDriverVersion
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5125);
     PNBSI_DRIVER_OBJ0 pNbsiGenObj0 = (PNBSI_DRIVER_OBJ0) pNbsiGenObj;
     NBSI_OBJ         *pNbsiObj     = getNbsiObject();
     NvU8  score = 0;
@@ -772,6 +779,7 @@ static NV_STATUS extractNBSIObjFromDir
     NvBool         * pbFound
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5126);
     NV_STATUS       status;
     PNBSI_GEN_OBJ   pNbsiGenObj;
     NvU8            numGlobs;
@@ -977,6 +985,7 @@ static NV_STATUS allocNbsiCache
     NvU8       cacheEntries
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5127);
     NvU32           cacheSize;
     NBSI_CACHE_OBJ  cacheObj;
     PNBSI_CACHE_OBJ pCacheObj;
@@ -1046,6 +1055,7 @@ static NV_STATUS addNbsiCacheEntry
     NvU8            actualGlobIdx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5128);
     NvU8            cacheNdx;
     PNBSI_CACHE_OBJ pCacheObj;
     NBSI_CACHE_ENTRY_OBJ cacheEntry;
@@ -1122,6 +1132,7 @@ static NV_STATUS freeNbsiCache
     NvU32      idx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5129);
     NBSI_OBJ       *pNbsiObj = getNbsiObject();
     PNBSI_CACHE_OBJ pCacheObj;
     NvU8            i;
@@ -1195,6 +1206,7 @@ static NV_STATUS getNbsiCacheInfoForGlobType
     NvU8             * pCurTbl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5130);
     NBSI_OBJ       *pNbsiObj = getNbsiObject();
     PNBSI_CACHE_OBJ pCacheObj;
     PNBSI_GEN_OBJ   pGenObj;
@@ -1320,6 +1332,7 @@ static NV_STATUS getNbsiObjFromCache
     NvU32           * globTypeRtnStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5131);
     NvU8          curTbl;
     PNBSI_GEN_OBJ pTempGlob = NULL;
     NvU32         tempGlobSize;
@@ -1412,6 +1425,7 @@ static NV_STATUS getNbsiDirFromRegistry
     NvU32           * rtnNbsiDirSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5132);
     NV_STATUS  status;
     NvU32      nbsiDirSize;
 
@@ -1493,6 +1507,7 @@ static NV_STATUS determineACPIAccess
     ACPI_DSM_FUNCTION acpiFunction
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5133);
     NV_STATUS  status = NV_ERR_NOT_SUPPORTED;
     NV_STATUS  statusByType = NV_ERR_NOT_SUPPORTED;
     NV_STATUS  statusAllObj = NV_ERR_NOT_SUPPORTED;
@@ -1583,6 +1598,7 @@ static NV_STATUS getNbsiDirectory
     ACPI_DSM_FUNCTION   acpiFunction
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5134);
     NV_STATUS         status;
 
     NV_ASSERT(pNbsiDir);
@@ -1665,6 +1681,7 @@ static NV_STATUS nbsiObjTypeCallAcpi
     NvU32             * sizeToRead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5135);
     NV_STATUS   status = NV_OK;
     NvU32       leftToRead;
     NvU16       rtnSize;
@@ -1744,6 +1761,7 @@ static NV_STATUS nbsiObjTypeCallUefi
     NvU32             * sizeToRead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5136);
     NV_STATUS   status = NV_OK;
     NvU32       uefiRtnSize = inOutDataSz;
     char        uefiVariableName[] = "NBSI_GLOB_000";
@@ -1818,6 +1836,7 @@ static NV_STATUS getTableDataUsingObjTypeCall
     NvU32             * sizeToRead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5137);
     NV_STATUS status = NV_OK;
 
     NV_ASSERT(inOutData);
@@ -1915,6 +1934,7 @@ static NV_STATUS getTableUsingObjTypeCall
     NvU32               tmpBufferSz
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5138);
     NV_STATUS        status = NV_OK;
     PNBSI_DRIVER_OBJ pNbsiDrvrObj;
     NBSI_DRIVER_OBJ  nbsiDriverObj;
@@ -2153,6 +2173,7 @@ static NV_STATUS getTableDataUsingAllObjectCall
     NvU32             * sizeToRead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5139);
     NV_STATUS status = NV_OK;
     NvU32     leftToRead;
     NvU32     bufferOffset;
@@ -2264,6 +2285,7 @@ static NV_STATUS getTableUsingAllObjectCall
     NvU32               tmpBufferSz
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5140);
     NV_STATUS        status = NV_OK;
     PNBSI_DIRECTORY  pNbsiDir;
     NvU32            nbsiDirSize;
@@ -2629,6 +2651,7 @@ static NV_STATUS _extractNBSIObjFromACPIDir
     NvBool            * pbFound
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5141);
     NV_STATUS  status = NV_ERR_GENERIC;
     void*      inOutData = NULL;
     NvU32      inOutDataSz = NV_ACPI_DSM_READ_SIZE;
@@ -2800,6 +2823,7 @@ NV_STATUS getNbsiObjByType
     NBSI_VALIDATE       validationOption
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5142);
     NvU32              idx;
     NV_STATUS          status = NV_ERR_GENERIC;
     PNBSI_DIRECTORY    pNbsiDir = NULL;
@@ -3157,6 +3181,7 @@ NV_STATUS getNbsiObjByType
 
 NV_STATUS initNbsiTable(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5143);
     NvU32           idx;
     NV_STATUS       status;
     NvU32           globTypeRtnStatus;
@@ -3341,6 +3366,7 @@ NV_STATUS initNbsiTable(OBJGPU *pGpu)
 
 void freeNbsiTable(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5144);
     NvU32     idx = gpuGetInstance(pGpu);
     NBSI_OBJ *pNbsiObj = getNbsiObject();
 
@@ -3362,6 +3388,7 @@ void freeNbsiTable(OBJGPU *pGpu)
 
 void initNbsiObject(NBSI_OBJ *pNbsiObj)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5145);
     NvU32 i;
     for (i = 0; i < MAX_NBSI_OS; i++)
     {
@@ -3387,6 +3414,7 @@ void initNbsiObject(NBSI_OBJ *pNbsiObj)
 
 NBSI_OBJ *getNbsiObject(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5146);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJPFM *pPfm = SYS_GET_PFM(pSys);
     return &pPfm->nbsi;

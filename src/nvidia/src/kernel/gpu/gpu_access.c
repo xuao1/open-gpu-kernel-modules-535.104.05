@@ -54,6 +54,7 @@ regAccessConstruct
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1776);
     NV_STATUS    rmStatus = NV_OK;
     DEVICE_INDEX deviceIndex, minDeviceIndex, maxDeviceIndex;
 
@@ -98,6 +99,7 @@ regAccessDestruct
     RegisterAccess *pRegisterAccess
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1777);
     OBJGPU         *pGpu = pRegisterAccess->pGpu;
     DEVICE_INDEX    deviceIndex;
     NvU32           mappingNum;
@@ -168,6 +170,7 @@ _regWriteUnicast
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1778);
     OBJGPU   *pGpu    = pRegisterAccess->pGpu;
     NvU32     flags   = 0;
     NV_STATUS status;
@@ -230,6 +233,7 @@ ioaprtInit
     NvU32           length
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1779);
     return objCreateWithFlags(&pAperture, NVOC_NULL_OBJECT, IoAperture, NVOC_OBJ_CREATE_FLAGS_IN_PLACE_CONSTRUCT, pParentAperture, NULL, 0, 0, NULL, 0, offset, length);
 }
 
@@ -261,6 +265,7 @@ ioaprtConstruct_IMPL
     NvU32            length
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1780);
     if (pParentAperture != NULL)
     {
         NV_ASSERT_OR_RETURN(pMapping == NULL, NV_ERR_INVALID_ARGUMENT);
@@ -311,6 +316,7 @@ ioaprtWriteRegUnicast
     NvU32           size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1781);
     NvU32              deviceIndex = pAperture->deviceIndex;
     NvU32              instance    = pAperture->deviceInstance;
     NvU32              regAddr     = pAperture->baseAddress + addr;
@@ -359,6 +365,7 @@ ioaprtWriteReg08_IMPL
     NvV8            val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1782);
     NV_ASSERT(!gpumgrGetBcEnabledStatus(pAperture->pGpu));
 
     ioaprtWriteRegUnicast(pAperture->pGpu, pAperture, addr, val, 8 /* size */);
@@ -372,6 +379,7 @@ ioaprtWriteReg16_IMPL
     NvV16              val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1783);
     NV_ASSERT(!gpumgrGetBcEnabledStatus(pAperture->pGpu));
 
     ioaprtWriteRegUnicast(pAperture->pGpu, pAperture, addr, val, 16 /* size */);
@@ -385,6 +393,7 @@ ioaprtWriteReg32_IMPL
     NvV32              val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1784);
     NV_ASSERT(!gpumgrGetBcEnabledStatus(pAperture->pGpu));
 
     ioaprtWriteRegUnicast(pAperture->pGpu, pAperture, addr, val, 32 /* size */);
@@ -398,6 +407,7 @@ ioaprtWriteReg32Uc_IMPL
     NvV32              val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1785);
     ioaprtWriteRegUnicast(pAperture->pGpu, pAperture, addr, val, 32 /* size */);
 }
 
@@ -411,6 +421,7 @@ regWrite008
     NvV8            val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1786);
     OBJGPU *pGpu = pRegisterAccess->pGpu;
 
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY);
@@ -427,6 +438,7 @@ regWrite016
     NvV16           val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1787);
     OBJGPU *pGpu = pRegisterAccess->pGpu;
 
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY);
@@ -445,6 +457,7 @@ regWrite032
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1788);
     OBJGPU *pGpu = pRegisterAccess->pGpu;
 
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY);
@@ -463,6 +476,7 @@ regWrite032Unicast
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1789);
 
     _regWriteUnicast(pRegisterAccess, deviceIndex, instance, addr, val, 32, pThreadState);
 }
@@ -475,6 +489,7 @@ ioaprtReadReg
     NvU32           size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1790);
     NvU32              flags       = 0;
     NvU32              returnValue = 0;
     OBJGPU            *pGpu        = pAperture->pGpu;
@@ -534,6 +549,7 @@ ioaprtReadReg08_IMPL
     NvU32           addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1791);
     return (NvU8) ioaprtReadReg(pAperture, addr, 8 /* size */);
 }
 
@@ -544,6 +560,7 @@ ioaprtReadReg16_IMPL
     NvU32           addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1792);
     return (NvU16) ioaprtReadReg(pAperture, addr, 16 /* size */);
 }
 
@@ -555,6 +572,7 @@ ioaprtReadReg32_IMPL
 
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1793);
     return ioaprtReadReg(pAperture, addr, 32 /* size */);
 }
 
@@ -573,6 +591,7 @@ ioaprtIsRegValid_IMPL
     NvU32           addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1794);
     NV_ASSERT_OR_RETURN(pAperture != NULL, NV_FALSE);
 
     return addr < pAperture->length;
@@ -589,6 +608,7 @@ _regRead
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1795);
     NvU32     flags       = 0;
     NvU32     returnValue = 0;
     OBJGPU   *pGpu        = pRegisterAccess->pGpu;
@@ -651,6 +671,7 @@ regRead008
     NvU32           addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1796);
     return _regRead(pRegisterAccess, deviceIndex, instance, addr, 8, NULL);
 }
 
@@ -663,6 +684,7 @@ regRead016
     NvU32           addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1797);
     return _regRead(pRegisterAccess, deviceIndex, instance, addr, 16, NULL);
 }
 
@@ -690,6 +712,7 @@ regRead032_AndPoll
     NvU32             val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1798);
     RMTIMEOUT  timeout;
     OBJGPU    *pGpu = pRegisterAccess->pGpu;
     NvU32      data = 0;
@@ -728,6 +751,7 @@ regRead032
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1799);
     if (pRegisterAccess == NULL)
     {
         return NV_ERR_INVALID_POINTER;
@@ -755,6 +779,7 @@ _gpuInitIOAperture
     DEVICE_MAPPING *pMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1800);
     NV_STATUS rmStatus;
 
     rmStatus = objCreate(&pGpu->pIOApertures[deviceIndex], NVOC_NULL_OBJECT, IoAperture,
@@ -790,6 +815,7 @@ regAddRegisterFilter
     REGISTER_FILTER **ppFilter
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1801);
     DEVICE_REGFILTER_INFO *pRegFilter;
     REGISTER_FILTER     *pNode;
     REGISTER_FILTER     *pTmpNode;
@@ -903,6 +929,7 @@ regRemoveRegisterFilter
     REGISTER_FILTER *pFilter
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1802);
     REGISTER_FILTER       *pNode;
     REGISTER_FILTER       *pPrev = NULL;
     REGISTER_FILTER       *pNext = NULL;
@@ -969,6 +996,7 @@ _gpuCleanRegisterFilterList
     DEVICE_REGFILTER_INFO *pRegFilter
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1803);
     REGISTER_FILTER *pNode = pRegFilter->pRegFilterList;
     REGISTER_FILTER *pPrev = NULL;
     REGISTER_FILTER *pNext = NULL;
@@ -1014,6 +1042,7 @@ _gpuHandleReadRegisterFilter
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1804);
     REGISTER_FILTER       *pFilter;
     NvU32                  returnValue = 0;
     NvU32                  tempVal     = 0;
@@ -1117,6 +1146,7 @@ _gpuHandleWriteRegisterFilter
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1805);
     REGISTER_FILTER       *pFilter;
     DEVICE_REGFILTER_INFO *pRegFilter;
     DEVICE_MAPPING        *pMapping;
@@ -1205,6 +1235,7 @@ _findGpuRegisterFilter
     REGISTER_FILTER *pFilter
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1806);
     while (pFilter != NULL)
     {
         if (!(pFilter->flags & REGISTER_FILTER_FLAGS_INVALID) &&
@@ -1227,6 +1258,7 @@ _gpuEnablePciMemSpaceAndCheckPmcBoot0Match
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1807);
     NvU16 VendorId;
     NvU16 DeviceId;
     NvU8  bus = gpuGetBus(pGpu);
@@ -1262,6 +1294,7 @@ _regCheckReadFailure
     NvU32   value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1808);
     NvU32 flagsFailed;
     NvU32 reason = BAD_READ_UNKNOWN;
 
@@ -1318,6 +1351,7 @@ regCheckAndLogReadFailure
     NvU32 value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1809);
     OBJGPU *pGpu = pRegisterAccess->pGpu;
     const NvU32 failureReason = _regCheckReadFailure(pGpu, value);
     PRmRC2BadRead2_RECORD pBadRead = NULL;
@@ -1358,6 +1392,7 @@ regCheckRead032
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1810);
     NvU32 returnValue;
     OBJGPU *pGpu = pRegisterAccess->pGpu;
 
@@ -1377,6 +1412,7 @@ regCheckRead032
 NvU8
 gpuRegRd08_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJGPU *pGpu, NvU32 addr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1811);
     NvU8 val = REG_INST_RD08(pGpu, GPU, 0, addr);
     // filter out duplicate read
     static NvU32 prev_addr = 0;
@@ -1399,6 +1435,7 @@ gpuRegRd08_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJ
 NvU16
 gpuRegRd16_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJGPU *pGpu, NvU32 addr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1812);
     NvU16 val = REG_INST_RD16(pGpu, GPU, 0, addr);
     // filter out duplicate read
     static NvU32 prev_addr = 0;
@@ -1421,6 +1458,7 @@ gpuRegRd16_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJ
 NvU32
 gpuRegRd32_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJGPU *pGpu, NvU32 addr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1813);
     NvU32 val = REG_INST_RD32(pGpu, GPU, 0, addr);
     // filter out duplicate read
     static NvU32 prev_addr = 0;
@@ -1443,6 +1481,7 @@ gpuRegRd32_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJ
 void
 gpuRegWr08_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJGPU *pGpu, NvU32 addr, NvV8 val)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1814);
     // filter out bar0 windows registers (NV_PRAMIN – range 0x007FFFFF:0x00700000 )
     if ((addr & 0xFFF00000) != 0x00700000)
     {
@@ -1456,6 +1495,7 @@ gpuRegWr08_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJ
 void
 gpuRegWr16_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJGPU *pGpu, NvU32 addr, NvV16 val)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1815);
     // filter out bar0 windows registers (NV_PRAMIN – range 0x007FFFFF:0x00700000 )
     if ((addr & 0xFFF00000) != 0x00700000)
     {
@@ -1469,6 +1509,7 @@ gpuRegWr16_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJ
 void
 gpuRegWr32_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJGPU *pGpu, NvU32 addr, NvV32 val)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1816);
     // filter out bar0 windows registers (NV_PRAMIN – range 0x007FFFFF:0x00700000 )
     if ((addr & 0xFFF00000) != 0x00700000)
     {
@@ -1482,6 +1523,7 @@ gpuRegWr32_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJ
 void
 gpuRegWr32Uc_dumpinfo(const char *func, const char *addrStr, const char *vreg, OBJGPU *pGpu, NvU32 addr, NvV32 val)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1817);
     // filter out bar0 windows registers (NV_PRAMIN – range 0x007FFFFF:0x00700000 )
     if ((addr & 0xFFF00000) != 0x00700000)
     {
@@ -1516,6 +1558,7 @@ gpuSanityCheckRegisterAccess_IMPL
     NvU32       *pRetVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1818);
     NV_STATUS status = NV_OK;
     NvU32     retVal = ~0;
 
@@ -1599,6 +1642,7 @@ gpuValidateRegOffset_IMPL
     NvU32   offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1819);
     NvU64 maxBar0Size = pGpu->deviceMappings[0].gpuNvLength;
 
     // The register offset should be 4 bytes smaller than the max bar size
@@ -1633,6 +1677,7 @@ gpuVerifyExistence_IMPL
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1820);
     NvU32 regVal = GPU_REG_RD32(pGpu, NV_PMC_BOOT_0);
 
     if (regVal != pGpu->chipId0)
@@ -1666,6 +1711,7 @@ gpuSanityCheckRegRead_IMPL
     void *pValue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1821);
     NvU8       *pValue8;
     NvU16      *pValue16;
     NvU32      *pValue32;
@@ -1753,6 +1799,7 @@ NV_STATUS swbcaprtConstruct_IMPL
     NvU32              numApertures
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1822);
     NV_ASSERT_OR_RETURN(numApertures != 0, NV_ERR_INVALID_ARGUMENT);
 
     pAperture->pApertures = pApertures;
@@ -1768,6 +1815,7 @@ swbcaprtReadReg08_IMPL
     NvU32         addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1823);
     NvU8 val = REG_RD08(&pAperture->pApertures[0], addr);
 
 #if defined(DEBUG)
@@ -1786,6 +1834,7 @@ swbcaprtReadReg16_IMPL
     NvU32         addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1824);
     NvU16 val = REG_RD16(&pAperture->pApertures[0], addr);
 
 #if defined(DEBUG)
@@ -1804,6 +1853,7 @@ swbcaprtReadReg32_IMPL
     NvU32         addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1825);
     NvU32 val = REG_RD32(&pAperture->pApertures[0], addr);
 
 #if defined(DEBUG)
@@ -1823,6 +1873,7 @@ swbcaprtWriteReg08_IMPL
     NvV8          value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1826);
     NvU32 i;
 
     for (i = 0; i < pAperture->numApertures; i++)
@@ -1837,6 +1888,7 @@ swbcaprtWriteReg16_IMPL
     NvV16         value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1827);
     NvU32 i;
 
     for (i = 0; i < pAperture->numApertures; i++)
@@ -1851,6 +1903,7 @@ swbcaprtWriteReg32_IMPL
     NvV32         value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1828);
     NvU32 i;
 
     for (i = 0; i < pAperture->numApertures; i++)
@@ -1865,6 +1918,7 @@ swbcaprtWriteReg32Uc_IMPL
     NvV32         value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1829);
     NvU32 i;
 
     for (i = 0; i < pAperture->numApertures; i++)
@@ -1878,6 +1932,7 @@ swbcaprtIsRegValid_IMPL
     NvU32         addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1830);
 
     NvU32 i;
 

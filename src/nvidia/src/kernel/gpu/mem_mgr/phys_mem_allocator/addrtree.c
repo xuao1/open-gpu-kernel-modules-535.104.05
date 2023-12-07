@@ -45,6 +45,7 @@ PMA_PAGESTATUS _pmaAddrtreeReadLevelAndSkipUnavailable(void *pMap, NvU32 levelNu
 
 static NvU64 alignUpToMod(NvU64 frame, NvU64 alignment, NvU64 mod)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3104);
     if ((frame & (alignment - 1)) <= mod)
         return NV_ALIGN_DOWN(frame, alignment) + mod;
     else
@@ -54,6 +55,7 @@ static NvU64 alignUpToMod(NvU64 frame, NvU64 alignment, NvU64 mod)
 static NvU32
 addrtreeGetTreeLevel(NvU64 pageSize)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3105);
     NvU32 level = 0;
     switch (pageSize)
     {
@@ -71,6 +73,7 @@ addrtreeGetTreeLevel(NvU64 pageSize)
 static void
 pmaAddrtreePrintLevel(ADDRTREE_LEVEL *pLevel)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3106);
     NvU32 i;
     NvU32 mapIndex = MAP_IDX_ALLOC_PIN;
     ADDRTREE_NODE *pNode = NULL;
@@ -89,6 +92,7 @@ pmaAddrtreePrintLevel(ADDRTREE_LEVEL *pLevel)
 
 void pmaAddrtreePrintTree(void *pMap, const char* str)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3107);
     NvU32 i;
     PMA_ADDRTREE *pTree = (PMA_ADDRTREE *)pMap;
     NV_PRINTF(LEVEL_INFO, "%s ==== \n", str);
@@ -104,6 +108,7 @@ void pmaAddrtreePrintTree(void *pMap, const char* str)
 static NvU64
 _makeMaskUpToIndex(NvU32 index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3108);
     NV_ASSERT(index <= 64);
     if (index == 64)
     {
@@ -124,6 +129,7 @@ pmaAddrtreeInit
     NvBool     bProtected
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3109);
     //
     // Hardcoding this for now to get things started
     // TODO: use more flexible configs
@@ -310,6 +316,7 @@ error:
 
 void pmaAddrtreeDestroy(void *pMap)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3110);
     NvU64 num2mbPages;
     PMA_ADDRTREE *pTree = (PMA_ADDRTREE *)pMap;
     NV_ASSERT_OR_RETURN_VOID(pTree != NULL);
@@ -333,6 +340,7 @@ void pmaAddrtreeDestroy(void *pMap)
 static void
 _addrtreeConvertFrame(PMA_ADDRTREE *pTree, NvU32 sourceLevel, NvU64 sourceFrame, NvU32 targetLevel, NvU64 *pTargetFrame)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3111);
     // Converting up the tree, frame number goes down
     if (sourceLevel > targetLevel)
     {
@@ -389,6 +397,7 @@ getNodeIndexStatus
     PMA_PAGESTATUS *pCumulativeStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3112);
     PMA_PAGESTATUS curStatusMask = *pStatusMask;
     PMA_PAGESTATUS nextStatusMask = 0;
     NvU64 state = 0;
@@ -437,6 +446,7 @@ getNodeIndexStatus
 static NvBool
 shouldCheckChildren(PMA_PAGESTATUS statusMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3113);
     return statusMask != 0;
 }
 
@@ -450,6 +460,7 @@ _addrtreeNodeValid
     PMA_PAGESTATUS *pFoundState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3114);
     ADDRTREE_NODE *n = pTree->root;
     NvU64 newFrame = 0;
     NvU32 newIndex = 0;
@@ -482,6 +493,7 @@ _addrtreeNodeValid
 static NvU64
 _addrtreeComputeMask(ADDRTREE_NODE *node, NvU64 frameStart, NvU64 numFrames)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3115);
     NV_ASSERT(node->numChildren <= 64);
 
     NvU64 mask = _makeMaskUpToIndex(node->numChildren);
@@ -527,6 +539,7 @@ _addrtreeNodeMaskAvailable(
     NvU64          *pDiff
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3116);
     NvU64 allocated = 0;
     NvU32 i;
 
@@ -572,6 +585,7 @@ _addrtreeNodeMaskAvailable(
 static NvU64
 _addrtreeGetNodeIdx(PMA_ADDRTREE *pTree, NvU32 level, NvU64 frame)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3117);
     ADDRTREE_LEVEL *treeLevel = &pTree->levels[level];
 
     // Current level's frame number should be the same as next level's node number
@@ -601,6 +615,7 @@ _pmaAddrtreeReadLevelAndSkipUnavailable
     NvBool         bReverse
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3118);
     NvU32 index;
     ADDRTREE_NODE *pNode;
     PMA_ADDRTREE *pTree = (PMA_ADDRTREE *)pMap;
@@ -693,6 +708,7 @@ _pmaAddrtreeAvailable
     NvU64          *pDiff
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3119);
     NvU64 i, startIdx, endIdx, childrenMask;
     PMA_PAGESTATUS foundState;
     NvU64 nodeIndexDiff;
@@ -773,6 +789,7 @@ _pmaAddrtreeAvailableReverse
     NvU64          *pDiff
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3120);
     NvU64 i, startIdx, endIdx, childrenMask;
     PMA_PAGESTATUS foundState;
     NvU64 nodeIndexDiff;
@@ -834,6 +851,7 @@ _pmaAddrtreeContigSearchLoop
     NvU64         *freeList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3121);
     NvBool found = NV_FALSE;
     NvU64 freeStart;
     NvU64 diff;
@@ -934,6 +952,7 @@ _pmaAddrtreeContigSearchLoopReverse
     NvU64         *freeList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3122);
     NvBool found = NV_FALSE;
     NvU64 freeStart;
     NvU64 diff;
@@ -1033,6 +1052,7 @@ _pmaAddrtreeScanContiguous
     NvBool bReverseAlloc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3123);
     NvU64 localStart, localEnd, frameAlignment;
     NvBool found;
     NvU32 level;
@@ -1130,6 +1150,7 @@ pmaAddrtreeScanContiguous
     NvBool bReverseAlloc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3124);
     if (NV_UNLIKELY(pageSize == _PMA_128KB)) {
         //
         // Call the contig function with twice as many 64KB frames,
@@ -1188,6 +1209,7 @@ _pmaAddrtreeDiscontigSearchLoop
     NvBool         bReverseAlloc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3125);
     NvU64 found = 0;
     NvU64 freeStart;
     PMA_PAGESTATUS startStatus;
@@ -1244,6 +1266,7 @@ _pmaAddrtreeScanDiscontiguous
     NvBool bReverseAlloc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3126);
     NvU64 localStart, localEnd;
     NvU64 foundFree;
     NvU64 foundEvictable;
@@ -1335,6 +1358,7 @@ pmaAddrtreeScanDiscontiguous
     NvBool bReverseAlloc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3127);
     if (NV_UNLIKELY(pageSize == _PMA_128KB)) {
         NV_STATUS status = NV_OK;
         NvU64 i;
@@ -1414,6 +1438,7 @@ pmaAddrtreeScanDiscontiguous
 static NvU64
 replaceBit(NvU64 old, NvU32 bit, NvBool bIsSet)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3128);
     NV_ASSERT(bit < 64);
     NvU64 mask = NVBIT64(bit);
     return bIsSet ? (old | mask) : (old & ~mask);
@@ -1427,6 +1452,7 @@ _addrtreeUpdateAncestors
     PMA_PAGESTATUS  newStateMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3129);
     ADDRTREE_NODE *pParent;
     NvU32 i;
     NvU64 newFrame;
@@ -1520,6 +1546,7 @@ _addrtreeSetState
     PMA_PAGESTATUS  newStateMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3130);
     ADDRTREE_NODE *n = pTree->root;
     ADDRTREE_NODE *pChildNode;
     NvU32 i;
@@ -1627,6 +1654,7 @@ _addrtreeGetState
     NvBool          bReadAttrib
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3131);
     ADDRTREE_NODE *n = pTree->root;
 
     NvU64 newFrame = 0;
@@ -1670,6 +1698,7 @@ _addrtreeConvertLevelFrameToNodeIndex
     NvU32          *pIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3132);
     NvU32 nodeIdx;
     ADDRTREE_LEVEL *pLevel;
     NvU32 framesPerNode;
@@ -1694,6 +1723,7 @@ pmaAddrtreeReadLevel
     NvBool bReadAttrib
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3133);
     NvU32 index;
     ADDRTREE_NODE *pNode;
     PMA_PAGESTATUS state;
@@ -1723,6 +1753,7 @@ _addrtreeNodeIndexHasSeeChildSet
     PMA_PAGESTATUS *pState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3134);
     ADDRTREE_NODE *n = pTree->root;
     NvU64 newFrame = 0;
     NvU32 newIndex = 0;
@@ -1776,6 +1807,7 @@ __pmaAddrtreeChangePageStateAttribEx
     PMA_PAGESTATUS  newStateMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3135);
     NvU32 index;
     ADDRTREE_NODE *pNode;
     NvU32 targetLevelNum = addrtreeGetTreeLevel(pageSize) - 1;
@@ -1900,6 +1932,7 @@ _pmaAddrtreeChangePageStateAttribEx
     PMA_PAGESTATUS  newStateMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3136);
     if (NV_UNLIKELY(pageSize == _PMA_128KB)) {
         NvU64 i;
         for (i = 0; i < 2; i++) {
@@ -1939,18 +1972,21 @@ pmaAddrtreeChangeStateAttribEx
     PMA_PAGESTATUS  newStateMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3137);
     _pmaAddrtreeChangePageStateAttribEx(pMap, frameNum, _PMA_64KB, newState, newStateMask);
 }
 
 // TODO: merge this on PMA level
 void pmaAddrtreeChangeState(void *pTree, NvU64 frameNum, PMA_PAGESTATUS newState)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3138);
     pmaAddrtreeChangeStateAttribEx(pTree, frameNum, newState, STATE_MASK);
 }
 
 // TODO: merge this on PMA level
 void pmaAddrtreeChangeStateAttrib(void *pTree, NvU64 frameNum, PMA_PAGESTATUS newState, NvBool writeAttrib)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3139);
     PMA_PAGESTATUS mask = writeAttrib ? MAP_MASK : STATE_MASK;
     pmaAddrtreeChangeStateAttribEx(pTree, frameNum, newState, mask);
 }
@@ -1966,6 +2002,7 @@ pmaAddrtreeChangePageStateAttrib
     NvBool writeAttrib
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3140);
     PMA_PAGESTATUS mask = writeAttrib ? MAP_MASK : STATE_MASK;
     _pmaAddrtreeChangePageStateAttribEx(pTree, frameNumStart, pageSize, newState, mask);
 }
@@ -1977,6 +2014,7 @@ PMA_PAGESTATUS pmaAddrtreeRead
     NvBool bReadAttrib
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3141);
     NvU32 index;
     ADDRTREE_NODE *pNode;
     NvU32 levelNum = addrtreeGetTreeLevel(_PMA_64KB) - 1;
@@ -1998,6 +2036,7 @@ void pmaAddrtreeGetSize
     NvU64 *pBytesTotal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3142);
     PMA_ADDRTREE *pTree = (PMA_ADDRTREE *)pMap;
     *pBytesTotal = (pTree->totalFrames << PMA_PAGE_SHIFT);
 }
@@ -2012,6 +2051,7 @@ void pmaAddrtreeGetLargestFree
     NvU64 *pLargestFree
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3143);
     NvU64 i, length = 0, largestLength = 0;
     PMA_ADDRTREE *pTree = (PMA_ADDRTREE *)pMap;
 
@@ -2049,6 +2089,7 @@ _pmaAddrtreeScanNumaUnevictable
     NvU64         frameEnd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3144);
     NvU64 frame;
     PMA_PAGESTATUS frameStatus;
 
@@ -2084,6 +2125,7 @@ NV_STATUS pmaAddrtreeScanContiguousNumaEviction
     NvU64   *evictEnd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3145);
     NV_STATUS status = NV_ERR_NO_MEMORY;
     PMA_ADDRTREE *pTree = (PMA_ADDRTREE *)pMap;
 
@@ -2183,10 +2225,12 @@ NV_STATUS pmaAddrtreeScanContiguousNumaEviction
 
 NvU64 pmaAddrtreeGetEvictingFrames(void *pMap)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3146);
     return ((PMA_ADDRTREE *)pMap)->frameEvictionsInProcess;
 }
 
 void pmaAddrtreeSetEvictingFrames(void *pMap, NvU64 frameEvictionsInProcess)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3147);
     ((PMA_ADDRTREE *)pMap)->frameEvictionsInProcess = frameEvictionsInProcess;
 }

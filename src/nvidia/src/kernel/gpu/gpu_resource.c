@@ -55,6 +55,7 @@ gpuresConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1900);
     RsResourceRef *pResourceRef = pCallContext->pResourceRef;
     RsResourceRef *pDeviceRef;
     RsResourceRef *pSubdeviceRef;
@@ -103,6 +104,7 @@ gpuresCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1901);
     GpuResource *pGpuResourceSrc = dynamicCast(pParams->pSrcRef->pResource, GpuResource);
 
     if (pGpuResourceSrc == NULL)
@@ -122,6 +124,7 @@ gpuresMap_IMPL
     RsCpuMapping *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1902);
     OBJGPU *pGpu;
     NvU32 offset, size;
     NV_STATUS rmStatus;
@@ -157,6 +160,7 @@ gpuresUnmap_IMPL
     RsCpuMapping *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1903);
     RmClient *pClient = dynamicCast(pCallContext->pClient, RmClient);
     OBJGPU *pGpu;
     NvBool bBroadcast;
@@ -183,6 +187,7 @@ gpuresShareCallback_IMPL
     RS_SHARE_POLICY *pSharePolicy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1904);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGpuResource);
     NvBool bMIGInUse = IS_MIG_IN_USE(pGpu);
     NvU16 shareType = pSharePolicy->type;
@@ -314,6 +319,7 @@ gpuresGetRegBaseOffsetAndSize_IMPL
     NvU32 *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1905);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -326,6 +332,7 @@ gpuresGetMapAddrSpace_IMPL
     NV_ADDRESS_SPACE *pAddrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1906);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pGpuResource);
     NV_STATUS status;
     NvU32 offset;
@@ -354,6 +361,7 @@ gpuresInternalControlForward_IMPL
     NvU32 size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1907);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(GPU_RES_GET_GPU(pGpuResource));
     return pRmApi->Control(pRmApi,
                            RES_GET_CLIENT_HANDLE(pGpuResource),
@@ -370,6 +378,7 @@ gpuresInternalControlForward_IMPL
 NvHandle
 gpuresGetInternalObjectHandle_IMPL(GpuResource *pGpuResource)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1908);
     return RES_GET_HANDLE(pGpuResource);
 }
 
@@ -381,6 +390,7 @@ gpuresControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1909);
     gpuresControlSetup(pParams, pGpuResource);
 
     return resControl_IMPL(staticCast(pGpuResource, RsResource),
@@ -394,6 +404,7 @@ gpuresControlSetup_IMPL
     GpuResource *pGpuResource
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1910);
     RmCtrlParams *pRmCtrlParams = pParams->pLegacyParams;
     pRmCtrlParams->pGpu = pGpuResource->pGpu;
 
@@ -408,6 +419,7 @@ gpuresSetGpu_IMPL
     NvBool bBcResource
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1911);
     if (pGpu != NULL)
     {
         RmResource *pResource = staticCast(pGpuResource, RmResource);
@@ -427,6 +439,7 @@ gpuresGetByHandle_IMPL
     GpuResource **ppGpuResource
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1912);
     RsResourceRef  *pResourceRef;
     NV_STATUS       status;
 
@@ -449,6 +462,7 @@ gpuresGetByDeviceOrSubdeviceHandle
     GpuResource **ppGpuResource
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1913);
     NV_STATUS status;
 
     status = gpuresGetByHandle(pClient, hResource, ppGpuResource);

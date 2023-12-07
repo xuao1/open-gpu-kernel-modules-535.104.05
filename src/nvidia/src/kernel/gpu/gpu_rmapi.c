@@ -44,6 +44,7 @@
 NV_STATUS
 gpuSetExternalKernelClientCount_IMPL(OBJGPU *pGpu, NvBool bIncr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1929);
     if (bIncr)
     {
         pGpu->externalKernelClientCount++;
@@ -65,6 +66,7 @@ _gpuGetUserClientCount
     NvBool  bCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1930);
     NvU32      count = 0;
     Device    *pDevice;
     RmClient **ppClient;
@@ -104,6 +106,7 @@ gpuIsInUse_IMPL
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1931);
     return !!_gpuGetUserClientCount(pGpu, NV_FALSE) ||
            (pGpu->externalKernelClientCount > 0);
 }
@@ -115,6 +118,7 @@ gpuGetUserClientCount_IMPL
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1932);
     return _gpuGetUserClientCount(pGpu, NV_TRUE);
 }
 
@@ -125,6 +129,7 @@ gpuGetExternalClientCount_IMPL
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1933);
     return _gpuGetUserClientCount(pGpu, NV_TRUE) + pGpu->externalKernelClientCount;
 }
 
@@ -149,6 +154,7 @@ gpuGetByRef
     OBJGPU       **ppGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1934);
     NV_STATUS      status = NV_OK;
     RsResourceRef *pDeviceRef;
     RsResourceRef *pSubdeviceRef;
@@ -215,6 +221,7 @@ gpuGetByHandle
     OBJGPU       **ppGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1935);
     RsResourceRef    *pResourceRef;
     NV_STATUS         status;
 
@@ -230,6 +237,7 @@ gpuGetByHandle
 
 NV_STATUS gpuRegisterSubdevice_IMPL(OBJGPU *pGpu, Subdevice *pSubdevice)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1936);
     const NvU32 initialSize = 32;
     const NvU32 expansionFactor = 2;
 
@@ -261,6 +269,7 @@ NV_STATUS gpuRegisterSubdevice_IMPL(OBJGPU *pGpu, Subdevice *pSubdevice)
 
 void gpuUnregisterSubdevice_IMPL(OBJGPU *pGpu, Subdevice *pSubdevice)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1937);
     NvU32 i;
     for (i = 0; i < pGpu->numSubdeviceBackReferences; i++)
     {
@@ -309,6 +318,7 @@ _gpuFilterSubDeviceEventInfo
     NvU16  rcInstanceAttributionId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1938);
     MIG_INSTANCE_REF ref;
     NvHandle hClient = RES_GET_CLIENT_HANDLE(pSubdevice->pDevice);
     NvU32 engineIdx;
@@ -484,6 +494,7 @@ gpuNotifySubDeviceEvent_IMPL
     NvV16   info16
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1939);
     PEVENTNOTIFICATION pEventNotification;
     THREAD_STATE_NODE *pCurThread;
     NvU32 localNotifyType;
@@ -583,6 +594,7 @@ gpuGspPluginTriggeredEvent_IMPL
     NvU32   notifyIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1940);
     PEVENTNOTIFICATION pEventNotification;
     RS_SHARE_ITERATOR it = serverutilShareIter(classId(NotifShare));
 
@@ -637,6 +649,7 @@ _gpuiIsPidSavedAlready
     NvU32  pidCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1941);
     NvU32 j;
 
     for (j = 0; j < pidCount; j++)
@@ -666,6 +679,7 @@ gpuGetProcWithObject_IMPL
     MIG_INSTANCE_REF *pRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1942);
     NvU32         pidcount       = 0;
     NvHandle      hClient;
     Device        *pDevice;
@@ -822,6 +836,7 @@ _gpuCollectMemInfo
     NvBool                                            bGlobalInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1943);
     RS_ITERATOR      iter;
     Memory          *pMemory = NULL;
     RsResourceRef   *pResourceRef;
@@ -918,6 +933,7 @@ gpuFindClientInfoWithPidIterator_IMPL
     NvBool bGlobalInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1944);
     NvHandle    hClient;
     Device     *pDevice;
     NvHandle    hDevice;

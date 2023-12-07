@@ -54,6 +54,7 @@ _knvlinkCreateIoctrl
     NvU32         PublicId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3863);
     KernelIoctrl *pKernelIoctrl = NULL;
     NV_STATUS     status        = NV_OK;
 
@@ -82,6 +83,7 @@ _knvlinkFilterDiscoveredLinks
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3864);
     // Ensure any vbios disabled links are removed from discovered
     if (pKernelNvlink->vbiosDisabledLinkMask)
     {
@@ -121,6 +123,7 @@ _knvlinkFilterIoctrls
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3865);
     KernelIoctrl *pKernelIoctrl;
     NvU32         i;
 
@@ -166,6 +169,7 @@ knvlinkConstructEngine_IMPL
     ENGDESCRIPTOR  engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3866);
     NV_STATUS status    = NV_OK;
     NvU32     ioctrlIdx = 0;
 
@@ -251,6 +255,7 @@ knvlinkIsPresent_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3867);
     NV_STATUS status = NV_OK;
 
     // Mark NVLINK as absent when HCC is enabled
@@ -284,6 +289,7 @@ knvlinkStatePreInitLocked_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3868);
     return knvlinkRemoveMissingIoctrlObjects(pGpu, pKernelNvlink);
 }
 
@@ -302,6 +308,7 @@ knvlinkRemoveMissingIoctrlObjects_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3869);
     NvU32         ioctrlIdx     = 0;
     KernelIoctrl *pKernelIoctrl = NULL;
     NV_STATUS     status        = NV_OK;
@@ -342,6 +349,7 @@ knvlinkStateLoad_IMPL
     NvU32         flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3870);
     NV_STATUS         status = NV_OK;
     OBJSYS           *pSys   = SYS_GET_INSTANCE();
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -704,6 +712,7 @@ knvlinkStatePostLoad_IMPL
     NvU32         flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3871);
     NV_STATUS  status              = NV_OK;
     NV_STATUS  trainingStatus      = NV_OK;
     OBJGPU    *pRemoteGpu          = NULL;
@@ -803,6 +812,7 @@ knvlinkStateUnload_IMPL
     NvU32         flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3872);
     //
     // Don't tear down FLA when undergoing suspend/resume
     // Enable this only for CPU-RM and monolithic RM
@@ -831,6 +841,7 @@ knvlinkStatePostUnload_IMPL
     NvU32         flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3873);
     OBJSYS    *pSys   = SYS_GET_INSTANCE();
     NV_STATUS  status = NV_OK;
 #if defined(INCLUDE_NVLINK_LIB)
@@ -971,6 +982,7 @@ _knvlinkPurgeState
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3874);
     KernelIoctrl *pKernelIoctrl = NULL;
     NvU32         ioctrlIdx;
 #if defined(INCLUDE_NVLINK_LIB)
@@ -1077,6 +1089,7 @@ knvlinkSetDegradedMode_IMPL
     NvU32         linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3875);
     NvU32         status = NV_ERR_GENERIC;
     NvU32         gpuInstance;
     OBJGPU       *pRemoteGpu = NULL;
@@ -1150,6 +1163,7 @@ knvlinkDestruct_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3876);
     OBJGPU       *pGpu          = ENG_GET_GPU(pKernelNvlink);
     KernelIoctrl *pKernelIoctrl = NULL;
     NvU32         ioctrlIdx;
@@ -1190,6 +1204,7 @@ _knvlinkProcessSysmemLinks
     NvBool        bFlush
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3877);
     NV_STATUS status = NV_OK;
 
 #if defined(NVCPU_PPC64LE) || defined(NVCPU_AARCH64)

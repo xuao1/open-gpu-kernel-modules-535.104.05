@@ -33,6 +33,7 @@
 NV_STATUS
 swengConstructEngine_IMPL(OBJGPU *pGpu, OBJSWENG *pSwEng, ENGDESCRIPTOR engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4105);
     // RS-TODO: Register SW emulated classes here
     return NV_OK;
 }

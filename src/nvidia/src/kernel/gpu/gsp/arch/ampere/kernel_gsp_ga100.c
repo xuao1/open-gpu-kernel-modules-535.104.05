@@ -41,6 +41,7 @@ kgspIsDebugModeEnabled_GA100
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2216);
     NvU32 data;
 
     data = GPU_REG_RD32(pGpu, NV_FUSE_OPT_SECURE_GSP_DEBUG_DIS);
@@ -63,6 +64,7 @@ kgspReadUcodeFuseVersion_GA100
     const NvU32 ucodeId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2217);
     NvU32 fuseVal = 0;
     NvU32 index = ucodeId - 1;  // adjust to 0-indexed
 

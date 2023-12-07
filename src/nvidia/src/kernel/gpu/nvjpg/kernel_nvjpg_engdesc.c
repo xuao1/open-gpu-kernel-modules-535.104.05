@@ -49,6 +49,7 @@ nvjpgGetEngineDescFromAllocParams
     void    *pAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3715);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     NvU32 engineInstance = 0;
     NV_NVJPG_ALLOCATION_PARAMETERS *pNvjpgAllocParms = pAllocParams;

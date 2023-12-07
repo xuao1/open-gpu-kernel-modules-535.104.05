@@ -158,6 +158,7 @@ memmgrAllocDetermineAlignment_GM107
     NvU64          hwAlignment
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2603);
     KernelGmmu  *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     const MEMORY_SYSTEM_STATIC_CONFIG *pMemorySystemConfig =
         kmemsysGetStaticConfig(pGpu, GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu));
@@ -258,6 +259,7 @@ memmgrSetZbcReferenced
     NvBool  bZbcSurfacesExist
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2604);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_INTERNAL_MEMSYS_SET_ZBC_REFERENCED_PARAMS params = {0};
 
@@ -288,6 +290,7 @@ memmgrAllocHal_GM107
     FB_ALLOC_INFO *pFbAllocInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2605);
     KernelMemorySystem *pKernelMemorySystem   = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     NV_STATUS           status                = NV_OK;
     NvU32               comprAttr, tiledAttr, zcullAttr, type;
@@ -509,6 +512,7 @@ memmgrSetAllocParameters_GM107
     FB_ALLOC_INFO *pFbAllocInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2606);
 
     return NV_OK;
 }
@@ -525,6 +529,7 @@ memmgrFreeHal_GM107
     PRMTIMEOUT     pTimeout
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2607);
     NvU32 commitResId = pFbAllocInfo->hwResId;
 
     if (pFbAllocInfo->pageFormat->flags & NVOS32_ALLOC_FLAGS_SKIP_RESOURCE_ALLOC)
@@ -585,6 +590,7 @@ memmgrGetSurfacePhysAttr_GM107
     NvU64            *contigSegmentSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2608);
     NV_STATUS                   rmStatus;
     PMEMORY_DESCRIPTOR          pMemDesc      = memdescGetMemDescFromGpu(pMemory->pMemDesc, pGpu);
     COMPR_INFO                  comprInfo;
@@ -652,6 +658,7 @@ memmgrGetBAR1InfoForDevice_GM107
     PGETBAR1INFO   bar1Info
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2609);
     KernelBus     *pKernelBus   = GPU_GET_KERNEL_BUS(pGpu);
     NvU64          largestFreeSize;
     NvU64          freeSize;
@@ -729,6 +736,7 @@ memmgrGetReservedHeapSizeMb_GM107
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2610);
     NvU32  i;
     NvU64  rsvdSize = 0;
 
@@ -759,6 +767,7 @@ memmgrStateInitReservedMemory
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2611);
     if (IS_GSP_CLIENT(pGpu))
         return;
 
@@ -775,6 +784,7 @@ memmgrStateInitAdjustReservedMemory
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2612);
 
     return NV_OK;
 }
@@ -791,6 +801,7 @@ memmgrCheckReservedMemorySize_GK104
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2613);
     NV_ASSERT_OR_RETURN(pMemoryManager->rsvdMemorySize < DRF_SIZE(NV_PRAMIN), NV_ERR_INSUFFICIENT_RESOURCES);
 
     return NV_OK;
@@ -811,6 +822,7 @@ memmgrInitReservedMemory_GM107
     NvU64          fbSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2614);
     NvU64                  tmpAddr          = 0;
     NvU32                  i;
     NvBool                 bRsvdRegionIsValid = NV_FALSE;
@@ -996,6 +1008,7 @@ memmgrComparePhysicalAddresses_GM107
     NvU64          address1
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2615);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
 
     //
@@ -1045,6 +1058,7 @@ memmgrComputeAndSetVgaDisplayMemoryBase_GM107
     NvU64   fbSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2616);
 
     return NV_OK;
 }
@@ -1059,6 +1073,7 @@ memmgrGetPteKindBl_GM107
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2617);
     return NV_MMU_PTE_KIND_GENERIC_16BX2;
 }
 
@@ -1072,6 +1087,7 @@ memmgrGetPteKindPitch_GM107
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2618);
     return NV_MMU_PTE_KIND_PITCH;
 }
 
@@ -1091,6 +1107,7 @@ _memmgrGetOptimalSysmemPageSize
     NvU64 sysmemPageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2619);
     NvBool bIsContiguous = memdescGetContiguity(pMemDesc, AT_GPU);
 
     //
@@ -1149,6 +1166,7 @@ memmgrSetMemDescPageSize_GM107
     RM_ATTR_PAGE_SIZE   pageSizeAttr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2620);
     NvU64             newPageSize    = RM_PAGE_SIZE;
     KernelGmmu       *pKernelGmmu    = GPU_GET_KERNEL_GMMU(pGpu);
     NV_ADDRESS_SPACE  addrSpace      = memdescGetAddressSpace(pMemDesc);
@@ -1278,6 +1296,7 @@ memmgrCalcReservedFbSpaceForUVM_GM107
     NvU64         *rsvdSlowSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2621);
     //
     // For WDDM-UVM, reserve space to create identity mapping (deviceVA = devicePA). (Kepler only)
     //
@@ -1297,6 +1316,7 @@ memmgrGetUserdReservedFbSpace_GM107
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2622);
     return 2 * 1024 * 1024;
 }
 
@@ -1315,6 +1335,7 @@ memmgrGetRsvdSizeForSr_GM107
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2623);
     if ((pMemoryManager->Ram.fbTotalMemSizeMb >> 10) > 32)
     {
         //
@@ -1336,6 +1357,7 @@ memmgrGetRunlistEntriesReservedFbSpace_GM107
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2624);
     // Kepler Runlist: 4096 entries * 8B/entry * 7 engines * 2 runlists/engine = 458K
     return (4096 * 8 * 7 * 2);
 }
@@ -1351,6 +1373,7 @@ memmgrScrubRegistryOverrides_GM107
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2625);
     const MEMORY_SYSTEM_STATIC_CONFIG *pMemorySystemConfig =
         kmemsysGetStaticConfig(pGpu, GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu));
 
@@ -1405,6 +1428,7 @@ memmgrGetAddrSpaceSizeMB_GM107
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2626);
     NV_ASSERT(pMemoryManager->Ram.fbAddrSpaceSizeMb != 0);
 
     return NvU64_LO32(pMemoryManager->Ram.fbAddrSpaceSizeMb);
@@ -1420,6 +1444,7 @@ memmgrGetUsableMemSizeMB_GM107
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2627);
     NV_ASSERT(pMemoryManager->Ram.fbAddrSpaceSizeMb != 0);
 
     // we shouldn't ever need this, but...
@@ -1440,6 +1465,7 @@ memmgrGetBankPlacementData_GM107
     NvU32         *pPlacementStrategy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2628);
     // set up bank placement arrays
     pPlacementStrategy[BANK_PLACEMENT_IMAGE]  = ((0)
                                                 | BANK_MEM_GROW_UP
@@ -1478,6 +1504,7 @@ memmgrDirtyForPmTest_GM107
     NvBool         partialDirty
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2629);
 }
 
 /*!
@@ -1492,6 +1519,7 @@ memmgrGetInvalidOffset_GM107
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2630);
     return 0xdead000000000000ull;
 }
 
@@ -1518,6 +1546,7 @@ memmgrGetBlackListPages_GM107
     NvU32               *pCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2631);
     RM_API    *pRmApi;
     NV_STATUS status = NV_OK;
     NvU32     idx;
@@ -1612,6 +1641,7 @@ memmgrGetBlackListPagesForHeap_GM107
     Heap          *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2632);
     BLACKLIST_ADDRESS  *pBlAddrs;
     NvU32               idx;
     NV_STATUS           status;

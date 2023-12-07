@@ -93,6 +93,7 @@ extdevGetDevice_P2060
     PDACEXTERNALDEVICE pExternalDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1079);
     NvU8 revId;
     NvU8 data;
     DAC_EXTERNAL_DEVICES externalDeviceId;
@@ -157,6 +158,7 @@ extdevConstruct_P2060
     PDACEXTERNALDEVICE  pExternalDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1080);
     DACP2060EXTERNALDEVICE *pThis = (PDACP2060EXTERNALDEVICE)pExternalDevice;
     KernelDisplay          *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32 iface, head, i;
@@ -250,6 +252,7 @@ _externalDeviceInit_P2060
     NvBool             bExtDevFound
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1081);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     RM_API   *pRmApi      = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32     hClient     = pGpu->hInternalClient;
@@ -283,6 +286,7 @@ gsyncFindGpuHandleLocation
     NvU32                  *iface
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1082);
     DACP2060EXTERNALDEVICE *pThis = (PDACP2060EXTERNALDEVICE)pExternalDevice;
     NvU32 tempIface;
     NV_STATUS rmStatus = NV_ERR_GENERIC;
@@ -306,6 +310,7 @@ gsyncFindFreeHandleLocation
     NvU32                  *iface
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1083);
     NvU32 tempIface;
     NV_STATUS rmStatus = NV_ERR_GENERIC;
 
@@ -328,6 +333,7 @@ extdevSaveI2cHandles_P2060
     DACEXTERNALDEVICE  *pExternalDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1084);
     DACP2060EXTERNALDEVICE *pThis = (PDACP2060EXTERNALDEVICE)pExternalDevice;
     RM_API                 *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     NvHandle                hClient;
@@ -373,6 +379,7 @@ i2c_extdeviceHelper
     NvBool             write
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1085);
     RM_API                 *pRmApi  = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     DACP2060EXTERNALDEVICE *pThis   = (PDACP2060EXTERNALDEVICE)pExternalDevice;
     NV_STATUS               status  = NV_ERR_GENERIC;
@@ -430,6 +437,7 @@ extdevInit_P2060
     PDACEXTERNALDEVICE pExternalDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1086);
     OBJGPU  *pGpuTemp;
     OBJSYS  *pSys = SYS_GET_INSTANCE();
     OBJGSYNC *pGsyncTemp = NULL;
@@ -487,6 +495,7 @@ gsyncReadBoardId_P2060
     NvU32              *uniqueId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1087);
     NvU8  i, id = 0;
     NV_STATUS rmStatus = NV_OK;
 
@@ -514,6 +523,7 @@ gsyncAttachExternalDevice_P2060
     PDACEXTERNALDEVICE *ppExtdevs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1088);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = NULL;
@@ -741,6 +751,7 @@ extdevDestroy_P2060
     PDACEXTERNALDEVICE pExternalDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1089);
     DACP2060EXTERNALDEVICE *pThis = (PDACP2060EXTERNALDEVICE)pExternalDevice;
     RM_API   *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
@@ -834,6 +845,7 @@ extdevService_P2060
     NvBool             rmStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1090);
     OBJOS   *pOS    = GPU_GET_OS(pGpu);
     EXTDEV_INTR_DATA intrData;
 
@@ -883,6 +895,7 @@ _extdevService
     void *workerThreadData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1091);
     OBJGPU *pGpu = gpumgrGetGpu(gpuInstance);
     NV_STATUS rmStatus;
 
@@ -1032,6 +1045,7 @@ extdevWatchdog_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1092);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NvU32 iface, head;
@@ -1118,6 +1132,7 @@ gsyncApplyStereoPinAlwaysHiWar
     PDACEXTERNALDEVICE pExtDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1093);
 
     return NV_OK;
 
@@ -1129,6 +1144,7 @@ gsyncUnApplyStereoPinAlwaysHiWar
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1094);
 
     return NV_OK;
 
@@ -1151,6 +1167,7 @@ gsyncReadUniversalFrameCount_P2060
     NvU32 *pFrameCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1095);
     OBJGPU   *pTmpGpu = NULL;
     KernelDisplay *pKernelDisplay = NULL;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
@@ -1354,6 +1371,7 @@ gsyncReadFrameRate_P2060
     NvU32 *pFrameRate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1096);
     NvU8  FrameCountLow, FrameCountMid, FrameCountHigh;
     NvU32 FrameCount;
     NV_STATUS rmStatus = NV_OK;
@@ -1389,6 +1407,7 @@ gsyncReadHouseSyncFrameRate_P2060
     NvU32 *pFrameRate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1097);
     NvU8  FrameCountLow, FrameCountMid, FrameCountHigh;
     NvU32 FrameCount;
     NV_STATUS rmStatus = NV_OK;
@@ -1420,6 +1439,7 @@ gsyncOptimizeTimingParameters_P2060
     GSYNCTIMINGPARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1098);
     RM_API   *pRmApi      = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32     hClient     = pGpu->hInternalClient;
     NvU32     hSubdevice  = pGpu->hInternalSubdevice;
@@ -1454,6 +1474,7 @@ gsyncProgramExtStereoPolarity_P2060
     PDACEXTERNALDEVICE pExternalDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1099);
     NV_STATUS rmStatus = NV_OK;
     NvU8  ctrl4 = 0x00;
 
@@ -1480,6 +1501,7 @@ gsyncSetStereoLockMode_P2060
     NvU32              enable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1100);
     NvU8 ctrl4;
     NV_STATUS rmStatus;
 
@@ -1512,6 +1534,7 @@ gsyncGetStereoLockMode_P2060
     NvU32              *enable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1101);
     NvU8 ctrl4;
     NV_STATUS rmStatus;
 
@@ -1533,6 +1556,7 @@ gsyncSetVideoMode_P2060
     GSYNCVIDEOMODE VideoMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1102);
     return NV_OK;
 }
 
@@ -1544,6 +1568,7 @@ gsyncGetVideoMode_P2060
     GSYNCVIDEOMODE *pVideoMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1103);
     NvU8 videoMode;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1576,6 +1601,7 @@ gsyncSetEmitTestSignal_P2060
     NvU32 bEmitTestSignal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1104);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1653,6 +1679,7 @@ gsyncGetEmitTestSignal_P2060
  NvU32 *pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1105);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1678,6 +1705,7 @@ gsyncSetInterlaceMode_P2060
     NvU32 InterlaceMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1106);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1707,6 +1735,7 @@ gsyncGetInterlaceMode_P2060
     NvU32 *pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1107);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1735,6 +1764,7 @@ gsyncSetUseHouse_P2060
     NvU32 UseHouseSync
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1108);
     NvU8 ctrl;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1764,6 +1794,7 @@ gsyncGetUseHouse_P2060
     NvU32 *val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1109);
     NvU8 ctrl;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1789,6 +1820,7 @@ gsyncSetSyncPolarity_P2060
     GSYNCSYNCPOLARITY SyncPolarity
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1110);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1838,6 +1870,7 @@ gsyncGetSyncPolarity_P2060
     GSYNCSYNCPOLARITY *pSyncPolarity
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1111);
     NvU8 ctrl;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1863,6 +1896,7 @@ gsyncSetNSync_P2060
     NvU32 NSync
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1112);
     NvU8 regNSync;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1889,6 +1923,7 @@ gsyncGetNSync_P2060
     NvU32 *pNSync
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1113);
     NvU8 regNSync;
     NV_STATUS rmStatus;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1914,6 +1949,7 @@ gsyncSetSyncSkew_P2060
     NvU32 SyncSkew
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1114);
     NvU8 SyncSkewLow, SyncSkewHigh;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1954,6 +1990,7 @@ gsyncGetSyncSkew_P2060
     NvU32 *pSyncSkew
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1115);
     NvU8 SyncSkewLow, SyncSkewHigh;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -1982,6 +2019,7 @@ gsyncSetSyncStartDelay_P2060
     NvU32 StartDelay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1116);
     NvU8 StartDelayLow, StartDelayHigh;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -2006,6 +2044,7 @@ gsyncGetSyncStartDelay_P2060
     NvU32 *pStartDelay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1117);
     NvU8 StartDelayLow, StartDelayHigh;
     NV_STATUS rmStatus = NV_OK;
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
@@ -2038,6 +2077,7 @@ gsyncReadHouseSignalPresent_P2060
     NvU32 *pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1118);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NvU8 regStatus2;
     NvU32 regStatus = GetP2060GpuSnapshot(pGpu,pThis);
@@ -2087,6 +2127,7 @@ gsyncReadIsSyncDetected_P2060
     NvU32 *pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1119);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32 numHeads = kdispGetNumHeads(pKernelDisplay);
@@ -2203,6 +2244,7 @@ gsyncReadStereoLocked_P2060
     NvU32 *pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1120);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NV_STATUS rmStatus = NV_ERR_GENERIC;
 
@@ -2264,6 +2306,7 @@ gsyncReadIsTiming_P2060
     NvU32 *pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1121);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NvU32 iface;
 
@@ -2290,6 +2333,7 @@ gsyncProgramMaster_P2060
     NvBool skipSwapBarrierWar
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1122);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32       DisplayIds[OBJ_MAX_HEADS];
     NvU32       iface, head, index;
@@ -2605,6 +2649,7 @@ gsyncReadMaster_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1123);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32       DisplayIds[OBJ_MAX_HEADS];
     NvU32       iface, head;
@@ -2659,6 +2704,7 @@ gsyncProgramSlaves_P2060
     NvU32 Slaves
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1124);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32       DisplayIds[OBJ_MAX_HEADS];
     NvU32       iface, head, index;
@@ -2840,6 +2886,7 @@ gsyncReadSlaves_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1125);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvU32       DisplayIds[OBJ_MAX_HEADS];
     NvU32       iface, head;
@@ -2872,6 +2919,7 @@ gsyncProgramSwapBarrier_P2060
     NvBool               bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1126);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU32          iface;
     NvU8           ctrl2 = 0;
@@ -3058,6 +3106,7 @@ gsyncReadSwapBarrier_P2060
     NvBool             *bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1127);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU32 iface;
     NV_STATUS status = NV_OK;
@@ -3128,6 +3177,7 @@ gsyncSetLsrMinTime
     NvU32                                     enable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1128);
     PDACP2060EXTERNALDEVICE pThis    = (PDACP2060EXTERNALDEVICE)pExtDev;
     NV_STATUS               rmStatus = NV_OK;
     NvU32                   index;
@@ -3216,6 +3266,7 @@ gsyncSetMosaic_P2060
     NV30F1_CTRL_GSYNC_SET_LOCAL_SYNC_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1129);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NV_STATUS rmStatus = NV_OK;
     OBJGPU *pTempGpu = NULL;
@@ -3357,6 +3408,7 @@ gsyncSetMosaic_P2060
 static void
 DbgPrintP2060StatusRegister(NvU32 DebugLevel, NvU32 regStatus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1130);
     if (DRF_VAL(_P2060, _STATUS, _SYNC_LOSS, regStatus))
         NV_PRINTF_EX(NV_PRINTF_MODULE, DebugLevel, "SYNC_LOSS ");
     if (DRF_VAL(_P2060, _STATUS, _STEREO, regStatus))
@@ -3377,6 +3429,7 @@ DbgPrintP2060StatusRegister(NvU32 DebugLevel, NvU32 regStatus)
 static NV_STATUS
 gsyncGpuStereoHeadSync(OBJGPU *pGpu, NvU32 iface, PDACEXTERNALDEVICE pExtDev, NvU32 status1)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1131);
     DACP2060EXTERNALDEVICE *pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     RM_API   *pRmApi      = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -3418,6 +3471,7 @@ gsyncUpdateGsyncStatusSnapshot_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1132);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NvU32 iface;
     NvU8 regStatus = 0;
@@ -3677,6 +3731,7 @@ gsyncRefSignal_P2060
     NvU32              *pPresence
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1133);
     NV_STATUS status = NV_OK;
     NvU32 rate;
     NvU32 value = 0;
@@ -3794,6 +3849,7 @@ gsyncRefMaster_P2060
     NvBool skipSwapBarrierWar
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1134);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NvU32 Master = pThis->Master;
     NvU32 RefreshRate = pThis->RefreshRate;
@@ -3870,6 +3926,7 @@ gsyncRefSlaves_P2060
     NvU32 *pRefresh
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1135);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     NV_STATUS status = NV_OK;
     NvU32 Slaves = pThis->Slaves;
@@ -3929,6 +3986,7 @@ gsyncGetCplStatus_P2060
     NvU32 *pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1136);
     NV_STATUS status = NV_OK;
     NvU8  regStatus2;
 
@@ -4025,6 +4083,7 @@ gsyncSetWatchdog_P2060
     NvU32 pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1137);
     OBJGPU *pTempGpu = NULL;
     PDACP2060EXTERNALDEVICE pP2060 = (PDACP2060EXTERNALDEVICE)pExtDev;
     NV_STATUS status = NV_OK;
@@ -4057,6 +4116,7 @@ gsyncGetRevision_P2060
     GSYNCCAPSPARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1138);
     OBJSYS  *pSys = SYS_GET_INSTANCE();
     NV_STATUS status = NV_OK;
     DAC_EXTERNAL_DEVICES deviceId = pExtDev->deviceId;
@@ -4142,6 +4202,7 @@ gsyncRefSwapBarrier_P2060
     NvBool               *bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1139);
     NV_STATUS status = NV_OK;
 
     switch (rType)
@@ -4171,6 +4232,7 @@ gsyncConfigFlashGsync_P2060
     NvU32                  preFlash
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1140);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU32 iface;
     NV_STATUS rmStatus = NV_OK;
@@ -4261,6 +4323,7 @@ GetP2060GpuSnapshot
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1141);
     NvU32 iface;
     NV_STATUS status;
 
@@ -4281,6 +4344,7 @@ GpuIsP2060Master
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1142);
     NvU8 regControl;
     NvU32 index;
     NvBool bIsMasterGpu;
@@ -4317,6 +4381,7 @@ GpuIsP2060Connected
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1143);
     NvU32 iface;
 
     if (NV_OK == GetP2060GpuLocation(pGpu, pThis, &iface))
@@ -4337,6 +4402,7 @@ GetP2060MasterableGpu
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1144);
     OBJGPU *tempGpu;
     NvU32 iface;
 
@@ -4369,6 +4435,7 @@ GetP2060ConnectorIndexFromGpu
     NvU32 *index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1145);
     NV_STATUS rmStatus = NV_OK;
     NvU8 regStatus2;
 
@@ -4392,6 +4459,7 @@ GetP2060GpuLocation
     NvU32 *iface
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1146);
     NvU32 tempIface;
 
     for (tempIface = 0; tempIface < NV_P2060_MAX_IFACES_PER_GSYNC; tempIface++)
@@ -4416,6 +4484,7 @@ gsyncProgramFramelockEnable_P2060
     NvBool                  bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1147);
     //
     // Key here is to force the status register snapshot
     // to unsynched and setting back the timeout for
@@ -4456,6 +4525,7 @@ GpuIsMosaicTimingSlave
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1148);
     OBJGPU *pTempGpu = NULL;
     NvU8 i, j;
 
@@ -4489,6 +4559,7 @@ gsyncGpuCanBeMaster_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1149);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE)pExtDev;
     OBJGPU *pTempGpu;
     NvU32 iface, tempIface;
@@ -4540,6 +4611,7 @@ GetP2060Gpu
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1150);
     NvU32 iface;
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
     {
@@ -4562,6 +4634,7 @@ GetP2060WatchdogGpu
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1151);
    return GetP2060Gpu(pGpu, pThis);
 }
 
@@ -4576,6 +4649,7 @@ gsyncIsStereoEnabled_p2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1152);
     NvU8 regStatus;
     NV_STATUS rmStatus;
 
@@ -4602,6 +4676,7 @@ gsyncCancelWatchdog_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1153);
     NvU32 iface;
     OBJGPU *pTempGpu = NULL;
 
@@ -4633,6 +4708,7 @@ gsyncEnableFramelockInterrupt_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1154);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU8  regCtrl3;
     NvU32 iface;
@@ -4676,6 +4752,7 @@ gsyncDisableFrameLockInterrupt_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1155);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU8  regCtrl3;
     NvU32 iface;
@@ -4716,6 +4793,7 @@ gsyncEnableNonFramelockInterrupt_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1156);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU8  regCtrl3 = 0x00;
     NV_STATUS rmStatus = NV_OK;
@@ -4741,6 +4819,7 @@ gsyncDisableNonFramelockInterrupt_P2060
     PDACEXTERNALDEVICE pExtDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1157);
     PDACP2060EXTERNALDEVICE pThis = (PDACP2060EXTERNALDEVICE) pExtDev;
     NvU8  regCtrl3 = 0x00;
     NV_STATUS rmStatus = NV_OK;
@@ -4763,6 +4842,7 @@ gsyncResetMosaicData_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1158);
    NvU8 i;
 
    if (!pThis)
@@ -4793,6 +4873,7 @@ gsyncUpdateSwapRdyConnectionForGpu_P2060
     NvBool bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1159);
     NV_STATUS rmStatus = NV_OK;
     NvU8 ctrl2 = 0x00;
 
@@ -4821,6 +4902,7 @@ gsyncIsFrameLockMaster_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1160);
     NvU32 iface;
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
@@ -4850,6 +4932,7 @@ gsyncIsFrameLocked_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1161);
     NvU32 iface;
 
     for (iface = 0; iface < NV_P2060_MAX_IFACES_PER_GSYNC; iface++)
@@ -4879,6 +4962,7 @@ gsyncIsOnlyFrameLockMaster_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1162);
     NvU32 iface, numHeads, head;
     KernelDisplay  *pKernelDisplay;
     OBJGPU  *pGpu;
@@ -4921,6 +5005,7 @@ gsyncIsP2060MasterBoard
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1163);
     NvU8 ctrl;
     NvBool bIsMasterBoard;
     NV_STATUS rmStatus;
@@ -4951,6 +5036,7 @@ GpuIsConnectedToMasterViaBridge
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1164);
     OBJGPU *pOtherGpu = NULL;
     NvU32 gpuMask, gpuIndex, tempIface;
     NvU32 drOut, drIn;
@@ -5001,6 +5087,7 @@ NV_STATUS gsyncFrameCountTimerService_P2060
     void *pComponent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1165);
     PDACP2060EXTERNALDEVICE pThis = NULL;
     NV_STATUS status;
     OBJGSYNC *pGsync = NULL;
@@ -5041,6 +5128,7 @@ gsyncResetFrameCountData_P2060
     PDACP2060EXTERNALDEVICE pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1166);
 
     NvU8 regCtrl3;
     NV_STATUS rmStatus;
@@ -5091,6 +5179,7 @@ gsyncUpdateFrameCount_P2060
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1167);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     RM_API *pRmApi;
     NvU32 hClient;
@@ -5304,6 +5393,7 @@ gsyncGetNumberOfGpuFrameCountRollbacks_P2060
     NvU32 high
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1168);
     NvU32 mid = (low + high) / 2;
 
     if (FrameCount >= (high * NV_P2060_MAX_GPU_FRAME_COUNT))
@@ -5336,6 +5426,7 @@ gsyncSupportsLargeSyncSkew_P2060
     DACEXTERNALDEVICE *pExtdev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1169);
     if (pExtdev->deviceId == DAC_EXTERNAL_DEVICE_P2061)
     {
         // All p2061 revisions support sync skew > 1.
@@ -5359,6 +5450,7 @@ needsMasterBarrierWar
     PDACEXTERNALDEVICE pExtdev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1170);
     if (pExtdev->deviceId == DAC_EXTERNAL_DEVICE_P2061)
     {
         // All p2061 revisions do not need the WAR.
@@ -5385,6 +5477,7 @@ isFirmwareRevMismatch
     DAC_EXTERNAL_DEVICE_REVS currentRev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1171);
     if (IsKEPLER(pGpu))
     {
         return ((currentRev < NV_P2060_MIN_REV) ||
@@ -5416,6 +5509,7 @@ isBoardWithNvlinkQsyncContention
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1172);
     NvU16 devIds[] = {
         0x2230,     // Nvidia RTX A6000 (PG133 SKU 500)
         0x2231,     // Nvidia RTX A5000 (PG132 SKU 500)
@@ -5443,6 +5537,7 @@ supportsMulDiv
     DACEXTERNALDEVICE *pExtDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1173);
     // Supported only for 2061 boards with >= 2.4
     if (pExtDev->deviceId == DAC_EXTERNAL_DEVICE_P2061)
     {
@@ -5464,6 +5559,7 @@ gsyncGetMulDiv_P2060
     NV30F1_CTRL_GSYNC_MULTIPLY_DIVIDE_SETTINGS *pMulDivSettings
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1174);
     DACP2060EXTERNALDEVICE *pThis = (DACP2060EXTERNALDEVICE *)pExtDev;
     NvU8 reg;
 
@@ -5495,6 +5591,7 @@ gsyncSetMulDiv_P2060
     NV30F1_CTRL_GSYNC_MULTIPLY_DIVIDE_SETTINGS *pMulDivSettings
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1175);
     DACP2060EXTERNALDEVICE *pThis = (DACP2060EXTERNALDEVICE *)pExtDev;
     NvU8 reg;
 

@@ -47,6 +47,7 @@ NV_STATUS diagapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4102);
     NvU32 i;
 
     for (i = 0; i < NV208F_NOTIFIERS_MAXCOUNT; i++)
@@ -66,6 +67,7 @@ diagapiControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4103);
     RmCtrlParams *pRmCtrlParams = pParams->pLegacyParams;
     gpuresControlSetup(pParams, staticCast(pDiagApi, GpuResource));
 
@@ -85,6 +87,7 @@ diagapiControlFilter_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4104);
     return NV_OK;
 }
 

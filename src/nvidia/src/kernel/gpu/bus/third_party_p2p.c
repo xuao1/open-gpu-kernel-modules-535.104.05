@@ -53,6 +53,7 @@ thirdpartyp2pConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 674);
     NV503C_ALLOC_PARAMETERS    *pNv503cAllocParams = pParams->pAllocParams;
     NvHandle                    hClient            = pCallContext->pClient->hClient;
     NvHandle                    hThirdPartyP2P     = pParams->hResource;
@@ -171,6 +172,7 @@ thirdpartyp2pConstruct_IMPL
 static inline
 NV_STATUS gpuFullPowerSanityCheck(OBJGPU *pGpu, NvBool bGpuAccess)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 675);
     API_GPU_FULL_POWER_SANITY_CHECK(pGpu, bGpuAccess, NV_FALSE);
     return NV_OK;
 }
@@ -181,6 +183,7 @@ thirdpartyp2pDestruct_IMPL
     ThirdPartyP2P *pThirdPartyP2P
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 676);
     NV_STATUS                               status = NV_OK;
     OBJGPU                                 *pGpu = GPU_RES_GET_GPU(pThirdPartyP2P);
     PCLI_THIRD_PARTY_P2P_VIDMEM_INFO        pVidmemInfo;
@@ -229,6 +232,7 @@ NV_STATUS CliGetThirdPartyP2PInfoFromToken
     ThirdPartyP2P            **ppThirdPartyP2P
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 677);
     ThirdPartyP2P *pThirdPartyP2P;
     RS_SHARE_ITERATOR it;
 
@@ -261,6 +265,7 @@ NV_STATUS CliGetPlatformDataMatchFromVidMem
     void *pPlatformData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 678);
     NV_STATUS status;
     PNODE pNode;
 
@@ -275,6 +280,7 @@ NV_STATUS CliGetThirdPartyP2PPlatformData
     void *platformData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 679);
     PCLI_THIRD_PARTY_P2P_VIDMEM_INFO        pVidmemInfo;
     CLI_THIRD_PARTY_P2P_VIDMEM_INFO_MAPIter vidMemMapIter = mapIterAll(&pThirdPartyP2P->vidmemInfoMap);
 
@@ -299,6 +305,7 @@ NV_STATUS CliNextThirdPartyP2PInfoWithPid
     ThirdPartyP2P **ppThirdPartyP2P
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 680);
     ThirdPartyP2P *pThirdPartyP2P;
     RS_SHARE_ITERATOR it;
 
@@ -341,6 +348,7 @@ NV_STATUS CliAddThirdPartyP2PVASpace
     NvU32         *pVASpaceToken
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 681);
     NvHandle hThirdPartyP2P = RES_GET_HANDLE(pThirdPartyP2P);
     RsClient *pClient = RES_GET_CLIENT(pThirdPartyP2P);
     CLI_THIRD_PARTY_P2P_VASPACE_INFO vaSpaceInfo;
@@ -399,6 +407,7 @@ NV_STATUS CliDelThirdPartyP2PVASpace
     NvHandle hVASpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 682);
     PCLI_THIRD_PARTY_P2P_VASPACE_INFO pVASpaceInfo;
 
     pVASpaceInfo = mapFind(&pThirdPartyP2P->vaSpaceInfoMap, hVASpace);
@@ -419,6 +428,7 @@ NV_STATUS thirdpartyp2pGetNextVASpaceInfo_IMPL
     PCLI_THIRD_PARTY_P2P_VASPACE_INFO *ppVASpaceInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 683);
     if (*ppVASpaceInfo == NULL)
     {
         *ppVASpaceInfo = mapFindGEQ(&pThirdPartyP2P->vaSpaceInfoMap, 0);
@@ -445,6 +455,7 @@ NV_STATUS thirdpartyp2pGetVASpaceInfoFromToken_IMPL
     PCLI_THIRD_PARTY_P2P_VASPACE_INFO *ppVASpaceInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 684);
     PCLI_THIRD_PARTY_P2P_VASPACE_INFO        pVASpaceInfo;
     CLI_THIRD_PARTY_P2P_VASPACE_INFO_MAPIter vaSpaceInfoIter = mapIterAll(&pThirdPartyP2P->vaSpaceInfoMap);
 
@@ -474,6 +485,7 @@ NV_STATUS CliAddThirdPartyP2PVidmemInfo
     Memory        *pMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 685);
     NV_STATUS status;
     PCLI_THIRD_PARTY_P2P_VIDMEM_INFO pVidmemInfo;
 
@@ -534,6 +546,7 @@ void CliDelThirdPartyP2PVidmemInfoPersistent
     CLI_THIRD_PARTY_P2P_VIDMEM_INFO *pVidmemInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 686);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     NODE *pNode = NULL;
 
@@ -552,6 +565,7 @@ NV_STATUS CliDelThirdPartyP2PVidmemInfo
     NvHandle hMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 687);
     NV_STATUS status;
     PNODE pNode;
     PCLI_THIRD_PARTY_P2P_MAPPING_INFO pMappingInfo;
@@ -610,6 +624,7 @@ NV_STATUS CliGetThirdPartyP2PVidmemInfoFromAddress
     PCLI_THIRD_PARTY_P2P_VIDMEM_INFO *ppVidmemInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 688);
     NV_STATUS status;
     PNODE pNode;
     PCLI_THIRD_PARTY_P2P_VIDMEM_INFO pVidmemInfo;
@@ -648,6 +663,7 @@ NV_STATUS CliGetThirdPartyP2PVidmemInfoFromId
     CLI_THIRD_PARTY_P2P_VIDMEM_INFO **ppVidmemInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 689);
     NV_STATUS status;
     PNODE pNode;
 
@@ -673,6 +689,7 @@ NV_STATUS CliRegisterThirdPartyP2PMappingCallback
     void                                 *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 690);
     NV_STATUS status;
     PCLI_THIRD_PARTY_P2P_MAPPING_INFO pMappingInfo;
 
@@ -703,6 +720,7 @@ NV_STATUS CliAddThirdPartyP2PMappingInfo
     PCLI_THIRD_PARTY_P2P_MAPPING_INFO    *ppMappingInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 691);
     NV_STATUS status;
     PCLI_THIRD_PARTY_P2P_VIDMEM_INFO pVidmemInfo;
     PCLI_THIRD_PARTY_P2P_MAPPING_INFO pMappingInfo;
@@ -751,6 +769,7 @@ NV_STATUS CliGetThirdPartyP2PMappingInfoFromKey
     PCLI_THIRD_PARTY_P2P_MAPPING_INFO *ppMappingInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 692);
     NV_STATUS status;
     PNODE pNode;
     PCLI_THIRD_PARTY_P2P_VIDMEM_INFO pVidmemInfo;
@@ -784,6 +803,7 @@ static NV_STATUS _thirdpartyp2pDelMappingInfoByKey
     CLI_THIRD_PARTY_P2P_VIDMEM_INFO **ppVidmemInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 693);
     NV_STATUS                                status;
     PNODE                                    pNode;
     PCLI_THIRD_PARTY_P2P_VIDMEM_INFO         pVidmemInfo;
@@ -919,6 +939,7 @@ NV_STATUS thirdpartyp2pDelMappingInfoByKey_IMPL
     NvBool                            bIsRsyncNeeded
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 694);
     return _thirdpartyp2pDelMappingInfoByKey(pThirdPartyP2P,
                                              pKey,
                                              bIsRsyncNeeded,
@@ -932,6 +953,7 @@ NV_STATUS thirdpartyp2pDelPersistentMappingInfoByKey_IMPL
     NvBool                            bIsRsyncNeeded
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 695);
     CLI_THIRD_PARTY_P2P_VIDMEM_INFO *pVidmemInfo = NULL;
 
     NV_ASSERT_OK_OR_RETURN(
@@ -952,6 +974,7 @@ CliAddThirdPartyP2PClientPid
     NvU32    client
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 696);
     RsResourceRef *pThirdPartyP2PRef;
     ThirdPartyP2P *pThirdPartyP2P;
     NvU32          pidIndex;
@@ -1000,6 +1023,7 @@ thirdpartyp2pIsValidClientPid_IMPL
     NvHandle hClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 697);
     NvU32 pidIndex;
 
     for (pidIndex = 0; pidIndex < CLI_THIRD_PARTY_P2P_MAX_CLIENT; pidIndex++)
@@ -1023,6 +1047,7 @@ CliDelThirdPartyP2PClientPid
     NvU32    client
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 698);
     NvU32 pidIndex;
     RsResource               *pRes;
     ThirdPartyP2P            *pThirdPartyP2P;
@@ -1053,6 +1078,7 @@ CliUnregisterFromThirdPartyP2P
     RmClient *pClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 699);
     NV_STATUS status = NV_OK;
     ThirdPartyP2P *pThirdPartyP2P = NULL;
     NvU32 pid;
@@ -1081,11 +1107,13 @@ CliUnregisterFromThirdPartyP2P
 NV_STATUS
 shrp2pConstruct_IMPL(P2PTokenShare *pP2PTokenShare)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 700);
     return NV_OK;
 }
 
 void shrp2pDestruct_IMPL(P2PTokenShare *pP2PTokenShare)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 701);
 }
 
 void
@@ -1094,6 +1122,7 @@ CliUnregisterMemoryFromThirdPartyP2P
     Memory   *pMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 702);
     RsClient *pRsClient = RES_GET_CLIENT(pMemory);
     NvHandle hMemory = RES_GET_HANDLE(pMemory);
     ThirdPartyP2P *pThirdPartyP2P;

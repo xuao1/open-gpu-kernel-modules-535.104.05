@@ -39,6 +39,7 @@ gpudbConstruct_IMPL
     GpuDb *pGpuDb
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4281);
     listInit(&pGpuDb->gpuList, portMemAllocatorGetGlobalNonPaged());
 
     pGpuDb->pLock = portSyncMutexCreate(portMemAllocatorGetGlobalNonPaged());
@@ -58,6 +59,7 @@ gpudbDestruct_IMPL
     GpuDb *pGpuDb
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4282);
     if (pGpuDb->pLock != NULL)
     {
         portSyncMutexDestroy(pGpuDb->pLock);
@@ -72,6 +74,7 @@ _gpudbFindGpuInfoByUuid
     const NvU8 *pUuid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4283);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     GpuDb *pGpuDb = SYS_GET_GPUDB(pSys);
     GPU_INFO_LIST_NODE *pNode = NULL;
@@ -92,6 +95,7 @@ _gpudbFindGpuInfoByUuid
 NV_STATUS
 gpudbRegisterGpu(const NvU8 *pUuid, const NBADDR *pUpstreamPortPciInfo, NvU64 pciInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4284);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     GpuDb *pGpuDb = SYS_GET_GPUDB(pSys);
     GPU_INFO_LIST_NODE *pNode;
@@ -165,6 +169,7 @@ gpudbSetGpuComputePolicyConfig
     GPU_COMPUTE_POLICY_INFO *policyInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4285);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     GpuDb *pGpuDb = SYS_GET_GPUDB(pSys);
     GPU_INFO_LIST_NODE *pNode;
@@ -220,6 +225,7 @@ gpudbGetGpuComputePolicyConfigs
     GPU_COMPUTE_POLICY_INFO *policyInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4286);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     GpuDb *pGpuDb = SYS_GET_GPUDB(pSys);
     GPU_INFO_LIST_NODE *pNode;
@@ -266,6 +272,7 @@ gpudbSetClockPoliciesControl
     GPU_CLK_PROP_TOP_POLS_CONTROL *pControl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4287);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     GpuDb *pGpuDb = SYS_GET_GPUDB(pSys);
     GPU_INFO_LIST_NODE *pNode;
@@ -313,6 +320,7 @@ gpudbGetClockPoliciesControl
     GPU_CLK_PROP_TOP_POLS_CONTROL *pControl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4288);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     GpuDb *pGpuDb = SYS_GET_GPUDB(pSys);
     GPU_INFO_LIST_NODE *pNode;
@@ -349,6 +357,7 @@ gpudbSetShutdownState
     const NvU8 *pUuid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4289);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     GpuDb *pGpuDb = SYS_GET_GPUDB(pSys);
     GPU_INFO_LIST_NODE *pNode;

@@ -52,6 +52,7 @@ knvlinkConstructHal_GV100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3747);
     NV_STATUS status = NV_OK;
 
     if (IS_FMODEL(pGpu) || IS_EMULATION(pGpu))
@@ -78,6 +79,7 @@ knvlinkEnableLinksPostTopology_GV100
     NvU32         linkMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3748);
     NV_STATUS status = NV_OK;
     NV2080_CTRL_NVLINK_ENABLE_LINKS_POST_TOPOLOGY_PARAMS params;
 
@@ -133,6 +135,7 @@ knvlinkOverrideConfig_GV100
     NvU32         phase
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3749);
     NV_STATUS status = NV_OK;
     NvU32     i;
 
@@ -220,6 +223,7 @@ knvlinkApplyNvswitchDegradedModeSettings_GV100
     NvU32        *pSwitchLinkMasks
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3750);
     NV_STATUS status = NV_OK;
 
 #if defined(INCLUDE_NVLINK_LIB)
@@ -327,6 +331,7 @@ _knvlinkAreLinksDisconnected
     NvBool       *bLinkDisconnected
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3751);
     NV_STATUS status = NV_OK;
     NvU32     linkId;
 
@@ -391,6 +396,7 @@ knvlinkProgramLinkSpeed_GV100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3752);
     NV_STATUS status = NV_OK;
     NvU32     platformLineRate;
 
@@ -433,6 +439,7 @@ knvlinkStatePostLoadHal_GV100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3753);
     NV_STATUS status = NV_OK;
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
 
@@ -508,6 +515,7 @@ knvlinkValidateFabricBaseAddress_GV100
     NvU64         fabricBaseAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3754);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64          fbSizeBytes;
     NvU64          fbUpperLimit;
@@ -562,6 +570,7 @@ knvlinkSetUniqueFabricBaseAddress_GV100
     NvU64         fabricBaseAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3755);
     NV_STATUS status = NV_OK;
 
     if (!knvlinkIsForcedConfig(pGpu, pKernelNvlink))

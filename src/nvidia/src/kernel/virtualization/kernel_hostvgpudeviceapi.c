@@ -30,6 +30,7 @@ kernelhostvgpudeviceshrConstruct_IMPL
     KernelHostVgpuDeviceShr *pKernelHostVgpuDeviceShr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5785);
     return NV_OK;
 }
 
@@ -39,6 +40,7 @@ kernelhostvgpudeviceshrDestruct_IMPL
     KernelHostVgpuDeviceShr *pKernelHostVgpuDeviceShr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5786);
 }
 
 NV_STATUS
@@ -49,6 +51,7 @@ kernelhostvgpudeviceapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5787);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -58,6 +61,7 @@ kernelhostvgpudeviceapiCanCopy_IMPL
     KernelHostVgpuDeviceApi *pKernelHostVgpuDeviceApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5788);
     return NV_TRUE;
 }
 
@@ -69,12 +73,14 @@ kernelhostvgpudeviceapiCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5789);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 void
 destroyKernelHostVgpuDeviceShare(OBJGPU *pGpu, KernelHostVgpuDeviceShr* pShare)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5790);
 }
 
 void
@@ -83,6 +89,7 @@ kernelhostvgpudeviceapiDestruct_IMPL
     KernelHostVgpuDeviceApi *pKernelHostVgpuDeviceApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5791);
 }
 
 NV_STATUS
@@ -92,6 +99,7 @@ kernelhostvgpudeviceapiCtrlCmdSetVgpuDeviceInfo_IMPL
     NVA084_CTRL_KERNEL_HOST_VGPU_DEVICE_SET_VGPU_DEVICE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5792);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -102,6 +110,7 @@ kernelhostvgpudeviceapiCtrlCmdSetVgpuGuestLifeCycleState_IMPL
     NVA084_CTRL_KERNEL_HOST_VGPU_DEVICE_SET_VGPU_GUEST_LIFE_CYCLE_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5793);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -112,6 +121,7 @@ kernelhostvgpudeviceapiCtrlCmdVfConfigSpaceAccess_IMPL
     NVA084_CTRL_KERNEL_HOST_VGPU_DEVICE_VF_CONFIG_SPACE_ACCESS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5794);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -122,6 +132,7 @@ kernelhostvgpudeviceapiCtrlCmdBindFecsEvtbuf_IMPL
     NVA084_CTRL_KERNEL_HOST_VGPU_DEVICE_BIND_FECS_EVTBUF_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5795);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -132,6 +143,7 @@ kernelhostvgpudeviceapiCtrlCmdSetOfflinedPagePatchInfo_IMPL
     NVA084_CTRL_KERNEL_HOST_VGPU_DEVICE_SET_OFFLINED_PAGE_PATCHINFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5796);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -143,6 +155,7 @@ kernelhostvgpudeviceGetGuestFbInfo
     VGPU_DEVICE_GUEST_FB_INFO   *pFbInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5797);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -155,6 +168,7 @@ kernelhostvgpudeviceSetGuestFbInfo
     NvU64 length
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5798);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -165,6 +179,7 @@ kernelhostvgpudeviceapiCtrlCmdTriggerPrivDoorbell_IMPL
     NVA084_CTRL_KERNEL_HOST_VGPU_DEVICE_TRIGGER_PRIV_DOORBELL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5799);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -175,6 +190,7 @@ kernelhostvgpudeviceapiCtrlCmdEventSetNotification_IMPL
     NVA084_CTRL_KERNEL_HOST_VGPU_DEVICE_EVENT_SET_NOTIFICATION_PARAMS *pSetEventParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5800);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -185,6 +201,7 @@ kernelhostvgpudeviceapiCtrlCmdGetBarMappingRanges_IMPL
     NVA084_CTRL_KERNEL_HOST_VGPU_DEVICE_GET_BAR_MAPPING_RANGES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5801);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -194,5 +211,6 @@ kernelhostvgpudeviceapiCtrlCmdRestoreDefaultExecPartition_IMPL
     KernelHostVgpuDeviceApi *pKernelHostVgpuDeviceApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5802);
     return NV_ERR_NOT_SUPPORTED;
 }

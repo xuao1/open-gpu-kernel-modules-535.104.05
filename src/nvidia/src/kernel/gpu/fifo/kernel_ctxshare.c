@@ -44,6 +44,7 @@ kctxshareapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1531);
     NV_STATUS                           rmStatus     = NV_OK;
     OBJVASPACE                         *pVAS;
     OBJGPU                             *pGpu         = GPU_RES_GET_GPU(pKernelCtxShareApi);
@@ -183,6 +184,7 @@ kctxshareapiDestruct_IMPL
     KernelCtxShareApi *pKernelCtxShareApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1532);
     CALL_CONTEXT                *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
     OBJGPU                      *pGpu = GPU_RES_GET_GPU(pKernelCtxShareApi);
@@ -253,6 +255,7 @@ kctxshareapiCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1533);
     NV_STATUS      rmStatus     = NV_OK;
     OBJGPU        *pGpu         = GPU_RES_GET_GPU(pKernelCtxShareApi);
     RsClient      *pDstClient   = pCallContext->pClient;
@@ -326,6 +329,7 @@ kctxshareapiCanCopy_IMPL
     KernelCtxShareApi *pKernelCtxShareApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1534);
     return NV_TRUE;
 }
 
@@ -335,6 +339,7 @@ kctxshareConstruct_IMPL
     KernelCtxShare *pKernelCtxShare
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1535);
     return NV_OK;
 }
 
@@ -365,6 +370,7 @@ kctxshareInitCommon_IMPL
     KernelChannelGroupApi *pKernelChannelGroupApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1536);
     NV_STATUS           status                = NV_OK;
     NvU32               heapFlag              = 0;
     NvU64               offset                = 0;
@@ -504,6 +510,7 @@ kctxshareDestroyCommon_IMPL
     KernelChannelGroupApi *pKernelChannelGroupApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1537);
     NV_STATUS               status = NV_OK;
     NvU32                   subctxId;
     NvU32                   i;
@@ -590,6 +597,7 @@ kctxshareDestruct_IMPL
     KernelCtxShare *pKernelCtxShare
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1538);
     //
     // Assert that kctxshareDestroyCommon was called to free kctxshare resources before
     // getting here by checking if subctxId has been freed from heap.

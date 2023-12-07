@@ -45,6 +45,7 @@ dispcmnCtrlCmdSystemGetHotplugUnplugState_IMPL
     NV0073_CTRL_SYSTEM_GET_HOTPLUG_UNPLUG_STATE_PARAMS *pHotplugParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 945);
     NvHandle   hDevice = RES_GET_PARENT_HANDLE(pDispCommon);
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(DISPAPI_GET_GPU(pDispCommon));
     NvU32      hotPlugMask   = 0;
@@ -107,6 +108,7 @@ dispcmnCtrlCmdSystemAllocateDisplayBandwidth_IMPL
     NV0073_CTRL_SYSTEM_ALLOCATE_DISPLAY_BANDWIDTH_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 946);
     OBJGPU        *pGpu;
     KernelDisplay *pKernelDisplay;
     NV_STATUS      status;
@@ -138,6 +140,7 @@ dispcmnCtrlCmdDpGenerateFakeInterrupt_IMPL
     NV0073_CTRL_CMD_DP_GENERATE_FAKE_INTERRUPT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 947);
     OBJGPU *pGpu = DISPAPI_GET_GPU(pDispCommon);
     NvU32 displayId = pParams->displayId;
     NvU32 interruptType = pParams->interruptType;
@@ -217,6 +220,7 @@ NV_STATUS dispcmnCtrlCmdVRRSetRgLineActive_IMPL
     NV0073_CTRL_CMD_SYSTEM_VRR_SET_RGLINE_ACTIVE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 948);
     POBJGPU   pGpu   = DISPAPI_GET_GPU(pDispCommon);
     NvHandle  hClient = RES_GET_CLIENT_HANDLE(pDispCommon);
     NvHandle  hParent = RES_GET_PARENT_HANDLE(pDispCommon);

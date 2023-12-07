@@ -51,6 +51,7 @@ gpuIsInternalSku_FWCLIENT
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1869);
     GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
 
     return pGSCI->bGpuInternalSku;
@@ -62,6 +63,7 @@ gpuInitSriov_FWCLIENT
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1870);
     GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
     NvU32 totalPcieFns = 0;
 
@@ -106,6 +108,7 @@ gpuDeinitSriov_FWCLIENT
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1871);
     if (pGpu->sriovState.pAllocatedGfids != NULL)
     {
         // Clear GFID 0 usage.
@@ -124,12 +127,14 @@ gpuCheckPageRetirementSupport_GSPCLIENT
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1872);
     GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
     return pGSCI->bPageRetirementSupported;
 }
 
 void gpuInitBranding_FWCLIENT(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1873);
     GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
 
     pGpu->bIsQuadro    = pGSCI->bIsQuadroAd || pGSCI->bIsQuadroGeneric;
@@ -144,6 +149,7 @@ void gpuInitBranding_FWCLIENT(OBJGPU *pGpu)
 
 BRANDING_TYPE gpuDetectBranding_FWCLIENT(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1874);
     GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
 
     if (pGSCI->bIsQuadroGeneric)
@@ -159,6 +165,7 @@ BRANDING_TYPE gpuDetectBranding_FWCLIENT(OBJGPU *pGpu)
 COMPUTE_BRANDING_TYPE
 gpuDetectComputeBranding_FWCLIENT(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1875);
     GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
     return pGSCI->computeBranding;
 }
@@ -166,6 +173,7 @@ gpuDetectComputeBranding_FWCLIENT(OBJGPU *pGpu)
 BRANDING_TYPE
 gpuDetectVgxBranding_FWCLIENT(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1876);
     return pGpu->bIsVgx ? BRANDING_TYPE_VGX : BRANDING_TYPE_NONE;
 }
 
@@ -178,6 +186,7 @@ gpuGenGidData_FWCLIENT
     NvU32   gidFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1877);
     if (FLD_TEST_DRF(2080_GPU_CMD, _GPU_GET_GID_FLAGS, _TYPE, _SHA1, gidFlags))
     {
         GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
@@ -197,18 +206,21 @@ gpuGenGidData_FWCLIENT
 
 NvU32 gpuGetActiveFBIOs_FWCLIENT(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1878);
     GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
     return pGSCI->fbio_mask;
 }
 
 NvBool gpuIsGlobalPoisonFuseEnabled_FWCLIENT(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1879);
     GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
     return pGSCI->poisonFuseEnabled;
 }
 
 void gpuInitProperties_FWCLIENT(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1880);
     GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
 
     pGpu->setProperty(pGpu, PDB_PROP_GPU_IS_MOBILE, pGSCI->bIsMobile);
@@ -234,6 +246,7 @@ gpuGetChipSubRev_FWCLIENT
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1881);
     const NV2080_CTRL_INTERNAL_GPU_GET_CHIP_INFO_PARAMS *pChipInfo = gpuGetChipInfo(pGpu);
     NV_ASSERT_OR_RETURN(pChipInfo != NULL, 0);
 
@@ -246,6 +259,7 @@ gpuGetEmulationRev1_FWCLIENT
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1882);
     const NV2080_CTRL_INTERNAL_GPU_GET_CHIP_INFO_PARAMS *pChipInfo = gpuGetChipInfo(pGpu);
     NV_ASSERT_OR_RETURN(pChipInfo != NULL, 0);
 
@@ -258,6 +272,7 @@ gpuConstructDeviceInfoTable_FWCLIENT
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1883);
     NV_STATUS status;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -306,6 +321,7 @@ gpuGetLitterValues_FWCLIENT
     NvU32 index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1884);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     const NV2080_CTRL_INTERNAL_STATIC_GR_INFO *pGrInfo;
     NvU32 i;
@@ -330,6 +346,7 @@ gpuGetRegBaseOffset_FWCLIENT
     NvU32 *pOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1885);
     const NV2080_CTRL_INTERNAL_GPU_GET_CHIP_INFO_PARAMS *pChipInfo = gpuGetChipInfo(pGpu);
     NV_ASSERT_OR_RETURN(pChipInfo != NULL, NV_ERR_INVALID_STATE);
     NV_ASSERT_OR_RETURN(regBase < NV_ARRAY_ELEMENTS(pChipInfo->regBases), NV_ERR_NOT_SUPPORTED);
@@ -349,6 +366,7 @@ gpuReadBAR1Size_FWCLIENT
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1886);
     const NV2080_CTRL_INTERNAL_GPU_GET_CHIP_INFO_PARAMS *pChipInfo = gpuGetChipInfo(pGpu);
     NV_ASSERT_OR_RETURN(pChipInfo != NULL, 0);
 

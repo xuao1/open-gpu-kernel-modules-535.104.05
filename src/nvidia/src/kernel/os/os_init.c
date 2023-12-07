@@ -71,6 +71,7 @@ const char *ppOsBugCheckBugcodeStr[] = OS_BUG_CHECK_BUGCODE_STR;
 NV_STATUS
 constructObjOS(OBJOS *pOS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4751);
     // Stub out function pointers
     initOSFunctionPointers(pOS);
 
@@ -83,6 +84,7 @@ constructObjOS(OBJOS *pOS)
 static void
 initOSFunctionPointers(OBJOS *pOS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4752);
     initMiscOSFunctionPointers(pOS);
     initWinNTStubOSFunctionPointers(pOS);
     initMacOSCoreOSFunctionPointers(pOS);
@@ -92,6 +94,7 @@ initOSFunctionPointers(OBJOS *pOS)
 static void
 initMiscOSFunctionPointers(OBJOS *pOS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4753);
     initCommonMiscOSFunctionPointers(pOS);
     initStubMiscOSFunctionPointers(pOS);
 }
@@ -99,6 +102,7 @@ initMiscOSFunctionPointers(OBJOS *pOS)
 static void
 initCommonMiscOSFunctionPointers(OBJOS *pOS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4754);
     // Common OS function pointers.
     pOS->osGetSimulationMode             = osGetSimulationMode;
 }
@@ -106,6 +110,7 @@ initCommonMiscOSFunctionPointers(OBJOS *pOS)
 static void
 initStubMiscOSFunctionPointers(OBJOS *pOS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4755);
     // Stubbed OS function pointers.
     pOS->osSimEscapeWrite               = stubOsSimEscapeWrite;
     pOS->osSimEscapeWriteBuffer         = stubOsSimEscapeWriteBuffer;
@@ -124,6 +129,7 @@ initStubMiscOSFunctionPointers(OBJOS *pOS)
 static void
 initWinNTStubOSFunctionPointers(OBJOS *pOS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4756);
     pOS->osQADbgRegistryInit         = stubOsQADbgRegistryInit;
     pOS->osQueueWorkItem             = stubOsQueueWorkItem;
     pOS->osQueueWorkItemWithFlags    = stubOsQueueWorkItemWithFlags;
@@ -140,6 +146,7 @@ initWinNTStubOSFunctionPointers(OBJOS *pOS)
 static void
 initMacOSCoreOSFunctionPointers(OBJOS *pOS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4757);
     pOS->osNv_rdcr4                      = stubOsnv_rdcr4;
     pOS->osNv_rdxcr0                     = stubOsnv_rdxcr0;
     pOS->osNv_cpuid                      = stubOsnv_cpuid;
@@ -152,6 +159,7 @@ initMacOSCoreOSFunctionPointers(OBJOS *pOS)
 static void
 initAPIOSFunctionPointers(OBJOS *pOS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4758);
     pOS->osRmInitRm                      = osRmInitRm;
 }
 
@@ -160,6 +168,7 @@ initAPIOSFunctionPointers(OBJOS *pOS)
 //
 NvU32 osGetMaximumCoreCount(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4759);
     //
     // Windows provides an API to query this that supports CPU hotadd that our
     // cpuid() didn't catch, so favor that.
@@ -190,6 +199,7 @@ void osGpuWriteReg008(
      NvU8     thisValue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4760);
     DEVICE_MAPPING *pMapping = gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0);
     osDevWriteReg008(pGpu, pMapping, thisAddress, thisValue);
 }
@@ -211,6 +221,7 @@ void osGpuWriteReg016(
      NvV16    thisValue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4761);
     DEVICE_MAPPING *pMapping = gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0);
     osDevWriteReg016(pGpu, pMapping, thisAddress, thisValue);
 }
@@ -232,6 +243,7 @@ void osGpuWriteReg032(
      NvV32    thisValue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4762);
     DEVICE_MAPPING *pMapping = gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0);
     osDevWriteReg032(pGpu, pMapping, thisAddress, thisValue);
 }
@@ -252,6 +264,7 @@ NvU8 osGpuReadReg008(
     NvU32   thisAddress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4763);
     DEVICE_MAPPING *pMapping = gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0);
     return osDevReadReg008(pGpu, pMapping, thisAddress);
 }
@@ -272,6 +285,7 @@ NvU16 osGpuReadReg016(
     NvU32    thisAddress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4764);
     DEVICE_MAPPING *pMapping = gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0);
     return osDevReadReg016(pGpu, pMapping, thisAddress);
 }
@@ -292,6 +306,7 @@ NvU32 osGpuReadReg032(
     NvU32   thisAddress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4765);
     DEVICE_MAPPING *pMapping = gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0);
     return osDevReadReg032(pGpu, pMapping, thisAddress);
 }
@@ -303,6 +318,7 @@ void vgpuDevWriteReg032(
         NvBool   *vgpuHandled
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4766);
     NvBool         isPCIConfigAccess = NV_FALSE;
     NvU32          offAddr = 0;
     NvU32          configSpaceSize;
@@ -374,6 +390,7 @@ NvU32 vgpuDevReadReg032(
         NvBool  *vgpuHandled
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4767);
     NvBool         isPCIConfigAccess = NV_FALSE;
     NvU32          offAddr = 0;
     NvU32          configSpaceSize;
@@ -450,6 +467,7 @@ NvU64 osGetMaxUserVa(void);
 NvU32
 osGetCpuVaAddrShift(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4768);
     NvU64 maxUserVa = osGetMaxUserVa();
 
     //
@@ -483,6 +501,7 @@ osMemAddFilter
     void           *pPriv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4769);
     OBJSYS             *pSys = SYS_GET_INSTANCE();
     POSMEMFILTERDATA    pFilterData = NULL;
 
@@ -514,6 +533,7 @@ osMemRemoveFilter
     NvU64       rangeStart
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4770);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     PNODE       pNode = NULL;
 
@@ -549,6 +569,7 @@ osMemRemoveFilter
 POSMEMFILTERDATA
 osMemGetFilter(NvUPtr address)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4771);
     OBJSYS     *pSys;
     PNODE       pNode = NULL;
 
@@ -581,6 +602,7 @@ osMemGetFilter(NvUPtr address)
 
 void osPagedSegmentAccessCheck(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4772);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJOS     *pOS  = SYS_GET_OS(pSys);
 
@@ -610,6 +632,7 @@ NV_STATUS osReadRegistryDword
     NvU32  *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4773);
     NV_STATUS status;
 
     NV_ASSERT_OR_RETURN(pRegParmStr != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -644,6 +667,7 @@ NV_STATUS osReadRegistryString
     NvU32   *pCbLen
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4774);
     NV_STATUS status;
     NV_ASSERT_OR_RETURN(pRegParmStr != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(pCbLen != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -660,6 +684,7 @@ NV_STATUS osReadRegistryString
 
 void nvErrorLog(void *pVoid, NvU32 num, const char *pFormat, va_list arglist)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4775);
     if ((pFormat == NULL) || (*pFormat == '\0'))
     {
         return;
@@ -706,6 +731,7 @@ nvErrorLog_va
     ...
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4776);
     va_list arglist;
 
     va_start(arglist, pFormat);

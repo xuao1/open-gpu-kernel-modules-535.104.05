@@ -47,6 +47,7 @@ confComputeApiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 845);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
 
@@ -61,6 +62,7 @@ confComputeApiDestruct_IMPL
     ConfidentialComputeApi *pConfComputeApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 846);
 }
 
 NV_STATUS
@@ -70,6 +72,7 @@ confComputeApiCtrlCmdSystemGetCapabilities_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_SYSTEM_GET_CAPABILITIES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 847);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     CONF_COMPUTE_CAPS *pCcCaps = pConfComputeApi->pCcCaps;
 
@@ -131,6 +134,7 @@ confComputeApiCtrlCmdSystemGetGpusState_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_SYSTEM_GET_GPUS_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 848);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
 
     pParams->bAcceptClientRequest = pConfComputeApi->pCcCaps->bAcceptClientRequest;
@@ -145,6 +149,7 @@ confComputeApiCtrlCmdSystemSetGpusState_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_SYSTEM_SET_GPUS_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 849);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
 
     pConfComputeApi->pCcCaps->bAcceptClientRequest = pParams->bAcceptClientRequest;
@@ -159,6 +164,7 @@ confComputeApiCtrlCmdGpuGetVidmemSize_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_GPU_GET_VIDMEM_SIZE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 850);
     Subdevice        *pSubdevice            = NULL;
     OBJGPU           *pGpu                  = NULL;
     Heap             *pHeap                 = NULL;
@@ -211,6 +217,7 @@ confComputeApiCtrlCmdGpuSetVidmemSize_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_GPU_SET_VIDMEM_SIZE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 851);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
 
     return NV_OK;
@@ -223,6 +230,7 @@ confComputeApiCtrlCmdGetGpuCertificate_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_GET_GPU_CERTIFICATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 852);
     Subdevice           *pSubdevice   = NULL;
     OBJGPU              *pGpu         = NULL;
     ConfidentialCompute *pConfCompute = NULL;
@@ -260,6 +268,7 @@ confComputeApiCtrlCmdGetGpuAttestationReport_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_GET_GPU_ATTESTATION_REPORT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 853);
     Subdevice           *pSubdevice   = NULL;
     OBJGPU              *pGpu         = NULL;
     ConfidentialCompute *pConfCompute = NULL;
@@ -299,6 +308,7 @@ confComputeApiCtrlCmdGpuGetNumSecureChannels_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_GPU_GET_NUM_SECURE_CHANNELS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 854);
     Subdevice  *pSubdevice;
     OBJGPU     *pGpu;
     KernelFifo *pKernelFifo;

@@ -50,6 +50,7 @@ _krcErrorWriteNotifierCpuMemHelper
     NV_STATUS  notifierStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3933);
     NV_STATUS status = NV_OK;
 
     switch (memdescGetAddressSpace(pMemory->pMemDesc))
@@ -100,6 +101,7 @@ krcErrorWriteNotifier_CPU
     NvU32         *pFlushFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3934);
     NV_STATUS   status = NV_OK;
     ContextDma *pContextDma;
     Memory     *pMemory;
@@ -248,6 +250,7 @@ NV_STATUS krcErrorSetNotifier_IMPL
     RC_NOTIFIER_SCOPE  scope
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3935);
     KernelFifo   *pKernelFifo     = GPU_GET_KERNEL_FIFO(pGpu);
     NvU32         status          = NV_OK;
     NvU32         flushFlags      = 0;
@@ -366,6 +369,7 @@ krcErrorSendEventNotificationsCtxDma_FWCLIENT
     RC_NOTIFIER_SCOPE scope
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3936);
     NV_STATUS          status          = NV_OK;
     KernelFifo        *pKernelFifo     = GPU_GET_KERNEL_FIFO(pGpu);
     NvBool             bNewListCreated = NV_FALSE;
@@ -444,6 +448,7 @@ krcErrorSendEventNotifications_KERNEL
     NvU16              partitionAttributionId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3937);
     NV_ASSERT_OR_RETURN(!gpumgrGetBcEnabledStatus(pGpu), NV_ERR_INVALID_STATE);
     NV_ASSERT_OR_RETURN(pKernelChannel != NULL, NV_ERR_INVALID_CHANNEL);
 

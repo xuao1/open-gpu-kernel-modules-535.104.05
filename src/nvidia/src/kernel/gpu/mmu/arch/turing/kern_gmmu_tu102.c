@@ -53,6 +53,7 @@ kgmmuCheckPendingInvalidates_TU102
     NvU32       gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3569);
     NV_STATUS status = NV_OK;
 
     while (1)
@@ -96,6 +97,7 @@ kgmmuCommitTlbInvalidate_TU102
     TLB_INVALIDATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3570);
     NV_STATUS status = NV_OK;
 
     if (!FLD_TEST_DRF(_VIRTUAL_FUNCTION_PRIV, _MMU_INVALIDATE, _ALL_PDB, _TRUE, pParams->regVal))
@@ -135,6 +137,7 @@ kgmmuSetPdbToInvalidate_TU102
     TLB_INVALIDATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3571);
     {
         GPU_VREG_WR32(pGpu, NV_VIRTUAL_FUNCTION_PRIV_MMU_INVALIDATE_PDB,
                 DRF_NUM(_VIRTUAL_FUNCTION_PRIV, _MMU_INVALIDATE_PDB, _ADDR,
@@ -160,6 +163,7 @@ kgmmuSetPdbToInvalidate_TU102
 NV_STATUS
 kgmmuFmtFamiliesInit_TU102(OBJGPU *pGpu, KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3572);
     extern NV_STATUS kgmmuFmtFamiliesInit_GV100(OBJGPU *pGpu, KernelGmmu *pKernelGmmu);
 
     NvU32            v;
@@ -208,6 +212,7 @@ kgmmuSetTlbInvalidateMembarWarParameters_TU102
     TLB_INVALIDATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3573);
 
     pParams->regVal = FLD_SET_DRF(_VIRTUAL_FUNCTION_PRIV, _MMU_INVALIDATE, _SYS_MEMBAR, _TRUE, pParams->regVal);
     pParams->regVal = FLD_SET_DRF(_VIRTUAL_FUNCTION_PRIV, _MMU_INVALIDATE, _ACK,    _GLOBALLY, pParams->regVal);
@@ -231,6 +236,7 @@ kgmmuGetFaultRegisterMappings_TU102
     NvP64                 *pPrefetchCtrl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3574);
     Intr               *pIntr       = GPU_GET_INTR(pGpu);
     DEVICE_MAPPING     *pMapping    = gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0);
     NvP64               bar0Mapping = NV_PTR_TO_NvP64(pMapping->gpuNvAddr);
@@ -276,6 +282,7 @@ NvBool kgmmuTestAccessCounterWriteNak_TU102
     KernelGmmu *pKernelGmmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3575);
     NvU32 accessCntrInfo = GPU_VREG_RD32(pGpu, NV_VIRTUAL_FUNCTION_PRIV_ACCESS_COUNTER_NOTIFY_BUFFER_INFO);
     return FLD_TEST_DRF(_VIRTUAL_FUNCTION_PRIV, _ACCESS_COUNTER_NOTIFY_BUFFER_INFO,
                                       _WRITE_NACK, _TRUE, accessCntrInfo);
@@ -296,6 +303,7 @@ kgmmuServiceReplayableFault_TU102
     KernelGmmu *pKernelGmmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3576);
     NV_STATUS rmStatus = NV_OK;
     PEVENTNOTIFICATION *ppEventNotification  = NULL;
 
@@ -320,6 +328,7 @@ kgmmuReadMmuFaultStatus_TU102
     NvU32       gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3577);
     {
         return GPU_VREG_RD32(pGpu, NV_VIRTUAL_FUNCTION_PRIV_MMU_FAULT_STATUS);
     }
@@ -333,6 +342,7 @@ kgmmuWriteMmuFaultStatus_TU102
     NvU32       value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3578);
     GPU_VREG_WR32(pGpu, NV_VIRTUAL_FUNCTION_PRIV_MMU_FAULT_STATUS, value);
 }
 
@@ -345,6 +355,7 @@ kgmmuReadMmuFaultBufferSize_TU102
     NvU32       gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3579);
     {
         return GPU_VREG_RD32(pGpu, NV_VIRTUAL_FUNCTION_PRIV_MMU_FAULT_BUFFER_SIZE(index));
     }
@@ -360,6 +371,7 @@ kgmmuReadFaultBufferGetPtr_TU102
     THREAD_STATE_NODE    *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3580);
     NvU32 val;
     NV_ASSERT_OR_RETURN((index < NUM_FAULT_BUFFERS), NV_ERR_INVALID_ARGUMENT);
 
@@ -379,6 +391,7 @@ kgmmuReadFaultBufferPutPtr_TU102
     THREAD_STATE_NODE    *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3581);
     NvU32 val;
     NV_ASSERT_OR_RETURN((index < NUM_FAULT_BUFFERS), NV_ERR_INVALID_ARGUMENT);
 
@@ -404,6 +417,7 @@ kgmmuIsNonReplayableFaultPending_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3582);
     NvU32 reg = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_REG(NV_PFB_PRI_MMU_INT_VECTOR_FAULT_NOTIFY_NON_REPLAYABLE);
     NvU32 bit = NV_CTRL_INTR_GPU_VECTOR_TO_LEAF_BIT(NV_PFB_PRI_MMU_INT_VECTOR_FAULT_NOTIFY_NON_REPLAYABLE);
     NvU32 pending = GPU_VREG_RD32_EX(pGpu, NV_VIRTUAL_FUNCTION_PRIV_CPU_INTR_LEAF(reg), pThreadState);
@@ -425,6 +439,7 @@ kgmmuClearNonReplayableFaultIntr_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3583);
     Intr *pIntr = GPU_GET_INTR(pGpu);
     intrClearLeafVector_HAL(pGpu, pIntr, NV_PFB_PRI_MMU_INT_VECTOR_FAULT_NOTIFY_NON_REPLAYABLE, pThreadState);
 }
@@ -444,6 +459,7 @@ kgmmuClearReplayableFaultIntr_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3584);
     Intr *pIntr = GPU_GET_INTR(pGpu);
     intrClearLeafVector_HAL(pGpu, pIntr, NV_PFB_PRI_MMU_INT_VECTOR_FAULT_NOTIFY_REPLAYABLE, pThreadState);
 }

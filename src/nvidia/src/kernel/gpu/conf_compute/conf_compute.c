@@ -114,6 +114,7 @@ _confComputeInitRegistryOverrides
     ConfidentialCompute   *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 834);
     NvU32 data = 0;
 
     if ((osReadRegistryDword(pGpu, NV_REG_STR_RM_CONFIDENTIAL_COMPUTE, &data) == NV_OK) &&
@@ -210,6 +211,7 @@ confComputeEstablishSpdmSessionAndKeys_KERNEL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 835);
     NV_STATUS status = NV_OK;
 
     if (IS_FMODEL(pGpu))
@@ -292,6 +294,7 @@ _confComputeDeinitSpdmSession
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 836);
     NV_STATUS status = NV_OK;
 
     if (IS_FMODEL(pGpu))
@@ -339,6 +342,7 @@ confComputeStatePreInitLocked_IMPL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 837);
     return confComputeEstablishSpdmSessionAndKeys_HAL(pGpu, pConfCompute);
 }
 
@@ -357,6 +361,7 @@ confComputeStatePostLoad_IMPL
     NvU32                flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 838);
     NV_STATUS status = NV_OK;
     RM_API   *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -391,6 +396,7 @@ confComputeStatePreUnload_IMPL
     NvU32                flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 839);
     NV_PRINTF(LEVEL_INFO, "Performing SPDM deinitialization in Pre Unload!\n");
     return _confComputeDeinitSpdmSession(pGpu, pConfCompute);
 }
@@ -402,6 +408,7 @@ confComputeAcceptClientRequest_IMPL
     ConfidentialCompute   *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 840);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
 
@@ -422,6 +429,7 @@ confComputeStateInitLocked_IMPL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 841);
     RM_API *pRmApi = IS_GSP_CLIENT(pGpu) ? GPU_GET_PHYSICAL_RMAPI(pGpu) :
                                            rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
@@ -445,6 +453,7 @@ confComputeStartEncryption_KERNEL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 842);
     NV_STATUS                                                        status = NV_OK;
     RM_API                                                          *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_CMD_INTERNAL_CONF_COMPUTE_ENCRYPTION_CONTROL_PARAMS  params;
@@ -505,6 +514,7 @@ confComputeStopEncryption_KERNEL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 843);
     RM_API                                                         *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_CMD_INTERNAL_CONF_COMPUTE_ENCRYPTION_CONTROL_PARAMS params;
     NV_STATUS                                                       status = NV_OK;
@@ -577,6 +587,7 @@ confComputeStateDestroy_IMPL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 844);
     NV_STATUS status = NV_OK;
 
     status = _confComputeDeinitSpdmSession(pGpu, pConfCompute);

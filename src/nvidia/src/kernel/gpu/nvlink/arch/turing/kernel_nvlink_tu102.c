@@ -44,6 +44,7 @@ knvlinkFilterBridgeLinks_TU102
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3742);
     NV_STATUS status = NV_OK;
     NvU32     linkId;
 
@@ -120,6 +121,7 @@ knvlinkGetConnectedLinksMask_TU102
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3743);
     //
     // On Turing, enabledLinks != connectedLinksMask
     // This is because the connection cannot be sensed till receiver detect
@@ -143,6 +145,7 @@ knvlinkPoweredUpForD3_TU102
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3744);
     //
     // IOCTRL is guaranteed NOT to be reset if the D3 variant is
     // RTD3 or FGC6 and if NVLink L2 is supported on the chip

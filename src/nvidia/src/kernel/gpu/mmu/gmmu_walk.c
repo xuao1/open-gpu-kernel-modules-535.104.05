@@ -68,6 +68,7 @@ _mirrorLevel
     const MMU_FMT_LEVEL *pLevelFmt
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3617);
     return (pLevelFmt == pUserCtx->pGpuState->pFmt->pRoot) && pUserCtx->pGVAS->bIsMirrored;
 }
 
@@ -78,6 +79,7 @@ _mirrorLevel
 static NvU8 NV_FORCEINLINE
 _getMaxPageDirs(NvBool bMirror)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3618);
     return bMirror ? GMMU_MAX_PAGE_DIR_INDEX_COUNT :
                      GMMU_MAX_PAGE_DIR_INDEX_COUNT - 1;
 }
@@ -89,6 +91,7 @@ _gmmuScrubMemDesc
     MEMORY_DESCRIPTOR   *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3619);
     TRANSFER_SURFACE dest = {0};
 
     dest.pMemDesc = pMemDesc;
@@ -114,6 +117,7 @@ _gmmuWalkCBLevelAlloc
     NvBool                  *pBChanged
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3620);
     OBJGPU              *pGpu     = pUserCtx->pGpu;
     KernelGmmu          *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     OBJGVASPACE         *pGVAS    = pUserCtx->pGVAS;
@@ -454,6 +458,7 @@ _gmmuMemDescCacheCreate
     NvU32               memSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3621);
     NV_STATUS status = NV_OK;
     MEMORY_DESCRIPTOR* pMemDescTmp;
     NvU32 i;
@@ -498,6 +503,7 @@ _gmmuMemDescCacheAlloc
     MMU_WALK_USER_CTX *pUserCtx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3622);
     MEMORY_DESCRIPTOR *pParentMemDesc;
     MEMORY_DESCRIPTOR *pParentMemDescNext;
 
@@ -523,6 +529,7 @@ gmmuMemDescCacheFree
     GVAS_GPU_STATE *pGpuState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3623);
     NV_ASSERT_OR_RETURN_VOID(NULL != pGpuState);
 
     while (listCount(&pGpuState->unpackedMemDescList) > 0)
@@ -555,6 +562,7 @@ _gmmuWalkCBLevelFree
     MMU_WALK_MEMDESC    *pOldMem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3624);
     NvU8               i;
     NvBool             bMirror   = _mirrorLevel(pUserCtx, pLevelFmt);
     NvU8               maxPgDirs = _getMaxPageDirs(bMirror);
@@ -636,6 +644,7 @@ _gmmuWalkCBUpdatePdb
     const NvBool             bIgnoreChannelBusy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3625);
     OBJGPU            *pGpu = pUserCtx->pGpu;
     MEMORY_DESCRIPTOR *pPDB = (MEMORY_DESCRIPTOR*)pRootMem;
 
@@ -678,6 +687,7 @@ _gmmuWalkCBUpdatePde
     const MMU_WALK_MEMDESC **pSubLevels
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3626);
     NvU32              i;
     GMMU_ENTRY_VALUE   entry;
     NvBool             bMirror     = _mirrorLevel(pUserCtx, pLevelFmt);
@@ -813,6 +823,7 @@ _gmmuWalkCBFillEntries
     NvU32                     *pProgress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3627);
     NvU32              i;
     NvU32              j;
     OBJGPU            *pGpu           = pUserCtx->pGpu;
@@ -974,6 +985,7 @@ _gmmuWalkCBCopyEntries
     NvU32                     *pProgress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3628);
     MEMORY_DESCRIPTOR *pSrcDesc = (MEMORY_DESCRIPTOR *)pSrcMem;
     MEMORY_DESCRIPTOR *pDstDesc = (MEMORY_DESCRIPTOR *)pDstMem;
     TRANSFER_SURFACE   src      = {0};

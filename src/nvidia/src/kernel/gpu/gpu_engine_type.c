@@ -50,6 +50,7 @@ ct_assert(RM_ENGINE_TYPE_LAST == NV2080_ENGINE_TYPE_LAST);
  */
 RM_ENGINE_TYPE gpuGetRmEngineType_IMPL(NvU32 index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1838);
     NV_ASSERT_OR_RETURN(index < NV2080_ENGINE_TYPE_LAST, RM_ENGINE_TYPE_LAST);
 
     switch (index)
@@ -124,6 +125,7 @@ RM_ENGINE_TYPE gpuGetRmEngineType_IMPL(NvU32 index)
  */
 NvU32 gpuGetNv2080EngineType_IMPL(RM_ENGINE_TYPE index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1839);
     NV_ASSERT_OR_RETURN(index < RM_ENGINE_TYPE_LAST, NV2080_ENGINE_TYPE_LAST);
 
     switch (index)
@@ -204,6 +206,7 @@ void gpuGetNv2080EngineTypeList_IMPL
     NvU32 *pNv2080EngineList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1840);
     NV_ASSERT_OR_RETURN_VOID(engineCount < RM_ENGINE_TYPE_LAST);
 
     NvU32 i;
@@ -229,6 +232,7 @@ void gpuGetRmEngineTypeList_IMPL
     RM_ENGINE_TYPE *pRmEngineList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1841);
     NV_ASSERT_OR_RETURN_VOID(engineCount < RM_ENGINE_TYPE_LAST);
 
     NvU32 i;
@@ -257,6 +261,7 @@ NV_STATUS gpuGetRmEngineTypeCapMask_IMPL
     NvU32 *pRmEngineTypeCap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1842);
     NvU32 i;
 
     NV_ASSERT_OR_RETURN(capSize == NVGPU_ENGINE_CAPS_MASK_ARRAY_MAX, NV_ERR_INVALID_ARGUMENT);

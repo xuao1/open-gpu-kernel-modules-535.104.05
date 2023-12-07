@@ -49,6 +49,7 @@ _bar2WalkCBUpdatePdb
     const NvBool             bIgnoreChannelBusy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3595);
     OBJGPU             *pGpu        = pUserCtx->pGpu;
     KernelBus          *pKernelBus  = GPU_GET_KERNEL_BUS(pGpu);
     KernelGmmu         *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
@@ -127,6 +128,7 @@ _bar2WalkCBFillEntries
     NvU32                     *pProgress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3596);
     OBJGPU                *pGpu         = pUserCtx->pGpu;
     KernelBus             *pKernelBus   = GPU_GET_KERNEL_BUS(pGpu);
     KernelGmmu            *pKernelGmmu  = GPU_GET_KERNEL_GMMU(pGpu);
@@ -319,6 +321,7 @@ _bar2WalkCBUpdatePde
     const MMU_WALK_MEMDESC **pSubLevels
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3597);
     OBJGPU             *pGpu        = pUserCtx->pGpu;
     KernelGmmu         *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     KernelBus          *pKernelBus  = GPU_GET_KERNEL_BUS(pGpu);
@@ -476,6 +479,7 @@ _bar2WalkCBLevelFree
     MMU_WALK_MEMDESC    *pOldMem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3598);
     MEMORY_DESCRIPTOR *pMemDesc = (MEMORY_DESCRIPTOR*)pOldMem;
 
     NV_PRINTF(LEVEL_INFO, "PA 0x%llX for VA 0x%llX-0x%llX\n",
@@ -503,6 +507,7 @@ _bar2WalkCBLevelAlloc
     NvBool                  *pBChanged
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3599);
     OBJGPU             *pGpu    = pUserCtx->pGpu;
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     KernelBus          *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
@@ -774,6 +779,7 @@ _bar2WalkCBWriteBuffer
      NvU64                 entrySize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3600);
     OBJGPU            *pGpu               = pUserCtx->pGpu;
     KernelBus         *pKernelBus         = GPU_GET_KERNEL_BUS(pGpu);
     NvU32              gfid;

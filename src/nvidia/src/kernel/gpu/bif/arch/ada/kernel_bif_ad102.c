@@ -47,6 +47,7 @@ kbifPreOsGlobalErotGrantRequest_AD102
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 356);
     NV_STATUS status = NV_OK;
     NvU32 reg = GPU_REG_RD32(pGpu, NV_PBUS_SW_GLOBAL_EROT_GRANT);
 
@@ -81,6 +82,7 @@ _kbifPreOsCheckErotGrantAllowed_AD102
     void   *pVoid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 357);
     NvU32 reg = GPU_REG_RD32(pGpu, NV_PBUS_SW_GLOBAL_EROT_GRANT);
 
     return FLD_TEST_DRF(_PBUS, _SW_GLOBAL_EROT_GRANT, _ALLOW, _YES, reg);

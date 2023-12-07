@@ -42,6 +42,7 @@ kbifApplyWARBug3208922_GA100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 358);
     if (IsMobile(pGpu))
     {
         pKernelBif->setProperty(pKernelBif, PDB_PROP_KBIF_P2P_READS_DISABLED,  NV_TRUE);
@@ -62,6 +63,7 @@ kbifInitRelaxedOrderingFromEmulatedConfigSpace_GA100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 359);
     NvU32 passthroughEmulatedConfig = osPciReadDword(osPciInitHandle(gpuGetDomain(pGpu),
                                                                      gpuGetBus(pGpu),
                                                                      gpuGetDevice(pGpu),

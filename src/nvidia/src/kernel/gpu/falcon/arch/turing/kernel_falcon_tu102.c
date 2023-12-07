@@ -50,6 +50,7 @@ kflcnRegRead_TU102
     NvU32 offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1297);
     return REG_INST_DEVIDX_RD32_EX(pGpu, DEVICE_INDEX_GPU, 0,
                pKernelFlcn->registerBase + offset, NULL);
 }
@@ -71,6 +72,7 @@ kflcnRegWrite_TU102
     NvU32 data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1298);
     REG_INST_DEVIDX_WR32_EX(pGpu, DEVICE_INDEX_GPU, 0,
         pKernelFlcn->registerBase + offset, data, NULL);
 }
@@ -92,6 +94,7 @@ kflcnRiscvRegRead_TU102
     NvU32 offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1299);
     return REG_INST_DEVIDX_RD32_EX(pGpu, DEVICE_INDEX_GPU, 0,
                pKernelFlcn->riscvRegisterBase + offset, NULL);
 }
@@ -113,6 +116,7 @@ kflcnRiscvRegWrite_TU102
     NvU32 data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1300);
     REG_INST_DEVIDX_WR32_EX(pGpu, DEVICE_INDEX_GPU, 0,
         pKernelFlcn->riscvRegisterBase + offset, data, NULL);
 }
@@ -127,6 +131,7 @@ kflcnIsRiscvCpuEnabled_TU102
     KernelFalcon *pKernelFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1301);
     NvU32 reg = kflcnRegRead_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_HWCFG2);
 
     return FLD_TEST_DRF(_PFALCON, _FALCON_HWCFG2, _RISCV, _ENABLE, reg);
@@ -142,6 +147,7 @@ kflcnIsRiscvActive_TU102
     KernelFalcon *pKernelFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1302);
     NvU32 val;
 
     val = kflcnRiscvRegRead_HAL(pGpu, pKernelFlcn, NV_PRISCV_RISCV_CORE_SWITCH_RISCV_STATUS);
@@ -159,6 +165,7 @@ kflcnReset_TU102
     KernelFalcon *pKernelFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1303);
     kflcnEnable_HAL(pGpu, pKernelFlcn, NV_FALSE);
     kflcnEnable_HAL(pGpu, pKernelFlcn, NV_TRUE);
 }
@@ -173,6 +180,7 @@ kflcnSecureReset_TU102
     KernelFalcon *pKernelFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1304);
     NV_ASSERT_OR_RETURN_VOID(kflcnPreResetWait_HAL(pGpu, pKernelFlcn) == NV_OK);
     NV_ASSERT_OK(kflcnResetHw(pGpu, pKernelFlcn));
 
@@ -192,6 +200,7 @@ kflcnEnable_TU102
     NvBool bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1305);
     KernelMc *pKernelMc = GPU_GET_KERNEL_MC(pGpu);
 
     if (!bEnable)
@@ -241,6 +250,7 @@ kflcnEnable_TU102
 void
 kflcnStartCpu_TU102(OBJGPU *pGpu, KernelFalcon *pKernelFlcn)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1306);
     if (FLD_TEST_DRF(_PFALCON, _FALCON_CPUCTL, _ALIAS_EN, _TRUE,
                      kflcnRegRead_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_CPUCTL)))
     {
@@ -264,6 +274,7 @@ kflcnDisableCtxReq_TU102
     KernelFalcon *pKernelFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1307);
     NvU32 data = 0;
 
     data = GPU_REG_RD32(pGpu, pKernelFlcn->fbifBase + NV_PFALCON_FBIF_CTL);
@@ -289,6 +300,7 @@ _kflcnMemScrubbingFinished
     void *pVoid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1308);
     NvBool bResult = NV_FALSE;
     NvU32 dmaCtrl = 0;
     KernelFalcon *pKernelFlcn = reinterpretCast(pVoid, KernelFalcon *);
@@ -314,6 +326,7 @@ kflcnWaitForResetToFinish_TU102
     KernelFalcon *pKernelFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1309);
     // Skip the wait if we are in the GPU reset path
     if (API_GPU_IN_RESET_SANITY_CHECK(pGpu))
         return NV_ERR_GPU_IN_FULLCHIP_RESET;
@@ -343,6 +356,7 @@ kflcnWaitForHalt_TU102
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1310);
     NV_STATUS status = NV_OK;
     RMTIMEOUT timeout;
 
@@ -376,6 +390,7 @@ kflcnReadIntrStatus_TU102
     KernelFalcon *pKernelFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1311);
     return ((kflcnRegRead_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_IRQSTAT) &
              kflcnRegRead_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_IRQMASK) &
              kflcnRegRead_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_IRQDEST)) |
@@ -399,6 +414,7 @@ kflcnMaskImemAddr_TU102
 
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1312);
     return (addr & (DRF_SHIFTMASK(NV_PFALCON_FALCON_IMEMC_OFFS) |
                     DRF_SHIFTMASK(NV_PFALCON_FALCON_IMEMC_BLK)));
 }
@@ -416,6 +432,7 @@ kflcnMaskDmemAddr_TU102
     NvU32 addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1313);
     return (addr & (DRF_SHIFTMASK(NV_PFALCON_FALCON_DMEMC_OFFS) |
                     DRF_SHIFTMASK(NV_PFALCON_FALCON_DMEMC_BLK)));
 }

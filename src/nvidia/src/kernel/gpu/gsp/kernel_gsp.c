@@ -147,6 +147,7 @@ _kgspGetActiveRpcDebugData
     NvU32 *data1
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2283);
     switch (function)
     {
         case NV_VGPU_MSG_FUNCTION_GSP_RM_CONTROL:
@@ -189,6 +190,7 @@ _kgspGetActiveRpcDebugData
 static NV_STATUS
 _kgspRpcSanityCheck(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2284);
     if (API_GPU_IN_RESET_SANITY_CHECK(pGpu))
     {
         NV_PRINTF(LEVEL_INFO,
@@ -233,6 +235,7 @@ _kgspRpcSendMessage
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2285);
     NV_STATUS nvStatus;
     KernelGsp *pKernelGsp = GPU_GET_KERNEL_GSP(pGpu);
 
@@ -281,6 +284,7 @@ _kgspRpcRunCpuSequencer
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2286);
     RPC_PARAMS(run_cpu_sequencer, _v17_00);
     KernelGsp *pKernelGsp = GPU_GET_KERNEL_GSP(pGpu);
 
@@ -294,6 +298,7 @@ _kgspProcessEccNotifier
     void   *eventData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2287);
     NV_STATUS          nvStatus     = NV_OK;
     MemoryManager     *pMemoryMgr   = GPU_GET_MEMORY_MANAGER(pGpu);
 
@@ -333,6 +338,7 @@ _kgspRpcPostEvent
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2288);
     RPC_PARAMS(post_event, _v17_00);
     PEVENTNOTIFICATION pNotifyList  = NULL;
     PEVENTNOTIFICATION pNotifyEvent = NULL;
@@ -393,6 +399,7 @@ _kgspRpcRCTriggered
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2289);
     RPC_PARAMS(rc_triggered, _v17_02);
 
     KernelRc      *pKernelRc = GPU_GET_KERNEL_RC(pGpu);
@@ -462,6 +469,7 @@ _kgspRpcOsErrorLog
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2290);
     RPC_PARAMS(os_error_log, _v17_00);
 
     KernelRc      *pKernelRc = GPU_GET_KERNEL_RC(pGpu);
@@ -496,6 +504,7 @@ _kgspRpcGpuacctPerfmonUtilSamples
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2291);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     GpuAccounting *pGpuAcct = SYS_GET_GPUACCT(pSys);
     GPUACCT_GPU_INSTANCE_INFO *pGpuInstanceInfo = &pGpuAcct->gpuInstanceInfo[pGpu->gpuInstance];
@@ -559,6 +568,7 @@ _kgspRpcPerfGpuBoostSyncLimitsCallback
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2292);
     KernelPerf *pKernelPerf = GPU_GET_KERNEL_PERF(pGpu);
 
     RPC_PARAMS(perf_gpu_boost_sync_limits_callback, _v17_00);
@@ -589,6 +599,7 @@ _kgspRpcPerfBridgelessInfoUpdate
     OBJRPC  *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2293);
     RPC_PARAMS(perf_bridgeless_info_update, _v17_00);
 
     kPerfGpuBoostSyncBridgelessUpdateInfo(pGpu, rpc_params->bBridgeless);
@@ -601,6 +612,7 @@ _kgspRpcNvlinkFaultUpCallback
     OBJRPC  *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2294);
     RPC_PARAMS(nvlink_fault_up, _v17_00);
 
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
@@ -615,6 +627,7 @@ _kgspRpcNvlinkInbandReceivedData256Callback
     OBJRPC  *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2295);
     RPC_PARAMS(nvlink_inband_received_data_256, _v17_00);
 
     NV2080_CTRL_NVLINK_INBAND_RECEIVED_DATA_256_PARAMS_v17_00 *dest = &rpc_params->params;
@@ -630,6 +643,7 @@ _kgspRpcNvlinkInbandReceivedData512Callback
     OBJRPC  *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2296);
     RPC_PARAMS(nvlink_inband_received_data_512, _v17_00);
 
     NV2080_CTRL_NVLINK_INBAND_RECEIVED_DATA_512_PARAMS_v17_00 *dest = &rpc_params->params;
@@ -645,6 +659,7 @@ _kgspRpcNvlinkInbandReceivedData1024Callback
     OBJRPC  *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2297);
     RPC_PARAMS(nvlink_inband_received_data_1024, _v17_00);
 
     NV2080_CTRL_NVLINK_INBAND_RECEIVED_DATA_1024_PARAMS_v17_00 *dest = &rpc_params->params;
@@ -660,6 +675,7 @@ _kgspRpcNvlinkInbandReceivedData2048Callback
     OBJRPC  *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2298);
     RPC_PARAMS(nvlink_inband_received_data_2048, _v17_00);
 
     NV2080_CTRL_NVLINK_INBAND_RECEIVED_DATA_2048_PARAMS_v17_00 *dest = &rpc_params->params;
@@ -675,6 +691,7 @@ _kgspRpcNvlinkInbandReceivedData4096Callback
     OBJRPC  *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2299);
     RPC_PARAMS(nvlink_inband_received_data_4096, _v17_00);
 
     NV2080_CTRL_NVLINK_INBAND_RECEIVED_DATA_4096_PARAMS_v17_00 *dest = &rpc_params->params;
@@ -693,6 +710,7 @@ _kgspRpcEventIsGpuDegradedCallback
     OBJRPC  *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2300);
 }
 
 /*!
@@ -709,6 +727,7 @@ _kgspRpcMMUFaultQueued(
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2301);
     osQueueMMUFaultHandler(pGpu);
 
     return NV_OK;
@@ -721,6 +740,7 @@ _kgspRpcSimRead
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2302);
     RPC_PARAMS(sim_read, _v1E_01);
     if (IS_SIMULATION(pGpu))
     {
@@ -754,6 +774,7 @@ _kgspRpcSimWrite
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2303);
     RPC_PARAMS(sim_write, _v1E_01);
     if (IS_SIMULATION(pGpu))
     {
@@ -775,6 +796,7 @@ _kgspRpcSemaphoreScheduleCallback(
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2304);
     RPC_PARAMS(semaphore_schedule_callback, _v17_00);
     NV_STATUS status;
     RsClient *pClient;
@@ -798,6 +820,7 @@ _kgspRpcTimedSemaphoreRelease(
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2305);
     RPC_PARAMS(timed_semaphore_release, _v01_00);
     NV_STATUS status;
     RsClient *pClient;
@@ -823,6 +846,7 @@ _kgspRpcUcodeLibosPrint
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2306);
     RPC_PARAMS(ucode_libos_print, _v1E_08);
 
     // Check ucodes registered with the libos print mechanism
@@ -851,6 +875,7 @@ _kgspRpcVgpuGspPluginTriggered
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2307);
     RPC_PARAMS(vgpu_gsp_plugin_triggered, _v17_00);
 
     if (!IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pGpu))
@@ -867,6 +892,7 @@ _kgspRpcGspVgpuConfig
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2308);
     RPC_PARAMS(vgpu_config_event, _v17_00);
 
     NV_ASSERT_OR_RETURN(rpc_params->notifyIndex < NVA081_NOTIFIERS_MAXCOUNT,
@@ -884,6 +910,7 @@ _kgspRpcGspExtdevIntrService
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2309);
     RPC_PARAMS(extdev_intr_service, _v17_00);
 
     extdevGsyncService(pGpu, rpc_params->lossRegStatus, rpc_params->gainRegStatus, rpc_params->miscRegStatus, rpc_params->rmStatus);
@@ -898,6 +925,7 @@ _kgspRpcGspSendUserSharedData
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2310);
     RPC_PARAMS(gsp_send_user_shared_data, _v17_00);
     NV00DE_SHARED_DATA *pSharedData = gpushareddataWriteStart(pGpu);
     GspUserSharedData *pRpcData = (GspUserSharedData*)(&rpc_params->data);
@@ -914,6 +942,7 @@ static void _kgspRpcMigCiConfigUpdateCallback
     void *pArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2311);
     OBJGPU *pGpu = gpumgrGetGpu(gpuInstance);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     struct MIG_CI_UPDATE_CALLBACK_PARAMS * pParams = (struct MIG_CI_UPDATE_CALLBACK_PARAMS *)pArgs;
@@ -932,6 +961,7 @@ _kgspRpcMigCiConfigUpdate
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2312);
     NV_STATUS status;
     OBJOS *pOS = GPU_GET_OS(pGpu);
     struct MIG_CI_UPDATE_CALLBACK_PARAMS *pParams;
@@ -971,6 +1001,7 @@ _kgspRpcRgLineIntr
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2313);
     RPC_PARAMS(rg_line_intr, _v17_00);
 
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
@@ -988,6 +1019,7 @@ _kgspRpcEventPlatformRequestHandlerStateSyncCallback
     OBJRPC* pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2314);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     PlatformRequestHandler* pPlatformRequestHandler
                  = SYS_GET_PFM_REQ_HNDLR(pSys);
@@ -1029,6 +1061,7 @@ _kgspRpcGspLockdownNotice
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2315);
     KernelGsp *pKernelGsp = GPU_GET_KERNEL_GSP(pGpu);
     RPC_PARAMS(gsp_lockdown_notice, _v17_00);
 
@@ -1049,6 +1082,7 @@ const char *_getRpcName
     NvU32 id
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2316);
     static const char *rpcName[] =
         {
             #define X(UNIT, a) #a,
@@ -1082,6 +1116,7 @@ _kgspProcessRpcEvent
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2317);
     rpc_message_header_v *pMsgHdr = RPC_HDR;
     NV_STATUS nvStatus = NV_OK;
 
@@ -1236,6 +1271,7 @@ _kgspRpcDrainOneEvent
     NvU32            expectedFunc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2318);
     NV_STATUS nvStatus;
 
     // Issue a memory barrier to ensure we see any queue updates.
@@ -1290,6 +1326,7 @@ _kgspRpcDrainEvents
     NvU32      expectedFunc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2319);
     NV_STATUS nvStatus = NV_OK;
     OBJRPC *pRpc = GPU_GET_RPC(pGpu);
 
@@ -1320,6 +1357,7 @@ _kgspLogXid119
     NvU32 expectedFunc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2320);
     NvU32 historyEntry = pRpc->rpcHistoryCurrent;
 
     if (pRpc->timeoutCount == 1)
@@ -1394,6 +1432,7 @@ _kgspRpcIncrementTimeoutCountAndRateLimitPrints
     OBJRPC *pRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2321);
     KernelGsp *pKernelGsp = GPU_GET_KERNEL_GSP(pGpu);
 
     pRpc->timeoutCount++;
@@ -1438,6 +1477,7 @@ _kgspRpcRecvPoll
     NvU32   expectedFunc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2322);
     KernelGsp *pKernelGsp = GPU_GET_KERNEL_GSP(pGpu);
     NV_STATUS  rpcStatus = NV_OK;
     NV_STATUS  timeoutStatus = NV_OK;
@@ -1571,6 +1611,7 @@ _kgspInitRpcInfrastructure
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2323);
     NV_STATUS nvStatus = NV_OK;
     MESSAGE_QUEUE_COLLECTION *pMQCollection = NULL;
 
@@ -1628,6 +1669,7 @@ _kgspConstructRpcObject
     OBJRPC **ppRpc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2324);
     OBJRPC *pRpc;
 
     NV_ASSERT_OR_RETURN(pMQI != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -1661,6 +1703,7 @@ _kgspFreeRpcInfrastructure
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2325);
     if (pKernelGsp->pRpc != NULL)
     {
         rpcDestroy(pGpu, pKernelGsp->pRpc);
@@ -1684,6 +1727,7 @@ _kgspFreeRpcInfrastructure
 static NvU64
 _kgspGenerateInitArgId(const char *name)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2326);
     NvU64 id = 0;
     NvU8 c;
     NvU32 i;
@@ -1713,6 +1757,7 @@ _kgspFreeLibosVgpuPartitionLoggingStructures
     NvU32 gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2327);
     libosLogDestroy(&pKernelGsp->logDecodeVgpuPartition[gfid - 1]);
 
     // release the vgpu task log buffer memory
@@ -1761,6 +1806,7 @@ kgspFreeVgpuPartitionLogging_IMPL
     NvU32 gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2328);
     if (gfid > MAX_PARTITIONS_WITH_GFID)
     {
         return NV_ERR_INVALID_ARGUMENT;
@@ -1790,6 +1836,7 @@ kgspInitVgpuPartitionLogging_IMPL
     NvU64 vgpuTaskLogBuffSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2329);
     NV_STATUS nvStatus = NV_OK;
     RM_LIBOS_LOG_MEM *pGspPluginVgpuTaskLog = NULL;
     RM_LIBOS_LOG_MEM *pGspPluginInitTaskLog = NULL;
@@ -1919,6 +1966,7 @@ error_cleanup:
 
 void kgspNvlogFlushCb(void *pKernelGsp)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2330);
     if (pKernelGsp != NULL)
         kgspDumpGspLogs((KernelGsp*)pKernelGsp, NV_TRUE);
 }
@@ -1933,6 +1981,7 @@ _kgspFreeLibosLoggingStructures
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2331);
     NvU8 idx;
 
     _kgspStopLogPolling(pGpu, pKernelGsp);
@@ -1987,6 +2036,7 @@ _kgspInitLibosLoggingStructures
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2332);
     static const struct
     {
         const char *szMemoryId;
@@ -2090,6 +2140,7 @@ _kgspInitLibosLogDecoder
     GSP_FIRMWARE *pGspFw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2333);
     // If there's no log ELF or it's already been wired, skip wiring it now
     if ((pGspFw->pLogElf == NULL) || (pKernelGsp->pLogElf != NULL))
         return NV_OK;
@@ -2126,6 +2177,7 @@ _kgspInitLibosLogDecoder
 static NV_STATUS
 _kgspAllocSimAccessBuffer(OBJGPU *pGpu, KernelGsp *pKernelGsp)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2334);
     NvP64 pVa   = NvP64_NULL;
     NvP64 pPriv = NvP64_NULL;
     NV_STATUS nvStatus;
@@ -2173,6 +2225,7 @@ error_cleanup:
 static void
 _kgspFreeSimAccessBuffer(OBJGPU *pGpu, KernelGsp *pKernelGsp)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2335);
     if (!IS_SIMULATION(pGpu))
     {
         return;
@@ -2200,6 +2253,7 @@ kgspConstructEngine_IMPL
     ENGDESCRIPTOR engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2336);
     NV_STATUS nvStatus = NV_OK;
 
     if (!IS_GSP_CLIENT(pGpu))
@@ -2267,6 +2321,7 @@ done:
 static void
 _kgspVbiosVersionToStr(NvU64 vbiosVersionCombined, char *pVbiosVersionStr, NvU32 size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2337);
     nvDbgSnprintf(pVbiosVersionStr, size, "%2X.%02X.%02X.%02X.%02X",
                   (vbiosVersionCombined >> 32) & 0xff,
                   (vbiosVersionCombined >> 24) & 0xff,
@@ -2293,6 +2348,7 @@ kgspInitRm_IMPL
     GSP_FIRMWARE *pGspFw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2338);
     NV_STATUS  status = NV_OK;
     OBJTMR    *pTmr = GPU_GET_TIMER(pGpu);
     GPU_MASK   gpusLockedMask = 0;
@@ -2553,6 +2609,7 @@ kgspUnloadRm_IMPL
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2339);
     NV_STATUS rpcStatus = NV_OK;
     NV_STATUS status;
 
@@ -2629,6 +2686,7 @@ kgspDestruct_IMPL
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2340);
     OBJGPU *pGpu = ENG_GET_GPU(pKernelGsp);
 
     if (!IS_GSP_CLIENT(pGpu))
@@ -2666,6 +2724,7 @@ kgspDumpGspLogsUnlocked_IMPL
     NvBool bSyncNvLog
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2341);
     if (pKernelGsp->bInInit || pKernelGsp->pLogElf || bSyncNvLog)
     {
         libosExtractLogs(&pKernelGsp->logDecode, bSyncNvLog);
@@ -2696,6 +2755,7 @@ kgspDumpGspLogs_IMPL
     NvBool bSyncNvLog
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2342);
     if (pKernelGsp->bInInit || pKernelGsp->pLogElf || bSyncNvLog)
     {
         if (pKernelGsp->pNvlogFlushMtx != NULL)
@@ -2719,6 +2779,7 @@ kgspPopulateGspRmInitArgs_IMPL
     GSP_SR_INIT_ARGUMENTS *pGspInitArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2343);
     GSP_ARGUMENTS_CACHED *pGspArgs = pKernelGsp->pGspArgumentsCached;
     MESSAGE_QUEUE_INIT_ARGUMENTS *pMQInitArgs = &pGspArgs->messageQueueInitArguments;
     MESSAGE_QUEUE_COLLECTION *pMQCollection   = pKernelGsp->pMQCollection;
@@ -2778,6 +2839,7 @@ kgspPrepareBootBinaryImage_IMPL
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2344);
     NV_STATUS status;
     BINDATA_STORAGE *pBinStorageImage;
     BINDATA_STORAGE *pBinStorageDesc;
@@ -2860,6 +2922,7 @@ _kgspFreeBootBinaryImage
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2345);
     portMemFree(pKernelGsp->pGspRmBootUcodeDesc);
     pKernelGsp->pGspRmBootUcodeDesc  = NULL;
 
@@ -2890,6 +2953,7 @@ _kgspCreateSignatureMemdesc
     GSP_FIRMWARE *pGspFw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2346);
     NV_STATUS status = NV_OK;
     NvU8 *pSignatureVa = NULL;
     NvU64 flags = MEMDESC_FLAGS_NONE;
@@ -2942,6 +3006,7 @@ _kgspFwContainerVerifyVersion
     const char *pNameInMsg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2347);
     const char *pFwversion;
     NvU64 fwversionSize;
     NvU64 expectedVersionLength = portStringLength(NV_VERSION_STRING);
@@ -2997,6 +3062,7 @@ _kgspGetSectionNameForPrefix
     const char *pSectionPrefix
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2348);
     NvLength sectionPrefixLength;
 
     nv_firmware_chip_family_t chipFamily;
@@ -3042,6 +3108,7 @@ _kgspPrepareGspRmBinaryImage
     GSP_FIRMWARE *pGspFw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2349);
     char signatureSectionName[32];
 
     NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
@@ -3093,6 +3160,7 @@ kgspCreateRadix3_IMPL
     NvU64 size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2350);
     const NvU64 entriesLog2 = LIBOS_MEMORY_REGION_RADIX_PAGE_LOG2 - 3;
     NvU8 *pRadix3Buf;
     NvP64 pVaKernel;
@@ -3248,6 +3316,7 @@ _kgspFwContainerGetSection
     NvU64 *pSectionSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2351);
     const NvU8 *pGspBuf = pElfData;
     const LibosElf64Header *pElfHeader;
     const LibosElf64SectionHeader *pElfSectionHeader;
@@ -3344,6 +3413,7 @@ kgspSetupLibosInitArgs_IMPL
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2352);
     LibosMemoryRegionInitArgument *pLibosInitArgs = pKernelGsp->pLibosInitArgumentsCached;
     NvU8 idx;
 
@@ -3388,6 +3458,7 @@ kgspRpcRecvEvents_IMPL
     KernelGsp  *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2353);
     NV_ASSERT(rmDeviceGpuLockIsOwner(pGpu->gpuInstance));
     //
     // We should never have an event with code NV_VGPU_MSG_FUNCTION_NUM_FUNCTIONS.
@@ -3407,6 +3478,7 @@ kgspWaitForRmInitDone_IMPL
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2354);
     OBJRPC *pRpc = pKernelGsp->pRpc;
 
     //
@@ -3453,6 +3525,7 @@ kgspExecuteSequencerBuffer_IMPL
     void      *pRunCpuSeqParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2355);
     rpc_run_cpu_sequencer_v17_00 *pParams = (rpc_run_cpu_sequencer_v17_00 *)pRunCpuSeqParams;
     NvU32 *pCmd = pParams->commandBuffer;
     NvU32 buffer_end = pParams->cmdIndex;
@@ -3598,6 +3671,7 @@ _kgspLogPollingCallback
     void   *data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2356);
     //
     // Do not take any locks in kgspDumpGspLogs. As this callback only fires when kgspNvlogFlushCb
     // is not registered, there is no possibility of data race.
@@ -3613,6 +3687,7 @@ kgspStartLogPolling_IMPL
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2357);
     NV_STATUS status = NV_OK;
 
     //
@@ -3631,6 +3706,7 @@ _kgspStopLogPolling
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2358);
     if (pKernelGsp->pLogElf != NULL)
         osRemove1SecondRepeatingCallback(pGpu, _kgspLogPollingCallback, NULL);
 }
@@ -3644,6 +3720,7 @@ kgspStartLogPolling_IMPL
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2359);
     return NV_OK;
 }
 
@@ -3654,6 +3731,7 @@ _kgspStopLogPolling
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2360);
     return;
 }
 #endif // LIBOS_LOG_DECODE_ENABLE
@@ -3669,6 +3747,7 @@ kgspRegisterIntrService_IMPL
     IntrServiceRecord pRecords[MC_ENGINE_IDX_MAX]
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2361);
     NvU32 engineIdx = MC_ENGINE_IDX_GSP;
 
     if (!IS_GSP_CLIENT(pGpu))
@@ -3692,6 +3771,7 @@ kgspServiceInterrupt_IMPL
     IntrServiceServiceInterruptArguments *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2362);
     NV_ASSERT_OR_RETURN(pParams != NULL, 0);
     NV_ASSERT_OR_RETURN(pParams->engineIdx == MC_ENGINE_IDX_GSP, 0);
 
@@ -3709,6 +3789,7 @@ _kgspCalculateFwHeapSize
     NvU32 maxGspFwHeapSizeMB
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2363);
     // For VGPU, use the static pre-calculated size
     if (pGpu->bVgpuGspPluginOffloadEnabled)
         return GSP_FW_HEAP_SIZE_VGPU_DEFAULT;
@@ -3768,6 +3849,7 @@ kgspGetFwHeapSize_IMPL
     NvU64 posteriorFbSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2364);
     NvU32 maxScrubbedHeapSizeMB = NV_U32_MAX;
     NvU32 heapSizeMB = 0;
 

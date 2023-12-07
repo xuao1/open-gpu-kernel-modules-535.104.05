@@ -52,6 +52,7 @@ eventbufferConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5482);
     NV_STATUS                         status;
     NV_EVENT_BUFFER_ALLOC_PARAMETERS *pAllocParams   = pParams->pAllocParams;
 
@@ -462,6 +463,7 @@ eventbufferDestruct_IMPL
     EventBuffer *pEventBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5483);
     CALL_CONTEXT          *pCallContext;
     EVENT_BUFFER_MAP_INFO *pClientMap         = &pEventBuffer->clientMapInfo;
     EVENT_BUFFER_MAP_INFO *pKernelMap         = &pEventBuffer->kernelMapInfo;
@@ -508,6 +510,7 @@ _allocAndMapMemory
     NvP64* pUserPriv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5484);
     NV_STATUS           status;
     MEMORY_DESCRIPTOR*  pMemDesc = NULL;
 
@@ -558,6 +561,7 @@ _unmapAndFreeMemory
     NvP64              userPriv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5485);
     if (pMemDesc == NULL)
         return;
 
@@ -577,6 +581,7 @@ eventbuffertBufferCtrlCmdFlush_IMPL
     EventBuffer *pEventBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5486);
     OBJGPU *pGpu;
     NvU32 gpuMask = 0;
     NvU32 gpuIndex = 0;
@@ -595,6 +600,7 @@ eventbuffertBufferCtrlCmdEnableEvent_IMPL
     NV_EVENT_BUFFER_CTRL_CMD_ENABLE_EVENTS_PARAMS *pEnableParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5487);
     GPU_MASK  gpuMask;
     NV_STATUS status          = NV_OK;
     NvBool    updateTelemetry = NV_FALSE;
@@ -647,6 +653,7 @@ eventbuffertBufferCtrlCmdUpdateGet_IMPL
     NV_EVENT_BUFFER_CTRL_CMD_UPDATE_GET_PARAMS *pUpdateParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5488);
     EVENT_BUFFER_PRODUCER_INFO *pProducerInfo = &pEventBuffer->producerInfo;
     NvP64 pVardataBuf = pEventBuffer->kernelMapInfo.vardataBuffAddr;
 
@@ -682,12 +689,14 @@ eventbuffertBufferCtrlCmdPostTelemetryEvent_IMPL
     NV_EVENT_BUFFER_CTRL_CMD_POST_TELEMETRY_EVENT_PARAMS *pPostTelemetryEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5489);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 NV_STATUS
 eventBufferAdd(EventBuffer* pEventBuffer, void *pEventData, NvU32 recordType, NvBool *pBNotify, NvP64 *pHandle)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5490);
     EVENT_BUFFER_PRODUCER_DATA *pProducerData = (EVENT_BUFFER_PRODUCER_DATA*)pEventData;
     RECORD_BUFFER_INFO *pRBI;
     NV_EVENT_BUFFER_HEADER *pHeader;

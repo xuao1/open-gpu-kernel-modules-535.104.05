@@ -47,6 +47,7 @@ physmemConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4671);
     NV_PHYSICAL_MEMORY_ALLOCATION_PARAMS *pAllocParams;
     NV_STATUS                             status         = NV_OK;
     NvHandle                              hClient        = pCallContext->pClient->hClient;
@@ -233,5 +234,6 @@ physmemCanCopy_IMPL
     PhysicalMemory *pPhysicalMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4672);
     return NV_TRUE;
 }

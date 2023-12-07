@@ -31,6 +31,7 @@ i2capiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2417);
     return NV_OK;
 }
 
@@ -40,4 +41,5 @@ i2capiDestruct_IMPL
     I2cApi *pI2cApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2418);
 }

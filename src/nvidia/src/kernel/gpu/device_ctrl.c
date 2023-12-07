@@ -53,6 +53,7 @@ deviceCtrlCmdGpuGetClasslist_IMPL
     NV0080_CTRL_GPU_GET_CLASSLIST_PARAMS *pClassListParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 891);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
@@ -75,6 +76,7 @@ deviceCtrlCmdGpuGetClasslistV2_IMPL
     NV0080_CTRL_GPU_GET_CLASSLIST_V2_PARAMS *pClassListParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 892);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
@@ -96,6 +98,7 @@ deviceCtrlCmdGpuGetNumSubdevices_IMPL
     NV0080_CTRL_GPU_GET_NUM_SUBDEVICES_PARAMS *pSubDeviceCountParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 893);
     pSubDeviceCountParams->numSubDevices = 1;
 
     return NV_OK;
@@ -108,6 +111,7 @@ deviceCtrlCmdGpuModifyGpuSwStatePersistence_IMPL
     NV0080_CTRL_GPU_MODIFY_SW_STATE_PERSISTENCE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 894);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
     NvU32 gpuMask, index;
@@ -163,6 +167,7 @@ deviceCtrlCmdGpuQueryGpuSwStatePersistence_IMPL
     NV0080_CTRL_GPU_QUERY_SW_STATE_PERSISTENCE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 895);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
 
     if (pGpu->getProperty(pGpu, PDB_PROP_GPU_PERSISTENT_SW_STATE))
@@ -194,6 +199,7 @@ deviceCtrlCmdGpuGetVirtualizationMode_IMPL
     NV0080_CTRL_GPU_GET_VIRTUALIZATION_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 896);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
 
     if (pGpu == NULL)
@@ -258,6 +264,7 @@ deviceCtrlCmdGpuGetSriovCaps_IMPL
     NV0080_CTRL_GPU_GET_SRIOV_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 897);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
@@ -275,6 +282,7 @@ deviceCtrlCmdGpuGetFindSubDeviceHandle_IMPL
     NV0080_CTRL_GPU_FIND_SUBDEVICE_HANDLE_PARAM *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 898);
     NV_STATUS       status;
     Subdevice      *pSubdevice;
 
@@ -317,6 +325,7 @@ deviceCtrlCmdGpuGetSparseTextureComputeMode_IMPL
     NV0080_CTRL_GPU_GET_SPARSE_TEXTURE_COMPUTE_MODE_PARAMS *pModeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 899);
     NV_STATUS status;
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pDevice);
 
@@ -353,6 +362,7 @@ deviceCtrlCmdGpuSetSparseTextureComputeMode_IMPL
     NV0080_CTRL_GPU_SET_SPARSE_TEXTURE_COMPUTE_MODE_PARAMS *pModeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 900);
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pDevice);
 
@@ -384,6 +394,7 @@ deviceCtrlCmdGpuGetVgxCaps_IMPL
     NV0080_CTRL_GPU_GET_VGX_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 901);
     pParams->isVgx = NV_FALSE;
 
     return NV_OK;
@@ -406,6 +417,7 @@ deviceCtrlCmdGpuSetVgpuVfBar1Size_IMPL
     NV0080_CTRL_GPU_SET_VGPU_VF_BAR1_SIZE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 902);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
 

@@ -102,6 +102,7 @@ static void      _heapValidate(Heap *);
 
 static void ConvertOwnerToString(NvU32 owner, char *string)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2774);
     int i;
     string[0] = (unsigned char)((owner >> 24));
     string[1] = (unsigned char)((owner >> 16) & 0xFF);
@@ -121,6 +122,7 @@ static void _heapDump
     Heap *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2775);
     NvU64       free;
     MEM_BLOCK  *pBlock;
     char        ownerString[5];
@@ -189,6 +191,7 @@ static void _heapValidate
     Heap *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2776);
     MEM_BLOCK  *pBlock, *pBlockFree;
     NvU64       free, used;
 
@@ -305,6 +308,7 @@ static NV_STATUS heapReserveRegion
     NvBool              bProtected
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2777);
     NV_STATUS                    rmStatus           = NV_OK;
     OBJGPU                      *pGpu               = ENG_GET_GPU(pMemoryManager);
     NvU64                        heapSize           = (pHeap->base + pHeap->total);
@@ -397,6 +401,7 @@ NV_STATUS heapInitInternal_IMPL
     void              *pPtr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2778);
     MEM_BLOCK              *pBlock;
     NvU32                   i;
     NV_STATUS               status;
@@ -691,6 +696,7 @@ heapDestruct_IMPL
     Heap *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2779);
     MEM_BLOCK            *pBlock, *pBlockFirst, *pBlockNext;
     OBJGPU               *pGpu = ENG_GET_GPU(pHeap);
     MemoryManager        *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -807,6 +813,7 @@ static NV_STATUS _heapGetBankPlacement
     NvU32  *placement
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2780);
     NvU32    bankPlacement, i;
 
     if (type != NVOS32_TYPE_PRIMARY)
@@ -917,6 +924,7 @@ static void _heapSetTexturePlacement
     NvU8   *currentBankInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2781);
     NvU32 index, numClients, clientFound, mostRecentIndex;
     mostRecentIndex     = 0xFFFFFFFF;
     clientFound         = NV_FALSE;
@@ -1082,6 +1090,7 @@ _isAllocValidForFBRegion
     OBJHEAP_ALLOC_DATA *pAllocData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2782);
     MemoryManager        *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvBool                isValid        = NV_FALSE;
     FB_REGION_DESCRIPTOR *fbRegion;
@@ -1191,6 +1200,7 @@ _heapBlacklistSingleChunk
     BLACKLIST_CHUNK    *pBlacklistChunk
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2783);
     NV_STATUS status = NV_OK;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_ASSERT(pBlacklistChunk != NULL);
@@ -1266,6 +1276,7 @@ _heapFreeBlacklistPages
     NvU64          size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2784);
     NvU32               chunk               = 0;
     NvU64               baseChunkAddress    = 0;
     NvU64               endChunkAddress     = 0;
@@ -1327,6 +1338,7 @@ _heapBlacklistChunks
     NvU64           size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2785);
     NvU32              chunk                = 0;
     NvU64              baseAddress          = 0;
     NvU64              endAddress           = 0;
@@ -1392,6 +1404,7 @@ NV_STATUS heapAlloc_IMPL
     NvBool                         bAllocedMemdesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2786);
     NV_MEMORY_ALLOCATION_PARAMS   *pVidHeapAlloc        = pAllocRequest->pUserParams;
     MEMORY_DESCRIPTOR             *pMemDesc             = pAllocRequest->pMemDesc;
     MemoryManager                 *pMemoryManager       = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -1904,6 +1917,7 @@ static void _heapBlacklistChunksInFreeBlocks
     Heap   *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2787);
     MEM_BLOCK *pBlockFirstFree, *pBlockFree;
     NvU64 blockLo;
     NvU64 blockHi;
@@ -1935,6 +1949,7 @@ static NV_STATUS _heapBlockFree
     MEM_BLOCK   *pBlock
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2788);
     MEM_BLOCK       *pBlockTmp;
     NvU32            i;
     OBJOS           *pOS            = GPU_GET_OS(pGpu);
@@ -2186,6 +2201,7 @@ NV_STATUS heapReference_IMPL
     MEMORY_DESCRIPTOR  *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2789);
     NvU64       offsetAlign = memdescGetPhysAddr(pMemDesc, AT_GPU, 0);
     MEM_BLOCK  *pBlock;
 
@@ -2244,6 +2260,7 @@ _heapFindBlockByOffset
     MEM_BLOCK         **ppBlock
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2790);
     NV_STATUS status;
 
     // IRQL TEST: must be running at equivalent of passive-level
@@ -2275,6 +2292,7 @@ heapFree_IMPL
     MEMORY_DESCRIPTOR  *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2791);
     NV_STATUS   status;
     MEM_BLOCK  *pBlock;
     MEM_BLOCK  *pNextBlock;
@@ -2465,6 +2483,7 @@ NV_STATUS heapGetBlock_IMPL
     MEM_BLOCK **ppMemBlock
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2792);
     NODE *pNode;
 
     if (btreeSearch(offset, &pNode, pHeap->pBlockTree) != NV_OK)
@@ -2492,6 +2511,7 @@ static MEM_BLOCK *_heapFindAlignedBlockWithOwner
     NvU64     offset // aligned
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2793);
     MEM_BLOCK  *pBlock;
     NODE       *pNode;
 
@@ -2517,6 +2537,7 @@ NV_STATUS heapGetSize_IMPL
     NvU64 *size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2794);
     *size = pHeap->total;
     HEAP_VALIDATE(pHeap);
     return (NV_OK);
@@ -2528,6 +2549,7 @@ NV_STATUS heapGetUsableSize_IMPL
     NvU64 *usableSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2795);
     *usableSize = pHeap->total - pHeap->reserved;
     HEAP_VALIDATE(pHeap);
     return (NV_OK);
@@ -2539,6 +2561,7 @@ NV_STATUS heapGetFree_IMPL
     NvU64 *free
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2796);
     *free = pHeap->free;
     HEAP_VALIDATE(pHeap);
     return (NV_OK);
@@ -2550,6 +2573,7 @@ NV_STATUS heapGetBase_IMPL
     NvU64 *base
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2797);
     *base = pHeap->base;
     HEAP_VALIDATE(pHeap);
     return (NV_OK);
@@ -2562,6 +2586,7 @@ static NV_STATUS _heapGetMaxFree
     NvU64 *maxFree
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2798);
     MEM_BLOCK  *pBlockFirstFree, *pBlockFree;
     NvU64       freeBlockSize;
 
@@ -2597,6 +2622,7 @@ NV_STATUS heapInfo_IMPL
     NvU64 *largestFree         // largest free blocks size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2799);
     NV_STATUS status;
 
     *bytesFree  = pHeap->free;
@@ -2615,6 +2641,7 @@ NV_STATUS heapInfoTypeAllocBlocks_IMPL
     NvU64  *bytesTotal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2800);
     MEM_BLOCK  *pBlock;
     NvU64       total;
 
@@ -2669,6 +2696,7 @@ NV_STATUS heapGetBlockHandle_IMPL(
     NvHandle   *puHandle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2801);
     MEM_BLOCK *pBlock;
     NV_STATUS status;
 
@@ -2698,6 +2726,7 @@ NvU32 heapGetNumBlocks_IMPL
     Heap *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2802);
     return pHeap->numBlocks;
 }
 
@@ -2711,6 +2740,7 @@ NV_STATUS heapGetBlockInfo_IMPL
     NVOS32_HEAP_DUMP_BLOCK *pBlockBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2803);
     MEM_BLOCK *pBlock;
     NvU32                   heapSize, i;
     NV_STATUS               rmStatus = NV_OK;
@@ -2743,6 +2773,7 @@ NV_STATUS heapAllocHint_IMPL
     HEAP_ALLOC_HINT_PARAMS *pAllocHint
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2804);
     MemoryManager          *pMemoryManager      = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64                   alignment;
     NV_STATUS               status;
@@ -2980,6 +3011,7 @@ NV_STATUS heapHwAlloc_IMPL
     NvU32           *pAttr2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2805);
     MemoryManager          *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_STATUS               status = NV_OK;
     FB_ALLOC_INFO          *pFbAllocInfo = NULL;
@@ -3176,6 +3208,7 @@ void heapHwFree_IMPL
     NvU32     flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2806);
     MemoryManager        *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     FB_ALLOC_INFO        *pFbAllocInfo       = NULL;
     FB_ALLOC_PAGE_FORMAT *pFbAllocPageFormat = NULL;
@@ -3238,6 +3271,7 @@ exit:
 
 NV_STATUS heapFreeBlockCount_IMPL(OBJGPU *pGpu, Heap *pHeap, NvU32 *pCount)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2807);
     MEM_BLOCK *pMemBlock;
 
     pMemBlock = pHeap->pFreeBlockList;
@@ -3259,6 +3293,7 @@ NV_STATUS heapFreeBlockCount_IMPL(OBJGPU *pGpu, Heap *pHeap, NvU32 *pCount)
 
 NV_STATUS heapFreeBlockInfo_IMPL(OBJGPU *pGpu, Heap *pHeap, NvU32 Count, void *pVoidInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2808);
     NVOS32_BLOCKINFO   *pBlockInfo = pVoidInfo;
     NvU32               actualCount;
     MEM_BLOCK          *pMemBlock;
@@ -3317,6 +3352,7 @@ _heapAdjustFree
     NvBool    internalHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2809);
     pHeap->free += blockSize;
 
     NV_ASSERT(pHeap->free <= pHeap->total);
@@ -3354,6 +3390,7 @@ _heapProcessFreeBlock
     NvU64              *offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2810);
     NV_MEMORY_ALLOCATION_PARAMS *pVidHeapAlloc = pAllocRequest->pUserParams;
     MEM_BLOCK  *pBlockNew = NULL, *pBlockSplit = NULL;
     OBJOS      *pOS       = GPU_GET_OS(pGpu);
@@ -3660,6 +3697,7 @@ _heapAddBlockToNoncontigList
     MEM_BLOCK  *pBlock
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2811);
     if (NULL == pHeap->pNoncontigFreeBlockList)
     {
         pHeap->pNoncontigFreeBlockList = pBlock;
@@ -3722,6 +3760,7 @@ _heapRemoveBlockFromNoncontigList
     MEM_BLOCK  *pBlock
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2812);
     //
     // Unless pBlock is at the head of the list (and is the only element in the
     // list), both prev and nextFreeNoncontig cannot be NULL at the same time.
@@ -3784,6 +3823,7 @@ _heapAllocNoncontig
     HWRESOURCE_INFO   **ppHwResource
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2813);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     NV_MEMORY_ALLOCATION_PARAMS *pVidHeapAlloc = pAllocRequest->pUserParams;
     NvBool      bFirstBlock = NV_TRUE;
@@ -4153,6 +4193,7 @@ _heapUpdate
     BlockAction action
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2814);
     // A new block is to be added, init its node structure.
     if (BLOCK_ADD == action)
     {
@@ -4210,6 +4251,7 @@ _heapUpdate
 static NvU32
 _heapGetPageBlackListGranularity(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2815);
     return RM_PAGE_SIZE;
 }
 
@@ -4225,6 +4267,7 @@ heapBlackListPages_IMPL
     Heap   *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2816);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     PMA                 *pPma       = &pHeap->pmaObject;
     NvU32                i = 0, j = 0;
@@ -4384,6 +4427,7 @@ heapFreeBlackListedPages_IMPL
     Heap   *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2817);
     NvU32 i;
     BLACKLIST *pBlackList = &pHeap->blackList;
 
@@ -4434,6 +4478,7 @@ heapStorePendingBlackList_IMPL
     NvU64    pageAddressWithEccOff
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2818);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_STATUS status = NV_OK;
     NvU64  physicalAddress;
@@ -4512,6 +4557,7 @@ heapStoreBlackList_IMPL
     NvU32 maxInputPages
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2819);
     NvU32       i;
     NvU64      *pPageNumbers;
     NV_STATUS   status  = NV_OK;
@@ -4559,6 +4605,7 @@ heapAddPageToBlackList_IMPL
     NvU32   type
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2820);
     NvU32 index = pHeap->blackListAddresses.count;
     const MEMORY_SYSTEM_STATIC_CONFIG *pMemorySystemConfig =
         kmemsysGetStaticConfig(pGpu, GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu));
@@ -4613,6 +4660,7 @@ heapIsPmaManaged_IMPL
     NvU64   limit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2821);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
     if (memmgrIsPmaInitialized(pMemoryManager))
@@ -4666,6 +4714,7 @@ heapAddRef_IMPL
     Heap *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2822);
     if (pHeap == NULL)
         return 0;
 
@@ -4686,6 +4735,7 @@ heapRemoveRef_IMPL
     Heap   *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2823);
     NvU64 refCount = 0;
 
     if (pHeap == NULL)
@@ -4713,6 +4763,7 @@ NV_STATUS heapResize_IMPL
     NvS64 resizeBy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2824);
     MEM_BLOCK  *pBlockLast;
     MEM_BLOCK  *pBlockNew;
     NV_STATUS   status  = NV_OK;

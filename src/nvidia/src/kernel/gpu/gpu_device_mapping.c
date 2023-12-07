@@ -43,6 +43,7 @@ _gpuFindDeviceMapping
     NvU32   instance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1831);
     NvU32 i;
     NvU32 devId = 0;
     DEVICE_ID_MAPPING *deviceIdMapping;
@@ -86,6 +87,7 @@ gpuGetDeviceMapping_IMPL
     NvU32   instance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1832);
     // Fast lookup path for first instance of a device
     if ((deviceIndex < DEVICE_INDEX_MAX) && (instance == 0))
     {
@@ -118,6 +120,7 @@ gpuGetDeviceMappingFromDeviceID_IMPL
     NvU32 instance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1833);
     NvU32 i;
 
     //
@@ -155,6 +158,7 @@ gpuGetDeviceMappingFromDeviceID_IMPL
 
 static NvBool _gpuCheckIsBar0OffByN(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1834);
     NvU32 i, pmcBoot0;
 
     // Check to see if we can find PMC_BOOT_0
@@ -179,6 +183,7 @@ static NvBool _gpuCheckIsBar0OffByN(OBJGPU *pGpu)
 
 static NvBool _gpuCheckDoesPciSpaceMatch(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1835);
     NvU16 VendorId;
     NvU16 DeviceId;
     NvU8  bus = gpuGetBus(pGpu);
@@ -197,6 +202,7 @@ static NvBool _gpuCheckDoesPciSpaceMatch(OBJGPU *pGpu)
 
 static NvBool _gpuCheckIsPciMemSpaceEnabled(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1836);
     NvU16 VendorId;
     NvU16 DeviceId;
     NvU8  bus = gpuGetBus(pGpu);
@@ -221,6 +227,7 @@ NV_STATUS gpuSanityCheck_IMPL
     NvU32 *pFlagsFailed
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1837);
     NV_STATUS rmStatus = NV_OK;
     NvU32 flagsFailed = GPU_SANITY_CHECK_FLAGS_NONE;
     THREAD_STATE_NODE *pThreadNode = NULL;

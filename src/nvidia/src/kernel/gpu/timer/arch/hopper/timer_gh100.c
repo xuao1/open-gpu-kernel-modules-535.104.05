@@ -52,6 +52,7 @@ NV_STATUS tmrSetCurrentTime_GH100
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4129);
     KernelFsp *pKernelFsp = GPU_GET_KERNEL_FSP(pGpu);
     NvU64 osTimeNs, secTimerNs, sysTimerOffsetNs;
     NvU32 secTimerLo, secTimerHi, secTimerHi2;
@@ -114,6 +115,7 @@ tmrSetCountdown_GH100
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4130);
     NV_ASSERT_OR_RETURN(tmrId < NV_VIRTUAL_FUNCTION_PRIV_TIMER__SIZE_1, NV_ERR_NOT_SUPPORTED);
 
     GPU_VREG_WR32_EX(pGpu, NV_VIRTUAL_FUNCTION_PRIV_TIMER(tmrId), time, pThreadState);
@@ -128,6 +130,7 @@ tmrGetTimeEx_GH100
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4131);
     NvU32 TimeLo  = 0;
     NvU32 TimeHi  = 0;
     NvU32 TimeHi2 = 0;

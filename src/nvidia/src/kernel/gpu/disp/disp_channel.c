@@ -57,6 +57,7 @@ dispchnParseAllocParams
     NvBool      *pConnectPbAtGrab
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 926);
     NV50VAIO_CHANNELDMA_ALLOCATION_PARAMETERS *pDmaChannelAllocParams = NULL;
     NV50VAIO_CHANNELPIO_ALLOCATION_PARAMETERS *pPioChannelAllocParams = NULL;
 
@@ -105,6 +106,7 @@ dispchnConstruct_IMPL
     NvU32                         isDma
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 927);
     OBJGPU         *pGpu = GPU_RES_GET_GPU(pDispChannel);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NV_STATUS       rmStatus = NV_OK;
@@ -251,6 +253,7 @@ dispchnGrabChannel_IMPL
     void        *pAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 928);
     NV_STATUS          rmStatus = NV_OK;
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pDispChannel);
     KernelDisplay     *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
@@ -345,6 +348,7 @@ dispchnGetRegBaseOffsetAndSize_IMPL
     NvU32 *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 929);
     if (pOffset)
         *pOffset = pDispChannel->ControlOffset;
 
@@ -361,6 +365,7 @@ dispchnSetRegBaseOffsetAndSize_IMPL
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 930);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
 
     (void)kdispGetDisplayChannelUserBaseAndSize_HAL(pGpu, pKernelDisplay,
@@ -383,6 +388,7 @@ kdispMapDispChannel_IMPL
     DispChannel   *pDispChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 931);
     NV_STATUS       rmStatus;
     OBJGPU         *pGpu        = GPU_RES_GET_GPU(pDispChannel);
     RsClient       *pClient     = RES_GET_CLIENT(pDispChannel);
@@ -425,6 +431,7 @@ void kdispUnbindUnmapDispChannel_IMPL
     DispChannel *pDispChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 932);
     OBJGPU             *pGpu        = GPU_RES_GET_GPU(pDispChannel);
     RsClient           *pClient     = RES_GET_CLIENT(pDispChannel);
     RmClient           *pRmClient   = dynamicCast(pClient, RmClient);
@@ -444,6 +451,7 @@ dispchnDestruct_IMPL
     DispChannel *pDispChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 933);
     NV_STATUS           rmStatus  = NV_OK;
     OBJGPU             *pGpu      = GPU_RES_GET_GPU(pDispChannel);
     KernelDisplay      *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
@@ -550,6 +558,7 @@ dispchnpioConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 934);
     return NV_OK;
 }
 
@@ -561,6 +570,7 @@ dispchndmaConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 935);
     return NV_OK;
 }
 
@@ -572,6 +582,7 @@ dispchnGetByHandle_IMPL
     DispChannel **ppDispChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 936);
     RsResourceRef  *pResourceRef;
     NV_STATUS       status;
 
@@ -597,6 +608,7 @@ dispchnBindCtx_IMPL
     NvHandle     hChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 937);
     RsClient     *pClient = RES_GET_CLIENT(pContextDma);
     DispChannel  *pDispChannel = NULL;
     NV_STATUS rmStatus = NV_OK;
@@ -650,6 +662,7 @@ dispchnUnbindCtx_IMPL
     NvHandle     hChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 938);
     RsClient     *pClient = RES_GET_CLIENT(pContextDma);
     DispChannel  *pDispChannel = NULL;
     NV_STATUS  rmStatus = NV_OK;
@@ -690,6 +703,7 @@ dispchnUnbindAllCtx_IMPL
     DispChannel *pDispChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 939);
     KernelDisplay *pKernelDisplay;
     DisplayInstanceMemory *pInstMem;
 
@@ -712,6 +726,7 @@ dispchnUnbindCtxFromAllChannels_IMPL
     ContextDma  *pContextDma
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 940);
     KernelDisplay *pKernelDisplay;
     DisplayInstanceMemory *pInstMem;
 
@@ -737,6 +752,7 @@ kdispSetPushBufferParamsToPhysical_IMPL
     DISPCHNCLASS    internalDispChnClass
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 941);
     RsClient       *pClient  = RES_GET_CLIENT(pDispChannel);
     RM_API         *pRmApi   = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS       rmStatus = NV_OK;

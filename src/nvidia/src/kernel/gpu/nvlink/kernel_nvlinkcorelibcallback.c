@@ -169,6 +169,7 @@ knvlinkCoreAddLinkCallback
     nvlink_link *link
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3818);
     return 0;
 }
 
@@ -185,6 +186,7 @@ knvlinkCoreRemoveLinkCallback
     nvlink_link *link
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3819);
     portMemFree((NvU8 *)link->linkName);
     link->linkName      = NULL;
     link->link_handlers = NULL;
@@ -207,6 +209,7 @@ knvlinkCoreLockLinkCallback
     nvlink_link *link
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3820);
     KNVLINK_RM_LINK *pNvlinkLink = (KNVLINK_RM_LINK *)link->link_info;
     OBJSYS          *pSys        = SYS_GET_INSTANCE();
 
@@ -278,6 +281,7 @@ knvlinkCoreUnlockLinkCallback
     nvlink_link *link
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3821);
     KNVLINK_RM_LINK *pNvlinkLink = (KNVLINK_RM_LINK *)link->link_info;
     OBJSYS          *pSys        = SYS_GET_INSTANCE();
 
@@ -338,6 +342,7 @@ _knvlinkCorePassiveLinkChangeCallback
     void  *linkChangeData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3822);
     OBJGPU       *pGpu          = NULL;
     OBJSYS       *pSys          = SYS_GET_INSTANCE();
     KernelNvlink *pKernelNvlink = NULL;
@@ -437,6 +442,7 @@ knvlinkCoreQueueLinkChangeCallback
     nvlink_link_change *link_change
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3823);
 
     KNVLINK_RM_LINK *pNvlinkLink;
     OBJGPU          *pGpu   = NULL;
@@ -494,6 +500,7 @@ knvlinkCoreSetDlLinkModeCallback
     NvU32        flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3824);
     KNVLINK_RM_LINK  *pNvlinkLink;
     OBJGPU           *pGpu          = NULL;
     KernelNvlink     *pKernelNvlink = NULL;
@@ -753,6 +760,7 @@ knvlinkCoreGetDlLinkModeCallback
     NvU64       *mode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3825);
     KNVLINK_RM_LINK *pNvlinkLink;
     OBJGPU          *pGpu          = NULL;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -805,6 +813,7 @@ knvlinkCoreSetTlLinkModeCallback
     NvU32        flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3826);
     KNVLINK_RM_LINK *pNvlinkLink;
     OBJGPU          *pGpu          = NULL;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -867,6 +876,7 @@ knvlinkCoreGetTlLinkModeCallback
     NvU64       *mode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3827);
     KNVLINK_RM_LINK *pNvlinkLink;
     OBJGPU          *pGpu          = NULL;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -918,6 +928,7 @@ knvlinkCoreSetTxSublinkModeCallback
     NvU32        flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3828);
     KNVLINK_RM_LINK *pNvlinkLink;
     OBJGPU          *pGpu          = NULL;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -994,6 +1005,7 @@ knvlinkCoreSetRxSublinkModeCallback
     NvU32        flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3829);
     KNVLINK_RM_LINK *pNvlinkLink;
     OBJGPU          *pGpu          = NULL;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -1067,6 +1079,7 @@ knvlinkCoreGetTxSublinkModeCallback
     NvU32       *subMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3830);
     KNVLINK_RM_LINK *pNvlinkLink;
     OBJGPU          *pGpu          = NULL;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -1126,6 +1139,7 @@ knvlinkCoreGetRxSublinkModeCallback
     NvU32       *subMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3831);
     KNVLINK_RM_LINK *pNvlinkLink;
     OBJGPU          *pGpu          = NULL;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -1183,6 +1197,7 @@ knvlinkCoreSetRxSublinkDetectCallback
     NvU32        flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3832);
     KNVLINK_RM_LINK *pNvlinkLink;
     OBJGPU          *pGpu          = NULL;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -1239,6 +1254,7 @@ knvlinkCoreGetRxSublinkDetectCallback
     nvlink_link *link
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3833);
     KNVLINK_RM_LINK *pNvlinkLink;
     OBJGPU          *pGpu          = NULL;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -1303,6 +1319,7 @@ knvlinkCoreWriteDiscoveryTokenCallback
     NvU64        token
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3834);
     KNVLINK_RM_LINK *pNvlinkLink   = (KNVLINK_RM_LINK *)link->link_info;
     OBJGPU          *pGpu          = pNvlinkLink->pGpu;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -1398,6 +1415,7 @@ knvlinkCoreReadDiscoveryTokenCallback
     NvU64       *token
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3835);
     KNVLINK_RM_LINK *pNvlinkLink   = (KNVLINK_RM_LINK *)link->link_info;
     OBJGPU          *pGpu          = pNvlinkLink->pGpu;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -1472,6 +1490,7 @@ knvlinkCoreTrainingCompleteCallback
     nvlink_link *link
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3836);
     KNVLINK_RM_LINK *pNvlinkLink;
     OBJGPU          *pGpu          = NULL;
     KernelNvlink    *pKernelNvlink = NULL;
@@ -1508,6 +1527,7 @@ knvlinkCoreAliTrainingCallback
     nvlink_link *link
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3837);
     KNVLINK_RM_LINK *pNvlinkLink = (KNVLINK_RM_LINK *) link->link_info;
     OBJGPU          *pGpu        = pNvlinkLink->pGpu;
     KernelNvlink   * pKernelNvlink     = NULL;
@@ -1555,6 +1575,7 @@ knvlinkCoreGetUphyLoadCallback
     NvBool      *bUnlocked
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3838);
     KNVLINK_RM_LINK *pNvlinkLink   = (KNVLINK_RM_LINK *)link->link_info;
     OBJGPU          *pGpu          = pNvlinkLink->pGpu;
     KernelNvlink    *pKernelNvlink = NULL;

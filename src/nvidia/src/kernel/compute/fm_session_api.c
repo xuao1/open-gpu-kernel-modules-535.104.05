@@ -44,6 +44,7 @@
 static void
 _clearOutstandingComputeChannels(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 18);
     OBJGPU *pGpu = NULL;
     NvU32 gpuMask = 0;
     NvU32 gpuCount = 0;
@@ -75,6 +76,7 @@ _clearOutstandingComputeChannels(void)
 static void
 _clearFmState(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 19);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     Fabric *pFabric = SYS_GET_FABRIC(pSys);
     NvU32 flags = fabricGetFmSessionFlags(pFabric);
@@ -104,6 +106,7 @@ fmsessionapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 20);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     Fabric *pFabric = SYS_GET_FABRIC(pSys);
     NvHandle hClient = pCallContext->pClient->hClient;
@@ -170,6 +173,7 @@ fmsessionapiDestruct_IMPL
     FmSessionApi *pFmSessionApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 21);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     NV_PRINTF(LEVEL_INFO, "Fabric manager is shutting down.\n");
@@ -186,6 +190,7 @@ fmsessionapiCtrlCmdSetFmState_IMPL
     FmSessionApi *pFmSessionApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 22);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     if (pSys->getProperty(pSys, PDB_PROP_SYS_FABRIC_MANAGER_IS_INITIALIZED))
@@ -208,6 +213,7 @@ fmsessionapiCtrlCmdClearFmState_IMPL
     FmSessionApi *pFmSessionApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 23);
     _clearFmState();
 
     return NV_OK;

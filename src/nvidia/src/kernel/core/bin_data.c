@@ -56,6 +56,7 @@ bindataAcquire
     PBINDATA_RUNTIME_INFO *ppBinInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 26);
     NV_STATUS              status         = NV_OK;
     PBINDATA_RUNTIME_INFO  pBinInfo       = NULL;
 
@@ -136,6 +137,7 @@ bindataGetNextChunk
     NvU32                 nBytes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 27);
     NvU32               nBytesInflated;
 
     // paged memory access check
@@ -191,6 +193,7 @@ bindataRelease
     PBINDATA_RUNTIME_INFO pBinInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 28);
     if (pBinInfo == NULL)
     {
         return;
@@ -222,6 +225,7 @@ bindataWriteToBuffer
     NvU32                  bufferSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 29);
     // paged memory access check
     osPagedSegmentAccessCheck();
 
@@ -246,6 +250,7 @@ _bindataWriteStorageToBuffer
     NvU8                  *pBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 30);
     NV_STATUS             status  = NV_OK;
     PBINDATA_RUNTIME_INFO pBinInfo = NULL;
 
@@ -279,6 +284,7 @@ bindataGetBufferSize
     const BINDATA_STORAGE *pBinStorage
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 31);
     // paged memory access check
     osPagedSegmentAccessCheck();
 
@@ -306,6 +312,7 @@ bindataArchiveGetStorage(
     const char *binName
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 32);
     // paged memory access check
     osPagedSegmentAccessCheck();
 
@@ -332,6 +339,7 @@ bindataArchiveGetStorage(
 
 void bindataMarkReferenced(const BINDATA_STORAGE *pBinStorage)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 33);
     if (BINDATA_IS_MUTABLE)
     {
         // Cast away the constness
@@ -343,6 +351,7 @@ void bindataMarkReferenced(const BINDATA_STORAGE *pBinStorage)
 
 void* bindataGetNextUnreferencedStorage(const BINDATA_STORAGE **iter, NvU32 *pDataSize)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 34);
     extern BINDATA_STORAGE_PVT g_bindata_pvt;
     extern const NvU32 g_bindata_pvt_count;
 
@@ -376,6 +385,7 @@ void* bindataGetNextUnreferencedStorage(const BINDATA_STORAGE **iter, NvU32 *pDa
 
 void bindataDestroyStorage(BINDATA_STORAGE *storage)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 35);
     BINDATA_STORAGE_PVT *pBindataPvt = (BINDATA_STORAGE_PVT *)storage;
     pBindataPvt->pData = NULL;
     pBindataPvt->actualSize = 0;

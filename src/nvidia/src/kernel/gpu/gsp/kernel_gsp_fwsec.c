@@ -211,6 +211,7 @@ s_biosStructCalculatePackedSize
     const char *format
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2373);
 
     NvU32 packedSize = 0;
     NvU32 count;
@@ -266,6 +267,7 @@ s_biosUnpackStructure
     const char *format
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2374);
 
     NvU32 count;
     NvU32 data;
@@ -336,6 +338,7 @@ s_vbiosReadStructure
     const char *format
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2375);
 
     NvU32 packedSize;
     NvU32 maxOffset;
@@ -355,6 +358,7 @@ s_vbiosReadStructure
 
 static NvU8 s_vbiosRead8(const KernelGspVbiosImg *pVbiosImg, NvU32 offset, NV_STATUS *pStatus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2376);
     bios_U008 data;  // ReadStructure expects 'bios' types
     if (NV_UNLIKELY(*pStatus != NV_OK))
     {
@@ -366,6 +370,7 @@ static NvU8 s_vbiosRead8(const KernelGspVbiosImg *pVbiosImg, NvU32 offset, NV_ST
 
 static NvU16 s_vbiosRead16(const KernelGspVbiosImg *pVbiosImg, NvU32 offset, NV_STATUS *pStatus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2377);
     bios_U016 data;  // ReadStructure expects 'bios' types
     if (NV_UNLIKELY(*pStatus != NV_OK))
     {
@@ -377,6 +382,7 @@ static NvU16 s_vbiosRead16(const KernelGspVbiosImg *pVbiosImg, NvU32 offset, NV_
 
 static NvU32 s_vbiosRead32(const KernelGspVbiosImg *pVbiosImg, NvU32 offset, NV_STATUS *pStatus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2378);
     bios_U032 data;  // ReadStructure expects 'bios' types
     if (NV_UNLIKELY(*pStatus != NV_OK))
     {
@@ -399,6 +405,7 @@ s_vbiosFindBitHeader
     NvU32 *pBitAddr  // out
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2379);
 
     NV_STATUS status = NV_OK;
     NvU32 addr;
@@ -465,6 +472,7 @@ s_vbiosParseFwsecUcodeDescFromBit
     NvU64 *pVbiosVersionCombined  // out
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2380);
 
     NV_STATUS status;
     BIT_HEADER_V1_00 bitHeader;
@@ -687,6 +695,7 @@ s_vbiosFillFlcnUcodeFromDescV2
     KernelGspFlcnUcode *pFlcnUcode  // out
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2381);
     NV_STATUS status;
     KernelGspFlcnUcodeBootWithLoader *pUcode = NULL;
 
@@ -857,6 +866,7 @@ s_vbiosFillFlcnUcodeFromDescV3
     KernelGspFlcnUcode *pFlcnUcode  // out
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2382);
     NV_STATUS status;
     KernelGspFlcnUcodeBootFromHs *pUcode = NULL;
 
@@ -1011,6 +1021,7 @@ s_vbiosNewFlcnUcodeFromDesc
     KernelGspFlcnUcode **ppFlcnUcode  // out
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2383);
     NV_STATUS status;
     KernelGspFlcnUcode *pFlcnUcode = NULL;
 
@@ -1087,6 +1098,7 @@ kgspParseFwsecUcodeFromVbiosImg_IMPL
     NvU64 *pVbiosVersionCombined  // out
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2384);
     NV_STATUS status;
 
     FlcnUcodeDescFromBit fwsecUcodeDescFromBit;

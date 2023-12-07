@@ -35,6 +35,7 @@ kmemsysWriteL2SysmemInvalidateReg_TU102
     NvU32               value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3325);
     GPU_VREG_WR32(pGpu, NV_VIRTUAL_FUNCTION_PRIV_L2_SYSMEM_INVALIDATE, value);
 }
 
@@ -45,6 +46,7 @@ kmemsysReadL2SysmemInvalidateReg_TU102
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3326);
     return GPU_VREG_RD32(pGpu, NV_VIRTUAL_FUNCTION_PRIV_L2_SYSMEM_INVALIDATE);
 }
 
@@ -56,6 +58,7 @@ kmemsysWriteL2PeermemInvalidateReg_TU102
     NvU32               value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3327);
     GPU_VREG_WR32(pGpu, NV_VIRTUAL_FUNCTION_PRIV_L2_PEERMEM_INVALIDATE, value);
 }
 
@@ -66,5 +69,6 @@ kmemsysReadL2PeermemInvalidateReg_TU102
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3328);
     return GPU_VREG_RD32(pGpu, NV_VIRTUAL_FUNCTION_PRIV_L2_PEERMEM_INVALIDATE);
 }

@@ -44,6 +44,7 @@ kmemsysDoCacheOp_GH100
     PRMTIMEOUT          pTimeout
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3306);
     NV_STATUS  rmStatus = NV_OK;
     NvU32      cnt = 0;
     NV_STATUS  timeoutStatus = NV_OK;
@@ -216,6 +217,7 @@ kmemsysCacheOp_GH100
     FB_CACHE_OP         cacheOp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3307);
     NV_STATUS status  = NV_OK;
     RMTIMEOUT timeout = {0, };
     NvU32     reg = 0;
@@ -361,6 +363,7 @@ kmemsysProgramSysmemFlushBuffer_GH100
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3308);
     NvU32                  alignedSysmemFlushBufferAddr   = 0x0;
     NvU32                  alignedSysmemFlushBufferAddrHi = 0x0;
 
@@ -396,6 +399,7 @@ kmemsysAssertSysmemFlushBufferValid_GH100
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3309);
     NV_ASSERT((GPU_REG_RD_DRF(pGpu, _PFB, _FBHUB_PCIE_FLUSH_SYSMEM_ADDR_LO, _ADR) != 0) ||
               (GPU_REG_RD_DRF(pGpu, _PFB, _FBHUB_PCIE_FLUSH_SYSMEM_ADDR_HI, _ADR) != 0));
 }
@@ -428,6 +432,7 @@ kmemsysNumaAddMemory_GH100
     NvS32              *numaNodeId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3310);
     NV_STATUS status;
     NvU64     memblockSize   = 0;
     NvU32     lNumaNodeId;
@@ -478,6 +483,7 @@ kmemsysNumaRemoveMemory_GH100
     NvU32               swizzId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3311);
     if (pKernelMemorySystem->memPartitionNumaInfo[swizzId].bInUse == NV_FALSE)
     {
         return;
@@ -515,6 +521,7 @@ kmemsysNumaRemoveAllMemory_GH100
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3312);
     NvU32 swizzId;
 
     for (swizzId = 0; swizzId < KMIGMGR_MAX_GPU_SWIZZID; swizzId++)
@@ -538,6 +545,7 @@ kmemsysSwizzIdToVmmuSegmentsRange_GH100
     NvU32 totalVmmuSegments
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3313);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     const KERNEL_MIG_MANAGER_STATIC_INFO *pStaticInfo = kmigmgrGetStaticInfo(pGpu, pKernelMIGManager);
     NvU64 startingVmmuSegment;

@@ -67,6 +67,7 @@ gpumgrDetectSliLinkFromGpus
     NvU32  *pVidLinkCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4415);
     OBJGPU     *pGpu;
     OBJGPU     *pGpuSaved;
     NvU32       gpuIndex        = 0;
@@ -244,6 +245,7 @@ gpumgrDetectSliLinkFromGpus
 //
 static NV_STATUS gpumgrStateInitialized(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4416);
     OBJGPU    *pGpu           = NULL;
     NvU32      gpuMask        = 0;
     NvU32      gpuCount       = 0;
@@ -300,6 +302,7 @@ NvBool gpumgrUpdateSliLinkRouting
     NvBool bForceUpdate
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4417);
 
     NvBool      linkFound   = NV_FALSE;
     OBJSYS     *pSys = SYS_GET_INSTANCE();
@@ -389,6 +392,7 @@ NvBool gpumgrUpdateSliLinkRouting
 NvBool
 gpumgrDetectHighSpeedVideoBridges(NvU32 linkOutputMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4418);
     OBJGPU     *pGpu;
     KernelDisplay *pKernelDisp;
     NvU32       gpuIndex;
@@ -469,6 +473,7 @@ gpumgrDetectHighSpeedVideoBridges(NvU32 linkOutputMask)
 NV_STATUS
 gpumgrPinsetToPinsetTableIndex(NvU32 pinset, NvU32 *pPinsetIndex)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4419);
     NvU32 pinsetIndex;
     if (!ONEBITSET(pinset))
     {
@@ -508,6 +513,7 @@ gpumgrPinsetToPinsetTableIndex(NvU32 pinset, NvU32 *pPinsetIndex)
 NV_STATUS
 gpumgrGetSliLinks(NV0000_CTRL_GPU_GET_VIDEO_LINKS_PARAMS *pVideoLinksParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4420);
     NvU32 i, j;
     NvU32 gpuIndex, peerGpuIndex;
     NvU32 pinsetIndex, childDrPort, childDrPortIndex;

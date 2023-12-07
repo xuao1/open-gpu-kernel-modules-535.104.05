@@ -43,6 +43,7 @@ rmProfStart
     RM_PROF_STATS *pStats
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 302);
     NV_ASSERT_OR_RETURN_VOID(pStats != NULL);
 
     if (pStats->start_ns != 0)
@@ -73,6 +74,7 @@ rmProfStop
     RM_PROF_STATS *pStats
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 303);
     NvU64 stop_ns;
 
     NV_ASSERT_OR_RETURN_VOID(pStats != NULL);
@@ -91,6 +93,7 @@ _rmProfStopTime
     NvU64          stop_ns
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 304);
     NV_ASSERT_OR_RETURN_VOID(pStats != NULL);
 
     if (pStats->start_ns == 0)
@@ -123,6 +126,7 @@ rmProfRecord
     NvU64          time_ns
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 305);
     NV_ASSERT_OR_RETURN_VOID(pStats != NULL);
 
     if (pStats->count == 0 || time_ns < pStats->min_ns)
@@ -152,6 +156,7 @@ rmProfGroupStart
     RM_PROF_STATS *pFirst
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 306);
     NV_ASSERT_OR_RETURN_VOID(pGroup != NULL);
     NV_ASSERT_OR_RETURN_VOID(pFirst != NULL);
 
@@ -182,6 +187,7 @@ rmProfGroupNext
     RM_PROF_STATS *pNext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 307);
     NV_ASSERT_OR_RETURN_VOID(pGroup != NULL);
     NV_ASSERT_OR_RETURN_VOID(pGroup->pLast != NULL);
     NV_ASSERT_OR_RETURN_VOID(pNext != NULL);
@@ -207,6 +213,7 @@ rmProfGroupStop
     RM_PROF_GROUP *pGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 308);
     NvU64 stop_ns;
 
     NV_ASSERT_OR_RETURN_VOID(pGroup != NULL);

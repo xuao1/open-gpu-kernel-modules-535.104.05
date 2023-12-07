@@ -41,6 +41,7 @@ static NvBool _hypervisorCheckVirtualPcieP2PApproval(OBJHYPERVISOR *, NvU32);
 
 static void _hypervisorLoad(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5768);
     _hypervisorOps[OS_HYPERVISOR_XEN]    = xenHypervisorOps;
     _hypervisorOps[OS_HYPERVISOR_KVM]    = kvmHypervisorOps;
     _hypervisorOps[OS_HYPERVISOR_HYPERV] = hypervHypervisorOps;
@@ -49,11 +50,13 @@ static void _hypervisorLoad(void)
 
 void hypervisorDestruct_IMPL(OBJHYPERVISOR *pHypervisor)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5769);
     pHypervisor->type = OS_HYPERVISOR_UNKNOWN;
 }
 
 NV_STATUS hypervisorConstruct_IMPL(OBJHYPERVISOR *pHypervisor)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5770);
     _hypervisorLoad();
 
     pHypervisor->type = OS_HYPERVISOR_UNKNOWN;
@@ -69,6 +72,7 @@ NvBool hypervisorPcieP2pDetection_IMPL
     NvU32 gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5771);
     if (_hypervisorCheckVirtualPcieP2PApproval(pHypervisor, gpuMask))
         return NV_TRUE;
 
@@ -84,6 +88,7 @@ NV_STATUS hypervisorDetection_IMPL
     OBJOS *pOS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5772);
     NV_STATUS rmStatus = NV_OK;
 
     if (hypervisorIsVgxHyper())
@@ -124,6 +129,7 @@ static NV_STATUS _hypervisorDetection_HVM
     OBJOS *pOS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5773);
 #if defined(NVCPU_X86_64)
     NvU32 i = 0, base, eax = 0;
     NvU32 vmmSignature[3];
@@ -250,6 +256,7 @@ static NV_STATUS _hypervisorDetection_HVM
 
 HYPERVISOR_TYPE hypervisorGetHypervisorType_IMPL(OBJHYPERVISOR *pHypervisor)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5774);
     if (pHypervisor)
         return pHypervisor->type;
     return OS_HYPERVISOR_UNKNOWN;
@@ -257,6 +264,7 @@ HYPERVISOR_TYPE hypervisorGetHypervisorType_IMPL(OBJHYPERVISOR *pHypervisor)
 
 void hypervisorSetHypervisorType_IMPL(OBJHYPERVISOR *pHypervisor, HYPERVISOR_TYPE type)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5775);
     pHypervisor->type = type;
     pHypervisor->bDetected = type != OS_HYPERVISOR_UNKNOWN;
 }
@@ -267,6 +275,7 @@ static NvBool _hypervisorCheckVirtualPcieP2PApproval
     NvU32 gpuMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5776);
     OBJGPU *pGpu;
     NvU32 gpuInstance = 0;
     NvU8 peerCliqueId = 0xFF;
@@ -309,6 +318,7 @@ static NvBool _hypervisorCheckVirtualPcieP2PApproval
 
 NvBool hypervisorIsType_IMPL(HYPERVISOR_TYPE hyperType)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5777);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJHYPERVISOR *pHypervisor = SYS_GET_HYPERVISOR(pSys);
 

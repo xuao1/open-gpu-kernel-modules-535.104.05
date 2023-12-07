@@ -42,6 +42,7 @@ _semsurfFreeRmClient
     SEM_SHARED_DATA *pShared
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3261);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
     if (pShared->hClient != NV01_NULL_OBJECT)
@@ -62,6 +63,7 @@ _semsurfUnregisterCallback
     SEM_SHARED_DATA *pShared
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3262);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
     if ((pShared->hClient != NV01_NULL_OBJECT) &&
@@ -82,6 +84,7 @@ _semsurfGetValue
     NvU64 index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3263);
     volatile NvU8 *pSem          = pShared->pSem;
     volatile NvU8 *pMaxSubmitted = pShared->pMaxSubmitted;
     volatile NvU8 *pSemBase      = pSem + index * pShared->layout.size;
@@ -131,6 +134,7 @@ _semsurfSetValue
     NvU64 newValue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3264);
     volatile NvU8 *pSem          = pShared->pSem;
     volatile NvU8 *pMaxSubmitted = pShared->pMaxSubmitted;
     volatile NvU8 *pSemBase      = pSem + index * pShared->layout.size;
@@ -197,6 +201,7 @@ _semsurfNotifyCompleted
     SEM_PENDING_NOTIFICATIONS *notifications
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3265);
     OBJGPU *pGpu = pShared->pSemaphoreMem->pGpu;
     SEM_PENDING_NOTIFICATIONSIter pendIter;
     SEM_VALUE_LISTENERS_NODE *pVNode;
@@ -275,6 +280,7 @@ _semsurfSetMonitoredValue
     NvU64 value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3266);
     if (!pShared->bHasMonitoredFence)
         return;
 
@@ -311,6 +317,7 @@ _semsurfEventCallback
     NvU32        status
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3267);
     SEM_SHARED_DATA *pShared = pArg;
     SEM_INDEX_LISTENERSIter ilIter;
     SEM_VALUE_LISTENERSIter vlIter;
@@ -405,6 +412,7 @@ _semsurfAllocRmClient
     SemaphoreSurface *pSemSurf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3268);
     SEM_SHARED_DATA *pShared = pSemSurf->pShared;
     NV0080_ALLOC_PARAMETERS nv0080AllocParams;
     NV2080_ALLOC_PARAMETERS nv2080AllocParams;
@@ -459,6 +467,7 @@ _semsurfFreeMemory
     SEM_SHARED_DATA *pShared
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3269);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
     if (pShared->hClient != NV01_NULL_OBJECT)
@@ -486,6 +495,7 @@ _semsurfDupMemory
     NV_SEMAPHORE_SURFACE_ALLOC_PARAMETERS  *pAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3270);
     SEM_SHARED_DATA *pShared = pSemSurf->pShared;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
@@ -535,6 +545,7 @@ _semsurfRegisterCallback
     SemaphoreSurface *pSemSurf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3271);
     SEM_SHARED_DATA *pShared = pSemSurf->pShared;
     NV0005_ALLOC_PARAMETERS nv0005AllocParams;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
@@ -570,6 +581,7 @@ semsurfCopyConstruct
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3272);
     RsResourceRef *pSrcRef = pParams->pSrcRef;
     SemaphoreSurface *pSrcSemSurf = dynamicCast(pSrcRef->pResource,
                                                 SemaphoreSurface);
@@ -592,6 +604,7 @@ _semsurfDestroyShared
     SEM_SHARED_DATA *pShared
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3273);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
     if (pShared == NULL)
@@ -650,6 +663,7 @@ _semsurfValidateIndex
     NvU64 index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3274);
     const NvU64 slotSize = pShared->layout.size;
 
     if (((index * slotSize) + slotSize) <= pShared->pSemaphoreMem->pMemDesc->Size)
@@ -666,6 +680,7 @@ semsurfConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3275);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     SEM_SHARED_DATA                        *pShared;
     RmClient                               *pClient;
@@ -836,6 +851,7 @@ semsurfDestruct_IMPL
     SemaphoreSurface *pSemSurf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3276);
     SEM_SHARED_DATA *pShared = pSemSurf->pShared;
     SEM_INDEX_LISTENERS_NODE *pIndexListeners;
     SEM_VALUE_LISTENERS_NODE *pValueListeners;
@@ -944,6 +960,7 @@ semsurfCtrlCmdRefMemory_IMPL
     NV_SEMAPHORE_SURFACE_CTRL_REF_MEMORY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3277);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     SEM_SHARED_DATA *pShared = pSemSurf->pShared;
     NV_STATUS status = NV_OK;
@@ -1032,6 +1049,7 @@ semsurfCtrlCmdBindChannel_IMPL
     NV_SEMAPHORE_SURFACE_CTRL_BIND_CHANNEL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3278);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -1043,6 +1061,7 @@ _semsurfSetValueAndNotify
     NvU64 newValue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3279);
     SEM_INDEX_LISTENERS_NODE *valueNode;
     SEM_VALUE_LISTENERSIter vlIter;
     SEM_PENDING_NOTIFICATIONS notifications;
@@ -1135,6 +1154,7 @@ _semsurfAddWaiter
     NvBool bKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3280);
     SEM_INDEX_LISTENERS_NODE *pIndexListeners;
     SEM_VALUE_LISTENERSIter vlIter;
     SEM_VALUE_LISTENERS_NODE *pValueListeners;
@@ -1443,6 +1463,7 @@ semsurfCtrlCmdRegisterWaiter_IMPL
     NV_SEMAPHORE_SURFACE_CTRL_REGISTER_WAITER_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3281);
     CALL_CONTEXT       *pCallContext = resservGetTlsCallContext();
     NvP64               notificationHandle = 0;
     const NvBool        bKernel = (pCallContext->secInfo.paramLocation ==
@@ -1496,6 +1517,7 @@ semsurfCtrlCmdSetValue_IMPL
     NV_SEMAPHORE_SURFACE_CTRL_SET_VALUE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3282);
     NV_CHECK_OR_RETURN(LEVEL_ERROR,
                        _semsurfValidateIndex(pSemSurf->pShared, pParams->index),
                        NV_ERR_INVALID_INDEX);
@@ -1515,6 +1537,7 @@ _semsurfDelWaiter
     NvBool bKernel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3283);
     SEM_INDEX_LISTENERS_NODE *pIndexListeners;
     SEM_VALUE_LISTENERSIter vlIter;
     SEM_VALUE_LISTENERS_NODE *pValueListeners;
@@ -1595,6 +1618,7 @@ semsurfCtrlCmdUnregisterWaiter_IMPL
     NV_SEMAPHORE_SURFACE_CTRL_UNREGISTER_WAITER_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3284);
     CALL_CONTEXT       *pCallContext = resservGetTlsCallContext();
     NvP64               notificationHandle = 0;
     const NvBool        bKernel = (pCallContext->secInfo.paramLocation ==

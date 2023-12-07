@@ -189,6 +189,7 @@ _spdmReleaseSurfaceGsp
     Spdm *pSpdm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3978);
     SPDM_GSP_IO_CONTEXT *pIOContext = NULL;
 
     if (pSpdm == NULL || pSpdm->pDeviceIOContext == NULL)
@@ -229,6 +230,7 @@ _spdmErrorCheck
     NvU32                cmdType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3979);
     // Perform validation of received RPC SPDM message.
     if (pSpdmMsg->status != FLCN_OK)
     {
@@ -285,6 +287,7 @@ _spdmGetSequenceNumberGsp
     uint8_t  *sequence_number_buffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3980);
     // No sequence number included as a part of GSP secured message.
     return 0;
 }
@@ -299,6 +302,7 @@ _spdmGetMaxRandomNumberCountGsp
     void
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3981);
     return NV_SPDM_MAX_RANDOM_MSG_BYTES;
 }
 
@@ -312,6 +316,7 @@ _spdmGetTransportHeaderSizeGsp
     void *spdm_context
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3982);
     return sizeof(NV_SPDM_DESC_HEADER);
 }
 
@@ -332,6 +337,7 @@ _spdmEncodeMessageGsp
     void           **transport_message
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3983);
     libspdm_secured_message_callbacks_t  securedMessageInfo;
     libspdm_return_t                     status                 = LIBSPDM_STATUS_SUCCESS;
     size_t                               securedMessageSize     = 0;
@@ -464,6 +470,7 @@ _spdmDecodeMessageGsp
     void     **message
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3984);
     libspdm_secured_message_callbacks_t    securedMessageInfo;
     NV_SPDM_DESC_HEADER                   *pNvSpdmDescHdr         = NULL;
     NvU32                                  payloadSize            = 0;
@@ -606,6 +613,7 @@ _spdmSendMessageGsp
     uint64_t    timeout
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3985);
     NvU8                    *pRequest    = NULL;
     NvU32                    requestSize = 0;
     NV_STATUS                nvStatus    = NV_OK;
@@ -674,6 +682,7 @@ _spdmReceiveMessageGsp
     uint64_t   timeout
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3986);
     libspdm_return_t     spdmStatus = LIBSPDM_STATUS_SUCCESS;
     SPDM_GSP_IO_CONTEXT *pIOContext = NULL;
 
@@ -725,6 +734,7 @@ _spdmSendInitRmDataCommand
     Spdm   *pSpdm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3987);
     NV_STATUS                                  status     = NV_OK;
     RMTIMEOUT                                  timeout;
     NV2080_CTRL_INTERNAL_SPDM_PARTITION_PARAMS params;
@@ -770,6 +780,7 @@ spdmDeviceInit_GH100
     Spdm   *pSpdm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3988);
     NV_STATUS                                  status         = NV_OK;
     NV_STATUS                                  descHdrStatus  = NV_OK;
     SPDM_GSP_IO_CONTEXT                       *pIOContext     = NULL;
@@ -943,6 +954,7 @@ spdmDeviceDeinit_GH100
     NvBool  bForceClear
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3989);
     NV_STATUS                                  status         = NV_OK;
     NV_STATUS                                  descHdrStatus  = NV_OK;
     RM_GSP_SPDM_CMD_CC_DEINIT                 *pCcDeinit      = NULL;
@@ -1022,6 +1034,7 @@ spdmMessageProcess_GH100
     NvU32  *pResponseSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3990);
     NV_STATUS                                  status                = NV_OK;
     NV_STATUS                                  descHdrStatus         = NV_OK;
     NvU8                                      *pMapMem               = NULL;
@@ -1149,6 +1162,7 @@ spdmDeviceSecuredSessionSupported_GH100
     Spdm   *pSpdm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3991);
 
     return NV_OK;
 }
@@ -1160,6 +1174,7 @@ spdmCheckConnection_GH100
     Spdm   *pSpdm
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3992);
     void                       *pContext      = NULL;
     uint32_t                    expectedFlags = 0;
     uint32_t                    capabilitiesFlags = 0;
@@ -1262,6 +1277,7 @@ spdmGetAttestationReport_GH100
     NvU32  *pCecAttestationReportSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3993);
     NV_STATUS status             = NV_OK;
     uint8_t   numBlocks          = 0;
     uint32_t  measurementSize    = 0;

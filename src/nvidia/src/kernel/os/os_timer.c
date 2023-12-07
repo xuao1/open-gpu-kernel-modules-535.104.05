@@ -47,6 +47,7 @@ osInit1HzCallbacks
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4873);
     NvU32   i;
 
     // Initialize the OS 1 Hz timer callback list.
@@ -83,6 +84,7 @@ osDestroy1HzCallbacks
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4874);
     if (pTmr->pOs1HzEvent != NULL)
     {
         tmrEventCancel(pTmr, pTmr->pOs1HzEvent);
@@ -117,6 +119,7 @@ osSchedule1SecondCallback
     NvU32       flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4875);
     OBJTMR             *pTmr = GPU_GET_TIMER(pGpu);
     OS1HZTIMERENTRY    *pEntry;
     NV_STATUS           nvStatus = NV_OK;
@@ -168,6 +171,7 @@ osRemove1SecondRepeatingCallback
     void       *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4876);
     OBJTMR             *pTmr = GPU_GET_TIMER(pGpu);
     OS1HZTIMERENTRY    *pEntry;
     OS1HZTIMERENTRY   **ppEntryPtr;
@@ -208,6 +212,7 @@ osRun1HzCallbacksNow
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4877);
     OBJSYS             *pSys = SYS_GET_INSTANCE();
     OBJTMR             *pTmr = GPU_GET_TIMER(pGpu);
     OS1HZTIMERENTRY   **ppEntryPtr;
@@ -380,6 +385,7 @@ _os1HzCallbackIsOnList
     NvU32      flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4878);
     POS1HZTIMERENTRY    pScan;
 
     for (pScan = pTmr->pOs1HzCallbackList; pScan != NULL; pScan = pScan->next)
@@ -416,6 +422,7 @@ _os1HzCallback
     TMR_EVENT *pTmrEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4879);
     osRun1HzCallbacksNow(pGpu);
 
     // TMR_FLAG_RECUR does not work, so reschedule it here.

@@ -119,6 +119,7 @@ NVDUMP_EXPORT volatile NV_DECLARE_ALIGNED(NVDUMP_CONFIG, 8) nvDumpConfig =
 void
 rcdbDestruct_IMPL(Journal *pRcDB)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 171);
     EVENT_JOURNAL *pJournal = &pRcDB->Journal;
 
     // Deallocate NvDebug debugger dump buffer.
@@ -152,6 +153,7 @@ rcdbDestruct_IMPL(Journal *pRcDB)
 static void
 _initJournal(EVENT_JOURNAL *pJournal, NvU32 size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 172);
     // verify we are not abandoning any memory allocations.
     NV_ASSERT(NULL == pJournal->pBuffer);
     NV_ASSERT(NULL == (NvU8*) pJournal->AssertList.ppList);
@@ -201,6 +203,7 @@ _initJournal(EVENT_JOURNAL *pJournal, NvU32 size)
 NV_STATUS
 rcdbConstruct_IMPL(Journal *pRcDB)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 173);
     EVENT_JOURNAL *pJournal = &pRcDB->Journal;
     RING_BUFFER_LOG_COLLECTION *pRingBufferColl = &pRcDB->RingBufferColl;
     NvU32 i;
@@ -292,6 +295,7 @@ NV_STATUS rcdbSavePreviousDriverVersion_IMPL
     Journal *pRcDB
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 174);
     NV_STATUS nvStatus = NV_OK;
 
     NvU32     regEntrySize = 0;
@@ -416,6 +420,7 @@ rcdbSavePreviousDriverVersion_writeRegistry:
 
 NV_STATUS rcdbAddAssertJournalRecWithLine(void *pVoidGpu, NvU32 lineNum, void** ppRec, NvU8 jGroup, NvU8 type, NvU16 size, NvU32 level, NvU64 key)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 175);
     OBJSYS                     *pSys;
     Journal                    *pRcDB;
     OBJGPU                     *pPossibleNULLGpu;
@@ -525,11 +530,13 @@ NV_STATUS rcdbAddAssertJournalRecWithLine(void *pVoidGpu, NvU32 lineNum, void** 
 
 NV_STATUS rcdbAddAssertJournalRec(void *pVoidGpu, void** ppRec, NvU8 jGroup, NvU8 type, NvU16 size, NvU32 level, NvU64 key)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 176);
     return rcdbAddAssertJournalRecWithLine(pVoidGpu, NV_RM_ASSERT_UNKNOWN_LINE_NUM, ppRec, jGroup, type, size, level, key);
 }
 // Populate stateMask with flags that represent the power state and other useful things.
 static NvU64 _getCommonJournalStateMask(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 177);
     NvU64 stateMask = REF_NUM(NV_RM_JOURNAL_STATE_MASK_GC6_STATE,
         pGpu->gc6State.currentState);
 
@@ -574,6 +581,7 @@ rcdbSetCommonJournalRecord
     RmRCCommonJournal_RECORD *pRec
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 178);
     OS_THREAD_HANDLE threadId;
 
     pRec->timeStamp = osGetTimestamp();
@@ -601,6 +609,7 @@ rcdbAddBugCheckRec_IMPL
     NvU32    bugCheckCode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 179);
     RmJournalBugcheck_RECORD *pRec;
     NV_STATUS                 rmStatus;
 
@@ -630,6 +639,7 @@ rcdbAddPowerStateRec_IMPL
     NvU32    fastBootPowerState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 180);
     RmPowerState_RECORD       newRmDiagWrapBuffRec;
 
     // Create Records, then write it.
@@ -651,6 +661,7 @@ rcdbGetRcDiagRecBoundaries_IMPL
     NvU32     processId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 181);
     NV_STATUS                   status = NV_ERR_MISSING_TABLE_ENTRY;
     RmRCCommonJournal_RECORD   *pCommon;
     RmRcDiag_RECORD            *pRecord = NULL;
@@ -753,6 +764,7 @@ rcdbAddRcDiagRec_IMPL
     RmRcDiag_RECORD       *pRmDiagWrapBuffRec
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 182);
     NvU32   usec;
 
     // Create Records, then write it.
@@ -784,6 +796,7 @@ _rcdbInternalGetRcDiagRec
     NvU32                       processId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 183);
     RmRCCommonJournal_RECORD   *pCommon;
     RmRcDiag_RECORD*            pRecord = NULL;
     NV_STATUS                   status = NV_ERR_INVALID_INDEX;
@@ -851,6 +864,7 @@ rcdbGetRcDiagRec_IMPL
     NvU32                       processId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 184);
     NV_STATUS                   status = NV_ERR_INVALID_INDEX;
 
     if (ppRmDiagWrapBuffRec == NULL)
@@ -881,6 +895,7 @@ rcdbUpdateRcDiagRecContext_IMPL
     NvU32                       owner
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 185);
     RmRCCommonJournal_RECORD   *pCommon = NULL;
     RmRcDiag_RECORD*            pRecord = NULL;
     NV_STATUS                   status = NV_OK;
@@ -914,6 +929,7 @@ rcdbUpdateRcDiagRecContext_IMPL
 //
 NV_STATUS rcdbAllocNextJournalRec_IMPL(Journal *pRcDB, NVCD_RECORD** ppRec, NvU8 jGroup, NvU8 type, NvU16 size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 186);
     EVENT_JOURNAL *pJournal = &pRcDB->Journal;
 
     if ( ppRec == NULL )
@@ -952,6 +968,7 @@ NV_STATUS rcdbAllocNextJournalRec_IMPL(Journal *pRcDB, NVCD_RECORD** ppRec, NvU8
 
 NV_STATUS rcdbClearErrorHistory_IMPL(Journal *pRcDB)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 187);
     SYS_ERROR_INFO         *pSysErrorInfo = &pRcDB->ErrorInfo;
     RMFIFOERRORELEMENT_V3* pFifoErrorInfo;
     RMFIFOERRORELEMENT_V3* pFreeErrorInfo;
@@ -983,6 +1000,7 @@ NV_STATUS rcdbClearErrorHistory_IMPL(Journal *pRcDB)
 
 NV_STATUS rcdbDeleteErrorElement_IMPL(Journal *pRcDB, void *pDelete)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 188);
     RMFIFOERRORELEMENT_V3* pFifoDelete = (RMFIFOERRORELEMENT_V3*)pDelete;
     RMCD_ERROR_BLOCK*              pErrorBlock;
     RMCD_ERROR_BLOCK*              pOldErrorBlock;
@@ -1005,6 +1023,7 @@ NV_STATUS rcdbDeleteErrorElement_IMPL(Journal *pRcDB, void *pDelete)
 // Frees up the all the ring buffers
 void rcdbDestroyRingBufferCollection_IMPL(Journal *pRcDB)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 189);
     RING_BUFFER_LOG_COLLECTION *pRingBufferColl = &pRcDB->RingBufferColl;
     NvU32 i;
     RING_BUFFER_LOG* pCurrentBuffer = pRingBufferColl->pFirstEntry;
@@ -1049,6 +1068,7 @@ rcdbDumpInitGpuAccessibleFlag_IMPL
     Journal *pRcDB
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 190);
     pRcDB->nvDumpState.bGpuAccessible =
         pRcDB->nvDumpState.bRMLock                                    &&
         !pGpu->bIsSOC                                                 &&
@@ -1097,6 +1117,7 @@ rcdbDumpComponent_IMPL
     PrbBufferCallback *pBufferCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 191);
     NVD_STATE *pNvDumpState = &pRcDB->nvDumpState;
     void *pBuff;
     PRB_ENCODER encoder;
@@ -1213,6 +1234,7 @@ _rcdbGetTimeInfo
     const PRB_FIELD_DESC *pFieldDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 192);
     NvU64 timeSinceBoot;
     NvU32 sec;
     NvU32 usec;
@@ -1258,6 +1280,7 @@ rcdbDumpSystemInfo_IMPL
     NVD_STATE   *pNvDumpState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 193);
     OBJGPU     *pGpu;
     NvU8       *pGidString;
     NvU32       gpu;
@@ -1558,6 +1581,7 @@ rcdbDumpSystemFunc_IMPL
     NVD_STATE *pNvDumpState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 194);
     OBJGPU  *pGpu = gpumgrGetSomeGpu();
 
     switch (DRF_VAL(_NVD, _ERROR_CODE, _MAJOR, pNvDumpState->internalCode))
@@ -1586,6 +1610,7 @@ rcdbDumpSystemFunc_IMPL
 static NvU32
 _rcdbInsertErrorHistoryToList(RmRCCommonJournal_RECORD   *pList, NVD_STATE *pNvDumpState)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 195);
     OBJSYS                *pSys          = SYS_GET_INSTANCE();
     Journal               *pRcDB         = SYS_GET_RCDB(pSys);
     SYS_ERROR_INFO        *pSysErrorInfo = &pRcDB->ErrorInfo;
@@ -1645,6 +1670,7 @@ _rcdbDumpCommonJournalRecord
     RmRCCommonJournal_RECORD  *pRec
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 196);
     NV_STATUS nvStatus = NV_OK;
 
     NV_CHECK_OK(nvStatus, LEVEL_ERROR,
@@ -1673,6 +1699,7 @@ rcdbDumpCommonAssertRecord
     NvU32                     type
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 197);
     NvU32 i;
 
     prbEncAddUInt32(pPrbEnc, JOURNAL_ASSERT_TYPE,                 type);
@@ -1826,6 +1853,7 @@ _rcdbDumpDclMsgRecord(
 static NvU32
 _rcdbInsertJournalRecordToList (RmRCCommonJournal_RECORD *pList, RmRCCommonJournal_RECORD *pRecord)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 198);
     RmRCCommonJournal_RECORD *pCurrentRecord = pList;
     RmRCCommonJournal_RECORD *pNextRecord;
 
@@ -1853,6 +1881,7 @@ rcdbInsertRingBufferToList(
     RING_BUFFER_LOG            *pRingBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 199);
     RmRCCommonJournal_RECORD *pCommon;
     NvU32 recordSize;
     NvU32 i;
@@ -1916,6 +1945,7 @@ rcdbDumpJournal_IMPL
     const PRB_FIELD_DESC *pFieldDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 200);
     OS_DRIVER_BLOCK DriverBlock;
     EVENT_JOURNAL *pJournal = &pRcDB->Journal;
     NvU8 *pJournalBuff      = pJournal->pBuffer;
@@ -2038,6 +2068,7 @@ rcdbDumpJournal_IMPL
 NvU32
 rcdbDumpErrorCounters_IMPL(Journal *pRcDB, OBJGPU *pGpu, PRB_ENCODER *pPrbEnc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 201);
     NvU32                   i;
     NvU32                   rcErrTyp = RC_ERROR_COUNTER_TYPE_INVALID;
     NV_STATUS               nvStatus = NV_OK;
@@ -2090,6 +2121,7 @@ _rcdbAddRmGpuDumpCallback
     void *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 202);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     NV_STATUS status;
 
@@ -2145,6 +2177,7 @@ _rcdbAddRmGpuDumpCallback
 static NV_STATUS
 nvdDebuggerBufferCallback(void *pEncoder, NvBool bBufferFull)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 203);
     if (bBufferFull)
     {
         nvDumpConfig.dumpStatus = NVDUMP_STATUS_DUMP_BUFFER_FULL;
@@ -2175,6 +2208,7 @@ nvdDebuggerBufferCallback(void *pEncoder, NvBool bBufferFull)
 static void
 nvdDebuggerControlFunc(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 204);
     OBJSYS        *pSys = SYS_GET_INSTANCE();
     Journal       *pRcDB = SYS_GET_RCDB(pSys);
     OBJGPU        *pGpu = NULL;
@@ -2269,6 +2303,7 @@ nvdDebuggerControlFunc(void)
 #if (defined(_WIN32) || defined(_WIN64) || defined(NV_UNIX) || RMCFG_FEATURE_PLATFORM_GSP) && !defined(NV_MODS)
 static void _rcdbRmAssert(NvU32 level, NvU32 lineNum, NvU64 ip)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 205);
     RmRC2SwRmAssert3_RECORD* pRec = NULL;
     if (rcdbAddAssertJournalRecWithLine(NULL, lineNum, (void **)&pRec, RmGroup,
         RmRC2SwRmAssert_V3, sizeof(RmRC2SwRmAssert3_RECORD),
@@ -2279,6 +2314,7 @@ static void _rcdbRmAssert(NvU32 level, NvU32 lineNum, NvU64 ip)
 
 #if !defined(DEBUG) && !defined(QA_BUILD)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 206);
         OBJSYS *pSys = SYS_GET_INSTANCE();
 
         // Add assert to NvLog.  But skip when nvLog asserts to avoid stack overflow.
@@ -2321,6 +2357,7 @@ void rcdbRmAssertStatus(NvU32 status, NvU32 LineNum, NvU64 ip) { _rcdbRmAssert(s
  */
 static void _rcdbDbgBreakEx(void *pGpu, NvU32 lineNum, NvU32 level, NvU64 ip)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 207);
     RmRC2SwRmAssert3_RECORD* pRec = NULL;
     if (rcdbAddAssertJournalRecWithLine(pGpu, lineNum, (void**)&pRec, RmGroup,
          RmRC2SwDbgBreakpoint_V3, sizeof(RmRC2SwRmAssert3_RECORD), level, ip) == NV_OK)
@@ -2330,6 +2367,7 @@ static void _rcdbDbgBreakEx(void *pGpu, NvU32 lineNum, NvU32 level, NvU64 ip)
 
 #if !defined(DEBUG) && !defined(QA_BUILD)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 208);
         OBJSYS *pSys = SYS_GET_INSTANCE();
 
         // Add assert to NvLog.  But skip when nvLog asserts to avoid stack overflow.
@@ -2365,6 +2403,7 @@ rcdbAddRmEngDump
     NvU32 component
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 209);
     OBJSYS          *pSys     = SYS_GET_INSTANCE();
     Journal         *pRcDB    = SYS_GET_RCDB(pSys);
     NvDebugDump     *pNvd     = GPU_GET_NVD(pGpu);
@@ -2423,6 +2462,7 @@ rcdbFindRingBufferForType
     RING_BUFFER_LOG **ppRingBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 210);
     NvU32 i;
     RING_BUFFER_LOG *pCurrentRingBuffer = NULL;
     RING_BUFFER_LOG_COLLECTION *pRingBufferColl = &pRcDB->RingBufferColl;
@@ -2465,6 +2505,7 @@ rcdbCreateRingBuffer_IMPL
     NvU32   maxEntries
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 211);
     NV_STATUS status;
     RING_BUFFER_LOG_COLLECTION *pRingBufferColl = &pRcDB->RingBufferColl;
     RING_BUFFER_LOG *pRingBuffer;
@@ -2596,6 +2637,7 @@ rcdbDestroyRingBuffer_IMPL
     RMCD_RECORD_TYPE type
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 212);
     RING_BUFFER_LOG_COLLECTION *pRingBufferColl = &pRcDB->RingBufferColl;
     RING_BUFFER_LOG *pRingBuffer, *pCurrentRingBuffer;
     NvU32 i;
@@ -2654,6 +2696,7 @@ _rcdbAllocRecFromRingBuffer
     RMCD_RECORD_TYPE    type
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 213);
     RING_BUFFER_LOG    *pRingBuffer = NULL;
     NvU32               newItemIndex;
     RmRCCommonJournal_RECORD
@@ -2720,6 +2763,7 @@ rcdbAddRecToRingBuffer_IMPL
     NvU8               *pRecord
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 214);
     RmRCCommonJournal_RECORD
                        *pCommon;
 
@@ -2740,6 +2784,7 @@ rcdbAddRecToRingBuffer_IMPL
 // Non-hal function to return the sizes of records that are not chip dependent.
 NvU32 rcdbGetOcaRecordSize_IMPL(Journal *pRcDB, RMCD_RECORD_TYPE type)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 215);
     switch(type)
     {
         case RmRcDiagReport:
@@ -2754,6 +2799,7 @@ NvU32 rcdbGetOcaRecordSize_IMPL(Journal *pRcDB, RMCD_RECORD_TYPE type)
 }
 static NvU32 _rcdbGetOcaRecordSizeWithHeader(Journal *pRcDB, RMCD_RECORD_TYPE type)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 216);
     NvU32 recSz;
 
     recSz = rcdbGetOcaRecordSize(pRcDB, type);
@@ -2778,6 +2824,7 @@ rcdbAddRmGpuDump
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 217);
     NV_STATUS           status = NV_OK;
     OBJSYS             *pSys               = SYS_GET_INSTANCE();
     Journal            *pRcDB              = SYS_GET_RCDB(pSys);
@@ -2971,6 +3018,7 @@ rcdProbeGpuPresent(
     NvU64    ip
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 218);
     NvU32       testValue;
     NvBool      bFoundLostGpu = NV_FALSE;
 
@@ -3016,6 +3064,7 @@ rcdProbeAllGpusPresent(
     NvU64   ip
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 219);
     NvBool  bFoundLostGpu = NV_FALSE;
     OBJGPU *pGpu;
     NvU32   gpuMask;
@@ -3039,6 +3088,7 @@ rcdbAddCrashedFalcon
     Falcon *pFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 220);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     Journal *pRcDB = SYS_GET_RCDB(pSys);
 
@@ -3059,6 +3109,7 @@ rcdbAddCrashedFalcon
 NV_STATUS
 _rcdbNocatCollectContext(OBJGPU *pGpu, Journal* pRcdb, NV2080_NOCAT_JOURNAL_GPU_STATE* pContext)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 221);
     NV2080_NOCAT_JOURNAL_GPU_STATE* pContextCache = NULL;
     const char *pTag;
 
@@ -3160,6 +3211,7 @@ void _rcdbSetTdrReason
     NvU32               maxLen
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 222);
     const char *pTmpStr;
 
     // validate inputs.
@@ -3230,6 +3282,7 @@ RM_NOCAT_JOURNAL_ENTRY* _rcdbAllocNocatJournalRecord
     RmRCCommonJournal_RECORD   **ppCommon
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 223);
     nocatQueueDescriptor   *pDesc = NULL;
     RmRCCommonJournal_RECORD* pCommon;
     RM_NOCAT_JOURNAL_ENTRY * pNocatEntry = NULL;
@@ -3302,6 +3355,7 @@ _rcdbGetNocatJournalRecord
                       **ppReturnedNocatEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 224);
     nocatQueueDescriptor     *pDesc;
     RmRCCommonJournal_RECORD *pCommon = NULL;
     RM_NOCAT_JOURNAL_ENTRY   *pNocatEntry = NULL;
@@ -3424,6 +3478,7 @@ _rcdbGetNewestNocatJournalRecordForType
                       **ppReturnedNocatEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 225);
     if (type >= NV2080_NOCAT_JOURNAL_REC_TYPE_COUNT)
     {
         // we failed
@@ -3472,6 +3527,7 @@ rcdbReportNextNocatJournalEntry
                        *pReturnedNocatEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 226);
     OBJSYS                   *pSys = SYS_GET_INSTANCE();
     Journal                  *pRcdb = SYS_GET_RCDB(pSys);
     NV_STATUS                 status = NV_ERR_OBJECT_NOT_FOUND;
@@ -3553,6 +3609,7 @@ rcdbReportNextNocatJournalEntry
 NvU32
 rcdbGetNocatOutstandingCount(Journal *pRcdb)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 227);
     NvU32 count = NV_U32_MAX;
     if (pRcdb != NULL)
     {
@@ -3594,6 +3651,7 @@ _rcdbSendNocatJournalNotification
     NvU32 type
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 228);
     if ((pCommon == NULL) || (pRcdb == NULL))
     {
         return NV_ERR_INVALID_ARGUMENT;
@@ -3625,6 +3683,7 @@ _rcdbSendNocatJournalNotification
 */
 void rcdbInitNocatGpuCache_IMPL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 229);
     OS_DRIVER_BLOCK         driverBlock;
     OBJSYS                 *pSys = SYS_GET_INSTANCE();
     Journal                *pRcdb = SYS_GET_RCDB(pSys);
@@ -3685,6 +3744,7 @@ void rcdbInitNocatGpuCache_IMPL(OBJGPU *pGpu)
 */
 void rcdbCleanupNocatGpuCache_IMPL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 230);
 #if NOCAT_PROBE_FB_MEMORY
     if (pGpu == NULL)
     {
@@ -3719,6 +3779,7 @@ rcdbNocatInsertNocatError(
     NOCAT_JOURNAL_PARAMS *pNewEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 231);
     OBJSYS                     *pSys = SYS_GET_INSTANCE();
     Journal                    *pRcdb = SYS_GET_RCDB(pSys);
     NvBool                      bInsertRecord;
@@ -3947,6 +4008,7 @@ rcdbNocatInitEngineErrorEvent
     NOCAT_JOURNAL_PARAMS *pNewEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 232);
     if (pNewEntry == NULL)
     {
         return NV_ERR_INVALID_ARGUMENT;
@@ -3982,6 +4044,7 @@ rcdbNocatInsertEngineError(
     NvU32               diagBufferLen
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 233);
     NOCAT_JOURNAL_PARAMS newEntry;
 
     rcdbNocatInitEngineErrorEvent(&newEntry);
@@ -4005,6 +4068,7 @@ rcdbNocatInitTDRErrorEvent
     NOCAT_JOURNAL_PARAMS *pNewEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 234);
     if (pNewEntry == NULL)
     {
         return NV_ERR_INVALID_ARGUMENT;
@@ -4048,6 +4112,7 @@ rcdbNocatInsertTDRError
     const char         *pFaultingEngine
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 235);
     NOCAT_JOURNAL_PARAMS newEntry;
 
     rcdbNocatInitTDRErrorEvent(&newEntry);
@@ -4065,6 +4130,7 @@ rcdbNocatInitRCErrorEvent
     NOCAT_JOURNAL_PARAMS *pNewEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 236);
     if (pNewEntry == NULL)
     {
         return NV_ERR_INVALID_ARGUMENT;
@@ -4090,6 +4156,7 @@ _rcdbNocatReportAssert
     RmRCCommonAssert_RECORD *pAssertRec
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 237);
     OBJSYS                 *pSys = SYS_GET_INSTANCE();
     Journal                *pRcdb = SYS_GET_RCDB(pSys);
     NOCAT_JOURNAL_PARAMS    newEntry;
@@ -4234,6 +4301,7 @@ NV_STATUS rcdbSetNocatTdrReason
     NV2080CtrlNocatJournalDataTdrReason *pReasonData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 238);
     OBJSYS             *pSys = SYS_GET_INSTANCE();
     Journal            *pRcdb = SYS_GET_RCDB(pSys);
     RM_NOCAT_JOURNAL_ENTRY* pNocatEntry = NULL;

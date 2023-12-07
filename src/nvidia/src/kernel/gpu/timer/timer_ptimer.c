@@ -47,6 +47,7 @@ NV_STATUS tmrDelay_PTIMER
      NvU32      nsec
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4222);
     NvU64   Time;
     NvU32   start = 0;
     OBJGPU *pGpu = ENG_GET_GPU(pTmr);
@@ -181,6 +182,7 @@ tmrGetTimerBar0MapInfo_PTIMER
     NvU32   *pBar0MapSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4223);
     *pBar0MapOffset = DRF_BASE(NV_PTIMER);
     *pBar0MapSize   = DRF_SIZE(NV_PTIMER);
 

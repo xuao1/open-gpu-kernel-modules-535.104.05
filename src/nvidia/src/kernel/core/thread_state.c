@@ -49,6 +49,7 @@ THREAD_STATE_DB threadStateDatabase;
 
 static void _threadStatePrintInfo(THREAD_STATE_NODE *pThreadNode)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 110);
     if ((threadStateDatabase.setupFlags & THREAD_STATE_SETUP_FLAGS_PRINT_INFO_ENABLED) == 0)
         return;
 
@@ -70,6 +71,7 @@ static void _threadStatePrintInfo(THREAD_STATE_NODE *pThreadNode)
 
 static void _threadStateFreeProcessWork(THREAD_STATE_NODE *pThreadNode)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 111);
     PORT_UNREFERENCED_VARIABLE(pThreadNode);
 }
 
@@ -83,6 +85,7 @@ static void _threadStateFreeProcessWork(THREAD_STATE_NODE *pThreadNode)
  */
 static NV_STATUS _threadStateAllocPerCpuPerGpu(PPTHREAD_STATE_ISR_LOCKLESS ppIsrlocklessThreadNode)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 112);
     NvU32 allocSize;
     PTHREAD_STATE_ISR_LOCKLESS pIsrlocklessThreadNode;
     NvS32 i;
@@ -131,6 +134,7 @@ static NV_STATUS _threadStateAllocPerCpuPerGpu(PPTHREAD_STATE_ISR_LOCKLESS ppIsr
  */
 static void _threadStateFreePerCpuPerGpu(PTHREAD_STATE_ISR_LOCKLESS pIsrlocklessThreadNode)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 113);
     NvU32 i;
     // Free any memory we allocated
     if (pIsrlocklessThreadNode)
@@ -150,6 +154,7 @@ static void _threadStateFreePerCpuPerGpu(PTHREAD_STATE_ISR_LOCKLESS pIsrlockless
  */
 NV_STATUS threadStateGlobalAlloc(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 114);
     NV_STATUS rmStatus;
     NvU32 allocSize;
 
@@ -189,6 +194,7 @@ NV_STATUS threadStateGlobalAlloc(void)
 
 void threadStateGlobalFree(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 115);
     // Disable all threadState usage once the spinlock is freed
     threadStateDatabase.setupFlags = THREAD_STATE_SETUP_FLAGS_NONE;
 
@@ -213,6 +219,7 @@ void threadStateGlobalFree(void)
 
 void threadStateInitRegistryOverrides(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 116);
     NvU32 flags;
 
     if (osReadRegistryDword(pGpu,
@@ -227,6 +234,7 @@ void threadStateInitRegistryOverrides(OBJGPU *pGpu)
 
 void threadStateInitSetupFlags(NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 117);
     threadStateDatabase.timeout.nonComputeTimeoutMsecs = 0;
     threadStateDatabase.timeout.computeTimeoutMsecs = 0;
     threadStateDatabase.timeout.computeGpuMask = 0;
@@ -235,6 +243,7 @@ void threadStateInitSetupFlags(NvU32 flags)
 
 NvU32 threadStateGetSetupFlags(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 118);
     return threadStateDatabase.setupFlags;
 }
 
@@ -245,6 +254,7 @@ NvU32 threadStateGetSetupFlags(void)
 //
 static void _threadStateSetNextCpuYieldTime(THREAD_STATE_NODE *pThreadNode)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 119);
     NvU64 timeInNs;
     osGetCurrentTick(&timeInNs);
 
@@ -254,6 +264,7 @@ static void _threadStateSetNextCpuYieldTime(THREAD_STATE_NODE *pThreadNode)
 
 void threadStateYieldCpuIfNecessary(OBJGPU *pGpu, NvBool bQuiet)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 120);
     NV_STATUS rmStatus;
     THREAD_STATE_NODE *pThreadNode = NULL;
     NvU64 timeInNs;
@@ -276,6 +287,7 @@ void threadStateYieldCpuIfNecessary(OBJGPU *pGpu, NvBool bQuiet)
 
 static NV_STATUS _threadNodeInitTime(THREAD_STATE_NODE *pThreadNode)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 121);
     NV_STATUS rmStatus = NV_OK;
     NvU64 timeInNs;
     NvBool firstInit;
@@ -399,6 +411,7 @@ static void _getTimeoutDataFromGpuMode(
 //
 static NV_STATUS _threadNodeCheckTimeout(OBJGPU *pGpu, THREAD_STATE_NODE *pThreadNode, NvU64 *pElapsedTimeUs)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 122);
     NV_STATUS rmStatus = NV_OK;
     NvU64 threadStateDatabaseTimeoutMsecs = 0;
     NvU64 *pThreadNodeTime = NULL;
@@ -487,6 +500,7 @@ static void _threadStateFreeInvokeCallbacks
     THREAD_STATE_NODE *pThreadNode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 123);
     THREAD_STATE_FREE_CALLBACK *pCbListNode;
 
     NV_ASSERT_OR_RETURN_VOID(pThreadNode->flags &
@@ -502,6 +516,7 @@ static void _threadStateFreeInvokeCallbacks
 
 static void _threadStateLogInitCaller(THREAD_STATE_NODE *pThreadNode, NvU64 funcAddr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 124);
     threadStateDatabase.traceInfo.entries[threadStateDatabase.traceInfo.index].callerRA = funcAddr;
     threadStateDatabase.traceInfo.entries[threadStateDatabase.traceInfo.index].flags = pThreadNode->flags;
     threadStateDatabase.traceInfo.index =
@@ -517,6 +532,7 @@ static void _threadStateLogInitCaller(THREAD_STATE_NODE *pThreadNode, NvU64 func
  */
 void threadStateInit(THREAD_STATE_NODE *pThreadNode, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 125);
     NV_STATUS rmStatus;
     NvU64 funcAddr;
 
@@ -616,6 +632,7 @@ void threadStateInitISRAndDeferredIntHandler
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 126);
     NV_STATUS rmStatus;
 
     NV_ASSERT(pGpu);
@@ -664,6 +681,7 @@ TlsMirror_Exit:
  */
 void threadStateInitISRLockless(THREAD_STATE_NODE *pThreadNode, OBJGPU *pGpu, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 127);
     NV_STATUS rmStatus;
     PTHREAD_STATE_ISR_LOCKLESS pThreadStateIsrLockless;
 
@@ -729,6 +747,7 @@ void threadStateFreeISRAndDeferredIntHandler
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 128);
     NV_STATUS rmStatus;
 
     NV_ASSERT_OR_RETURN_VOID(pGpu &&
@@ -778,6 +797,7 @@ void threadStateFreeISRAndDeferredIntHandler
  */
 void threadStateFree(THREAD_STATE_NODE *pThreadNode, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 129);
     NV_STATUS rmStatus;
     THREAD_STATE_NODE *pNode;
     ThreadStateNodeMap *pMap;
@@ -875,6 +895,7 @@ void threadStateFree(THREAD_STATE_NODE *pThreadNode, NvU32 flags)
  */
 void threadStateFreeISRLockless(THREAD_STATE_NODE *pThreadNode, OBJGPU *pGpu, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 130);
     NV_STATUS rmStatus = NV_OK;
     PTHREAD_STATE_ISR_LOCKLESS pThreadStateIsrlockless;
 
@@ -938,6 +959,7 @@ static NV_STATUS _threadStateGet
     THREAD_STATE_NODE **ppThreadNode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 131);
     THREAD_STATE_NODE *pNode;
 
     // Check to see if ThreadState is enabled
@@ -1010,6 +1032,7 @@ static NV_STATUS _threadStateGet
 
 NV_STATUS threadStateGetCurrentUnchecked(THREAD_STATE_NODE **ppThreadNode, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 132);
     NV_STATUS rmStatus;
     OS_THREAD_HANDLE threadId;
 
@@ -1039,6 +1062,7 @@ NV_STATUS threadStateGetCurrentUnchecked(THREAD_STATE_NODE **ppThreadNode, OBJGP
 
 NV_STATUS threadStateGetCurrent(THREAD_STATE_NODE **ppThreadNode, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 133);
     NV_STATUS status = threadStateGetCurrentUnchecked(ppThreadNode, pGpu);
 
     if (TLS_MIRROR_THREADSTATE)
@@ -1071,6 +1095,7 @@ NV_STATUS threadStateGetCurrent(THREAD_STATE_NODE **ppThreadNode, OBJGPU *pGpu)
 //
 NV_STATUS threadStateInitTimeout(OBJGPU *pGpu, NvU32 timeoutUs, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 134);
     NvU32 timeoutMsecs = (timeoutUs / 1000);
     NvU32 gpuMode = gpuGetMode(pGpu);
     NvU32 scaleIgnored = 0;
@@ -1105,6 +1130,7 @@ NV_STATUS threadStateInitTimeout(OBJGPU *pGpu, NvU32 timeoutUs, NvU32 flags)
 //
 NV_STATUS threadStateResetTimeout(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 135);
     NV_STATUS rmStatus;
     THREAD_STATE_NODE *pThreadNode = NULL;
 
@@ -1132,6 +1158,7 @@ NV_STATUS threadStateResetTimeout(OBJGPU *pGpu)
 
 void threadStateLogTimeout(OBJGPU *pGpu, NvU64 funcAddr, NvU32 lineNum)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 136);
         // Log the Timeout in the RM Journal
         RmRC2GpuTimeout3_RECORD* pRec = NULL;
 
@@ -1157,6 +1184,7 @@ void threadStateLogTimeout(OBJGPU *pGpu, NvU64 funcAddr, NvU32 lineNum)
 //
 NV_STATUS threadStateCheckTimeout(OBJGPU *pGpu, NvU64 *pElapsedTimeUs)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 137);
     NV_STATUS rmStatus;
     THREAD_STATE_NODE *pThreadNode = NULL;
 
@@ -1198,6 +1226,7 @@ NV_STATUS threadStateCheckTimeout(OBJGPU *pGpu, NvU64 *pElapsedTimeUs)
 //
 void threadStateSetTimeoutOverride(THREAD_STATE_NODE *pThreadNode, NvU64 newTimeoutMs)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 138);
     NvU64 timeInNs;
 
     pThreadNode->timeout.overrideTimeoutMsecs = newTimeoutMs;
@@ -1225,6 +1254,7 @@ NV_STATUS threadStateEnqueueCallbackOnFree
     THREAD_STATE_FREE_CALLBACK *pCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 139);
     THREAD_STATE_FREE_CALLBACK *pCbListNode;
 
     if ((pThreadNode == NULL) || (pCallback == NULL) ||
@@ -1251,6 +1281,7 @@ void threadStateRemoveCallbackOnFree
     THREAD_STATE_FREE_CALLBACK *pCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 140);
     THREAD_STATE_FREE_CALLBACK *pCbListNode;
 
     NV_ASSERT_OR_RETURN_VOID(pThreadNode->flags &

@@ -38,6 +38,7 @@
  */
 static NvU16 _nvStrLen(const char *szStr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5147);
     NvU16 dwLen = 0;
     // next statements on one line so easier to step over in debugger
     while (*szStr != '\0') { dwLen ++; szStr ++; }
@@ -71,6 +72,7 @@ NV_STATUS nbsiReadRegistryDword
     NvU32  *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5148);
     NBSI_OBJ  *pNbsiObj = getNbsiObject();
     NvU32      nbsiDword;
     NvU16      pathHash;
@@ -184,6 +186,7 @@ NV_STATUS nbsiReadRegistryString
     NvU32  *pCbLen
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5149);
     NBSI_OBJ  *pNbsiObj = getNbsiObject();
     NvU16      pathHash;
     NvU8      *pRetBuf;

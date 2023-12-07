@@ -48,6 +48,7 @@ kflcnIsRiscvActive_GA10X
     KernelFalcon *pKernelFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1287);
     NvU32 val = kflcnRiscvRegRead_HAL(pGpu, pKernelFlcn, NV_PRISCV_RISCV_CPUCTL);
 
     return FLD_TEST_DRF(_PRISCV, _RISCV_CPUCTL, _ACTIVE_STAT, _ACTIVE, val);
@@ -68,6 +69,7 @@ kflcnRiscvProgramBcr_GA102
     NvBool bBRFetch
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1288);
     NvU32 bcr;
 
     bcr = DRF_DEF(_PRISCV_RISCV, _BCR_CTRL, _CORE_SELECT, _RISCV)   |
@@ -87,6 +89,7 @@ void kflcnSwitchToFalcon_GA10X
     KernelFalcon *pKernelFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1289);
     NvU32     bcrCtrl;
     RMTIMEOUT timeout;
     NV_STATUS status = NV_OK;
@@ -141,6 +144,7 @@ kflcnPreResetWait_GA10X
     KernelFalcon *pKernelFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1290);
     NvU32 hwcfg2;
     RMTIMEOUT timeout;
     NvU32 flags = (GPU_TIMEOUT_FLAGS_TMR |
@@ -190,6 +194,7 @@ kflcnPreResetWait_GA10X
 static NvBool
 _kflcnWaitForScrubbingToFinish(OBJGPU *pGpu, void *pVoid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1291);
     NvBool bResult = NV_FALSE;
     NvU32 dmaCtrl = 0;
     KernelFalcon *pKernelFlcn = reinterpretCast(pVoid, KernelFalcon *);
@@ -207,6 +212,7 @@ _kflcnWaitForScrubbingToFinish(OBJGPU *pGpu, void *pVoid)
 NV_STATUS
 kflcnWaitForResetToFinish_GA102(OBJGPU *pGpu, KernelFalcon *pKernelFlcn)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1292);
     // Skip the wait if we are in the reset path
     if (API_GPU_IN_RESET_SANITY_CHECK(pGpu))
         return NV_ERR_GPU_IN_FULLCHIP_RESET;
@@ -230,6 +236,7 @@ kflcnReadIntrStatus_GA102
     KernelFalcon *pKernelFlcn
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1293);
     return ((kflcnRegRead_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_IRQSTAT) &
              kflcnRegRead_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_IRQMASK) &
              kflcnRegRead_HAL(pGpu, pKernelFlcn, NV_PFALCON_FALCON_IRQDEST)) |

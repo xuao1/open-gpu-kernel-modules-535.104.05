@@ -43,6 +43,7 @@ gpuInitRegistryOverrides_KERNEL
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1897);
     NvU32 data32 = 0;
 
     // Override timeout settings
@@ -197,6 +198,7 @@ gpuInitInstLocOverrides_IMPL
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1898);
     NvU32 data32 = 0;
     //
     // If Hopper CC mode is enabled, move all except few buffers to FB
@@ -323,6 +325,7 @@ _gpuInitGlobalSurfaceOverride
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1899);
     NvU32 globalOverride;
 
     //

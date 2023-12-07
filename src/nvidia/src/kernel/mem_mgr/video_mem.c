@@ -60,6 +60,7 @@ _vidmemQueryAlignment
     NvU64                     *pAlign
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4725);
     NV_MEMORY_ALLOCATION_PARAMS *pAllocData     = pAllocRequest->pUserParams;
     OBJGPU                      *pGpu           = pAllocRequest->pGpu;
     MemoryManager               *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -120,6 +121,7 @@ _vidmemPmaAllocate
     MEMORY_ALLOCATION_REQUEST *pAllocRequest
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4726);
     NV_MEMORY_ALLOCATION_PARAMS *pAllocData     = pAllocRequest->pUserParams;
     OBJGPU                      *pGpu           = pAllocRequest->pGpu;
     MemoryManager               *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -379,6 +381,7 @@ vidmemPmaFree
     NvU32           flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4727);
     PMA   *pPma  = &pHeap->pmaObject;
     NvU32 pmaFreeFlags = flags;
 
@@ -423,6 +426,7 @@ vidmemGetHeap
     NvBool   bSubheap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4728);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_STATUS      status         = NV_OK;
 
@@ -466,6 +470,7 @@ vidmemCopyConstruct
     RS_RES_ALLOC_PARAMS_INTERNAL    *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4729);
     Memory    *pMemorySrc            = dynamicCast(pParams->pSrcRef->pResource, Memory);
     OBJGPU    *pGpu                  = pMemorySrc->pGpu;
     NV_STATUS  status;
@@ -513,6 +518,7 @@ vidmemConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4730);
     Memory                      *pMemory               = staticCast(pVideoMemory, Memory);
     NV_MEMORY_ALLOCATION_PARAMS *pAllocData            = pParams->pAllocParams;
     NvHandle                     hClient               = pCallContext->pClient->hClient;
@@ -1013,6 +1019,7 @@ vidmemDestruct_IMPL
     VideoMemory        *pVideoMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4731);
     Memory             *pMemory        = staticCast(pVideoMemory, Memory);
     OBJGPU             *pGpu           = pMemory->pGpu;
     MEMORY_DESCRIPTOR  *pMemDesc       = pMemory->pMemDesc;
@@ -1104,6 +1111,7 @@ vidmemAllocResources
     Heap                        *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4732);
     NV_STATUS                    status               = NV_OK;
     KernelMemorySystem          *pKernelMemorySystem  = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     NV_MEMORY_ALLOCATION_PARAMS *pVidHeapAlloc        = pAllocRequest->pUserParams;
@@ -1371,6 +1379,7 @@ vidmemCheckCopyPermissions_IMPL
     Device             *pDstDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4733);
     Memory           *pMemory               = staticCast(pVideoMemory, Memory);
     OBJGPU           *pSrcGpu               = pMemory->pGpu;
     NvHandle          hSrcClient            = RES_GET_CLIENT_HANDLE(pVideoMemory);

@@ -55,6 +55,7 @@ dispapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 952);
     NV_STATUS        status;
     CLASSDESCRIPTOR *pClassDescriptor;
     RsResourceRef   *pResourceRef = pCallContext->pResourceRef;
@@ -106,6 +107,7 @@ dispapiDestruct_IMPL
     DisplayApi *pDisplayApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 953);
     NvU32 i;
 
     // Free notify actions memory if it's been allocated
@@ -124,6 +126,7 @@ _dispapiNotifierInit
     NvU32       disableCmd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 954);
     NvU32     i, j;
     NV_STATUS status = NV_OK;
 
@@ -169,6 +172,7 @@ dispobjConstructHal_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 955);
     DisplayApi  *pDisplayApi  = staticCast(pDispObject, DisplayApi);
     Device      *pDevice      = dynamicCast(pCallContext->pResourceRef->pParentRef->pResource, Device);
     GpuResource *pGpuResource = staticCast(pDevice, GpuResource);
@@ -217,6 +221,7 @@ dispobjConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 956);
     pDispObject->rmFreeFlags = NV5070_CTRL_SET_RMFREE_FLAGS_NONE;
 
     if (pParams->pSecInfo->privLevel < RS_PRIV_LEVEL_USER_ROOT)
@@ -246,6 +251,7 @@ dispobjGetByHandle_IMPL
     DispObject **ppDispObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 957);
     NV_STATUS      status;
     RsResourceRef *pResourceRef;
 
@@ -266,6 +272,7 @@ dispobjGetByDevice_IMPL
     DispObject **ppDispObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 958);
     NV_STATUS      status;
     RsResourceRef *pResourceRef;
 
@@ -293,6 +300,7 @@ dispapiSetUnicastAndSynchronize_KERNEL
     NvU32            subDeviceInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 959);
     NV_STATUS   nvStatus    = NV_OK;
 
     nvStatus = gpugrpGetGpuFromSubDeviceInstance(pGpuGroup, subDeviceInstance, ppGpu);
@@ -325,6 +333,7 @@ dispapiControl_Prologue_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pRmCtrlParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 960);
     NvU32       subdeviceIndex;
     NV_STATUS   status;
     RmResource *pResource = staticCast(pDisplayApi, RmResource);
@@ -411,6 +420,7 @@ dispapiControl_Epilogue_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pRmCtrlParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 961);
     if (dynamicCast(pDisplayApi, DispCommon) == NULL)
     {
         RmResource *pResource = staticCast(pDisplayApi, RmResource);
@@ -428,6 +438,7 @@ dispapiControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 962);
     Intr             *pIntr;
     NV_STATUS         status        = NV_OK;
     Device           *pDevice       = dynamicCast(pCallContext->pResourceRef->pParentRef->pResource, Device);
@@ -472,6 +483,7 @@ dispswobjConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 963);
     return NV_OK;
 }
 
@@ -483,6 +495,7 @@ dispcmnConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 964);
     DisplayApi *pDisplayApi = staticCast(pDispCommon, DisplayApi);
 
     //
@@ -507,6 +520,7 @@ dispcmnGetByHandle_IMPL
     DispCommon **ppDispCommon
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 965);
     NV_STATUS      status;
     RsResourceRef *pResourceRef;
 
@@ -527,6 +541,7 @@ dispcmnGetByDevice_IMPL
     DispCommon **ppDispCommon
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 966);
     Device        *pDevice;
     RsResourceRef *pResourceRef;
 
@@ -551,6 +566,7 @@ dispcmnGetByDevice_IMPL
  */
 NvBool dispobjGetRmFreeFlags_IMPL(DispObject *pDispObject)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 967);
     return !!(pDispObject->rmFreeFlags & NV5070_CTRL_SET_RMFREE_FLAGS_PRESERVE_HW);
 }
 
@@ -563,6 +579,7 @@ NvBool dispobjGetRmFreeFlags_IMPL(DispObject *pDispObject)
  */
 void dispobjClearRmFreeFlags_IMPL(DispObject *pDispObject)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 968);
     pDispObject->rmFreeFlags  = NV5070_CTRL_SET_RMFREE_FLAGS_NONE;
 }
 
@@ -574,6 +591,7 @@ nvdispapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 969);
     return NV_OK;
 }
 
@@ -593,6 +611,7 @@ CliFindDispChannelInfo
     NvHandle      *phParent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 970);
     RsClient   *pClient;
     NV_STATUS   status;
 
@@ -623,6 +642,7 @@ CliGetDispCommonInfo
     DisplayApi **ppDisplayApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 971);
     RsClient   *pClient;
     NV_STATUS   status;
     DispCommon *pDispCommon;
@@ -653,6 +673,7 @@ CliGetDispInfo
     DisplayApi **pDisplayApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 972);
     if (!pDisplayApi)
         return NV_FALSE;
 
@@ -671,6 +692,7 @@ CliGetDispFromDispHandle
     NvHandle hDisp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 973);
     RsClient   *pClient;
     NV_STATUS   status;
     DispObject *pDispObject;
@@ -696,6 +718,7 @@ dispapiCtrlCmdEventSetNotification_IMPL
     NV5070_CTRL_EVENT_SET_NOTIFICATION_PARAMS *pSetEventParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 974);
     OBJGPU *pGpu = DISPAPI_GET_GPU(pDisplayApi);
     NvU32 *pNotifyActions;
     NV_STATUS status = NV_OK;

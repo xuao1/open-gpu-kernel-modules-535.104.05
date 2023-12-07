@@ -39,6 +39,7 @@ conmemConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4421);
     NV_STATUS          status         = NV_OK;
     NvHandle           hClient        = pCallContext->pClient->hClient;
     Memory            *pMemory        = staticCast(pConsoleMemory, Memory);
@@ -88,5 +89,6 @@ conmemCanCopy_IMPL
     ConsoleMemory *pConsoleMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4422);
     return NV_TRUE;
 }

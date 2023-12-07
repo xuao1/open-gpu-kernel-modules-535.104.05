@@ -50,6 +50,7 @@ kmcWritePmcEnableReg_GA100
     NvBool bIsPmcDeviceEngine
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2560);
     NvU32 regAddr;
     NvU32 newPmc;
 
@@ -114,6 +115,7 @@ kmcReadPmcEnableReg_GA100
     NvBool bIsPmcDeviceEngine
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2561);
     //
     // If hardware increases the size of this register in future chips, we would
     // need to catch this and fork another HAL.

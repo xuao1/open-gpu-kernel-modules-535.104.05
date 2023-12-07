@@ -188,6 +188,7 @@ plxPex8747GetFirmwareInfo
  OBJHWBC *pHWBC
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5091);
     return;
 } // end of Plx_Pex8747_GetFirmwareInfo()
 
@@ -206,6 +207,7 @@ objClFindUpperHWBC
     RmPhysAddr currentGpuPhysAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5092);
     NvU16 vendorID, deviceID;
     void *handle;
     OBJHWBC *pHWBC = NULL;
@@ -390,6 +392,7 @@ objClSetPcieHWBC
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5093);
     NBADDR port;
     NvU16 vendorID, deviceID;
     OBJHWBC **root = NULL, *father = NULL, *now = NULL, *next = NULL;
@@ -536,6 +539,7 @@ objClGetBr03Bar0
     OBJHWBC *pBR03
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5094);
     NvU8 Rev;
     NvU32 bar0 = 0;
 
@@ -617,6 +621,7 @@ objClFreeBr03Bar0
     OBJHWBC *pBR03
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5095);
     NvU8 Rev;
     NvU32 bar0 = 0;
     volatile NvU32 *pData;
@@ -683,6 +688,7 @@ objClSetupBR03
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5096);
     void *handle;
     NvU16 vendorID, deviceID;
     volatile NvU32 *pData;
@@ -871,6 +877,7 @@ clResumeBridge_IMPL
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5097);
     NV_STATUS status = NV_OK;
     NvBool    bFirstGpuResuming = NV_TRUE;
     OBJGPU   *pGpu = NULL;
@@ -916,6 +923,7 @@ objClResumeBridgeHWBC
     OBJHWBC *pHWBC
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5098);
     NV_STATUS status = NV_OK;
 
     if (pHWBC->bcRes == HWBC_PLX_PEX8747)
@@ -954,6 +962,7 @@ clChangeUpstreamBusSpeed_IMPL
     NvU32   cmd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5099);
     OBJHWBC *target = pCl->pHWBC;
 
     while (target)
@@ -1004,6 +1013,7 @@ clGetUpstreamBusSpeed_IMPL
     NvU32  *speed
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5100);
     OBJHWBC *target = pCl->pHWBC;
 
     while (target)
@@ -1054,6 +1064,7 @@ clHWBCGetUpstreamBAR0_IMPL
     RmPhysAddr *pBAR0
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5101);
     OBJHWBC *target = pCl->pHWBC;
 
     while (target)
@@ -1127,6 +1138,7 @@ clFindBR04_IMPL
     OBJCL   *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5102);
     NvU32 i;
 
     // Sanity check inputs
@@ -1193,6 +1205,7 @@ Nvidia_BR04_ShiftAliasingRegisters
     RmPhysAddr addr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5103);
     OBJGPU *pGpu;
     NvU32 gpuMask, gpuInstance;
     NvU32 data;
@@ -1331,6 +1344,7 @@ Nvidia_BR04_GetBar0
     NvS32 portNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5104);
     RmPhysAddr bar0 = 0;
     volatile NvU32* pData = NULL;
     NvU32 i;
@@ -1545,6 +1559,7 @@ Nvidia_BR04_ChangeUpstreamBusSpeed
     NvU32 cmd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5105);
     volatile NvU32 *pData = NULL;    // Register access for upstream port
     volatile NvU32 *pDpData[4] = { NULL, NULL, NULL, NULL};  // Register access for each downstream port
     RmPhysAddr bar0;
@@ -1826,6 +1841,7 @@ Nvidia_BR04_GetUpstreamBusSpeed
     NvU32 *speed
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5106);
     volatile NvU32 *pData = NULL;    // Register access for upstream port
     RmPhysAddr bar0;
     NvU32 regValue;
@@ -1882,6 +1898,7 @@ Nvidia_BR04_disableDownstreamASPM
     NvU8 bus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5107);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL *pCl = SYS_GET_CL(pSys);
     OBJHWBC *target = pCl->pHWBC;
@@ -1964,6 +1981,7 @@ Nvidia_BR04_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5108);
     volatile NvU32 *pData = NULL;    // Register access for upstream port
     volatile NvU32 *pDpData[4] = { NULL, NULL, NULL, NULL};  // Register access for each downstream port
     RmPhysAddr bar0;
@@ -2636,6 +2654,7 @@ Nvidia_BR04_FindDpInfo
     OBJGPU  *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5109);
     RmPhysAddr bar0;
     volatile NvU32 *pData = NULL;    // Register access for upstream port
     volatile NvU32 *pDpData[4] = { NULL, NULL, NULL, NULL};  // Register access for each downstream port
@@ -2735,6 +2754,7 @@ Plx_Pex8747_GetBar0
     OBJHWBC *pPlx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5110);
     RmPhysAddr bar0 = 0;
 
     // Sanity checks
@@ -2772,6 +2792,7 @@ Plx_Pex8747_ChangeUpstreamBusSpeed
     NvU32 cmd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5111);
     volatile NvU32 *pData = NULL;    // Register access for upstream port
     RmPhysAddr bar0;
     NvU32 regValue;
@@ -2878,6 +2899,7 @@ Plx_Pex8747_GetUpstreamBusSpeed
     NvU32 *speed
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5112);
     volatile NvU32 *pData = NULL;    // Register access for upstream port
     RmPhysAddr bar0;
     NvU32 regValue;
@@ -2919,6 +2941,7 @@ Plx_Pex8747_setupFunc
     OBJCL *pCl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5113);
     volatile NvU32 *pData = NULL;    // Register access for upstream port
     RmPhysAddr bar0;
     NvU32 regValue;
@@ -3027,6 +3050,7 @@ subdeviceCtrlCmdBusHWBCGetUpstreamBAR0_IMPL
     NV2080_CTRL_BUS_HWBC_GET_UPSTREAM_BAR0_PARAMS *pBusInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5114);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl = SYS_GET_CL(pSys);
 
@@ -3040,6 +3064,7 @@ subdeviceCtrlCmdBusSetHwbcUpstreamPcieSpeed_IMPL
     NV2080_CTRL_BUS_SET_HWBC_UPSTREAM_PCIE_SPEED_PARAMS *pBusInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5115);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl = SYS_GET_CL(pSys);
     NV_STATUS status = NV_OK;
@@ -3075,6 +3100,7 @@ subdeviceCtrlCmdBusGetHwbcUpstreamPcieSpeed_IMPL
     NV2080_CTRL_BUS_GET_HWBC_UPSTREAM_PCIE_SPEED_PARAMS *pBusInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5116);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl = SYS_GET_CL(pSys);
 

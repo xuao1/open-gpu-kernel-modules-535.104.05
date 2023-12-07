@@ -60,6 +60,7 @@ _memoryfabricMemDescGetNumAddr
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4603);
     OBJGPU *pGpu     = pMemDesc->pGpu;
     NvU64   pageSize = 0;
 
@@ -88,6 +89,7 @@ _memoryfabricValidatePhysMem
     MEMORY_DESCRIPTOR **ppPhysMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4604);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pOwnerGpu);
     RsResourceRef *pPhysmemRef;
     MEMORY_DESCRIPTOR *pPhysMemDesc;
@@ -143,6 +145,7 @@ _memoryFabricDetachMem
     NvU64                offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4605);
     NV_STATUS status;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     FABRIC_ATTCH_MEM_INFO_NODE *pAttachMemInfoNode;
@@ -181,6 +184,7 @@ _memoryFabricBatchDetachMem
     MEMORY_DESCRIPTOR *pFabricMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4606);
     FABRIC_MEMDESC_DATA *pMemdescData;
     NODE *pNode = NULL;
     NvU64 offset;
@@ -205,6 +209,7 @@ _memoryFabricAttachMem
     NV00F8_CTRL_ATTACH_MEM_INFO *pAttachInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4607);
     NV_STATUS status;
     Memory *pMemory = staticCast(pMemoryFabric, Memory);
     OBJGPU *pGpu = pMemory->pGpu;
@@ -307,6 +312,7 @@ _memoryfabricMemDescDestroyCallback
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4608);
     RM_API              *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     FABRIC_VASPACE      *pFabricVAS;
     RmPhysAddr          *pteArray;
@@ -364,6 +370,7 @@ _memoryfabricFreeFabricVa_VGPU
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4609);
     NV_STATUS status = NV_OK;
     NV_RM_RPC_FREE(pGpu, pParams->hClient,
                    pParams->hParent, pParams->hResource, status);
@@ -380,6 +387,7 @@ _memoryfabricFreeFabricVa
     NvU32                         numAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4610);
     if (pFabricVAS->bRpcAlloc)
     {
         _memoryfabricFreeFabricVa_VGPU(pGpu, pParams);
@@ -400,6 +408,7 @@ _memoryfabricAllocFabricVa_VGPU
     NvU32                        *pNumAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4611);
     NV00F8_CTRL_DESCRIBE_PARAMS *pDescribeParams = NULL;
     NvU32  i = 0;
     NV_STATUS status = NV_OK;
@@ -496,6 +505,7 @@ _memoryfabricAllocFabricVa
     NvU32                        *pNumAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4612);
     if (pFabricVAS->bRpcAlloc)
     {
         return _memoryfabricAllocFabricVa_VGPU(pGpu, pParams,
@@ -522,6 +532,7 @@ memoryfabricConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4613);
     Memory *pMemory = staticCast(pMemoryFabric, Memory);
     OBJGPU *pGpu = pMemory->pGpu;
     FABRIC_VASPACE *pFabricVAS  = dynamicCast(pGpu->pFabricVAS, FABRIC_VASPACE);
@@ -844,6 +855,7 @@ memoryfabricDestruct_IMPL
     MemoryFabric *pMemoryFabric
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4614);
     return;
 }
 
@@ -853,6 +865,7 @@ memoryfabricCanCopy_IMPL
     MemoryFabric *pMemoryFabric
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4615);
     return NV_TRUE;
 }
 
@@ -864,6 +877,7 @@ memoryfabricCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4616);
     //
     // Memory fabric object must enforce the source (owner) GPU for duping.
     // However, CUDA and UVM drivers have been using destination (mapping)
@@ -886,6 +900,7 @@ memoryfabricControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4617);
     NV_STATUS status;
 
     if (REF_VAL(NVXXXX_CTRL_CMD_CLASS, pParams->cmd) != NV_MEMORY_FABRIC)
@@ -904,6 +919,7 @@ memoryfabricCtrlGetInfo_IMPL
     NV00F8_CTRL_GET_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4618);
     Memory *pMemory = staticCast(pMemoryFabric, Memory);
     FABRIC_MEMDESC_DATA *pMemdescData;
 
@@ -927,6 +943,7 @@ memoryfabricCtrlCmdDescribe_IMPL
     NV00F8_CTRL_DESCRIBE_PARAMS   *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4619);
     Memory *pMemory = staticCast(pMemoryFabric, Memory);
     NvU64  *pFabricArray;
     NvU64   offset;
@@ -980,6 +997,7 @@ memoryfabricCtrlAttachMem_IMPL
     NV00F8_CTRL_ATTACH_MEM_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4620);
     NvU32 i;
     NV_STATUS status;
 
@@ -1011,6 +1029,7 @@ memoryfabricCtrlDetachMem_IMPL
     NV00F8_CTRL_DETACH_MEM_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4621);
     NvU32 i;
     NV_STATUS status;
     Memory *pMemory = staticCast(pMemoryFabric, Memory);
@@ -1043,6 +1062,7 @@ memoryfabricCtrlGetNumAttachedMem_IMPL
     NV00F8_CTRL_GET_NUM_ATTACHED_MEM_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4622);
     Memory *pMemory = staticCast(pMemoryFabric, Memory);
     MEMORY_DESCRIPTOR *pFabricMemDesc = pMemory->pMemDesc;
     FABRIC_MEMDESC_DATA *pMemdescData = \
@@ -1070,6 +1090,7 @@ memoryfabricCtrlGetAttachedMem_IMPL
     NV00F8_CTRL_GET_ATTACHED_MEM_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4623);
     NV_STATUS status;
     Memory *pMemory = staticCast(pMemoryFabric, Memory);
     MEMORY_DESCRIPTOR *pFabricMemDesc = pMemory->pMemDesc;
@@ -1143,6 +1164,7 @@ _memoryfabricGetPhysAttrsUsingFabricMemdesc
     NvU64             *pPhysPageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4624);
     NV_STATUS status;
     MEMORY_DESCRIPTOR *pPhysMemDesc;
     FABRIC_MEMDESC_DATA *pMemdescData;
@@ -1185,6 +1207,7 @@ memoryfabricCtrlGetPageLevelInfo_IMPL
     NV00F8_CTRL_GET_PAGE_LEVEL_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4625);
     Memory *pMemory = staticCast(pMemoryFabric, Memory);
     OBJGPU *pGpu  = pMemory->pGpu;
     FABRIC_VASPACE *pFabricVAS = dynamicCast(pGpu->pFabricVAS, FABRIC_VASPACE);

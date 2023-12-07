@@ -50,6 +50,7 @@ krcConstructEngine_IMPL
     ENGDESCRIPTOR  engDescriptor
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3911);
     _krcInitRegistryOverrides(pGpu, pKernelRc);
 
     return NV_OK;
@@ -63,6 +64,7 @@ krcInitRegistryOverridesDelayed_IMPL
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3912);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
     NvU32 dword = 0;
     (void) dword;
@@ -117,6 +119,7 @@ _krcInitRegistryOverrides
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3913);
     NvU32 dword = 0;
     (void) dword;
 
@@ -213,6 +216,7 @@ _krcLogUuidOnce
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3914);
     if (!pKernelRc->bGpuUuidLoggedOnce)
     {
         NvU8 *gidString = NULL;
@@ -253,6 +257,7 @@ krcGetMigAttributionForError_KERNEL
     NvU16    *pComputeInstanceId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3915);
     if (pGpuPartitionId != NULL)
     {
         *pGpuPartitionId = KMIGMGR_INSTANCE_ATTRIBUTION_ID_INVALID;
@@ -273,6 +278,7 @@ krcReportXid_IMPL
     const char *pMsg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3916);
     //
     // Log the RC error to the OS
     //
@@ -373,6 +379,7 @@ krcTestAllowAlloc_IMPL
     NvU32     failMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3917);
     if (pKernelRc->bRobustChannelsEnabled &&
         (pKernelRc->watchdog.allocFailMask & failMask))
     {
@@ -400,6 +407,7 @@ krcCheckBusError_KERNEL
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3918);
     KernelBif        *pKernelBif               = GPU_GET_KERNEL_BIF(pGpu);
     OBJCL            *pCl                      = SYS_GET_CL(SYS_GET_INSTANCE());
     NvU32             clDevCtrlStatusFlags     = 0;
@@ -525,6 +533,7 @@ krcGetChannelInError_FWCLIENT
     KernelRc *pKernelRc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3919);
     NV_ASSERT_OR_RETURN(IS_GSP_CLIENT(ENG_GET_GPU(pKernelRc)), NULL);
     return pKernelRc->pPreviousChannelInError;
 }

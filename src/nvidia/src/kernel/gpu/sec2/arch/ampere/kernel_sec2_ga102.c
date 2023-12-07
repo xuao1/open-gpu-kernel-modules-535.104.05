@@ -39,6 +39,7 @@ ksec2ConfigureFalcon_GA102
     KernelSec2 *pKernelSec2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3960);
     KernelFalconEngineConfig falconConfig;
 
     portMemSet(&falconConfig, 0, sizeof(falconConfig));

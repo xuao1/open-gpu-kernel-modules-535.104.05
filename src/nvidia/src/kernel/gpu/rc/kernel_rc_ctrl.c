@@ -38,6 +38,7 @@ subdeviceCtrlCmdRcReadVirtualMem_IMPL
     NV2080_CTRL_RC_READ_VIRTUAL_MEM_PARAMS *pReadVirtMemParam
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3923);
     OBJGPU        *pGpu   = GPU_RES_GET_GPU(pSubdevice);
     NV_STATUS      status = NV_OK;
     KernelChannel *pKernelChannel;
@@ -76,6 +77,7 @@ subdeviceCtrlCmdSetRcInfo_IMPL
     NV2080_CTRL_CMD_RC_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3924);
     OBJGPU   *pGpu      = GPU_RES_GET_GPU(pSubdevice);
     KernelRc *pKernelRc = GPU_GET_KERNEL_RC(pGpu);
 
@@ -104,6 +106,7 @@ subdeviceCtrlCmdGetRcInfo_IMPL
     NV2080_CTRL_CMD_RC_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3925);
     OBJGPU   *pGpu      = GPU_RES_GET_GPU(pSubdevice);
     KernelRc *pKernelRc = GPU_GET_KERNEL_RC(pGpu);
 
@@ -126,6 +129,7 @@ krcSubdeviceCtrlGetErrorInfoCheckPermissions_KERNEL
     Subdevice *pSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3926);
     OBJGPU       *pGpu         = GPU_RES_GET_GPU(pSubdevice);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
 
@@ -156,6 +160,7 @@ subdeviceCtrlCmdRcGetErrorCount_IMPL
     NV2080_CTRL_RC_GET_ERROR_COUNT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3927);
     NV_STATUS  status    = NV_OK;
     OBJGPU    *pGpu      = GPU_RES_GET_GPU(pSubdevice);
     KernelRc  *pKernelRc = GPU_GET_KERNEL_RC(pGpu);
@@ -189,6 +194,7 @@ subdeviceCtrlCmdRcGetErrorV2_IMPL
     NV2080_CTRL_RC_GET_ERROR_V2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3928);
     NV_STATUS  status    = NV_OK;
     OBJGPU    *pGpu      = GPU_RES_GET_GPU(pSubdevice);
     KernelRc  *pKernelRc = GPU_GET_KERNEL_RC(pGpu);
@@ -223,6 +229,7 @@ krcSubdeviceCtrlCmdRcGetErrorCount_IMPL
     NV2080_CTRL_RC_GET_ERROR_COUNT_PARAMS *pErrorCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3929);
     OBJSYS         *pSys          = SYS_GET_INSTANCE();
     Journal        *pRcDB         = SYS_GET_RCDB(pSys);
     SYS_ERROR_INFO *pSysErrorInfo = &pRcDB->ErrorInfo;
@@ -240,6 +247,7 @@ krcSubdeviceCtrlCmdRcGetErrorV2_IMPL
     NV2080_CTRL_RC_GET_ERROR_V2_PARAMS *pErrorParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3930);
     OBJSYS            *pSys          = SYS_GET_INSTANCE();
     Journal           *pRcDB         = SYS_GET_RCDB(pSys);
     SYS_ERROR_INFO    *pSysErrorInfo = &pRcDB->ErrorInfo;
@@ -347,6 +355,7 @@ krcCliresCtrlNvdGetRcerrRptCheckPermissions_KERNEL
     NV0000_CTRL_CMD_NVD_GET_RCERR_RPT_PARAMS *pReportParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3931);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     RmClient     *pClient = dynamicCast(RES_GET_CLIENT(pRmCliRes), RmClient);
 

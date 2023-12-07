@@ -33,6 +33,7 @@
 NV_STATUS
 kpmuConstructEngine_IMPL(OBJGPU *pGpu, KernelPmu *pKernelPmu, ENGDESCRIPTOR engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3905);
 
     return kpmuInitLibosLoggingStructures(pGpu, pKernelPmu);
 }
@@ -40,6 +41,7 @@ kpmuConstructEngine_IMPL(OBJGPU *pGpu, KernelPmu *pKernelPmu, ENGDESCRIPTOR engD
 void
 kpmuDestruct_IMPL(KernelPmu *pKernelPmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3906);
     OBJGPU *pGpu = ENG_GET_GPU(pKernelPmu);
 
     kpmuFreeLibosLoggingStructures(pGpu, pKernelPmu);
@@ -55,6 +57,7 @@ kpmuInitLibosLoggingStructures_IMPL
     KernelPmu *pKernelPmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3907);
     NV_STATUS nvStatus = NV_OK;
 
     if (!IS_GSP_CLIENT(pGpu))
@@ -96,6 +99,7 @@ kpmuFreeLibosLoggingStructures_IMPL
     KernelPmu *pKernelPmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3908);
     if (!IS_GSP_CLIENT(pGpu))
     {
         return;
@@ -121,6 +125,7 @@ kpmuLogBuf_IMPL
     NvU32 bufSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3909);
     NV_ASSERT_OR_RETURN_VOID(pKernelPmu->pPrintBuf != NULL);
 
     portMemCopy(pKernelPmu->pPrintBuf, pKernelPmu->printBufSize,
@@ -134,6 +139,7 @@ NV_STATUS kpmuStateInitLocked_IMPL
     KernelPmu *pKernelPmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3910);
 
     return NV_OK;
 }

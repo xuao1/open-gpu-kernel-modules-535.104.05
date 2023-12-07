@@ -38,6 +38,7 @@ swintrRegisterIntrService_IMPL
     IntrServiceRecord pRecords[MC_ENGINE_IDX_MAX]
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2543);
     NvU32 engineIdx = MC_ENGINE_IDX_CPU_DOORBELL;
     NV_ASSERT(pRecords[engineIdx].pInterruptService == NULL);
     pRecords[engineIdx].pInterruptService = staticCast(pSwIntr, IntrService);
@@ -61,6 +62,7 @@ swintrServiceInterrupt_IMPL
     IntrServiceServiceInterruptArguments *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2544);
     NV_ASSERT_OR_RETURN(pParams != NULL, 0);
 
     switch (pParams->engineIdx)

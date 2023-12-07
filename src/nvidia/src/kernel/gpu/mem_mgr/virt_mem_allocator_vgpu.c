@@ -34,5 +34,6 @@
 NV_STATUS
 dmaConstructHal_VGPUSTUB(OBJGPU *pGpu, VirtMemAllocator *pDma)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3295);
     return NV_OK;
 }

@@ -38,6 +38,7 @@ vmrangeConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4750);
     NV_MEMORY_VIRTUAL_ALLOCATION_PARAMS *pAllocData;
     NV_STATUS           status         = NV_OK;
     RsResourceRef      *pResourceRef   = pCallContext->pResourceRef;

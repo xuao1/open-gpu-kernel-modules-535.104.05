@@ -64,6 +64,7 @@ rmapiResourceDescToLegacyFlags
     NvU32 *pFreeFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5252);
     if (pAllocFlags)
     {
         *pAllocFlags = (pResDesc->flags & RS_FLAGS_ACQUIRE_GPUS_LOCK_ON_ALLOC) ? RM_LOCK_FLAGS_NONE : RM_LOCK_FLAGS_NO_GPUS_LOCK;
@@ -85,6 +86,7 @@ serverAllocClientHandleBase
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5253);
     NvU32 handleBase;
     NvU32 gfid = (NvU32)((NvU64)pSecInfo->pProcessToken);
 
@@ -111,6 +113,7 @@ serverAllocApiCopyIn
     API_STATE                   **ppParamCopy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5254);
     NV_STATUS          status;
     API_SECURITY_INFO *pSecInfo = pRmAllocParams->pSecInfo;
     NvBool             bCopyInParams  = pSecInfo->paramLocation == PARAM_LOCATION_USER;
@@ -198,6 +201,7 @@ serverAllocApiCopyOut
     API_STATE *pParamCopy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5255);
     NV_STATUS cpStatus = NV_OK;
     if (pParamCopy->paramsSize > 0)
     {
@@ -222,6 +226,7 @@ serverLookupSecondClient
     NvHandle *phClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5256);
     *phClient = 0;
 
     switch (pParams->externalClassId)
@@ -260,6 +265,7 @@ serverTopLock_Prologue
     NvU32 *pReleaseFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5257);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     NV_STATUS status;
     if ((pLockInfo->flags & RM_LOCK_FLAGS_RM_SEMA) &&
@@ -311,6 +317,7 @@ serverTopLock_Epilogue
     NvU32 *pReleaseFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5258);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     if (*pReleaseFlags & RM_LOCK_RELEASE_API_LOCK)
@@ -337,6 +344,7 @@ serverResLock_Prologue
     NvU32 *pReleaseFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5259);
     NV_STATUS status = NV_OK;
     OBJGPU   *pParentGpu = NULL;
 
@@ -486,6 +494,7 @@ serverAllocEpilogue_WAR
     RS_RES_ALLOC_PARAMS_INTERNAL *pRmAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5260);
     //
     // Pre-Volta Linux swapgroups is the only remaining use of channel grabbing.
     // Bug 2869820 is tracking the transition of swapgroups from requiring this
@@ -555,6 +564,7 @@ _rmAlloc
     API_SECURITY_INFO secInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5261);
     NV_STATUS status;
     RS_RES_ALLOC_PARAMS_INTERNAL   rmAllocParams = {0};
 
@@ -590,6 +600,7 @@ _fixupAllocParams
     RS_RES_ALLOC_PARAMS_INTERNAL *pRmAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5262);
     RS_RESOURCE_DESC *pResDesc = *ppResDesc;
 
     if ((pResDesc->pClassInfo != NULL) && (pResDesc->pClassInfo->classId == classId(Event)))
@@ -631,6 +642,7 @@ _serverAllocValidatePrivilege
     RS_RES_ALLOC_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5263);
     if (hypervisorIsVgxHyper())
     {
         // Host CPU-RM context
@@ -685,6 +697,7 @@ serverAllocResourceUnderLock
     RS_RES_ALLOC_PARAMS *pRmAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5264);
     NvHandle                 hClient = pRmAllocParams->hClient;
     NvHandle                 hParent;
     RS_RESOURCE_DESC        *pResDesc;
@@ -963,6 +976,7 @@ serverFreeResourceRpcUnderLock
     RS_RES_FREE_PARAMS *pFreeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5265);
     NV_STATUS status;
     RsResourceRef *pResourceRef = pFreeParams->pResourceRef;
     OBJGPU *pGpu = NULL;
@@ -1000,6 +1014,7 @@ serverResLock_Epilogue
     NvU32 *pReleaseFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5266);
     if (*pReleaseFlags & RM_LOCK_RELEASE_GPU_GROUP_LOCK)
     {
         // UNLOCK: release GPU group lock
@@ -1020,6 +1035,7 @@ serverResLock_Epilogue
 NV_STATUS
 serverInitFreeParams_Recursive(NvHandle hClient, NvHandle hResource, RS_LOCK_INFO *pLockInfo, RS_RES_FREE_PARAMS *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5267);
     portMemSet(pParams, 0, sizeof(*pParams));
     pParams->hClient = hClient;
     pParams->hResource = hResource;
@@ -1034,6 +1050,7 @@ serverUpdateLockFlagsForFree
     RS_RES_FREE_PARAMS_INTERNAL *pRmFreeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5268);
     RS_LOCK_INFO *pLockInfo = pRmFreeParams->pLockInfo;
     OBJGPU *pGpu = NULL;
 
@@ -1069,6 +1086,7 @@ rmapiFreeResourcePrologue
     RS_RES_FREE_PARAMS_INTERNAL *pRmFreeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5269);
     RsResourceRef     *pResourceRef = pRmFreeParams->pResourceRef;
     NV_STATUS          tmpStatus;
     OBJGPU            *pGpu         = NULL;
@@ -1113,6 +1131,7 @@ rmapiAlloc
     NvU32        paramsSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5270);
     if (!pRmApi->bHasDefaultSecInfo)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -1132,6 +1151,7 @@ rmapiAllocWithHandle
     NvU32        paramsSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5271);
     if (!pRmApi->bHasDefaultSecInfo)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -1154,6 +1174,7 @@ rmapiAllocWithSecInfo
     API_SECURITY_INFO   *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5272);
     NV_STATUS      status;
     NvU32          allocInitStates = RM_ALLOC_STATES_NONE;
     RM_API_CONTEXT rmApiContext    = {0};
@@ -1256,6 +1277,7 @@ resservClientFactory
     RsClient **ppRsClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5273);
     RmClient *pClient;
     NV_STATUS status;
 
@@ -1280,6 +1302,7 @@ resservResourceFactory
     RsResource          **ppResource
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5274);
     RS_RESOURCE_DESC *pResDesc;
     NV_STATUS   status;
     Dynamic    *pDynamic = NULL;
@@ -1345,6 +1368,7 @@ rmapiAllocWithSecInfoTls
     API_SECURITY_INFO   *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5275);
     THREAD_STATE_NODE threadState;
     NV_STATUS         status;
 
@@ -1366,6 +1390,7 @@ rmapiFree
     NvHandle  hObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5276);
     if (!pRmApi->bHasDefaultSecInfo)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -1382,6 +1407,7 @@ rmapiFreeWithSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5277);
     NV_STATUS          status;
     RS_RES_FREE_PARAMS freeParams;
     RS_LOCK_INFO lockInfo;
@@ -1447,6 +1473,7 @@ rmapiFreeWithSecInfoTls
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5278);
     THREAD_STATE_NODE threadState;
     NV_STATUS         status;
 
@@ -1467,6 +1494,7 @@ rmapiDisableClients
     NvU32     numClients
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5279);
     if (!pRmApi->bHasDefaultSecInfo)
         return NV_ERR_NOT_SUPPORTED;
 
@@ -1482,6 +1510,7 @@ rmapiDisableClientsWithSecInfo
     API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5280);
     OBJSYS            *pSys = SYS_GET_INSTANCE();
     NvU32              lockState = 0;
     NvU32              i;
@@ -1519,6 +1548,7 @@ rmapiDisableClientsWithSecInfoTls
     API_SECURITY_INFO   *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5281);
     THREAD_STATE_NODE threadState;
     NV_STATUS         status;
 
@@ -1537,6 +1567,7 @@ serverRwApiLockIsOwner
     RsServer *pServer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5282);
     return rmapiLockIsOwner();
 }
 
@@ -1549,6 +1580,7 @@ serverAllocResourceLookupLockFlags
     LOCK_ACCESS_TYPE *pAccess
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5283);
     NV_ASSERT_OR_RETURN(pAccess != NULL, NV_ERR_INVALID_ARGUMENT);
 
     if (lock == RS_LOCK_TOP)
@@ -1594,6 +1626,7 @@ serverFreeResourceLookupLockFlags
     LOCK_ACCESS_TYPE *pAccess
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5284);
     NV_ASSERT_OR_RETURN(pAccess != NULL, NV_ERR_INVALID_ARGUMENT);
 
     *pAccess = (serverSupportsReadOnlyLock(pServer, lock, RS_API_FREE_RESOURCE))

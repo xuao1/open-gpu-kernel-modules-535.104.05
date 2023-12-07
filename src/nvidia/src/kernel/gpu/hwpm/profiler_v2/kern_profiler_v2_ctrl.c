@@ -33,6 +33,7 @@
 
 static NV_STATUS _issueRpcToHost(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2411);
     NV_STATUS status = NV_OK;
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams;
@@ -55,6 +56,7 @@ profilerBaseCtrlCmdFreePmaStream_IMPL
     NVB0CC_CTRL_FREE_PMA_STREAM_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2412);
     RM_API            *pRmApi     = GPU_GET_PHYSICAL_RMAPI(GPU_RES_GET_GPU(pProfiler));
     NVB0CC_CTRL_INTERNAL_FREE_PMA_STREAM_PARAMS internalParams;
 
@@ -115,6 +117,7 @@ profilerBaseCtrlCmdBindPmResources_IMPL
     ProfilerBase *pProfiler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2413);
     OBJGPU        *pGpu                       = GPU_RES_GET_GPU(pProfiler);
     RM_API        *pRmApi                     = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvHandle       hClient                    = RES_GET_CLIENT_HANDLE(pProfiler);
@@ -190,6 +193,7 @@ profilerBaseCtrlCmdUnbindPmResources_IMPL
     ProfilerBase *pProfiler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2414);
     OBJGPU   *pGpu                            = GPU_RES_GET_GPU(pProfiler);
     RM_API   *pRmApi                          = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvHandle  hClient                         = RES_GET_CLIENT_HANDLE(pProfiler);
@@ -237,6 +241,7 @@ profilerBaseCtrlCmdReserveHwpmLegacy_IMPL
     NVB0CC_CTRL_RESERVE_HWPM_LEGACY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2415);
     OBJGPU   *pGpu                            = GPU_RES_GET_GPU(pProfiler);
     RM_API   *pRmApi                          = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvHandle  hClient                         = RES_GET_CLIENT_HANDLE(pProfiler);
@@ -255,6 +260,7 @@ profilerBaseCtrlCmdAllocPmaStream_IMPL
     NVB0CC_CTRL_ALLOC_PMA_STREAM_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2416);
     NV_STATUS status                          = NV_OK;
     OBJGPU   *pGpu                            = GPU_RES_GET_GPU(pProfiler);
     RM_API   *pRmApi                          = GPU_GET_PHYSICAL_RMAPI(pGpu);

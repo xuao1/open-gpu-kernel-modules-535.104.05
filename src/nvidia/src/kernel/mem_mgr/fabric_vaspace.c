@@ -69,6 +69,7 @@ _fabricvaspaceBindInstBlk
     FABRIC_VASPACE *pFabricVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4438);
     OBJVASPACE *pVAS   = staticCast(pFabricVAS, OBJVASPACE);
     OBJGPU     *pGpu   = gpumgrGetGpu(gpumgrGetDefaultPrimaryGpu(pVAS->gpuMask));
     KernelBus  *pKernelBus  = GPU_GET_KERNEL_BUS(pGpu);
@@ -159,6 +160,7 @@ _fabricvaspaceUnbindInstBlk
     FABRIC_VASPACE *pFabricVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4439);
     OBJVASPACE *pVAS  = staticCast(pFabricVAS, OBJVASPACE);
     OBJGPU     *pGpu  = gpumgrGetGpu(gpumgrGetDefaultPrimaryGpu(pVAS->gpuMask));
     KernelBus  *pKernelBus  = GPU_GET_KERNEL_BUS(pGpu);
@@ -210,6 +212,7 @@ fabricvaspaceConstruct__IMPL
     NvU32           flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4440);
     RM_API     *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     OBJSYS     *pSys   = SYS_GET_INSTANCE();
     OBJVMM     *pVmm   = SYS_GET_VMM(pSys);
@@ -304,6 +307,7 @@ fabricvaspaceDestruct_IMPL
     FABRIC_VASPACE *pFabricVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4441);
     RM_API     *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJVMM     *pVmm = SYS_GET_VMM(pSys);
@@ -339,6 +343,7 @@ fabricvaspaceAlloc_IMPL
     NvU64           *pAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4442);
     //
     // TODO: If needed, can call into fabricvaspaceAllocNonContiguous_IMPL()
     // by forcing contig flag.
@@ -360,6 +365,7 @@ fabricvaspaceAllocNonContiguous_IMPL
     NvU32            *pNumAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4443);
     NV_STATUS status    = NV_OK;
     NvU64     freeSize  = 0;
     NvU32     pageCount = (size / pageSize);
@@ -494,6 +500,7 @@ fabricvaspaceFree_IMPL
     NvU64           vAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4444);
     OBJVASPACE *pVAS = staticCast(pFabricVAS, OBJVASPACE);
     OBJGPU     *pGpu = gpumgrGetGpu(gpumgrGetDefaultPrimaryGpu(pVAS->gpuMask));
     KernelBus  *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
@@ -535,6 +542,7 @@ fabricvaspaceMap_IMPL
     const VAS_MAP_FLAGS   flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4445);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -547,6 +555,7 @@ fabricvaspaceUnmap_IMPL
     const NvU64     vaHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4446);
     return;
 }
 
@@ -560,6 +569,7 @@ fabricvaspaceApplyDefaultAlignment_IMPL
     NvU64               *pPageSizeLockMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4447);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -570,6 +580,7 @@ fabricvaspaceGetVasInfo_IMPL
     NV0080_CTRL_DMA_ADV_SCHED_GET_VA_CAPS_PARAMS  *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4448);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -580,6 +591,7 @@ fabricvaspacePinRootPageDir_IMPL
     OBJGPU         *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4449);
     NV_ASSERT_OR_RETURN(pFabricVAS->pGVAS != NULL, NV_ERR_OBJECT_NOT_FOUND);
 
     return vaspacePinRootPageDir(pFabricVAS->pGVAS, pGpu);
@@ -592,6 +604,7 @@ fabricvaspaceUnpinRootPageDir_IMPL
     OBJGPU         *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4450);
     NV_ASSERT(pFabricVAS->pGVAS != NULL);
 
     vaspaceUnpinRootPageDir(pFabricVAS->pGVAS, pGpu);
@@ -604,6 +617,7 @@ fabricvaspaceGetFreeHeap_IMPL
     NvU64          *freeSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4451);
     NV_ASSERT_OR_RETURN(pFabricVAS->pGVAS != NULL, NV_ERR_OBJECT_NOT_FOUND);
     NV_ASSERT_OR_RETURN(freeSize != NULL,         NV_ERR_INVALID_ARGUMENT);
 
@@ -620,6 +634,7 @@ fabricvaspaceBatchFree_IMPL
     NvU32           stride
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4452);
     OBJVASPACE *pVAS = staticCast(pFabricVAS, OBJVASPACE);
     OBJGPU     *pGpu = gpumgrGetGpu(gpumgrGetDefaultPrimaryGpu(pVAS->gpuMask));
     KernelBus  *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
@@ -664,6 +679,7 @@ fabricvaspaceInvalidateTlb_IMPL
     VAS_PTE_UPDATE_TYPE  type
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4453);
     vaspaceInvalidateTlb(pFabricVAS->pGVAS, pGpu, type);
 }
 
@@ -676,6 +692,7 @@ fabricvaspaceGetGpaMemdesc_IMPL
     MEMORY_DESCRIPTOR **ppAdjustedMemdesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4454);
     KernelNvlink      *pKernelNvlink      = GPU_GET_KERNEL_NVLINK(pMappingGpu);
     MEMORY_DESCRIPTOR *pRootMemDesc       = NULL;
     NODE              *pNode              = NULL;
@@ -752,6 +769,7 @@ fabricvaspacePutGpaMemdesc_IMPL
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4455);
     memdescDestroy(pMemDesc);
 }
 
@@ -762,6 +780,7 @@ fabricvaspaceVaToGpaMapRemove_IMPL
     NvU64           vAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4456);
     FABRIC_VA_TO_GPA_MAP_NODE *pFabricNode = NULL;
     NODE                      *pNode       = NULL;
 
@@ -784,6 +803,7 @@ fabricvaspaceVaToGpaMapInsert_IMPL
     NvU64              offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4457);
     FABRIC_VA_TO_GPA_MAP_NODE *pFabricNode = NULL;
     NV_STATUS                  status      = NV_OK;
 
@@ -825,6 +845,7 @@ fabricvaspaceAllocMulticast_IMPL
     NvU64           size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4458);
     NvU64 rangeLo;
     NvU64 rangeHi;
     NvU64 addr = 0;
@@ -865,6 +886,7 @@ _fabricVaspaceValidateMapAttrs
     NvU64  physPageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4459);
     // Fabric mem offset should be at least phys page size aligned.
     if (!NV_IS_ALIGNED64(fabricOffset, physPageSize) ||
         (fabricOffset >= fabricAllocSize))
@@ -925,6 +947,7 @@ _fabricvaspaceGetMappingRegions
     NvU32                          *pNumRegions
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4460);
     NvU64 fabricOffsetAligned = NV_ALIGN_UP64(fabricOffset, fabricPageSize);
     NvU64 mapLengthAligned = NV_ALIGN_DOWN64(physMapLength, fabricPageSize);
 
@@ -977,6 +1000,7 @@ fabricvaspaceUnmapPhysMemdesc_IMPL
     NvU64              physMapLength
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4461);
     OBJGPU *pGpu = pPhysMemDesc->pGpu;
     NvU32 fabricPageCount;
     NvU64 fabricAddr;
@@ -1040,6 +1064,7 @@ fabricvaspaceMapPhysMemdesc_IMPL
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4462);
     OBJGPU *pGpu = pPhysMemDesc->pGpu;
     VirtMemAllocator *pDma = GPU_GET_DMA(pGpu);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -1212,6 +1237,7 @@ fabricvaspaceInitUCRange_IMPL
     NvU64           fabricSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4463);
     if (fabricvaspaceGetUCFlaLimit(pFabricVAS) != 0)
         return NV_ERR_IN_USE;
 
@@ -1234,6 +1260,7 @@ fabricvaspaceClearUCRange_IMPL
     FABRIC_VASPACE *pFabricVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4464);
     pFabricVAS->ucFabricBase      = 0;
     pFabricVAS->ucFabricLimit     = 0;
     pFabricVAS->ucFabricInUseSize = 0;
@@ -1248,6 +1275,7 @@ fabricvaspaceGetPageLevelInfo_IMPL
     NV90F1_CTRL_VASPACE_GET_PAGE_LEVEL_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4465);
     OBJGVASPACE *pGVAS = dynamicCast(pFabricVAS->pGVAS, OBJGVASPACE);
     NV_ASSERT_OR_RETURN(pGVAS != NULL, NV_ERR_OBJECT_NOT_FOUND);
 
@@ -1260,5 +1288,6 @@ fabricvaspaceIsInUse_IMPL
     FABRIC_VASPACE *pFabricVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4466);
     return gvaspaceIsInUse(dynamicCast(pFabricVAS->pGVAS, OBJGVASPACE));
 }

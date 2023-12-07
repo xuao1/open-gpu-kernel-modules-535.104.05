@@ -54,6 +54,7 @@ gpuWriteBusConfigReg_GH100
     NvU32      value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 319);
     return gpuWriteBusConfigCycle(pGpu, index, value);
 }
 
@@ -74,6 +75,7 @@ gpuReadBusConfigReg_GH100
     NvU32     *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 320);
     return gpuReadBusConfigCycle(pGpu, index, pData);
 }
 
@@ -90,6 +92,7 @@ gpuGetIdInfo_GH100
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 321);
     NvU32   data;
     NvU32   deviceId;
 
@@ -134,6 +137,7 @@ NvU32 gpuGetPhysAddrWidth_GH100
     NV_ADDRESS_SPACE addrSp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 322);
     // Currently this function supports only sysmem addresses
     NV_ASSERT_OR_RETURN(ADDR_SYSMEM == addrSp, 0);
 
@@ -150,6 +154,7 @@ NvU32 gpuGetPhysAddrWidth_GH100
  */
 NvBool gpuIsAtsSupportedWithSmcMemPartitioning_GH100(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 323);
     //
     // ATS is supported only on self-hosted Hopper.
     // Also enable it for simulation platforms for fmodel/RTL verification
@@ -187,6 +192,7 @@ gpuReadDeviceId_GH100
     NvU32   *pSsId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 324);
     NvU32   deviceId;
     NvU32   ssId;
 
@@ -220,6 +226,7 @@ gpuHandleSecFault_GH100
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 325);
     NvU32   secDebug = 0;
 
     //
@@ -298,6 +305,7 @@ gpuHandleSanityCheckRegReadError_GH100
     NvU32 value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 326);
     // SEC_FAULT possibly detected, confirm by reading NV_PMC_BOOT_0
     if ((value == NV_XAL_EP_SCPM_PRI_DUMMY_DATA_PATTERN_INIT) &&
         (osGpuReadReg032(pGpu, NV_PMC_BOOT_0) == NV_XAL_EP_SCPM_PRI_DUMMY_DATA_PATTERN_INIT))
@@ -352,6 +360,7 @@ gpuGetFlaVasSize_GH100
     NvBool  bNvswitchVirtualization
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 327);
     return 0x8000000000;  // 512GB
 }
 
@@ -404,6 +413,7 @@ static const GPUCHILDPRESENT gpuChildrenPresent_GH100[] =
 const GPUCHILDPRESENT *
 gpuGetChildrenPresent_GH100(OBJGPU *pGpu, NvU32 *pNumEntries)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 328);
     *pNumEntries = NV_ARRAY_ELEMENTS(gpuChildrenPresent_GH100);
     return gpuChildrenPresent_GH100;
 }
@@ -423,6 +433,7 @@ gpuDetermineSelfHostedMode_KERNEL_GH100
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 329);
     if (IS_GSP_CLIENT(pGpu))
     {
         GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
@@ -449,6 +460,7 @@ gpuDetermineMIGSupport_GH100
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 330);
     if (gpuIsSelfHosted(pGpu) &&
         (gpuGetChipSubRev_HAL(pGpu) < NV2080_CTRL_MC_ARCH_INFO_SUBREVISION_R))
     {
@@ -469,6 +481,7 @@ gpuIsCCEnabledInHw_GH100
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 331);
     NvU32 val = GPU_REG_RD32(pGpu, NV_PGC6_AON_SECURE_SCRATCH_GROUP_20_CC);
     return FLD_TEST_DRF(_PGC6, _AON_SECURE_SCRATCH_GROUP_20_CC, _MODE_ENABLED, _TRUE, val);
 }
@@ -484,6 +497,7 @@ gpuIsDevModeEnabledInHw_GH100
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 332);
     NvU32 val = GPU_REG_RD32(pGpu, NV_PGC6_AON_SECURE_SCRATCH_GROUP_20_CC);
     return FLD_TEST_DRF(_PGC6, _AON_SECURE_SCRATCH_GROUP_20_CC, _DEV_ENABLED, _TRUE, val);
 }

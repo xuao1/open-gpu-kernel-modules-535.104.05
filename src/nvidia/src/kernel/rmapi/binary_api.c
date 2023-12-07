@@ -42,6 +42,7 @@ binapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5285);
     return NV_OK;
 }
 
@@ -53,6 +54,7 @@ binapiprivConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5286);
     return NV_OK;
 }
 
@@ -64,6 +66,7 @@ binapiControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5287);
     NV_STATUS status;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pResource);
     GPU_MASK gpuMaskRelease = 0;
@@ -103,6 +106,7 @@ binapiprivControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5288);
     // check if CMD is NULL, return early
     if (RMCTRL_IS_NULL_CMD(pParams->cmd))
         return NV_OK;

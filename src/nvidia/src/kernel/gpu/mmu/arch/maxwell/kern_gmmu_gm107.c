@@ -40,6 +40,7 @@
 NvU64
 kgmmuGetBigPageSize_GM107(KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3554);
     return pKernelGmmu->defaultBigPageSize;
 }
 
@@ -76,6 +77,7 @@ kgmmuInvalidateTlb_GM107
     NvU32                invalidation_scope
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3555);
     NV_STATUS             status         = NV_OK;
     TLB_INVALIDATE_PARAMS params;
     NvU32                 flushCount     = 0;
@@ -211,6 +213,7 @@ kgmmuInvalidateTlb_GM107
 NvBool
 kgmmuFmtIsVersionSupported_GM10X(KernelGmmu *pKernelGmmu, NvU32 version)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3556);
     return (version == GMMU_FMT_VERSION_1);
 }
 
@@ -221,6 +224,7 @@ kgmmuDetermineMaxVASize_GM107
     KernelGmmu *pKernelGmmu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3557);
     NvU32       v;
     NvU32       maxFmtVersionSupported = 0;
 
@@ -264,6 +268,7 @@ kgmmuEncodeSysmemAddrs_GM107
     NvU64       count
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3558);
     OBJGPU     *pGpu    = ENG_GET_GPU(pKernelGmmu);
     const NvU32 paWidth = gpuGetPhysAddrWidth_HAL(pGpu, ADDR_SYSMEM);
     NvU64 i;
@@ -298,6 +303,7 @@ kgmmuEncodeSysmemAddrs_GM107
 NvU64
 kgmmuGetMaxBigPageSize_GM107(KernelGmmu *pKernelGmmu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3559);
     if (!kgmmuIsPerVaspaceBigPageEn(pKernelGmmu))
         return kgmmuGetBigPageSize_HAL(pKernelGmmu);
 
@@ -311,6 +317,7 @@ kgmmuGetHwPteApertureFromMemdesc_GM107
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3560);
     NV_ADDRESS_SPACE addrSpace = memdescGetAddressSpace(pMemDesc);
     NvU8             aperture  = 0;
 

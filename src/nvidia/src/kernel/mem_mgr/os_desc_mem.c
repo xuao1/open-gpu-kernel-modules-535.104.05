@@ -43,6 +43,7 @@ osdescConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pRmAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4669);
     Memory            *pMemory = staticCast(pOsDescMemory, Memory);
     NV_OS_DESC_MEMORY_ALLOCATION_PARAMS *pUserParams;
     OBJGPU            *pGpu = pMemory->pGpu;
@@ -195,5 +196,6 @@ osdescCanCopy_IMPL
     OsDescMemory *pOsDescMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4670);
     return RMCFG_FEATURE_PLATFORM_UNIX;
 }

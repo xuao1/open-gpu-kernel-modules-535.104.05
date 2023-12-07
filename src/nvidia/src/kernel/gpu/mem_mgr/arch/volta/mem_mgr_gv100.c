@@ -37,6 +37,7 @@ memmgrScrubMapDoorbellRegion_GV100
     OBJCHANNEL    *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2704);
     NV_STATUS  status = NV_OK;
     RM_API    *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
@@ -93,6 +94,7 @@ memmgrGetMaxContextSize_GV100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2705);
     extern NvU64 memmgrGetMaxContextSize_GP100(OBJGPU *pGpu, MemoryManager *pMemoryManager);
 
     NvU64 size = memmgrGetMaxContextSize_GP100(pGpu, pMemoryManager);
@@ -143,6 +145,7 @@ memmgrIsSurfaceBlockLinear_GV100
     NvU32              dmaFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2706);
     if (FLD_TEST_DRF(OS03, _FLAGS, _PTE_KIND, _BL, dmaFlags))
     {
         return NV_TRUE;

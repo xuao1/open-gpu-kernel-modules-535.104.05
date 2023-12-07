@@ -40,6 +40,7 @@ kchangrpAllocFaultMethodBuffers_GV100
     KernelChannelGroup          *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1404);
     NV_STATUS                    status         = NV_OK;
     NvU32                        bufSizeInBytes = 0;
     KernelFifo                  *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);
@@ -150,6 +151,7 @@ kchangrpFreeFaultMethodBuffers_GV100
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1405);
     NV_STATUS                   status         = NV_OK;
     HW_ENG_FAULT_METHOD_BUFFER *pFaultMthdBuf  = NULL;
     KernelFifo                 *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);
@@ -204,6 +206,7 @@ kchangrpMapFaultMethodBuffers_GV100
     NvU32                        runqueue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1406);
     NvU32                        gfid           = pKernelChannelGroup->gfid;
     MemoryManager               *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelFifo                  *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);
@@ -271,6 +274,7 @@ kchangrpUnmapFaultMethodBuffers_GV100
     NvU32               runqueue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1407);
     NvU32                       gfid           = pKernelChannelGroup->gfid;
     KernelBus                  *pKernelBus     = GPU_GET_KERNEL_BUS(pGpu);
     KernelFifo                 *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);

@@ -38,6 +38,7 @@ ksec2ConstructEngine_IMPL
     ENGDESCRIPTOR engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3966);
     ksec2ConfigureFalcon_HAL(pGpu, pKernelSec2);
     return NV_OK;
 }
@@ -48,6 +49,7 @@ ksec2Destruct_IMPL
     KernelSec2 *pKernelSec2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3967);
     portMemFree((void * /* const_cast */) pKernelSec2->pGenericBlUcodeDesc);
     pKernelSec2->pGenericBlUcodeDesc = NULL;
 
@@ -63,6 +65,7 @@ ksec2RegisterIntrService_IMPL
     IntrServiceRecord pRecords[MC_ENGINE_IDX_MAX]
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3968);
     KernelFalcon *pKernelFalcon = staticCast(pKernelSec2, KernelFalcon);
     NV_ASSERT_OR_RETURN_VOID(pKernelFalcon);
 
@@ -87,6 +90,7 @@ ksec2ServiceNotificationInterrupt_IMPL
     IntrServiceServiceNotificationInterruptArguments *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3969);
     NV_PRINTF(LEVEL_INFO, "servicing nonstall intr for SEC2 engine\n");
 
     // Wake up channels waiting on this event

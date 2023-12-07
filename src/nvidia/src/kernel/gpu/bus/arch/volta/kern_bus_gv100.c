@@ -48,6 +48,7 @@ kbusSetupCpuPointerForBusFlush_GV100
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 576);
     NV_STATUS status = NV_OK;
 
     // Nothing to be done in paravirtualized guest (or CC) or if we don't want to do CPU reads for flushing.
@@ -107,6 +108,7 @@ kbusDestroyCpuPointerForBusFlush_GV100
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 577);
     if (pKernelBus->pReadToFlush != NULL)
     {
         memdescUnmapInternal(pGpu,
@@ -138,6 +140,7 @@ kbusMapCoherentCpuMapping_GV100
     PMEMORY_DESCRIPTOR     pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 578);
     RmPhysAddr startAddr = memdescGetPhysAddr(pMemDesc, FORCE_VMMU_TRANSLATION(pMemDesc, AT_GPU), 0);
     NvU64      size = memdescGetSize(pMemDesc);
     RmPhysAddr endAddr = startAddr + size - 1;
@@ -188,6 +191,7 @@ kbusUnmapCoherentCpuMapping_GV100
     PMEMORY_DESCRIPTOR   pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 579);
     RmPhysAddr startAddr = memdescGetPhysAddr(pMemDesc, FORCE_VMMU_TRANSLATION(pMemDesc, AT_GPU), 0);
     NvU64      size = memdescGetSize(pMemDesc);
     RmPhysAddr endAddr = startAddr + size - 1;
@@ -236,6 +240,7 @@ void kbusTeardownCoherentCpuMappingAcr_GV100
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 580);
     if (pKernelBus->coherentCpuMapping.bCoherentCpuMapping)
     {
         NV_ASSERT_OR_RETURN_VOID(pGpu->getProperty(pGpu, PDB_PROP_GPU_COHERENT_CPU_MAPPING));
@@ -268,6 +273,7 @@ kbusTeardownCoherentCpuMapping_GV100
     NvBool    bFlush
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 581);
     NvU32 i = 0;
 
     if (!pKernelBus->coherentCpuMapping.bCoherentCpuMapping)

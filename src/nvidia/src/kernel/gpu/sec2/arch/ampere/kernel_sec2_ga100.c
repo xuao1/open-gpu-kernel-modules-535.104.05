@@ -39,6 +39,7 @@ ksec2ConfigureFalcon_GA100
     KernelSec2 *pKernelSec2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3958);
     KernelFalconEngineConfig falconConfig;
 
     portMemSet(&falconConfig, 0, sizeof(falconConfig));
@@ -72,6 +73,7 @@ ksec2ReadUcodeFuseVersion_GA100
     const NvU32 ucodeId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3959);
     NvU32 fuseVal = 0;
     NvU32 index = ucodeId - 1;  // adjust to 0-indexed
 

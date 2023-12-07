@@ -39,6 +39,7 @@ _intrSetIntrEnInHw_GP100
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2432);
     NvU32       pmcIntrEnSet;
     NvU32       pmcIntrEnClear;
     //
@@ -81,6 +82,7 @@ intrSetIntrEnInHw_GP100
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2433);
     NV_ASSERT(intrEn0 <= INTERRUPT_TYPE_MAX);
 
     pIntr->intrCachedEn0 = intrEn0;
@@ -99,6 +101,7 @@ intrSetIntrMask_GP100
     THREAD_STATE_NODE   *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2434);
     NvU32 intrMask = 0;
 
     if (bitVectorTestAllSet(pEngMask))
@@ -133,6 +136,7 @@ intrGetIntrEnFromHw_GP100
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2435);
     NvU32       intrEn;
     //
     // If the GPU is in GC6 (aka powered down or rail-gated state), return
@@ -156,6 +160,7 @@ intrGetIntrMask_GP100
     THREAD_STATE_NODE   *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2436);
     NvU32 intrMask = pIntr->intrMask.cached;
 
     if (intrMask == 0x0)
@@ -186,6 +191,7 @@ intrGetPendingStall_GP100
     THREAD_STATE_NODE   *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2437);
     extern NV_STATUS intrGetPendingStall_GM107(OBJGPU *pGpu, Intr *pIntr, MC_ENGINE_BITVECTOR *pEngines, THREAD_STATE_NODE *pThreadState);
     OBJTMR              *pTmr    = GPU_GET_TIMER(pGpu);
     MC_ENGINE_BITVECTOR  pendingEngines;
@@ -234,6 +240,7 @@ intrEncodeStallIntrEn_GP100
     NvU32   *pIntrEnClear
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2438);
     if (intrEn == INTERRUPT_TYPE_SOFTWARE)
     {
         *pIntrEnSet = INTERRUPT_MASK_SOFTWARE;

@@ -40,6 +40,7 @@ _kgspIsScrubberCompleted
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2212);
     NvU32 data = GPU_REG_RD32(pGpu, NV_PGC6_BSI_VPR_SECURE_SCRATCH_15);
     NvU32 handoff = DRF_VAL(_PGC6, _BSI_VPR_SECURE_SCRATCH_15, _SCRUBBER_HANDOFF, data);
     return (handoff >= NV_PGC6_BSI_VPR_SECURE_SCRATCH_15_SCRUBBER_HANDOFF_DONE);
@@ -52,6 +53,7 @@ kgspExecuteScrubberIfNeeded_AD102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2213);
     NV_STATUS status;
     KernelSec2 *pKernelSec2 = GPU_GET_KERNEL_SEC2(pGpu);
 

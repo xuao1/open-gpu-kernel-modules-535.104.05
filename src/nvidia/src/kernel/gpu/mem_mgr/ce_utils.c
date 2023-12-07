@@ -56,6 +56,7 @@ ceutilsConstruct_IMPL
     NV0050_ALLOCATION_PARAMETERS *pAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2707);
     NV_STATUS status = NV_OK;
     NvU64 allocFlags = pAllocParams->flags;
     NV_ASSERT_OR_RETURN(pGpu, NV_ERR_INVALID_STATE);
@@ -166,6 +167,7 @@ ceutilsDestruct_IMPL
     CeUtils *pCeUtils
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2708);
     OBJCHANNEL *pChannel = pCeUtils->pChannel;
     OBJGPU *pGpu = pCeUtils->pGpu;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -234,6 +236,7 @@ ceutilsDestruct_IMPL
 void
 ceutilsServiceInterrupts_IMPL(CeUtils *pCeUtils)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2709);
     OBJCHANNEL *pChannel = pCeUtils->pChannel;
 
     //
@@ -265,6 +268,7 @@ _ceUtilsFastScrubEnabled
     CHANNEL_PB_INFO *pChannelPbInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2710);
     OBJGPU *pGpu = pChannel->pGpu;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
@@ -305,6 +309,7 @@ _ceutilsSubmitPushBuffer
     CHANNEL_PB_INFO * pChannelPbInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2711);
     NV_STATUS status = NV_OK;
     NvU32 methodsLength, putIndex = 0;
 
@@ -383,6 +388,7 @@ ceutilsMemset_IMPL
     CEUTILS_MEMSET_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2712);
     OBJCHANNEL *pChannel = pCeUtils->pChannel;
     NV_STATUS   status = NV_OK;
 
@@ -489,6 +495,7 @@ ceutilsMemcopy_IMPL
     CEUTILS_MEMCOPY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2713);
     OBJCHANNEL *pChannel = pCeUtils->pChannel;
     NV_STATUS   status = NV_OK;
 
@@ -617,6 +624,7 @@ ceutilsUpdateProgress_IMPL
     CeUtils *pCeUtils
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2714);
     NV_ASSERT((pCeUtils != NULL) && (pCeUtils->pChannel != NULL));
 
     NvU32 hwCurrentCompletedPayload = 0;
@@ -657,6 +665,7 @@ ceutilsapiCtrlCmdCheckProgress_IMPL
     NV0050_CTRL_CHECK_PROGRESS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2715);
     if (pParams->submittedWorkId <= ceutilsUpdateProgress(pCeUtilsApi->pCeUtils))
     {
         pParams->result = NV0050_CTRL_CHECK_PROGRESS_RESULT_FINISHED;
@@ -673,6 +682,7 @@ ceutilsapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2716);
     NV0050_ALLOCATION_PARAMETERS *pAllocParams = pParams->pAllocParams;
 
     if (FLD_TEST_DRF(0050_CEUTILS, _FLAGS, _EXTERNAL, _TRUE, pAllocParams->flags))
@@ -690,6 +700,7 @@ ceutilsapiDestruct_IMPL
     CeUtilsApi *pCeUtilsApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2717);
     objDelete(pCeUtilsApi->pCeUtils);
 }
 
@@ -700,6 +711,7 @@ ceutilsapiCtrlCmdMemset_IMPL
     NV0050_CTRL_MEMSET_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2718);
     NV_STATUS          status = NV_OK;
     NvHandle           hClient = RES_GET_CLIENT_HANDLE(pCeUtilsApi);
     RsResourceRef     *pPhysmemRef;
@@ -741,6 +753,7 @@ ceutilsapiCtrlCmdMemcopy_IMPL
     NV0050_CTRL_MEMCOPY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2719);
     NV_STATUS          status = NV_OK;
     NvHandle           hClient = RES_GET_CLIENT_HANDLE(pCeUtilsApi);
     RsResourceRef     *pSrcPhysmemRef;

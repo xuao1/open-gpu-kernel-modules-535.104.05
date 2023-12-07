@@ -30,6 +30,7 @@
 
 static NvBool _dummyKvmIsP2PSupported(NvU32 gpuMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5779);
     return NV_FALSE;
 }
 
@@ -41,6 +42,7 @@ static NvBool _dummyKvmIsP2PSupported(NvU32 gpuMask)
 //
 static NV_STATUS _dummyKvmChildPartitionDetection(OBJOS *pOS, NvBool *result)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5780);
     *result = NV_TRUE;
     return NV_OK;
 }

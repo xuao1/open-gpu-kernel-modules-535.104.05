@@ -53,6 +53,7 @@ deviceCtrlCmdFifoGetChannelList_IMPL
     NV0080_CTRL_FIFO_GET_CHANNELLIST_PARAMS *pChannelParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1599);
     OBJGPU  *pGpu               = GPU_RES_GET_GPU(pDevice);
     NvU32   *pChannelHandleList = NvP64_VALUE(pChannelParams->pChannelHandleList);
     NvU32   *pChannelList       = NvP64_VALUE(pChannelParams->pChannelList);
@@ -100,6 +101,7 @@ deviceCtrlCmdFifoIdleChannels_IMPL
     NV0080_CTRL_FIFO_IDLE_CHANNELS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1600);
     NvBool        isGpuLockAcquired = NV_FALSE;
     NV_STATUS     status = NV_OK;
     OBJGPU       *pGpu = GPU_RES_GET_GPU(pDevice);
@@ -158,6 +160,7 @@ subdeviceCtrlCmdGetPhysicalChannelCount_IMPL
     NV2080_CTRL_FIFO_GET_PHYSICAL_CHANNEL_COUNT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1601);
     OBJGPU   *pGpu          = GPU_RES_GET_GPU(pSubdevice);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NvU32     numChannelsInUse = 0;
@@ -207,6 +210,7 @@ subdeviceCtrlCmdFifoGetInfo_IMPL
     NV2080_CTRL_FIFO_GET_INFO_PARAMS *pFifoInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1602);
     OBJGPU        *pGpu           = GPU_RES_GET_GPU(pSubdevice);
     KernelFifo    *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -328,6 +332,7 @@ NV_STATUS subdeviceCtrlCmdFifoGetAllocatedChannels_IMPL
     NV2080_CTRL_FIFO_GET_ALLOCATED_CHANNELS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1603);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(GPU_RES_GET_GPU(pSubdevice));
     NV_STATUS status;
 
@@ -365,6 +370,7 @@ subdeviceCtrlCmdFifoGetUserdLocation_IMPL
     NV2080_CTRL_CMD_FIFO_GET_USERD_LOCATION_PARAMS *pUserdLocationParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1604);
     NvU32      userdAperture;
     NvU32      userdAttribute;
     NV_STATUS  rmStatus = NV_OK;
@@ -432,6 +438,7 @@ subdeviceCtrlCmdFifoGetChannelMemInfo_IMPL
     NV2080_CTRL_CMD_FIFO_GET_CHANNEL_MEM_INFO_PARAMS *pChannelMemParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1605);
     OBJGPU    *pGpu     = GPU_RES_GET_GPU(pSubdevice);
     NvHandle   hDevice  = RES_GET_PARENT_HANDLE(pSubdevice);
     RsClient  *pClient  = RES_GET_CLIENT(pSubdevice);
@@ -510,6 +517,7 @@ diagapiCtrlCmdFifoEnableVirtualContext_IMPL
     NV208F_CTRL_FIFO_ENABLE_VIRTUAL_CONTEXT_PARAMS *pEnableVCParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1606);
     NV_STATUS      rmStatus = NV_OK;
     KernelChannel *pKernelChannel = NULL;
     RsClient      *pClient = RES_GET_CLIENT(pDiagApi);
@@ -542,6 +550,7 @@ subdeviceCtrlCmdFifoUpdateChannelInfo_IMPL
     NV2080_CTRL_FIFO_UPDATE_CHANNEL_INFO_PARAMS *pChannelInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1607);
     CALL_CONTEXT             *pCallContext  = resservGetTlsCallContext();
     RmCtrlParams             *pRmCtrlParams = pCallContext->pControlParams;
     OBJGPU                   *pGpu           = GPU_RES_GET_GPU(pSubdevice);
@@ -620,6 +629,7 @@ diagapiCtrlCmdFifoGetChannelState_IMPL
     NV208F_CTRL_FIFO_GET_CHANNEL_STATE_PARAMS *pChannelStateParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1608);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDiagApi);
     RsClient *pChannelClient;
     KernelChannel *pKernelChannel;
@@ -647,6 +657,7 @@ _kfifoGetCaps
     NvU8   *pKfifoCaps
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1609);
     NV_STATUS   rmStatus         = NV_OK;
     NvBool      bCapsInitialized = NV_FALSE;
     KernelFifo *pKernelFifo      = GPU_GET_KERNEL_FIFO(pGpu);
@@ -682,6 +693,7 @@ deviceCtrlCmdFifoGetCaps_IMPL
     NV0080_CTRL_FIFO_GET_CAPS_PARAMS *pKfifoCapsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1610);
     OBJGPU  *pGpu      = GPU_RES_GET_GPU(pDevice);
     NvU8    *pKfifoCaps = NvP64_VALUE(pKfifoCapsParams->capsTbl);
 
@@ -713,6 +725,7 @@ deviceCtrlCmdFifoGetCapsV2_IMPL
     NV0080_CTRL_FIFO_GET_CAPS_V2_PARAMS *pKfifoCapsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1611);
     OBJGPU    *pGpu      = GPU_RES_GET_GPU(pDevice);
     NvU8      *pKfifoCaps = pKfifoCapsParams->capsTbl;
 
@@ -732,6 +745,7 @@ subdeviceCtrlCmdFifoDisableChannels_IMPL
     NV2080_CTRL_FIFO_DISABLE_CHANNELS_PARAMS *pDisableChannelParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1612);
     NV_STATUS       status        = NV_OK;
     OBJGPU         *pGpu          = GPU_RES_GET_GPU(pSubdevice);
     CALL_CONTEXT   *pCallContext  = resservGetTlsCallContext();

@@ -47,6 +47,7 @@ hwresConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4561);
     NV_MEMORY_HW_RESOURCES_ALLOCATION_PARAMS *pAllocData;
     MEMORY_HW_RESOURCES_ALLOCATION_REQUEST    allocRequest  = {0};
     MEMORY_HW_RESOURCES_ALLOCATION_REQUEST   *pAllocRequest = &allocRequest;
@@ -184,6 +185,7 @@ hwresDestruct_IMPL
     MemoryHwResources *pMemoryHwResources
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4562);
     Memory            *pMemory = staticCast(pMemoryHwResources, Memory);
     OBJGPU            *pGpu = pMemory->pGpu;
     MEMORY_DESCRIPTOR *pMemDesc = pMemory->pMemDesc;
@@ -208,5 +210,6 @@ hwresCanCopy_IMPL
     MemoryHwResources *pMemoryHwResources
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4563);
     return NV_TRUE;
 }

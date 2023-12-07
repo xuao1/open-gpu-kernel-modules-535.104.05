@@ -57,6 +57,7 @@ memmgrGetFlaKind_GA100
     NvU32         *pPteKind
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2580);
     *pPteKind = NV_MMU_PTE_KIND_SMSKED_MESSAGE;
     return NV_OK;
 }
@@ -82,6 +83,7 @@ memmgrAllocDetermineAlignment_GA100
     NvU64          hwAlignment
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2581);
 
     return memmgrAllocDetermineAlignment_GM107(pGpu, pMemoryManager, pMemSize, pAlign, alignPad,
                                                allocFlags, retAttr, retAttr2, hwAlignment);
@@ -97,6 +99,7 @@ memmgrScrubRegistryOverrides_GA100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2582);
     //Fix me: Fork the same function for GA10x.
 
     //
@@ -148,6 +151,7 @@ memmgrReadMmuLock_GA100
     NvU64     *pMmuLockHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2583);
     NvU32 plm = 0;
     NvU32 tmp = 0;
 
@@ -198,6 +202,7 @@ memmgrBlockMemLockedMemory_GA100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2584);
     FB_REGION_DESCRIPTOR blockedFbRegion;
     NvU64                memLockLo            = 0;
     NvU64                memLockHi            = 0;
@@ -256,6 +261,7 @@ memmgrGetMaxContextSize_GA100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2585);
     NvU64  size = memmgrGetMaxContextSize_TU102(pGpu, pMemoryManager);
 
     if (RMCFG_FEATURE_PLATFORM_GSP)
@@ -291,6 +297,7 @@ memmgrGetDisablePlcKind_GA100
     NvU32          *pKind
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2586);
     if (pKind != NULL)
     {
         *pKind = NV_MMU_PTE_KIND_GENERIC_MEMORY_COMPRESSIBLE_DISABLE_PLC;
@@ -307,6 +314,7 @@ memmgrEnableDynamicPageOfflining_GA100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2587);
     if (gpuIsGlobalPoisonFuseEnabled(pGpu))
     {
        pMemoryManager->bEnableDynamicPageOfflining = NV_TRUE;
@@ -338,6 +346,7 @@ memmgrGetBlackListPages_GA100
     NvU32               *pCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2588);
     NvU32               baseIndex        = 0;
     NV_STATUS           status           = NV_OK;
     NvU32               idx              = 0;
@@ -438,6 +447,7 @@ memmgrInsertUnprotectedRegionAtBottomOfFb_GA100
     NvU64         *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2589);
     FB_REGION_DESCRIPTOR fbRegion        = {0};
     NvU64                memLockLo       = 0;
     NvU64                memLockHi       = 0;
@@ -500,6 +510,7 @@ memmgrIsApertureSupportedByFla_GA100
     NV_ADDRESS_SPACE aperture
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2590);
     if (aperture == ADDR_FBMEM)
     {
         return NV_TRUE;

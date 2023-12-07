@@ -71,6 +71,7 @@ _isDsmError
     NvU32    *rtnvalue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4880);
     if (status != NV_OK)
     {
         return NV_TRUE;
@@ -108,6 +109,7 @@ cacheDsmSupportedFunction
     NvU32   inOutSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4881);
     if ((acpiDsmSubFunction == NV_ACPI_ALL_FUNC_SUPPORT) &&
         (inOutSize > 0) &&
         (inOutSize <= sizeof(pGpu->acpi.dsm[acpiDsmFunction].suppFuncs)))
@@ -176,6 +178,7 @@ testIfDsmSubFunctionEnabled
     NvU32   acpiDsmSubFunction
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4882);
     NvU32     idx;
     NvU32     bitToTest;
 
@@ -253,6 +256,7 @@ testIfDsmFuncSupported
     ACPI_DSM_FUNCTION acpiDsmFunction
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4883);
     if (pGpu == NULL)
     {
         return NV_ERR_INVALID_STATE;
@@ -343,6 +347,7 @@ _getRemappedDsmSubfunction
     NvU32              *pRemappedDsmSubFunction
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4884);
     NvU32     i;
 
     NV_ASSERT_OR_RETURN(pRemappedDsmSubFunction, NV_ERR_INVALID_ARGUMENT);
@@ -434,6 +439,7 @@ remapDsmFunctionAndSubFunction
     NvU32             *pRemappedDsmSubFunction
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4885);
     NvU32             testDSMfuncIndex;
     NvU32             remappedDSMSubFunction;
     NvU32             dsmIndex;
@@ -529,6 +535,7 @@ getDsmGetObjectSubfunction
     NvU32              *pGetAllObjsSubFunction
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4886);
     NV_STATUS          rmStatus = NV_ERR_NOT_SUPPORTED;
     NvU32              testDSMfuncIndex;
     ACPI_DSM_FUNCTION  curFuncForGetObjByType;
@@ -698,6 +705,7 @@ checkDsmCall
     NvU16             *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4887);
     NV_STATUS rmStatus = NV_ERR_NOT_SUPPORTED;
 
     NV_ASSERT_OR_RETURN(pAcpiDsmFunction, NV_ERR_INVALID_ARGUMENT);
@@ -772,6 +780,7 @@ _acpiDsmSupportedFuncCacheInit
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4888);
     ACPI_DSM_FUNCTION func;
     NV_STATUS         status = NV_OK;
     NvU16             rtnSize;
@@ -863,6 +872,7 @@ _acpiDsmCallbackInit
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4889);
     ACPI_DSM_FUNCTION func;
     NV_STATUS         status = NV_OK;
     NvU32             callbacks;
@@ -969,6 +979,7 @@ _acpiDsmCapsInit
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4890);
     ACPI_DSM_FUNCTION func;
     NV_STATUS         status = NV_OK;
     NvU32             platCaps;
@@ -1015,6 +1026,7 @@ _acpiGenFuncCacheInit
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4891);
     NvU32       testGenSubFunc;
     NvU32       dsmIndex;
     NV_STATUS   status = NV_OK;
@@ -1079,6 +1091,7 @@ _acpiDsmFeatureInit
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4892);
     if (pGpu->acpi.MDTLFeatureSupport == DSM_FUNC_STATUS_UNKNOWN)
     {
         //
@@ -1107,6 +1120,7 @@ _acpiCacheMethodData
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4893);
     NV_STATUS status;
     NvU32 inOut = 0;
     NvU16 rtnSize = sizeof(inOut);
@@ -1171,6 +1185,7 @@ void acpiDsmInit
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4894);
     // initialize the cache of the supported Functions list.
     _acpiDsmSupportedFuncCacheInit(pGpu);
     _acpiGenFuncCacheInit(pGpu);
@@ -1206,6 +1221,7 @@ getAcpiDsmObjectData
     NBSI_VALIDATE       validateOption
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4895);
     NV_STATUS       status;
     NvU32           rtnStatus;
     NBSI_SOURCE_LOC globSrc;
@@ -1275,6 +1291,7 @@ void uncacheDsmFuncStatus
     NvU32                acpiDsmSubFunction
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4896);
     if (acpiDsmSubFunction == NV_ACPI_ALL_FUNC_SUPPORT)
     {
         pGpu->acpi.dsm[acpiDsmFunction].suppFuncsLen = 0;

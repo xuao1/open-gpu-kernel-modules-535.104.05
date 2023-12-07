@@ -53,6 +53,7 @@ kgrobjPromoteContext_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2171);
     NvU32 promoteIds[NV2080_CTRL_GPU_PROMOTE_CONTEXT_MAX_ENTRIES];
     NvU32 promoteIdsSize;
     NvBool bAttemptPromote;
@@ -170,6 +171,7 @@ _kgrAlloc
     KernelGraphicsObject *pKernelGraphicsObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2172);
     ChannelDescendant *pChannelDescendant = staticCast(pKernelGraphicsObject, ChannelDescendant);
     NvU32 numGpcs;
     NvU32 classNum = pChannelDescendant->resourceDesc.externalClassId;
@@ -235,6 +237,7 @@ static void _kgrobjDestruct
     NvBool bDestructor
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2173);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelGraphicsObject);
 
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY | SLI_LOOP_FLAGS_IGNORE_REENTRANCY)
@@ -288,6 +291,7 @@ kgrobjConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2174);
     ChannelDescendant *pChannelDescendant = staticCast(pKernelGraphicsObject, ChannelDescendant);
     KernelChannel     *pKernelChannel = pChannelDescendant->pKernelChannel;
     NV_STATUS          status = NV_OK;
@@ -367,6 +371,7 @@ kgrobjDestruct_IMPL
     KernelGraphicsObject *pKernelGraphicsObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2175);
     // Destroy the kernel object from the destructor
     _kgrobjDestruct(pKernelGraphicsObject, NV_TRUE);
 }
@@ -378,6 +383,7 @@ kgrobjGetMemInterMapParams_IMPL
     RMRES_MEM_INTER_MAP_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2176);
     MEMORY_DESCRIPTOR *pSrcMemDesc = pKernelGraphicsObject->pMmioMemDesc;
 
     if (pParams->bSubdeviceHandleProvided)
@@ -405,6 +411,7 @@ kgrobjSetComputeMmio_IMPL
     KernelGraphicsObject *pKernelGraphicsObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2177);
     ChannelDescendant *pChanDes = staticCast(pKernelGraphicsObject, ChannelDescendant);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU32 classNum = pChanDes->resourceDesc.externalClassId;
@@ -452,6 +459,7 @@ kgrobjFreeComputeMmio_IMPL
     KernelGraphicsObject *pKernelGraphicsObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2178);
     memdescDestroy(pKernelGraphicsObject->pMmioMemDesc);
     pKernelGraphicsObject->pMmioMemDesc = NULL;
 }
@@ -467,6 +475,7 @@ kgrobjShouldCleanup_KERNEL
     KernelGraphicsObject *pKernelGraphicsObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2179);
     ChannelDescendant *pChannelDescendant = staticCast(pKernelGraphicsObject, ChannelDescendant);
     NvU32              gfid = kchannelGetGfid(pChannelDescendant->pKernelChannel);
 
@@ -484,6 +493,7 @@ kgrobjShouldCleanup_PHYSICAL
     KernelGraphicsObject *pKernelGraphicsObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2180);
     ChannelDescendant *pChannelDescendant = staticCast(pKernelGraphicsObject, ChannelDescendant);
     NvU32              gfid = kchannelGetGfid(pChannelDescendant->pKernelChannel);
 
@@ -507,6 +517,7 @@ kgrobjGetPromoteIds_VF
     NvBool *pbPromote
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2181);
     void kgrobjGetPromoteIds_FWCLIENT(OBJGPU *, KernelGraphicsObject *, NvU32, NvU32 *, NvU32 *, NvBool *);
     NvU32 promoteSriovHeavy[] =
     {
@@ -550,6 +561,7 @@ kgrobjGetPromoteIds_FWCLIENT
     NvBool *pbPromote
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2182);
     ChannelDescendant *pChannelDescendant = staticCast(pKernelGraphicsObject, ChannelDescendant);
     NvBool bAcquire3d;
 
@@ -634,6 +646,7 @@ kgrobjGetPromoteIds_PHYSICAL
     NvBool *pbPromote
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2183);
     ChannelDescendant *pChannelDescendant = staticCast(pKernelGraphicsObject, ChannelDescendant);
     NvU32 gfid = kchannelGetGfid(pChannelDescendant->pKernelChannel);
     NvBool bAcquire3d;

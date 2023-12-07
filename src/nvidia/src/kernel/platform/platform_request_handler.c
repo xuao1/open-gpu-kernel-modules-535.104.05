@@ -52,6 +52,7 @@ pfmreqhndlrConstruct_IMPL
     PlatformRequestHandler *pPlatformRequestHandler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5171);
     NV_PRINTF(LEVEL_INFO, "\n");
     return NV_OK;
 }
@@ -69,6 +70,7 @@ pfmreqhndlrInitGpu
     PlatformRequestHandler *pPlatformRequestHandler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5172);
     pPlatformRequestHandler->dsmVersion = ACPI_DSM_FUNCTION_INVALID;
 
     OBJGPU   *pGpu     = NULL;
@@ -133,6 +135,7 @@ pfmreqhndlrGetGpu
     PlatformRequestHandler *pPlatformRequestHandler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5173);
     OBJGPU *pGpu = NULL;
     NvU32   gpuIndex;
     NvU32   gpuCount;
@@ -170,6 +173,7 @@ pfmreqhndlrPassiveModeTransition
     NvU32   gpuLockFlag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5174);
     OBJSYS     *pSys            = SYS_GET_INSTANCE();
     NvBool      bReleaseRmSema  = NV_FALSE;
     NvBool      bReleaseApiLock = NV_FALSE;
@@ -264,6 +268,7 @@ pfmreqhndlrPassiveModeTransition
 NV_STATUS
 pfmreqhndlrPcontrol_IMPL(PlatformRequestHandler *pPlatformRequestHandler, NvU32 input, NvBool bSbiosCall)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5175);
     OBJGPU                    *pGpu             = NULL;
     PFM_REQ_HNDLR_SENSOR_DATA *pPfmreqhndlrData = NULL;
     NvU32                      indexPstate      = 0;        // Pstate index received by SBIOS
@@ -444,6 +449,7 @@ pfmreqhndlrIsInitialized_IMPL
     PlatformRequestHandler *pPlatformRequestHandler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5176);
     NV_ASSERT(pPlatformRequestHandler);
 
     return pPlatformRequestHandler->controlData.bStateInitialized;
@@ -464,6 +470,7 @@ pfmreqhndlrStateInit_IMPL
     PlatformRequestHandler *pPlatformRequestHandler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5177);
     NV_STATUS  status = NV_ERR_INVALID_STATE;
     OBJGPU    *pGpu   = NULL;
     RM_API    *pRmApi = NULL;
@@ -620,6 +627,7 @@ pfmreqhndlrStateDestroy_IMPL
     PlatformRequestHandler *pPlatformRequestHandler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5178);
     NV_ASSERT(pPlatformRequestHandler);
 
     pPlatformRequestHandler->controlData.bStateInitialized = NV_FALSE;
@@ -631,6 +639,7 @@ pfmreqhndlrStateLoad_IMPL
     PlatformRequestHandler *pPlatformRequestHandler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5179);
     OBJGPU    *pGpu          = NULL;
     NvBool     bPM1Available = NV_FALSE;
     NvTemp     targetTemp    = PFM_REQ_HNDLR_TEMP_0_C;
@@ -710,6 +719,7 @@ pfmreqhndlrStateUnload_IMPL
     PlatformRequestHandler *pPlatformRequestHandler
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5180);
     return NV_OK;
 }
 
@@ -722,6 +732,7 @@ pfmreqhndlrStateSync_IMPL
                            *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5181);
     NV_STATUS  status = NV_OK;
 
     switch(pParams->flags)
@@ -773,6 +784,7 @@ _pfmreqhndlrSupportExists
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5182);
     NvU64       supportedFunction = 0;
     NvU16       outDataSize       = 0;
 
@@ -824,6 +836,7 @@ _pfmreqhndlrCheckAndGetPM1ForcedOffState
     OBJGPU                  *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5183);
     RM_API    *pRmApi     = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvBool     bForcedOff = NV_FALSE; // Return NV_FALSE to match Legacy return values
     NV_STATUS  status     = NV_ERR_GENERIC;
@@ -857,6 +870,7 @@ _pfmreqhndlrThermPmuPostInitPrereqCallback
     NvBool  bSatisfied
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5184);
     OBJSYS                 *pSys                    = SYS_GET_INSTANCE();
     PlatformRequestHandler *pPlatformRequestHandler = SYS_GET_PFM_REQ_HNDLR(pSys);
     NV_STATUS               status                  = NV_OK;
@@ -949,6 +963,7 @@ _pfmreqhndlrPmgrPmuPostLoadPrereqCallback
     NvBool  bSatisfied
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5185);
     OBJSYS    *pSys   = SYS_GET_INSTANCE();
     PlatformRequestHandler
               *pPlatformRequestHandler

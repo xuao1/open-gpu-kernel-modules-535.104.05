@@ -119,6 +119,7 @@ _fecsLoadInternalRoutingInfo
     NV2080_CTRL_GR_ROUTE_INFO *pGrRouteInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1978);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN(pFecsTraceInfo != NULL, NV_ERR_INVALID_STATE);
@@ -152,6 +153,7 @@ fecsExtractTagAndTimestamp
     NvU8 *pTag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1979);
     const KGRAPHICS_STATIC_INFO *pKernelGraphicsStaticInfo = kgraphicsGetStaticInfo(pGpu, pKernelGraphics);
     NV_ASSERT_OR_RETURN(pKernelGraphicsStaticInfo != NULL, NV_ERR_INVALID_STATE);
     NV_ASSERT_OR_RETURN(pKernelGraphicsStaticInfo->pFecsTraceDefines != NULL, NV_ERR_INVALID_STATE);
@@ -182,6 +184,7 @@ formatAndNotifyFecsRecord
     FECS_EVENT_RECORD  *pRecord
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1980);
     FECS_EVENT_NOTIFICATION_DATA notifRecord;
     KernelFifo                  *pKernelFifo       = GPU_GET_KERNEL_FIFO(pGpu);
     KernelChannel               *pKernelChannel    = NULL;
@@ -383,6 +386,7 @@ _fecsEventBufferAdd
     NvU64 timestamp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1981);
     NV_STATUS status;
     NvBool bNotify;
     NvP64 notificationHandle;
@@ -444,6 +448,7 @@ notifyEventBuffers
     FECS_EVENT_NOTIFICATION_DATA const *pRecord
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1982);
     NvBool bMIGInUse = IS_MIG_IN_USE(pGpu);
 
     if (pSubmap != NULL)
@@ -541,6 +546,7 @@ _getFecsMemDesc
     MEMORY_DESCRIPTOR **ppFecsMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1983);
     MEMORY_DESCRIPTOR *pMemDesc;
     GR_GLOBALCTX_BUFFERS *pGlobalCtxBuffers = kgraphicsGetGlobalCtxBuffers(pGpu, pKernelGraphics, GPU_GFID_PF);
 
@@ -564,6 +570,7 @@ _getFecsEventListParameters
     NvU32 *pFecsRecordSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1984);
     const KGRAPHICS_STATIC_INFO *pStaticInfo;
     NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
         _getFecsMemDesc(pGpu, pKernelGraphics, ppFecsMemDesc));
@@ -595,6 +602,7 @@ void fecsSetRoutingInfo
     NvU32 localGrEngineIdx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1985);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN_VOID(pFecsTraceInfo != NULL);
@@ -611,6 +619,7 @@ void fecsClearRoutingInfo
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1986);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN_VOID(pFecsTraceInfo != NULL);
@@ -628,6 +637,7 @@ fecsCtxswLoggingInit
     KGRAPHICS_FECS_TRACE_INFO **ppFecsTraceInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1987);
     NvU64 seed;
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo;
 
@@ -655,6 +665,7 @@ fecsCtxswLoggingTeardown
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1988);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN_VOID(pFecsTraceInfo != NULL);
@@ -674,6 +685,7 @@ void fecsSetRecordsPerIntr
     NvU32 recordsPerIntr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1989);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN_VOID(pFecsTraceInfo != NULL);
@@ -687,6 +699,7 @@ fecsBufferChanged
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1990);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
     NvU8 *pFecsBufferMapping;
     MEMORY_DESCRIPTOR *pFecsMemDesc = NULL;
@@ -722,6 +735,7 @@ nvEventBufferFecsCallback
     void    *pArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1991);
     KernelGraphics     *pKernelGraphics = (KernelGraphics*)pArgs;
     NvU32               fecsReadOffset;
     NvU32               fecsReadOffsetPrev;
@@ -893,6 +907,7 @@ fecsAddBindpoint
     NvU32 *pReasonCode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1992);
     NV_STATUS status;
     NvHandle hClient = staticCast(pClient, RsClient)->hClient;
     NvHandle hEventBuffer = pEventBufferRef->hResource;
@@ -1125,6 +1140,7 @@ fecsRemoveBindpoint
     NV_EVENT_BUFFER_BIND_POINT_FECS *pBind
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1993);
     EventBuffer *pEventBuffer = pBind->pEventBuffer;
 
     --pGpu->fecsCtxswLogConsumerCount;
@@ -1176,6 +1192,7 @@ fecsRemoveAllBindpoints
     EventBuffer *pEventBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1994);
     OBJGPU *pGpu = NULL;
     NvU32 gpuMask = 0;
     NvU32 gpuIndex = 0;
@@ -1211,6 +1228,7 @@ fecsBufferReset
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1995);
     MEMORY_DESCRIPTOR *pFecsMemDesc = NULL;
     NV_STATUS status;
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
@@ -1305,6 +1323,7 @@ fecsBufferDisableHw
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1996);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvHandle hClient;
     NvHandle hSubdevice;
@@ -1358,6 +1377,7 @@ fecsBufferTeardown
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1997);
     fecsBufferDisableHw(pGpu, pKernelGraphics);
     fecsBufferUnmap(pGpu, pKernelGraphics);
 }
@@ -1370,6 +1390,7 @@ fecsBufferIsMapped
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1998);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN(pFecsTraceInfo != NULL, NV_FALSE);
@@ -1383,6 +1404,7 @@ fecsBufferMap
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1999);
     MEMORY_DESCRIPTOR *pFecsMemDesc = NULL;
     NvU8 *pFecsBufferMapping = NULL;
     NV_STATUS status;
@@ -1416,6 +1438,7 @@ fecsBufferUnmap
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2000);
     MEMORY_DESCRIPTOR *pFecsMemDesc = NULL;
     NV_STATUS status;
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
@@ -1440,6 +1463,7 @@ fecsSignalIntrPendingIfNotPending
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2001);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN(pFecsTraceInfo != NULL, NV_FALSE);
@@ -1455,6 +1479,7 @@ fecsClearIntrPendingIfPending
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2002);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN(pFecsTraceInfo != NULL, NV_FALSE);
@@ -1469,6 +1494,7 @@ NvBool fecsIsIntrPending
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2003);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN(pFecsTraceInfo != NULL, NV_FALSE);
@@ -1484,6 +1510,7 @@ fecsGetVgpuStagingBuffer
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2004);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN(pFecsTraceInfo != NULL, NULL);
@@ -1500,6 +1527,7 @@ fecsSetVgpuStagingBuffer
     VGPU_FECS_TRACE_STAGING_BUFFER *pStagingBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2005);
     KGRAPHICS_FECS_TRACE_INFO *pFecsTraceInfo = kgraphicsGetFecsTraceInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN_VOID(pFecsTraceInfo != NULL);

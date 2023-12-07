@@ -40,6 +40,7 @@ kmemsysInitRegistryOverrides
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3337);
     NvU32 data32;
 
     //
@@ -60,6 +61,7 @@ kmemsysConstructEngine_IMPL
     ENGDESCRIPTOR       engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3338);
     pKernelMemorySystem->memPartitionNumaInfo = NULL;
 
     kmemsysInitRegistryOverrides(pGpu, pKernelMemorySystem);
@@ -90,6 +92,7 @@ NV_STATUS kmemsysStateInitLocked_IMPL
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3339);
     MEMORY_SYSTEM_STATIC_CONFIG *pStaticConfig;
     NV_STATUS status = NV_OK;
 
@@ -174,6 +177,7 @@ kmemsysStatePreLoad_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3340);
     //
     // Program the sysmem flush buffer address and assert that the register contents are valid.
     // The HAL wiring is such that a given RM build will only do one or the other (e.g., RM offloaded
@@ -207,6 +211,7 @@ kmemsysStatePostLoad_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3341);
     if (IS_SILICON(pGpu) &&
         pGpu->getProperty(pGpu, PDB_PROP_GPU_ATS_SUPPORTED))
     {
@@ -229,6 +234,7 @@ kmemsysStatePreUnload_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3342);
     if (IS_SILICON(pGpu) &&
         pGpu->getProperty(pGpu, PDB_PROP_GPU_ATS_SUPPORTED))
     {
@@ -248,6 +254,7 @@ void kmemsysStateDestroy_IMPL
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3343);
 
     // Teardown of Coherent Cpu Link is not required on Physical RM
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
@@ -272,6 +279,7 @@ kmemsysGetStaticConfig_IMPL
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3344);
     // check if state Init has not completed.
     NV_ASSERT_OR_ELSE(pKernelMemorySystem != NULL, return NULL);
 
@@ -284,6 +292,7 @@ kmemsysDestruct_IMPL
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3345);
     OBJGPU *pGpu = ENG_GET_GPU(pKernelMemorySystem);
 
     //
@@ -325,6 +334,7 @@ kmemsysAllocComprResources_KERNEL
     NvU32                 retAttr2
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3346);
     MemoryManager                     *pMemoryManager      = GPU_GET_MEMORY_MANAGER(pGpu);
     const MEMORY_SYSTEM_STATIC_CONFIG *pMemorySystemConfig = kmemsysGetStaticConfig(pGpu, pKernelMemorySystem);
     NvU32                              gfid;
@@ -381,6 +391,7 @@ kmemsysInitStaticConfig_KERNEL
     MEMORY_SYSTEM_STATIC_CONFIG *pConfig
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3347);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS status;
 
@@ -411,6 +422,7 @@ kmemsysSwizzIdToMIGMemSize_IMPL
     NvU64 *pSizeInBytes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3348);
     //
     // To handle the straddling issue we always consider memory for different
     // swizzIds as addition of minimum sized segements allowed in partitioning
@@ -490,6 +502,7 @@ kmemsysSwizzIdToMIGMemRange_IMPL
     NV_RANGE *pAddrRange
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3349);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     NV_STATUS rmStatus = NV_OK;
     NvU32 memSizeFlag = 0;
@@ -527,6 +540,7 @@ kmemsysGetMIGGPUInstanceMemInfo_IMPL
     NV_RANGE *pAddrRange
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3350);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64 vmmuSegmentSize;
     NvU64 startAddr;
@@ -573,6 +587,7 @@ kmemsysPopulateMIGGPUInstanceMemConfig_KERNEL
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3351);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_RANGE partitionableMemoryRange = memmgrGetMIGPartitionableMemoryRange(pGpu, pMemoryManager);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -630,6 +645,7 @@ kmemsysGetMIGGPUInstanceMemConfigFromSwizzId_IMPL
     const MIG_GPU_INSTANCE_MEMORY_CONFIG **ppGPUInstanceMemConfig
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3352);
     NV_ASSERT_OR_RETURN(swizzId < KMIGMGR_MAX_GPU_SWIZZID, NV_ERR_INVALID_ARGUMENT);
     // MODS makes a control call to describe GPU instances before this is populated. Return invalid data anyways
     NV_ASSERT_OR_RETURN(pKernelMemorySystem->gpuInstanceMemConfig[swizzId].bInitialized, NV_ERR_INVALID_STATE);
@@ -651,6 +667,7 @@ kmemsysInitMIGGPUInstanceMemConfigForSwizzId_IMPL
     NvU64 memSizeInVmmuSegment
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3353);
     NV_ASSERT_OR_RETURN(swizzId < KMIGMGR_MAX_GPU_SWIZZID, NV_ERR_INVALID_ARGUMENT);
 
     pKernelMemorySystem->gpuInstanceMemConfig[swizzId].startingVmmuSegment = startingVmmuSegment;
@@ -683,6 +700,7 @@ kmemsysEnsureSysmemFlushBufferInitialized_IMPL
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3354);
     if (IS_VIRTUAL(pGpu)                                       ||
         IS_GSP_CLIENT(pGpu)                                    ||
         RMCFG_FEATURE_PLATFORM_GSP)
@@ -711,6 +729,7 @@ kmemsysSetupCoherentCpuLink_IMPL
     NvBool              bFlush
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3355);
     KernelBus     *pKernelBus     = GPU_GET_KERNEL_BUS(pGpu);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64          numaOnlineSize = 0;
@@ -857,6 +876,7 @@ kmemsysTeardownCoherentCpuLink_IMPL
     NvBool             bFlush
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3356);
     kbusTeardownCoherentCpuMapping_HAL(pGpu, GPU_GET_KERNEL_BUS(pGpu), bFlush);
     pGpu->setProperty(pGpu, PDB_PROP_GPU_COHERENT_CPU_MAPPING, NV_FALSE);
 }
@@ -885,6 +905,7 @@ kmemsysSendFlushL2AllRamsAndCaches_IMPL
     KernelMemorySystem *pKernelMemorySystem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3357);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
     return pRmApi->Control(pRmApi, pGpu->hInternalClient, pGpu->hInternalSubdevice,
@@ -900,6 +921,7 @@ kmemsysGetUsableFbSize_KERNEL
     NvU64                *pFbSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3358);
     return kmemsysReadUsableFbSize_HAL(pGpu, pKernelMemorySystem, pFbSize);
 }
 

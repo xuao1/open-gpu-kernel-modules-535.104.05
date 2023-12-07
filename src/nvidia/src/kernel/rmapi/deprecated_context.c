@@ -54,6 +54,7 @@ _rmControlForDeprecatedApi(DEPRECATED_CONTEXT *_pContext, NvHandle hClient, NvHa
 static NV_STATUS
 _rmFreeForDeprecatedApi(DEPRECATED_CONTEXT *_pContext, NvHandle hClient, NvHandle hObject)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5441);
     DEPRECATED_CONTEXT_EXT *pContext = (DEPRECATED_CONTEXT_EXT *)_pContext;
     RM_API                 *pRmApi   = pContext->pRmApi;
 
@@ -82,6 +83,7 @@ RmCopyUserForDeprecatedApi
     NvBool bUserModeArgs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5442);
     NV_STATUS status = NV_OK;
 
     switch (op)
@@ -141,6 +143,7 @@ _rmCopyUserForDeprecatedApi
     void **ppKernelPtr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5443);
     return RmCopyUserForDeprecatedApi(op, bufPolicy, dataPtr, dataSize,
                                       ppKernelPtr,
                                       ((DEPRECATED_CONTEXT_EXT *)_pContext)->bUserModeArgs);
@@ -149,12 +152,14 @@ _rmCopyUserForDeprecatedApi
 static void *
 _rmAllocMemForDeprecatedApi(NvU32 length)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5444);
     return portMemAllocNonPaged(length);
 }
 
 static void
 _rmFreeMemForDeprecatedApi(void *pAddress)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5445);
     portMemFree(pAddress);
 }
 
@@ -171,6 +176,7 @@ void rmapiInitDeprecatedContext
     NvBool bInternal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5446);
     if (pSecInfo == NULL)
     {
         portMemSet(&pContext->secInfo, 0, sizeof(pContext->secInfo));

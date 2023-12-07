@@ -67,6 +67,7 @@ s_promRead08
     NvU32 offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2273);
     return osDevReadReg008(pGpu, gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0),
                            NV_PROM_DATA(offset));
 }
@@ -83,6 +84,7 @@ s_promRead32
     NvU32 offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2274);
     return osDevReadReg032(pGpu, gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0),
                            NV_PROM_DATA(offset));
 }
@@ -106,6 +108,7 @@ s_romImgReadGeneric
     NV_STATUS *pStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2275);
 
     union
     {
@@ -175,6 +178,7 @@ s_romImgReadGeneric
  */
 static NvU8 s_romImgRead8(const RomImgSrc *pSrc, NvU32 offset, NV_STATUS *pStatus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2276);
     return (NvU8) s_romImgReadGeneric(pSrc, offset, sizeof(NvU8), pStatus);
 }
 
@@ -183,6 +187,7 @@ static NvU8 s_romImgRead8(const RomImgSrc *pSrc, NvU32 offset, NV_STATUS *pStatu
  */
 static NvU16 s_romImgRead16(const RomImgSrc *pSrc, NvU32 offset, NV_STATUS *pStatus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2277);
     return (NvU16) s_romImgReadGeneric(pSrc, offset, sizeof(NvU16), pStatus);
 }
 
@@ -191,6 +196,7 @@ static NvU16 s_romImgRead16(const RomImgSrc *pSrc, NvU32 offset, NV_STATUS *pSta
  */
 static NvU32 s_romImgRead32(const RomImgSrc *pSrc, NvU32 offset, NV_STATUS *pStatus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2278);
     return (NvU32) s_romImgReadGeneric(pSrc, offset, sizeof(NvU32), pStatus);
 }
 
@@ -207,6 +213,7 @@ s_romImgFindPciHeader_TU102
     NvU32 *pIfrSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2279);
 
     NV_STATUS status = NV_OK;
 
@@ -283,6 +290,7 @@ s_locateExpansionRoms
     NvU32 *pExpansionRomOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2280);
     NV_STATUS status = NV_OK;
     NvU32 currBlock = pciOffset;
 
@@ -427,6 +435,7 @@ s_getBaseBiosMaxSize_TU102
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2281);
     return 0x100000;  // 1 MB
 }
 
@@ -448,6 +457,7 @@ kgspExtractVbiosFromRom_TU102
     KernelGspVbiosImg **ppVbiosImg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2282);
 
     NV_STATUS status = NV_OK;
 

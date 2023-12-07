@@ -461,6 +461,7 @@ typedef struct nvGpuOpsLockSet
 
 static void _nvGpuOpsLocksRelease(nvGpuOpsLockSet *acquiredLocks)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5563);
     OBJSYS *pSys;
     pSys = SYS_GET_INSTANCE();
 
@@ -618,6 +619,7 @@ static NV_STATUS _nvGpuOpsLocksAcquireAll(NvU32 rmApiLockFlags,
 
 static NV_STATUS nvGpuOpsCreateClient(RM_API *pRmApi, NvHandle *hClient)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5564);
     NV_STATUS status;
     RS_SHARE_POLICY sharePolicy;
 
@@ -647,6 +649,7 @@ static NV_STATUS nvGpuOpsCreateClient(RM_API *pRmApi, NvHandle *hClient)
 
 NV_STATUS nvGpuOpsCreateSession(struct gpuSession **session)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5565);
     struct gpuSession *gpuSession = NULL;
     NV_STATUS status;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
@@ -673,6 +676,7 @@ NV_STATUS nvGpuOpsCreateSession(struct gpuSession **session)
 
 NV_STATUS nvGpuOpsDestroySession(struct gpuSession *session)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5566);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
 
     if (!session)
@@ -690,6 +694,7 @@ NV_STATUS nvGpuOpsDestroySession(struct gpuSession *session)
 
 static void *gpuBar0BaseAddress(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5567);
     DEVICE_MAPPING *pMapping = gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0);
 
     NV_ASSERT(pMapping);
@@ -709,6 +714,7 @@ static void eccErrorCallback(void *pArg, void *pData, NvHandle hEvent,
 
 static NvBool deviceNeedsDummyAlloc(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5568);
     // The dummy mapping is needed so the client can issue a read to flush out
     // any CPU BAR1 PCIE writes prior to updating GPPUT. This is only needed
     // when the bus is non-coherent and when not in ZeroFB (where there can't be
@@ -718,6 +724,7 @@ static NvBool deviceNeedsDummyAlloc(struct gpuDevice *device)
 
 static NV_STATUS nvGpuOpsVaSpaceRetainDummyAlloc(struct gpuAddressSpace *vaSpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5569);
     struct gpuDevice *device;
     NV_STATUS status = NV_OK;
     gpuAllocInfo allocInfo = {0};
@@ -767,6 +774,7 @@ done:
 
 static void nvGpuOpsVaSpaceReleaseDummyAlloc(struct gpuAddressSpace *vaSpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5570);
     NV_ASSERT(deviceNeedsDummyAlloc(vaSpace->device));
     NV_ASSERT(vaSpace->dummyGpuAlloc.refCount != 0);
 
@@ -785,6 +793,7 @@ static void nvGpuOpsVaSpaceReleaseDummyAlloc(struct gpuAddressSpace *vaSpace)
 
 static NV_STATUS nvGpuOpsDisableVaSpaceChannels(struct gpuAddressSpace *vaSpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5571);
     NV_STATUS   status = NV_OK;
     OBJVASPACE *pVAS = NULL;
     Device     *pDevice;
@@ -844,6 +853,7 @@ static NV_STATUS nvGpuOpsDisableVaSpaceChannels(struct gpuAddressSpace *vaSpace)
 
 static NV_STATUS nvGpuOpsEnableVaSpaceChannels(struct gpuAddressSpace *vaSpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5572);
     NV_STATUS    status = NV_OK;
     OBJVASPACE  *pVAS = NULL;
     Device      *pDevice;
@@ -902,6 +912,7 @@ static NV_STATUS nvGpuOpsEnableVaSpaceChannels(struct gpuAddressSpace *vaSpace)
 
 static NV_STATUS nvGpuOpsRmDeviceCreate(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5573);
     NV_STATUS status;
     NV0080_ALLOC_PARAMETERS nv0080AllocParams = { 0 };
     deviceDesc *rmDevice = NULL;
@@ -977,6 +988,7 @@ cleanup_device_desc:
 
 static void nvGpuOpsRmDeviceDestroy(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5574);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
     deviceDesc *rmDevice = device->rmDevice;
 
@@ -996,6 +1008,7 @@ static void nvGpuOpsRmDeviceDestroy(struct gpuDevice *device)
 
 static void gpuDeviceRmSubDeviceDeinitEcc(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5575);
     NV2080_CTRL_EVENT_SET_NOTIFICATION_PARAMS eventDbeParams = {0};
     subDeviceDesc *rmSubDevice = device->rmSubDevice;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
@@ -1039,6 +1052,7 @@ static void gpuDeviceRmSubDeviceDeinitEcc(struct gpuDevice *device)
 //
 static NV_STATUS gpuDeviceRmSubDeviceInitEcc(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5576);
     NV_STATUS status = NV_OK;
     NvU32 i = 0;
     int tempPtr = 0;
@@ -1311,6 +1325,7 @@ static NV_STATUS getSwizzIdFromUserSmcPartHandle(RM_API *pRmApi,
 
 static void nvGpuOpsRmSmcPartitionDestroy(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5577);
     subDeviceDesc *rmSubDevice = device->rmSubDevice;
 
     if (rmSubDevice->smcPartition.info != NULL)
@@ -1327,6 +1342,7 @@ static void nvGpuOpsRmSmcPartitionDestroy(struct gpuDevice *device)
 
 static NV_STATUS nvGpuOpsRmSmcPartitionCreate(struct gpuDevice *device, const gpuInfo *pGpuInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5578);
     NV_STATUS status;
     OBJGPU *pGpu = NULL;
     subDeviceDesc *rmSubDevice = device->rmSubDevice;
@@ -1413,6 +1429,7 @@ cleanup_dup_user_handle:
 
 static NV_STATUS nvGpuOpsRmSubDeviceCreate(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5579);
     NV_STATUS status;
     NV2080_ALLOC_PARAMETERS nv2080AllocParams = { 0 };
     deviceDesc *rmDevice = NULL;
@@ -1490,24 +1507,28 @@ cleanup_subdevice_desc:
 
 static NvBool isDevicePascalPlus(const struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5580);
     NV_ASSERT(device->rmDevice);
     return device->rmDevice->arch >= GPU_ARCHITECTURE_PASCAL;
 }
 
 static NvBool isDeviceVoltaPlus(const struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5581);
     NV_ASSERT(device->rmDevice);
     return device->rmDevice->arch >= GPU_ARCHITECTURE_VOLTA;
 }
 
 static NvBool isDeviceTuringPlus(const struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5582);
     NV_ASSERT(device->rmDevice);
     return device->rmDevice->arch >= GPU_ARCHITECTURE_TURING;
 }
 
 static NvBool isDeviceAmperePlus(const struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5583);
     NV_ASSERT(device->rmDevice);
     return device->rmDevice->arch >= GPU_ARCHITECTURE_AMPERE;
 }
@@ -1515,12 +1536,14 @@ static NvBool isDeviceAmperePlus(const struct gpuDevice *device)
 // Assume ...->Ampere->Ada->Hopper->...
 static NvBool isDeviceHopperPlus(const struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5584);
     NV_ASSERT(device->rmDevice);
     return (device->rmDevice->arch >= GPU_ARCHITECTURE_HOPPER) && (device->rmDevice->arch != GPU_ARCHITECTURE_ADA);
 }
 
 static UVM_LINK_TYPE rmControlToUvmNvlinkVersion(NvU32 nvlinkVersion)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5585);
     if (nvlinkVersion == NV2080_CTRL_NVLINK_STATUS_NVLINK_VERSION_INVALID)
         return UVM_LINK_TYPE_NONE;
     else if (nvlinkVersion == NV2080_CTRL_NVLINK_STATUS_NVLINK_VERSION_1_0)
@@ -1540,6 +1563,7 @@ static UVM_LINK_TYPE rmControlToUvmNvlinkVersion(NvU32 nvlinkVersion)
 
 static NV_STATUS queryFbInfo(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5586);
     NV_STATUS nvStatus = NV_OK;
     NV2080_CTRL_FB_GET_INFO_PARAMS fbInfoParams;
     NV2080_CTRL_CMD_FB_GET_FB_REGION_INFO_PARAMS *fbRegionInfoParams;
@@ -1608,6 +1632,7 @@ out:
 // megabytes per second.
 static NV_STATUS getPCIELinkRateMBps(NvHandle hClient, NvHandle hSubDevice, NvU32 *pcieLinkRate)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5587);
     // PCI Express Base Specification: https://www.pcisig.com/specifications/pciexpress
     const NvU32 PCIE_1_ENCODING_RATIO_TOTAL = 10;
     const NvU32 PCIE_1_ENCODING_RATIO_EFFECTIVE = 8;
@@ -1811,6 +1836,7 @@ cleanup_device_obj:
 
 NV_STATUS nvGpuOpsDeviceDestroy(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5588);
     deviceDesc *rmDevice = device->rmDevice;
     subDeviceDesc *rmSubDevice = device->rmSubDevice;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
@@ -2947,6 +2973,7 @@ nvGpuOpsMemGetPageSize
     NvU64  *pPageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5589);
     NvU64 pageSize;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_STATUS status;
@@ -2987,6 +3014,7 @@ nvGpuOpsBuildExternalAllocPtes
     gpuExternalMappingInfo *pGpuExternalMappingInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5590);
     NV_STATUS               status              = NV_OK;
     OBJGVASPACE            *pGVAS               = NULL;
     const GMMU_FMT         *pFmt                = NULL;
@@ -3557,6 +3585,7 @@ done:
 
 void nvGpuOpsAddressSpaceDestroy(struct gpuAddressSpace *vaSpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5591);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
 
     NV_ASSERT(vaSpace->dummyGpuAlloc.refCount == 0);
@@ -3959,6 +3988,7 @@ static void nvGpuOpsUnmapGpuMemory(struct gpuAddressSpace *vaSpace,
 
 static void nvGpuOpsFreeVirtual(struct gpuAddressSpace *vaSpace, NvU64 vaOffset)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5592);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
     gpuMemDesc *memDescVa = NULL;
     portSyncRwLockAcquireWrite(vaSpace->allocationsLock);
@@ -4273,6 +4303,7 @@ static void gpuDeviceUnmapCpuFreeHandle(struct gpuDevice *device,
 
 static void gpuDeviceDestroyUsermodeRegion(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5593);
     subDeviceDesc *rmSubDevice = device->rmSubDevice;
 
     gpuDeviceUnmapCpuFreeHandle(device,
@@ -4283,6 +4314,7 @@ static void gpuDeviceDestroyUsermodeRegion(struct gpuDevice *device)
 
 static NV_STATUS gpuDeviceMapUsermodeRegion(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5594);
     NV_STATUS status = NV_OK;
     NvHandle regionHandle = 0;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
@@ -4431,6 +4463,7 @@ static NV_STATUS nvGpuOpsGetWorkSubmissionInfo(struct gpuAddressSpace *vaSpace,
 
 static NvBool channelNeedsDummyAlloc(struct gpuChannel *channel)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5595);
     if (deviceNeedsDummyAlloc(channel->tsg->vaSpace->device))
     {
         return isDeviceHopperPlus(channel->tsg->vaSpace->device) ?
@@ -4443,6 +4476,7 @@ static NvBool channelNeedsDummyAlloc(struct gpuChannel *channel)
 
 static NV_STATUS channelRetainDummyAlloc(struct gpuChannel *channel, gpuChannelInfo *channelInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5596);
     struct gpuAddressSpace *vaSpace = channel->tsg->vaSpace;
     NV_STATUS status;
 
@@ -4461,6 +4495,7 @@ static NV_STATUS channelRetainDummyAlloc(struct gpuChannel *channel, gpuChannelI
 
 static void channelReleaseDummyAlloc(struct gpuChannel *channel)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5597);
     if (channel != NULL && channel->retainedDummyAlloc)
     {
         NV_ASSERT(channelNeedsDummyAlloc(channel));
@@ -4470,6 +4505,7 @@ static void channelReleaseDummyAlloc(struct gpuChannel *channel)
 
 static RM_ENGINE_TYPE tsgEngineType(const struct gpuTsg *tsg)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5598);
     NV_ASSERT(tsg->engineType == UVM_GPU_CHANNEL_ENGINE_TYPE_CE || tsg->engineType == UVM_GPU_CHANNEL_ENGINE_TYPE_SEC2);
 
     if (tsg->engineType == UVM_GPU_CHANNEL_ENGINE_TYPE_SEC2)
@@ -4889,6 +4925,7 @@ cleanup_free_memory:
 
 static NV_STATUS engineAllocate(struct gpuChannel *channel, gpuChannelInfo *channelInfo, UVM_GPU_CHANNEL_ENGINE_TYPE engineType)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5599);
     NV_STATUS status = NV_OK;
     NVB0B5_ALLOCATION_PARAMETERS ceAllocParams = {0};
     NVA06F_CTRL_GPFIFO_SCHEDULE_PARAMS channelGrpParams = {0};
@@ -5007,6 +5044,7 @@ cleanup_free_channel:
 
 void nvGpuOpsChannelDestroy(struct gpuChannel *channel)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5600);
     NvU32 pid = osGetCurrentProcess();
     struct gpuAddressSpace *vaSpace = NULL;
     struct gpuDevice *device = NULL;
@@ -5142,6 +5180,7 @@ cleanup_free_tsg:
 
 void nvGpuOpsTsgDestroy(struct gpuTsg *tsg)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5601);
     if (!tsg)
         return;
 
@@ -5170,6 +5209,7 @@ void nvGpuOpsTsgDestroy(struct gpuTsg *tsg)
 
 static NV_STATUS trackDescriptor(PNODE *pRoot, NvU64 key, void *desc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5602);
     PNODE btreeNode;
     NV_ASSERT(desc);
     NV_ASSERT(pRoot);
@@ -5184,6 +5224,7 @@ static NV_STATUS trackDescriptor(PNODE *pRoot, NvU64 key, void *desc)
 
 static NV_STATUS findDescriptor(PNODE pRoot, NvU64 key, void **desc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5603);
     PNODE btreeNode = NULL;
     NV_STATUS status = NV_OK;
 
@@ -5199,6 +5240,7 @@ static NV_STATUS findDescriptor(PNODE pRoot, NvU64 key, void **desc)
 
 static NV_STATUS deleteDescriptor(PNODE *pRoot, NvU64 key, void **desc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5604);
     PNODE btreeNode = NULL;
     NV_STATUS status = NV_OK;
 
@@ -5216,6 +5258,7 @@ static NV_STATUS deleteDescriptor(PNODE *pRoot, NvU64 key, void **desc)
 
 static NV_STATUS destroyAllGpuMemDescriptors(NvHandle hClient, PNODE pNode)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5605);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
     gpuMemDesc *memDesc = NULL;
 
@@ -5358,6 +5401,7 @@ cleanup_desc:
 
 void nvGpuOpsMemoryCpuUnMap(struct gpuAddressSpace *vaSpace, void *cpuPtr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5606);
     unsigned pid =0;
     cpuMappingDesc *mappingDesc = NULL;
     PNODE btreeNode;
@@ -5399,6 +5443,7 @@ void nvGpuOpsMemoryCpuUnMap(struct gpuAddressSpace *vaSpace, void *cpuPtr)
 // This is a counter-function of nvGpuOpsGpuMalloc!
 void nvGpuOpsMemoryFree(struct gpuAddressSpace *vaSpace, NvU64 pointer)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5607);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
     gpuMemDesc *memDesc = NULL;
 
@@ -5454,6 +5499,7 @@ NV_STATUS nvGpuOpsQueryCesCaps(struct gpuDevice *device,
 
 NV_STATUS nvGpuOpsQueryCaps(struct gpuDevice *device, gpuCaps *caps)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5608);
     NV_STATUS status;
     nvGpuOpsLockSet acquiredLocks;
     THREAD_STATE_NODE threadState;
@@ -5589,6 +5635,7 @@ static NV_STATUS findVaspaceFromPid(unsigned pid, unsigned gpuId,
 //
 static NV_STATUS findUvmAddressSpace(NvHandle hClient, NvU32 gpuInstance, NvHandle *phVaSpace, OBJVASPACE **ppVASpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5609);
     RsResourceRef *pResourceRef;
     RS_ITERATOR    iter;
     NvU32          gpuMask = NVBIT(gpuInstance);
@@ -5619,6 +5666,7 @@ ct_assert(NV2080_GPU_MAX_NAME_STRING_LENGTH == UVM_GPU_NAME_LENGTH);
 
 static void getGpcTpcInfo(OBJGPU *pGpu, gpuInfo *pGpuInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5610);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
 
     pGpuInfo->maxTpcPerGpcCount = 0;
@@ -5657,6 +5705,7 @@ static void getGpcTpcInfo(OBJGPU *pGpu, gpuInfo *pGpuInfo)
 
 static NV_STATUS queryVirtMode(NvHandle hClient, NvHandle hDevice, NvU32 *virtMode)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5611);
     NV_STATUS status = NV_OK;
     *virtMode = UVM_VIRT_MODE_NONE;
     return status;
@@ -5807,6 +5856,7 @@ static NV_STATUS getSysmemLinkInfo(NvHandle hClient,
 
 static NV_STATUS getSystemMemoryWindow(OBJGPU *pGpu, gpuInfo *pGpuInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5612);
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
 
     if (!pKernelMemorySystem)
@@ -6123,6 +6173,7 @@ NV_STATUS nvGpuOpsGetGpuIds(const NvU8 *pUuid,
 
 NV_STATUS nvGpuOpsServiceDeviceInterruptsRM(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5613);
     NV_STATUS status;
     nvGpuOpsLockSet acquiredLocks;
     THREAD_STATE_NODE threadState;
@@ -6267,6 +6318,7 @@ static NV_STATUS nvGpuOpsFillGpuMemoryInfo(PMEMORY_DESCRIPTOR pMemDesc,
 
 static NvBool memdescIsSysmem(PMEMORY_DESCRIPTOR pMemDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5614);
     return (memdescGetAddressSpace(pMemDesc) == ADDR_SYSMEM) &&
         !(memdescGetFlag(pMemDesc, MEMDESC_FLAGS_MAP_SYSCOH_OVER_BAR1));
 }
@@ -6580,6 +6632,7 @@ ct_assert(UVM_COPY_ENGINE_COUNT_MAX >= NV2080_ENGINE_TYPE_COPY_SIZE);
 
 static void setCeCaps(const NvU8 *rmCeCaps, gpuCeCaps *ceCaps)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5615);
     ceCaps->grce        = !!NV2080_CTRL_CE_GET_CAP(rmCeCaps, NV2080_CTRL_CE_CAPS_CE_GRCE);
     ceCaps->shared      = !!NV2080_CTRL_CE_GET_CAP(rmCeCaps, NV2080_CTRL_CE_CAPS_CE_SHARED);
     ceCaps->sysmemRead  = !!NV2080_CTRL_CE_GET_CAP(rmCeCaps, NV2080_CTRL_CE_CAPS_CE_SYSMEM_READ);
@@ -6591,6 +6644,7 @@ static void setCeCaps(const NvU8 *rmCeCaps, gpuCeCaps *ceCaps)
 
 static NV_STATUS queryCopyEngines(struct gpuDevice *gpu, gpuCesCaps *cesCaps)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5616);
     NV_STATUS status = NV_OK;
     NV2080_CTRL_GPU_GET_ENGINES_PARAMS getEnginesParams = {0};
     NvU32 *engineList;
@@ -6685,6 +6739,7 @@ done:
 
 static NvBool isClassHost(NvU32 class)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5617);
     NvBool bHostClass = NV_FALSE;
     CLI_CHANNEL_CLASS_INFO classInfo;
     CliGetChannelClassInfo(class, &classInfo);
@@ -6694,6 +6749,7 @@ static NvBool isClassHost(NvU32 class)
 
 static NvBool isClassCE(NvU32 class)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5618);
     switch (class)
     {
         case MAXWELL_DMA_COPY_A:
@@ -6713,6 +6769,7 @@ static NvBool isClassCE(NvU32 class)
 
 static NvBool isClassSec2(NvU32 class)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5619);
     switch (class)
     {
         case HOPPER_SEC2_WORK_LAUNCH_A:
@@ -6724,6 +6781,7 @@ static NvBool isClassSec2(NvU32 class)
 
 static NvBool isClassCompute(NvU32 class)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5620);
     switch (class)
     {
         case MAXWELL_COMPUTE_A:
@@ -6745,6 +6803,7 @@ static NvBool isClassCompute(NvU32 class)
 
 static NvBool isClassFaultBuffer(NvU32 class)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5621);
     switch (class)
     {
         case MAXWELL_FAULT_BUFFER_A:
@@ -6758,6 +6817,7 @@ static NvBool isClassFaultBuffer(NvU32 class)
 
 static NvBool isClassAccessCounterBuffer(NvU32 class)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5622);
     switch (class)
     {
         case ACCESS_COUNTER_NOTIFY_BUFFER:
@@ -7024,6 +7084,7 @@ NV_STATUS nvGpuOpsSetPageDirectory(struct gpuAddressSpace *vaSpace,
 
 NV_STATUS nvGpuOpsUnsetPageDirectory(struct gpuAddressSpace *vaSpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5623);
     NV_STATUS status;
     nvGpuOpsLockSet acquiredLocks;
     THREAD_STATE_NODE threadState;
@@ -7111,6 +7172,7 @@ NV_STATUS nvGpuOpsUnsetPageDirectory(struct gpuAddressSpace *vaSpace)
 
 NV_STATUS nvGpuOpsGetGmmuFmt(struct gpuAddressSpace *vaSpace, void **pFmt)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5624);
     NV_STATUS status = NV_OK;
     nvGpuOpsLockSet acquiredLocks;
     THREAD_STATE_NODE threadState;
@@ -7153,6 +7215,7 @@ NV_STATUS nvGpuOpsGetGmmuFmt(struct gpuAddressSpace *vaSpace, void **pFmt)
 
 NV_STATUS nvGpuOpsInvalidateTlb(struct gpuAddressSpace *vaSpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5625);
     NV2080_CTRL_DMA_INVALIDATE_TLB_PARAMS params = {0};
     RM_API *pRmApi = rmapiGetInterface(RMAPI_EXTERNAL_KERNEL);
 
@@ -7170,6 +7233,7 @@ NV_STATUS nvGpuOpsInvalidateTlb(struct gpuAddressSpace *vaSpace)
 
 NV_STATUS nvGpuOpsGetFbInfo(struct gpuDevice *device, gpuFbInfo *fbInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5626);
     NV_STATUS status;
     nvGpuOpsLockSet acquiredLocks;
     THREAD_STATE_NODE threadState;
@@ -7197,6 +7261,7 @@ NV_STATUS nvGpuOpsGetFbInfo(struct gpuDevice *device, gpuFbInfo *fbInfo)
 
 NV_STATUS nvGpuOpsGetEccInfo(struct gpuDevice *device, gpuEccInfo *eccInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5627);
     subDeviceDesc *rmSubDevice;
 
     if (!device || !eccInfo)
@@ -7549,6 +7614,7 @@ cleanup:
 static NV_STATUS
 getAccessCounterGranularityValue(UVM_ACCESS_COUNTER_GRANULARITY granularity, NvU32 *value)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5628);
     *value = 0;
 
     switch (granularity)
@@ -7575,6 +7641,7 @@ getAccessCounterGranularityValue(UVM_ACCESS_COUNTER_GRANULARITY granularity, NvU
 static NV_STATUS
 getAccessCounterLimitValue(UVM_ACCESS_COUNTER_USE_LIMIT limit, NvU32 *value)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5629);
     *value = 0;
 
     switch (limit)
@@ -7889,6 +7956,7 @@ NV_STATUS nvGpuOpsGetNonReplayableFaults(gpuFaultInfo *pFaultInfo,
 
 NV_STATUS nvGpuOpsFlushReplayableFaultBuffer(struct gpuDevice *device)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5630);
     NV_STATUS   status;
     NvHandle    hClient = device->session->handle;
     RsClient   *pClient;
@@ -8009,6 +8077,7 @@ static NV_STATUS nvGpuOpsGetChannelEngineType(OBJGPU *pGpu,
 
 static void _memdescRetain(MEMORY_DESCRIPTOR *pMemDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5631);
     if (pMemDesc->Allocated > 0)
     {
         pMemDesc->Allocated++;
@@ -8453,6 +8522,7 @@ error:
 
 static void _nvGpuOpsReleaseChannel(gpuRetainedChannel *retainedChannel)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5632);
     NV_STATUS status = NV_OK;
     struct gpuSession *session;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
@@ -8496,6 +8566,7 @@ static void _nvGpuOpsReleaseChannel(gpuRetainedChannel *retainedChannel)
 
 void nvGpuOpsReleaseChannel(gpuRetainedChannel *retainedChannel)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5633);
     nvGpuOpsLockSet acquiredLocks;
     THREAD_STATE_NODE threadState;
     threadStateInit(&threadState, THREAD_STATE_FLAGS_NONE);
@@ -8862,6 +8933,7 @@ done:
 
 static void _nvGpuOpsReleaseChannelResources(gpuRetainedChannel *retainedChannel)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5634);
     NvU32 i;
     NvU32 descriptorCount = retainedChannel->resourceCount;
 
@@ -9428,6 +9500,7 @@ cleanup_free_channel:
 
 void nvGpuOpsPagingChannelDestroy(UvmGpuPagingChannel *channel)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5635);
     NV_STATUS status;
     struct gpuDevice *device;
     Device *pDevice;
@@ -9642,6 +9715,7 @@ NV_STATUS nvGpuOpsPagingChannelPushStream(UvmGpuPagingChannel *channel,
 
 static NV_STATUS nvGpuOpsGetMemoryByHandle(NvHandle hClient, NvHandle hMemory, Memory **ppMemory)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5636);
     RsClient *pRsClient = NULL;
 
     NV_ASSERT_OK_OR_RETURN(serverGetClientUnderLock(&g_resServ,
@@ -9665,6 +9739,7 @@ NV_STATUS nvGpuOpsCcslContextInit(struct ccslContext_t **ctx,
 
 NV_STATUS nvGpuOpsCcslContextClear(struct ccslContext_t *ctx)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5637);
     if (ctx == NULL)
     {
         return NV_ERR_INVALID_ARGUMENT;
@@ -9676,6 +9751,7 @@ NV_STATUS nvGpuOpsCcslContextClear(struct ccslContext_t *ctx)
 
 NV_STATUS nvGpuOpsCcslRotateIv(struct ccslContext_t *ctx, NvU8 direction)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5638);
     if (ctx == NULL)
     {
         return NV_ERR_INVALID_ARGUMENT;

@@ -43,6 +43,7 @@ gpumgmtapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL    *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4302);
     return NV_OK;
 }
 
@@ -52,6 +53,7 @@ gpumgmtapiDestruct_IMPL
     GpuManagementApi    *pGpuMgmt
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4303);
 }
 
 NV_STATUS
@@ -61,5 +63,6 @@ gpumgmtapiCtrlCmdSetShutdownState_IMPL
     NV0020_CTRL_GPU_MGMT_SET_SHUTDOWN_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4304);
     return gpudbSetShutdownState(pParams->uuid);
 }

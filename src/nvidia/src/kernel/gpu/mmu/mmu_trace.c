@@ -126,6 +126,7 @@ mmuTraceWalk
     NvBool          verbose
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3690);
     PMEMORY_DESCRIPTOR pPDB = vaspaceGetPageDirBase(pVAS, pGpu);
     OBJGVASPACE       *pGVAS = dynamicCast(pVAS, OBJGVASPACE);
     GVAS_GPU_STATE    *pGpuState = gvaspaceGetGpuState(pGVAS, pGpu);
@@ -164,6 +165,7 @@ mmuTrace
     PMMU_TRACE_PARAM pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3691);
     PMEMORY_DESCRIPTOR pPDB;
     MMU_TRACE_INFO     info = {0};
     NV_STATUS          status;
@@ -248,6 +250,7 @@ _mmuInitLayout
     PMMU_LAYOUT pLayout
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3692);
     OBJGVASPACE    *pGVAS = dynamicCast(pVAS, OBJGVASPACE);
     const GMMU_FMT *pGmmuFmt;
 
@@ -281,6 +284,7 @@ _mmuPrintPte
     NvBool                     verbose
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3693);
     NvU64 pageSize;
 
     if (!verbose)
@@ -354,6 +358,7 @@ _mmuPrintPt
     const MMU_ENTRY     *pPde
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3694);
     const void                *pFmt     = pLayout->pFmt;
     const MMU_TRACE_CALLBACKS *pTraceCb = pLayout->pTraceCb;
     const MMU_FMT_LEVEL       *pFmtSub  = &pFmtLevel->subLevels[subLevel];
@@ -374,6 +379,7 @@ _mmuPrintPdeInvalid
     NvBool             verbose
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3695);
 #if NV_PRINTF_LEVEL_ENABLED(LEVEL_INFO)
     const void                *pFmt     = pLayout->pFmt;
     const MMU_TRACE_CALLBACKS *pTraceCb = pLayout->pTraceCb;
@@ -412,6 +418,7 @@ _mmuPrintPdeValid
     NvBool               verbose
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3696);
 #if NV_PRINTF_LEVEL_ENABLED(LEVEL_INFO)
     const void                *pFmt     = pLayout->pFmt;
     const MMU_TRACE_CALLBACKS *pTraceCb = pLayout->pTraceCb;
@@ -461,6 +468,7 @@ _mmuTraceWalk
     NvBool               verbose
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3697);
     const void                *pFmt           = pLayout->pFmt;
     const MMU_TRACE_CALLBACKS *pTraceCb       = pLayout->pTraceCb;
     NvU32                      index          = mmuFmtVirtAddrToEntryIndex(pFmtLevel, va);
@@ -682,6 +690,7 @@ _mmuTracePteCallback
     NvBool                    *pDone
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3698);
     *pDone = NV_FALSE;
 
     if (valid)
@@ -710,6 +719,7 @@ _mmuTraceTranslateCallback
     NvBool                    *pDone
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3699);
     PMMU_TRACE_ARG pMmuTraceArg;
 
     if (!valid)
@@ -745,6 +755,7 @@ _mmuTraceDumpMappingCallback
     NvBool                    *pDone
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3700);
     PMMU_TRACE_ARG  pMmuTraceArg = (PMMU_TRACE_ARG)pArg;
     *pDone = NV_FALSE;
 
@@ -795,6 +806,7 @@ _mmuTraceValidateCallback
     NvBool *pDone
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3701);
     PMMU_TRACE_ARG pMmuTraceArg = (PMMU_TRACE_ARG)pArg;
 
     // If the range is valid, then subtract validated range from validateCount

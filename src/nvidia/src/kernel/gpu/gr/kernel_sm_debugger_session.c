@@ -66,6 +66,7 @@ dbgSessionRemoveDependant_IMPL
     RsResourceRef     *pResourceRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2184);
     RsSession *pSession = dynamicCast(pDbgSession, RsSession);
 
     // Freeing a KernelSMDebuggerSession dependant should just call the destructor normally
@@ -82,6 +83,7 @@ dbgSessionRemoveDependency_IMPL
     RsResourceRef     *pResourceRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2185);
     RsSession *pSession = dynamicCast(pDbgSession, RsSession);
 
     //
@@ -115,6 +117,7 @@ _ksmdbgssnInitClient
     KernelSMDebuggerSession *pKernelSMDebuggerSession
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2186);
     NV0080_ALLOC_PARAMETERS nv0080AllocParams;
     NV2080_ALLOC_PARAMETERS nv2080AllocParams;
     NV_STATUS status = NV_OK;
@@ -219,6 +222,7 @@ ksmdbgssnConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2187);
     NV83DE_ALLOC_PARAMETERS  *pNv83deAllocParams = pParams->pAllocParams;
     OBJGPU                   *pGpu;
     NvHandle                  hAppChannel;
@@ -369,6 +373,7 @@ _ShareDebugger
     RsResourceRef           *pGrResourceRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2188);
     NV_STATUS  status = NV_OK;
     RsSession *pRsSession;
 
@@ -426,6 +431,7 @@ ksmdbgssnDestruct_IMPL
     KernelSMDebuggerSession *pKernelSMDebuggerSession
 )
 {}
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2189);
 
 //
 // The free callback will always be invoked before the destructor for either the KernelSMDebuggerSession
@@ -439,6 +445,7 @@ ksmdbgssnFreeCallback_IMPL
     KernelSMDebuggerSession *pKernelSMDebuggerSession
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2190);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
     // This should free the entire hierarchy of objects.
@@ -458,11 +465,13 @@ ksmdbgssnInternalControlForward_IMPL
     NvU32 size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2191);
     return gpuresInternalControlForward_IMPL(staticCast(pKernelSMDebuggerSession, GpuResource), command, pParams, size);
 }
 
 NvHandle
 ksmdbgssnGetInternalObjectHandle_IMPL(KernelSMDebuggerSession *pKernelSMDebuggerSession)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2192);
     return NV01_NULL_OBJECT;
 }

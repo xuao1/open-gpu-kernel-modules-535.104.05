@@ -98,6 +98,7 @@ cliresConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL* pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5319);
     return NV_OK;
 }
 
@@ -107,6 +108,7 @@ cliresDestruct_IMPL
     RmClientResource *pRmCliRes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5320);
 }
 
 NvBool
@@ -118,6 +120,7 @@ cliresAccessCallback_IMPL
     RsAccessRight accessRight
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5321);
     // Client resource's access callback will grant any rights here to any resource it owns
     switch (accessRight)
     {
@@ -141,6 +144,7 @@ cliresShareCallback_IMPL
     RS_SHARE_POLICY *pSharePolicy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5322);
     RmClient *pSrcClient = dynamicCast(RES_GET_CLIENT(pRmCliRes), RmClient);
     RmClient *pDstClient = dynamicCast(pInvokingClient, RmClient);
     NvBool bDstKernel = (pDstClient != NULL) &&
@@ -219,6 +223,7 @@ cliresControl_Prologue_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5323);
     NV_STATUS status = serverDeserializeCtrlDown(pCallContext, pParams->cmd, &pParams->pParams, &pParams->paramsSize, &pParams->flags);
 
     return status;
@@ -232,6 +237,7 @@ cliresControl_Epilogue_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5324);
     NV_ASSERT_OK(serverSerializeCtrlUp(pCallContext, pParams->cmd, &pParams->pParams, &pParams->paramsSize, &pParams->flags));
     serverFreeSerializeStructures(pCallContext, pParams->pParams);
 }
@@ -249,6 +255,7 @@ CliControlSystemEvent
     NvU32    action
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5325);
     NV_STATUS status = NV_OK;
     RmClient *pClient;
     PEVENTNOTIFICATION *pEventNotification = NULL;
@@ -309,6 +316,7 @@ CliGetSystemEventStatus
     NvU32    *pStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5326);
     NvU32 Head, Tail;
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
 
@@ -347,6 +355,7 @@ CliGetSystemP2pCaps
     NvU32  *pBusPeerIds
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5327);
     OBJGPU       *pGpuLocal          = NULL;
     OBJGPU       *pGpuLocalLoop      = NULL;
     OBJGPU       *pGpuPeer           = NULL;
@@ -601,6 +610,7 @@ _configCalculateSizes
     NvU32      *pUnpackedSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5328);
     NvU32 unpkdSize = 0;
     NvU32 pkdSize = 0;
     NvU32 count;
@@ -660,6 +670,7 @@ _configUnpackStructure
     NvU32      *pFieldsCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5329);
     NvU32 unpkdSize = 0;
     NvU32 fields = 0;
     NvU32 count;
@@ -764,6 +775,7 @@ cliresCtrlCmdSystemGetFeatures_IMPL
     NV0000_CTRL_SYSTEM_GET_FEATURES_PARAMS *pFeaturesParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5330);
     OBJSYS    *pSys         = SYS_GET_INSTANCE();
     NvU32      featuresMask = 0;
 
@@ -803,6 +815,7 @@ cliresCtrlCmdSystemGetBuildVersionV2_IMPL
     NV0000_CTRL_SYSTEM_GET_BUILD_VERSION_V2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5331);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
 
     ct_assert(sizeof(NV_VERSION_STRING) <= sizeof(pParams->driverVersionBuffer));
@@ -837,6 +850,7 @@ cliresCtrlCmdSystemExecuteAcpiMethod_IMPL
     NV0000_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_PARAMS *pAcpiMethodParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5332);
     OBJGPU     *pGpu            = NULL;
     NvU32       method          = (NvU32) pAcpiMethodParams->method;
     NvU32       outStatus       = 0;
@@ -995,6 +1009,7 @@ cliresCtrlCmdSystemGetCpuInfo_IMPL
     NV0000_CTRL_SYSTEM_GET_CPU_INFO_PARAMS *pCpuInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5333);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
@@ -1033,6 +1048,7 @@ cliresCtrlCmdSystemGetChipsetInfo_IMPL
     NV0000_CTRL_SYSTEM_GET_CHIPSET_INFO_PARAMS *pChipsetInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5334);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl  = SYS_GET_CL(pSys);
 
@@ -1106,6 +1122,7 @@ cliresCtrlCmdSystemSetMemorySize_IMPL
     NV0000_CTRL_SYSTEM_SET_MEMORY_SIZE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5335);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJOS *pOS = SYS_GET_OS(pSys);
 
@@ -1119,6 +1136,7 @@ cliresCtrlCmdSystemSetMemorySize_IMPL
 static NV_STATUS
 classGetSystemClasses(NV0000_CTRL_SYSTEM_GET_CLASSLIST_PARAMS *pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5336);
     NvU32 i;
     NvU32 numResources;
     const RS_RESOURCE_DESC *resources;
@@ -1163,6 +1181,7 @@ cliresCtrlCmdSystemGetClassList_IMPL
     NV0000_CTRL_SYSTEM_GET_CLASSLIST_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5337);
     NV_STATUS status;
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
@@ -1190,6 +1209,7 @@ cliresCtrlCmdSystemNotifyEvent_IMPL
     NV0000_CTRL_SYSTEM_NOTIFY_EVENT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5338);
     NV_STATUS   status    = NV_OK;
 
     switch(pParams->eventType)
@@ -1229,6 +1249,7 @@ cliresCtrlCmdSystemGetPlatformType_IMPL
     NV0000_CTRL_CMD_SYSTEM_GET_PLATFORM_TYPE_PARAMS *pSysParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5339);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJPFM     *pPfm = SYS_GET_PFM(pSys);
 
@@ -1257,6 +1278,7 @@ cliresCtrlCmdSystemDebugCtrlRmMsg_IMPL
     NV0000_CTRL_SYSTEM_DEBUG_RMMSG_CTRL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5340);
 // NOTE: RmMsg is only available when NV_PRINTF_STRINGS_ALLOWED is true.
 #if NV_PRINTF_STRINGS_ALLOWED
     NvU32 len = 0;
@@ -1308,6 +1330,7 @@ cliresCtrlCmdSystemGetRmInstanceId_IMPL
     NV0000_CTRL_SYSTEM_GET_RM_INSTANCE_ID_PARAMS *pRmInstanceIdParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5341);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     pRmInstanceIdParams->rm_instance_id = pSys->rmInstanceId;
 
@@ -1328,6 +1351,7 @@ cliresCtrlCmdGpuGetAttachedIds_IMPL
     NV0000_CTRL_GPU_GET_ATTACHED_IDS_PARAMS *pGpuAttachedIds
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5342);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
 
     return gpumgrGetAttachedGpuIds(pGpuAttachedIds);
@@ -1346,6 +1370,7 @@ cliresCtrlCmdGpuGetIdInfo_IMPL
     NV0000_CTRL_GPU_GET_ID_INFO_PARAMS *pGpuIdInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5343);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
 
     return gpumgrGetGpuIdInfo(pGpuIdInfoParams);
@@ -1358,6 +1383,7 @@ cliresCtrlCmdGpuGetIdInfoV2_IMPL
     NV0000_CTRL_GPU_GET_ID_INFO_V2_PARAMS *pGpuIdInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5344);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
 
     return gpumgrGetGpuIdInfoV2(pGpuIdInfoParams);
@@ -1377,6 +1403,7 @@ cliresCtrlCmdGpuGetInitStatus_IMPL
     NV0000_CTRL_GPU_GET_INIT_STATUS_PARAMS *pGpuInitStatusParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5345);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
 
     return gpumgrGetGpuInitStatus(pGpuInitStatusParams);
@@ -1396,6 +1423,7 @@ cliresCtrlCmdGpuGetDeviceIds_IMPL
     NV0000_CTRL_GPU_GET_DEVICE_IDS_PARAMS *pDeviceIdsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5346);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
 
     pDeviceIdsParams->deviceIds = gpumgrGetDeviceInstanceMask();
@@ -1417,6 +1445,7 @@ cliresCtrlCmdGpuGetPciInfo_IMPL
     NV0000_CTRL_GPU_GET_PCI_INFO_PARAMS *pPciInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5347);
     NV_STATUS status;
     NvU64 gpuDomainBusDevice;
 
@@ -1447,6 +1476,7 @@ cliresCtrlCmdGpuGetProbedIds_IMPL
     NV0000_CTRL_GPU_GET_PROBED_IDS_PARAMS *pGpuProbedIds
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5348);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
 
     return gpumgrGetProbedGpuIds(pGpuProbedIds);
@@ -1466,6 +1496,7 @@ cliresCtrlCmdGpuAttachIds_IMPL
     NV0000_CTRL_GPU_ATTACH_IDS_PARAMS *pGpuAttachIds
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5349);
     NV0000_CTRL_GPU_GET_PROBED_IDS_PARAMS *pGpuProbedIds = NULL;
     NvU32 i, j;
     NV_STATUS status = NV_OK;
@@ -1530,6 +1561,7 @@ cliresCtrlCmdGpuDetachIds_IMPL
     NV0000_CTRL_GPU_DETACH_IDS_PARAMS *pGpuDetachIds
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5350);
     NV0000_CTRL_GPU_GET_ATTACHED_IDS_PARAMS *pGpuAttachedIds = NULL;
     NvU32 i, j;
     NV_STATUS status = NV_OK;
@@ -1593,6 +1625,7 @@ cliresCtrlCmdGpuGetSvmSize_IMPL
     NV0000_CTRL_GPU_GET_SVM_SIZE_PARAMS *pSvmSizeGetParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5351);
     OBJGPU *pGpu = NULL;
 
     // error check incoming gpu id
@@ -1616,6 +1649,7 @@ cliresCtrlCmdGsyncGetAttachedIds_IMPL
     NV0000_CTRL_GSYNC_GET_ATTACHED_IDS_PARAMS *pGsyncAttachedIds
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5352);
     return gsyncGetAttachedIds(pGsyncAttachedIds);
 }
 
@@ -1626,6 +1660,7 @@ cliresCtrlCmdGsyncGetIdInfo_IMPL
     NV0000_CTRL_GSYNC_GET_ID_INFO_PARAMS *pGsyncIdInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5353);
     return gsyncGetIdInfo(pGsyncIdInfoParams);
 }
 
@@ -1636,6 +1671,7 @@ cliresCtrlCmdEventSetNotification_IMPL
     NV0000_CTRL_EVENT_SET_NOTIFICATION_PARAMS *pEventSetNotificationParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5354);
     NvHandle hClient = RES_GET_CLIENT_HANDLE(pRmCliRes);
 
     return CliControlSystemEvent(hClient, pEventSetNotificationParams->event, pEventSetNotificationParams->action);
@@ -1648,6 +1684,7 @@ cliresCtrlCmdEventGetSystemEventStatus_IMPL
     NV0000_CTRL_GET_SYSTEM_EVENT_STATUS_PARAMS *pSystemEventStatusParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5355);
     NvHandle hClient = RES_GET_CLIENT_HANDLE(pRmCliRes);
 
     return CliGetSystemEventStatus(hClient, &pSystemEventStatusParams->event, &pSystemEventStatusParams->status);
@@ -1660,6 +1697,7 @@ cliresCtrlCmdGpuAcctGetProcAccountingInfo_IMPL
     NV0000_CTRL_GPUACCT_GET_PROC_ACCOUNTING_INFO_PARAMS *pAcctInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5356);
     OBJSYS        *pSys = SYS_GET_INSTANCE();
     GpuAccounting *pGpuAcct = SYS_GET_GPUACCT(pSys);
     OBJGPU        *pGpu;
@@ -1715,6 +1753,7 @@ cliresCtrlCmdGpuAcctSetAccountingState_IMPL
     NV0000_CTRL_GPUACCT_SET_ACCOUNTING_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5357);
     OBJGPU       *pGpu = NULL;
     NV_STATUS     status = NV_OK;
     CALL_CONTEXT *pCallContext;
@@ -1786,6 +1825,7 @@ cliresCtrlCmdGpuAcctClearAccountingData_IMPL
     NV0000_CTRL_GPUACCT_CLEAR_ACCOUNTING_DATA_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5358);
     OBJSYS         *pSys = SYS_GET_INSTANCE();
     GpuAccounting  *pGpuAcct = SYS_GET_GPUACCT(pSys);
     OBJGPU         *pGpu = NULL;
@@ -1840,6 +1880,7 @@ cliresCtrlCmdGpuAcctGetAccountingState_IMPL
     NV0000_CTRL_GPUACCT_GET_ACCOUNTING_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5359);
     OBJSYS         *pSys = SYS_GET_INSTANCE();
     GpuAccounting  *pGpuAcct = SYS_GET_GPUACCT(pSys);
     OBJGPU         *pGpu = NULL;
@@ -1894,6 +1935,7 @@ cliresCtrlCmdGpuAcctGetAccountingPids_IMPL
     NV0000_CTRL_GPUACCT_GET_ACCOUNTING_PIDS_PARAMS *pAcctPidsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5360);
     OBJSYS         *pSys = SYS_GET_INSTANCE();
     GpuAccounting  *pGpuAcct = SYS_GET_GPUACCT(pSys);
     OBJGPU         *pGpu;
@@ -1950,6 +1992,7 @@ cliresCtrlCmdSystemPfmreqhndlrControl_IMPL
     NV0000_CTRL_SYSTEM_PFM_REQ_HNDLR_CONTROL_PARAMS *controlParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5361);
     OBJSYS    				*pSys  				     = NULL;
     PlatformRequestHandler  *pPlatformRequestHandler = NULL;
     NV_STATUS  ret   = NV_OK;
@@ -1990,6 +2033,7 @@ cliresCtrlCmdSystemPfmreqhndlrBatchControl_IMPL
     NV0000_CTRL_SYSTEM_PFM_REQ_HNDLR_BATCH_CONTROL_PARAMS *controlParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5362);
     OBJSYS    *pSys  = NULL;
     PlatformRequestHandler       *pPlatformRequestHandler  = NULL;
     NvU32      data  = 0;
@@ -2051,6 +2095,7 @@ _controllerBuildConfig_StaticTable_v20
     NV0000_CTRL_CMD_SYSTEM_NVPCF_GET_POWER_MODE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5363);
     pParams->samplingMulti   =
         (NvU16)pEntry->samplingMulti;
     pParams->filterType      =
@@ -2097,6 +2142,7 @@ _controllerBuildQboostConfig_StaticTable_v20
     NV0000_CTRL_CMD_SYSTEM_NVPCF_GET_POWER_MODE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5364);
 
     pParams->bIsBoostController = NV_TRUE;
 
@@ -2130,6 +2176,7 @@ _controllerBuildConfig_StaticTable_v22
     NV0000_CTRL_CMD_SYSTEM_NVPCF_GET_POWER_MODE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5365);
     pParams->samplingMulti          = CONTROLLER_GRP_DEFAULT_SAMPLING_MULTIPLIER;
     pParams->filterType             = NVPCF0100_CTRL_CONTROLLER_FILTER_TYPE_EMWA;
     pParams->filterParam.weight     = CONTROLLER_GRP_DEFAULT_EWMA_WEIGHT;
@@ -2150,6 +2197,7 @@ _controllerBuildQboostConfig_StaticTable_v22
     NV0000_CTRL_CMD_SYSTEM_NVPCF_GET_POWER_MODE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5366);
     pParams->bIsBoostController = NV_TRUE;
 
     // Use increase gain of 90%, decrease gain of 100%
@@ -2176,6 +2224,7 @@ _controllerBuildCtgpConfig_StaticTable_2x
     NV0000_CTRL_CMD_SYSTEM_NVPCF_GET_POWER_MODE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5367);
     //
     // Sampling period only really only affects the delay in handling
     // CTGP changes, so just set sampling period multiplier to 1
@@ -2218,6 +2267,7 @@ _controllerParseStaticTable_v20
     NV0000_CTRL_CMD_SYSTEM_NVPCF_GET_POWER_MODE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5368);
     const char *pHeaderFmt = NVPCF_CONTROLLER_STATIC_TABLE_HEADER_V20_FMT_SIZE_05;
     const char *pCommonFmt = NVPCF_CONTROLLER_STATIC_TABLE_COMMON_V20_FMT_SIZE_02;
     const char *pEntryFmt  = NVPCF_CONTROLLER_STATIC_TABLE_ENTRY_V20_FMT_SIZE_0F;
@@ -2350,6 +2400,7 @@ _controllerParseStaticTable_v22
     NV0000_CTRL_CMD_SYSTEM_NVPCF_GET_POWER_MODE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5369);
     const char *pHeaderFmt = NVPCF_CONTROLLER_STATIC_TABLE_HEADER_V22_FMT_SIZE_04;
     const char *pEntryFmt  = NVPCF_CONTROLLER_STATIC_TABLE_ENTRY_V22_FMT_SIZE_05;
     NV_STATUS   status     = NV_OK;
@@ -2455,6 +2506,7 @@ _sysDeviceParseStaticTable_2x
     NV0000_CTRL_CMD_SYSTEM_NVPCF_GET_POWER_MODE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5370);
     NV_STATUS                       status              = NV_OK;
     NvU32                           deviceTableOffset   = 0;
     SYSDEV_STATIC_TABLE_HEADER_2X   sysdevHeader        = { 0 };
@@ -2505,6 +2557,7 @@ _controllerParseStaticTable_2x
     NV0000_CTRL_CMD_SYSTEM_NVPCF_GET_POWER_MODE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5371);
     NvU32       controllerTableOffset   = 0;
     NvU8        entryCount              = 0;
     NV_STATUS   status                  = NV_OK;
@@ -2573,6 +2626,7 @@ _validateConfigStaticTable_2x
     NvU16   *pDataSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5372);
     NV_STATUS  status    = NV_OK;
     NvU8       checkSum;
     NvU8       idx;
@@ -2617,6 +2671,7 @@ cliresCtrlCmdSystemNVPCFGetPowerModeInfo_IMPL
     NV0000_CTRL_CMD_SYSTEM_NVPCF_GET_POWER_MODE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5373);
     NvU32     rc = NV_OK;
     OBJGPU   *pGpu   = NULL;
     NV_STATUS status = NV_OK;
@@ -2892,6 +2947,7 @@ getHwbcInfo
     NvU32 *pIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5374);
     if (pHWBC->pFirstChild)
         getHwbcInfo(pHwbcInfo, pHWBC->pFirstChild, pIndex);
     if (pHWBC->pSibling)
@@ -2923,6 +2979,7 @@ cliresCtrlCmdSystemGetHwbcInfo_IMPL
     NV0000_CTRL_SYSTEM_GET_HWBC_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5375);
     NV0000_CTRL_SYSTEM_HWBC_INFO *pHwbcInfo = pParams->hwbcInfo;
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl  = SYS_GET_CL(pSys);
@@ -2953,6 +3010,7 @@ cliresCtrlCmdNvdGetDumpSize_IMPL
     NV0000_CTRL_NVD_GET_DUMP_SIZE_PARAMS *pDumpSizeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5376);
     OBJSYS       *pSys  = SYS_GET_INSTANCE();
     Journal      *pRcDB = SYS_GET_RCDB(pSys);
     NVDUMP_BUFFER nvDumpBuffer = {0};
@@ -2983,6 +3041,7 @@ cliresCtrlCmdNvdGetDump_IMPL
     NV0000_CTRL_NVD_GET_DUMP_PARAMS *pDumpParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5377);
     OBJSYS       *pSys          = SYS_GET_INSTANCE();
     Journal      *pRcDB         = SYS_GET_RCDB(pSys);
     NVDUMP_BUFFER nvDumpBuffer  = {0};
@@ -3016,6 +3075,7 @@ cliresCtrlCmdNvdGetTimestamp_IMPL
     NV0000_CTRL_NVD_GET_TIMESTAMP_PARAMS *pTimestampParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5378);
     NV_STATUS status = NV_OK;
 
     switch (pTimestampParams->cpuClkId)
@@ -3074,6 +3134,7 @@ cliresCtrlCmdNvdGetNvlogInfo_IMPL
     NV0000_CTRL_NVD_GET_NVLOG_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5379);
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
     NvU32 i;
 
@@ -3149,6 +3210,7 @@ cliresCtrlCmdNvdGetNvlogBufferInfo_IMPL
     NV0000_CTRL_NVD_GET_NVLOG_BUFFER_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5380);
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
 
     NV_ASSERT_OR_RETURN(pParams->component >= NV0000_CTRL_NVD_DUMP_COMPONENT_NVLOG,   NV_ERR_INVALID_ARGUMENT);
@@ -3210,6 +3272,7 @@ cliresCtrlCmdNvdGetNvlog_IMPL
     NV0000_CTRL_NVD_GET_NVLOG_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5381);
     NV_STATUS status = NV_ERR_NOT_SUPPORTED;
 
     NV_ASSERT_OR_RETURN(pParams->component >= NV0000_CTRL_NVD_DUMP_COMPONENT_NVLOG,    NV_ERR_INVALID_ARGUMENT);
@@ -3247,6 +3310,7 @@ cliresCtrlCmdSystemGetP2pCaps_IMPL
     NV0000_CTRL_SYSTEM_GET_P2P_CAPS_PARAMS *pP2PParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5382);
     OBJGPU *pGpu;
 
     if (RMCFG_FEATURE_PLATFORM_GSP)
@@ -3283,6 +3347,7 @@ cliresCtrlCmdSystemGetP2pCapsV2_IMPL
     NV0000_CTRL_SYSTEM_GET_P2P_CAPS_V2_PARAMS *pP2PParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5383);
     OBJGPU *pGpu;
     NvBool bLoopback = pP2PParams->gpuCount == 2 && pP2PParams->gpuIds[0] == pP2PParams->gpuIds[1];
 
@@ -3320,6 +3385,7 @@ cliresCtrlCmdSystemGetP2pCapsMatrix_IMPL
     NV0000_CTRL_SYSTEM_GET_P2P_CAPS_MATRIX_PARAMS *pP2PParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5384);
     NvU32 grpAIdx, grpBIdx;
     NV_STATUS status = NV_OK;
     NvBool bReflexive = NV_FALSE;
@@ -3444,6 +3510,7 @@ cliresCtrlCmdSystemGetGpusPowerStatus_IMPL
     NV0000_CTRL_SYSTEM_GET_GPUS_POWER_STATUS_PARAMS *pGpusPowerStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5385);
     NV_STATUS  status   = NV_OK;
     OBJSYS    *pSys     = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr  = SYS_GET_GPUMGR(pSys);
@@ -3513,6 +3580,7 @@ cliresCtrlCmdSystemGetPrivilegedStatus_IMPL
     NV0000_CTRL_SYSTEM_GET_PRIVILEGED_STATUS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5386);
     RmClient *pClient = dynamicCast(RES_GET_CLIENT(pRmCliRes), RmClient);
     NvU8     privStatus = 0;
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
@@ -3547,6 +3615,7 @@ cliresCtrlCmdSystemGetFabricStatus_IMPL
     NV0000_CTRL_SYSTEM_GET_FABRIC_STATUS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5387);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     NvU32 fabricStatus = NV0000_CTRL_GET_SYSTEM_FABRIC_STATUS_SKIP;
 
@@ -3577,6 +3646,7 @@ cliresCtrlCmdGpuGetUuidInfo_IMPL
     NV0000_CTRL_GPU_GET_UUID_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5388);
     OBJGPU *pGpu = NULL;
 
     pGpu = gpumgrGetGpuFromUuid(pParams->gpuUuid, pParams->flags);
@@ -3598,6 +3668,7 @@ cliresCtrlCmdGpuGetUuidFromGpuId_IMPL
     NV0000_CTRL_GPU_GET_UUID_FROM_GPU_ID_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5389);
     OBJGPU   *pGpu = NULL;
     NvU8     *pGidString = NULL;
     NvU32     gidStrLen = 0;
@@ -3643,6 +3714,7 @@ cliresCtrlCmdGpuModifyGpuDrainState_IMPL
     NV0000_CTRL_GPU_MODIFY_DRAIN_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5390);
     NV_STATUS status;
     NvBool    bEnable;
     NvBool    bRemove = NV_FALSE;
@@ -3714,6 +3786,7 @@ cliresCtrlCmdGpuQueryGpuDrainState_IMPL
     NV0000_CTRL_GPU_QUERY_DRAIN_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5391);
     NvBool    bDrainState;
     NvBool    bRemove;
     NV_STATUS status;
@@ -3745,6 +3818,7 @@ cliresCtrlCmdSetSubProcessID_IMPL
     NV0000_CTRL_SET_SUB_PROCESS_ID_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5392);
     NvHandle  hClient = RES_GET_CLIENT_HANDLE(pRmCliRes);
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
 
@@ -3769,6 +3843,7 @@ cliresCtrlCmdDisableSubProcessUserdIsolation_IMPL
     NV0000_CTRL_DISABLE_SUB_PROCESS_USERD_ISOLATION_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5393);
     NvHandle  hClient = RES_GET_CLIENT_HANDLE(pRmCliRes);
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
 
@@ -3790,6 +3865,7 @@ cliresCtrlCmdSyncGpuBoostInfo_IMPL
     NV0000_SYNC_GPU_BOOST_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5394);
     OBJSYS         *pSys      = SYS_GET_INSTANCE();
     OBJGPUBOOSTMGR *pBoostMgr = SYS_GET_GPUBOOSTMGR(pSys);
 
@@ -3820,6 +3896,7 @@ cliresCtrlCmdSyncGpuBoostGroupCreate_IMPL
     NV0000_SYNC_GPU_BOOST_GROUP_CREATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5395);
     NV_STATUS       status    = NV_OK;
     OBJSYS         *pSys      = SYS_GET_INSTANCE();
     OBJGPUBOOSTMGR *pBoostMgr = SYS_GET_GPUBOOSTMGR(pSys);
@@ -3848,6 +3925,7 @@ cliresCtrlCmdSyncGpuBoostGroupDestroy_IMPL
     NV0000_SYNC_GPU_BOOST_GROUP_DESTROY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5396);
     NV_STATUS       status    = NV_OK;
     OBJSYS         *pSys      = SYS_GET_INSTANCE();
     OBJGPUBOOSTMGR *pBoostMgr = SYS_GET_GPUBOOSTMGR(pSys);
@@ -3871,6 +3949,7 @@ cliresCtrlCmdSyncGpuBoostGroupInfo_IMPL
     NV0000_SYNC_GPU_BOOST_GROUP_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5397);
 
     NV_STATUS       status    = NV_OK;
     OBJSYS         *pSys      = SYS_GET_INSTANCE();
@@ -3891,6 +3970,7 @@ cliresCtrlCmdVgpuGetStartData_IMPL
     NV0000_CTRL_VGPU_GET_START_DATA_PARAMS *pVgpuStartParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5398);
     NV_STATUS   status = NV_OK;
     NvHandle    hClient = RES_GET_CLIENT_HANDLE(pRmCliRes);
     NvU32       event, eventStatus;
@@ -3931,6 +4011,7 @@ cliresCtrlCmdVgpuGetVgpuVersion_IMPL
     NV0000_CTRL_VGPU_GET_VGPU_VERSION_PARAMS *vgpuVersionInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5399);
     vgpuVersionInfo->host_min_supported_version
         = GRIDSW_VERSION_EXTERNAL(NV_VGPU_MIN_SUPPORTED_GRIDSW_VERSION_EXTERNAL_MAJOR,
                                   NV_VGPU_MIN_SUPPORTED_GRIDSW_VERSION_EXTERNAL_MINOR);
@@ -3953,6 +4034,7 @@ cliresCtrlCmdVgpuSetVgpuVersion_IMPL
     NV0000_CTRL_VGPU_SET_VGPU_VERSION_PARAMS *vgpuVersionInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5400);
     return (kvgpumgrSetHostVgpuVersion(vgpuVersionInfo->min_version,
                                        vgpuVersionInfo->max_version));
 }
@@ -3964,6 +4046,7 @@ cliresCtrlCmdClientGetAddrSpaceType_IMPL
     NV0000_CTRL_CLIENT_GET_ADDR_SPACE_TYPE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5401);
     NvHandle         hClient = RES_GET_CLIENT_HANDLE(pRmCliRes);
     CALL_CONTEXT     callContext;
     RsClient        *pRsClient;
@@ -4051,6 +4134,7 @@ cliresCtrlCmdClientGetHandleInfo_IMPL
     NV0000_CTRL_CLIENT_GET_HANDLE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5402);
     NvHandle       hClient = RES_GET_CLIENT_HANDLE(pRmCliRes);
     NV_STATUS      status;
     RsResourceRef *pRsResourceRef;
@@ -4083,6 +4167,7 @@ cliresCtrlCmdClientGetAccessRights_IMPL
     NV0000_CTRL_CLIENT_GET_ACCESS_RIGHTS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5403);
     NV_STATUS      status;
     RsResourceRef *pRsResourceRef;
     RsResourceRef *pClientRef = RES_GET_REF(pRmCliRes);
@@ -4108,6 +4193,7 @@ cliresCtrlCmdClientSetInheritedSharePolicy_IMPL
     NV0000_CTRL_CLIENT_SET_INHERITED_SHARE_POLICY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5404);
     NV0000_CTRL_CLIENT_SHARE_OBJECT_PARAMS params;
 
     portMemSet(&params, 0, sizeof(params));
@@ -4124,6 +4210,7 @@ cliresCtrlCmdClientShareObject_IMPL
     NV0000_CTRL_CLIENT_SHARE_OBJECT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5405);
     RS_SHARE_POLICY *pSharePolicy = &pParams->sharePolicy;
     RsClient        *pClient = RES_GET_CLIENT(pRmCliRes);
     RsResourceRef   *pObjectRef;
@@ -4187,6 +4274,7 @@ cliresCtrlCmdClientGetChildHandle_IMPL
     NV0000_CTRL_CMD_CLIENT_GET_CHILD_HANDLE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5406);
     NvHandle       hClient = RES_GET_CLIENT_HANDLE(pRmCliRes);
     NV_STATUS      status;
     RsResourceRef *pParentRef;
@@ -4213,6 +4301,7 @@ cliresCtrlCmdObjectsAreDuplicates_IMPL
     NV0000_CTRL_CLIENT_OBJECTS_ARE_DUPLICATES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5407);
     RsResourceRef *pResRef;
     RsClient *pClient = RES_GET_CLIENT(pRmCliRes);
 
@@ -4233,6 +4322,7 @@ cliresCtrlCmdGpuGetMemOpEnable_IMPL
     NV0000_CTRL_GPU_GET_MEMOP_ENABLE_PARAMS *pMemOpEnableParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5408);
     OBJSYS   *pSys = SYS_GET_INSTANCE();
     NV_STATUS status = NV_OK;
 
@@ -4254,6 +4344,7 @@ cliresCtrlCmdGpuDisableNvlinkInit_IMPL
     NV0000_CTRL_GPU_DISABLE_NVLINK_INIT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5409);
     NvHandle hClient = RES_GET_CLIENT_HANDLE(pRmCliRes);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
 
@@ -4283,6 +4374,7 @@ cliresCtrlCmdGpuSetNvlinkBwMode_IMPL
     NV0000_CTRL_GPU_SET_NVLINK_BW_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5410);
     return gpumgrSetGpuNvlinkBwMode(pParams->mode);
 }
 
@@ -4293,6 +4385,7 @@ cliresCtrlCmdGpuGetNvlinkBwMode_IMPL
     NV0000_CTRL_GPU_GET_NVLINK_BW_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5411);
     pParams->mode = gpumgrGetGpuNvlinkBwMode();
     return NV_OK;
 }
@@ -4309,6 +4402,7 @@ cliresCtrlCmdNvdGetRcerrRpt_IMPL
     NV0000_CTRL_CMD_NVD_GET_RCERR_RPT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5412);
     NV_STATUS status         = NV_OK;
     NvU32     gpuMask        = 0;
     NvU32     gpuAttachCount = 0;
@@ -4421,6 +4515,7 @@ cliresCtrlCmdLegacyConfig_IMPL
     NV0000_CTRL_GPU_LEGACY_CONFIG_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5413);
     NvHandle      hClient            = RES_GET_CLIENT_HANDLE(pRmCliRes);
     RsClient     *pClient            = RES_GET_CLIENT(pRmCliRes);
     RmClient     *pRmClient          = dynamicCast(pClient, RmClient);
@@ -4478,6 +4573,7 @@ cliresCtrlCmdIdleChannels_IMPL
     NV0000_CTRL_GPU_IDLE_CHANNELS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5414);
     CALL_CONTEXT *pCallContext  = resservGetTlsCallContext();
     NvBool        bUserModeArgs = pCallContext->secInfo.paramLocation != PARAM_LOCATION_KERNEL;
     NvHandle      hClient       = RES_GET_CLIENT_HANDLE(pRmCliRes);
@@ -4494,6 +4590,7 @@ cliresCtrlCmdSystemSyncExternalFabricMgmt_IMPL
     NV0000_CTRL_CMD_SYSTEM_SYNC_EXTERNAL_FABRIC_MGMT_PARAMS *pExtFabricMgmtParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5415);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     pSys->setProperty(pSys, PDB_PROP_SYS_FABRIC_IS_EXTERNALLY_MANAGED,
@@ -4507,6 +4604,7 @@ NV_STATUS cliresCtrlCmdSystemGetClientDatabaseInfo_IMPL
     NV0000_CTRL_SYSTEM_GET_CLIENT_DATABASE_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5416);
     pParams->clientCount = g_resServ.activeClientCount;
     pParams->resourceCount = g_resServ.activeResourceCount;
     return NV_OK;
@@ -4529,6 +4627,7 @@ NV_STATUS cliresCtrlCmdPushGspUcode_IMPL
     NV0000_CTRL_GPU_PUSH_GSP_UCODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5417);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -4538,6 +4637,7 @@ NV_STATUS cliresCtrlCmdSystemRmctrlCacheModeCtrl_IMPL
     NV0000_CTRL_SYSTEM_RMCTRL_CACHE_MODE_CTRL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5418);
     switch (pParams->cmd)
     {
         case NV0000_CTRL_SYSTEM_RMCTRL_CACHE_MODE_CTRL_CMD_SET:
@@ -4559,6 +4659,7 @@ cliresCtrlCmdSystemPfmreqhndlrGetPerfSensorCounters_IMPL
     NV0000_CTRL_SYSTEM_PFM_REQ_HNDLR_GET_PERF_SENSOR_COUNTERS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5419);
     NV_STATUS status = NV_OK;
     status = pfmreqhndlrGetPerfSensorCounters(pParams, PFM_REQ_HNDLR_PSR_PUB_TAG);
     return status;
@@ -4571,6 +4672,7 @@ cliresCtrlCmdSystemPfmreqhndlrGetExtendedPerfSensorCounters_IMPL
     NV0000_CTRL_SYSTEM_PFM_REQ_HNDLR_GET_PERF_SENSOR_COUNTERS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5420);
     NV_STATUS status = NV_OK;
     status = pfmreqhndlrGetPerfSensorCounters(pParams, 0);
     return status;
@@ -4584,6 +4686,7 @@ cliresCtrlCmdSystemGpsControl_IMPL
     NV0000_CTRL_SYSTEM_GPS_CONTROL_PARAMS *controlParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5421);
     return NV_OK;
 }
 
@@ -4594,6 +4697,7 @@ cliresCtrlCmdSystemGpsBatchControl_IMPL
     NV0000_CTRL_SYSTEM_GPS_BATCH_CONTROL_PARAMS *controlParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5422);
     return NV_OK;
 }
 
@@ -4604,6 +4708,7 @@ cliresCtrlCmdSystemGetPerfSensorCounters_IMPL
     NV0000_CTRL_SYSTEM_GPS_GET_PERF_SENSOR_COUNTERS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5423);
     return NV_OK;
 }
 
@@ -4614,6 +4719,7 @@ cliresCtrlCmdSystemGetExtendedPerfSensorCounters_IMPL
     NV0000_CTRL_SYSTEM_GPS_GET_PERF_SENSOR_COUNTERS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5424);
     return NV_OK;
 }
 

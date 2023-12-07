@@ -75,6 +75,7 @@ static NvU64 getChannelMaxValue (void);
 NV_STATUS
 ccKeyStoreInit (OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 855);
     if (gpuIsApmFeatureEnabled(pGpu))
     {
         ccMode = APM;
@@ -98,6 +99,7 @@ ccKeyStoreDeposit
     CC_KMB keyMaterialBundle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 856);
     if (slotNumber >= NUM_SLOTS)
     {
         return NV_ERR_INVALID_INDEX;
@@ -122,6 +124,7 @@ ccKeyStoreRetrieveViaChannel
     PCC_KMB        keyMaterialBundle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 857);
     NvU32 slotNumber;
 
     if (RM_ENGINE_TYPE_IS_COPY(kchannelGetEngineType(pKernelChannel)))
@@ -170,6 +173,7 @@ ccKeyStoreRetrieveViaChannel
 void
 cckeyStoreClear (void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 858);
     portMemSet (keySlot, 0, sizeof(keySlot));
 }
 
@@ -180,6 +184,7 @@ getSlotNumberLce
     NvU32         *slotNumber
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 859);
     NvU8 index;
 
     // TODO: Get actual privilege level of channel. For now assume
@@ -226,6 +231,7 @@ checkAndIncrementSlot
     ROTATE_IV_TYPE rotateOperation  // Will only be ROTATE_IV_ENCRYPT or ROTATE_IV_DECRYPT.
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 860);
     if (checkSlot (slotNumber, rotateOperation) != NV_OK)
     {
         return NV_ERR_GENERIC;
@@ -247,6 +253,7 @@ checkSlot
     ROTATE_IV_TYPE rotateOperation  // Will only be ROTATE_IV_ENCRYPT or ROTATE_IV_DECRYPT.
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 861);
     if (getChannelCounter (slotNumber, rotateOperation) == getChannelMaxValue())
     {
         return NV_ERR_GENERIC;
@@ -262,6 +269,7 @@ incrementChannelCounter
     ROTATE_IV_TYPE rotateOperation  // Will only be ROTATE_IV_ENCRYPT or ROTATE_IV_DECRYPT.
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 862);
     NvU64 channelCounter = getChannelCounter (slotNumber, rotateOperation);
 
     channelCounter++;
@@ -302,6 +310,7 @@ getChannelCounter
     ROTATE_IV_TYPE rotateOperation  // Will only be ROTATE_IV_ENCRYPT or ROTATE_IV_DECRYPT.
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 863);
     NvU64 channelCounter = 0;
 
     switch (rotateOperation)
@@ -338,6 +347,7 @@ getChannelCounter
 static NvU64
 getChannelMaxValue (void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 864);
     switch (ccMode)
     {
         case HCC:

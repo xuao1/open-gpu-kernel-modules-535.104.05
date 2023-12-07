@@ -45,6 +45,7 @@
 NV_STATUS
 kperfConstructEngine_IMPL(OBJGPU *pGpu, KernelPerf *pKernelPerf, ENGDESCRIPTOR engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3884);
     return NV_OK;
 }
 
@@ -54,6 +55,7 @@ kperfConstructEngine_IMPL(OBJGPU *pGpu, KernelPerf *pKernelPerf, ENGDESCRIPTOR e
 NV_STATUS
 kperfStateInitLocked_IMPL(OBJGPU *pGpu, KernelPerf *pKernelPerf)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3885);
 
     NV_STATUS status = NV_OK;
 
@@ -81,6 +83,7 @@ kperfStateInitLocked_IMPL(OBJGPU *pGpu, KernelPerf *pKernelPerf)
 NV_STATUS
 kperfStateLoad_IMPL(OBJGPU *pGpu, KernelPerf *pKernelPerf, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3886);
     // Initialize SW state corresponding to SLI GPU Boost synchronization.
     kperfGpuBoostSyncStateInit(pGpu, pKernelPerf);
 
@@ -113,6 +116,7 @@ kperfStateUnload_IMPL
     NvU32          flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3887);
     {
         OBJSYS                  *pSys                    = SYS_GET_INSTANCE();
         PlatformRequestHandler  *pPlatformRequestHandler = SYS_GET_PFM_REQ_HNDLR(pSys);
@@ -137,6 +141,7 @@ kperfStateDestroy_IMPL
     KernelPerf    *pKernelPerf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3888);
     {
         OBJSYS                  *pSys                    = SYS_GET_INSTANCE();
         PlatformRequestHandler  *pPlatformRequestHandler = SYS_GET_PFM_REQ_HNDLR(pSys);
@@ -156,6 +161,7 @@ kperfStateDestroy_IMPL
  */
 NV_STATUS kperfReentrancy_IMPL(OBJGPU *pGpu, KernelPerf *pKernelPerf, NvU32 function, NvBool bSet)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3889);
     // This routine and all routines that this routine calls are forbidden.
     NvU32 reentrancyMask = function | (function - 1);
 

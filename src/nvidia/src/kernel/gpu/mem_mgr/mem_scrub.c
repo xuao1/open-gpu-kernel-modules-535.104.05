@@ -92,6 +92,7 @@ scrubberConstruct
     Heap    *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3039);
     OBJMEMSCRUB      *pScrubber;
     MemoryManager    *pMemoryManager    = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -200,6 +201,7 @@ _isScrubWorkPending(
     OBJMEMSCRUB  *pScrubber
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3040);
     NvBool workPending = NV_FALSE;
 
     if (pScrubber->bVgpuScrubberEnabled)
@@ -243,6 +245,7 @@ scrubberDestruct
     OBJMEMSCRUB    *pScrubber
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3041);
     PMA          *pPma      = NULL;
     PSCRUB_NODE   pPmaScrubList = NULL;
     NvU64         count = 0;
@@ -317,6 +320,7 @@ _scrubCheckLocked
     NvU64        *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3042);
     NV_STATUS   status             = NV_OK;
     PSCRUB_NODE pList              = NULL;
     NvLength    itemsToSave        = 0;
@@ -367,6 +371,7 @@ scrubCheck
     NvU64        *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3043);
     NV_STATUS status;
     portSyncMutexAcquire(pScrubber->pScrubberMutex);
     status = _scrubCheckLocked(pScrubber, ppList, pSize);
@@ -401,6 +406,7 @@ scrubSubmitPages
     NvU64       *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3044);
     NvU64       curPagesSaved     = 0;
     PSCRUB_NODE pScrubList        = NULL;
     NvLength    pagesToScrubCheck = 0;
@@ -506,6 +512,7 @@ scrubWaitPages
     NvU32        pageCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3045);
 
     NvU32     iter   = 0;
     NV_STATUS status = NV_OK;
@@ -545,6 +552,7 @@ scrubCheckAndWaitForSize
     NvU64        *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3046);
     PSCRUB_NODE pList        = NULL;
     NV_STATUS   status       = NV_OK;
     NvLength    totalItems  = 0;
@@ -601,6 +609,7 @@ _scrubCopyListItems
     NvLength     itemsToSave
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3047);
     NvLength startIdx             = pScrubber->lastSeenIdByClient%MAX_SCRUB_ITEMS;
     NvLength endIdx               = (pScrubber->lastSeenIdByClient + itemsToSave)%
                                     MAX_SCRUB_ITEMS;
@@ -662,6 +671,7 @@ _scrubCheckAndSubmit
     NvLength     pagesToScrubCheck
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3048);
     NvU64        iter              = 0;
     NvU64        newId;
     NV_STATUS    status;
@@ -712,6 +722,7 @@ _scrubGetFreeEntries
     OBJMEMSCRUB *pScrubber
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3049);
     return MAX_SCRUB_ITEMS - pScrubber->scrubListSize;
 }
 
@@ -729,6 +740,7 @@ _searchScrubList
     RmPhysAddr    end
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3050);
     NvU64      tempLastSeenIdByClient    = pScrubber->lastSeenIdByClient;
     NvU64      lastSubmittedWorkId       = pScrubber->lastSubmittedWorkId;
     NvU64      id                        = 0;
@@ -772,6 +784,7 @@ _scrubWaitAndSave
     NvLength     itemsToSave
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3051);
     NvU64  currentCompletedId = 0;
 
     if (itemsToSave == 0)
@@ -805,6 +818,7 @@ _waitForPayload
     RmPhysAddr    end
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3052);
     NvU64     idToWait;
 
     //We need to look up in the range between [lastSeenIdByClient, lastSubmittedWorkId]
@@ -834,6 +848,7 @@ _scrubAddWorkToList
     NvU64         newId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3053);
     //since the Id works from [1,4k] range, the Idx in which it writes in 1 lesser
     NvU32 idx = (newId-1) % MAX_SCRUB_ITEMS;
 
@@ -866,6 +881,7 @@ _scrubCheckProgress
     OBJMEMSCRUB *pScrubber
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3054);
     NvU32 hwCurrentCompletedId;
     NvU64 lastSWSemaphoreDone;
 
@@ -918,6 +934,7 @@ _scrubMemory
     NvU32        payload
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3055);
     NV_STATUS status = NV_OK;
     MEMORY_DESCRIPTOR *pMemDesc = NULL;
     NV_ASSERT_OK_OR_RETURN(memdescCreate(&pMemDesc, pScrubber->pGpu, size, 0, NV_TRUE,

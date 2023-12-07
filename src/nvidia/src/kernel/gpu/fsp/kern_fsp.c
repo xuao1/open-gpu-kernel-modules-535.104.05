@@ -46,6 +46,7 @@ static NV_STATUS kfspReadMessage(OBJGPU *pGpu, KernelFsp *pKernelFsp, NvU8 *pPay
 NV_STATUS
 kfspConstructEngine_IMPL(OBJGPU *pGpu, KernelFsp *pKernelFsp, ENGDESCRIPTOR engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1655);
 
     // Initialize based on registry keys
     kfspInitRegistryOverrides(pGpu, pKernelFsp);
@@ -70,6 +71,7 @@ kfspInitRegistryOverrides
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1656);
     NvU32 data = 0;
 
     if (((osReadRegistryDword(pGpu, NV_REG_STR_RM_DISABLE_FSP, &data) == NV_OK) &&
@@ -130,6 +132,7 @@ kfspStateInitUnlocked_IMPL
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1657);
     return NV_OK;
 }
 
@@ -148,6 +151,7 @@ kfspStateDestroy_IMPL
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1658);
     portMemFree(pKernelFsp->pCotPayload);
     pKernelFsp->pCotPayload = NULL;
 
@@ -199,6 +203,7 @@ kfspSecureReset_IMPL
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1659);
     // Should not reset FSP
     NV_PRINTF(LEVEL_ERROR, "FSP cannot be reset by CPU.\n");
     NV_ASSERT(0);
@@ -221,6 +226,7 @@ kfspIsQueueEmpty_IMPL
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1660);
     NvU32 cmdqHead, cmdqTail;
 
     kfspGetQueueHeadTail_HAL(pGpu, pKernelFsp, &cmdqHead, &cmdqTail);
@@ -244,6 +250,7 @@ kfspPollForQueueEmpty_IMPL
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1661);
     RMTIMEOUT timeout;
 
     gpuSetTimeout(pGpu, GPU_TIMEOUT_DEFAULT, &timeout, GPU_TIMEOUT_FLAGS_OSTIMER | GPU_TIMEOUT_FLAGS_BYPASS_THREAD_STATE);
@@ -287,6 +294,7 @@ kfspIsMsgQueueEmpty_IMPL
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1662);
     NvU32 msgqHead, msgqTail;
 
     kfspGetMsgQueueHeadTail_HAL(pGpu, pKernelFsp, &msgqHead, &msgqTail);
@@ -308,6 +316,7 @@ kfspPollForResponse_IMPL
     KernelFsp *pKernelFsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1663);
     RMTIMEOUT timeout;
     NV_STATUS status = NV_OK;
 
@@ -355,6 +364,7 @@ kfspReadMessage
     NvU32      payloadBufferSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1664);
     NvU8             *pPacketBuffer;
     NV_STATUS         status;
     NvU32             totalPayloadSize = 0;
@@ -470,6 +480,7 @@ kfspSendPacket_IMPL
     NvU32        packetSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1665);
     NvU32 paddedSize;
     NvU8 *pBuffer = NULL;
     NV_STATUS status = NV_OK;
@@ -525,6 +536,7 @@ kfspSendAndReadMessage_IMPL
     NvU32      responseBufferSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1666);
     NvU32 dataSent, dataRemaining;
     NvU32 packetPayloadCapacity;
     NvU32 curPayloadSize;

@@ -50,6 +50,7 @@ uvmSetupAccessCntrBuffer_GV100
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4264);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     NvU64 vaddr;
     NV_STATUS status = NV_OK;
@@ -89,6 +90,7 @@ uvmDisableAccessCntr_GV100
     NvBool  bIsErrorRecovery
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4265);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     RMTIMEOUT   timeout;
     NvU32       putPtr;
@@ -219,6 +221,7 @@ uvmUnloadAccessCntrBuffer_GV100
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4266);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
 
     // Return if guest RM is with no sriov
@@ -244,6 +247,7 @@ uvmDestroyAccessCntrBuffer_GV100
     AccessCounterBuffer *pAccessCounterBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4267);
     if(pUvm == NULL)
     {
         return NV_WARN_NULL_OBJECT;
@@ -272,6 +276,7 @@ uvmInitAccessCntrBuffer_GV100
     AccessCounterBuffer *pAccessCounterBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4268);
     NV_STATUS           status;
     NvU32               accessCntrBufferSize;
     MEMORY_DESCRIPTOR  *pUvmAccessCntrBufferDesc;
@@ -351,6 +356,7 @@ uvmResetAccessCntrBuffer_GV100
     NvU32   counterType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4269);
     switch(counterType)
     {
         case NVC365_CTRL_ACCESS_COUNTER_TYPE_ALL:
@@ -378,6 +384,7 @@ uvmAccessCntrSetCounterLimit_GV100
     NvU32   limit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4270);
     if (type == NVC365_CTRL_ACCESS_COUNTER_MIMC_LIMIT)
     {
         switch(limit)

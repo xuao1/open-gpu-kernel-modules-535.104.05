@@ -54,6 +54,7 @@ instmemGetSize_v03_00
     NvU32                 *pHashTableSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 993);
     if (pTotalInstMemSize != NULL)
     {
         *pTotalInstMemSize = (NV_UDISP_HASH_LIMIT - NV_UDISP_HASH_BASE + 1) +
@@ -73,6 +74,7 @@ instmemGetHashTableBaseAddr_v03_00
     DisplayInstanceMemory *pInstMem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 994);
     return NV_UDISP_HASH_BASE;
 }
 
@@ -85,6 +87,7 @@ instmemIsValid_v03_00
     NvU32                  offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 995);
     return (((offset << 5) < NV_UDISP_OBJ_MEM_LIMIT) &&
             ((offset << 5) > NV_UDISP_HASH_LIMIT));
 }
@@ -100,6 +103,7 @@ instmemHashFunc_v03_00
     NvU32                 *pResult
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 996);
     NV_ASSERT_OR_RETURN(pResult, NV_ERR_INVALID_ARGUMENT);
 
 
@@ -133,6 +137,7 @@ instmemGenerateHashTableData_v03_00
     NvU32                  dispChannelNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 997);
     return (SF_NUM(_UDISP, _HASH_TBL_CLIENT_ID, hClient) |
             SF_NUM(_UDISP, _HASH_TBL_INSTANCE,  offset)  |
             SF_NUM(_UDISP, _HASH_TBL_CHN,       dispChannelNum));
@@ -147,6 +152,7 @@ instmemCommitContextDma_v03_00
     ContextDma            *pContextDma
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 998);
     MEMORY_DESCRIPTOR  *pMemDesc        = memdescGetMemDescFromGpu(pContextDma->pMemDesc, pGpu);
     MemoryManager      *pMemoryManager  = GPU_GET_MEMORY_MANAGER(pGpu);
     RmPhysAddr          FrameAddr, Limit;
@@ -277,6 +283,7 @@ instmemUpdateContextDma_v03_00
     NvU32                  comprInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 999);
     MemoryManager     *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_STATUS          status         = NV_OK;
     NvU8              *pInst;

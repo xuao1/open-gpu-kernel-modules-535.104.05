@@ -65,6 +65,7 @@ _getMsgQueueParams
     MESSAGE_QUEUE_COLLECTION *pMQCollection
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2385);
     KernelGsp *pKernelGsp = GPU_GET_KERNEL_GSP(pGpu);
     NvLength queueSize;
     MESSAGE_QUEUE_INFO *pRmQueueInfo = &pMQCollection->rpcQueues[RPC_TASK_RM_QUEUE_IDX];
@@ -139,6 +140,7 @@ _gspMsgQueueInit
     MESSAGE_QUEUE_INFO *pMQI
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2386);
     NvU32 workAreaSize;
     NV_STATUS nvStatus = NV_OK;
     int nRet;
@@ -204,6 +206,7 @@ GspMsgQueuesInit
     MESSAGE_QUEUE_COLLECTION **ppMQCollection
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2387);
     KernelGsp *pKernelGsp = GPU_GET_KERNEL_GSP(pGpu);
     MESSAGE_QUEUE_COLLECTION *pMQCollection = NULL;
     MESSAGE_QUEUE_INFO  *pRmQueueInfo = NULL;
@@ -347,6 +350,7 @@ error_ret:
 
 NV_STATUS GspStatusQueueInit(OBJGPU *pGpu, MESSAGE_QUEUE_INFO **ppMQI)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2388);
     NV_STATUS  nvStatus = NV_ERR_GENERIC;
     int        nRet = 0;
     int        nRetries;
@@ -426,6 +430,7 @@ NV_STATUS GspStatusQueueInit(OBJGPU *pGpu, MESSAGE_QUEUE_INFO **ppMQI)
 static void
 _gspMsgQueueCleanup(MESSAGE_QUEUE_INFO *pMQI)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2389);
     if (pMQI == NULL)
     {
         return;
@@ -440,6 +445,7 @@ _gspMsgQueueCleanup(MESSAGE_QUEUE_INFO *pMQI)
 
 void GspMsgQueuesCleanup(MESSAGE_QUEUE_COLLECTION **ppMQCollection)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2390);
     MESSAGE_QUEUE_COLLECTION *pMQCollection = NULL;
     MESSAGE_QUEUE_INFO       *pRmQueueInfo  = NULL;
     MESSAGE_QUEUE_INFO       *pTaskIsrQueueInfo = NULL;
@@ -484,6 +490,7 @@ void GspMsgQueuesCleanup(MESSAGE_QUEUE_COLLECTION **ppMQCollection)
  */
 static NV_INLINE NvU32 _checkSum32(void *pData, NvU32 uLen)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2391);
     NvU64 *p        = (NvU64 *)pData;
     NvU64 *pEnd     = (NvU64 *)((NvUPtr)pData + uLen);
     NvU64  checkSum = 0;
@@ -507,6 +514,7 @@ static NV_INLINE NvU32 _checkSum32(void *pData, NvU32 uLen)
  */
 NV_STATUS GspMsgQueueSendCommand(MESSAGE_QUEUE_INFO *pMQI, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2392);
     GSP_MSG_QUEUE_ELEMENT *pCQE = pMQI->pCmdQueueElement;
     NvU8      *pSrc             = (NvU8 *)pCQE;
     NvU8      *pNextElement     = NULL;
@@ -645,6 +653,7 @@ done:
  */
 NV_STATUS GspMsgQueueReceiveStatus(MESSAGE_QUEUE_INFO *pMQI, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2393);
     const NvU8 *pNextElement = NULL;
     NvU8       *pTgt         = (NvU8 *)pMQI->pCmdQueueElement;
     int         nRet;

@@ -40,6 +40,7 @@ kgraphicsAllocGrGlobalCtxBuffers_GM200
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1971);
     MEMORY_DESCRIPTOR           **ppMemDesc;
     GR_GLOBALCTX_BUFFERS         *pCtxBuffers;
     GR_BUFFER_ATTR               *pCtxAttr;

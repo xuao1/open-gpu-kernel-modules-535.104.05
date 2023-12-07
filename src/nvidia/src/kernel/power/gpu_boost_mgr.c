@@ -67,6 +67,7 @@ gpuboostmgrCreateGroup_IMPL
     NV0000_SYNC_GPU_BOOST_GROUP_CONFIG  *pBoostConfig
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5237);
     NV_STATUS  status      = NV_OK;
     NODE      *pGpuIdNode  = NULL;
     NvBool     bCleanup    = NV_FALSE;
@@ -187,6 +188,7 @@ gpuboostmgrDestroyGroup_IMPL
     NvU32            boostGroupId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5238);
     NV_STATUS  status = NV_OK;
     NODE      *pGpuIdNode = NULL;
     NvU32      i;
@@ -226,6 +228,7 @@ gpuboostmgrQueryGroups_IMPL
     NV0000_SYNC_GPU_BOOST_GROUP_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5239);
     NvU32     i;
     NvU32     j;
 
@@ -270,6 +273,7 @@ gpuboostmgrCheckConfig_IMPL
     NV0000_SYNC_GPU_BOOST_GROUP_CONFIG *pBoostConfig
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5240);
     NV_STATUS  status = NV_OK;
     OBJGPU    *pGpu   = NULL;
     NODE      *pNode  = NULL;
@@ -347,6 +351,7 @@ gpuboostmgrCheckConfig_exit:
 NV_STATUS
 gpuboostmgrConstruct_IMPL(OBJGPUBOOSTMGR *pBoostMgr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5241);
     return NV_OK;
 }
 
@@ -356,6 +361,7 @@ gpuboostmgrConstruct_IMPL(OBJGPUBOOSTMGR *pBoostMgr)
 void
 gpuboostmgrDestruct_IMPL(OBJGPUBOOSTMGR *pBoostMgr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5242);
     btreeDestroyNodes(pBoostMgr->pGpuIdTree);
     portMemSet(pBoostMgr->pBoostGroups, 0, NV0000_SYNC_GPU_BOOST_MAX_GROUPS * sizeof(SYNC_GPU_BOOST_GROUP));
     pBoostMgr->groupCount = 0;
@@ -377,6 +383,7 @@ gpuboostmgrValidateGroupId_IMPL
     NvU32           boostGroupId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5243);
     if (NV0000_SYNC_GPU_BOOST_MAX_GROUPS <= boostGroupId)
         return NV_ERR_INVALID_INDEX;
 
@@ -402,6 +409,7 @@ gpuboostmgrIncrementRefCount_IMPL
     NvU32           boostGroupId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5244);
     NV_STATUS status = NV_OK;
 
     status = gpuboostmgrValidateGroupId(pBoostMgr, boostGroupId);
@@ -457,6 +465,7 @@ gpuboostmgrDecrementRefCount_IMPL
     NvU32           boostGroupId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5245);
     NV_STATUS status = NV_OK;
 
     status = gpuboostmgrValidateGroupId(pBoostMgr, boostGroupId);
@@ -518,6 +527,7 @@ gpuboostmgrGpuItr_IMPL
     NvU32                *pIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5246);
     NV_ASSERT_OR_RETURN(NULL != pIndex, NULL);
 
     if (0 == pBoostMgr->pBoostGroups[grpId].gpuCount)
@@ -555,6 +565,7 @@ gpuboostmgrGetBoostGrpIdFromGpu_IMPL
     NvU32          *pBoostGrpId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5247);
     NvU32   i;
     NvU32   index = 0;
     OBJGPU *pGpuTemp = NULL;
@@ -595,6 +606,7 @@ gpuboostmgrIsBoostGrpActive_IMPL
     NvU32            grpId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5248);
     if (grpId == NV0000_SYNC_GPU_BOOST_INVALID_GROUP_ID)
     {
         return NV_FALSE;
@@ -613,6 +625,7 @@ gpuboostmgrIsBoostGrpActive_IMPL
 static NV_STATUS
 _gpuboostmgrApplyPolicyFilters(NV0000_SYNC_GPU_BOOST_GROUP_CONFIG *pBoostConfig)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5249);
     NV_STATUS  status           = NV_ERR_NOT_COMPATIBLE;
     OBJGPU    *pGpu             = NULL;
     OBJGPU    *pGpuItr          = NULL;
@@ -785,6 +798,7 @@ syncgpuboostConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5250);
     OBJSYS                  *pSys       = SYS_GET_INSTANCE();
     OBJGPUBOOSTMGR          *pBoostMgr  = SYS_GET_GPUBOOSTMGR(pSys);
     NV_STATUS                rmStatus   = NV_OK;
@@ -804,6 +818,7 @@ syncgpuboostDestruct_IMPL
     SyncGpuBoost *pSyncGpuBoost
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5251);
     RS_RES_FREE_PARAMS_INTERNAL *pParams = NULL;
     OBJSYS          *pSys       = SYS_GET_INSTANCE();
     OBJGPUBOOSTMGR  *pBoostMgr  = SYS_GET_GPUBOOSTMGR(pSys);

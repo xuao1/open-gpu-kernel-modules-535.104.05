@@ -73,6 +73,7 @@ knvlinkCoreGetRemoteDeviceInfo_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3839);
     NV_STATUS status = NV_OK;
 
 #if defined(INCLUDE_NVLINK_LIB)
@@ -284,6 +285,7 @@ knvlinkTrainSysmemLinksToActive_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3840);
 #if defined(INCLUDE_NVLINK_LIB)
 
     OBJSYS *pSys = SYS_GET_INSTANCE();
@@ -376,6 +378,7 @@ knvlinkCheckTrainingIsComplete_IMPL
     KernelNvlink *pKernelNvlink0
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3841);
     NV_STATUS status = NV_OK;
 
 #if defined(INCLUDE_NVLINK_LIB)
@@ -574,6 +577,7 @@ knvlinkTrainP2pLinksToActive_IMPL
     KernelNvlink *pKernelNvlink0
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3842);
     NV_STATUS status = NV_OK;
 
 #if defined(INCLUDE_NVLINK_LIB)
@@ -829,6 +833,7 @@ knvlinkTrainFabricLinksToActive_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3843);
 #if defined(INCLUDE_NVLINK_LIB)
 
     OBJSYS *pSys = SYS_GET_INSTANCE();
@@ -914,6 +919,7 @@ knvlinkEnterExitSleep_IMPL
     NvBool        bEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3844);
 #if defined(INCLUDE_NVLINK_LIB)
 
     OBJSYS *pSys = SYS_GET_INSTANCE();
@@ -1027,6 +1033,7 @@ knvlinkCoreShutdownDeviceLinks_IMPL
     NvBool        bForceShutdown
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3845);
 #if defined(INCLUDE_NVLINK_LIB)
 
     nvlink_link *pLinks[NVLINK_MAX_LINKS_SW] = {0};
@@ -1126,6 +1133,7 @@ knvlinkCoreResetDeviceLinks_IMPL
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3846);
 #if defined(INCLUDE_NVLINK_LIB)
 
     nvlink_link *pLinks[NVLINK_MAX_LINKS_SW] = {0};
@@ -1217,6 +1225,7 @@ knvlinkRetrainLink_IMPL
     NvBool        bFromOff
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3847);
     NV_STATUS status = NV_OK;
 
     // If NVLINK_LIB isn't enabled, we just execute prologue and return.
@@ -1325,6 +1334,7 @@ knvlinkFloorSweep_IMPL
     NvU32        *pNumActiveLinksPerIoctrl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3848);
 
 #if defined(INCLUDE_NVLINK_LIB)
     NV_STATUS status = NV_OK;
@@ -1462,6 +1472,7 @@ knvlinkRetrainLinkFromOff
     NvU32         linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3849);
 
     return NV_OK;
 }
@@ -1483,6 +1494,7 @@ knvlinkRetrainLinkFromSafe
     NvU32         linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3850);
 
     return NV_OK;
 }
@@ -1502,6 +1514,7 @@ _knvlinkRetrainLinkPrologue
     NvU32         linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3851);
 
     return;
 }
@@ -1525,6 +1538,7 @@ _knvlinkActivateDiscoveredConns
     NvBool        bCheckDegradedMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3852);
     NvU32      initDisconnectedLinkMask = pKernelNvlink->disconnectedLinkMask;
     NvU32      switchLinkMasks          = 0;
     NvBool     bPeerUpdated             = NV_FALSE;
@@ -1667,6 +1681,7 @@ _knvlinkActivateDiscoveredP2pConn
     NvU32         linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3853);
     OBJGPU       *pGpu0             = pGpu;
     OBJGPU       *pGpu1             = NULL;
     KernelNvlink *pKernelNvlink0    = GPU_GET_KERNEL_NVLINK(pGpu0);
@@ -1809,6 +1824,7 @@ _knvlinkActivateDiscoveredSwitchConn
     NvU32         linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3854);
     NV_STATUS status = NV_OK;
 
     // Post Topology enablement for switch links
@@ -1842,6 +1858,7 @@ _knvlinkActivateDiscoveredSysmemConn
     NvU32         linkId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3855);
     NV_STATUS status = NV_OK;
 
     NV2080_CTRL_NVLINK_UPDATE_HSHUB_MUX_PARAMS    updateHshubMuxParams;
@@ -1905,6 +1922,7 @@ _knvlinkEnterSleep
     NvU32         linkMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3856);
     NV_STATUS retStatus = NV_OK;
     NvlStatus status    = NVL_SUCCESS;
 
@@ -1982,6 +2000,7 @@ _knvlinkExitSleep
     NvU32         linkMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3857);
     NvlStatus  status         = NVL_SUCCESS;
     NvlStatus  trainingStatus = NVL_SUCCESS;
     NvU32      linkId;
@@ -2237,6 +2256,7 @@ _knvlinkUpdateSwitchLinkMasks
     NvU32         switchLinkMasks
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3858);
     KernelNvlink *pKernelNvlink1 = NULL;
     OBJGPU       *pGpu1          = NULL;
     NvBool        bPeerUpdated   = NV_FALSE;
@@ -2321,6 +2341,7 @@ _knvlinkUpdateSwitchLinkMasksGpuDegraded
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3859);
     KernelNvlink *pKernelNvlink1 = NULL;
     OBJGPU       *pGpu1          = NULL;
     NvBool        bPeerUpdated   = NV_FALSE;
@@ -2392,6 +2413,7 @@ _knvlinkUpdatePeerConfigs
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3860);
     NvU32 gpuInst;
 
     for (gpuInst = 0; gpuInst < NV_ARRAY_ELEMENTS(pKernelNvlink->peerLinkMasks); gpuInst++)
@@ -2434,6 +2456,7 @@ _knvlinkPrintTopologySummary
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3861);
 #if NV_PRINTF_ENABLED
 
     NvU32     i;

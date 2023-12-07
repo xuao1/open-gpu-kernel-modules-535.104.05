@@ -45,6 +45,7 @@ tmrSetCountdown_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4142);
     GPU_VREG_WR32_EX(pGpu, NV_VIRTUAL_FUNCTION_PRIV_TIMER, time, pThreadState);
 
     return NV_OK;
@@ -57,6 +58,7 @@ tmrSetCountdownIntrEnable_TU102
     OBJTMR *pTmr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4143);
     //
     // The countdown timer interrupt has moved to NV_CTRL on Turing and hence,
     // we will never enable the interrupt in NV_PTIMER_INTR_EN_0 which controls
@@ -76,6 +78,7 @@ tmrSetCountdownIntrReset_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4144);
     //
     // The countdown timer interrupt has moved to NV_CTRL on Turing and will be
     // reset directly in NV_CTRL. We have not assigned a STUB to the HAL to
@@ -98,6 +101,7 @@ tmrGetGpuPtimerOffset_TU102
     NvU32   *pGpuTimestampOffsetHi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4145);
     extern NV_STATUS tmrGetGpuPtimerOffset_GV100(OBJGPU *pGpu, OBJTMR *pTmr, NvU32 *pGpuTimestampOffsetLo, NvU32 *pGpuTimestampOffsetHi);
     NvU32 ptimerOffsetLo = 0;
     NvU32 ptimerOffsetHi = 0;
@@ -139,6 +143,7 @@ tmrReadTimeLoReg_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4146);
     return GPU_VREG_RD32_EX(pGpu, NV_VIRTUAL_FUNCTION_TIME_0, pThreadState);
 }
 
@@ -156,5 +161,6 @@ tmrReadTimeHiReg_TU102
     THREAD_STATE_NODE  *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4147);
     return GPU_VREG_RD32_EX(pGpu, NV_VIRTUAL_FUNCTION_TIME_1, pThreadState);
 }

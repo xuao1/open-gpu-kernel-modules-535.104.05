@@ -45,6 +45,7 @@ intrGetNonStallEnable_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2448);
     NvU64 nonStallMask;
     NvU32 maskLo;
     NvU32 maskHi;
@@ -102,6 +103,7 @@ intrEnableTopNonstall_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2449);
     NvU64 nonStallMask;
 
     nonStallMask = intrGetIntrTopNonStallMask_HAL(pGpu, pIntr);
@@ -131,6 +133,7 @@ intrDisableTopNonstall_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2450);
     NvU64 nonStallMask;
 
     nonStallMask = intrGetIntrTopNonStallMask_HAL(pGpu, pIntr);
@@ -160,6 +163,7 @@ intrRestoreNonStall_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2451);
     if (!pGpu->getProperty(pGpu, PDB_PROP_GPU_ALTERNATE_TREE_ENABLED))
     {
         return;
@@ -196,6 +200,7 @@ intrGetPendingNonStall_TU102
     THREAD_STATE_NODE   *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2452);
     KernelFifo     *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     InterruptTable *pIntrTable;
     NvU32           i, j;
@@ -319,6 +324,7 @@ _intrServiceNonStallLeaf_TU102
     THREAD_STATE_NODE   *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2453);
     InterruptTable    *pIntrTable;
     NV_STATUS          status = NV_OK;
     NV_STATUS          tmpStatus;
@@ -385,6 +391,7 @@ intrDisableNonStall_TU102
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2454);
     if (pGpu->getProperty(pGpu, PDB_PROP_GPU_ALTERNATE_TREE_ENABLED))
     {
         intrDisableTopNonstall_HAL(pGpu, pIntr, pThreadState);
@@ -400,6 +407,7 @@ intrServiceNonStall_TU102
     THREAD_STATE_NODE   *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2455);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NV_STATUS   status      = NV_OK;
     NV_STATUS   tmpStatus   = NV_OK;

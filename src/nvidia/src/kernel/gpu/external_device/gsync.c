@@ -112,6 +112,7 @@ static NV_STATUS gsyncSetHouseSyncMode(OBJGSYNC *pGsync,
 NV_STATUS
 gsyncmgrConstruct_IMPL(OBJGSYNCMGR *pGsyncMgr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1181);
     NvU32 i;
 
     NV_PRINTF(LEVEL_INFO, "\n");
@@ -135,6 +136,7 @@ gsyncmgrConstruct_IMPL(OBJGSYNCMGR *pGsyncMgr)
 void
 gsyncmgrDestruct_IMPL(OBJGSYNCMGR *pGsyncMgr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1182);
     OBJGSYNC *pGsync;
     NvU32 i;
 
@@ -156,6 +158,7 @@ gsyncmgrDestruct_IMPL(OBJGSYNCMGR *pGsyncMgr)
 POBJGPU
 gsyncGetMasterableGpuByInstance(NvU32 gsyncInst)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1183);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
 
@@ -170,6 +173,7 @@ gsyncGetMasterableGpuByInstance(NvU32 gsyncInst)
 
 static OBJGPU *gsyncGetMasterableGpu(OBJGSYNC *pGsync)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1184);
     NvU32 i;
 
     for (i = 0; i < pGsync->gpuCount; i++)
@@ -192,6 +196,7 @@ static OBJGPU *gsyncGetMasterableGpu(OBJGSYNC *pGsync)
 static NV_STATUS
 gsyncP2060StartupProvider(OBJGSYNC *pGsync)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1185);
     DACEXTERNALDEVICE      *pExtDev = pGsync->pExtDev;
     DACP2060EXTERNALDEVICE *p2060   = (DACP2060EXTERNALDEVICE *)pGsync->pExtDev;
 
@@ -254,6 +259,7 @@ gsyncP2060StartupProvider(OBJGSYNC *pGsync)
 static NV_STATUS
 gsyncP2061StartupProvider(OBJGSYNC *pGsync)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1186);
     NV_STATUS status;
     DACP2060EXTERNALDEVICE *p2060 = (DACP2060EXTERNALDEVICE *)pGsync->pExtDev;
 
@@ -294,6 +300,7 @@ gsyncStartupProvider
     DAC_EXTERNAL_DEVICES externalDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1187);
     switch (externalDevice)
     {
         default:
@@ -398,6 +405,7 @@ gsyncAttachGpu(PDACEXTERNALDEVICE pExtDev, OBJGPU *pGpu,
 NV_STATUS
 gsyncRemoveGpu(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1188);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC    *pGsync;
@@ -464,6 +472,7 @@ gsyncRemoveGpu(OBJGPU *pGpu)
 POBJGSYNC
 gsyncmgrGetGsync(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1189);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = NULL;
     OBJGSYNC    *pGsync    = NULL;
@@ -504,6 +513,7 @@ gsyncmgrGetGsync(OBJGPU *pGpu)
 NV_STATUS
 gsyncGetAttachedIds(NV0000_CTRL_GSYNC_GET_ATTACHED_IDS_PARAMS *pGsyncIdsParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1190);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     NvU32 *pGsyncIds = &pGsyncIdsParams->gsyncIds[0];
@@ -534,6 +544,7 @@ gsyncGetAttachedIds(NV0000_CTRL_GSYNC_GET_ATTACHED_IDS_PARAMS *pGsyncIdsParams)
 NV_STATUS
 gsyncGetIdInfo(NV0000_CTRL_GSYNC_GET_ID_INFO_PARAMS *pGsyncInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1191);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     NvU32 i;
@@ -563,6 +574,7 @@ gsyncGetIdInfo(NV0000_CTRL_GSYNC_GET_ID_INFO_PARAMS *pGsyncInfo)
 NvU32
 gsyncGetGsyncInstance(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1192);
 
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
@@ -586,6 +598,7 @@ gsyncGetGsyncInstance(OBJGPU *pGpu)
 NvBool
 gsyncAreAllGpusInConfigAttachedToSameGsyncBoard(OBJGPU **pGpus, NvU32 gpuCount)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1193);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC    *pGsync    = NULL;
@@ -637,6 +650,7 @@ gsyncapiCtrlCmdGsyncGetVersion_IMPL
     NV30F1_CTRL_GSYNC_GET_VERSION_PARAMS *pGsyncGetVersionParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1194);
     pGsyncGetVersionParams->version = NV30F1_CTRL_GSYNC_API_VER;
     pGsyncGetVersionParams->revision = NV30F1_CTRL_GSYNC_API_REV;
 
@@ -650,6 +664,7 @@ gsyncapiCtrlCmdGetGsyncGpuTopology_IMPL
     NV30F1_CTRL_GET_GSYNC_GPU_TOPOLOGY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1195);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -664,6 +679,7 @@ gsyncapiCtrlCmdGsyncGetStatusSignals_IMPL
     NV30F1_CTRL_GSYNC_GET_STATUS_SIGNALS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1196);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -678,6 +694,7 @@ gsyncapiCtrlCmdGsyncGetControlParams_IMPL
     NV30F1_CTRL_GSYNC_GET_CONTROL_PARAMS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1197);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -692,6 +709,7 @@ gsyncapiCtrlCmdGsyncSetControlParams_IMPL
     NV30F1_CTRL_GSYNC_SET_CONTROL_PARAMS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1198);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -706,6 +724,7 @@ gsyncapiCtrlCmdGsyncGetControlSync_IMPL
     NV30F1_CTRL_GSYNC_GET_CONTROL_SYNC_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1199);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -720,6 +739,7 @@ gsyncapiCtrlCmdGsyncSetControlSync_IMPL
     NV30F1_CTRL_GSYNC_SET_CONTROL_SYNC_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1200);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -734,6 +754,7 @@ gsyncapiCtrlCmdGsyncSetControlUnsync_IMPL
     NV30F1_CTRL_GSYNC_SET_CONTROL_UNSYNC_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1201);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -748,6 +769,7 @@ gsyncapiCtrlCmdGsyncGetStatusSync_IMPL
     NV30F1_CTRL_GSYNC_GET_STATUS_SYNC_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1202);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -762,6 +784,7 @@ gsyncapiCtrlCmdGsyncGetStatus_IMPL
     NV30F1_CTRL_GSYNC_GET_STATUS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1203);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -776,6 +799,7 @@ gsyncapiCtrlCmdGsyncGetControlTesting_IMPL
     NV30F1_CTRL_GSYNC_GET_CONTROL_TESTING_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1204);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -790,6 +814,7 @@ gsyncapiCtrlCmdGsyncSetControlTesting_IMPL
     NV30F1_CTRL_GSYNC_SET_CONTROL_TESTING_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1205);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -804,6 +829,7 @@ gsyncapiCtrlCmdGsyncSetControlWatchdog_IMPL
     NV30F1_CTRL_GSYNC_SET_CONTROL_WATCHDOG_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1206);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -818,6 +844,7 @@ gsyncapiCtrlCmdGsyncGetControlInterlaceMode_IMPL
     NV30F1_CTRL_GSYNC_GET_CONTROL_INTERLACE_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1207);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -832,6 +859,7 @@ gsyncapiCtrlCmdGsyncSetControlInterlaceMode_IMPL
     NV30F1_CTRL_GSYNC_SET_CONTROL_INTERLACE_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1208);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -846,6 +874,7 @@ gsyncapiCtrlCmdGsyncGetControlSwapBarrier_IMPL
     NV30F1_CTRL_GSYNC_GET_CONTROL_SWAP_BARRIER_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1209);
     NV_STATUS status = NV_ERR_INVALID_STATE;
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
@@ -877,6 +906,7 @@ gsyncapiCtrlCmdGsyncSetControlSwapBarrier_IMPL
     NV30F1_CTRL_GSYNC_SET_CONTROL_SWAP_BARRIER_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1210);
     NV_STATUS status = NV_ERR_INVALID_STATE;
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
@@ -908,6 +938,7 @@ gsyncapiCtrlCmdGsyncGetControlSwapLockWindow_IMPL
     NV30F1_CTRL_GSYNC_GET_CONTROL_SWAP_LOCK_WINDOW_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1211);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -922,6 +953,7 @@ gsyncapiCtrlCmdGsyncGetCaps_IMPL
     NV30F1_CTRL_GSYNC_GET_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1212);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -936,6 +968,7 @@ gsyncapiCtrlCmdGsyncGetOptimizedTiming_IMPL
     NV30F1_CTRL_GSYNC_GET_OPTIMIZED_TIMING_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1213);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -950,6 +983,7 @@ gsyncapiCtrlCmdGsyncSetLocalSync_IMPL
     NV30F1_CTRL_GSYNC_SET_LOCAL_SYNC_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1214);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -964,6 +998,7 @@ gsyncapiCtrlCmdGsyncConfigFlash_IMPL
     NV30F1_CTRL_CMD_GSYNC_CONFIG_FLASH_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1215);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -978,6 +1013,7 @@ gsyncapiCtrlCmdGsyncSetEventNotification_IMPL
     NV30F1_CTRL_GSYNC_SET_EVENT_NOTIFICATION_PARAMS *pSetEventParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1216);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -1045,6 +1081,7 @@ gsyncapiCtrlCmdGsyncGetControlStereoLockMode_IMPL
     NV30F1_CTRL_CMD_GSYNC_GET_CONTROL_STEREO_LOCK_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1217);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -1059,6 +1096,7 @@ gsyncapiCtrlCmdGsyncSetControlStereoLockMode_IMPL
     NV30F1_CTRL_CMD_GSYNC_SET_CONTROL_STEREO_LOCK_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1218);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -1073,6 +1111,7 @@ gsyncapiCtrlCmdGsyncReadRegister_IMPL
     NV30F1_CTRL_GSYNC_READ_REGISTER_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1219);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -1087,6 +1126,7 @@ gsyncapiCtrlCmdGsyncWriteRegister_IMPL
     NV30F1_CTRL_GSYNC_WRITE_REGISTER_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1220);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -1101,6 +1141,7 @@ gsyncapiCtrlCmdGsyncGetHouseSyncMode_IMPL
     NV30F1_CTRL_GSYNC_HOUSE_SYNC_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1221);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -1115,6 +1156,7 @@ gsyncapiCtrlCmdGsyncSetHouseSyncMode_IMPL
     NV30F1_CTRL_GSYNC_HOUSE_SYNC_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1222);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync = &pGsyncMgr->gsyncTable[pGsyncApi->instance];
@@ -1155,6 +1197,7 @@ gsyncGetGpuTopology(OBJGSYNC *pGsync,
 NvBool
 gsyncIsAnyHeadFramelocked(OBJGSYNC *pGsync)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1223);
     if (pGsync && pGsync->pExtDev)
     {
         OBJGPU *pGpu = NULL;
@@ -1341,6 +1384,7 @@ NV_STATUS gsyncGetStatusCaps(OBJGSYNC *pGsync,
 static NvBool
 gsyncIsGpuInGsync(OBJGPU *pGpu, OBJGSYNC *pGsync)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1224);
     NvU32 gpuCount;
 
     if (!pGpu || !pGsync)
@@ -1620,6 +1664,7 @@ gsyncSetControlUnsync(OBJGSYNC *pGsync,
 NV_STATUS
 gsyncGetStatusSync(OBJGSYNC *pGsync, NV30F1_CTRL_GSYNC_GET_STATUS_SYNC_PARAMS* pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1225);
     OBJGPU *pGpu = NULL;
     NV_STATUS status = NV_OK;
 
@@ -1652,6 +1697,7 @@ gsyncGetStatusSync(OBJGSYNC *pGsync, NV30F1_CTRL_GSYNC_GET_STATUS_SYNC_PARAMS* p
 NV_STATUS
 gsyncGetStatus(OBJGSYNC *pGsync, NV30F1_CTRL_GSYNC_GET_STATUS_PARAMS* pParams)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1226);
     OBJGPU *pGpu = NULL;
     NV_STATUS status = NV_OK;
 
@@ -2030,6 +2076,7 @@ gsyncWriteRegister(OBJGSYNC *pGsync,
 NvBool
 gsyncIsInstanceValid(NvU32 gsyncInstance)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1227);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync;
@@ -2064,6 +2111,7 @@ gsyncIsInstanceValid(NvU32 gsyncInstance)
 NV_STATUS
 gsyncSignalServiceRequested(NvU32 gsyncInst, NvU32 eventFlags, NvU32 iface)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1228);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJGSYNCMGR *pGsyncMgr = SYS_GET_GSYNCMGR(pSys);
     OBJGSYNC *pGsync;
@@ -2121,6 +2169,7 @@ gsyncNullGpuCanBeMaster
     PDACEXTERNALDEVICE pExtDev
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1229);
     return NV_FALSE;
 }
 
@@ -2131,6 +2180,7 @@ gsyncNullOptimizeTimingParameters
     GSYNCTIMINGPARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1230);
     return NV_ERR_GENERIC;
 }
 
@@ -2142,6 +2192,7 @@ gsyncNullGetStereoLockMode
     NvU32                *val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1231);
     return NV_ERR_GENERIC;
 }
 
@@ -2153,6 +2204,7 @@ gsyncNullSetStereoLockMode
     NvU32                val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1232);
     return NV_ERR_GENERIC;
 }
 
@@ -2164,6 +2216,7 @@ gsyncNullGetSyncPolarity
  GSYNCSYNCPOLARITY *polarity
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1233);
     return NV_ERR_GENERIC;
 }
 
@@ -2175,6 +2228,7 @@ gsyncNullSetSyncPolarity
  GSYNCSYNCPOLARITY polarity
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1234);
     return NV_ERR_GENERIC;
 }
 
@@ -2186,6 +2240,7 @@ gsyncNullGetVideoMode
  GSYNCVIDEOMODE *videoMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1235);
     return NV_ERR_GENERIC;
 }
 
@@ -2197,6 +2252,7 @@ gsyncNullSetVideoMode
  GSYNCVIDEOMODE videoMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1236);
     return NV_ERR_GENERIC;
 }
 
@@ -2208,6 +2264,7 @@ gsyncNullGetNSync
  NvU32 *count
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1237);
     return NV_ERR_GENERIC;
 }
 
@@ -2219,6 +2276,7 @@ gsyncNullSetNSync
  NvU32 count
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1238);
     return NV_ERR_GENERIC;
 }
 
@@ -2230,6 +2288,7 @@ gsyncNullGetSyncSkew
  NvU32 *skew
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1239);
     return NV_ERR_GENERIC;
 }
 
@@ -2241,6 +2300,7 @@ gsyncNullSetSyncSkew
  NvU32 skew
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1240);
     return NV_ERR_GENERIC;
 }
 
@@ -2252,6 +2312,7 @@ gsyncNullGetUseHouse
  NvU32 *val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1241);
     return NV_ERR_GENERIC;
 }
 
@@ -2263,6 +2324,7 @@ gsyncNullSetUseHouse
  NvU32 val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1242);
     return NV_ERR_GENERIC;
 }
 
@@ -2274,6 +2336,7 @@ gsyncNullGetSyncStartDelay
  NvU32 *delay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1243);
     return NV_ERR_GENERIC;
 }
 
@@ -2285,6 +2348,7 @@ gsyncNullSetSyncStartDelay
  NvU32 delay
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1244);
     return NV_ERR_GENERIC;
 }
 
@@ -2296,6 +2360,7 @@ gsyncNullGetEmitTestSignal
  NvU32 *val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1245);
     return NV_ERR_GENERIC;
 }
 
@@ -2307,6 +2372,7 @@ gsyncNullSetEmitTestSignal
  NvU32 val
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1246);
     return NV_ERR_GENERIC;
 }
 
@@ -2318,6 +2384,7 @@ gsyncNullGetInterlaceMode
  NvU32 *mode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1247);
     return NV_ERR_GENERIC;
 }
 
@@ -2329,6 +2396,7 @@ gsyncNullSetInterlaceMode
  NvU32 mode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1248);
     return NV_ERR_GENERIC;
 }
 
@@ -2341,6 +2409,7 @@ gsyncNullRefSwapBarrier
  NvBool *enable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1249);
     return NV_ERR_GENERIC;
 }
 
@@ -2355,6 +2424,7 @@ gsyncNullRefSignal
  NvU32 *pPresence
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1250);
     return NV_ERR_GENERIC;
 }
 
@@ -2370,6 +2440,7 @@ gsyncNullRefMaster
  NvBool skipSwapBarrierWar
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1251);
     return NV_ERR_GENERIC;
 }
 
@@ -2383,6 +2454,7 @@ gsyncNullRefSlaves
  NvU32 *pRefresh
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1252);
     return NV_ERR_GENERIC;
 }
 
@@ -2395,6 +2467,7 @@ gsyncNullGetCplStatus
  NvU32 *pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1253);
     return NV_ERR_GENERIC;
 }
 
@@ -2406,6 +2479,7 @@ gsyncNullSetWatchdog
  NvU32 pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1254);
     return NV_ERR_GENERIC;
 }
 
@@ -2417,6 +2491,7 @@ gsyncNullGetRevision
  GSYNCCAPSPARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1255);
     return NV_ERR_GENERIC;
 }
 
@@ -2428,6 +2503,7 @@ gsyncNullSetMosaic
  NV30F1_CTRL_GSYNC_SET_LOCAL_SYNC_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1256);
     return NV_ERR_GENERIC;
 }
 
@@ -2439,6 +2515,7 @@ gsyncNullConfigFlashGsync
  NvU32 preFlash
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1257);
     return NV_ERR_GENERIC;
 }
 
@@ -2450,6 +2527,7 @@ gsyncNullGetHouseSyncMode
     NvU8* mode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1258);
     return NV_ERR_GENERIC;
 }
 
@@ -2461,6 +2539,7 @@ gsyncNullSetHouseSyncMode
     NvU8 mode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1259);
     return NV_ERR_GENERIC;
 }
 
@@ -2472,6 +2551,7 @@ gsyncNullGetMulDiv
     NV30F1_CTRL_GSYNC_MULTIPLY_DIVIDE_SETTINGS *pMulDivSettings
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1260);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -2483,12 +2563,14 @@ gsyncNullSetMulDiv
     NV30F1_CTRL_GSYNC_MULTIPLY_DIVIDE_SETTINGS *pMulDivSettings
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1261);
     return NV_ERR_NOT_SUPPORTED;
 }
 
 static NV_STATUS
 gsyncSetupNullProvider(OBJGSYNCMGR *pGsyncMgr, NvU32 gsyncInst)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1262);
     OBJGSYNC *pGsync;
     NV_STATUS status = NV_OK;
 
@@ -2554,6 +2636,7 @@ gsyncFilterEvents
     NvU32 iface
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1263);
     if ((eventFlags & NVBIT(NV30F1_GSYNC_NOTIFIERS_SYNC_GAIN(iface))) &&
         (eventFlags & NVBIT(NV30F1_GSYNC_NOTIFIERS_STEREO_LOSS(iface))))
     {
@@ -2589,6 +2672,7 @@ gsyncConvertNewEventToOldEventNum
     NvU32 eventFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1264);
     NvU32 eventNum = 0;
     NvU32 isEventOccured = 0;
     NvU32 connectorCount;
@@ -2667,6 +2751,7 @@ gsyncConvertNewEventToOldEventNum
 void
 gsyncDbgPrintGsyncEvents(NvU32 DebugLevel, NvU32 events, NvU32 iface)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1265);
     if (events & NVBIT(NV30F1_GSYNC_NOTIFIERS_SYNC_LOSS(iface)))
         NV_PRINTF_EX(NV_PRINTF_MODULE, DebugLevel, "SYNC_LOSS ");
     if (events & NVBIT(NV30F1_GSYNC_NOTIFIERS_SYNC_GAIN(iface)))

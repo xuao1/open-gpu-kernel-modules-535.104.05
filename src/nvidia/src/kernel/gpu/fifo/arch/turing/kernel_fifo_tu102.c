@@ -49,6 +49,7 @@ kfifoUpdateUsermodeDoorbell_TU102
     NvU32       runlistId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1402);
     NV_PRINTF(LEVEL_INFO, "Poking workSubmitToken 0x%x\n", workSubmitToken);
 
     GPU_VREG_WR32(pGpu, NV_VIRTUAL_FUNCTION_DOORBELL, workSubmitToken);
@@ -76,6 +77,7 @@ kfifoGenerateWorkSubmitToken_TU102
     NvBool         bUsedForHost
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1403);
     NvU32          chId;
     NvU32          gfid;
     NvU32          val = 0;

@@ -43,6 +43,7 @@ knvlinkApplyRegkeyOverrides_IMPL
 	KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3862);
     NvU32 regdata;
 
     // Initialize the settings

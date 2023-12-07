@@ -61,6 +61,7 @@ deviceConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 878);
     NV0080_ALLOC_PARAMETERS         *pNv0080AllocParams = pParams->pAllocParams;
     NvU32                            deviceInst, flags, vaMode;
     NvU32                            deviceClass        = pParams->externalClassId;
@@ -190,6 +191,7 @@ deviceDestruct_IMPL
     Device *pDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 879);
     CALL_CONTEXT           *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
     NV_STATUS               rmStatus = NV_OK;
@@ -252,6 +254,7 @@ deviceControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 880);
 
     //
     // Some assertions to make RMCTRL to NVOC migration smooth
@@ -275,6 +278,7 @@ deviceInternalControlForward_IMPL
     NvU32 size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 881);
     return gpuresInternalControlForward_IMPL(staticCast(pDevice, GpuResource), command, pParams, size);
 }
 
@@ -300,6 +304,7 @@ deviceInit_IMPL
     NvU32    vaMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 882);
     OBJGPU      *pGpu;
     NV_STATUS    status;
     GpuResource *pGpuResource = staticCast(pDevice, GpuResource);
@@ -392,6 +397,7 @@ _deviceTeardown
     CALL_CONTEXT *pCallContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 883);
     OBJGPU    *pGpu     = GPU_RES_GET_GPU(pDevice);
     PORT_UNREFERENCED_VARIABLE(pGpu);
 
@@ -431,6 +437,7 @@ static NV_STATUS _deviceTeardownRef
     CALL_CONTEXT *pCallContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 884);
 
     return NV_OK;
 }
@@ -443,6 +450,7 @@ deviceGetByHandle_IMPL
     Device          **ppDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 885);
     RsResourceRef  *pResourceRef;
     NV_STATUS       status;
 
@@ -465,6 +473,7 @@ deviceGetByInstance_IMPL
     Device          **ppDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 886);
     RS_ITERATOR  it;
     Device      *pDevice;
 
@@ -495,6 +504,7 @@ deviceGetByGpu_IMPL
     Device          **ppDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 887);
     NvU32     deviceInstance = gpuGetDeviceInstance(pGpu);
     NV_STATUS status;
 
@@ -548,6 +558,7 @@ CliSetGpuContext
     OBJGPUGRP **ppGpuGrp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 888);
     Device    *pDevice;
     RsClient  *pClient;
     NV_STATUS  status;
@@ -587,6 +598,7 @@ CliGetGpuFromContext
     NvBool        *pbBroadcast
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 889);
     NV_STATUS status;
     OBJGPU   *pGpu;
 
@@ -606,6 +618,7 @@ CliGetGpuFromHandle
     NvBool *pbBroadcast
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 890);
     RsClient    *pClient;
     NV_STATUS    status;
     OBJGPU      *pGpu;

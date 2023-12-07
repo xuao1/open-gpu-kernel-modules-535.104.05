@@ -52,6 +52,7 @@ ct_assert(NV2080_GET_P2P_CAPS_UUID_LEN == NV_GPU_UUID_LEN);
 static NvBool
 areGpusP2PCompatible(OBJGPU *pGpu0, OBJGPU *pGpu1)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5150);
     // Mark GPUs of different arch or impl incapable of P2P over pcie
     if ((gpuGetChipArch(pGpu0) != gpuGetChipArch(pGpu1)) ||
         (gpuGetChipImpl(pGpu0) != gpuGetChipImpl(pGpu1)))
@@ -77,6 +78,7 @@ p2pGetCaps
     P2P_CONNECTIVITY *pConnectivity
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5151);
     NvU8 p2PWriteCapsStatus;
     NvU8 p2PReadCapsStatus;
     NV_STATUS status;
@@ -126,6 +128,7 @@ _kp2pCapsGetStatusIndirectOverNvLink
     NvU8 *pP2PReadCapStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5152);
     OBJGPU *pGpu = NULL;
     NvU32 gpuInstance  = 0;
     OBJGPU *pFirstGpu = gpumgrGetNextGpu(gpuMask, &gpuInstance);
@@ -171,6 +174,7 @@ _gpumgrGetP2PCapsStatusOverNvLink
     NvU8 *pP2PReadCapStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5153);
     OBJGPU *pGpu = NULL;
     NvU32 gpuInstance  = 0;
     NV_STATUS status;
@@ -271,6 +275,7 @@ _kp2pCapsCheckStatusOverridesForPcie
     NvU8 *pP2PReadCapStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5154);
     KernelBif *pKernelBif  = NULL;
     NvU32      gpuInstance = 0;
     OBJGPU    *pGpu        = NULL;
@@ -333,6 +338,7 @@ _kp2pCapsGetStatusOverPcie
     NvBool *pbCommonPciSwitch
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5155);
     OBJGPU *pGpu      = NULL;
     OBJGPU *pFirstGpu = NULL;
     NvU32 gpuInstance = 0;
@@ -563,6 +569,7 @@ _p2pCapsGetHostSystemStatusOverPcieBar1
     NvBool   bCommonPciSwitchFound
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5156);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     NvU32 cpuFamily = DRF_VAL(0000_CTRL, _SYSTEM, _CPU_FAMILY, pSys->cpuInfo.family);
 
@@ -625,6 +632,7 @@ _kp2pCapsGetStatusOverPcieBar1
     NvBool  bCommonPciSwitchFound
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5157);
     OBJGPU    *pGpuPeer    = NULL;
     NvU32      gpuInstance = 0;
     OBJGPU    *pFirstGpu   = gpumgrGetNextGpu(gpuMask, &gpuInstance);
@@ -680,6 +688,7 @@ p2pGetCapsStatus
     P2P_CONNECTIVITY *pConnectivity
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5158);
     OBJSYS       *pSys          = SYS_GET_INSTANCE();
     KernelNvlink *pKernelNvlink = NULL;
     OBJGPU       *pGpu          = NULL;
@@ -803,6 +812,7 @@ _removeP2PPeerGpuCapsByGpuId
     NvU32 peerGpuId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5159);
     GPU_P2P_PEER_GPU_CAPS *pLocalPeerCaps = NULL;
 
     pLocalPeerCaps = gpuFindP2PPeerGpuCapsByGpuId(pGpu, peerGpuId);
@@ -828,6 +838,7 @@ subdeviceCtrlCmdInternalSetP2pCaps_IMPL
     NV2080_CTRL_INTERNAL_SET_P2P_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5160);
     NV_STATUS status = NV_OK;
     NvU32 i;
     NvU32 failingIndex;
@@ -898,6 +909,7 @@ subdeviceCtrlCmdInternalRemoveP2pCaps_IMPL
     NV2080_CTRL_INTERNAL_REMOVE_P2P_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5161);
     NV_STATUS status = NV_OK;
     NvU32 i;
     OBJGPU *pGpu = gpumgrGetGpuFromSubDeviceInst(pSubdevice->deviceInst,
@@ -929,6 +941,7 @@ subdeviceGetP2pCaps_VIRTUAL
     NV2080_CTRL_GET_P2P_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5162);
     NvU32 i;
     NV_STATUS status = NV_OK;
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
@@ -1017,6 +1030,7 @@ subdeviceCtrlCmdGetP2pCaps_IMPL
     NV2080_CTRL_GET_P2P_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5163);
     NvU32 i;
     NvU32 gfid = GPU_GFID_PF;
     OBJGPU *pGpu = gpumgrGetGpuFromSubDeviceInst(pSubdevice->deviceInst,

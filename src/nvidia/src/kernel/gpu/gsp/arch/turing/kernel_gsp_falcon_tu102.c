@@ -55,6 +55,7 @@ s_dmemCopyTo_TU102
     NvU32 sizeBytes
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2242);
     NvU32 numWords;
     NvU32 wordIdx;
     NvU32 *pSrcWords;
@@ -109,6 +110,7 @@ s_imemCopyTo_TU102
     NvU32 tag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2243);
     NvU32 numWords;
     NvU32 wordIdx;
     NvU32 *pSrcWords;
@@ -161,6 +163,7 @@ s_prepareHsFalconDirect
     KernelGspFlcnUcodeBootDirect *pUcode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2244);
     NV_STATUS status = NV_OK;
 
     NV_ASSERT_OR_RETURN(pUcode->pImage != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -206,6 +209,7 @@ s_prepareHsFalconWithLoader
     KernelGspFlcnUcodeBootWithLoader *pUcode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2245);
     NV_STATUS status = NV_OK;
     RM_FLCN_BL_DMEM_DESC blDmemDesc;
     NvU64 ucodePACode;
@@ -316,6 +320,7 @@ kgspExecuteHsFalcon_TU102
     NvU32 *pMailbox1
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2246);
     NV_STATUS status;
 
     NV_ASSERT_OR_RETURN(pFlcnUcode != NULL, NV_ERR_INVALID_ARGUMENT);

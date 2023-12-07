@@ -57,6 +57,7 @@ subdeviceCtrlCmdBusGetNvlinkCaps_IMPL
     NV2080_CTRL_CMD_NVLINK_GET_NVLINK_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3756);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
 
     return nvlinkCtrlCmdBusGetNvlinkCaps(pGpu, pParams);
@@ -72,6 +73,7 @@ static void _calculateNvlinkCaps
     NV2080_CTRL_CMD_NVLINK_GET_NVLINK_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3757);
     NvU8 tempCaps[NV2080_CTRL_NVLINK_CAPS_TBL_SIZE];
     portMemSet(tempCaps, 0, NV2080_CTRL_NVLINK_CAPS_TBL_SIZE);
 
@@ -194,6 +196,7 @@ nvlinkCtrlCmdBusGetNvlinkCaps
     NV2080_CTRL_CMD_NVLINK_GET_NVLINK_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3758);
     KernelMIGManager *pKernelMIGManager      = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     NvBool            bMIGNvLinkP2PSupported = ((pKernelMIGManager != NULL) &&
                                                 kmigmgrIsMIGNvlinkP2PSupported(pGpu, pKernelMIGManager));
@@ -265,6 +268,7 @@ static _getNvlinkStatus
     NV2080_CTRL_CMD_NVLINK_GET_NVLINK_STATUS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3759);
     NvU8   i = 0;
     NvU8   tempCaps[NV2080_CTRL_NVLINK_CAPS_TBL_SIZE];
     NvU32  r = 0;
@@ -586,6 +590,7 @@ subdeviceCtrlCmdBusGetNvlinkStatus_IMPL
     NV2080_CTRL_CMD_NVLINK_GET_NVLINK_STATUS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3760);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     NvBool bMIGNvLinkP2PSupported = ((pKernelMIGManager != NULL) &&

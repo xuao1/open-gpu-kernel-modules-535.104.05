@@ -45,6 +45,7 @@ _uvmSetupAccessCntrBuffer
     AccessCounterBuffer *pAccessCounterBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4271);
     NvU32 bufferSize;
     NvU32 numBufferPages;
     NV2080_CTRL_INTERNAL_UVM_REGISTER_ACCESS_CNTR_BUFFER_PARAMS params = {0};
@@ -94,6 +95,7 @@ _uvmUnloadAccessCntrBuffer
     AccessCounterBuffer *pAccessCounterBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4272);
     NV2080_CTRL_INTERNAL_UVM_UNREGISTER_ACCESS_CNTR_BUFFER_PARAMS params = {0};
     NV_STATUS status;
 
@@ -123,6 +125,7 @@ _uvmUnloadAccessCntrBuffer
 NV_STATUS
 uvmStateInitUnlocked_IMPL(OBJGPU *pGpu, OBJUVM *pUvm)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4273);
     NV_STATUS status = NV_OK;
 
     pUvm->pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
@@ -147,6 +150,7 @@ uvmStateInitUnlocked_IMPL(OBJGPU *pGpu, OBJUVM *pUvm)
 void
 uvmStateDestroy_IMPL(OBJGPU *pGpu, OBJUVM *pUvm)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4274);
     portMemFree(pUvm->pAccessCounterBuffers);
     rmapiutilFreeClientAndDeviceHandles(pUvm->pRmApi, &pUvm->hClient, NULL, &pUvm->hSubdevice);
 }
@@ -166,6 +170,7 @@ uvmInitializeAccessCntrBuffer_IMPL
     AccessCounterBuffer *pAccessCounterBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4275);
     NV_STATUS status;
 
     status = uvmInitAccessCntrBuffer_HAL(pGpu, pUvm, pAccessCounterBuffer);
@@ -197,6 +202,7 @@ uvmTerminateAccessCntrBuffer_IMPL
     AccessCounterBuffer *pAccessCounterBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4276);
     NV_STATUS status;
 
     status = _uvmUnloadAccessCntrBuffer(pGpu, pUvm, pAccessCounterBuffer);
@@ -234,6 +240,7 @@ uvmAccessCntrBufferRegister_IMPL
     NvU64  *pBufferPages
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4277);
     NV_STATUS status;
     MEMORY_DESCRIPTOR *pMemDesc;
     NvU32 addrSpace = ADDR_SYSMEM;
@@ -289,6 +296,7 @@ uvmAccessCntrBufferUnregister_IMPL
     NvU32   accessCounterIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4278);
     NV_STATUS status;
 
     status = uvmUnloadAccessCntrBuffer_HAL(pGpu, pUvm, accessCounterIndex);
@@ -317,6 +325,7 @@ uvmRegisterIntrService_IMPL
     IntrServiceRecord pRecords[MC_ENGINE_IDX_MAX]
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4279);
     NvU32 engineIdx = MC_ENGINE_IDX_ACCESS_CNTR;
     NV_ASSERT(pRecords[engineIdx].pInterruptService == NULL);
     pRecords[engineIdx].pInterruptService = staticCast(pUvm, IntrService);
@@ -336,6 +345,7 @@ uvmServiceInterrupt_IMPL
     IntrServiceServiceInterruptArguments *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4280);
     NV_ASSERT_OR_RETURN(pParams != NULL, 0);
     NV_ASSERT_OR_RETURN(pParams->engineIdx == MC_ENGINE_IDX_ACCESS_CNTR, 0);
 

@@ -56,6 +56,7 @@ kgrctxFromKernelChannel_IMPL
     KernelGraphicsContext **ppKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2073);
     RsResourceRef *pResourceRef;
 
     NV_ASSERT_OR_RETURN(pKernelChannel != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -100,6 +101,7 @@ kgrctxFromKernelChannelGroupApi_IMPL
     KernelGraphicsContext **ppKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2074);
     RsResourceRef *pResourceRef;
 
     NV_ASSERT_OR_RETURN(pKernelChannelGroupApi != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -129,6 +131,7 @@ NV_STATUS kgrctxCtrlHandle
     NvHandle hKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2075);
     RsResourceRef *pResourceRef;
 
     NV_ASSERT_OK_OR_RETURN(
@@ -150,6 +153,7 @@ kgrctxGetGlobalContextBufferExternalId_IMPL
     NvU32 *pExternalId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2076);
     NV_ASSERT_OR_RETURN(pExternalId != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(NV_ENUM_IS(GR_GLOBALCTX_BUFFER, id), NV_ERR_INVALID_ARGUMENT);
 
@@ -205,6 +209,7 @@ kgrctxGetGlobalContextBufferInternalId_IMPL
     GR_GLOBALCTX_BUFFER *pInternalId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2077);
     NV_ASSERT_OR_RETURN(pInternalId != NULL, NV_ERR_INVALID_ARGUMENT);
 
     switch (externalId)
@@ -260,6 +265,7 @@ kgrctxCtxBufferToFifoEngineId_IMPL
     NvU32 *pFifoEngineId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2078);
     NV_ASSERT_OR_RETURN(NV_ENUM_IS(GR_CTX_BUFFER, buffer), NV_ERR_INVALID_ARGUMENT);
 
     switch (buffer)
@@ -307,6 +313,7 @@ kgrctxGlobalCtxBufferToFifoEngineId_IMPL
     NvU32 *pFifoEngineId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2079);
     NV_ASSERT_OR_RETURN(pFifoEngineId != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(NV_ENUM_IS(GR_GLOBALCTX_BUFFER, buffId), NV_ERR_INVALID_ARGUMENT);
 
@@ -355,6 +362,7 @@ kgrctxGetGidInfoInPlace_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2080);
     NvU8 *pUuid;
     NvU32 uuidLength;
     NV_STATUS status;
@@ -390,6 +398,7 @@ kgrctxFillCtxBufferInfo_IMPL
     NV2080_CTRL_GR_CTX_BUFFER_INFO *pCtxBufferInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2081);
     NvU64 pageSize;
     NV_STATUS status;
 
@@ -467,6 +476,7 @@ kgrctxConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2082);
     NV_STATUS status = NV_OK;
     RsShared *pShared;
 
@@ -506,6 +516,7 @@ kgrctxCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2083);
     RsResourceRef *pSrcRef = pParams->pSrcRef;
     KernelGraphicsContext *pKernelGraphicsContextSrc =
         dynamicCast(pSrcRef->pResource, KernelGraphicsContext);
@@ -519,6 +530,7 @@ kgrctxCopyConstruct_IMPL
 NvHandle
 kgrctxGetInternalObjectHandle_IMPL(KernelGraphicsContext *pKernelGraphicsContext)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2084);
     return NV01_NULL_OBJECT;
 }
 
@@ -531,6 +543,7 @@ kgrctxDestruct_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2085);
     RsShared *pShared = staticCast(pKernelGraphicsContext->pShared, RsShared);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelGraphicsContext);
 
@@ -552,6 +565,7 @@ NV_STATUS kgrctxGetUnicast_IMPL
     KernelGraphicsContextUnicast **ppKernelGraphicsContextUnicast
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2086);
     *ppKernelGraphicsContextUnicast = NULL;
     NV_ASSERT_OR_RETURN(pKernelGraphicsContext->pShared != NULL, NV_ERR_INVALID_STATE);
     *ppKernelGraphicsContextUnicast = &pKernelGraphicsContext->pShared->kernelGraphicsContextUnicast;
@@ -569,6 +583,7 @@ kgrctxLookupMmuFaultInfo_IMPL
     NV83DE_CTRL_DEBUG_READ_MMU_FAULT_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2087);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     const NvU32 size = NV_ARRAY_ELEMENTS(pKernelGraphicsContextUnicast->mmuFault.mmuFaultInfoList);
     NvU32 i;
@@ -602,6 +617,7 @@ kgrctxLookupMmuFault_IMPL
     NV83DE_MMU_FAULT_INFO *pMmuFaultInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2088);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
 
     NV_ASSERT_OK_OR_RETURN(
@@ -621,6 +637,7 @@ kgrctxClearMmuFault_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2089);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
 
     NV_ASSERT_OK_OR_RETURN(
@@ -645,6 +662,7 @@ kgrctxRecordMmuFault_IMPL
     NvU32 mmuFaultAccessType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2090);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NV_STATUS status;
 
@@ -683,6 +701,7 @@ kgrctxIsValid_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2091);
     NvU32 runlistId;
     RM_ENGINE_TYPE engineType;
 
@@ -719,6 +738,7 @@ kgrctxIsMainContextAllocated_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2092);
     MEMORY_DESCRIPTOR *pMemDesc;
     return (kgrctxGetMainContextBuffer(pGpu, pKernelGraphicsContext, &pMemDesc) == NV_OK) &&
            (pMemDesc != NULL);
@@ -732,6 +752,7 @@ NV_STATUS kgrctxGetMainContextBuffer_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2093);
     ENGINE_CTX_DESCRIPTOR *pEngCtxDesc;
     NvU32 subDevInst = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
     RsResourceRef *pParentRef = RES_GET_REF(pKernelGraphicsContext)->pParentRef;
@@ -766,6 +787,7 @@ kgrctxGetCtxBuffers_IMPL
     NvU32 *pFirstGlobalBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2094);
     GR_GLOBALCTX_BUFFERS *pGlobalCtxBuffers = kgraphicsGetGlobalCtxBuffers(pGpu, pKernelGraphics, gfid);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     MEMORY_DESCRIPTOR *pGrCtxBufferMemDesc;
@@ -844,6 +866,7 @@ kgrctxGetBufferCount_IMPL
     NvU32 *pBufferCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2095);
     NvU32 gfid;
     NvBool bCallingContextPlugin;
     GR_GLOBALCTX_BUFFERS *pGlobalCtxBuffers;
@@ -900,6 +923,7 @@ kgrctxGetCtxBufferInfo_IMPL
     NV2080_CTRL_GR_CTX_BUFFER_INFO *pCtxBufferInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2096);
     MEMORY_DESCRIPTOR *pMemDescArray[3 + GR_GLOBALCTX_BUFFER_COUNT];
     NvU32 bufferExternalId[3 + GR_GLOBALCTX_BUFFER_COUNT];
     NvU32 memdescCount;
@@ -991,6 +1015,7 @@ kgrctxGetCtxBufferPtes_IMPL
     NvBool *pbNoMorePages
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2097);
     NvU64 bufferSize;
     NvU64 pageSize;
     NvU32 numPages;
@@ -1081,6 +1106,7 @@ kgrctxAllocMainCtxBuffer_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2098);
     MEMORY_DESCRIPTOR            *pGrCtxBufferMemDesc = NULL;
     NvU32                         ctxSize;
     MemoryManager                *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
@@ -1153,6 +1179,7 @@ kgrctxAllocPatchBuffer_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2099);
     KernelGraphicsContextUnicast  *pKernelGraphicsContextUnicast;
     const KGRAPHICS_STATIC_INFO   *pStaticInfo = kgraphicsGetStaticInfo(pGpu, pKernelGraphics);
     NvU32                          status = NV_OK;
@@ -1221,6 +1248,7 @@ kgrctxAllocPmBuffer_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2100);
     KernelGraphicsContextUnicast    *pKernelGraphicsContextUnicast;
     const KGRAPHICS_STATIC_INFO     *pKernelGraphicsStaticInfo = kgraphicsGetStaticInfo(pGpu, pKernelGraphics);
     NvU32                            size;
@@ -1306,6 +1334,7 @@ kgrctxAllocCtxBuffers_IMPL
     KernelGraphicsObject *pKernelGraphicsObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2101);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     ChannelDescendant            *pChannelDescendant = staticCast(pKernelGraphicsObject, ChannelDescendant);
     NV_STATUS                     status = NV_OK;
@@ -1400,6 +1429,7 @@ kgrctxMapGlobalCtxBuffer_IMPL
     NvBool                 bIsReadOnly
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2102);
     GR_GLOBALCTX_BUFFERS *pGlobalCtxBuffers = kgraphicsGetGlobalCtxBuffers(pGpu, pKernelGraphics, gfid);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NV_STATUS status = NV_OK;
@@ -1479,6 +1509,7 @@ kgrctxMapGlobalCtxBuffers_IMPL
     KernelChannel         *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2103);
     GR_GLOBALCTX_BUFFERS *pGlobalCtxBuffers = kgraphicsGetGlobalCtxBuffers(pGpu, pKernelGraphics, gfid);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
 
@@ -1542,6 +1573,7 @@ kgrctxMapCtxBuffers_IMPL
     KernelGraphicsObject *pKernelGraphicsObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2104);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     ChannelDescendant            *pChannelDescendant = staticCast(pKernelGraphicsObject, ChannelDescendant);
     KernelChannel                *pKernelChannel = pChannelDescendant->pKernelChannel;
@@ -1643,6 +1675,7 @@ kgrctxPrepareInitializeCtxBuffer_IMPL
     NvBool *pbAddEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2105);
     MEMORY_DESCRIPTOR *pMemDesc;
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NvU32 physAttr;
@@ -1814,6 +1847,7 @@ kgrctxPreparePromoteCtxBuffer_IMPL
     NvBool *pbAddEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2106);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     VA_LIST *pVaList;
     NvU64 vaddr;
@@ -1912,6 +1946,7 @@ kgrctxMarkCtxBufferInitialized_IMPL
     NvU32 externalId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2107);
     NV_STATUS status;
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
 
@@ -1997,6 +2032,7 @@ kgrctxSetupDeferredPmBuffer_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2108);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     OBJGVASPACE *pGVAS = dynamicCast(pKernelChannel->pVAS, OBJGVASPACE);
     NV_STATUS status = NV_OK;
@@ -2192,6 +2228,7 @@ kgrctxUnmapCtxPmBuffer_IMPL
     OBJVASPACE            *pVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2109);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NV_STATUS status;
 
@@ -2216,6 +2253,7 @@ kgrctxUnmapCtxZcullBuffer_IMPL
     OBJVASPACE *pVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2110);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     MEMORY_DESCRIPTOR *pMemDesc;
     VA_LIST *pVaList;
@@ -2263,6 +2301,7 @@ kgrctxUnmapCtxPreemptionBuffers_IMPL
     OBJVASPACE            *pVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2111);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NV_STATUS status;
 
@@ -2301,6 +2340,7 @@ kgrctxUnmapAssociatedCtxBuffers_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2112);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NvBool bRelease3d  = NV_FALSE;
     NvU32 gfid = kchannelGetGfid(pKernelChannel);
@@ -2436,6 +2476,7 @@ NvBool kgrctxShouldCleanup_KERNEL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2113);
     return gpuIsClientRmAllocatedCtxBufferEnabled(pGpu);
 };
 
@@ -2449,6 +2490,7 @@ NvBool kgrctxShouldPreAllocPmBuffer_PF
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2114);
     OBJGVASPACE                  *pGVAS = NULL;
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
 
@@ -2491,6 +2533,7 @@ kgrctxShouldPreAllocPmBuffer_VF
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2115);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast = NULL;
 
     NV_ASSERT(!gpumgrGetBcEnabledStatus(pGpu));
@@ -2533,6 +2576,7 @@ kgrctxShouldManageCtxBuffers_KERNEL
     NvU32 gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2116);
     return gpuIsClientRmAllocatedCtxBufferEnabled(pGpu) && !IS_GFID_VF(gfid);
 }
 
@@ -2549,6 +2593,7 @@ kgrctxShouldManageCtxBuffers_PHYSICAL
     NvU32 gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2117);
     return !gpuIsClientRmAllocatedCtxBufferEnabled(pGpu) || (gpuIsSriovEnabled(pGpu) && IS_GFID_PF(gfid));
 }
 
@@ -2563,6 +2608,7 @@ void kgrctxUnmapBuffers_KERNEL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2118);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     NV_STATUS status;
     NV2080_CTRL_GR_ROUTE_INFO grRouteInfo;
@@ -2596,6 +2642,7 @@ kgrctxUnmapMainCtxBuffer_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2119);
     MEMORY_DESCRIPTOR *pCtxBufferMemDesc;
     NV_STATUS status;
 
@@ -2623,6 +2670,7 @@ kgrctxUnmapGlobalCtxBuffers_IMPL
     NvU32                  gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2120);
     GR_GLOBALCTX_BUFFERS *pGlobalCtxBuffers = kgraphicsGetGlobalCtxBuffers(pGpu, pKernelGraphics, gfid);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NV_STATUS status;
@@ -2664,6 +2712,7 @@ kgrctxUnmapGlobalCtxBuffer_IMPL
     GR_GLOBALCTX_BUFFER    buffId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2121);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NV_STATUS status;
     NvU64 vaddr;
@@ -2697,6 +2746,7 @@ kgrctxFreeMainCtxBuffer_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2122);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NV_STATUS status;
 
@@ -2724,6 +2774,7 @@ kgrctxFreeZcullBuffer_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2123);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     MEMORY_DESCRIPTOR *pMemDesc;
     NV_STATUS status;
@@ -2757,6 +2808,7 @@ kgrctxFreeCtxPreemptionBuffers_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2124);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NV_STATUS status;
 
@@ -2797,6 +2849,7 @@ kgrctxFreePatchBuffer_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2125);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NV_STATUS status;
 
@@ -2830,6 +2883,7 @@ kgrctxFreePmBuffer_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2126);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     MEMORY_DESCRIPTOR *pMemDesc;
     NV_STATUS status;
@@ -2873,6 +2927,7 @@ void kgrctxFreeLocalGlobalCtxBuffers_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2127);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     MEMORY_DESCRIPTOR *pMemDesc;
@@ -2919,6 +2974,7 @@ void kgrctxFreeAssociatedCtxBuffers_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2128);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NV_STATUS status;
 
@@ -2967,6 +3023,7 @@ kgrctxUnmapCtxBuffers_IMPL
     NvBool bDestructor
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2129);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     ChannelDescendant            *pChannelDescendant = staticCast(pKernelGraphicsObject, ChannelDescendant);
     KernelChannel                *pKernelChannel = pChannelDescendant->pKernelChannel;
@@ -3085,6 +3142,7 @@ kgrctxIncObjectCount_IMPL
     NvU32 classNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2130);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NvU32 objType;
     NV_STATUS status;
@@ -3141,6 +3199,7 @@ kgrctxDecObjectCount_IMPL
     NvU32 classNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2131);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NvU32 objType;
     NvU32 countIdx;
@@ -3208,6 +3267,7 @@ kgrctxGetRegisterAccessMapId_PF
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2132);
     RmClient *pRmClient = dynamicCast(RES_GET_CLIENT(pKernelChannel), RmClient);
     RS_PRIV_LEVEL privLevel = rmclientGetCachedPrivilege(pRmClient);
 
@@ -3228,6 +3288,7 @@ kgrctxCtrlGetTpcPartitionMode_IMPL
     NV0090_CTRL_TPC_PARTITION_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2133);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelGraphicsContext);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
@@ -3262,6 +3323,7 @@ kgrctxCtrlSetTpcPartitionMode_IMPL
     NV0090_CTRL_TPC_PARTITION_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2134);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelGraphicsContext);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
@@ -3296,6 +3358,7 @@ kgrctxCtrlGetMMUDebugMode_IMPL
     NV0090_CTRL_GET_MMU_DEBUG_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2135);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelGraphicsContext);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
@@ -3330,6 +3393,7 @@ kgrctxCtrlProgramVidmemPromote_IMPL
     NV0090_CTRL_PROGRAM_VIDMEM_PROMOTE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2136);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelGraphicsContext);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
@@ -3363,6 +3427,7 @@ kgrctxCtrlProgramVidmemPromote_IMPL
 NV_STATUS
 shrkgrctxConstruct_IMPL(KernelGraphicsContextShared *pKernelGraphicsContextShared)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2137);
     return NV_OK;
 }
 
@@ -3381,6 +3446,7 @@ shrkgrctxInit_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2138);
     NV_STATUS status = NV_OK;
 
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY)
@@ -3437,6 +3503,7 @@ shrkgrctxConstructUnicast_IMPL
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2139);
     NvU32 i;
 
     for (i = 0; i < GR_GLOBALCTX_BUFFER_COUNT; i++)
@@ -3464,6 +3531,7 @@ shrkgrctxConstructUnicast_IMPL
 void
 shrkgrctxDestruct_IMPL(KernelGraphicsContextShared *pKernelGraphicsContextShared)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2140);
     return;
 }
 
@@ -3478,6 +3546,7 @@ shrkgrctxTeardown_IMPL
     KernelGraphicsContext *pKernelGraphicsContext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2141);
 
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY)
     {
@@ -3503,6 +3572,7 @@ shrkgrctxDestructUnicast_IMPL
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2142);
     GR_GLOBALCTX_BUFFER buff;
 
     if (kgrctxShouldCleanup_HAL(pGpu, pKernelGraphicsContext))
@@ -3535,6 +3605,7 @@ void shrkgrctxDetach_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2143);
     RM_ENGINE_TYPE rmEngineType = kchannelGetEngineType(pKernelChannel);
 
     // pre-Ampere chips can have NULL engine types. Find the engine type based on runlistId if set

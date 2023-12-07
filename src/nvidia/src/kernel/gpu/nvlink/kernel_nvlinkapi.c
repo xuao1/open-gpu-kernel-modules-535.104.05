@@ -45,6 +45,7 @@ subdeviceCtrlCmdNvlinkGetErrorRecoveries_IMPL
     NV2080_CTRL_CMD_NVLINK_GET_ERROR_RECOVERIES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3804);
     OBJGPU       *pGpu          = GPU_RES_GET_GPU(pSubdevice);
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -82,6 +83,7 @@ subdeviceCtrlCmdNvlinkSetPowerState_IMPL
     NV2080_CTRL_NVLINK_SET_POWER_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3805);
     OBJGPU           *pGpu              = GPU_RES_GET_GPU(pSubdevice);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     KernelNvlink     *pKernelNvlink     = GPU_GET_KERNEL_NVLINK(pGpu);
@@ -193,6 +195,7 @@ subdeviceCtrlCmdNvlinkSetNvlinkPeer_IMPL
     NV2080_CTRL_NVLINK_SET_NVLINK_PEER_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3806);
     OBJGPU       *pGpu          = GPU_RES_GET_GPU(pSubdevice);
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
     NV_STATUS     status        = NV_OK;

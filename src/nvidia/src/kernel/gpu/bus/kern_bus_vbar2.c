@@ -50,6 +50,7 @@ static MemDescDestroyCallBack _kbusReleaseRmAperture_wrapper;
  */
 static NV_STATUS _kbusConstructVirtualBar2Heaps(KernelBus *pKernelBus, NvU32 gfid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 622);
     NV_STATUS status = NV_OK;
 
     //
@@ -80,6 +81,7 @@ cleanup:
  */
 static NV_STATUS _kbusConstructVirtualBar2Lists(KernelBus *pKernelBus, NvU32 gfid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 623);
     //
     // TODO: This if() will go away when kbusConstructVirtualBar2 is moved back to kbusConstruct
     // from kbusStatePreInit().
@@ -125,6 +127,7 @@ static NV_STATUS _kbusConstructVirtualBar2Lists(KernelBus *pKernelBus, NvU32 gfi
 NV_STATUS
 kbusConstructVirtualBar2_VBAR2(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 624);
     NV_STATUS    status = NV_OK;
 
     //
@@ -181,6 +184,7 @@ kbusConstructVirtualBar2CpuVisibleHeap_VBAR2
     NvU32       gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 625);
     if (IS_GFID_VF(gfid))
     {
         return NV_OK;
@@ -223,6 +227,7 @@ kbusConstructVirtualBar2CpuInvisibleHeap_VBAR2
     NvU32       gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 626);
     //
     // TODO: Move the cpu invisible Heap construction out of BAR2 construction and into kbusPreInit
     // so that virtual BAR2 can be constructed during kbusConstruct
@@ -255,6 +260,7 @@ kbusConstructVirtualBar2CpuInvisibleHeap_VBAR2
  */
 static void _kbusDestructVirtualBar2Heaps(KernelBus *pKernelBus, NvU32 gfid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 627);
     if (NULL != pKernelBus->virtualBar2[gfid].pVASpaceHiddenHeap)
     {
         pKernelBus->virtualBar2[gfid].pVASpaceHiddenHeap->eheapDestruct(pKernelBus->virtualBar2[gfid].pVASpaceHiddenHeap);
@@ -276,6 +282,7 @@ static void _kbusDestructVirtualBar2Heaps(KernelBus *pKernelBus, NvU32 gfid)
  */
 static void _kbusDestructVirtualBar2Lists(KernelBus *pKernelBus, NvU32 gfid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 628);
     listDestroy(&pKernelBus->virtualBar2[gfid].freeMapList);
     listDestroy(&pKernelBus->virtualBar2[gfid].cachedMapList);
     listDestroy(&pKernelBus->virtualBar2[gfid].usedMapList);
@@ -297,6 +304,7 @@ static void _kbusDestructVirtualBar2Lists(KernelBus *pKernelBus, NvU32 gfid)
 void
 kbusDestructVirtualBar2_VBAR2(OBJGPU *pGpu, KernelBus *pKernelBus, NvBool shutdown, NvU32 gfid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 629);
     kbusFlushVirtualBar2_HAL(pGpu, pKernelBus, shutdown, gfid);
     _kbusDestructVirtualBar2Lists(pKernelBus, gfid);
     _kbusDestructVirtualBar2Heaps(pKernelBus, gfid);
@@ -333,6 +341,7 @@ kbusDestructVirtualBar2_VBAR2(OBJGPU *pGpu, KernelBus *pKernelBus, NvBool shutdo
 void
 kbusFlushVirtualBar2_VBAR2(OBJGPU *pGpu, KernelBus *pKernelBus, NvBool shutdown, NvU32 gfid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 630);
     if (IS_GFID_VF(gfid))
     {
         return;
@@ -376,6 +385,7 @@ kbusInitVirtualBar2_VBAR2
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 631);
     NvU32              gfid;
     MEMORY_DESCRIPTOR *pMemDesc;
     NV_STATUS          status     = NV_OK;
@@ -433,6 +443,7 @@ kbusPreInitVirtualBar2_VBAR2
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 632);
     NvU32              gfid;
     MEMORY_DESCRIPTOR *pMemDesc;
     NV_STATUS          status     = NV_OK;
@@ -480,6 +491,7 @@ _freeRmApertureMap_VBAR2
     NvU32                flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 633);
     OBJEHEAP     *pVASpaceHeap = pKernelBus->virtualBar2[GPU_GFID_PF].pVASpaceHeap;
     EMEMBLOCK    *pBlockFree;
     NvU64         vAddr, vAddrSize;
@@ -533,6 +545,7 @@ kbusMapBar2ApertureCached_VBAR2
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 634);
     VirtualBar2MapEntry   *pMapNew;
     OBJEHEAP              *pVASpaceHeap = NULL;
     NvU64                  vAddr        = 0;
@@ -726,6 +739,7 @@ _kbusReleaseRmAperture_wrapper
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 635);
     KernelBus *pKernelBus = reinterpretCast(pObject, KernelBus*);
     kbusReleaseRmAperture_HAL(ENG_GET_GPU(pKernelBus), pKernelBus, pMemDesc);
 }
@@ -752,6 +766,7 @@ kbusUnmapBar2ApertureCached_VBAR2
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 636);
     VirtualBar2MapListIter it;
 
     it = listIterAll(&pKernelBus->virtualBar2[GPU_GFID_PF].usedMapList);
@@ -795,6 +810,7 @@ kbusValidateBar2ApertureMapping_SCRATCH
     NvU8              *pCpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 637);
     return pCpu;
 }
 
@@ -812,6 +828,7 @@ kbusValidateBar2ApertureMapping_VBAR2
     NvU8              *pCpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 638);
     if (API_GPU_IN_RESET_SANITY_CHECK(pGpu) &&
         !memdescGetFlag(pMemDesc, MEMDESC_FLAGS_GPU_IN_RESET))
     {
@@ -845,6 +862,7 @@ kbusValidateBar2ApertureMapping_VBAR2_SRIOV
     NvU8              *pCpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 639);
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) || gpuIsWarBug200577889SriovHeavyEnabled(pGpu))
         return kbusValidateBar2ApertureMapping_SCRATCH(pGpu, pKernelBus, pMemDesc, pCpu);
 
@@ -865,6 +883,7 @@ kbusMapBar2Aperture_SCRATCH
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 640);
     if (pMemDesc->Size >= NV_U32_MAX)
     {
         return NULL;
@@ -897,6 +916,7 @@ kbusMapBar2Aperture_VBAR2
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 641);
     //
     // Fail the mapping when BAR2 access to CPR vidmem is blocked (for HCC)
     // It is however legal to allow non-CPR vidmem to be mapped to BAR2
@@ -966,6 +986,7 @@ kbusMapBar2Aperture_VBAR2_SRIOV
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 642);
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) || gpuIsWarBug200577889SriovHeavyEnabled(pGpu))
         return kbusMapBar2Aperture_SCRATCH(pGpu, pKernelBus, pMemDesc, flags);
 
@@ -987,6 +1008,7 @@ kbusUnmapBar2ApertureWithFlags_SCRATCH
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 643);
     portMemFree(*pCpuPtr);
     kbusFlush_HAL(pGpu, pKernelBus, kbusGetFlushAperture(pKernelBus, memdescGetAddressSpace(pMemDesc)) | BUS_FLUSH_USE_PCIE_READ);
 }
@@ -1018,6 +1040,7 @@ kbusUnmapBar2ApertureWithFlags_VBAR2
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 644);
     //
     // Fail the mapping when BAR2 access to CPR vidmem is blocked (for HCC)
     // It is however legal to allow non-CPR vidmem to be mapped to BAR2
@@ -1061,6 +1084,7 @@ kbusUnmapBar2ApertureWithFlags_VBAR2_SRIOV
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 645);
     // If SR-IOV is enabled, BAR2 mappings are managed by the guest.
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) || gpuIsWarBug200577889SriovHeavyEnabled(pGpu))
     {
@@ -1094,6 +1118,7 @@ kbusReleaseRmAperture_VBAR2
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 646);
     VirtualBar2MapListIter it;
 
     it = listIterAll(&pKernelBus->virtualBar2[GPU_GFID_PF].cachedMapList);
@@ -1145,6 +1170,7 @@ NV_STATUS kbusMapCpuInvisibleBar2Aperture_VBAR2
     NvU32       gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 647);
     OBJEHEAP *pVASpaceHiddenHeap = pKernelBus->virtualBar2[gfid].pVASpaceHiddenHeap;
     NV_STATUS status;
 
@@ -1198,6 +1224,7 @@ void kbusUnmapCpuInvisibleBar2Aperture_VBAR2
     NvU32       gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 648);
     OBJEHEAP *pVASpaceHiddenHeap = pKernelBus->virtualBar2[gfid].pVASpaceHiddenHeap;
 
     if (!pVASpaceHiddenHeap)

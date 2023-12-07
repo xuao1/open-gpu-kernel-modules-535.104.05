@@ -48,6 +48,7 @@ knvlinkOverrideConfig_GA100
     NvU32         phase
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3716);
     NV_STATUS status = NV_OK;
     NvU32     i;
 
@@ -133,6 +134,7 @@ knvlinkRemoveMapping_GA100
     NvBool        bL2Entry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3717);
     NV_STATUS status = NV_OK;
     NvU32     peerId;
     NvBool    bBufferReady = NV_FALSE;
@@ -215,6 +217,7 @@ knvlinkValidateFabricBaseAddress_GA100
     NvU64         fabricBaseAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3718);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64          fbSizeBytes;
     NvU64          fbUpperLimit;
@@ -268,6 +271,7 @@ knvlinkIsGpuReducedNvlinkConfig_GA100
     KernelNvlink *pKernelNvlink
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3719);
     NV2080_CTRL_NVLINK_IS_REDUCED_CONFIG_PARAMS params;
     NV_STATUS status;
 

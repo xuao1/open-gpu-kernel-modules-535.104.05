@@ -50,6 +50,7 @@ transformGidToUserFriendlyString
     NvU32       gidFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1963);
     NvUuid uuid;
 
     if (!FLD_TEST_DRF(2080_GPU_CMD,_GPU_GET_GID_FLAGS,_TYPE,_SHA1,gidFlags))
@@ -82,6 +83,7 @@ _nvCopyUuid
     void  *pInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1964);
     NvU8 *pBytes = pInfo;
     portMemCopy(pBuff, size, pBytes + index, size);
     return size;
@@ -156,6 +158,7 @@ _nvGenerateUuid
     NvUuid *pUuid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1965);
     NvU8 *pSha1Digest;
     NvU8 *pMessage;
     NvU32 messageSize = GPU_UUID_MESSAGE_SIZE;
@@ -213,6 +216,7 @@ nvGenerateGpuUuid
     NvUuid *pUuid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1966);
     return _nvGenerateUuid(NV_FALSE, chipId, pdi, 0, 0, pUuid);
 }
 
@@ -237,6 +241,7 @@ nvGenerateSmcUuid
     NvUuid *pUuid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1967);
     return _nvGenerateUuid(NV_TRUE, chipId, pdi, swizzId, syspipeId, pUuid);
 }
 
@@ -258,6 +263,7 @@ _nvGetUuidString
     char         *pUuidStr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1968);
     const NvU32 sha1GroupEntryNum[] = { 8, 4, 4, 4, 12 };
     const NvU32 *pGroupEntryNum;
     const NvU32 extraSymbolLen = 9; // 'G' 'P' 'U' '-'(x5), '\0x0', total = 9
@@ -294,6 +300,7 @@ nvGetGpuUuidString
     char         *pUuidStr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1969);
     _nvGetUuidString(NV_FALSE, pUuid, pUuidStr);
 }
 
@@ -313,5 +320,6 @@ nvGetSmcUuidString
     char         *pUuidStr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1970);
     _nvGetUuidString(NV_TRUE, pUuid, pUuidStr);
 }

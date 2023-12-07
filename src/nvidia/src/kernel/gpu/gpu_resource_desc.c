@@ -37,6 +37,7 @@ ct_assert(NVOC_CLASS_ID_MAX_WIDTH <= SF_WIDTH(ENGDESC_CLASS));
 NV_STATUS
 gpuBuildClassDB_IMPL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1914);
     PGPU_ENGINE_ORDER      pEngineOrder = &pGpu->engineOrder;
     PCLASSDESCRIPTOR       pClassDynamic;
     const CLASSDESCRIPTOR *pClassStatic;
@@ -108,6 +109,7 @@ gpuBuildClassDB_IMPL(OBJGPU *pGpu)
 NV_STATUS
 gpuDestroyClassDB_IMPL(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1915);
     portMemFree(pGpu->classDB.pClasses);
     portMemFree(pGpu->classDB.pSuppressClasses);
 
@@ -118,6 +120,7 @@ gpuDestroyClassDB_IMPL(OBJGPU *pGpu)
 NvBool
 gpuIsClassSupported_IMPL(OBJGPU *pGpu, NvU32 externalClassId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1916);
     PCLASSDESCRIPTOR pClassDesc;
     NV_STATUS        status;
 
@@ -129,6 +132,7 @@ gpuIsClassSupported_IMPL(OBJGPU *pGpu, NvU32 externalClassId)
 NV_STATUS
 gpuGetClassByClassId_IMPL(OBJGPU *pGpu, NvU32 externalClassId, PCLASSDESCRIPTOR *ppClassDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1917);
     PGPUCLASSDB pClassDB = &pGpu->classDB;
     NvU32 i;
 
@@ -150,6 +154,7 @@ gpuGetClassByClassId_IMPL(OBJGPU *pGpu, NvU32 externalClassId, PCLASSDESCRIPTOR 
 NV_STATUS
 gpuGetClassByEngineAndClassId_IMPL(OBJGPU *pGpu, NvU32 externalClassId, NvU32 engDesc, PCLASSDESCRIPTOR *ppClassDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1918);
     PGPUCLASSDB pClassDB = &pGpu->classDB;
     NvU32 i;
 
@@ -171,6 +176,7 @@ gpuGetSuppressedClassList
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1919);
     NvU8 *pStr;
     NvU8 *pEndStr;
     NvU8 *pSaveStr;
@@ -261,6 +267,7 @@ gpuGetSuppressedClassList
 NV_STATUS
 gpuGetClassList_IMPL(OBJGPU *pGpu, NvU32 *pNumClasses, NvU32 *pClassList, NvU32 engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1920);
     NvU32 *pSuppressClasses = NULL;
     NvU32 numClasses;
     NV_STATUS status = NV_OK;
@@ -336,6 +343,7 @@ gpuGetClassList_IMPL(OBJGPU *pGpu, NvU32 *pNumClasses, NvU32 *pClassList, NvU32 
 static NV_STATUS
 _gpuAddClassToClassDBByEngTagClassId(OBJGPU *pGpu, ENGDESCRIPTOR *pEngDesc, NvU32 *pExternalClassId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1921);
     PGPU_ENGINE_ORDER      pEngineOrder = &pGpu->engineOrder;
     const CLASSDESCRIPTOR *pClassDesc = &pEngineOrder->pClassDescriptors[0];
     PGPUCLASSDB            pClassDB   = &pGpu->classDB;
@@ -390,6 +398,7 @@ _gpuAddClassToClassDBByEngTagClassId(OBJGPU *pGpu, ENGDESCRIPTOR *pEngDesc, NvU3
 NV_STATUS
 gpuAddClassToClassDBByEngTagClassId_IMPL(OBJGPU *pGpu, ENGDESCRIPTOR engDesc, NvU32 externalClassId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1922);
     return _gpuAddClassToClassDBByEngTagClassId(pGpu, &engDesc, &externalClassId);
 }
 
@@ -405,6 +414,7 @@ gpuAddClassToClassDBByEngTagClassId_IMPL(OBJGPU *pGpu, ENGDESCRIPTOR engDesc, Nv
  */
 NV_STATUS gpuAddClassToClassDBByEngTag_IMPL(OBJGPU *pGpu, ENGDESCRIPTOR engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1923);
     return _gpuAddClassToClassDBByEngTagClassId(pGpu, &engDesc, NULL);
 }
 
@@ -420,6 +430,7 @@ NV_STATUS gpuAddClassToClassDBByEngTag_IMPL(OBJGPU *pGpu, ENGDESCRIPTOR engDesc)
  */
 NV_STATUS gpuAddClassToClassDBByClassId_IMPL(OBJGPU *pGpu, NvU32 externalClassId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1924);
     return _gpuAddClassToClassDBByEngTagClassId(pGpu, NULL, &externalClassId);
 }
 
@@ -438,6 +449,7 @@ NV_STATUS gpuAddClassToClassDBByClassId_IMPL(OBJGPU *pGpu, NvU32 externalClassId
 static NV_STATUS
 _gpuDeleteClassFromClassDBByEngTagClassId(OBJGPU *pGpu, ENGDESCRIPTOR *pEngDesc, NvU32 *pExternalClassId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1925);
     PGPUCLASSDB pClassDB = &pGpu->classDB;
     NvU32 i, j;
 
@@ -476,6 +488,7 @@ _gpuDeleteClassFromClassDBByEngTagClassId(OBJGPU *pGpu, ENGDESCRIPTOR *pEngDesc,
 NV_STATUS
 gpuDeleteClassFromClassDBByEngTagClassId_IMPL(OBJGPU *pGpu, ENGDESCRIPTOR engDesc, NvU32 externalClassId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1926);
     return _gpuDeleteClassFromClassDBByEngTagClassId(pGpu, &engDesc, &externalClassId);
 }
 
@@ -492,6 +505,7 @@ gpuDeleteClassFromClassDBByEngTagClassId_IMPL(OBJGPU *pGpu, ENGDESCRIPTOR engDes
 NV_STATUS
 gpuDeleteClassFromClassDBByClassId_IMPL(OBJGPU *pGpu, NvU32 externalClassId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1927);
     return _gpuDeleteClassFromClassDBByEngTagClassId(pGpu, NULL, &externalClassId);
 }
 
@@ -508,5 +522,6 @@ gpuDeleteClassFromClassDBByClassId_IMPL(OBJGPU *pGpu, NvU32 externalClassId)
 NV_STATUS
 gpuDeleteClassFromClassDBByEngTag_IMPL(OBJGPU *pGpu, ENGDESCRIPTOR engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1928);
     return _gpuDeleteClassFromClassDBByEngTagClassId(pGpu, &engDesc, NULL);
 }

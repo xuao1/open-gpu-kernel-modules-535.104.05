@@ -103,6 +103,7 @@ kgraphicsConstructEngine_IMPL
     ENGDESCRIPTOR   engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2006);
     KGRAPHICS_PRIVATE_DATA *pPrivate;
     NvU32 idx;
     GR_GLOBALCTX_BUFFER buf;
@@ -222,6 +223,7 @@ kgraphicsDestruct_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2007);
     OBJGPU *pGpu = ENG_GET_GPU(pKernelGraphics);
 
     fecsCtxswLoggingTeardown(pGpu, pKernelGraphics);
@@ -239,6 +241,7 @@ kgraphicsStateInitLocked_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2008);
     NvU32 nGlobalCtx = 1;
     NvU32 numClasses;
 
@@ -313,6 +316,7 @@ kgraphicsStateUnload_IMPL
 
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2009);
     if (pKernelGraphics->instance != 0)
         return NV_OK;
 
@@ -332,6 +336,7 @@ kgraphicsStateLoad_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2010);
     if (pGpu->fecsCtxswLogConsumerCount > 0)
     {
         fecsBufferMap(pGpu, pKernelGraphics);
@@ -349,6 +354,7 @@ kgraphicsStatePreUnload_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2011);
     fecsBufferUnmap(pGpu, pKernelGraphics);
 
     // Release global buffers used as part of the gr context, when not in S/R
@@ -365,6 +371,7 @@ kgraphicsStateDestroy_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2012);
     fecsBufferTeardown(pGpu, pKernelGraphics);
 
     portMemFree(pKernelGraphics->globalCtxBuffersInfo.pGlobalCtxBuffers);
@@ -377,6 +384,7 @@ NvBool kgraphicsIsPresent_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2013);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NvU32 unused;
 
@@ -399,6 +407,7 @@ kgraphicsStatePostLoad_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2014);
     const KGRAPHICS_STATIC_INFO *pKernelGraphicsStaticInfo;
     NV_CHECK_OK_OR_RETURN(LEVEL_ERROR, kgraphicsLoadStaticInfo(pGpu, pKernelGraphics, KMIGMGR_SWIZZID_INVALID));
     pKernelGraphicsStaticInfo = kgraphicsGetStaticInfo(pGpu, pKernelGraphics);
@@ -427,6 +436,7 @@ _kgraphicsPostSchedulingEnableHandler
     void *pGrIndex
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2015);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelGraphics *pKernelGraphics = GPU_GET_KERNEL_GRAPHICS(pGpu, ((NvU32)(NvUPtr)pGrIndex));
     const KGRAPHICS_STATIC_INFO *pKernelGraphicsStaticInfo = kgraphicsGetStaticInfo(pGpu, pKernelGraphics);
@@ -473,6 +483,7 @@ kgraphicsInvalidateStaticInfo_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2016);
     portMemFree(pKernelGraphics->pPrivate->staticInfo.pGrInfo);
     pKernelGraphics->pPrivate->staticInfo.pGrInfo = NULL;
 
@@ -505,6 +516,7 @@ kgraphicsGetStaticInfo_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2017);
     KGRAPHICS_PRIVATE_DATA *pPrivate = pKernelGraphics->pPrivate;
     return ((pPrivate != NULL) && pPrivate->bInitialized) ? &pPrivate->staticInfo : NULL;
 }
@@ -520,6 +532,7 @@ _kgraphicsInternalClientAlloc
     NvHandle *phSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2018);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL); //FIXME = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32 grIdx = pKernelGraphics->instance;
 
@@ -576,6 +589,7 @@ kgraphicsInitializeDeferredStaticData_IMPL
     NvHandle hSubdevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2019);
     NV2080_CTRL_INTERNAL_STATIC_GR_GET_CONTEXT_BUFFERS_INFO_PARAMS *pParams;
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     KGRAPHICS_PRIVATE_DATA *pPrivate = pKernelGraphics->pPrivate;
@@ -754,6 +768,7 @@ kgraphicsLoadStaticInfo_KERNEL
     NvU32 swizzId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2020);
     KGRAPHICS_PRIVATE_DATA *pPrivate = pKernelGraphics->pPrivate;
     NvHandle hClient = NV01_NULL_OBJECT;
     NvHandle hDevice;
@@ -1163,6 +1178,7 @@ kgraphicsIsGFXSupported_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2021);
     const KGRAPHICS_STATIC_INFO *pKernelGraphicsStaticInfo = kgraphicsGetStaticInfo(pGpu, pKernelGraphics);
     NvU32 gfxCapabilites;
 
@@ -1185,6 +1201,7 @@ kgraphicsGetCtxBufferInfo_IMPL
     GR_CTX_BUFFER buf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2022);
     NV_ASSERT_OR_RETURN(NV_ENUM_IS(GR_CTX_BUFFER, buf), NULL);
     return &pKernelGraphics->maxCtxBufSize[buf];
 }
@@ -1202,6 +1219,7 @@ kgraphicsSetCtxBufferInfo_IMPL
     NvBool bContiguous
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2023);
     CTX_BUF_INFO *pInfo;
     NV_ASSERT_OR_RETURN_VOID(NV_ENUM_IS(GR_CTX_BUFFER, buf));
 
@@ -1220,6 +1238,7 @@ kgraphicsClearCtxBufferInfo_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2024);
     portMemSet(pKernelGraphics->maxCtxBufSize, 0, sizeof(pKernelGraphics->maxCtxBufSize));
 }
 
@@ -1232,6 +1251,7 @@ kgraphicsInitCtxBufPool_IMPL
     Heap *pHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2025);
     return ctxBufPoolInit(pGpu, pHeap, &pKernelGraphics->pCtxBufPool);
 }
 
@@ -1243,6 +1263,7 @@ kgraphicsGetCtxBufPool_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2026);
     return pKernelGraphics->pCtxBufPool;
 }
 
@@ -1254,6 +1275,7 @@ kgraphicsDestroyCtxBufPool_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2027);
     if (pKernelGraphics->pCtxBufPool == NULL)
         return;
 
@@ -1271,6 +1293,7 @@ kgraphicsGetGlobalCtxBuffers_IMPL
     NvU32 gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2028);
     if (pKernelGraphics->globalCtxBuffersInfo.pGlobalCtxBuffers == NULL)
         return NULL;
     return &pKernelGraphics->globalCtxBuffersInfo.pGlobalCtxBuffers[gfid];
@@ -1285,6 +1308,7 @@ kgraphicsIsGlobalCtxBufferSizeAligned_IMPL
     GR_GLOBALCTX_BUFFER buf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2029);
     NV_ASSERT_OR_RETURN(NV_ENUM_IS(GR_GLOBALCTX_BUFFER, buf), NV_FALSE);
     return pKernelGraphics->globalCtxBuffersInfo.bSizeAligned[buf];
 }
@@ -1297,6 +1321,7 @@ kgraphicsGetGlobalPrivAccessMapAttr_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2030);
     return &pKernelGraphics->globalCtxBuffersInfo.globalCtxAttr[GR_GLOBAL_BUFFER_GLOBAL_PRIV_ACCESS_MAP];
 }
 
@@ -1317,6 +1342,7 @@ kgraphicsGetMainCtxBufferSize_IMPL
     NvU32 *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2031);
     const KGRAPHICS_STATIC_INFO *pKernelGraphicsStaticInfo = kgraphicsGetStaticInfo(pGpu, pKernelGraphics);
     NvU32 size;
 
@@ -1353,6 +1379,7 @@ kgraphicsAllocKgraphicsBuffers_KERNEL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2032);
     NvU32 gfid;
     OBJGVASPACE *pGVAS;
 
@@ -1415,6 +1442,7 @@ _kgraphicsMapGlobalCtxBuffer
     NvBool bIsReadOnly
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2033);
     KernelGraphicsContextUnicast *pKernelGraphicsContextUnicast;
     NV_STATUS status = NV_OK;
     NvU64 vaddr = 0;
@@ -1488,6 +1516,7 @@ kgraphicsMapCtxBuffer_IMPL
     NvBool bIsReadOnly
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2034);
     NV_STATUS status = NV_OK;
     NvU64 vaddr = 0;
     OBJGVASPACE *pGVAS;
@@ -1589,6 +1618,7 @@ kgraphicsUnmapCtxBuffer_IMPL
     VA_LIST *pVaList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2035);
     NV_STATUS status = NV_OK;
     NvU64     vaddr = 0;
 
@@ -1635,6 +1665,7 @@ kgraphicsGetClassByType_IMPL
     NvU32 *pClass
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2036);
     NV_STATUS status = NV_OK;
     NvU32 objectType;
     NvU32 i;
@@ -1689,6 +1720,7 @@ kgraphicsGetContextBufferAttr_IMPL
     GR_CTX_BUFFER buf
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2037);
     NV_ASSERT_OR_RETURN(NV_ENUM_IS(GR_CTX_BUFFER, buf), NULL);
     return &pKernelGraphics->ctxAttr[buf];
 }
@@ -1705,6 +1737,7 @@ kgraphicsCreateGoldenImageChannel_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2038);
     NV_STATUS                              status = NV_OK;
     NvHandle                               hClientId = NV01_NULL_OBJECT;
     NvHandle                               hDeviceId;
@@ -2083,6 +2116,7 @@ void kgraphicsFreeGlobalCtxBuffers_IMPL
     NvU32 gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2039);
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     GR_GLOBALCTX_BUFFERS *pCtxBuffers;
     GR_GLOBALCTX_BUFFER buff;
@@ -2122,6 +2156,7 @@ kgraphicsGetCaps_IMPL
     NvU8 *pGrCaps
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2040);
     const KGRAPHICS_STATIC_INFO *pKernelGraphicsStaticInfo = kgraphicsGetStaticInfo(pGpu, pKernelGraphics);
 
     NV_ASSERT_OR_RETURN(pGrCaps != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -2145,6 +2180,7 @@ kgraphicsIsUnrestrictedAccessMapSupported_PF
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2041);
     return !hypervisorIsVgxHyper();
 }
 
@@ -2159,6 +2195,7 @@ kgraphicsRegisterIntrService_IMPL
     IntrServiceRecord pRecords[MC_ENGINE_IDX_MAX]
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2042);
     NvU32 engineIdx = MC_ENGINE_IDX_GRn_FECS_LOG(pKernelGraphics->instance);
 
     NV_ASSERT(pRecords[engineIdx].pInterruptService == NULL);
@@ -2182,6 +2219,7 @@ kgraphicsServiceNotificationInterrupt_IMPL
     IntrServiceServiceNotificationInterruptArguments *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2043);
     NvU32 grIdx = pKernelGraphics->instance;
 
     NV_ASSERT_OR_RETURN(pParams != NULL, 0);
@@ -2213,6 +2251,7 @@ deviceCtrlCmdKGrGetCaps_IMPL
     NV0080_CTRL_GR_GET_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2044);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
     NvU8 *pGrCaps = NvP64_VALUE(pParams->capsTbl);
     NvBool bCapsPopulated = NV_FALSE;
@@ -2267,6 +2306,7 @@ deviceCtrlCmdKGrGetCapsV2_IMPL
     NV0080_CTRL_GR_GET_CAPS_V2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2045);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner());
@@ -2310,6 +2350,7 @@ _kgraphicsCtrlCmdGrGetInfoV2
     NV2080_CTRL_GR_GET_INFO_V2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2046);
     NV_STATUS status = NV_OK;
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     NvU32 grInfoListSize = pParams->grInfoListSize;
@@ -2377,6 +2418,7 @@ deviceCtrlCmdKGrGetInfo_IMPL
     NV0080_CTRL_GR_GET_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2047);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
     NV0080_CTRL_GR_GET_INFO_V2_PARAMS grInfoParamsV2;
     NV0080_CTRL_GR_INFO *pGrInfos = NvP64_VALUE(pParams->grInfoList);
@@ -2413,6 +2455,7 @@ deviceCtrlCmdKGrGetInfoV2_IMPL
     NV0080_CTRL_GR_GET_INFO_V2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2048);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDevice);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
@@ -2430,6 +2473,7 @@ kgraphicsDiscoverMaxLocalCtxBufferSize_IMPL
     KernelGraphics *pKernelGraphics
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2049);
     NvU32 bufId = 0;
     const KGRAPHICS_STATIC_INFO *pKernelGraphicsStaticInfo = kgraphicsGetStaticInfo(pGpu, pKernelGraphics);
 
@@ -2489,6 +2533,7 @@ subdeviceCtrlCmdKGrGetCapsV2_IMPL
     NV2080_CTRL_GR_GET_CAPS_V2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2050);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     KernelGraphics *pKernelGraphics;
@@ -2533,6 +2578,7 @@ subdeviceCtrlCmdKGrGetInfo_IMPL
     NV2080_CTRL_GR_GET_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2051);
     NV2080_CTRL_GR_GET_INFO_V2_PARAMS grInfoParamsV2;
     NV2080_CTRL_GR_INFO *pGrInfos = NvP64_VALUE(pParams->grInfoList);
     NV2080_CTRL_GR_ROUTE_INFO grRouteInfo = pParams->grRouteInfo;
@@ -2578,6 +2624,7 @@ subdeviceCtrlCmdKGrGetInfoV2_IMPL
     NV2080_CTRL_GR_GET_INFO_V2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2052);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     Device *pDevice = GPU_RES_GET_DEVICE(pSubdevice);
 
@@ -2602,6 +2649,7 @@ subdeviceCtrlCmdKGrGetSmToGpcTpcMappings_IMPL
     NV2080_CTRL_GR_GET_SM_TO_GPC_TPC_MAPPINGS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2053);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphics *pKernelGraphics;
     NvHandle hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
@@ -2649,6 +2697,7 @@ subdeviceCtrlCmdKGrGetGlobalSmOrder_IMPL
     NV2080_CTRL_GR_GET_GLOBAL_SM_ORDER_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2054);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphics *pKernelGraphics;
@@ -2708,6 +2757,7 @@ subdeviceCtrlCmdKGrGetSmIssueRateModifier_IMPL
     NV2080_CTRL_GR_GET_SM_ISSUE_RATE_MODIFIER_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2055);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphics *pKernelGraphics;
     NvHandle hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
@@ -2767,6 +2817,7 @@ subdeviceCtrlCmdKGrGetGpcMask_IMPL
     NV2080_CTRL_GR_GET_GPC_MASK_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2056);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvHandle hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
@@ -2814,6 +2865,7 @@ subdeviceCtrlCmdKGrGetTpcMask_IMPL
     NV2080_CTRL_GR_GET_TPC_MASK_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2057);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvHandle hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
@@ -2859,6 +2911,7 @@ subdeviceCtrlCmdKGrGetNumTpcsForGpc_IMPL
     NV2080_CTRL_GR_GET_NUM_TPCS_FOR_GPC_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2058);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     Device *pDevice = GPU_RES_GET_DEVICE(pSubdevice);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
@@ -2899,6 +2952,7 @@ subdeviceCtrlCmdKGrGetPpcMask_IMPL
     NV2080_CTRL_GR_GET_PPC_MASK_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2059);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvHandle hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
     Device *pDevice = GPU_RES_GET_DEVICE(pSubdevice);
@@ -2949,6 +3003,7 @@ subdeviceCtrlCmdKGrFecsBindEvtbufForUid_IMPL
     NV2080_CTRL_GR_FECS_BIND_EVTBUF_FOR_UID_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2060);
     NV_STATUS status;
     RmClient *pClient;
     RsResourceRef *pEventBufferRef = NULL;
@@ -2994,6 +3049,7 @@ subdeviceCtrlCmdKGrFecsBindEvtbufForUidV2_IMPL
     NV2080_CTRL_GR_FECS_BIND_EVTBUF_FOR_UID_V2_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2061);
     NV_STATUS status;
     RmClient *pClient;
     RsResourceRef *pEventBufferRef = NULL;
@@ -3035,6 +3091,7 @@ subdeviceCtrlCmdKGrGetPhysGpcMask_IMPL
     NV2080_CTRL_GR_GET_PHYS_GPC_MASK_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2062);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphics *pKernelGraphics;
     const KGRAPHICS_STATIC_INFO *pKernelGraphicsStaticInfo;
@@ -3105,6 +3162,7 @@ subdeviceCtrlCmdKGrGetZcullMask_IMPL
     NV2080_CTRL_GR_GET_ZCULL_MASK_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2063);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NvHandle hClient = RES_GET_CLIENT_HANDLE(pSubdevice);
     Device *pDevice = GPU_RES_GET_DEVICE(pSubdevice);
@@ -3162,6 +3220,7 @@ subdeviceCtrlCmdKGrGetZcullInfo_IMPL
     NV2080_CTRL_GR_GET_ZCULL_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2064);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     Device *pDevice = GPU_RES_GET_DEVICE(pSubdevice);
@@ -3199,6 +3258,7 @@ subdeviceCtrlCmdKGrCtxswPmMode_IMPL
     NV2080_CTRL_GR_CTXSW_PM_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2065);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NV_STATUS status = NV_OK;
 
@@ -3261,6 +3321,7 @@ subdeviceCtrlCmdKGrGetROPInfo_IMPL
     NV2080_CTRL_GR_GET_ROP_INFO_PARAMS *pRopInfoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2066);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     Device *pDevice = GPU_RES_GET_DEVICE(pSubdevice);
@@ -3301,6 +3362,7 @@ subdeviceCtrlCmdKGrGetAttributeBufferSize_IMPL
     NV2080_CTRL_GR_GET_ATTRIBUTE_BUFFER_SIZE_PARAMS *pAttribBufferSizeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2067);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     NV2080_CTRL_GR_ROUTE_INFO grRouteInfo;
@@ -3346,6 +3408,7 @@ subdeviceCtrlCmdKGrGetEngineContextProperties_IMPL
     NV2080_CTRL_GR_GET_ENGINE_CONTEXT_PROPERTIES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2068);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     KernelGraphics *pKernelGraphics;
@@ -3414,6 +3477,7 @@ subdeviceCtrlCmdKGrGetCtxBufferSize_IMPL
     NV2080_CTRL_GR_GET_CTX_BUFFER_SIZE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2069);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphics *pKernelGraphics;
@@ -3527,6 +3591,7 @@ subdeviceCtrlCmdKGrGetCtxBufferInfo_IMPL
     NV2080_CTRL_GR_GET_CTX_BUFFER_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2070);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
@@ -3603,6 +3668,7 @@ subdeviceCtrlCmdKGrGetCtxBufferPtes_IMPL
     NV2080_CTRL_KGR_GET_CTX_BUFFER_PTES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2071);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
@@ -3688,6 +3754,7 @@ subdeviceCtrlCmdKGrGetGfxGpcAndTpcInfo_IMPL
     NV2080_CTRL_GR_GET_GFX_GPC_AND_TPC_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2072);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     KernelGraphics *pKernelGraphics;

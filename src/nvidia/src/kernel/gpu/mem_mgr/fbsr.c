@@ -36,6 +36,7 @@
 NV_STATUS
 fbsrObjectInit_IMPL(OBJFBSR *pFbsr, NvU32 type)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2771);
     pFbsr->type   = type;
     pFbsr->bValid = NV_FALSE;
     pFbsr->bInitialized = NV_FALSE;
@@ -63,6 +64,7 @@ fbsrReserveSysMemoryForPowerMgmt_IMPL
     NvU64       Size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2772);
     NV_STATUS status;
 
     if (pFbsr->type != FBSR_TYPE_DMA)
@@ -95,6 +97,7 @@ fbsrReserveSysMemoryForPowerMgmt_IMPL
 void
 fbsrFreeReservedSysMemoryForPowerMgmt_IMPL(OBJFBSR *pFbsr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2773);
     if (pFbsr->pSysReservedMemDesc != NULL)
     {
         memdescFree(pFbsr->pSysReservedMemDesc);

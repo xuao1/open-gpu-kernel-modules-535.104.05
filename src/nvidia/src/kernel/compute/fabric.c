@@ -39,6 +39,7 @@ _fabricCacheInsert
     void         *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1);
     FabricCacheSubmap *pInsertedSubmap = NULL;
     FabricCacheEntry *pInsertedEntry = NULL;
     FabricCacheEntry *pEntry;
@@ -93,6 +94,7 @@ _fabricCacheDelete
     NvU64         key3
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2);
     FabricCacheSubmap *pSubmap;
     FabricCacheEntry *pEntry;
 
@@ -125,6 +127,7 @@ _fabricCacheFind
     NvU64         key3
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3);
     FabricCacheEntry *pEntry;
     FabricCacheMapEntry *pMapEntry;
 
@@ -145,6 +148,7 @@ fabricMulticastFabricOpsMutexAcquire_IMPL
     Fabric *pFabric
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4);
     portSyncMutexAcquire(pFabric->pMulticastFabricOpsMutex);
 }
 
@@ -154,6 +158,7 @@ fabricMulticastFabricOpsMutexRelease_IMPL
     Fabric *pFabric
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5);
     portSyncMutexRelease(pFabric->pMulticastFabricOpsMutex);
 }
 
@@ -165,6 +170,7 @@ fabricMulticastSetupCacheInsertUnderLock_IMPL
     void   *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 6);
     return _fabricCacheInsert(&pFabric->fabricMulticastCache,
                               0, requestId, 0, pData);
 }
@@ -176,6 +182,7 @@ fabricMulticastSetupCacheDeleteUnderLock_IMPL
     NvU64   requestId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 7);
     _fabricCacheDelete(&pFabric->fabricMulticastCache,
                        0, requestId, 0);
 }
@@ -187,6 +194,7 @@ fabricMulticastSetupCacheGetUnderLock_IMPL
     NvU64   requestId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 8);
     FabricCacheMapEntry *pMapEntry;
 
     pMapEntry = _fabricCacheFind(&pFabric->fabricMulticastCache,
@@ -203,6 +211,7 @@ fabricMulticastCleanupCacheInsertUnderLock_IMPL
     void   *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 9);
     return _fabricCacheInsert(&pFabric->fabricMulticastCache,
                               1, requestId, 0, pData);
 }
@@ -214,6 +223,7 @@ fabricMulticastCleanupCacheDeleteUnderLock_IMPL
     NvU64   requestId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 10);
     _fabricCacheDelete(&pFabric->fabricMulticastCache,
                        1, requestId, 0);
 }
@@ -225,6 +235,7 @@ fabricMulticastCleanupCacheGetUnderLock_IMPL
     NvU64   requestId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 11);
     FabricCacheMapEntry *pMapEntry;
 
     pMapEntry = _fabricCacheFind(&pFabric->fabricMulticastCache,
@@ -240,6 +251,7 @@ fabricSetFmSessionFlags_IMPL
     NvU32   flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 12);
     pFabric->flags = flags;
 }
 
@@ -249,6 +261,7 @@ fabricGetFmSessionFlags_IMPL
     Fabric  *pFabric
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 13);
     return pFabric->flags;
 }
 
@@ -258,6 +271,7 @@ fabricConstruct_IMPL
     Fabric *pFabric
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 14);
     NV_STATUS status = NV_OK;
 
     pFabric->pMulticastFabricOpsMutex = portSyncMutexCreate(portMemAllocatorGetGlobalNonPaged());
@@ -284,6 +298,7 @@ fabricDestruct_IMPL
     Fabric *pFabric
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 15);
     NV_ASSERT(multimapCountItems(&pFabric->fabricMulticastCache) == 0);
 
     multimapDestroy(&pFabric->fabricMulticastCache);
@@ -301,6 +316,7 @@ fabricInitInbandMsgHdr
     NvU32 len
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 16);
     NV_STATUS status;
 
     portMemSet(pMsgHdr, 0, sizeof(*pMsgHdr));
@@ -325,6 +341,7 @@ fabricMulticastWaitOnTeamCleanupCallback
     void *pCbData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 17);
     NvU64 inbandReqId = (NvU64)pCbData;
     Fabric *pFabric = SYS_GET_FABRIC(SYS_GET_INSTANCE());
     OS_WAIT_QUEUE *pWq;

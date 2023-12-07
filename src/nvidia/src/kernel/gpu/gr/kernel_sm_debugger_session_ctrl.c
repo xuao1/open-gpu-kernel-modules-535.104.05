@@ -65,6 +65,7 @@
 static NV_STATUS
 _nv83deCtrlCmdFetchVAS(RsClient *pClient, NvU32 hChannel, OBJVASPACE **ppVASpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2193);
     KernelChannel *pKernelChannel = NULL;
 
     NV_ASSERT_OR_RETURN(ppVASpace != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -101,6 +102,7 @@ _nv83deCtrlCmdValidateRange
     NV83DE_CTRL_DEBUG_ACCESS_SURFACE_PARAMETERS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2194);
     NvU32 i;
     NvU64 totalLength;
     NV_STATUS status = NV_OK;
@@ -152,6 +154,7 @@ _nv8deCtrlCmdReadWriteSurface
     NvBool bWrite
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2195);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelSMDebuggerSession);
     RsClient *pClient = RES_GET_CLIENT(pKernelSMDebuggerSession);
     OBJVASPACE *pVASpace = NULL;
@@ -305,6 +308,7 @@ ksmdbgssnCtrlCmdReadSurface_IMPL
     NV83DE_CTRL_DEBUG_ACCESS_SURFACE_PARAMETERS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2196);
     return _nv8deCtrlCmdReadWriteSurface(pKernelSMDebuggerSession, pParams, NV_FALSE);
 }
 
@@ -315,6 +319,7 @@ ksmdbgssnCtrlCmdWriteSurface_IMPL
     NV83DE_CTRL_DEBUG_ACCESS_SURFACE_PARAMETERS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2197);
     return _nv8deCtrlCmdReadWriteSurface(pKernelSMDebuggerSession, pParams, NV_TRUE);
 }
 
@@ -325,6 +330,7 @@ ksmdbgssnCtrlCmdGetMappings_IMPL
     NV83DE_CTRL_DEBUG_GET_MAPPINGS_PARAMETERS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2198);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelSMDebuggerSession);
     RsClient *pClient = RES_GET_CLIENT(pKernelSMDebuggerSession);
     OBJVASPACE *pVASpace = NULL;
@@ -356,6 +362,7 @@ typedef enum {
 static NV_STATUS
 _nv83deFlushAllGpusL2Cache(MEMORY_DESCRIPTOR *pMemDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2199);
     NvU32 gpuCount;
     NvU32 gpuMask;
     NvU32 gpuInstance = 0;
@@ -389,6 +396,7 @@ _nv83deUnmapMemoryFromGrdbgClient
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2200);
     NV_STATUS status;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
@@ -423,6 +431,7 @@ _nv83deMapMemoryIntoGrdbgClient
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2201);
     NV_STATUS rmStatus = NV_OK;
     void *pCpuVirtAddr = NULL;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
@@ -507,6 +516,7 @@ _nv83deCtrlCmdDebugAccessMemory
     GrdbgMemoryAccessType accessType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2202);
     RsResourceRef *pResourceRef;
     MEMORY_DESCRIPTOR *pMemDesc;
     NvU64 totalLength;
@@ -664,6 +674,7 @@ ksmdbgssnCtrlCmdDebugReadMemory_IMPL
     NV83DE_CTRL_DEBUG_READ_MEMORY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2203);
     return _nv83deCtrlCmdDebugAccessMemory(GPU_RES_GET_GPU(pKernelSMDebuggerSession),
                                            pKernelSMDebuggerSession,
                                            RES_GET_CLIENT_HANDLE(pKernelSMDebuggerSession),
@@ -681,6 +692,7 @@ ksmdbgssnCtrlCmdDebugWriteMemory_IMPL
     NV83DE_CTRL_DEBUG_WRITE_MEMORY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2204);
     return _nv83deCtrlCmdDebugAccessMemory(GPU_RES_GET_GPU(pKernelSMDebuggerSession),
                                            pKernelSMDebuggerSession,
                                            RES_GET_CLIENT_HANDLE(pKernelSMDebuggerSession),
@@ -698,6 +710,7 @@ ksmdbgssnCtrlCmdDebugGetHandles_IMPL
     NV83DE_CTRL_DEBUG_GET_HANDLES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2205);
     pParams->hChannel = pKernelSMDebuggerSession->hChannel;
     pParams->hSubdevice = pKernelSMDebuggerSession->hSubdevice;
 
@@ -710,6 +723,7 @@ NV_STATUS ksmdbgssnCtrlCmdDebugExecRegOps_IMPL
     NV83DE_CTRL_DEBUG_EXEC_REG_OPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2206);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelSMDebuggerSession);
     NV_STATUS status = NV_OK;
     NvBool isClientGspPlugin = NV_FALSE;
@@ -748,6 +762,7 @@ ksmdbgssnCtrlCmdDebugReadBatchMemory_IMPL
     NV83DE_CTRL_DEBUG_ACCESS_MEMORY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2207);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelSMDebuggerSession);
     NV_STATUS status = NV_OK;
     NvU32 i;
@@ -794,6 +809,7 @@ ksmdbgssnCtrlCmdDebugWriteBatchMemory_IMPL
     NV83DE_CTRL_DEBUG_ACCESS_MEMORY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2208);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelSMDebuggerSession);
     NV_STATUS status = NV_OK;
     NvU32 i;
@@ -840,6 +856,7 @@ ksmdbgssnCtrlCmdDebugReadAllSmErrorStates_IMPL
     NV83DE_CTRL_DEBUG_READ_ALL_SM_ERROR_STATES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2209);
     NV_STATUS rmStatus = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelSMDebuggerSession);
 
@@ -886,6 +903,7 @@ ksmdbgssnCtrlCmdDebugClearAllSmErrorStates_IMPL
     NV83DE_CTRL_DEBUG_CLEAR_ALL_SM_ERROR_STATES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2210);
     NV_STATUS rmStatus = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelSMDebuggerSession);
 
@@ -929,6 +947,7 @@ ksmdbgssnCtrlCmdDebugReadMMUFaultInfo_IMPL
     NV83DE_CTRL_DEBUG_READ_MMU_FAULT_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2211);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelSMDebuggerSession);
 
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());

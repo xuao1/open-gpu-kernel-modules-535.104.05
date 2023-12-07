@@ -51,6 +51,7 @@ memmgrMemUtilsCheckMemoryFastScrubEnable_GH100
     NV_ADDRESS_SPACE dstAddressSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2592);
     if (!memmgrIsFastScrubberEnabled(pMemoryManager))
     {
         return NV_FALSE;
@@ -87,6 +88,7 @@ memmgrMemUtilsSec2CtxInit_GH100
     OBJCHANNEL    *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2593);
     NV_STATUS rmStatus = NV_OK;
     RM_API   *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 

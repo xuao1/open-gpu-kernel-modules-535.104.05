@@ -62,6 +62,7 @@ memmgrGetDeviceCaps
     NvBool         bCapsInitialized
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3004);
     NvU8 tempCaps[NV0080_CTRL_FB_CAPS_TBL_SIZE], temp;
     KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
     const MEMORY_SYSTEM_STATIC_CONFIG *pMemorySystemConfig =
@@ -175,6 +176,7 @@ memmgrGetDeviceCaps
 static NV_STATUS
 memmgrGetFbCaps(OBJGPU *pGpu, NvU8 *pFbCaps)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3005);
     NV_STATUS  rmStatus         = NV_OK;
     NvBool     bCapsInitialized = NV_FALSE;
 
@@ -207,6 +209,7 @@ deviceCtrlCmdFbGetCaps_IMPL
     NV0080_CTRL_FB_GET_CAPS_PARAMS *pFbCapsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3006);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pDevice);
     NvU8     *pFbCaps = NvP64_VALUE(pFbCapsParams->capsTbl);
 
@@ -237,6 +240,7 @@ deviceCtrlCmdFbGetCapsV2_IMPL
     NV0080_CTRL_FB_GET_CAPS_V2_PARAMS *pFbCapsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3007);
     OBJGPU   *pGpu     = GPU_RES_GET_GPU(pDevice);
     NvU8     *pFbCaps  = pFbCapsParams->capsTbl;
     NV_STATUS rmStatus;
@@ -262,6 +266,7 @@ subdeviceCtrlCmdFbGetBar1Offset_IMPL
     NV2080_CTRL_FB_GET_BAR1_OFFSET_PARAMS *pFbMemParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3008);
     NvHandle      hClient  = RES_GET_CLIENT_HANDLE(pSubdevice);
     NvHandle      hDevice  = RES_GET_PARENT_HANDLE(pSubdevice);
     NvU64         offset;
@@ -292,6 +297,7 @@ subdeviceCtrlCmdFbIsKind_IMPL
     NV2080_CTRL_FB_IS_KIND_PARAMS *pIsKindParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3009);
     OBJGPU        *pGpu           = GPU_RES_GET_GPU(pSubdevice);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_STATUS      status         = NV_OK;
@@ -349,6 +355,7 @@ subdeviceCtrlCmdFbGetMemAlignment_IMPL
     NV2080_CTRL_FB_GET_MEM_ALIGNMENT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3010);
     OBJGPU                 *pGpu       = GPU_RES_GET_GPU(pSubdevice);
     NvHandle                hClient    = RES_GET_CLIENT_HANDLE(pSubdevice);
     Device                 *pDevice    = GPU_RES_GET_DEVICE(pSubdevice);
@@ -618,6 +625,7 @@ subdeviceCtrlCmdFbGetHeapReservationSize_IMPL
     NV2080_CTRL_INTERNAL_FB_GET_HEAP_RESERVATION_SIZE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3011);
     NV_ASSERT_OR_RETURN(0, NV_ERR_NOT_SUPPORTED);
 }
 
@@ -634,6 +642,7 @@ subdeviceCtrlCmdFbGetFBRegionInfo_IMPL
     NV2080_CTRL_CMD_FB_GET_FB_REGION_INFO_PARAMS *pGFBRIParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3012);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU32 regionIndex, i;
@@ -732,6 +741,7 @@ subdeviceCtrlCmdInternalMemmgrGetVgpuHostRmReservedFb_IMPL
     NV2080_CTRL_INTERNAL_MEMMGR_GET_VGPU_CONFIG_HOST_RESERVED_FB_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3013);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
@@ -759,6 +769,7 @@ diagapiCtrlCmdFbEccScrubDiag_IMPL
     NV208F_CTRL_CMD_FB_ECC_SCRUB_DIAG_PARAMS *pConfig
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3014);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDiagApi);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
@@ -788,6 +799,7 @@ diagapiCtrlCmdFbEccAsyncScrubRegion_IMPL
     NV208F_CTRL_CMD_FB_ECC_ASYNC_SCRUB_REGION_PARAMS *pConfig
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3015);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDiagApi);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
@@ -803,6 +815,7 @@ subdeviceCtrlCmdGbGetSemaphoreSurfaceLayout_IMPL
     NV2080_CTRL_FB_GET_SEMAPHORE_SURFACE_LAYOUT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3016);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(GPU_RES_GET_GPU(pSubdevice));
 
     pParams->caps = 0;

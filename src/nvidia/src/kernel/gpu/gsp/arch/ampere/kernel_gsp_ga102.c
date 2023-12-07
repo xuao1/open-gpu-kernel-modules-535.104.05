@@ -51,6 +51,7 @@ kgspConfigureFalcon_GA102
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2218);
     KernelFalconEngineConfig falconConfig;
 
     portMemSet(&falconConfig, 0, sizeof(falconConfig));
@@ -95,6 +96,7 @@ _kgspResetIntoRiscv
     KernelGsp *pKernelGsp
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2219);
     KernelFalcon *pKernelFlcn = staticCast(pKernelGsp, KernelFalcon);
     NV_ASSERT_OK_OR_RETURN(kflcnPreResetWait_HAL(pGpu, pKernelFlcn));
 
@@ -131,6 +133,7 @@ _kgspIsReloadCompleted
     void    *pVoid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2220);
     NvU32 reg;
 
     reg = GPU_REG_RD32(pGpu, NV_PGC6_BSI_SECURE_SCRATCH_14);
@@ -169,6 +172,7 @@ kgspBootstrapRiscvOSEarly_GA102
     GSP_FIRMWARE   *pGspFw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2221);
     KernelFalcon           *pKernelFalcon   = staticCast(pKernelGsp, KernelFalcon);
     NV_STATUS               status          = NV_OK;
 
@@ -286,6 +290,7 @@ kgspGetGspRmBootUcodeStorage_GA102
     BINDATA_STORAGE **ppBinStorageDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2222);
     const BINDATA_ARCHIVE *pBinArchive = kgspGetBinArchiveGspRmBoot_HAL(pKernelGsp);
 
     if (kgspIsDebugModeEnabled(pGpu, pKernelGsp))
@@ -322,6 +327,7 @@ kgspExecuteSequencerCommand_GA102
     NvU32           payloadSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2223);
     NV_STATUS       status        = NV_OK;
     KernelFalcon   *pKernelFalcon = staticCast(pKernelGsp, KernelFalcon);
     NvU32           secMailbox0   = 0;

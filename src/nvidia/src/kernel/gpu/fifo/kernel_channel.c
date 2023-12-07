@@ -132,6 +132,7 @@ kchannelConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1429);
     OBJGPU                 *pGpu             = GPU_RES_GET_GPU(pKernelChannel);
     OBJSYS                 *pSys             = SYS_GET_INSTANCE();
     KernelMIGManager       *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -1031,6 +1032,7 @@ kchannelDestruct_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1430);
     CALL_CONTEXT                *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
     NvHandle                     hClient;
@@ -1126,6 +1128,7 @@ kchannelMap_IMPL
     RsCpuMapping      *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1431);
     OBJGPU *pGpu;
     NV_STATUS rmStatus;
     RsClient *pRsClient = pCallContext->pClient;
@@ -1192,6 +1195,7 @@ kchannelUnmap_IMPL
     RsCpuMapping  *pCpuMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1432);
     OBJGPU   *pGpu;
     RsClient *pRsClient = pCallContext->pClient;
     RmClient *pRmClient = dynamicCast(pRsClient, RmClient);
@@ -1222,6 +1226,7 @@ kchannelGetMapAddrSpace_IMPL
     NV_ADDRESS_SPACE *pAddrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1433);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelChannel);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NvU32 userdAperture;
@@ -1243,6 +1248,7 @@ kchannelGetMemInterMapParams_IMPL
     RMRES_MEM_INTER_MAP_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1434);
     OBJGPU            *pGpu = pParams->pGpu;
     KernelFifo        *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     MEMORY_DESCRIPTOR *pSrcMemDesc = NULL;
@@ -1274,6 +1280,7 @@ kchannelCheckMemInterUnmap_IMPL
     NvBool         bSubdeviceHandleProvided
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1435);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelChannel);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
 
@@ -1310,6 +1317,7 @@ kchannelGetIter
     RsResourceRef *pScopeRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1436);
     return clientRefOrderedIter(pClient, pScopeRef, classId(KernelChannel), NV_TRUE);
 }
 
@@ -1333,6 +1341,7 @@ CliGetKernelChannelWithDevice
     KernelChannel **ppKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1437);
     RsResourceRef *pParentRef;
     RsResourceRef *pResourceRef;
     KernelChannel *pKernelChannel;
@@ -1378,6 +1387,7 @@ CliGetChannelClassInfo
     CLI_CHANNEL_CLASS_INFO *pClassInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1438);
     switch (classNum)
     {
         case GF100_CHANNEL_GPFIFO:
@@ -1514,6 +1524,7 @@ NV_STATUS kchannelGetNextKernelChannel
     KernelChannel      **ppKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1439);
     KernelChannel *pKernelChannel;
     KernelFifo    *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
 
@@ -1580,6 +1591,7 @@ CliGetKernelChannel
     KernelChannel **ppKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1440);
     NV_STATUS      status;
     RsResourceRef *pResourceRef;
 
@@ -1609,6 +1621,7 @@ kchannelNotifyRc_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1441);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelChannel);
     RM_ENGINE_TYPE rmEngineType = RM_ENGINE_TYPE_NULL;
     NV_STATUS rmStatus = NV_OK;
@@ -1662,6 +1675,7 @@ void kchannelNotifyGeneric_IMPL
     NvU32          notifyParamsSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1442);
     OBJGPU                 *pGpu = GPU_RES_GET_GPU(pKernelChannel);
     ContextDma             *pContextDma;
     EVENTNOTIFICATION      *pEventNotification;
@@ -1720,6 +1734,7 @@ kchannelCtrlCmdStopChannel_IMPL
     NVA06F_CTRL_STOP_CHANNEL_PARAMS *pStopChannelParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1443);
     NV_STATUS     rmStatus      = NV_OK;
     OBJGPU       *pGpu          = GPU_RES_GET_GPU(pKernelChannel);
     CALL_CONTEXT *pCallContext  = resservGetTlsCallContext();
@@ -1766,6 +1781,7 @@ kchannelGetNotifierInfo
     NvU64              *pOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1444);
     NvHandle    hDevice;
     Device     *pDevice     = NULL;
     ContextDma *pContextDma = NULL;
@@ -1885,6 +1901,7 @@ kchannelCheckIsUserMode_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1445);
     return (pKernelChannel->privilegeLevel == NV_KERNELCHANNEL_ALLOC_INTERNALFLAGS_PRIVILEGE_USER) ||
            (pKernelChannel->privilegeLevel == NV_KERNELCHANNEL_ALLOC_INTERNALFLAGS_PRIVILEGE_ADMIN);
 }
@@ -1906,6 +1923,7 @@ kchannelCheckIsKernel_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1446);
     return pKernelChannel->privilegeLevel == NV_KERNELCHANNEL_ALLOC_INTERNALFLAGS_PRIVILEGE_KERNEL;
 }
 
@@ -1926,6 +1944,7 @@ kchannelCheckIsAdmin_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1447);
     return (pKernelChannel->privilegeLevel == NV_KERNELCHANNEL_ALLOC_INTERNALFLAGS_PRIVILEGE_KERNEL) ||
            (pKernelChannel->privilegeLevel == NV_KERNELCHANNEL_ALLOC_INTERNALFLAGS_PRIVILEGE_ADMIN);
 }
@@ -1949,6 +1968,7 @@ kchannelIsSchedulable_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1448);
     OBJGVASPACE *pGVAS = NULL;
     NvU32        engineDesc = 0;
     NvU32        gfId;
@@ -1990,6 +2010,7 @@ _kchannelAllocHalData
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1449);
     portMemSet(pKernelChannel->pFifoHalData, 0, sizeof(pKernelChannel->pFifoHalData));
 
     // Alloc 1 page of instmem per GPU instance
@@ -2020,6 +2041,7 @@ _kchannelFreeHalData
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1450);
     // Unmap / delete memdescs
     kchannelDestroyMem_HAL(pGpu, pKernelChannel);
 
@@ -2040,6 +2062,7 @@ _kchannelgetVerifFlags
     NV_CHANNEL_ALLOC_PARAMS    *pChannelGpfifoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1451);
     NvU32 verifFlags = 0;
 
     return verifFlags;
@@ -2053,6 +2076,7 @@ _kchannelAllocOrDescribeInstMem
     NV_CHANNEL_ALLOC_PARAMS *pChannelGpfifoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1452);
     OBJGPU                *pGpu        = GPU_RES_GET_GPU(pKernelChannel);
     KernelFifo            *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     KernelChannelGroupApi *pKernelChannelGroupApi = pKernelChannel->pKernelChannelGroupApi;
@@ -2153,6 +2177,7 @@ _kchannelDescribeMemDescsFromParams
     NV_CHANNEL_ALLOC_PARAMS *pChannelGpfifoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1453);
     NV_STATUS               status         = NV_OK;
     FIFO_INSTANCE_BLOCK    *pInstanceBlock = NULL;
     NvU32                   subDevInst;
@@ -2306,6 +2331,7 @@ _kchannelDescribeMemDescsHeavySriov
     KernelChannel        *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1454);
     NV_STATUS               status         = NV_OK;
     FIFO_INSTANCE_BLOCK    *pInstanceBlock = NULL;
     NvU32                   subDevInst;
@@ -2426,6 +2452,7 @@ _kchannelSendChannelAllocRpc
     NvBool bFullSriov
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1455);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelChannel);
     NV_CHANNEL_ALLOC_PARAMS *pRpcParams;
     NV_STATUS status = NV_OK;
@@ -2611,6 +2638,7 @@ NV_STATUS kchannelBindToRunlist_IMPL
     ENGDESCRIPTOR  engineDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1456);
     OBJGPU    *pGpu;
     NV_STATUS  status = NV_OK;
 
@@ -2686,6 +2714,7 @@ kchannelCtrlCmdEventSetNotification_IMPL
     NV906F_CTRL_EVENT_SET_NOTIFICATION_PARAMS *pSetEventParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1457);
     CLI_CHANNEL_CLASS_INFO classInfo;
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams;
@@ -2737,6 +2766,7 @@ kchannelCtrlCmdGetClassEngineid_IMPL
     NV906F_CTRL_GET_CLASS_ENGINEID_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1458);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelChannel);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     NV_STATUS status = NV_OK;
@@ -2809,6 +2839,7 @@ kchannelCtrlCmdResetChannel_IMPL
     NV906F_CTRL_CMD_RESET_CHANNEL_PARAMS *pResetChannelParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1459);
     NV_STATUS status    = NV_OK;
     OBJGPU   *pGpu      = GPU_RES_GET_GPU(pKernelChannel);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
@@ -2865,6 +2896,7 @@ kchannelCtrlCmdEventSetTrigger_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1460);
     kchannelNotifyGeneric(pKernelChannel, NVA06F_NOTIFIERS_SW, NULL, 0);
 
     return NV_OK;
@@ -2877,6 +2909,7 @@ kchannelCtrlCmdGpFifoSchedule_IMPL
     NVA06F_CTRL_GPFIFO_SCHEDULE_PARAMS *pSchedParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1461);
     OBJGPU       *pGpu          = GPU_RES_GET_GPU(pKernelChannel);
     NV_STATUS     rmStatus      = NV_OK;
     CALL_CONTEXT *pCallContext  = resservGetTlsCallContext();
@@ -2936,6 +2969,7 @@ kchannelCtrlCmdGetEngineCtxSize_IMPL
     NVB06F_CTRL_GET_ENGINE_CTX_SIZE_PARAMS *pCtxSizeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1462);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -2946,6 +2980,7 @@ kchannelCtrlCmdSetErrorNotifier_IMPL
     NVA06F_CTRL_SET_ERROR_NOTIFIER_PARAMS *pSetErrorNotifierParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1463);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pKernelChannel);
     RC_NOTIFIER_SCOPE scope;
     NV_STATUS rmStatus = NV_OK;
@@ -2974,6 +3009,7 @@ kchannelCtrlCmdBind_IMPL
     NVA06F_CTRL_BIND_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1464);
     RM_ENGINE_TYPE globalRmEngineType;
     RM_ENGINE_TYPE localRmEngineType;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelChannel);
@@ -3038,6 +3074,7 @@ kchannelCtrlCmdSetInterleaveLevel_IMPL
     NVA06F_CTRL_INTERLEAVE_LEVEL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1465);
     OBJGPU          *pGpu         = GPU_RES_GET_GPU(pKernelChannel);
     NV_STATUS        status       = NV_OK;
 
@@ -3068,6 +3105,7 @@ kchannelCtrlCmdGetInterleaveLevel_IMPL
     NVA06F_CTRL_INTERLEAVE_LEVEL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1466);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelChannel);
 
     pParams->channelInterleaveLevel =
@@ -3083,6 +3121,7 @@ kchannelCtrlCmdGpfifoGetWorkSubmitToken_IMPL
     NVC36F_CTRL_CMD_GPFIFO_GET_WORK_SUBMIT_TOKEN_PARAMS *pTokenParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1467);
     NV_STATUS     rmStatus      = NV_OK;
     OBJGPU       *pGpu          = GPU_RES_GET_GPU(pKernelChannel);
     KernelFifo   *pKernelFifo   = GPU_GET_KERNEL_FIFO(pGpu);
@@ -3154,6 +3193,7 @@ kchannelCtrlCmdGpfifoSetWorkSubmitTokenNotifIndex_IMPL
     NVC36F_CTRL_GPFIFO_SET_WORK_SUBMIT_TOKEN_NOTIF_INDEX_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1468);
     NV_STATUS   rmStatus    = NV_OK;
     OBJGPU     *pGpu        = GPU_RES_GET_GPU(pKernelChannel);
 
@@ -3199,6 +3239,7 @@ kchannelRegisterChild_IMPL
     ChannelDescendant *pObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1469);
     NvU16 firstObjectClassID;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelChannel);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
@@ -3261,6 +3302,7 @@ kchannelDeregisterChild_IMPL
     ChannelDescendant *pObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1470);
     NV_STATUS status = NV_OK;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelChannel);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
@@ -3284,6 +3326,7 @@ kchannelGetChildIterator
     KernelChannelChildIterator *pIter
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1471);
     RsClient *pClient = RES_GET_CLIENT(pKernelChannel);
     NV_ASSERT_OR_RETURN_VOID(pIter != NULL);
 
@@ -3299,6 +3342,7 @@ kchannelGetNextChild
     KernelChannelChildIterator *pIter
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1472);
     ChannelDescendant *pChild;
 
     NV_ASSERT_OR_RETURN(pIter != NULL, NULL);
@@ -3333,6 +3377,7 @@ kchannelGetOneChild
     NvU32          engineID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1473);
     KernelChannelChildIterator iter;
 
     kchannelGetChildIterator(pKernelChannel, classID, engineID, &iter);
@@ -3357,6 +3402,7 @@ kchannelGetChildIterOverGroup
     KernelChannelChildIterOverGroup *pIt
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1474);
     NV_ASSERT_OR_RETURN_VOID(pIt != NULL);
     portMemSet(pIt, 0, sizeof(*pIt));
 
@@ -3388,6 +3434,7 @@ kchannelGetNextChildOverGroup
     KernelChannelChildIterOverGroup *pIt
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1475);
     PCHANNEL_NODE pHead = NULL;
     ChannelDescendant *pObject = NULL;
 
@@ -3431,6 +3478,7 @@ kchannelFindChildByHandle
     ChannelDescendant **ppObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1476);
     RsClient *pClient = RES_GET_CLIENT(pKernelChannel);
     RsResourceRef *pResourceRef = NULL;
 
@@ -3452,6 +3500,7 @@ _kchannelClearVAList
     NvBool           bUnmap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1477);
     //
     // Subcontext handling
     // We need to unmap the mappings on all the subcontext, since the this call will be made only on one of the TSG channels.
@@ -3495,6 +3544,7 @@ kchannelSetEngineContextMemDesc_IMPL
     MEMORY_DESCRIPTOR  *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1478);
     NV_STATUS status = NV_OK;
     ENGINE_CTX_DESCRIPTOR *pEngCtxDesc;
     KernelChannelGroup *pKernelChannelGroup = pKernelChannel->pKernelChannelGroupApi->pKernelChannelGroup;
@@ -3590,6 +3640,7 @@ kchannelUnmapEngineCtxBuf_IMPL
     NvU32               engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1479);
     NV_STATUS status = NV_OK;
     ENGINE_CTX_DESCRIPTOR *pEngCtxDesc;
 
@@ -3631,6 +3682,7 @@ kchannelCheckBcStateCurrent_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1480);
 #define KERNEL_CHANNEL_BCSTATE_UNINITIALIZED (0)
 #define KERNEL_CHANNEL_BCSTATE_DISABLED (1)
 #define KERNEL_CHANNEL_BCSTATE_ENABLED (2)
@@ -3665,6 +3717,7 @@ kchannelMapEngineCtxBuf_IMPL
     NvU32        engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1481);
     OBJVASPACE            *pVAS           = NULL;
     NV_STATUS              status         = NV_OK;
     ENGINE_CTX_DESCRIPTOR *pEngCtx;
@@ -3771,6 +3824,7 @@ kchannelUpdateWorkSubmitTokenNotifIndex_IMPL
     NvU32 index
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1482);
     NvHandle hNotifier;
     RsClient *pClient = RES_GET_CLIENT(pKernelChannel);
     Memory *pMemory;
@@ -3865,6 +3919,7 @@ kchannelNotifyWorkSubmitToken_IMPL
     NvU32 token
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1483);
     MEMORY_DESCRIPTOR *pNotifierMemDesc = pKernelChannel->pErrContextMemDesc;
     NV_ADDRESS_SPACE addressSpace;
     NvU16 notifyStatus = 0x0;
@@ -3951,6 +4006,7 @@ _kchannelSetupNotifyActions
     NvU32          classNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1484);
     CLI_CHANNEL_CLASS_INFO classInfo;
 
     // Allocate notifier action table for the maximum supported by this class
@@ -3980,6 +4036,7 @@ _kchannelCleanupNotifyActions
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1485);
     // free memory associated with notify actions table
     portMemFree(pKernelChannel->pNotifyActions);
     pKernelChannel->pNotifyActions = NULL;
@@ -3993,6 +4050,7 @@ _kchannelNotifyOfChid
     RsClient *pRsClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1486);
     ContextDma *pContextDma;
 
     //
@@ -4016,6 +4074,7 @@ kchannelGetGfid_IMPL
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1487);
     return pKernelChannel->pKernelChannelGroupApi->pKernelChannelGroup->gfid;
 }
 
@@ -4026,6 +4085,7 @@ kchannelIsCpuMapped
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1488);
     return !!(pKernelChannel->swState[gpumgrGetSubDeviceInstanceFromGpu(pGpu)] &
               KERNEL_CHANNEL_SW_STATE_CPU_MAP);
 }
@@ -4038,6 +4098,7 @@ kchannelSetCpuMapped
     NvBool bCpuMapped
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1489);
     if (bCpuMapped)
     {
         pKernelChannel->swState[gpumgrGetSubDeviceInstanceFromGpu(pGpu)] |=
@@ -4057,6 +4118,7 @@ kchannelIsRunlistSet
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1490);
     return !!(pKernelChannel->swState[gpumgrGetSubDeviceInstanceFromGpu(pGpu)] &
               KERNEL_CHANNEL_SW_STATE_RUNLIST_SET);
 }
@@ -4069,6 +4131,7 @@ kchannelSetRunlistSet
     NvBool bRunlistSet
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1491);
     if (bRunlistSet)
     {
         pKernelChannel->swState[gpumgrGetSubDeviceInstanceFromGpu(pGpu)] |=
@@ -4089,6 +4152,7 @@ kchannelGetChannelPhysicalState_KERNEL
     NV208F_CTRL_FIFO_GET_CHANNEL_STATE_PARAMS *pChannelStateParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1492);
     CALL_CONTEXT *pCallContext  = resservGetTlsCallContext();
     RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams->pLegacyParams;
     NV_STATUS status = NV_OK;
@@ -4118,6 +4182,7 @@ kchannelMapUserD_IMPL
     NvP64          *ppPriv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1493);
     NV_STATUS status      = NV_OK;
     NvU64     userBase;
     NvU64     userOffset;
@@ -4196,6 +4261,7 @@ kchannelUnmapUserD_IMPL
     NvP64          *ppPriv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1494);
     NV_STATUS status;
     NvU64     userBase;
     NvU64     userOffset;
@@ -4244,6 +4310,7 @@ _kchannelGetUserMemDesc
     PMEMORY_DESCRIPTOR *ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1495);
     NV_ASSERT_OR_RETURN(ppMemDesc != NULL, NV_ERR_INVALID_STATE);
     *ppMemDesc = NULL;
 
@@ -4270,6 +4337,7 @@ kchannelGetFromDualHandle_IMPL
     KernelChannel  **ppKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1496);
     KernelChannel *pKernelChannel;
     RsResourceRef *pChanGrpRef;
 
@@ -4324,6 +4392,7 @@ kchannelGetFromDualHandleRestricted_IMPL
     KernelChannel  **ppKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1497);
     NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
         kchannelGetFromDualHandle(pClient, hDual, ppKernelChannel));
     if ((RES_GET_HANDLE(*ppKernelChannel) == hDual) &&
@@ -4351,6 +4420,7 @@ _kchannelUpdateFifoMapping
     RsCpuMapping     *pMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1498);
     pMapping->pPrivate->pGpu      = pGpu;
     pMapping->pPrivate->bKernel   = bKernel;
     pMapping->processId = osGetCurrentProcess();
@@ -4370,6 +4440,7 @@ NV_STATUS kchannelRetrieveKmb_KERNEL
     CC_KMB *keyMaterialBundle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1499);
     ConfidentialCompute *pCC = GPU_GET_CONF_COMPUTE(pGpu);
 
     NV_ASSERT(pCC != NULL);
@@ -4391,6 +4462,7 @@ kchannelCtrlCmdGetKmb_KERNEL
     NVC56F_CTRL_CMD_GET_KMB_PARAMS *pGetKmbParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1500);
     if (!pKernelChannel->bCCSecureChannel)
     {
         return NV_ERR_NOT_SUPPORTED;
@@ -4419,6 +4491,7 @@ kchannelCtrlRotateSecureChannelIv_KERNEL
     NVC56F_CTRL_ROTATE_SECURE_CHANNEL_IV_PARAMS *pRotateIvParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1501);
     NV_STATUS            status            = NV_OK;
     OBJGPU              *pGpu              = GPU_RES_GET_GPU(pKernelChannel);
     ConfidentialCompute *pCC               = GPU_GET_CONF_COMPUTE(pGpu);
@@ -4493,6 +4566,7 @@ kchannelCtrlRotateSecureChannelIv_PHYSICAL
     NVC56F_CTRL_ROTATE_SECURE_CHANNEL_IV_PARAMS *pRotateIvParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1502);
     NV_STATUS status;
     
     NV_PRINTF(LEVEL_INFO, "Rotating IV in GSP-RM.\n");

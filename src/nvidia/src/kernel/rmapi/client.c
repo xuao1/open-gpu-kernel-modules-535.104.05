@@ -58,6 +58,7 @@ rmclientConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL* pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5289);
     NV_STATUS          status = NV_OK;
     NvU32              i;
     OBJSYS            *pSys = SYS_GET_INSTANCE();
@@ -215,6 +216,7 @@ rmclientDestruct_IMPL
     RmClient *pClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5290);
     NV_STATUS           status = NV_OK;
     RsClient           *pRsClient = staticCast(pClient, RsClient);
     NV_STATUS           tmpStatus;
@@ -301,6 +303,7 @@ rmclientInterMap_IMPL
     RS_INTER_MAP_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5291);
     RS_INTER_MAP_PRIVATE *pPrivate = pParams->pPrivate;
     RS_RES_MAP_TO_PARAMS mapToParams;
 
@@ -335,6 +338,7 @@ rmclientInterUnmap_IMPL
     RS_INTER_UNMAP_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5292);
     RS_INTER_UNMAP_PRIVATE *pPrivate = pParams->pPrivate;
     RS_RES_UNMAP_FROM_PARAMS unmapFromParams;
 
@@ -360,6 +364,7 @@ rmclientGetCachedPrivilege_IMPL
     RmClient *pClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5293);
     return pClient->cachedPrivilege;
 }
 
@@ -370,6 +375,7 @@ rmclientIsAdmin_IMPL
     RS_PRIV_LEVEL privLevel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5294);
     if (pClient == NULL)
         return NV_FALSE;
 
@@ -383,6 +389,7 @@ rmclientSetClientFlags_IMPL
     NvU32 clientFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5295);
     pClient->Flags |= clientFlags;
 }
 
@@ -393,6 +400,7 @@ _rmclientPromoteDebuggerState
    NvU32     newMinimumState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5296);
     if (pClient->ClientDebuggerState < newMinimumState)
     {
         pClient->ClientDebuggerState = newMinimumState;
@@ -405,6 +413,7 @@ rmclientGetSecurityToken_IMPL
     RmClient *pClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5297);
     return pClient->pSecurityToken;
 }
 
@@ -429,6 +438,7 @@ _rmclientUserClientSecurityCheck
     const API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5298);
     NV_STATUS        status = NV_OK;
     OBJSYS          *pSys = SYS_GET_INSTANCE();
     PSECURITY_TOKEN  pCurrentToken = NULL;
@@ -507,6 +517,7 @@ rmclientPostProcessPendingFreeList_IMPL
     RsResourceRef **ppFirstLowPriRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5299);
     RsClient *pRsClient = staticCast(pClient, RsClient);
     RsResourceRef *pTargetRef = NULL;
     RsResourceRef *pStopRef = NULL;
@@ -556,18 +567,21 @@ rmclientPostProcessPendingFreeList_IMPL
 
 RS_PRIV_LEVEL rmclientGetCachedPrivilegeByHandle(NvHandle hClient)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5300);
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
     return pClient ? rmclientGetCachedPrivilege(pClient) : RS_PRIV_LEVEL_USER;
 }
 
 NvBool rmclientIsAdminByHandle(NvHandle hClient, RS_PRIV_LEVEL privLevel)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5301);
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
     return pClient ? rmclientIsAdmin(pClient, privLevel) : NV_FALSE;
 }
 
 NvBool rmclientSetClientFlagsByHandle(NvHandle hClient, NvU32 clientFlags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5302);
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
     if (pClient)
         rmclientSetClientFlags(pClient, clientFlags);
@@ -576,6 +590,7 @@ NvBool rmclientSetClientFlagsByHandle(NvHandle hClient, NvU32 clientFlags)
 
 void rmclientPromoteDebuggerStateByHandle(NvHandle hClient, NvU32 newMinimumState)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5303);
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
     if (pClient)
         _rmclientPromoteDebuggerState(pClient, newMinimumState);
@@ -583,12 +598,14 @@ void rmclientPromoteDebuggerStateByHandle(NvHandle hClient, NvU32 newMinimumStat
 
 void *rmclientGetSecurityTokenByHandle(NvHandle hClient)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5304);
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
     return pClient ? rmclientGetSecurityToken(pClient) : NULL;
 }
 
 NV_STATUS rmclientUserClientSecurityCheckByHandle(NvHandle hClient, const API_SECURITY_INFO *pSecInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5305);
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
 
     //
@@ -630,6 +647,7 @@ _registerUserInfo
     UserInfo **ppUserInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5306);
     NV_STATUS status = NV_OK;
     NvBool bFound = NV_FALSE;
     UserInfo *pUserInfo = NULL;
@@ -694,6 +712,7 @@ _unregisterUserInfo
     UserInfo *pUserInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5307);
     NvS32 refCount = serverGetShareRefCount(&g_resServ, staticCast(pUserInfo, RsShared));
     if (--refCount == 0)
     {
@@ -707,6 +726,7 @@ NV_STATUS userinfoConstruct_IMPL
     UserInfo *pUserInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5308);
     return NV_OK;
 }
 
@@ -716,6 +736,7 @@ userinfoDestruct_IMPL
     UserInfo *pUserInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5309);
     portMemFree(pUserInfo->pUidToken);
 }
 
@@ -726,6 +747,7 @@ rmclientValidate_IMPL
     const API_SECURITY_INFO *pSecInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5310);
     NV_STATUS status = NV_OK;
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
@@ -757,6 +779,7 @@ rmclientFreeResource_IMPL
     RS_RES_FREE_PARAMS_INTERNAL *pRmFreeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5311);
     NV_STATUS status;
     OBJGPU *pGpu;
     NvBool bBcState;
@@ -785,6 +808,7 @@ static NvBool _rmclientIsCapable
     NvU32 capability
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5312);
     NvU32 internalClassId;
     RsResourceRef *pResourceRef = NULL;
 
@@ -829,6 +853,7 @@ NvBool rmclientIsCapableOrAdmin_IMPL
     RS_PRIV_LEVEL privLevel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5313);
     RsClient *pRsClient = staticCast(pClient, RsClient);
     NvHandle  hClient = pRsClient->hClient;
 
@@ -851,6 +876,7 @@ NvBool rmclientIsCapableOrAdminByHandle
     RS_PRIV_LEVEL privLevel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5314);
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
     if (pClient == NULL)
     {
@@ -866,6 +892,7 @@ NvBool rmclientIsCapable_IMPL
     NvU32 capability
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5315);
     RsClient *pRsClient = staticCast(pClient, RsClient);
     NvHandle  hClient = pRsClient->hClient;
 
@@ -882,6 +909,7 @@ NvBool rmclientIsCapableByHandle
     NvU32 capability
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5316);
     RmClient *pClient = serverutilGetClientUnderLock(hClient);
     if (pClient == NULL)
     {
@@ -907,6 +935,7 @@ _registerOSInfo
    void *pOSInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5317);
     OsInfoMapSubmap *pSubmap = NULL;
     RmClient **pInsert = NULL;
     NvU64 key1 = (NvUPtr)pOSInfo;
@@ -949,6 +978,7 @@ _unregisterOSInfo
     void *pOSInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5318);
      NvU64 key1 = (NvUPtr)pOSInfo;
      NvU64 key2 = (NvU64)(staticCast(pClient, RsClient))->hClient;
      OsInfoMapSubmap *pSubmap = NULL;

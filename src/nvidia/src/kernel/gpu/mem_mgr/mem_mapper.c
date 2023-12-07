@@ -33,6 +33,7 @@ memmapperConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2935);
     // if (!GPU_GET_DMA(GPU_RES_GET_GPU(pMemoryMapper))->bMemoryMapperApiEnabled)
     return NV_ERR_NOT_SUPPORTED;
 }
@@ -44,5 +45,6 @@ memmapperCtrlCmdSubmitPagingOperations_IMPL
     NV00FE_CTRL_SUBMIT_PAGING_OPERATIONS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2936);
     return NV_ERR_NOT_SUPPORTED;
 }

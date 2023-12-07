@@ -46,6 +46,7 @@ memmgrScrubInit_GP100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2681);
     if (memmgrIsScrubOnFreeEnabled(pMemoryManager))
     {
         NV_ASSERT_OK_OR_RETURN(kfifoAddSchedulingHandler(pGpu,
@@ -73,6 +74,7 @@ _memmgrPostSchedulingEnableHandler_GP100
     void   *pUnusedData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2682);
     Heap            *pHeap     = GPU_GET_HEAP(pGpu);
     NvBool           bIsMIGEnabled = IS_MIG_ENABLED(pGpu);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -101,6 +103,7 @@ memmgrScrubHandlePostSchedulingEnable_GP100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2683);
     return _memmgrPostSchedulingEnableHandler_GP100(pGpu, NULL);
 }
 
@@ -120,6 +123,7 @@ _memmgrPreSchedulingDisableHandler_GP100
     void   *pUnusedData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2684);
     Heap             *pHeap               = GPU_GET_HEAP(pGpu);
     OBJMEMSCRUB      *pMemscrub           = NULL;
     NvBool            bIsMIGEnabled       = IS_MIG_ENABLED(pGpu);
@@ -160,6 +164,7 @@ memmgrScrubHandlePreSchedulingDisable_GP100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2685);
     return _memmgrPreSchedulingDisableHandler_GP100(pGpu, NULL);
 }
 
@@ -175,6 +180,7 @@ memmgrScrubDestroy_GP100
     MemoryManager *pMemoryManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2686);
     if (memmgrIsScrubOnFreeEnabled(pMemoryManager))
     {
         kfifoRemoveSchedulingHandler(pGpu, GPU_GET_KERNEL_FIFO(pGpu),

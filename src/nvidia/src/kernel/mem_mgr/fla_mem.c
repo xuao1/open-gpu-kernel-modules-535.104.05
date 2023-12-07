@@ -43,6 +43,7 @@ flamemConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4467);
     NV_FLA_MEMORY_ALLOCATION_PARAMS *pAllocParams;
     Memory                          *pMemory      = staticCast(pFlaMemory, Memory);
     OBJGPU                          *pGpu         = pMemory->pGpu;
@@ -386,6 +387,7 @@ flamemCanCopy_IMPL
     FlaMemory *pFlaMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4468);
     return NV_TRUE;
 }
 
@@ -397,6 +399,7 @@ flamemCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4469);
     FlaMemory   *pSrcFlaMem;
 
     pSrcFlaMem = dynamicCast(pParams->pSrcRef->pResource, FlaMemory);
@@ -413,6 +416,7 @@ flamemDestruct_IMPL
     FlaMemory *pFlaMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4470);
     Memory     *pMemory    = staticCast(pFlaMemory, Memory);
     RM_API     *pRmApi     = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     RsClient   *pClient    = RES_GET_CLIENT(pMemory);

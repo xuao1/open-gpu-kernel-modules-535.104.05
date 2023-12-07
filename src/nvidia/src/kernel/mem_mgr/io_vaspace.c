@@ -51,6 +51,7 @@ iovaspaceConstruct__IMPL
     NvU32         flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4564);
     NV_ASSERT_OR_RETURN(IO_VASPACE_A == classId, NV_ERR_INVALID_ARGUMENT);
     pIOVAS->mappingCount = 0;
     return NV_OK;
@@ -59,6 +60,7 @@ iovaspaceConstruct__IMPL
 void
 iovaspaceDestruct_IMPL(OBJIOVASPACE *pIOVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4565);
     OBJVASPACE *pVAS = staticCast(pIOVAS, OBJVASPACE);
 
     if (pIOVAS->mappingCount != 0)
@@ -82,6 +84,7 @@ iovaspaceAlloc_IMPL
     NvU64           *pAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4566);
     NV_STATUS   status = NV_OK;
 
     // TBD implement iommu specific stuff
@@ -95,6 +98,7 @@ iovaspaceFree_IMPL
     NvU64         vAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4567);
     NV_STATUS   status = NV_OK;
 
     // TBD implement iommu specific stuff
@@ -111,6 +115,7 @@ iovaspaceApplyDefaultAlignment_IMPL
     NvU64               *pPageSizeLockMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4568);
     RM_ATTR_PAGE_SIZE   pageSizeAttr;
     NvU64               maxPageSize = RM_PAGE_SIZE;
 
@@ -178,6 +183,7 @@ iovaspaceIncAllocRefCnt_IMPL
     NvU64        vAddr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4569);
     NV_STATUS   status       = NV_OK;
 
     // TBD: Implement iommu specific stuff
@@ -191,12 +197,14 @@ iovaspaceGetVasInfo_IMPL
     struct NV0080_CTRL_DMA_ADV_SCHED_GET_VA_CAPS_PARAMS  *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4570);
     return NV_OK;
 }
 
 NvU64
 iovaspaceGetVaStart_IMPL(OBJIOVASPACE *pIOVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4571);
     // TODO: query OS layer, this could also be set in ctor, not virtual?
     return 0;
 }
@@ -204,6 +212,7 @@ iovaspaceGetVaStart_IMPL(OBJIOVASPACE *pIOVAS)
 NvU64
 iovaspaceGetVaLimit_IMPL(OBJIOVASPACE *pIOVAS)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4572);
     // TODO: query OS layer, this could also be set in ctor, not virtual?
     return NVBIT64(32) - 1;
 }
@@ -215,6 +224,7 @@ _iovaspaceCreateMappingDataFromMemDesc
     PMEMORY_DESCRIPTOR pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4573);
     PIOVAMAPPING pIovaMapping = NULL;
     NvU64 mappingDataSize = 0;
 
@@ -260,6 +270,7 @@ _iovaspaceCreateSubmapping
     PMEMORY_DESCRIPTOR pPhysMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4574);
     NvU64 rootOffset;
     NV_STATUS status = NV_OK;
     OBJVASPACE *pVAS = staticCast(pIOVAS, OBJVASPACE);
@@ -353,6 +364,7 @@ _iovaspaceDestroySubmapping
     PIOVAMAPPING pIovaMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4575);
     PMEMORY_DESCRIPTOR pPhysMemDesc = pIovaMapping->pPhysMemDesc;
     PIOVAMAPPING pRootIovaMapping = pIovaMapping->link.pParent;
     PIOVAMAPPING pTmpIovaMapping = pRootIovaMapping->link.pChildren;
@@ -398,6 +410,7 @@ _iovaspaceCreateMapping
     PMEMORY_DESCRIPTOR pPhysMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4576);
     NV_STATUS status;
     OBJVASPACE *pVAS = staticCast(pIOVAS, OBJVASPACE);
     NV_ADDRESS_SPACE addressSpace;
@@ -478,6 +491,7 @@ iovaspaceAcquireMapping_IMPL
     PMEMORY_DESCRIPTOR pPhysMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4577);
     OBJVASPACE *pVAS = staticCast(pIOVAS, OBJVASPACE);
     PIOVAMAPPING pIovaMapping = memdescGetIommuMap(pPhysMemDesc, pVAS->vaspaceId);
 
@@ -502,6 +516,7 @@ _iovaspaceDestroyRootMapping
     PIOVAMAPPING pIovaMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4578);
     PMEMORY_DESCRIPTOR pPhysMemDesc = pIovaMapping->pPhysMemDesc;
     PIOVAMAPPING pNextIovaMapping, pTmpIovaMapping;
 
@@ -539,6 +554,7 @@ iovaspaceDestroyMapping_IMPL
     PIOVAMAPPING pIovaMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4579);
     if (memdescIsSubMemoryMemDesc(pIovaMapping->pPhysMemDesc))
         _iovaspaceDestroySubmapping(pIOVAS, pIovaMapping);
     else
@@ -552,6 +568,7 @@ iovaspaceReleaseMapping_IMPL
     PIOVAMAPPING pIovaMapping
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4580);
     if (pIovaMapping == NULL)
     {
         NV_ASSERT(0);
@@ -569,6 +586,7 @@ iovaspaceReleaseMapping_IMPL
 
 OBJIOVASPACE *iovaspaceFromId(NvU32 iovaspaceId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4581);
     OBJVASPACE *pVAS;
     OBJVMM     *pVmm = SYS_GET_VMM(SYS_GET_INSTANCE());
     NV_STATUS   status = vmmGetVaspaceFromId(pVmm, iovaspaceId, IO_VASPACE_A, &pVAS);
@@ -581,6 +599,7 @@ OBJIOVASPACE *iovaspaceFromId(NvU32 iovaspaceId)
 
 OBJIOVASPACE *iovaspaceFromMapping(PIOVAMAPPING pIovaMapping)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4582);
     OBJIOVASPACE *pIOVAS = iovaspaceFromId(pIovaMapping->iovaspaceId);
 
     //
@@ -595,6 +614,7 @@ OBJIOVASPACE *iovaspaceFromMapping(PIOVAMAPPING pIovaMapping)
 
 void iovaMappingDestroy(PIOVAMAPPING pIovaMapping)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4583);
     OBJIOVASPACE *pIOVAS = iovaspaceFromMapping(pIovaMapping);
 
     NV_ASSERT_OR_RETURN_VOID(pIOVAS != NULL);

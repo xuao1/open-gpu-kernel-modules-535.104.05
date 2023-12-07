@@ -59,6 +59,7 @@ memmgrGetMemTransferType
     TRANSFER_SURFACE *pSrc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3056);
     TRANSFER_TYPE transferType        = TRANSFER_TYPE_PROCESSOR;
     OBJGPU    *pGpu       = ENG_GET_GPU(pMemoryManager);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
@@ -97,6 +98,7 @@ _memmgrAllocAndMapSurface
     void              **ppPriv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3057);
     NV_STATUS status;
     NvU64 flags = 0;
 
@@ -140,6 +142,7 @@ _memmgrUnmapAndFreeSurface
     void              *pPriv
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3058);
     memdescUnmapOld(pMemDesc, NV_TRUE, 0, pMap, pPriv);
 
     memdescFree(pMemDesc);
@@ -165,6 +168,7 @@ _memmgrMemReadOrWriteWithGsp
     NvBool            bRead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3059);
     NV2080_CTRL_INTERNAL_MEMMGR_MEMORY_TRANSFER_WITH_GSP_PARAMS gspParams;
     NV_STATUS status;
     MEMORY_DESCRIPTOR *pStagingBuf = NULL;
@@ -291,6 +295,7 @@ _memmgrMemcpyWithGsp
     NvU64             size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3060);
     NV2080_CTRL_INTERNAL_MEMMGR_MEMORY_TRANSFER_WITH_GSP_PARAMS gspParams;
     NV_STATUS status;
     MEMORY_DESCRIPTOR *pStagingBuf = NULL;
@@ -415,6 +420,7 @@ _memmgrMemsetWithGsp
     NvU64             size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3061);
     NV2080_CTRL_INTERNAL_MEMMGR_MEMORY_TRANSFER_WITH_GSP_PARAMS gspParams;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -467,6 +473,7 @@ memmgrMemCopyWithTransferType
     NvU32             flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3062);
     OBJGPU *pGpu = ENG_GET_GPU(pMemoryManager);
     NvU8 *pSrc;
     NvU8 *pDst;
@@ -536,6 +543,7 @@ memmgrMemSetWithTransferType
     NvU32             flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3063);
     OBJGPU *pGpu = ENG_GET_GPU(pMemoryManager);
     NvU8 *pDst;
 
@@ -595,6 +603,7 @@ memmgrMemWriteMapAndCopy
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3064);
     NvU8   *pDst = NULL;
     OBJGPU *pGpu = ENG_GET_GPU(pMemoryManager);
 
@@ -631,6 +640,7 @@ memmgrMemWriteInBlocks
     NvU32              blockSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3065);
     NV_STATUS  status    = NV_OK;
     OBJGPU    *pGpu      = ENG_GET_GPU(pMemoryManager);
     NvU64      remaining = size;
@@ -678,6 +688,7 @@ memmgrMemWriteWithTransferType
     NvU32             flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3066);
     NvU8 *pMapping = memdescGetKernelMapping(pDstInfo->pMemDesc);
     OBJGPU *pGpu = ENG_GET_GPU(pMemoryManager);
 
@@ -747,6 +758,7 @@ memmgrMemReadWithTransferType
     NvU32             flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3067);
     OBJGPU *pGpu = ENG_GET_GPU(pMemoryManager);
     NvU8   *pSrc;
     NvU8   *pMapping = memdescGetKernelMapping(pSrcInfo->pMemDesc);
@@ -799,6 +811,7 @@ memmgrMemReadWithTransferType
 
 NvU64 memUtilsLeastCommonAlignment(NvU64 align1, NvU64 align2)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3068);
     NvU64 a, b;  // For Euclid's algorithm
     NvU64 lcm;   // Least Common Multiple of align1 and align2
     NvU64 maxAlignment = NV_U64_MAX;
@@ -854,6 +867,7 @@ void memUtilsInitFBAllocInfo
     NvHandle hDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3069);
     pFbAllocInfo->pageFormat->type  = pAllocParams->type;
     pFbAllocInfo->owner             = pAllocParams->owner;
     pFbAllocInfo->hwResId           = 0;
@@ -902,6 +916,7 @@ memmgrMemUtilsGetMemDescFromHandle_IMPL
     NvHandle hMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3070);
     RsResourceRef *pMemoryRef;
     Memory        *pMemory;
 
@@ -937,6 +952,7 @@ memmgrMemCopy_IMPL
     NvU32             flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3071);
     TRANSFER_TYPE transferType = memmgrGetMemTransferType(pMemoryManager,
                                                           pDstInfo, pSrcInfo);
 
@@ -962,6 +978,7 @@ memmgrMemSet_IMPL
     NvU32             flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3072);
     TRANSFER_TYPE transferType = memmgrGetMemTransferType(pMemoryManager,
                                                           pDstInfo, NULL);
 
@@ -985,6 +1002,7 @@ memmgrMemDescMemSet_IMPL
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3073);
     TRANSFER_SURFACE transferSurface = {.offset = 0, .pMemDesc = pMemDesc};
     TRANSFER_TYPE    transferType = memmgrGetMemTransferType(pMemoryManager,
                                                              &transferSurface, NULL);
@@ -1013,6 +1031,7 @@ memmgrMemWrite_IMPL
     NvU32             flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3074);
     TRANSFER_TYPE transferType = memmgrGetMemTransferType(pMemoryManager,
                                                           pDstInfo, NULL);
 
@@ -1039,6 +1058,7 @@ memmgrMemRead_IMPL
     NvU32             flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3075);
     TRANSFER_TYPE transferType = memmgrGetMemTransferType(pMemoryManager,
                                                           NULL, pSrcInfo);
 
@@ -1062,6 +1082,7 @@ memmgrMemBeginTransfer_IMPL
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3076);
     TRANSFER_TYPE      transferType = memmgrGetMemTransferType(pMemoryManager,
                                                                pTransferInfo, NULL);
     MEMORY_DESCRIPTOR *pMemDesc     = pTransferInfo->pMemDesc;
@@ -1136,6 +1157,7 @@ memmgrMemEndTransfer_IMPL
     NvU32              flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3077);
     TRANSFER_TYPE      transferType = memmgrGetMemTransferType(pMemoryManager,
                                                                pTransferInfo, NULL);
     MEMORY_DESCRIPTOR *pMemDesc     = pTransferInfo->pMemDesc;
@@ -1195,6 +1217,7 @@ memmgrMemDescEndTransfer_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3078);
     if (pMemDesc == NULL)
     {
         return;
@@ -1218,6 +1241,7 @@ memmgrMemDescBeginTransfer_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3079);
     NV_ASSERT_OR_RETURN(pMemDesc != NULL, NULL);
     TRANSFER_SURFACE transferSurface = {.offset = 0, .pMemDesc = pMemDesc};
     return memmgrMemBeginTransfer(pMemoryManager, &transferSurface, memdescGetSize(pMemDesc), flags);
@@ -1239,6 +1263,7 @@ memmgrAllocResources_IMPL
     FB_ALLOC_INFO               *pFbAllocInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3080);
     NV_STATUS                    status        = NV_OK;
     NvU64                        alignment     = 0;
     NV_MEMORY_ALLOCATION_PARAMS *pVidHeapAlloc = pAllocRequest->pUserParams;
@@ -1432,6 +1457,7 @@ memUtilsAllocMemDesc
     NvBool                     *bAllocedMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3081);
     NV_STATUS status = NV_OK;
 
     //
@@ -1483,6 +1509,7 @@ memUtilsAllocMemDesc
 NV_STATUS
 memUtilsMemSetNoBAR2(OBJGPU *pGpu, PMEMORY_DESCRIPTOR pMemDesc, NvU8 value)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3082);
     KernelBus  *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     NvU8       *pMap  = NULL;
     void       *pPriv = NULL;
@@ -1584,6 +1611,7 @@ _memmgrMemUtilsScrubInitRegisterCallback
     OBJCHANNEL   *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3083);
     NV0005_ALLOC_PARAMETERS nv0005AllocParams;
     NV2080_CTRL_EVENT_SET_NOTIFICATION_PARAMS nv2080EventNotificationParams;
     NV_STATUS rmStatus;
@@ -1679,6 +1707,7 @@ _memmgrMemUtilsScrubInitScheduleChannel
     OBJCHANNEL   *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3084);
     NV_STATUS rmStatus;
     NVA06F_CTRL_GPFIFO_SCHEDULE_PARAMS nvA06fScheduleParams;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
@@ -1730,6 +1759,7 @@ memmgrMemUtilsChannelSchedulingSetup_IMPL
     OBJCHANNEL    *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3085);
     NvU32           classID;
     RM_ENGINE_TYPE  engineID;
     KernelFifo     *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);

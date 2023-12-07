@@ -96,6 +96,7 @@ static sysChildObject sysChildObjects[] =
 NV_STATUS
 sysConstruct_IMPL(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 90);
     NV_STATUS          status;
     OBJOS             *pOS;
     NvU32              sec = 0;
@@ -168,6 +169,7 @@ failed:
 void
 sysDestruct_IMPL(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 91);
     //
     // Any of these operations might fail but go ahead and
     // attempt to free remaining resources before complaining.
@@ -199,6 +201,7 @@ sysDestruct_IMPL(OBJSYS *pSys)
 static NV_STATUS
 _sysCreateChildObjects(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 92);
     NV_STATUS status = NV_OK;
     NvU32 i, n;
 
@@ -250,6 +253,7 @@ _sysCreateChildObjects(OBJSYS *pSys)
 static void
 _sysDeleteChildObjects(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 93);
     int i;
 
     osRmCapUnregister(&pSys->pOsRmCaps);
@@ -270,6 +274,7 @@ _sysRegistryOverrideResourceServer
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 94);
     NvU32 data32;
 
     // Set read-only API lock override
@@ -348,6 +353,7 @@ _sysRegistryOverrideExternalFabricMgmt
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 95);
     NvU32 data32;
 
     // Set external fabric management property
@@ -378,6 +384,7 @@ sysEnableExternalFabricMgmt_IMPL
     OBJSYS *pSys
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 96);
     pSys->setProperty(pSys, PDB_PROP_SYS_FABRIC_IS_EXTERNALLY_MANAGED, NV_TRUE);
 
     NV_PRINTF(LEVEL_INFO,
@@ -390,6 +397,7 @@ sysForceInitFabricManagerState_IMPL
     OBJSYS *pSys
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 97);
     //
     // We should only allow force init if there is not way to run fabric
     // manager. For example, HGX-2 virtualization use-case.
@@ -413,6 +421,7 @@ _sysNvSwitchDetection
     OBJSYS *pSys
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 98);
 
     if (osIsNvswitchPresent())
     {
@@ -432,6 +441,7 @@ _sysNvSwitchDetection
 static void
 _sysInitStaticConfig(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 99);
     portMemSet(&pSys->staticConfig, 0, sizeof(pSys->staticConfig));
     osInitSystemStaticConfig(&pSys->staticConfig);
 }
@@ -439,6 +449,7 @@ _sysInitStaticConfig(OBJSYS *pSys)
 NV_STATUS
 coreInitializeRm(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 100);
     NV_STATUS  status;
     OBJSYS    *pSys = NULL;
 
@@ -474,6 +485,7 @@ coreInitializeRm(void)
 void
 coreShutdownRm(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 101);
     OBJSYS *pSys = SYS_GET_INSTANCE();
 
     //
@@ -497,6 +509,7 @@ coreShutdownRm(void)
 NvS32
 RmInitRm(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 102);
     return (coreInitializeRm() == NV_OK);
 }
 
@@ -504,6 +517,7 @@ RmInitRm(void)
 NvS32
 RmDestroyRm(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 103);
     coreShutdownRm();
     return NV_TRUE;
 }
@@ -511,6 +525,7 @@ RmDestroyRm(void)
 static NV_STATUS
 _sysCreateOs(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 104);
     OBJOS      *pOS;
     NV_STATUS   status;
 
@@ -551,12 +566,14 @@ _sysCreateOs(OBJSYS *pSys)
 NV_STATUS
 sysCaptureState_IMPL(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 105);
     return NV_OK;
 }
 
 OBJOS*
 sysGetOs_IMPL(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 106);
     if (pSys->pOS)
         return pSys->pOS;
 
@@ -576,6 +593,7 @@ sysInitRegistryOverrides_IMPL
     OBJSYS         *pSys
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 107);
     OBJGPU         *pGpu      = NULL;
     NvU32           data32    = 0;
 
@@ -690,6 +708,7 @@ sysInitRegistryOverrides_IMPL
 void
 sysApplyLockingPolicy_IMPL(OBJSYS *pSys)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 108);
     g_resServ.bRouteToPhysicalLockBypass = pSys->getProperty(pSys, PDB_PROP_SYS_ROUTE_TO_PHYSICAL_LOCK_BYPASS);
     g_resServ.roTopLockApiMask = pSys->apiLockMask;
 }
@@ -701,6 +720,7 @@ sysSyncExternalFabricMgmtWAR_IMPL
     OBJGPU  *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 109);
     NV0000_CTRL_CMD_SYSTEM_SYNC_EXTERNAL_FABRIC_MGMT_PARAMS params;
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS  status = NV_OK;

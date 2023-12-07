@@ -104,6 +104,7 @@ static NV_STATUS _fbsrInitGsp
     OBJFBSR *pFbsr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2596);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvHandle       hSysMem        = NV01_NULL_OBJECT;
     RM_API        *pRmApi         = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -150,6 +151,7 @@ static NV_STATUS _fbsrMemoryCopy
     NvU64              size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2597);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvHandle       hVidMem        = NV01_NULL_OBJECT;
     RM_API        *pRmApi         = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -192,6 +194,7 @@ static NV_STATUS _fbsrMemoryCopy
 NV_STATUS
 fbsrInit_GM107(OBJGPU *pGpu, OBJFBSR *pFbsr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2598);
     NV_STATUS status;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
@@ -304,6 +307,7 @@ fbsrInit_GM107(OBJGPU *pGpu, OBJFBSR *pFbsr)
 void
 fbsrDestroy_GM107(OBJGPU *pGpu, OBJFBSR *pFbsr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2599);
     if (pFbsr->type == FBSR_TYPE_CPU ||
         pFbsr->type == FBSR_TYPE_WDDM_SLOW_CPU_PAGED ||
         pFbsr->type == FBSR_TYPE_FILE)
@@ -339,6 +343,7 @@ fbsrDestroy_GM107(OBJGPU *pGpu, OBJFBSR *pFbsr)
 NV_STATUS
 fbsrBegin_GM107(OBJGPU *pGpu, OBJFBSR *pFbsr, FBSR_OP_TYPE op)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2600);
     NV_STATUS status = NV_OK;
 
     pFbsr->op = op;
@@ -655,6 +660,7 @@ fbsrBegin_GM107(OBJGPU *pGpu, OBJFBSR *pFbsr, FBSR_OP_TYPE op)
 NV_STATUS
 fbsrEnd_GM107(OBJGPU *pGpu, OBJFBSR *pFbsr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2601);
     NvBool bIommuEnabled = pGpu->getProperty(pGpu, PDB_PROP_GPU_ENABLE_IOMMU_SUPPORT);
     NV_STATUS status = NV_OK;
 
@@ -796,6 +802,7 @@ fbsrEnd_GM107(OBJGPU *pGpu, OBJFBSR *pFbsr)
 void
 fbsrCopyMemoryMemDesc_GM107(OBJGPU *pGpu, OBJFBSR *pFbsr, MEMORY_DESCRIPTOR *pVidMemDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2602);
     NV_STATUS  status = NV_OK;
 
     NV_ASSERT(!gpumgrGetBcEnabledStatus(pGpu));

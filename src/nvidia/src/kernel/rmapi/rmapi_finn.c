@@ -46,6 +46,7 @@ serverSerializeCtrlDown
     NvU32 *flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5714);
     if (!(*flags & NVOS54_FLAGS_FINN_SERIALIZED))
     {
         NV_STATUS status;
@@ -125,6 +126,7 @@ serverDeserializeCtrlDown
     NvU32 *flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5715);
     if (*flags & NVOS54_FLAGS_FINN_SERIALIZED)
     {
         NV_STATUS status;
@@ -208,6 +210,7 @@ serverSerializeCtrlUp
     NvU32 *flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5716);
     //
     // We add NVOS54_FLAGS_FINN_SERIALIZED if the control can be serialized but wasn't in serverSerializeCtrlDown
     // We don't want to return a serialized buffer if one wasn't given to us in the first place
@@ -277,6 +280,7 @@ serverDeserializeCtrlUp
     NvU32 *flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5717);
     if (*flags & NVOS54_FLAGS_FINN_SERIALIZED)
     {
         NV_STATUS status;
@@ -340,6 +344,7 @@ serverSerializeAllocDown
     NvU32 *flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5718);
     const NvU32 interface_id = NV_RM_ALLOC_INTERFACE_INTERFACE_ID;
     const NvU32 message_id = classId;
     if (!(*flags & RMAPI_ALLOC_FLAGS_SERIALIZED))
@@ -409,6 +414,7 @@ serverDeserializeAllocDown
     NvU32 *flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5719);
     const NvU32 interface_id = NV_RM_ALLOC_INTERFACE_INTERFACE_ID;
     const NvU32 message_id = classId;
     if (*flags & RMAPI_ALLOC_FLAGS_SERIALIZED)
@@ -481,6 +487,7 @@ serverSerializeAllocUp
     NvU32 *flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5720);
     //
     // We add RMAPI_ALLOC_FLAGS_SERIALIZED if the alloc can be serialized but wasn't in serverSerializeAllocDown
     // We don't want to return a serialized buffer if one wasn't given to us in the first place
@@ -539,6 +546,7 @@ serverDeserializeAllocUp
     NvU32 *flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5721);
     const NvU32 interface_id = NV_RM_ALLOC_INTERFACE_INTERFACE_ID;
     const NvU32 message_id = classId;
     if (*flags & RMAPI_ALLOC_FLAGS_SERIALIZED)
@@ -597,6 +605,7 @@ serverFreeSerializeStructures
     void *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5722);
     if (pCallContext->pSerializedParams != pParams)
         portMemFree(pCallContext->pSerializedParams);
     if (pCallContext->pDeserializedParams != pParams)

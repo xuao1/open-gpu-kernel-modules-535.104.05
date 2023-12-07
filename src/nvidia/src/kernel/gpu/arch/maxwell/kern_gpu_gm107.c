@@ -46,6 +46,7 @@ gpuGetSriovCaps_GM107
     NV0080_CTRL_GPU_GET_SRIOV_CAPS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 333);
     pParams->bSriovEnabled = NV_FALSE;
     return NV_OK;
 }
@@ -60,6 +61,7 @@ gpuFuseSupportsDisplay_GM107
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 334);
     return GPU_FLD_TEST_DRF_DEF(pGpu, _FUSE, _STATUS_OPT_DISPLAY, _DATA, _ENABLE);
 }
 
@@ -80,6 +82,7 @@ gpuReadBusConfigRegEx_GM107
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 335);
 
     if (index > (PCIE_CONFIG_SPACE_SIZE - sizeof(NvU32)))
     {
@@ -110,6 +113,7 @@ gpuReadBusConfigReg_GM107
     NvU32  *data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 336);
     return gpuReadBusConfigRegEx_HAL(pGpu, index, data, NULL);
 }
 
@@ -128,6 +132,7 @@ gpuWriteBusConfigReg_GM107
     NvU32   value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 337);
 
     if (index > (PCIE_CONFIG_SPACE_SIZE - sizeof(NvU32)))
     {
@@ -152,6 +157,7 @@ gpuReadFunctionConfigReg_GM107
     NvU32  *data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 338);
     NvU32  retval;
 
     if (index > (PCIE_CONFIG_SPACE_SIZE - sizeof(NvU32)))
@@ -207,6 +213,7 @@ gpuWriteFunctionConfigReg_GM107
     NvU32   data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 339);
     return gpuWriteFunctionConfigRegEx_HAL(pGpu, function, index, data,
                                            NULL /* threadstate */);
 }
@@ -221,6 +228,7 @@ gpuWriteFunctionConfigRegEx_GM107
     THREAD_STATE_NODE *pThreadState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 340);
     if (index > (PCIE_CONFIG_SPACE_SIZE - sizeof(NvU32)))
     {
         NV_PRINTF(LEVEL_ERROR, "Offset 0x%08x exceeds range!\n", index);
@@ -266,6 +274,7 @@ gpuReadDeviceId_GM107
     NvU32  *ssId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 341);
     if (devId == NULL || ssId == NULL) return;
 
     *devId = GPU_REG_RD32(pGpu, DEVICE_BASE(NV_PCFG) + NV_XVE_ID);
@@ -287,6 +296,7 @@ gpuHandleSanityCheckRegReadError_GM107
     NvU32 value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 342);
 #if NV_PRINTF_ENABLED
     //
     // Read the interrupt status using the direct OS reg read call so we don't recurs
@@ -319,6 +329,7 @@ gpuHandleSanityCheckRegReadError_GM107
 void
 gpuGetIdInfo_GM107(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 343);
     NvU32 data;
 
     if (NV_OK != GPU_BUS_CFG_RD32(pGpu, NV_XVE_REV_ID, &data))
@@ -473,6 +484,7 @@ gpuChildOrderList_GM200[] =
 const GPUCHILDORDER *
 gpuGetChildrenOrder_GM200(OBJGPU *pGpu, NvU32 *pNumEntries)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 344);
     *pNumEntries = NV_ARRAY_ELEMENTS(gpuChildOrderList_GM200);
     return gpuChildOrderList_GM200;
 }
@@ -518,6 +530,7 @@ static const GPUCHILDPRESENT gpuChildrenPresent_GM200[] =
 const GPUCHILDPRESENT *
 gpuGetChildrenPresent_GM200(OBJGPU *pGpu, NvU32 *pNumEntries)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 345);
     *pNumEntries = NV_ARRAY_ELEMENTS(gpuChildrenPresent_GM200);
     return gpuChildrenPresent_GM200;
 }
@@ -546,6 +559,7 @@ gpuDetectSliLinkFromGpus_GK104
     NvU32  *pVidLinkCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 346);
     NvU32       i;
     NvU32       sliLinkOutputMask[SLI_MAX_BRIDGE_TYPES] = {0, 0};
     NvBool      bSliLinkCircular[SLI_MAX_BRIDGE_TYPES]  = {NV_FALSE, NV_FALSE};

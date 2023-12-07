@@ -48,6 +48,7 @@ kdispGetChannelNum_v03_00
     NvU32 *pChannelNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 910);
     NV_STATUS status = NV_ERR_INVALID_ARGUMENT;
 
     if (pChannelNum == NULL)
@@ -143,6 +144,7 @@ kdispGetDisplayCapsBaseAndSize_v03_00
     NvU32         *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 911);
     if (pOffset)
     {
         // Tegra offsets needs to be subtracted with -0x610000.
@@ -173,6 +175,7 @@ kdispGetDisplaySfUserBaseAndSize_v03_00
     NvU32         *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 912);
     if (pOffset)
     {
         // Tegra offsets needs to be subtracted with -0x610000.
@@ -209,6 +212,7 @@ kdispGetDisplayChannelUserBaseAndSize_v03_00
     NvU32         *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 913);
     NvU32 dispChannelNum;
     NV_STATUS status;
 
@@ -270,6 +274,7 @@ kdispSelectClass_v03_00_KERNEL
     NvU32 swClass
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 914);
     if (!gpuIsClassSupported(pGpu, swClass))
     {
         NV_PRINTF(LEVEL_ERROR, "class %x not supported\n", swClass);
@@ -300,6 +305,7 @@ kdispReadRgLineCountAndFrameCount_v03_00_KERNEL
     NvU32         *pFrameCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 915);
     NvU32 data32;
 
     if (head >= kdispGetNumHeads(pKernelDisplay))
@@ -332,6 +338,7 @@ kdispRestoreOriginalLsrMinTime_v03_00
     NvU32    origLsrMinTime
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 916);
     NvU32 feFliplock;
 
     feFliplock = GPU_REG_RD32(pGpu, NV_PDISP_FE_FLIPLOCK);
@@ -362,6 +369,7 @@ kdispSetSwapBarrierLsrMinTime_v03_00
     NvU32    newLsrMinTime
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 917);
     NvU32    dsiFliplock;
 
     dsiFliplock = GPU_REG_RD32(pGpu, NV_PDISP_FE_FLIPLOCK);

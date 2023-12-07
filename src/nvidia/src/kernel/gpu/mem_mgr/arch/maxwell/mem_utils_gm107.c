@@ -97,6 +97,7 @@ _memUtilsAllocateReductionSema
     OBJCHANNEL    *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2634);
 
     NV_MEMORY_ALLOCATION_PARAMS memAllocParams;
     NV_STATUS                   rmStatus;
@@ -211,6 +212,7 @@ _memUtilsChannelAllocatePB_GM107
     //  OBJMEMUTILS *to be added here
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2635);
     NV_STATUS                   rmStatus = NV_OK;
     NV_MEMORY_ALLOCATION_PARAMS memAllocParams;
     NvHandle                    hDevice;
@@ -389,6 +391,7 @@ memmgrMemUtilsChannelInitialize_GM107
     OBJCHANNEL    *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2636);
     NV_STATUS         rmStatus;
     NV_STATUS         lockStatus;
     RsClient         *pRsClient;
@@ -970,6 +973,7 @@ memmgrMemUtilsCreateMemoryAlias_GM107
     OBJCHANNEL    *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2637);
     RM_API  *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     NV_STATUS status = NV_OK;
 
@@ -1006,6 +1010,7 @@ memmgrMemUtilsCopyEngineInitialize_GM107
     OBJCHANNEL    *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2638);
     NV_STATUS rmStatus = NV_OK;
     RM_API   *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
@@ -1043,6 +1048,7 @@ static NV_STATUS _memUtilsGetCe_GM107
     KernelCE **ppKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2639);
     KernelCE  *pKCe       = NULL;
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     NV_STATUS  status     = NV_OK;
@@ -1097,6 +1103,7 @@ static NV_STATUS _memUtilsAllocCe_GM107
 
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2640);
     KernelCE *pKCe = NULL;
     NVC0B5_ALLOCATION_PARAMETERS  createParams;
     RM_API                       *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
@@ -1142,6 +1149,7 @@ _memUtilsMapUserd_GM107
     NvBool         bUseRmApiForBar1
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2641);
     //
     // The memTransfer API only works for client-allocated USERD
     // because otherwise we are calling MapToCpu using the channel
@@ -1193,6 +1201,7 @@ _memUtilsAllocateUserD
     OBJCHANNEL    *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2642);
     NV_STATUS                    rmStatus = NV_OK;
     KernelFifo                  *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     RM_API                      *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
@@ -1262,6 +1271,7 @@ _memUtilsAllocateChannel
     OBJCHANNEL    *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2643);
     NV_CHANNEL_ALLOC_PARAMS channelGPFIFOAllocParams;
     NV_STATUS               rmStatus =  NV_OK;
     NvU32                   hClass;
@@ -1390,6 +1400,7 @@ memmgrMemUtilsMemSet_GM107
     NvU32         *pNumBlocks
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2644);
     NvU32 blocksPushed = 0;
 
     if ((size % pChannel->minBlockSize) != 0)
@@ -1449,6 +1460,7 @@ memmgrMemUtilsMemSetBlocking_GM107
     NvU64          size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2645);
     NvU32 blocksPushed = 0;
 
     if((size % pChannel->minBlockSize) != 0)
@@ -1526,6 +1538,7 @@ memmgrMemUtilsMemSetBatched_GM107
     NvU64          size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2646);
     NvU32 blocksPushed = 0;
 
     NV_ASSERT_OR_RETURN(pChannel->pbCpuVA != NULL, NV_ERR_GENERIC);
@@ -1607,6 +1620,7 @@ memmgrMemUtilsMemCopyBatched_GM107
     NvU64            size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2647);
     NV_ASSERT_OR_RETURN(pChannel->pbCpuVA != NULL, NV_ERR_GENERIC);
     NV_ASSERT_OR_RETURN(pChannel->pControlGPFifo != NULL, NV_ERR_GENERIC);
 
@@ -1683,6 +1697,7 @@ memmgrMemUtilsAllocateEccScrubber_GM107
     OBJCHANNEL    *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2648);
     memmgrMemUtilsChannelInitialize_HAL(pGpu, pMemoryManager, pChannel);
 
     memmgrMemUtilsCopyEngineInitialize_HAL(pGpu, pMemoryManager, pChannel);
@@ -1707,6 +1722,7 @@ memmgrMemUtilsAllocateEccAllocScrubber_GM107
     OBJCHANNEL    *pChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2649);
     OBJSCRUB                   *pEccTD           = &pMemoryManager->eccScrubberState;
     OBJCHANNEL                 *pEccSyncChannel  = &pEccTD->allocationScrubberState;
     OBJCHANNEL                 *pEccAsyncChannel = &pEccTD->tdHeapState;
@@ -1784,6 +1800,7 @@ memmgrMemUtilsAllocateEccAllocScrubber_GM107
 static NvU32
 _getSpaceInPb(OBJCHANNEL *pChannel)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2650);
     NvU32 filledSpace;
     NvU32 avlblSpace;
 
@@ -1837,6 +1854,7 @@ _ceChannelScheduleBatchWork_GM107
     NvBool           bMemcopy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2651);
     NvU32  spaceInPb;
     NvU32  bytesPushed;
     NvU32 *ptr;
@@ -1928,6 +1946,7 @@ _ceChannelScheduleWork_GM107
     NvBool           bMemcopy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2652);
     RMTIMEOUT        timeout;
     NvU32            spaceInPb;
     NvU32            numBytes;
@@ -2066,6 +2085,7 @@ _checkSynchronization
     NvU32          block
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2653);
     NvU32 blockSema;
 
     if (!pChannel->isChannelSynchronized)
@@ -2108,6 +2128,7 @@ _ceChannelUpdateGpFifo_GM107
 
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2654);
     RMTIMEOUT        timeout;
     NvU32            GPPut;
     NvU32            GPGet;
@@ -2239,6 +2260,7 @@ _ceChannelPushMethodAperture_GM107
     NvU32          **pPtr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2655);
     NvU32 *ptr  = *pPtr;
     NvU32  data = 0;
 
@@ -2297,6 +2319,7 @@ _ceChannelPushMethodsBlock_GM107
     NvBool           bMemcopy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2656);
     NvU32  launchParams       = 0;
     NvU32 *ptr                = *pPtr;
     NvU32 *pStartPtr          = ptr;
@@ -2500,6 +2523,7 @@ memmgrMemUtilsGetCopyEngineClass_GM107
     NvU32         *pClass
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2657);
     NV_STATUS status;
     NvU32 numClasses;
     NvU32 *pClassList = NULL;

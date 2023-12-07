@@ -41,6 +41,7 @@ dispobjCtrlCmdEventSetTrigger_IMPL
     DispObject *pDispObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 949);
     OBJGPU        *pGpu = DISPAPI_GET_GPU(pDispObject);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
 
@@ -56,6 +57,7 @@ dispobjCtrlCmdEventSetMemoryNotifies_IMPL
     NV5070_CTRL_EVENT_SET_MEMORY_NOTIFIES_PARAMS *pSetMemoryNotifiesParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 950);
     OBJGPU        *pGpu = DISPAPI_GET_GPU(pDispObject);
     DisplayApi    *pDisplayApi = staticCast(pDispObject, DisplayApi);
     RsClient      *pClient = RES_GET_CLIENT(pDispObject);
@@ -169,6 +171,7 @@ dispobjCtrlCmdGetRgConnectedLockpinStateless_IMPL
     NV5070_CTRL_GET_RG_CONNECTED_LOCKPIN_STATELESS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 951);
     OBJGPU         *pGpu = DISPAPI_GET_GPU(pDispObject);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvHandle        hClient = RES_GET_CLIENT_HANDLE(pDispObject);

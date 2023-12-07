@@ -46,6 +46,7 @@ kfifoValidateSCGTypeAndRunqueue_GP102
     NvU32       runqueue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1398);
     if (scgType == NV_PPBDMA_SET_CHANNEL_INFO_SCG_TYPE_COMPUTE1 &&
         runqueue == 0)
     {
@@ -77,6 +78,7 @@ kfifoValidateEngineAndRunqueue_GP102
     NvU32       runqueue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1399);
     NvBool bIsGrCe = NV_FALSE;
     switch (runqueue)
     {
@@ -135,6 +137,7 @@ kfifoValidateEngineAndSubctxType_GP102
     NvU32       subctxType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1400);
     NvBool bIsGrCe = NV_FALSE;
     switch (subctxType)
     {
@@ -183,6 +186,7 @@ _kfifoIsValidCETag_GP102
     NvU32 ceEngineTag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1401);
     NvU32 ceRunlist    = 0;
     NvU32 *pCePbdmaIds;
     NvU32 numCePbdmaIds;

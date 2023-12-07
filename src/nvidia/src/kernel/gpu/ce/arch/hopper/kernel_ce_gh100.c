@@ -160,6 +160,7 @@ kceGetPce2lceConfigSize1_GH100
     KernelCE *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 754);
     return NV_CE_PCE2LCE_CONFIG__SIZE_1;
 }
 
@@ -174,6 +175,7 @@ kceGetNumPceRequired
     NvU32 numLinks
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 755);
     switch(numLinks)
     {
         case 6:
@@ -216,6 +218,7 @@ kceGetAutoConfigTableEntry_GH100
     NvU32                   *pExposeCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 756);
     NvU32 i;
 
     //
@@ -267,6 +270,7 @@ _ceGetAlgorithmPceIndex
     NvU8       *pHshubId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 757);
     NvU8 pHshubIdRequested;
     NvU32 i;
 
@@ -329,6 +333,7 @@ kceMapPceLceForC2C_GH100
     NvU32   *pLocalExposeCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 758);
     NV_STATUS status     = NV_OK;
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
     NvU32     pceIndex, i, hshubId, lceMask, lceIndex;
@@ -412,6 +417,7 @@ kceIsGenXorHigherSupported_GH100
     NvU32     checkGen
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 759);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJCL      *pCl = SYS_GET_CL(pSys);
     NvU8       genSpeed = 0;
@@ -464,6 +470,7 @@ kceMapPceLceForGRCE_GH100
     NvU32   fbPceMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 760);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
     NvU32     grceIdx, pceIndex, i;
     NvU32     lceIndex = 0;
@@ -591,6 +598,7 @@ kceMapPceLceForNvlinkPeers_GH100
     NvU32   *pLocalExposeCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 761);
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
     OBJSYS       *pSys          = SYS_GET_INSTANCE();
     NV_STATUS     status        = NV_OK;
@@ -783,6 +791,7 @@ kceMapAsyncLceDefault_GH100
     NvU32   numDefaultPces
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 762);
     NvU32 peerAvailableLceMask = NV_CE_LCE_MASK_INIT;
     NvU32 lceMask = 0;
     NvU32 pceMask = 0;
@@ -847,6 +856,7 @@ kceGetMappings_GH100
     NvU32    *pExposeCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 763);
     NV_STATUS    status         = NV_OK;
     NV_STATUS    statusC2C      = NV_OK;
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);

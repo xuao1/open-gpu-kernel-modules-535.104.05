@@ -206,6 +206,7 @@ allocUpstreamTopPool
     POOLALLOC_HANDLE *pPage
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4673);
     PMA_ALLOCATION_OPTIONS      allocOptions = {0};
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pMemReserveInfo;
     NV_STATUS                   status;
@@ -261,6 +262,7 @@ allocUpstreamLowerPools
     POOLALLOC_HANDLE *pPage
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4674);
     NV_STATUS status;
 
     NV_ASSERT_OR_RETURN(NULL != pCtx, NV_ERR_INVALID_ARGUMENT);
@@ -290,6 +292,7 @@ freeUpstreamTopPool
     POOLALLOC_HANDLE *pPage
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4675);
     NvU32 flags = 0;
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pMemReserveInfo;
 
@@ -326,6 +329,7 @@ freeUpstreamLowerPools
     POOLALLOC_HANDLE *pPage
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4676);
     NV_ASSERT_OR_RETURN_VOID(NULL != pCtx);
     NV_ASSERT_OR_RETURN_VOID(NULL != pPage);
 
@@ -346,6 +350,7 @@ rmMemPoolAddRef
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pMemReserveInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4677);
     NV_ASSERT_OR_RETURN_VOID(NULL != pMemReserveInfo);
 
     pMemReserveInfo->validAllocCount++;
@@ -365,6 +370,7 @@ rmMemPoolRemoveRef
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pMemReserveInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4678);
     NV_ASSERT_OR_RETURN_VOID(NULL != pMemReserveInfo);
     NV_ASSERT_OR_RETURN_VOID(pMemReserveInfo->validAllocCount > 0);
 
@@ -384,6 +390,7 @@ rmMemPoolGetRef
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pMemReserveInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4679);
     NV_ASSERT_OR_RETURN(NULL != pMemReserveInfo, 0);
 
     return pMemReserveInfo->validAllocCount;
@@ -399,6 +406,7 @@ rmMemPoolSetup
     POOL_CONFIG_MODE                  configMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4680);
     NvS32                       poolIndex;
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pMemReserveInfo;
     NV_STATUS                   status;
@@ -528,6 +536,7 @@ rmMemPoolReserve
     NvU32                        flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4681);
     NvU64     numChunks;
     NV_STATUS status = NV_ERR_NO_MEMORY;
     NvBool bPrevSkipScrubState = NV_FALSE;
@@ -567,6 +576,7 @@ rmMemPoolAllocate
     RM_POOL_ALLOC_MEMDESC          *pPoolMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4682);
     POOLALLOC_HANDLE   *pPageHandle = NULL;
     PoolPageHandleList *pPageHandleList = NULL;
     NvS32               poolIndex = 0;
@@ -752,6 +762,7 @@ rmMemPoolTrim
     NvU32                           flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4683);
     NvBool bPrevSkipScrubState = NV_FALSE;
 
     NV_ASSERT_OR_RETURN_VOID(NULL != pMemReserveInfo);
@@ -779,6 +790,7 @@ rmMemPoolFree
     NvU32                           flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4684);
     MEMORY_DESCRIPTOR     *pMemDesc = (MEMORY_DESCRIPTOR*)pPoolAllocMemDesc;
     NvS32                  poolIndex = 0;
     NvU64                  allocSize;
@@ -855,6 +867,7 @@ rmMemPoolRelease
     NvU32                           flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4685);
     NvS32 poolIndex;
     NvU32 freeListLength;
     NvU32 partialListLength;
@@ -920,6 +933,7 @@ rmMemPoolDestroy
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pMemReserveInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4686);
     NvS32 poolIndex;
     NvU32 freeListLength;
     NvU32 partialListLength;
@@ -965,6 +979,7 @@ rmMemPoolIsScrubSkipped
     RM_POOL_ALLOC_MEM_RESERVE_INFO *pMemReserveInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4687);
     NV_ASSERT_OR_RETURN(pMemReserveInfo != NULL, NV_FALSE);
     return pMemReserveInfo->bSkipScrub;
 }
@@ -976,6 +991,7 @@ rmMemPoolSkipScrub
     NvBool bSkipScrub
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4688);
     NV_ASSERT_OR_RETURN_VOID(pMemReserveInfo != NULL);
     pMemReserveInfo->bSkipScrub = bSkipScrub;
 }
@@ -989,6 +1005,7 @@ rmMemPoolGetChunkAndPageSize
     NvU64 *pPageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4689);
     NV_ASSERT_OR_RETURN(pMemReserveInfo != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN((pChunkSize != NULL) && (pPageSize != NULL), NV_ERR_INVALID_ARGUMENT);
     *pChunkSize = pMemReserveInfo->pmaChunkSize;
@@ -1003,6 +1020,7 @@ rmMemPoolAllocateProtectedMemory
     NvBool bProtected
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4690);
     NV_ASSERT_OR_RETURN_VOID(pMemReserveInfo != NULL);
     pMemReserveInfo->bProtected = bProtected;
 }

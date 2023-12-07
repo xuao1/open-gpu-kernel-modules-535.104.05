@@ -63,6 +63,7 @@ gpuacctConstruct_IMPL
     GpuAccounting *pGpuAcct
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 141);
     NV_STATUS status = NV_OK;
 
     status = gpuacctInitState(pGpuAcct);
@@ -83,6 +84,7 @@ gpuacctInitDataStore
     GPU_ACCT_PROC_DATA_STORE *pDS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 142);
     NV_STATUS status = NV_OK;
 
     mapInitIntrusive(&pDS->procMap);
@@ -106,6 +108,7 @@ static NV_STATUS gpuacctInitState
     GpuAccounting *pGpuAcct
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 143);
     NV_STATUS status = NV_OK;
     NvU32 i, j;
 
@@ -154,6 +157,7 @@ gpuacctCleanupDataStore
     GPU_ACCT_PROC_DATA_STORE *pDS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 144);
     NV_ASSERT_OR_RETURN(pDS != NULL, NV_ERR_INVALID_ARGUMENT);
 
     for (GPU_ACCT_PROC_LISTIter iter = listIterAll(&pDS->procList);
@@ -183,6 +187,7 @@ gpuacctDestroyDataStore
     GPU_ACCT_PROC_DATA_STORE *pDS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 145);
     NV_STATUS status = gpuacctCleanupDataStore(pDS);
 
     NV_ASSERT_OR_RETURN(status == NV_OK, status);
@@ -203,6 +208,7 @@ void gpuacctDestruct_IMPL
     GpuAccounting *pGpuAcct
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 146);
     NvU32 i;
 
     for (i = 0; i < NV0000_CTRL_GPU_MAX_ATTACHED_GPUS; i++)
@@ -235,6 +241,7 @@ gpuacctAllocProcEntry
     GPUACCT_PROC_ENTRY **ppEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 147);
     GPUACCT_PROC_ENTRY *pEntry;
     NV_STATUS status;
 
@@ -283,6 +290,7 @@ gpuacctFreeProcEntry
     GPUACCT_PROC_ENTRY *pEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 148);
     NV_STATUS status = gpuacctRemoveProcEntry(pDS, pEntry);
 
     NV_ASSERT_OR_RETURN(status == NV_OK, status);
@@ -310,6 +318,7 @@ gpuacctLookupProcEntry
     GPUACCT_PROC_ENTRY **ppEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 149);
     NV_ASSERT_OR_RETURN(ppEntry != NULL, NV_ERR_INVALID_ARGUMENT);
     *ppEntry = NULL;
 
@@ -334,6 +343,7 @@ gpuacctRemoveProcEntry
     GPUACCT_PROC_ENTRY *pEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 150);
     NV_ASSERT_OR_RETURN(pDS != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(pEntry != NULL, NV_ERR_INVALID_ARGUMENT);
 
@@ -361,6 +371,7 @@ gpuacctAddProcEntry
     NvBool isLiveProcEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 151);
     NvU32 maxProcLimit;
     GPUACCT_PROC_ENTRY *pOldEntry;
 
@@ -480,6 +491,7 @@ gpuacctSampleGpuUtil
     TMR_EVENT *pTmrEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 152);
     GPUACCT_GPU_INSTANCE_INFO *pGpuInstanceInfo = pTmrEvent->pUserData;
     NV2080_CTRL_PERF_GET_GPUMON_PERFMON_UTIL_SAMPLES_V2_PARAMS *pParams;
     NV_STATUS status;
@@ -546,6 +558,7 @@ gpuacctProcessGpuUtil
     NV2080_CTRL_PERF_GPUMON_PERFMON_UTIL_SAMPLE *pUtilSampleBuffer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 153);
     GPUACCT_PROC_ENTRY *pEntry;
     NV_STATUS status = NV_OK;
     NvU64 maxTimeStamp = 0;
@@ -651,6 +664,7 @@ gpuacctStartGpuAccounting_IMPL
     NvU32 subPid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 154);
     OBJGPU *pGpu;
     NvU32 vmIndex;
     NvU32 searchPid;
@@ -757,6 +771,7 @@ gpuacctStopGpuAccounting_IMPL
     NvU32 subPid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 155);
     OBJGPU *pGpu;
     GPUACCT_GPU_INSTANCE_INFO *pGpuInstanceInfo;
     GPU_ACCT_PROC_DATA_STORE *pLiveDS;
@@ -910,6 +925,7 @@ gpuacctUpdateProcPeakFbUsage_IMPL
     NvU64 fbUsage
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 156);
     GPUACCT_PROC_ENTRY *pEntry;
     GPU_ACCT_PROC_DATA_STORE *pDS = NULL;
     NV_STATUS status;
@@ -989,6 +1005,7 @@ gpuacctSetProcType_IMPL
     NvU32 procType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 157);
     OBJGPU *pGpu;
     GPUACCT_PROC_ENTRY *pEntry;
     GPU_ACCT_PROC_DATA_STORE *pDS = NULL;
@@ -1065,6 +1082,7 @@ gpuacctGetProcAcctInfo_IMPL
     NV0000_CTRL_GPUACCT_GET_PROC_ACCOUNTING_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 158);
     GPUACCT_PROC_ENTRY *pEntry;
     GPU_ACCT_PROC_DATA_STORE *pDS = NULL;
     NV_STATUS status;
@@ -1210,6 +1228,7 @@ gpuacctGetAcctPids_IMPL
     NV0000_CTRL_GPUACCT_GET_ACCOUNTING_PIDS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 159);
     GPUACCT_PROC_ENTRY *pEntry;
     GPU_ACCT_PROC_LIST *pList;
     OBJGPU *pGpu;
@@ -1325,6 +1344,7 @@ gpuacctGetAccountingMode_IMPL
     NV0000_CTRL_GPUACCT_GET_ACCOUNTING_STATE_PARAMS *pGetAcctModeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 160);
     OBJGPU *pGpu;
     NvU32 vmPid = NV_INVALID_VM_PID;
     NvBool bVgpuOnGspEnabled;
@@ -1392,6 +1412,7 @@ gpuacctStartTimerCallbacks
     GPUACCT_GPU_INSTANCE_INFO *pGpuInstanceInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 161);
     OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
     NV_STATUS status = NV_OK;
 
@@ -1448,6 +1469,7 @@ gpuacctStopTimerCallbacks
     GPUACCT_GPU_INSTANCE_INFO *pGpuInstanceInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 162);
     OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
 
     if (IS_GSP_CLIENT(pGpu))
@@ -1483,6 +1505,7 @@ gpuacctEnableAccounting_IMPL
     NV0000_CTRL_GPUACCT_SET_ACCOUNTING_STATE_PARAMS *pSetAcctModeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 163);
     OBJGPU *pGpu;
     GPUACCT_GPU_INSTANCE_INFO *pGpuInstanceInfo;
     NV_STATUS status = NV_OK;
@@ -1561,6 +1584,7 @@ gpuacctDisableAccounting_IMPL
     NV0000_CTRL_GPUACCT_SET_ACCOUNTING_STATE_PARAMS *pSetAcctModeParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 164);
     GPU_ACCT_PROC_DATA_STORE *pDS = NULL;
     OBJGPU *pGpu;
     NvU32 vmPid = NV_INVALID_VM_PID;
@@ -1641,6 +1665,7 @@ gpuacctClearAccountingData_IMPL
     NV0000_CTRL_GPUACCT_CLEAR_ACCOUNTING_DATA_PARAMS *pClearAcctDataParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 165);
     OBJGPU *pGpu;
     NvU32 vmPid = NV_INVALID_VM_PID;
     GPUACCT_GPU_INSTANCE_INFO *gpuInstanceInfo = &pGpuAcct->gpuInstanceInfo[gpuInstance];
@@ -1689,6 +1714,7 @@ static NvU64 gpuacctGetCurrTime
      void
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 166);
     NvU64 currTime = 0x00000000ffffffff;
     NvU32 currTimeHi, currTimeLo;
     osGetCurrentTime(&currTimeHi, &currTimeLo);
@@ -1707,6 +1733,7 @@ static NvU64 gpuacctGetCurrTime
 static void
 _vmAcctDestroyDataStore(GPUACCT_VM_INSTANCE_INFO *pVMInstanceInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 167);
     if (pVMInstanceInfo == NULL)
     {
         return;
@@ -1728,6 +1755,7 @@ _vmAcctDestroyDataStore(GPUACCT_VM_INSTANCE_INFO *pVMInstanceInfo)
 static NV_STATUS
 vmAcctInitDataStore(GPUACCT_VM_INSTANCE_INFO *vmInstanceInfo)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 168);
     NV_STATUS status;
 
     if (vmInstanceInfo == NULL)
@@ -1762,6 +1790,7 @@ vmAcctInitDataStore(GPUACCT_VM_INSTANCE_INFO *vmInstanceInfo)
 void
 vmAcctInitState(OBJGPU *pGpu, NvU32 vmPid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 169);
     NvU32 vmIndex;
     NvU32 targetVMIndex;
     NvBool vmInstanceFound;
@@ -1828,6 +1857,7 @@ vmAcctInitState(OBJGPU *pGpu, NvU32 vmPid)
 void
 vmAcctDestructState(NvU32 vmPid, OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 170);
     GpuAccounting *pGpuAcct;
     NvU32 vmIndex;
 

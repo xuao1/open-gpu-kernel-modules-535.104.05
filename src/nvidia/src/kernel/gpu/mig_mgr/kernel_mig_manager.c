@@ -74,6 +74,7 @@ kmigmgrIncRefCount_IMPL
     RsShared *pShared
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3403);
     NvS32 refCount;
 
     NV_ASSERT_OR_RETURN(pShared != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -95,6 +96,7 @@ kmigmgrDecRefCount_IMPL
     RsShared *pShared
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3404);
     NvS32 refCount;
 
     NV_ASSERT_OR_RETURN(pShared != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -115,6 +117,7 @@ kmigmgrMakeGIReference_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3405);
     MIG_INSTANCE_REF ref = { pKernelMIGGpuInstance, NULL };
     return ref;
 }
@@ -127,6 +130,7 @@ kmigmgrMakeCIReference_IMPL
     MIG_COMPUTE_INSTANCE *pMIGComputeInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3406);
     MIG_INSTANCE_REF ref = { pKernelMIGGpuInstance, pMIGComputeInstance };
     return ref;
 }
@@ -135,6 +139,7 @@ kmigmgrMakeCIReference_IMPL
 MIG_INSTANCE_REF
 kmigmgrMakeNoMIGReference_IMPL(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3407);
     MIG_INSTANCE_REF ref = { NULL, NULL };
     return ref;
 }
@@ -146,6 +151,7 @@ kmigmgrIsInstanceAttributionIdValid_IMPL
     NvU16 id
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3408);
     return (((id / KMIGMGR_MAX_GPU_SWIZZID) <= KMIGMGR_MAX_GPU_INSTANCES) &&
             ((id % KMIGMGR_MAX_GPU_SWIZZID) <= KMIGMGR_MAX_COMPUTE_INSTANCES));
 }
@@ -157,6 +163,7 @@ kmigmgrIsMIGReferenceValid_IMPL
     MIG_INSTANCE_REF *pRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3409);
     // Invalid argument
     NV_CHECK_OR_RETURN(LEVEL_SILENT, pRef != NULL, NV_FALSE);
     // Invalid argument
@@ -181,6 +188,7 @@ kmigmgrAreMIGReferencesSame_IMPL
     MIG_INSTANCE_REF *pRefB
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3410);
     NV_CHECK_OR_RETURN(LEVEL_SILENT, kmigmgrIsMIGReferenceValid(pRefA) &&
                        kmigmgrIsMIGReferenceValid(pRefB), NV_FALSE);
 
@@ -207,6 +215,7 @@ kmigmgrCountEnginesOfType_IMPL
     RM_ENGINE_TYPE rmEngineType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3411);
     NV_RANGE range = rangeMake(rmEngineType, rmEngineType);
     ENGTYPE_BIT_VECTOR mask;
 
@@ -252,6 +261,7 @@ kmigmgrGetAttributionIdFromMIGReference_IMPL
     MIG_INSTANCE_REF ref
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3412);
     NvU16 giID = KMIGMGR_MAX_GPU_SWIZZID;
     NvU16 ciID = KMIGMGR_MAX_COMPUTE_INSTANCES;
 
@@ -293,6 +303,7 @@ kmigmgrEngineTypeXlate_IMPL
     RM_ENGINE_TYPE *pDstEngineType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3413);
     RM_ENGINE_TYPE tempSrcEngineType;
     RM_ENGINE_TYPE tempDstEngineType;
     NvBool bFound;
@@ -363,6 +374,7 @@ kmigmgrAllocateInstanceEngines_IMPL
     ENGTYPE_BIT_VECTOR *pAllocatableEngines
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3414);
     NvU32 allocated = 0;
     ENGTYPE_BIT_VECTOR engines;
     RM_ENGINE_TYPE rmEngineType;
@@ -449,6 +461,7 @@ kmigmgrGetLocalEngineMask_IMPL
     ENGTYPE_BIT_VECTOR *pLocalEngineMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3415);
     NV_RANGE range;
     NvU32 count;
     bitVectorClrAll(pLocalEngineMask);
@@ -504,6 +517,7 @@ kmigmgrAllocGPUInstanceHandles_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3416);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     NvHandle hSubscription = NV01_NULL_OBJECT;
     NvHandle hClient;
@@ -536,6 +550,7 @@ kmigmgrFreeGPUInstanceHandles_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3417);
     if (pKernelMIGGpuInstance->instanceHandles.hClient != NV01_NULL_OBJECT)
     {
         RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
@@ -557,6 +572,7 @@ kmigmgrIsGPUInstanceReadyToBeDestroyed_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3418);
     NvS32 targetRefCount;
     NvS32 actualRefCount;
 
@@ -597,6 +613,7 @@ kmigmgrConstructEngine_IMPL
     ENGDESCRIPTOR    engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3419);
     NvU32 GIIdx;
     KERNEL_MIG_MANAGER_PRIVATE_DATA *pPrivate;
 
@@ -625,6 +642,7 @@ kmigmgrDestruct_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3420);
     NvU32 GIIdx;
     NvU32 CIIdx;
 
@@ -682,6 +700,7 @@ _kmigmgrHandlePostSchedulingEnableCallback
     void   *pUnusedData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3421);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
 
@@ -770,6 +789,7 @@ static NV_STATUS _kmigmgrHandlePreSchedulingDisableCallback
     void *pUnusedData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3422);
     NvU32 GIIdx;
     NvU32 CIIdx;
     NV_STATUS rmStatus = NV_OK;
@@ -899,6 +919,7 @@ kmigmgrStateInitLocked_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3423);
     //
     // Configure MIG Mode based on devinit's determination of MIG enable
     // preconditions being met or not. Devinit will set SW_SCRATCH bit if MIG
@@ -927,6 +948,7 @@ kmigmgrStateUnload_IMPL
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3424);
     kmigmgrClearStaticInfo_HAL(pGpu, pKernelMIGManager);
 
     // Nothing to do if MIG is not supported
@@ -947,6 +969,7 @@ kmigmgrInitRegistryOverrides_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3425);
 }
 
 /**
@@ -960,6 +983,7 @@ kmigmgrGetMIGGpuInstanceSlot_IMPL
     NvU32 i
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3426);
     NV_ASSERT_OR_RETURN(i < NV_ARRAY_ELEMENTS(pKernelMIGManager->kernelMIGGpuInstance), NULL);
     return &pKernelMIGManager->kernelMIGGpuInstance[i];
 }
@@ -975,6 +999,7 @@ kmigmgrIsMIGSupported_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3427);
     return pGpu->getProperty(pGpu, PDB_PROP_GPU_MIG_SUPPORTED);
 }
 
@@ -988,6 +1013,7 @@ kmigmgrIsMIGEnabled_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3428);
     return kmigmgrIsMIGSupported(pGpu, pKernelMIGManager) && pKernelMIGManager->bMIGEnabled;
 }
 
@@ -1001,6 +1027,7 @@ kmigmgrIsMIGGpuInstancingEnabled_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3429);
     return (IS_MIG_ENABLED(pGpu) &&
             (pKernelMIGManager->swizzIdInUseMask != 0));
 }
@@ -1015,6 +1042,7 @@ kmigmgrIsMIGMemPartitioningEnabled_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3430);
     NvU32 swizzId;
 
     if (!IS_MIG_IN_USE(pGpu))
@@ -1044,6 +1072,7 @@ kmigmgrIsMIGNvlinkP2PSupported_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3431);
     //
     // No need to make decision based on any override if MIG is not supported/enabled
     // on a specific chip
@@ -1065,6 +1094,7 @@ kmigmgrGetStaticInfo_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3432);
     KERNEL_MIG_MANAGER_PRIVATE_DATA *pPrivate = (KERNEL_MIG_MANAGER_PRIVATE_DATA *)pKernelMIGManager->pPrivate;
     return ((pPrivate != NULL) && pPrivate->bInitialized) ? &pPrivate->staticInfo : NULL;
 }
@@ -1077,6 +1107,7 @@ kmigmgrLoadStaticInfo_KERNEL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3433);
     KERNEL_MIG_MANAGER_PRIVATE_DATA *pPrivate = (KERNEL_MIG_MANAGER_PRIVATE_DATA *)pKernelMIGManager->pPrivate;
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS status;
@@ -1218,6 +1249,7 @@ kmigmgrClearStaticInfo_VF
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3434);
     NvU32 i;
 
     // Nothing to do
@@ -1246,6 +1278,7 @@ kmigmgrDisableWatchdog_IMPL
     KernelMIGManager *pKernelMigManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3435);
     KernelRc *pKernelRc = GPU_GET_KERNEL_RC(pGpu);
     NvU32 wdFlags = pKernelRc->watchdog.flags;
     NvS32 enableRequestsRefcount;
@@ -1293,6 +1326,7 @@ kmigmgrRestoreWatchdog_IMPL
     KernelMIGManager *pKernelMigManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3436);
     KernelRc *pKernelRc = GPU_GET_KERNEL_RC(pGpu);
 
     NV_CHECK_OR_RETURN(LEVEL_SILENT, pKernelMigManager->bRestoreWatchdog, NV_OK);
@@ -1319,6 +1353,7 @@ kmigmgrSetSwizzIdInUse_IMPL
     NvU32 swizzId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3437);
     // Validate that same ID is not already set and then set the ID
     NvU64 mask = NVBIT64(swizzId);
 
@@ -1350,6 +1385,7 @@ kmigmgrClearSwizzIdInUse_IMPL
     NvU32 swizzId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3438);
     // Validate that same ID is not already set and then set the ID
     NvU64 mask = NVBIT64(swizzId);
 
@@ -1381,6 +1417,7 @@ kmigmgrIsSwizzIdInUse_IMPL
     NvU32 swizzId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3439);
     NvU64 mask = NVBIT64(swizzId);
 
     if (mask & pKernelMIGManager->swizzIdInUseMask)
@@ -1399,6 +1436,7 @@ kmigmgrGetSwizzIdInUseMask_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3440);
     return pKernelMIGManager->swizzIdInUseMask;
 }
 
@@ -1413,6 +1451,7 @@ kmigmgrSetEnginesInUse_IMPL
     ENGTYPE_BIT_VECTOR *pEngines
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3441);
     ENGTYPE_BIT_VECTOR tempEngines;
 
     NV_ASSERT_OR_RETURN(pEngines != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -1439,6 +1478,7 @@ kmigmgrClearEnginesInUse_IMPL
     ENGTYPE_BIT_VECTOR *pEngines
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3442);
     ENGTYPE_BIT_VECTOR tempEngines;
 
     NV_ASSERT_OR_RETURN(pEngines != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -1466,6 +1506,7 @@ kmigmgrIsEngineInUse_IMPL
     RM_ENGINE_TYPE rmEngineType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3443);
     return bitVectorTest(&pKernelMIGManager->partitionableEnginesInUse, rmEngineType);
 }
 
@@ -1480,6 +1521,7 @@ kmigmgrIsEnginePartitionable_IMPL
     RM_ENGINE_TYPE rmEngineType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3444);
     return kmigmgrIsMIGSupported(pGpu, pKernelMIGManager) &&
            (RM_ENGINE_TYPE_IS_COPY(rmEngineType) ||
             RM_ENGINE_TYPE_IS_GR(rmEngineType) ||
@@ -1505,6 +1547,7 @@ kmigmgrIsEngineInInstance_IMPL
     MIG_INSTANCE_REF ref
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3445);
     RM_ENGINE_TYPE unused;
     return kmigmgrGetGlobalToLocalEngineType(pGpu, pKernelMIGManager, ref,
                                              globalRmEngType,
@@ -1522,6 +1565,7 @@ kmigmgrTrimInstanceRunlistBufPools_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3446);
     RM_ENGINE_TYPE rmEngineType;
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
 
@@ -1559,6 +1603,7 @@ kmigmgrCreateGPUInstanceRunlists_FWCLIENT
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3447);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NvU32 index;
     NvU32 runlistId;
@@ -1718,6 +1763,7 @@ kmigmgrDeleteGPUInstanceRunlists_FWCLIENT
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3448);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NvU32 runlistId;
     NV_STATUS status = NV_OK;
@@ -1765,6 +1811,7 @@ kmigmgrRestoreFromPersistence_PF
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3449);
     NV_STATUS status = NV_OK;
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     GPUMGR_SAVE_MIG_INSTANCE_TOPOLOGY *pTopologySave = NULL;
@@ -1914,6 +1961,7 @@ kmigmgrRestoreFromPersistence_VF
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3450);
     NV_STATUS status = NV_OK;
     GPUMGR_SAVE_MIG_INSTANCE_TOPOLOGY *pTopologySave = NULL;
     NvU32 GIIdx;
@@ -2045,6 +2093,7 @@ kmigmgrInitGPUInstanceInfo_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3451);
     NvU32 i;
 
     bitVectorClrAll(&pKernelMIGGpuInstance->exclusiveEngMask);
@@ -2080,6 +2129,7 @@ kmigmgrSetDeviceProfilingInUse_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3452);
     NV_ASSERT_OR_RETURN(!kmigmgrIsDeviceProfilingInUse(pGpu, pKernelMIGManager),
                         NV_ERR_STATE_IN_USE);
     pKernelMIGManager->bDeviceProfilingInUse = NV_TRUE;
@@ -2096,6 +2146,7 @@ kmigmgrClearDeviceProfilingInUse_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3453);
     pKernelMIGManager->bDeviceProfilingInUse = NV_FALSE;
 }
 
@@ -2109,6 +2160,7 @@ kmigmgrIsDeviceProfilingInUse_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3454);
     return pKernelMIGManager->bDeviceProfilingInUse;
 }
 
@@ -2123,6 +2175,7 @@ kmigmgrIsClientUsingDeviceProfiling_IMPL
     NvHandle hClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3455);
     RsClient *pRsClient;
     Device *pDevice;
     NV_STATUS status;
@@ -2156,6 +2209,7 @@ kmigmgrIsDeviceUsingDeviceProfiling_IMPL
     Device *pDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3456);
     RsClient *pRsClient;
     GPUInstanceSubscription *pGPUInstanceSubscription;
     Subdevice *pSubdevice;
@@ -2191,6 +2245,7 @@ kmigmgrEnableAllLCEs_IMPL
     NvBool bEnableAllLCEs
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3457);
     KernelCE *pKCe = NULL;
 
     //
@@ -2221,6 +2276,7 @@ kmigmgrGetInstanceRefFromDevice_IMPL
     MIG_INSTANCE_REF *pRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3458);
     NV_STATUS status = NV_OK;
     RsClient *pRsClient;
     GPUInstanceSubscription *pGPUInstanceSubscription;
@@ -2279,6 +2335,7 @@ kmigmgrGetInstanceRefFromClient_IMPL
     MIG_INSTANCE_REF *pRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3459);
     RsClient *pRsClient;
     Device *pDevice;
 
@@ -2311,6 +2368,7 @@ kmigmgrGetMemoryPartitionHeapFromDevice_IMPL
     Heap            **ppMemoryPartitionHeap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3460);
     MIG_INSTANCE_REF ref;
     NV_STATUS rmStatus = NV_OK;
     NvHandle hClient;
@@ -2364,6 +2422,7 @@ kmigmgrGetSwizzIdFromDevice_IMPL
     NvU32 *pSwizzId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3461);
     MIG_INSTANCE_REF ref;
     NV_ASSERT_OK_OR_RETURN(
         kmigmgrGetInstanceRefFromDevice(pGpu, pKernelMIGManager, pDevice, &ref));
@@ -2383,6 +2442,7 @@ kmigmgrPrintGPUInstanceInfo_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3462);
 #if NV_PRINTF_LEVEL_ENABLED(LEVEL_INFO)
     NV_STATUS status;
     const MIG_GPU_INSTANCE_MEMORY_CONFIG *pGPUInstanceMemConfig;
@@ -2506,6 +2566,7 @@ kmigmgrSetGPUInstanceInfo_IMPL
     KMIGMGR_CREATE_GPU_INSTANCE_PARAMS params
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3463);
     NvU32 i;
     NvHandle hMemory = NV01_NULL_OBJECT;
     NV_RANGE addrRange = NV_RANGE_EMPTY;
@@ -2612,6 +2673,7 @@ kmigmgrGetGPUInstanceInfo_IMPL
     KERNEL_MIG_GPU_INSTANCE **ppKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3464);
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGPUInstance;
 
     if (swizzId >= KMIGMGR_MAX_GPU_SWIZZID)
@@ -2647,6 +2709,7 @@ kmigmgrGetLocalToGlobalEngineType_IMPL
     RM_ENGINE_TYPE *pGlobalEngType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3465);
     NV_ASSERT_OR_RETURN(kmigmgrIsMIGReferenceValid(&ref), NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(RM_ENGINE_TYPE_IS_VALID(localEngType),
                         NV_ERR_INVALID_ARGUMENT);
@@ -2703,6 +2766,7 @@ kmigmgrGetGlobalToLocalEngineType_IMPL
     RM_ENGINE_TYPE *pLocalEngType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3466);
     NV_ASSERT_OR_RETURN(kmigmgrIsMIGReferenceValid(&ref), NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(RM_ENGINE_TYPE_IS_VALID(globalEngType),
                         NV_ERR_INVALID_ARGUMENT);
@@ -2772,6 +2836,7 @@ kmigmgrFilterEngineList_IMPL
     NvU32 *pEngineCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3467);
     MIG_INSTANCE_REF ref;
     NvBool bMIGInUse = IS_MIG_IN_USE(pGpu);
     NvU32 i;
@@ -2840,6 +2905,7 @@ kmigmgrFilterEnginePartnerList_IMPL
     NV2080_CTRL_GPU_GET_ENGINE_PARTNERLIST_PARAMS *pPartnerListParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3468);
     NvU32 i, j;
     MIG_INSTANCE_REF ref;
 
@@ -2893,6 +2959,7 @@ kmigmgrGetProfileByPartitionFlag_IMPL
     const NV2080_CTRL_INTERNAL_MIGMGR_PROFILE_INFO **ppProfile
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3469);
     const KERNEL_MIG_MANAGER_STATIC_INFO *pStaticInfo = kmigmgrGetStaticInfo(pGpu, pKernelMIGManager);
     NvU32 i;
 
@@ -2923,6 +2990,7 @@ kmigmgrGetInvalidSwizzIdMask_IMPL
     NvU64 *pUnsupportedSwizzIdMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3470);
     NvU64 i;
     NvU64 gpuSlice[KGRMGR_MAX_GR] =
     {
@@ -2962,6 +3030,7 @@ kmigmgrSetPartitioningMode_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3471);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_INTERNAL_GPU_GET_SMC_MODE_PARAMS params;
     KernelCcu *pKccu = GPU_GET_KERNEL_CCU(pGpu);
@@ -3025,6 +3094,7 @@ kmigmgrGetMIGReferenceFromEngineType_IMPL
     MIG_INSTANCE_REF *pRef
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3472);
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGPUInstance;
     MIG_COMPUTE_INSTANCE *pMIGComputeInstance;
     NvU32 CIIdx;
@@ -3098,6 +3168,7 @@ kmigmgrDetectReducedConfig_KERNEL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3473);
     const KERNEL_MIG_MANAGER_STATIC_INFO *pStaticInfo = kmigmgrGetStaticInfo(pGpu, pKernelMIGManager);
     NvU32 i;
 
@@ -3130,6 +3201,7 @@ kmigmgrGetGPUInstanceScrubberCe_IMPL
     NvU32 *ceInst
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3474);
     MIG_INSTANCE_REF ref;
     ENGTYPE_BIT_VECTOR ces;
 
@@ -3160,6 +3232,7 @@ kmigmgrDescribeGPUInstances_IMPL
     NV2080_CTRL_GPU_DESCRIBE_PARTITIONS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3475);
     const KERNEL_MIG_MANAGER_STATIC_INFO *pStaticInfo = kmigmgrGetStaticInfo(pGpu, pKernelMIGManager);
     NvU32 i;
     NvU32 entryCount;
@@ -3234,6 +3307,7 @@ kmigmgrSaveComputeInstances_IMPL
     GPUMGR_SAVE_COMPUTE_INSTANCE *pComputeInstanceSaves
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3476);
     NvU32 CIIdx;
     NvU32 ciCount = 0;
 
@@ -3308,6 +3382,7 @@ kmigmgrSwizzIdToResourceAllocation_IMPL
     MIG_RESOURCE_ALLOCATION *pResourceAllocation
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3477);
     NV2080_CTRL_INTERNAL_KMIGMGR_EXPORTED_GPU_INSTANCE_INFO info;
     NvU32 tempGpcMask;
 
@@ -3370,6 +3445,7 @@ kmigmgrAllocComputeInstanceHandles_IMPL
     MIG_COMPUTE_INSTANCE *pMIGComputeInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3478);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     NvHandle hGPUInstanceSubscription = NV01_NULL_OBJECT;
     NvHandle hComputeInstanceSubscription = NV01_NULL_OBJECT;
@@ -3433,6 +3509,7 @@ kmigmgrCreateComputeInstances_VF
     NvBool bCreateCap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3479);
     NV_STATUS status = NV_OK;
     NvU32 count;
     ENGTYPE_BIT_VECTOR shadowExclusiveEngMask;
@@ -4140,6 +4217,7 @@ kmigmgrCreateComputeInstances_FWCLIENT
     NvBool bCreateCap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3480);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     NV_STATUS status = NV_OK;
     KernelGraphics *pKernelGraphics;
@@ -4355,6 +4433,7 @@ kmigmgrFreeComputeInstanceHandles_IMPL
     MIG_COMPUTE_INSTANCE *pMIGComputeInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3481);
     if (pMIGComputeInstance->instanceHandles.hClient != NV01_NULL_OBJECT)
     {
         RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
@@ -4379,6 +4458,7 @@ kmigmgrReleaseComputeInstanceEngines_IMPL
     MIG_COMPUTE_INSTANCE *pMIGComputeInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3482);
     RM_ENGINE_TYPE globalEngineType;
     RM_ENGINE_TYPE localEngineType;
     ENGTYPE_BIT_VECTOR *pGlobalMask;
@@ -4454,6 +4534,7 @@ kmigmgrDeleteComputeInstance_IMPL
     NvBool bUnload
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3483);
     MIG_COMPUTE_INSTANCE *pMIGComputeInstance;
     MIG_RESOURCE_ALLOCATION *pComputeResourceAllocation;
     ENGTYPE_BIT_VECTOR grEngines;
@@ -4571,6 +4652,7 @@ _kmigmgrPrintComputeInstances
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3484);
 #if NV_PRINTF_LEVEL_ENABLED(LEVEL_INFO)
 #define PADDING_STR "----------------------------------------------------"
     RM_ENGINE_TYPE rmEngineType;
@@ -4666,6 +4748,7 @@ kmigmgrConfigureGPUInstance_IMPL
     NvU32 updateEngMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3485);
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NV_STATUS status = NV_OK;
     NvU32 i;
@@ -4906,6 +4989,7 @@ kmigmgrInvalidateGrGpcMapping_IMPL
     NvU32 grIdx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3486);
     NV_STATUS status = NV_OK;
     NvU32 gfid;
     NvBool bCallingContextPlugin;
@@ -4943,6 +5027,7 @@ kmigmgrInvalidateGr_IMPL
     NvU32 grIdx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3487);
     KernelGraphics *pKGr = GPU_GET_KERNEL_GRAPHICS(pGpu, grIdx);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
 
@@ -4976,6 +5061,7 @@ kmigmgrInvalidateGPUInstance_IMPL
     NvBool bUnload
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3488);
     NV_STATUS rmStatus = NV_OK;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance = NULL;
@@ -5111,6 +5197,7 @@ kmigmgrInitGPUInstanceScrubber_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3489);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
     if (!IsSLIEnabled(pGpu) &&
@@ -5135,6 +5222,7 @@ kmigmgrDestroyGPUInstanceScrubber_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3490);
     OBJMEMSCRUB *pMemscrub = NULL;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
@@ -5163,6 +5251,7 @@ kmigmgrDestroyGPUInstanceGrBufPools_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3491);
     RM_ENGINE_TYPE rmEngineType;
 
     if (!ctxBufPoolIsSupported(pGpu))
@@ -5197,6 +5286,7 @@ kmigmgrDestroyGPUInstancePool_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3492);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
     if (!memmgrIsPmaInitialized(pMemoryManager) ||
@@ -5235,6 +5325,7 @@ kmigmgrDestroyGPUInstanceRunlistBufPools_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3493);
     RM_ENGINE_TYPE rmEngineType;
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
 
@@ -5272,6 +5363,7 @@ kmigmgrPrintSubscribingClients_IMPL
     NvU32 swizzId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3494);
     RmClient **ppClient;
     for (ppClient = serverutilGetFirstClientUnderLock();
          ppClient != NULL;
@@ -5324,6 +5416,7 @@ kmigmgrSetMIGState_VF
     NvBool bUnload
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3495);
     if (bEnable)
     {
         KernelGraphics *pKGr = GPU_GET_KERNEL_GRAPHICS(pGpu, 0);
@@ -5358,6 +5451,7 @@ kmigmgrSetMIGState_FWCLIENT
     NvBool bUnload
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3496);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     NV_STATUS rmStatus = NV_OK;
     KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
@@ -5623,6 +5717,7 @@ kmigmgrCreateGPUInstance_IMPL
     NvBool bCreateCap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3497);
     NV_STATUS rmStatus = NV_OK;
 
     // If making a gpu instance valid, memory should be allocated accordingly
@@ -5752,6 +5847,7 @@ kmigmgrInitGPUInstancePool_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3498);
     KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     const GMMU_FMT *pFmt = kgmmuFmtGet(pKernelGmmu, GMMU_FMT_VERSION_DEFAULT, 0);
     NvU32 version;
@@ -5798,6 +5894,7 @@ kmigmgrInitGPUInstanceBufPools_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3499);
     Heap *pHeap;
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_ASSERT_OR_RETURN(pKernelMIGGpuInstance != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -5848,6 +5945,7 @@ kmigmgrInitGPUInstanceRunlistBufPools_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3500);
     RM_ENGINE_TYPE    rmEngineType;
     KernelFifo       *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     CTX_BUF_INFO      runlistBufInfo[NUM_BUFFERS_PER_RUNLIST] = {0};
@@ -5920,6 +6018,7 @@ kmigmgrInitGPUInstanceGrBufPools_IMPL
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGpuInstance
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3501);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     GR_GLOBALCTX_BUFFER    bufId;
     NvU32                  bufCount;
@@ -6013,6 +6112,7 @@ kmigmgrSaveToPersistence_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3502);
     GPUMGR_SAVE_MIG_INSTANCE_TOPOLOGY *pTopologySave = NULL;
     KERNEL_MIG_GPU_INSTANCE *pKernelMIGGPUInstance;
     NvU32 gpcIdx;
@@ -6078,6 +6178,7 @@ kmigmgrUpdateCiConfigForVgpu_IMPL
     NvBool bDelete
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3503);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -6089,6 +6190,7 @@ subdeviceCtrlCmdGpuGetActivePartitionIds_IMPL
     NV2080_CTRL_GPU_GET_ACTIVE_PARTITION_IDS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3504);
     OBJGPU           *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     NvU64             validSwizzIdMask;
@@ -6140,6 +6242,7 @@ subdeviceCtrlCmdGpuGetPartitionCapacity_IMPL
     NV2080_CTRL_GPU_GET_PARTITION_CAPACITY_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3505);
     NV_STATUS         status = NV_OK;
     OBJGPU           *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -6225,6 +6328,7 @@ subdeviceCtrlCmdGpuDescribePartitions_IMPL
     NV2080_CTRL_GPU_DESCRIBE_PARTITIONS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3506);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
 
@@ -6256,6 +6360,7 @@ subdeviceCtrlCmdGpuSetPartitioningMode_IMPL
     NV2080_CTRL_GPU_SET_PARTITIONING_MODE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3507);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -6299,6 +6404,7 @@ _kmigmgrProcessGPUInstanceEntry
     NV2080_CTRL_GPU_SET_PARTITION_INFO *pEntry
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3508);
     NV_STATUS status = NV_OK;
     NV2080_CTRL_GPU_SET_PARTITIONS_PARAMS *pParams = portMemAllocNonPaged(sizeof(*pParams));
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
@@ -6433,6 +6539,7 @@ subdeviceCtrlCmdGpuSetPartitions_IMPL
     NV2080_CTRL_GPU_SET_PARTITIONS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3509);
     NV_STATUS         rmStatus = NV_OK;
     NvU32             i;
     NvU32             j;
@@ -6519,6 +6626,7 @@ subdeviceCtrlCmdGpuGetPartitions_IMPL
     NV2080_CTRL_GPU_GET_PARTITIONS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3510);
     NV_STATUS                             rmStatus = NV_OK;
     NvU32                                 i;
     OBJGPU                               *pGpu = GPU_RES_GET_GPU(pSubdevice);
@@ -6699,6 +6807,7 @@ subdeviceCtrlCmdInternalKMIGmgrExportGPUInstance_IMPL
     NV2080_CTRL_INTERNAL_KMIGMGR_IMPORT_EXPORT_GPU_INSTANCE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3511);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -6739,6 +6848,7 @@ subdeviceCtrlCmdInternalKMIGmgrImportGPUInstance_IMPL
     NV2080_CTRL_INTERNAL_KMIGMGR_IMPORT_EXPORT_GPU_INSTANCE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3512);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     NV_STATUS status = NV_OK;
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
@@ -6844,6 +6954,7 @@ subdeviceCtrlCmdGpuGetComputeProfiles_IMPL
     NV2080_CTRL_GPU_GET_COMPUTE_PROFILES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3513);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     const KERNEL_MIG_MANAGER_STATIC_INFO *pStaticInfo = kmigmgrGetStaticInfo(pGpu, pKernelMIGManager);
@@ -6919,6 +7030,7 @@ kmigmgrGetNextComputeSize_IMPL
     NvU32 computeSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3514);
     const NvU32 computeSizeFlags[] =
     {
         KMIGMGR_COMPUTE_SIZE_INVALID,
@@ -6968,6 +7080,7 @@ kmigmgrGetSkylineFromSize_IMPL
     const NV2080_CTRL_INTERNAL_GRMGR_SKYLINE_INFO **ppSkyline
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3515);
     const KERNEL_MIG_MANAGER_STATIC_INFO *pStaticInfo = kmigmgrGetStaticInfo(pGpu, pKernelMIGManager);
     NvU32 i;
 
@@ -7005,6 +7118,7 @@ kmigmgrGetComputeProfileFromSize_IMPL
     NV2080_CTRL_INTERNAL_MIGMGR_COMPUTE_PROFILE *pProfile
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3516);
     const KERNEL_MIG_MANAGER_STATIC_INFO *pStaticInfo = kmigmgrGetStaticInfo(pGpu, pKernelMIGManager);
     NvU32 i;
 
@@ -7042,6 +7156,7 @@ kmigmgrGetComputeProfileFromSmCount_IMPL
     NV2080_CTRL_INTERNAL_MIGMGR_COMPUTE_PROFILE *pProfile
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3517);
     const KERNEL_MIG_MANAGER_STATIC_INFO *pStaticInfo = kmigmgrGetStaticInfo(pGpu, pKernelMIGManager);
     NvU32 i;
 
@@ -7082,6 +7197,7 @@ kmigmgrGetComputeProfileFromGpcCount_IMPL
     NV2080_CTRL_INTERNAL_MIGMGR_COMPUTE_PROFILE *pProfile
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3518);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
     const KERNEL_MIG_MANAGER_STATIC_INFO *pStaticInfo = kmigmgrGetStaticInfo(pGpu, pKernelMIGManager);
     NvBool bReducedConfig = kmigmgrIsA100ReducedConfig(pGpu, pKernelMIGManager);
@@ -7138,6 +7254,7 @@ kmigmgrGetComputeProfileFromCTSId_IMPL
     NV2080_CTRL_INTERNAL_MIGMGR_COMPUTE_PROFILE *pProfile
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3519);
     const KERNEL_MIG_MANAGER_STATIC_INFO *pStaticInfo = kmigmgrGetStaticInfo(pGpu, pKernelMIGManager);
     NvU32 computeSize;
 
@@ -7167,6 +7284,7 @@ kmigmgrGetInvalidCTSIdMask_IMPL
     NvU64 *pInvalidCTSIdMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3520);
     //
     // +---------------------------------------+
     // |                   0                   |
@@ -7220,6 +7338,7 @@ kmigmgrComputeProfileSizeToCTSIdRange_IMPL
     NvU32 computeSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3521);
     switch (computeSize)
     {
         case NV2080_CTRL_GPU_PARTITION_FLAG_COMPUTE_SIZE_FULL:
@@ -7272,6 +7391,7 @@ kmigmgrGetFreeCTSId_IMPL
     NvU32 profileSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3522);
     NV_RANGE ctsRange = kmigmgrComputeProfileSizeToCTSIdRange(profileSize);
     NvU64 validMask;
     NvU32 maxRemainingCapacity;
@@ -7335,6 +7455,7 @@ kmigmgrIsCTSAlignmentRequired_PF
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3523);
     const NV2080_CTRL_INTERNAL_GRMGR_SKYLINE_INFO *pUnused;
 
     // CTS alignment is always required when a unique MINI_QUARTER is present
@@ -7352,6 +7473,7 @@ kmigmgrIsCTSAlignmentRequired_VF
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3524);
     NV2080_CTRL_INTERNAL_MIGMGR_COMPUTE_PROFILE unused;
 
     // CTS alignment is always required when a unique MINI_QUARTER is present
@@ -7368,6 +7490,7 @@ kmigmgrGetComputeSizeFromCTSId_IMPL
     NvU32 ctsId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3525);
     NvU32 computeSize = kmigmgrGetNextComputeSize(NV_TRUE, KMIGMGR_COMPUTE_SIZE_INVALID);
 
     while (computeSize != KMIGMGR_COMPUTE_SIZE_INVALID)
@@ -7391,6 +7514,7 @@ kmigmgrSmallestComputeProfileSize_IMPL
     KernelMIGManager *pKernelMIGManager
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3526);
     NvU32 computeSize = kmigmgrGetNextComputeSize(NV_FALSE, KMIGMGR_COMPUTE_SIZE_INVALID);
 
     while (computeSize != KMIGMGR_COMPUTE_SIZE_INVALID)
@@ -7423,6 +7547,7 @@ kmigmgrSetCTSIdInUse_IMPL
     NvBool bInUse
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3527);
     NV_ASSERT_OR_RETURN_VOID(pKernelMIGGpuInstance != NULL);
 
     if (bInUse)
@@ -7472,6 +7597,7 @@ kmigmgrXlateSpanStartToCTSId_IMPL
     NvU32 *pCtsId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3528);
     NV_RANGE computeSizeIdRange;
     NvU64 computeSizeIdMask;
     NvU64 slotBasisMask;
@@ -7529,6 +7655,7 @@ kmigmgrGetSlotBasisMask_IMPL
     NvU64 *pMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3529);
     NV_RANGE slotBasisIdRange;
     NvU32 slotBasisComputeSize;
 
@@ -7560,6 +7687,7 @@ kmigmgrGetSpanStartFromCTSId_IMPL
     NvU32 ctsId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3530);
     NvU32 computeSize = kmigmgrGetComputeSizeFromCTSId(ctsId);
     NV_RANGE computeSizeIdRange;
     NvU64 computeSizeIdMask;
@@ -7601,6 +7729,7 @@ kmigmgrIsCTSIdAvailable_IMPL
     NvU32 ctsId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3531);
     NvU64 invalidMask = 0x0;
     NvU32 i;
 
