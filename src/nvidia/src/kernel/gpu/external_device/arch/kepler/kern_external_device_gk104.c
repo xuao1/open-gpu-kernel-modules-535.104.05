@@ -32,6 +32,7 @@
 NV_STATUS
 gpuExtdevConstruct_GK104(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3950);
     NvU32    index;
     NvBool   foundDevice = NV_FALSE;
 
@@ -50,14 +51,17 @@ gpuExtdevConstruct_GK104(OBJGPU *pGpu)
     pExtDeviceTest = portMemAllocNonPaged(sizeof(*pExtDeviceTest));
     if (pExtDeviceTest == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3951);
         NV_PRINTF(LEVEL_ERROR, "Out of memory.\n");
         return NV_ERR_NO_MEMORY;
     }
 
     if (!(IS_EMULATION(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3952);
         for (index = 0; pConstruct[index]; index++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3953);
             portMemSet(pExtDeviceTest, 0, sizeof(*pExtDeviceTest));
 
             //
@@ -67,16 +71,21 @@ gpuExtdevConstruct_GK104(OBJGPU *pGpu)
 
             if ((pConstruct[index])(pGpu, &pExtDeviceTest->ExtDevice))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3954);
                 if (pExtDeviceTest->ExtDevice.pI->setI2cHandles(pGpu, &pExtDeviceTest->ExtDevice))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3955);
                     if (pExtDeviceTest->ExtDevice.pI->GetDevice(pGpu, &pExtDeviceTest->ExtDevice))
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3956);
                         NV_PRINTF(LEVEL_INFO,
                                   "EXTDEV: device is connecting\n");
                         if (pExtDeviceTest->ExtDevice.pI->Attach(pGpu, (PDACEXTERNALDEVICE *) &pExtDeviceTest))
                         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3957);
                             if (pExtDeviceTest->ExtDevice.pI->Init(pGpu, &pExtDeviceTest->ExtDevice))
                             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3958);
                                 foundDevice = NV_TRUE;
                                 break;
                             }
@@ -86,6 +95,7 @@ gpuExtdevConstruct_GK104(OBJGPU *pGpu)
 
                 if (!foundDevice)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3959);
                     pExtDeviceTest->ExtDevice.pI->Destroy(pGpu, &pExtDeviceTest->ExtDevice);
                 }
             }
@@ -94,6 +104,7 @@ gpuExtdevConstruct_GK104(OBJGPU *pGpu)
 
     if (!foundDevice)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3960);
         portMemFree(pExtDeviceTest);
 
         // Set back extdev i2c to default value.

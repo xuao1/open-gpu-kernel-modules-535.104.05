@@ -54,14 +54,17 @@ instmemGetSize_v03_00
     NvU32                 *pHashTableSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3686);
     if (pTotalInstMemSize != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3687);
         *pTotalInstMemSize = (NV_UDISP_HASH_LIMIT - NV_UDISP_HASH_BASE + 1) +
                              (NV_UDISP_OBJ_MEM_LIMIT - NV_UDISP_OBJ_MEM_BASE + 1);
     }
 
     if (pHashTableSize != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3688);
         *pHashTableSize = (NV_UDISP_HASH_LIMIT - NV_UDISP_HASH_BASE + 1);
     }
 }
@@ -73,6 +76,7 @@ instmemGetHashTableBaseAddr_v03_00
     DisplayInstanceMemory *pInstMem
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3689);
     return NV_UDISP_HASH_BASE;
 }
 
@@ -85,6 +89,7 @@ instmemIsValid_v03_00
     NvU32                  offset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3690);
     return (((offset << 5) < NV_UDISP_OBJ_MEM_LIMIT) &&
             ((offset << 5) > NV_UDISP_HASH_LIMIT));
 }
@@ -100,6 +105,7 @@ instmemHashFunc_v03_00
     NvU32                 *pResult
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3691);
     NV_ASSERT_OR_RETURN(pResult, NV_ERR_INVALID_ARGUMENT);
 
 
@@ -133,6 +139,7 @@ instmemGenerateHashTableData_v03_00
     NvU32                  dispChannelNum
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3692);
     return (SF_NUM(_UDISP, _HASH_TBL_CLIENT_ID, hClient) |
             SF_NUM(_UDISP, _HASH_TBL_INSTANCE,  offset)  |
             SF_NUM(_UDISP, _HASH_TBL_CHN,       dispChannelNum));
@@ -147,6 +154,7 @@ instmemCommitContextDma_v03_00
     ContextDma            *pContextDma
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3693);
     MEMORY_DESCRIPTOR  *pMemDesc        = memdescGetMemDescFromGpu(pContextDma->pMemDesc, pGpu);
     MemoryManager      *pMemoryManager  = GPU_GET_MEMORY_MANAGER(pGpu);
     RmPhysAddr          FrameAddr, Limit;
@@ -173,6 +181,7 @@ instmemCommitContextDma_v03_00
     // Cannot bind a Z surface to display.  Bug 439965.
     if (memmgrIsKind_HAL(pMemoryManager, FB_IS_KIND_Z, kind))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3694);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -186,6 +195,7 @@ instmemCommitContextDma_v03_00
 
     if (bIsSurfaceBl)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3695);
         ctxDMAFlag |= SF_DEF(_DMA, _KIND, _BLOCKLINEAR);
     }
     else
@@ -195,6 +205,7 @@ instmemCommitContextDma_v03_00
 
     if (pContextDma->bReadOnly)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3696);
         ctxDMAFlag |= SF_DEF(_DMA, _ACCESS, _READ_ONLY);
     }
     else
@@ -204,11 +215,13 @@ instmemCommitContextDma_v03_00
 
     switch (memdescGetAddressSpace(pMemDesc))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3697);
         case ADDR_SYSMEM:
         case ADDR_REGMEM:
             // SOC Display always need _PHYSICAL_NVM flag to be set as display is not over PCI
             if (pGpu->getProperty(pGpu, PDB_PROP_GPU_TEGRA_SOC_NVDISPLAY))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3698);
                 ctxDMAFlag |= SF_DEF(_DMA, _TARGET_NODE, _PHYSICAL_NVM);
             }
             else
@@ -236,6 +249,7 @@ instmemCommitContextDma_v03_00
                         TRANSFER_FLAGS_SHADOW_ALLOC);
     if (pInstMemCpuVA == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3699);
         return NV_ERR_INSUFFICIENT_RESOURCES;
     }
 
@@ -277,6 +291,7 @@ instmemUpdateContextDma_v03_00
     NvU32                  comprInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3700);
     MemoryManager     *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NV_STATUS          status         = NV_OK;
     NvU8              *pInst;
@@ -296,12 +311,14 @@ instmemUpdateContextDma_v03_00
                 TRANSFER_FLAGS_SHADOW_ALLOC | TRANSFER_FLAGS_SHADOW_INIT_MEM);
     if (pInst == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3701);
         status = NV_ERR_INSUFFICIENT_RESOURCES;
         goto exit;
     }
 
     if (pNewAddress != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3702);
         // Address in disp ctxdma is 256B aligned
         NvU64 newAddress256Align = (*pNewAddress) >> 8;
         MEM_WR32(pInst + SF_OFFSET(NV_DMA_ADDRESS_BASE_LO),
@@ -312,6 +329,7 @@ instmemUpdateContextDma_v03_00
 
     if (pNewLimit != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3703);
         NvU64 newLimit256Align = (*pNewLimit) >> 8;
         MEM_WR32(pInst + SF_OFFSET(NV_DMA_ADDRESS_LIMIT_LO),
                  NvU64_LO32(newLimit256Align));
@@ -321,10 +339,12 @@ instmemUpdateContextDma_v03_00
 
     if (comprInfo != NV0002_CTRL_CMD_UPDATE_CONTEXTDMA_FLAGS_USE_COMPR_INFO_NONE)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3704);
         NvU32 word = MEM_RD32(pInst + SF_OFFSET(NV_DMA_KIND));
 
         if (comprInfo == NV0002_CTRL_CMD_UPDATE_CONTEXTDMA_FLAGS_USE_COMPR_INFO_FORMAT_BLOCK_LINEAR)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3705);
             word = FLD_SF_DEF(_DMA, _KIND, _BLOCKLINEAR, word);
         }
         else

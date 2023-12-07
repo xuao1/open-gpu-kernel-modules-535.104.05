@@ -43,9 +43,11 @@ _vblankCallback
     NV_STATUS   rmStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3913);
     VblankCallback *pVblankCallback = (VblankCallback *)pObject;
     if (pVblankCallback->CallBack.bIsVblankNotifyEnable)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3914);
         pVblankCallback->pProc(pVblankCallback->pParm1, pVblankCallback->pParm2);
     }
     return NV_OK;
@@ -59,6 +61,7 @@ vblcbConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3915);
     OBJSYS          *pSys           = SYS_GET_INSTANCE();
     OBJOS           *pOS            = SYS_GET_OS(pSys);
     OBJGPU          *pGpu           = GPU_RES_GET_GPU(pVblankCallback);
@@ -69,6 +72,7 @@ vblcbConstruct_IMPL
 
     if (pKernelDisplay == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3916);
         return NV_ERR_NOT_SUPPORTED;
     }
 
@@ -76,6 +80,7 @@ vblcbConstruct_IMPL
 
     if (pKernelHead == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3917);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -102,6 +107,7 @@ vblcbConstruct_IMPL
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3918);
         kheadDeleteVblankCallback(pGpu, pKernelHead, &pVblankCallback->CallBack);
     }
 
@@ -114,6 +120,7 @@ vblcbDestruct_IMPL
     VblankCallback *pVblankCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3919);
     OBJSYS  *pSys  = SYS_GET_INSTANCE();
     OBJOS   *pOS   = SYS_GET_OS(pSys);
     OBJGPU  *pGpu  = GPU_RES_GET_GPU(pVblankCallback);
@@ -131,14 +138,17 @@ vblcbCtrlSetVBlankNotification_IMPL
     NV9010_CTRL_CMD_SET_VBLANK_NOTIFICATION_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3920);
     OBJGPU        *pGpu           = GPU_RES_GET_GPU(pVblankCallback);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     KernelHead    *pKernelHead    = KDISP_GET_HEAD(pKernelDisplay, pVblankCallback->LogicalHead);
     NV_STATUS      status         = NV_ERR_INVALID_ARGUMENT;
     if (pVblankCallback->CallBack.Proc != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3921);
         if (pParams->bSetVBlankNotifyEnable)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3922);
             pVblankCallback->CallBack.bIsVblankNotifyEnable = NV_TRUE;
             kheadAddVblankCallback(pGpu, pKernelHead, &pVblankCallback->CallBack);
         }

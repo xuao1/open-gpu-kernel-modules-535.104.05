@@ -53,6 +53,7 @@ kceGetPce2lceConfigSize1_GA102
     KernelCE *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2867);
     return NV_CE_PCE2LCE_CONFIG__SIZE_1;
 }
 
@@ -83,6 +84,7 @@ kceMapPceLceForSysmemLinks_GA102
     NvU32   fbPceMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2868);
     NvU32   lceMask      = 0;
     NvU32   tempFbPceMask;
     NvU32   lceIndex, pceIndex;
@@ -100,6 +102,7 @@ kceMapPceLceForSysmemLinks_GA102
                                  (void *)&params, sizeof(params));
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2869);
         NV_PRINTF(LEVEL_ERROR, "Unable to determine PCEs and LCEs for sysmem links\n");
         return status;
     }
@@ -112,12 +115,14 @@ kceMapPceLceForSysmemLinks_GA102
     //
     if (params.sysmemLinkMask == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2870);
         // Store lceMask in the exposeCeMask before moving on
         *pLocalExposeCeMask |= lceMask;
 
         tempFbPceMask = fbPceMask;
         while(tempFbPceMask)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2871);
             lceIndex = CE_GET_LOWEST_AVAILABLE_IDX(lceMask);
             pceIndex = CE_GET_LOWEST_AVAILABLE_IDX(tempFbPceMask);
             pLocalPceLceMap[pceIndex] = lceIndex;
@@ -152,6 +157,7 @@ kceGetSysmemSupportedLceMask_GA102
     KernelCE   *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2872);
     return (NV_CE_SYS_ALLOWED_LCE_MASK & NV_CE_MAX_LCE_MASK);
 }
 
@@ -172,6 +178,7 @@ kceGetNvlinkPeerSupportedLceMask_GA102
     NvU32   peerAvailableLceMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2873);
     // There is no odd async LCE on GA10X - only LCE 4
     return (NV_CE_EVEN_ASYNC_LCE_MASK & NV_CE_MAX_LCE_MASK);
 }
@@ -192,5 +199,6 @@ kceGetGrceSupportedLceMask_GA102
     KernelCE   *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2874);
     return (NV_CE_GRCE_ALLOWED_LCE_MASK & NV_CE_MAX_LCE_MASK);
 }

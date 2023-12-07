@@ -31,6 +31,7 @@
 
 NV_STATUS kceGetP2PCes_GV100(KernelCE *pKCe, OBJGPU *pGpu, NvU32 gpuMask, NvU32 *nvlinkP2PCeMask)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2962);
     NvU32         gpuCount      = gpumgrGetSubDeviceCount(gpuMask);
     NvU32         maxPces = 0;
 
@@ -39,9 +40,11 @@ NV_STATUS kceGetP2PCes_GV100(KernelCE *pKCe, OBJGPU *pGpu, NvU32 gpuMask, NvU32 
     // If GPU count = 1, return all possible nvlink P2P CEs
     if (gpuCount == 1)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2963);
         *nvlinkP2PCeMask |= NVBIT(NVLINK_MIN_P2P_LCE);
         for (NvU32 i = NVLINK_MIN_P2P_LCE; i < gpuGetNumCEs(pGpu); i++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2964);
             *nvlinkP2PCeMask |= NVBIT(i);
 
         }
@@ -61,11 +64,13 @@ NV_STATUS kceGetP2PCes_GV100(KernelCE *pKCe, OBJGPU *pGpu, NvU32 gpuMask, NvU32 
 
         if (pKernelNvlink != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2965);
             bSwitchConfig = knvlinkIsGpuConnectedToNvswitch(pGpu, pKernelNvlink);
 
             // Get the remote GPU
             while ((pRemoteGpu = gpumgrGetNextGpu(gpuMask, &gpuInstance)) != NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2966);
                 if (pRemoteGpu != pGpu)
                     break;
             }
@@ -82,6 +87,7 @@ NV_STATUS kceGetP2PCes_GV100(KernelCE *pKCe, OBJGPU *pGpu, NvU32 gpuMask, NvU32 
         //
         if (numLinks == 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2967);
             *nvlinkP2PCeMask = NVBIT32(NVLINK_SYSMEM_WRITE_LCE);
             NV_PRINTF(LEVEL_INFO,
                       "GPU %d Peer %d has no links (could be an indirect peer). Sysmem LCE assigned %d!\n",
@@ -93,6 +99,7 @@ NV_STATUS kceGetP2PCes_GV100(KernelCE *pKCe, OBJGPU *pGpu, NvU32 gpuMask, NvU32 
         KCE_ITER_ALL_BEGIN(pGpu, pKCeLoop, NVLINK_MIN_P2P_LCE)
             if (pKCeLoop->bStubbed)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2968);
                 continue;
             }
 
@@ -114,18 +121,21 @@ NV_STATUS kceGetP2PCes_GV100(KernelCE *pKCe, OBJGPU *pGpu, NvU32 gpuMask, NvU32 
             if ((numPces > maxPces) &&
                 (bSwitchConfig || (pKCeLoop->nvlinkPeerMask == 0)))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2969);
                 pKCeMaxPces = pKCeLoop;
                 maxPces = numPces;
             }
 
             if ((pKCeLoop->nvlinkPeerMask & NVBIT(gpuInstance)) != 0)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2970);
                 // LCE is already assigned to this peer
                 pKCeMatch = pKCeLoop;
                 break;
             }
             else if (pKCeLoop->nvlinkPeerMask != 0)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2971);
                 // LCE is assigned to another peer
                 continue;
             }
@@ -137,10 +147,12 @@ NV_STATUS kceGetP2PCes_GV100(KernelCE *pKCe, OBJGPU *pGpu, NvU32 gpuMask, NvU32 
                 //
                 if (numPces == numLinks)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2972);
                     pKCeMatch = (pKCeMatch == NULL) ? pKCeLoop : pKCeMatch;
                 }
                 else if (numPces < numLinks)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2973);
                     pKCeSubMatch = (pKCeSubMatch == NULL) ? pKCeLoop : pKCeSubMatch;
                 }
             }
@@ -156,22 +168,27 @@ NV_STATUS kceGetP2PCes_GV100(KernelCE *pKCe, OBJGPU *pGpu, NvU32 gpuMask, NvU32 
 
         if (pKCeMatch != NULL && !bSwitchConfig)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2974);
             pTargetCe = pKCeMatch;
         }
         else if (pKCeSubMatch != NULL && !bSwitchConfig)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2975);
             pTargetCe = pKCeSubMatch;
         }
         else if (pKCeMaxPces != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2976);
             pTargetCe = pKCeMaxPces;
         }
 
         if (pTargetCe != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2977);
             // assign LCE to peer
             if (pTargetCe->nvlinkPeerMask == 0)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2978);
                 pTargetCe->nvlinkPeerMask = NVBIT(gpuInstance);
             }
 
@@ -189,6 +206,7 @@ NV_STATUS kceGetP2PCes_GV100(KernelCE *pKCe, OBJGPU *pGpu, NvU32 gpuMask, NvU32 
 
 void kceGetSysmemRWLCEs_GV100(KernelCE* pKCe, NvU32 *rd, NvU32 *wr)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2979);
     *rd = NVLINK_SYSMEM_READ_LCE;
     *wr = NVLINK_SYSMEM_WRITE_LCE;
 }
@@ -219,16 +237,19 @@ kceGetAutoConfigTableEntry_GV100
     NvU32                   *pExposeCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2980);
     NvU32 i;
 
     for (i = 0; i < autoConfigNumEntries; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2981);
         if ((pTable[i].sysmemLinks     == pCurrentTopo->sysmemLinks    ) &&
             (pTable[i].maxLinksPerPeer == pCurrentTopo->maxLinksPerPeer) &&
             (pTable[i].bSymmetric      == pCurrentTopo->bSymmetric     ) &&
             (pTable[i].bSwitchConfig   == pCurrentTopo->bSwitchConfig  ) &&
             ((pTable[i].numPeers       == pCurrentTopo->numPeers) || (pCurrentTopo->bSwitchConfig)))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2982);
             *pIdx = i;
             *pExposeCeMask = pTable[i].exposeCeMask;
             return NV_TRUE;
@@ -250,6 +271,7 @@ kceClearAssignedNvlinkPeerMasks_GV100
     KernelCE  *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2983);
     KernelCE *pKCeLoop = NULL;
 
     KCE_ITER_ALL_BEGIN(pGpu, pKCeLoop, NVLINK_MIN_P2P_LCE)

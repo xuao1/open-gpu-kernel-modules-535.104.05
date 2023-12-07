@@ -47,6 +47,7 @@ confComputeIsDebugModeEnabled_GH100
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3045);
    NvU32 fuseStat = GPU_REG_RD32(pGpu, NV_FUSE_OPT_SECURE_GSP_DEBUG_DIS);
 
    return !FLD_TEST_DRF(_FUSE_OPT, _SECURE_GSP_DEBUG_DIS, _DATA, _YES, fuseStat);
@@ -66,10 +67,12 @@ confComputeIsGpuCcCapable_GH100
     ConfidentialCompute  *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3046);
     NvU32 reg;
 
     if (confComputeIsDebugModeEnabled_HAL(pGpu, pConfCompute))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3047);
         NV_PRINTF(LEVEL_ERROR, "Not checking if GPU is capable of accepting conf compute workloads\n");
         return NV_TRUE;
     }
@@ -77,9 +80,11 @@ confComputeIsGpuCcCapable_GH100
     reg = GPU_REG_RD32(pGpu, NV_FUSE_SPARE_BIT_0);
     if (FLD_TEST_DRF(_FUSE, _SPARE_BIT_0, _DATA, _ENABLE, reg))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3048);
         if (FLD_TEST_DRF(_FUSE, _SPARE_BIT_1, _DATA, _ENABLE, GPU_REG_RD32(pGpu, NV_FUSE_SPARE_BIT_1))
             && FLD_TEST_DRF(_FUSE, _SPARE_BIT_2, _DATA, _DISABLE, GPU_REG_RD32(pGpu, NV_FUSE_SPARE_BIT_2)))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3049);
             return NV_TRUE;
         }
     }
@@ -90,11 +95,13 @@ NV_STATUS
 confComputeDeriveSecrets_GH100(ConfidentialCompute *pConfCompute,
                                NvU32                engine)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3050);
     OBJGPU *pGpu = ENG_GET_GPU(pConfCompute);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
     switch (engine)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3051);
         case MC_ENGINE_IDX_GSP:
             // GSP automatically derives these keys so no need for CPU-RM to trigger it.
             NV_ASSERT_OK_OR_RETURN(confComputeKeyStoreDeriveKey_HAL(pConfCompute,

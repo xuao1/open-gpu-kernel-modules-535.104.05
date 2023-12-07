@@ -52,6 +52,7 @@ gpuDetectNvlinkLinkFromGpus_GP100
     NvU32  *pVidLinkCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1182);
     OBJGPU       *pGpuLoop            = NULL;
     KernelNvlink *pKernelNvlink       = NULL;
     KernelNvlink *pKernelNvlinkChild  = NULL;
@@ -78,10 +79,12 @@ gpuDetectNvlinkLinkFromGpus_GP100
     pGpuLoop = gpumgrGetNextGpu(gpuMask, &gpuIndex);
     while (pGpuLoop != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1183);
         // determine if there is a connected NvLink on the GPU.
         pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpuLoop);
         if (NULL == pKernelNvlink)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1184);
             pGpuLoop = gpumgrGetNextGpu(gpuMask, &gpuIndex);
             continue;
         }
@@ -90,17 +93,21 @@ gpuDetectNvlinkLinkFromGpus_GP100
         pGpuChild = gpumgrGetNextGpu(gpuMask, &gpuIndexChild);
         while (pGpuChild != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1185);
             // determine if there is a connected NvLink on the GPU.
             pKernelNvlinkChild = GPU_GET_KERNEL_NVLINK(pGpuChild);
             if (NULL != pKernelNvlinkChild)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1186);
                 if (knvlinkIsNvlinkP2pSupported(pGpuLoop, pKernelNvlink, pGpuChild) == NV_FALSE)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1187);
                     pGpuChild = gpumgrGetNextGpu(gpuMask, &gpuIndexChild);
                     continue;
                 }
                 if (0 == knvlinkGetConnectedLinksMask_HAL(pGpuChild, pKernelNvlinkChild))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1188);
                     pGpuChild = gpumgrGetNextGpu(gpuMask, &gpuIndexChild);
                     continue;
                 }
@@ -113,12 +120,15 @@ gpuDetectNvlinkLinkFromGpus_GP100
             // Loop through the parent pinsets
             for (parentPinsetIndex = 0; parentPinsetIndex < DR_PINSET_COUNT; parentPinsetIndex++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1189);
                 // Loop through the child pinsets
                 for (childPinsetIndex = 0; childPinsetIndex < DR_PINSET_COUNT; childPinsetIndex++)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1190);
                     if (gpumgrUpdateSliLinkRouting(pGpuLoop, pGpuChild, SLI_BT_NVLINK,
                                                    parentPinsetIndex, childPinsetIndex, NV_FALSE))
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1191);
                         // update link Output Mask
                         *pSliLinkOutputMask |= (NVBIT(pGpuLoop->gpuInstance) | NVBIT(pGpuChild->gpuInstance));
 

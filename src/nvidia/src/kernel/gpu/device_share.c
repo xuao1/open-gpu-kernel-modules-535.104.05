@@ -65,6 +65,7 @@ deviceSetClientShare_IMPL
     NvU32      deviceAllocFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3406);
     pDevice->pVASpace = NULL;
     pDevice->hClientShare = hClientShare;
     pDevice->deviceAllocFlags = deviceAllocFlags;
@@ -73,12 +74,14 @@ deviceSetClientShare_IMPL
 
     if (deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_RESTRICT_RESERVED_VALIMITS)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3407);
         pDevice->vaStartInternal = vaStartInternal;
         pDevice->vaLimitInternal = vaLimitInternal;
     }
 
     if ((deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_VASPACE_SIZE) && (vaSize == 0))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3408);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -98,6 +101,7 @@ deviceInitClientShare
     NvU32       deviceAllocInternalFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3409);
     Device      *pShareDevice;
     RsClient    *pClientShare;
     OBJVASPACE  *pVAS        = NULL;
@@ -119,6 +123,7 @@ deviceInitClientShare
     //
     if (hClientShare == NV01_NULL_OBJECT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3410);
         OBJGPUGRP *pGpuGrp = gpumgrGetGpuGrpFromGpu(pGpu);
         status = gpugrpGetGlobalVASpace(pGpuGrp, &pVAS);
         NV_ASSERT_OR_RETURN(status == NV_OK, status);
@@ -132,6 +137,7 @@ deviceInitClientShare
     //
     else if (hClientShare == RES_GET_CLIENT_HANDLE(pDevice))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3411);
         NvU32 flags = VASPACE_FLAGS_DEFAULT_PARAMS;
         NvU64 vaLimit;
 
@@ -140,14 +146,17 @@ deviceInitClientShare
 
         if (deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_MINIMIZE_PTETABLE_SIZE)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3412);
             flags |= VASPACE_FLAGS_MINIMIZE_PTETABLE_SIZE;
         }
         if (deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_RETRY_PTE_ALLOC_IN_SYS)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3413);
             flags |= VASPACE_FLAGS_RETRY_PTE_ALLOC_IN_SYS;
         }
         if (deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_VASPACE_SIZE)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3414);
             vaLimit = pDevice->vaSize - 1;
         }
         else
@@ -159,15 +168,18 @@ deviceInitClientShare
         if ( (deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_VASPACE_BIG_PAGE_SIZE_64k) &&
               (deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_VASPACE_BIG_PAGE_SIZE_128k) )
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3415);
             return NV_ERR_INVALID_ARGUMENT;
         }
 
         if (deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_VASPACE_BIG_PAGE_SIZE_64k)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3416);
             flags |= DRF_DEF(_VASPACE, _FLAGS, _BIG_PAGE_SIZE, _DEFAULT);
         }
         else if (deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_VASPACE_BIG_PAGE_SIZE_128k)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3417);
             flags |= DRF_DEF(_VASPACE, _FLAGS, _BIG_PAGE_SIZE, _DEFAULT);
         }
         else
@@ -178,6 +190,7 @@ deviceInitClientShare
 
         if (deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_RESTRICT_RESERVED_VALIMITS)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3418);
             flags |= VASPACE_FLAGS_RESTRICTED_RM_INTERNAL_VALIMITS;
             NV_ASSERT(pDevice->vaStartInternal);
             NV_ASSERT(pDevice->vaLimitInternal);
@@ -197,6 +210,7 @@ deviceInitClientShare
             || (deviceAllocInternalFlags & NV_DEVICE_INTERNAL_ALLOCATION_FLAGS_ENABLE_PRIVILEGED_VASPACE)
            )
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3419);
             flags |= VASPACE_FLAGS_SET_MIRRORED;
         }
         if (NULL != GPU_GET_KERNEL_GMMU(pGpu))
@@ -205,6 +219,7 @@ deviceInitClientShare
             vaspaceClass = IO_VASPACE_A;
         else if (vaspaceClass == 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3420);
             NV_ASSERT(0);
             return NV_ERR_OBJECT_NOT_FOUND;
         }
@@ -218,6 +233,7 @@ deviceInitClientShare
         if (!gpuIsSplitVasManagementServerClientRmEnabled(pGpu) ||
             !IS_VIRTUAL(pGpu))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3421);
             flags |= VASPACE_FLAGS_ALLOW_PAGES_IN_PHYS_MEM_SUBALLOCATOR;
         }
 
@@ -241,6 +257,7 @@ deviceInitClientShare
             memmgrAreClientPageTablesPmaManaged(pMemoryManager) &&
             (deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_VASPACE_PTABLE_PMA_MANAGED))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3422);
             flags |= VASPACE_FLAGS_PTETABLE_PMA_MANAGED;
         }
 
@@ -251,6 +268,7 @@ deviceInitClientShare
         //
         if (deviceAllocFlags & NV_DEVICE_ALLOCATION_FLAGS_VASPACE_REQUIRE_FIXED_OFFSET)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3423);
             flags |= VASPACE_FLAGS_REQUIRE_FIXED_OFFSET;
         }
 
@@ -259,6 +277,7 @@ deviceInitClientShare
                                         pDevice->vaLimitInternal, NULL, flags, &pVAS);
         if (NV_OK != status)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3424);
             NV_ASSERT(0);
             return status;
         }
@@ -285,6 +304,7 @@ deviceInitClientShare
         // Init target share if needed
         if (pShareDevice->pVASpace == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3425);
             status = deviceInitClientShare(pShareDevice,
                                            pShareDevice->hClientShare,
                                            pShareDevice->vaSize,
@@ -312,11 +332,13 @@ deviceRemoveFromClientShare_IMPL
     Device *pDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3426);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJVMM *pVmm = SYS_GET_VMM(pSys);
 
     if (pDevice->pVASpace != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3427);
         vmmDestroyVaspace(pVmm, pDevice->pVASpace);
         pDevice->pVASpace = NULL;
     }
@@ -329,6 +351,7 @@ deviceGetDefaultVASpace_IMPL
     OBJVASPACE **ppVAS
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3428);
     NV_STATUS status = NV_OK;
 
     //
@@ -337,6 +360,7 @@ deviceGetDefaultVASpace_IMPL
     //
     if (pDevice->pVASpace == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3429);
         status = deviceInitClientShare(pDevice,
                                        pDevice->hClientShare,
                                        pDevice->vaSize,
@@ -368,6 +392,7 @@ deviceSetDefaultVASpace_IMPL
     NvHandle   hVASpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3430);
     NV_STATUS         status     = NV_OK;
     VaSpaceApi       *pVaSpaceApi  = NULL;
     RsResourceRef    *pResourceRef;
@@ -382,6 +407,7 @@ deviceSetDefaultVASpace_IMPL
                                                 &pResourceRef);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3431);
         NV_PRINTF(LEVEL_ERROR, "Invalid object handle 0x%x pEntry %p\n",
                   hVASpace, pVaSpaceApi);
         return NV_ERR_INVALID_OBJECT_HANDLE;
@@ -391,6 +417,7 @@ deviceSetDefaultVASpace_IMPL
 
     if (pDevice->pVASpace != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3432);
         NV_PRINTF(LEVEL_ERROR, "device already has an Associated VASPace\n");
         return NV_ERR_INVALID_OBJECT_HANDLE;
     }

@@ -44,6 +44,7 @@ dispsfConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3633);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pDispSfUser);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
 
@@ -66,13 +67,16 @@ dispsfGetRegBaseOffsetAndSize_IMPL
     NvU32* pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3634);
     if (pOffset)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3635);
         *pOffset = pDispSfUser->ControlOffset;
     }
 
     if (pSize)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3636);
         *pSize = pDispSfUser->ControlLength;
     }
 

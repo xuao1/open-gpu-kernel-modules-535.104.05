@@ -44,6 +44,7 @@ kctxshareapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5564);
     NV_STATUS                           rmStatus     = NV_OK;
     OBJVASPACE                         *pVAS;
     OBJGPU                             *pGpu         = GPU_RES_GET_GPU(pKernelCtxShareApi);
@@ -62,6 +63,7 @@ kctxshareapiConstruct_IMPL
     if (CliGetChannelGroup(pParams->hClient, pParams->hParent,
             &pChanGrpRef, &hDevice) == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5565);
         pKernelChannelGroupApi = dynamicCast(pChanGrpRef->pResource,
                                              KernelChannelGroupApi);
         NV_ASSERT_OR_RETURN(pKernelChannelGroupApi != NULL,
@@ -76,6 +78,7 @@ kctxshareapiConstruct_IMPL
     // Copy Constructor path
     if (RS_IS_COPY_CTOR(pParams))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5566);
         rmStatus = kctxshareapiCopyConstruct_IMPL(pKernelCtxShareApi, pCallContext, pParams);
         return rmStatus;
     }
@@ -83,6 +86,7 @@ kctxshareapiConstruct_IMPL
     rmStatus = serverGetClientUnderLock(&g_resServ, hClient, &pClient);
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5567);
         NV_PRINTF(LEVEL_ERROR, "Invalid client handle!\n");
         return NV_ERR_INVALID_ARGUMENT;
     }
@@ -98,6 +102,7 @@ kctxshareapiConstruct_IMPL
     rmStatus = deviceGetByHandle(pClient, hDevice, &pDevice);
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5568);
         NV_PRINTF(LEVEL_ERROR, "Invalid parent/device handle!\n");
         return NV_ERR_INVALID_ARGUMENT;
     }
@@ -107,6 +112,7 @@ kctxshareapiConstruct_IMPL
 
     if (pKernelChannelGroup->bLegacyMode)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5569);
         //
         // RM is trying to pre-allocate the kctxshares to for legacy mode
         // In this case, we use the the parent TSG's pVAS rather than
@@ -147,6 +153,7 @@ kctxshareapiConstruct_IMPL
 
     if (hVASpace != NV01_NULL_OBJECT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5570);
         RsResourceRef *pVASpaceRef;
         rmStatus = clientGetResourceRef(pCallContext->pClient, hVASpace, &pVASpaceRef);
         if (rmStatus != NV_OK)
@@ -157,6 +164,7 @@ kctxshareapiConstruct_IMPL
 
     if (pKernelChannelGroupApi->hKernelGraphicsContext != NV01_NULL_OBJECT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5571);
         RsResourceRef *pKernelGraphicsContextRef;
         rmStatus = clientGetResourceRef(pCallContext->pClient, pKernelChannelGroupApi->hKernelGraphicsContext, &pKernelGraphicsContextRef);
         if (rmStatus != NV_OK)
@@ -168,8 +176,10 @@ kctxshareapiConstruct_IMPL
 failed:
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5572);
         if (pShared)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5573);
             serverFreeShare(&g_resServ, pShared);
         }
     }
@@ -183,6 +193,7 @@ kctxshareapiDestruct_IMPL
     KernelCtxShareApi *pKernelCtxShareApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5574);
     CALL_CONTEXT                *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
     OBJGPU                      *pGpu = GPU_RES_GET_GPU(pKernelCtxShareApi);
@@ -196,6 +207,7 @@ kctxshareapiDestruct_IMPL
     pChanGrpRef = pCallContext->pResourceRef->pParentRef;
     if (pChanGrpRef != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5575);
         pKernelChannelGroupApi = dynamicCast(pChanGrpRef->pResource,
                                              KernelChannelGroupApi);
         pKernelChannelGroup = pKernelChannelGroupApi->pKernelChannelGroup;
@@ -205,6 +217,7 @@ kctxshareapiDestruct_IMPL
 
     if (pKernelCtxShareApi->pShareData != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5576);
         NV_ASSERT(pKernelCtxShareApi->pShareData->pKernelChannelGroup ==
                   pKernelChannelGroup);
 
@@ -222,6 +235,7 @@ kctxshareapiDestruct_IMPL
 
         if (refcnt > 1)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5577);
             //
             // serverFreeShare will delete the object automatically if the count hits 0;
             // we'd still need it to free all underlying resourcees, however.
@@ -253,6 +267,7 @@ kctxshareapiCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5578);
     NV_STATUS      rmStatus     = NV_OK;
     OBJGPU        *pGpu         = GPU_RES_GET_GPU(pKernelCtxShareApi);
     RsClient      *pDstClient   = pCallContext->pClient;
@@ -273,12 +288,14 @@ kctxshareapiCopyConstruct_IMPL
     iter =  serverutilRefIter(pDstClient->hClient, pDstRef->pParentRef->pParentRef->hResource, classId(VaSpaceApi), RS_ITERATE_DESCENDANTS, NV_TRUE);
     while (clientRefIterNext(iter.pClient, &iter))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5579);
         pVaspaceRef = iter.pResourceRef;
         pVaspaceApi = dynamicCast(pVaspaceRef->pResource, VaSpaceApi);
         NV_ASSERT_OR_ELSE(pVaspaceApi != NULL, rmStatus = NV_ERR_INVALID_STATE; goto done);
 
         if (pVaspaceApi->pVASpace == pKernelCtxShareApi->pShareData->pVAS)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5580);
             refAddDependant(pVaspaceRef, pDstRef);
             break;
         }
@@ -291,6 +308,7 @@ kctxshareapiCopyConstruct_IMPL
 
     if (pKernelChannelGroupApi->hKernelGraphicsContext != NV01_NULL_OBJECT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5581);
         RsResourceRef *pKernelGraphicsContextRef;
         NV_ASSERT_OK_OR_ELSE(rmStatus,
                              clientGetResourceRef(pCallContext->pClient, pKernelChannelGroupApi->hKernelGraphicsContext, &pKernelGraphicsContextRef),
@@ -305,6 +323,7 @@ kctxshareapiCopyConstruct_IMPL
     //
     if ((IS_VIRTUAL(pGpu) || IS_GSP_CLIENT(pGpu)) && !pKernelCtxShareApi->pShareData->pKernelChannelGroup->bLegacyMode)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5582);
         NV_RM_RPC_DUP_OBJECT(pGpu, pDstClient->hClient, pDstRef->pParentRef->hResource, pDstRef->hResource,
                              pParams->pSrcClient->hClient, pSrcRef->hResource, 0,
                              NV_TRUE, // automatically issue RPC_FREE on object free
@@ -314,6 +333,7 @@ kctxshareapiCopyConstruct_IMPL
 done:
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5583);
         serverFreeShare(&g_resServ, pShared);
     }
 
@@ -326,6 +346,7 @@ kctxshareapiCanCopy_IMPL
     KernelCtxShareApi *pKernelCtxShareApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5584);
     return NV_TRUE;
 }
 
@@ -335,6 +356,7 @@ kctxshareConstruct_IMPL
     KernelCtxShare *pKernelCtxShare
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5585);
     return NV_OK;
 }
 
@@ -365,6 +387,7 @@ kctxshareInitCommon_IMPL
     KernelChannelGroupApi *pKernelChannelGroupApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5586);
     NV_STATUS           status                = NV_OK;
     NvU32               heapFlag              = 0;
     NvU64               offset                = 0;
@@ -387,9 +410,11 @@ kctxshareInitCommon_IMPL
     //
     if (!IsAMODEL(pGpu) && vaspaceIsExternallyOwned(pVAS))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5587);
         SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY | SLI_LOOP_FLAGS_IGNORE_REENTRANCY)
         if (vaspaceGetPageDirBase(pVAS, pGpu) == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5588);
             NV_ASSERT(0);
             SLI_LOOP_RETURN(NV_ERR_INVALID_STATE);
         }
@@ -399,6 +424,7 @@ kctxshareInitCommon_IMPL
    // If flag is equal to SYNC, allocate context share from veId 0.
     if (Flags == NV_CTXSHARE_ALLOCATION_FLAGS_SUBCONTEXT_SYNC)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5589);
         heapFlag = NVOS32_ALLOC_FLAGS_FIXED_ADDRESS_ALLOCATE;
         offset   = 0;
     }
@@ -409,10 +435,12 @@ kctxshareInitCommon_IMPL
     //
     else if (Flags == NV_CTXSHARE_ALLOCATION_FLAGS_SUBCONTEXT_ASYNC)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5590);
         heapFlag = NVOS32_ALLOC_FLAGS_FORCE_MEM_GROWS_DOWN;
     }
     else if (Flags == NV_CTXSHARE_ALLOCATION_FLAGS_SUBCONTEXT_SPECIFIED)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5591);
         heapFlag = NVOS32_ALLOC_FLAGS_FIXED_ADDRESS_ALLOCATE;
         offset   = *pSubctxId;
     }
@@ -435,6 +463,7 @@ kctxshareInitCommon_IMPL
         NULL);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5592);
         return status;
     }
 
@@ -450,6 +479,7 @@ kctxshareInitCommon_IMPL
 
     if(status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5593);
         goto done;
     }
 
@@ -457,6 +487,7 @@ kctxshareInitCommon_IMPL
 done:
     if (status == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5594);
        *pSubctxId   = NvU64_LO32(offset);
 
         NV_PRINTF(LEVEL_INFO,
@@ -504,6 +535,7 @@ kctxshareDestroyCommon_IMPL
     KernelChannelGroupApi *pKernelChannelGroupApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5595);
     NV_STATUS               status = NV_OK;
     NvU32                   subctxId;
     NvU32                   i;
@@ -538,8 +570,10 @@ kctxshareDestroyCommon_IMPL
 
     for (i = 0; i < numMax; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5596);
         if (i == pKernelCtxShare->subctxId)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5597);
             continue;
         }
 
@@ -549,9 +583,11 @@ kctxshareDestroyCommon_IMPL
             NV_FALSE);
         if (pBlock)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5598);
             OBJVASPACE *pSubctxVAS = ((KernelCtxShare *)pBlock->pData)->pVAS;
             if (pSubctxVAS == pKernelCtxShare->pVAS)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5599);
                 bRelease = NV_FALSE;
                 break;
             }
@@ -561,6 +597,7 @@ kctxshareDestroyCommon_IMPL
     status = kctxshareDestroy_HAL(pKernelCtxShare, pKernelCtxShareApi, pGpu, pKernelChannelGroupApi, bRelease);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5600);
         goto fail;
     }
 
@@ -572,6 +609,7 @@ kctxshareDestroyCommon_IMPL
 fail:
     if (status == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5601);
         NV_PRINTF(LEVEL_INFO, "Freed Context Share 0x%p with id 0x%x\n",
                   pKernelCtxShare, subctxId);
     }
@@ -590,6 +628,7 @@ kctxshareDestruct_IMPL
     KernelCtxShare *pKernelCtxShare
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5602);
     //
     // Assert that kctxshareDestroyCommon was called to free kctxshare resources before
     // getting here by checking if subctxId has been freed from heap.
@@ -597,6 +636,7 @@ kctxshareDestruct_IMPL
     //
     if(pKernelCtxShare->pKernelChannelGroup != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5603);
         PEMEMBLOCK pBlock =
             pKernelCtxShare->pKernelChannelGroup->pSubctxIdHeap->eheapGetBlock(
                 pKernelCtxShare->pKernelChannelGroup->pSubctxIdHeap,

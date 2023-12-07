@@ -64,6 +64,7 @@ kbifConstructEngine_IMPL
     ENGDESCRIPTOR  engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1336);
     // Initialize registry overrides
     _kbifInitRegistryOverrides(pGpu, pKernelBif);
 
@@ -98,6 +99,7 @@ kbifStateInitLocked_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1337);
     OBJSYS    *pSys   = SYS_GET_INSTANCE();
     OBJOS     *pOS    = SYS_GET_OS(pSys);
     OBJCL     *pCl    = SYS_GET_CL(pSys);
@@ -106,6 +108,7 @@ kbifStateInitLocked_IMPL
     // Return early if GPU is connected to an unsupported chipset
     if (pCl->getProperty(pCl, PDB_PROP_CL_UNSUPPORTED_CHIPSET))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1338);
         return NV_ERR_NOT_COMPATIBLE;
     }
 
@@ -113,6 +116,7 @@ kbifStateInitLocked_IMPL
     status = osInitMapping(pGpu);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1339);
         return status;
     }
 
@@ -127,6 +131,7 @@ kbifStateInitLocked_IMPL
          NV2080_CTRL_BUS_INFO_TYPE_PCI_EXPRESS) &&
         pOS->getProperty(pOS, PDB_PROP_OS_PAT_UNSUPPORTED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1340);
         NV_PRINTF(LEVEL_INFO,
                   "BIF disabling noncoherent on OS w/o usable PAT support\n");
 
@@ -151,6 +156,7 @@ kbifStateLoad_IMPL
     NvU32      flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1341);
     NV_PRINTF(LEVEL_INFO, "BIF DMA Caps: %08x\n", kbifGetDmaCaps(pGpu, pKernelBif));
 
     // Apply C73 chipset WAR
@@ -166,6 +172,7 @@ kbifStateLoad_IMPL
     if (pKernelBif->getProperty(pKernelBif, PDB_PROP_KBIF_CHECK_IF_GPU_EXISTS_DEF) &&
         !IS_VIRTUAL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1342);
         osSchedule1SecondCallback(pGpu, _kbifCheckIfGpuExists, NULL, NV_OS_1HZ_REPEAT);
     }
 
@@ -187,6 +194,7 @@ _kbifSetPcieRelaxedOrdering
     NvBool    enableRo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1343);
     NV2080_CTRL_INTERNAL_BIF_SET_PCIE_RO_PARAMS pcieRo;
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS  status;
@@ -220,6 +228,7 @@ kbifStatePostLoad_IMPL
     NvU32       flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1344);
     NV_STATUS status;
 
     kbifInitRelaxedOrderingFromEmulatedConfigSpace(pGpu, pKernelBif);
@@ -251,6 +260,7 @@ kbifStateUnload_IMPL
     NvU32      flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1345);
 
     return NV_OK;
 }
@@ -268,6 +278,7 @@ kbifInitDmaCaps_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1346);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl  = SYS_GET_CL(pSys);
 
@@ -277,6 +288,7 @@ kbifInitDmaCaps_IMPL
     if (IsAMODEL(pGpu) ||
         pCl->getProperty(pCl, PDB_PROP_CL_IS_CHIPSET_IO_COHERENT))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1347);
         pKernelBif->dmaCaps |= REF_DEF(BIF_DMA_CAPS_SNOOP, _CTXDMA);
     }
 }
@@ -288,6 +300,7 @@ kbifGetDmaCaps_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1348);
     NvU32 retval;
 
     // Start out with system specific DMA caps
@@ -296,6 +309,7 @@ kbifGetDmaCaps_IMPL
     // If noncoherent support is disabled, mask out SNOOP caps
     if (!pKernelBif->getProperty(pKernelBif, PDB_PROP_KBIF_SUPPORT_NONCOHERENT))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1349);
         retval &= ~DRF_SHIFTMASK(BIF_DMA_CAPS_NOSNOOP);
     }
 
@@ -315,6 +329,7 @@ kbifStaticInfoInit_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1350);
     NV2080_CTRL_INTERNAL_BIF_GET_STATIC_INFO_PARAMS *pStaticInfo;
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS  status = NV_OK;
@@ -323,6 +338,7 @@ kbifStaticInfoInit_IMPL
     pStaticInfo = portMemAllocNonPaged(sizeof(*pStaticInfo));
     if (pStaticInfo == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1351);
         NV_PRINTF(LEVEL_ERROR, "Could not allocate pStaticInfo for KernelBif");
         status = NV_ERR_NO_MEMORY;
         goto kBifStaticInfoInit_IMPL_exit;
@@ -359,6 +375,7 @@ kbifInitPcieDeviceControlStatus
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1352);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl  = SYS_GET_CL(pSys);
 
@@ -372,6 +389,7 @@ kbifInitPcieDeviceControlStatus
     //
     if (!pCl->getProperty(pCl, PDB_PROP_CL_RELAXED_ORDERING_NOT_CAPABLE))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1353);
         kbifPcieConfigEnableRelaxedOrdering_HAL(pGpu, pKernelBif);
     }
     else
@@ -385,12 +403,14 @@ kbifInitPcieDeviceControlStatus
     //
     if (IsGH100(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1354);
         pCl->setProperty(pCl, PDB_PROP_CL_ROOTPORT_NEEDS_NOSNOOP_WAR, NV_TRUE);
     }
 
     if (!pCl->getProperty(pCl, PDB_PROP_CL_NOSNOOP_NOT_CAPABLE) &&
         !pCl->getProperty(pCl, PDB_PROP_CL_ROOTPORT_NEEDS_NOSNOOP_WAR))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1355);
         // Bug 393398 - Re-enable DEVICE_CONTROL_STATUS_ENABLE_NO_SNOOP
         kbifEnableNoSnoop_HAL(pGpu, pKernelBif, NV_TRUE);
     }
@@ -420,15 +440,19 @@ kbifCheckAndRearmMSI_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1356);
     Intr *pIntr = GPU_GET_INTR(pGpu);
 
     if (kbifIsMSIEnabled(pGpu, pKernelBif))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1357);
         if (!IS_VIRTUAL(pGpu))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1358);
             // Send EOI to rearm
             if (pKernelBif->getProperty(pKernelBif, PDB_PROP_KBIF_USE_CONFIG_SPACE_TO_REARM_MSI))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1359);
                 kbifRearmMSI_HAL(pGpu, pKernelBif);
             }
             else
@@ -439,6 +463,7 @@ kbifCheckAndRearmMSI_IMPL
     }
     else if (kbifIsMSIXEnabled(pGpu, pKernelBif))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1360);
         intrRetriggerTopLevel_HAL(pGpu, pIntr);
     }
 }
@@ -460,6 +485,7 @@ kbifIsMSIEnabled_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1361);
     //
     // Bug 418883: We shall rely upon value cached at boot, for the value
     // should not change during execution. If however, we must ever change
@@ -468,12 +494,15 @@ kbifIsMSIEnabled_IMPL
     //
     if (!pKernelBif->getProperty(pKernelBif, PDB_PROP_KBIF_IS_MSI_CACHED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1362);
         if (kbifIsMSIEnabledInHW_HAL(pGpu, pKernelBif))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1363);
             pKernelBif->setProperty(pKernelBif, PDB_PROP_KBIF_IS_MSI_ENABLED, NV_TRUE);
 
             if (IS_VIRTUAL(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1364);
                 // vGPU guests want an FYI print that re-arming is not required
                 NV_PRINTF(LEVEL_WARNING,
                           "MSI is enabled for vGPU, but no need to re-ARM\n");
@@ -506,10 +535,13 @@ kbifIsMSIXEnabled_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1365);
     if (!pKernelBif->getProperty(pKernelBif, PDB_PROP_KBIF_IS_MSIX_CACHED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1366);
         if (kbifIsMSIXEnabledInHW_HAL(pGpu, pKernelBif))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1367);
             pKernelBif->setProperty(pKernelBif, PDB_PROP_KBIF_IS_MSIX_ENABLED, NV_TRUE);
         }
         else
@@ -537,6 +569,7 @@ kbifClearConfigErrors_IMPL
     NvU32      xveAerFlagsMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1368);
     NvU32 xveStatusFlags = 0;
     NvU32 xveStatus      = 0;
     NvU32 xveAerFlags    = 0;
@@ -545,23 +578,28 @@ kbifClearConfigErrors_IMPL
         (kbifGetXveStatusBits_HAL(pGpu, pKernelBif, &xveStatusFlags, &xveStatus) == NV_OK) &&
         (xveStatusFlags != 0))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1369);
         NV_PRINTF(LEVEL_WARNING, "PCI-E device status errors pending (%08X):\n",
                   xveStatusFlags);
 #ifdef DEBUG
         if ( xveStatusFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_ERRORS_CORR_ERROR )
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1370);
             NV_PRINTF(LEVEL_WARNING, "     _CORR_ERROR_DETECTED\n");
         }
         if ( xveStatusFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_ERRORS_NON_FATAL_ERROR )
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1371);
             NV_PRINTF(LEVEL_WARNING, "     _NON_FATAL_ERROR_DETECTED\n");
         }
         if ( xveStatusFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_ERRORS_FATAL_ERROR )
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1372);
             NV_PRINTF(LEVEL_WARNING, "     _FATAL_ERROR_DETECTED\n");
         }
         if ( xveStatusFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_ERRORS_UNSUPP_REQUEST )
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1373);
             NV_PRINTF(LEVEL_WARNING, "     _UNSUPP_REQUEST_DETECTED\n");
         }
 #endif
@@ -572,80 +610,99 @@ kbifClearConfigErrors_IMPL
     if ((xveAerFlagsMask) &&
         (kbifGetXveAerBits_HAL(pGpu, pKernelBif, &xveAerFlags) == NV_OK))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1374);
         xveAerFlags &= xveAerFlagsMask;
 
         if (xveAerFlags != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1375);
             NV_PRINTF(LEVEL_WARNING,
                       "PCI-E device AER errors pending (%08X):\n",
                       xveAerFlags);
 #ifdef DEBUG
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_UNCORR_TRAINING_ERR)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1376);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_UNCORR_TRAINING_ERR\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_UNCORR_DLINK_PROTO_ERR)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1377);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_UNCORR_DLINK_PROTO_ERR\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_UNCORR_POISONED_TLP)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1378);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_UNCORR_POISONED_TLP\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_UNCORR_FC_PROTO_ERR)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1379);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_UNCORR_FC_PROTO_ERR\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_UNCORR_CPL_TIMEOUT)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1380);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_UNCORR_CPL_TIMEOUT\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_UNCORR_CPL_ABORT)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1381);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_UNCORR_CPL_ABORT\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_UNCORR_UNEXP_CPL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1382);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_UNCORR_UNEXP_CPL\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_UNCORR_RCVR_OVERFLOW)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1383);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_UNCORR_RCVR_OVERFLOW\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_UNCORR_MALFORMED_TLP)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1384);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_UNCORR_MALFORMED_TLP\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_UNCORR_ECRC_ERROR)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1385);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_UNCORR_ECRC_ERROR\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_UNCORR_UNSUPPORTED_REQ)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1386);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_UNCORR_UNSUPPORTED_REQ\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_CORR_RCV_ERR)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1387);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_CORR_RCV_ERR\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_CORR_BAD_TLP)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1388);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_CORR_BAD_TLP\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_CORR_BAD_DLLP)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1389);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_CORR_BAD_DLLP\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_CORR_RPLY_ROLLOVER)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1390);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_CORR_RPLY_ROLLOVER\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_CORR_RPLY_TIMEOUT)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1391);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_CORR_RPLY_TIMEOUT\n");
             }
             if (xveAerFlags & NV2080_CTRL_BUS_INFO_PCIE_LINK_AER_CORR_ADVISORY_NONFATAL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1392);
                 NV_PRINTF(LEVEL_WARNING, "     _AER_CORR_ADVISORY_NONFATAL\n");
             }
 #endif
@@ -665,6 +722,7 @@ kbifIsPciBusFamily_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1393);
     NvU32 busType = kbifGetBusIntfType_HAL(pKernelBif);
 
     return ((busType == NV2080_CTRL_BUS_INFO_TYPE_PCI) ||
@@ -685,12 +743,14 @@ _kbifInitRegistryOverrides
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1394);
     NvU32 data32;
 
     // P2P Override
     pKernelBif->p2pOverride = BIF_P2P_NOT_OVERRIDEN;
     if (osReadRegistryDword(pGpu, NV_REG_STR_CL_FORCE_P2P, &data32) == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1395);
         pKernelBif->p2pOverride = data32;
         pKernelBif->setProperty(pKernelBif, PDB_PROP_KBIF_P2P_READS_DISABLED, FLD_TEST_DRF(_REG_STR, _CL_FORCE_P2P, _READ, _DISABLE, data32));
         pKernelBif->setProperty(pKernelBif, PDB_PROP_KBIF_P2P_WRITES_DISABLED, FLD_TEST_DRF(_REG_STR, _CL_FORCE_P2P, _WRITE, _DISABLE, data32));
@@ -701,6 +761,7 @@ _kbifInitRegistryOverrides
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_FORCE_P2P_TYPE, &data32) == NV_OK &&
         (data32 <= NV_REG_STR_RM_FORCE_P2P_TYPE_MAX))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1396);
         pKernelBif->forceP2PType = data32;
     }
 
@@ -708,6 +769,7 @@ _kbifInitRegistryOverrides
     pKernelBif->peerMappingOverride = NV_REG_STR_PEERMAPPING_OVERRIDE_DEFAULT;
     if (osReadRegistryDword(pGpu, NV_REG_STR_PEERMAPPING_OVERRIDE, &data32) == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1397);
         NV_PRINTF(LEVEL_INFO, "allow peermapping reg key = %d\n", data32);
         pKernelBif->peerMappingOverride = !!data32;
     }
@@ -727,10 +789,13 @@ _kbifCheckIfGpuExists
     void   *rsvd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1398);
     if (FULL_GPU_SANITY_CHECK(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1399);
         if (gpuVerifyExistence_HAL(pGpu) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1400);
             osRemove1SecondRepeatingCallback(pGpu, _kbifCheckIfGpuExists, NULL);
         }
     }
@@ -743,16 +808,19 @@ kbifGetGpuLinkCapabilities_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1401);
     NvU32 addrLinkCap = 0;
     NvU32 data        = 0;
 
     if (NV_OK != kbifGetBusOptionsAddr_HAL(pGpu, pKernelBif, BUS_OPTIONS_LINK_CAPABILITIES, &addrLinkCap))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1402);
         return 0;
     }
 
     if (NV_OK != GPU_BUS_CFG_RD32(pGpu, addrLinkCap, &data))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1403);
         NV_PRINTF(LEVEL_ERROR, "Unable to read %x\n", addrLinkCap);
         return 0;
     }
@@ -767,16 +835,19 @@ kbifGetGpuLinkControlStatus_IMPL
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1404);
     NvU32 addrLinkControlStatus = 0;
     NvU32 data                  = 0;
 
     if (NV_OK != kbifGetBusOptionsAddr_HAL(pGpu, pKernelBif, BUS_OPTIONS_LINK_CONTROL_STATUS, &addrLinkControlStatus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1405);
         return 0;
     }
 
     if (NV_OK != GPU_BUS_CFG_RD32(pGpu, addrLinkControlStatus, &data ))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1406);
         NV_PRINTF(LEVEL_ERROR, "Unable to read %x\n", addrLinkControlStatus);
         return 0;
     }
@@ -787,12 +858,14 @@ kbifGetGpuLinkControlStatus_IMPL
 static NvBool
 _doesBoardHaveMultipleGpusAndSwitch(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1407);
     if (((gpuIsMultiGpuBoard(pGpu)) ||
         (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_GEMINI)))&&
         ((pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_PLX_PRESENT))  ||
          (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_BR03_PRESENT)) ||
          (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_BR04_PRESENT))))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1408);
         return NV_TRUE;
     }
     else
@@ -809,6 +882,7 @@ kbifControlGetPCIEInfo_IMPL
     NV2080_CTRL_BUS_INFO *pBusInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1409);
     OBJSYS *pSys  = SYS_GET_INSTANCE();
     OBJCL  *pCl   = SYS_GET_CL(pSys);
     NvU32   index = pBusInfo->index;
@@ -816,6 +890,7 @@ kbifControlGetPCIEInfo_IMPL
 
     if (kbifGetBusIntfType_HAL(pKernelBif) != NV2080_CTRL_BUS_INFO_TYPE_PCI_EXPRESS)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1410);
         // KMD cannot handle error codes for this ctrl call, hence returning
         // NV_OK, once KMD fixes the bug:3545197, RM can return NV_ERR_NOT_SUPPORTED
         return NV_OK;
@@ -823,6 +898,7 @@ kbifControlGetPCIEInfo_IMPL
 
     switch (index)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1411);
         case NV2080_CTRL_BUS_INFO_INDEX_PCIE_GPU_LINK_CAPS:
         {
             data = kbifGetGpuLinkCapabilities(pGpu, pKernelBif);
@@ -833,10 +909,12 @@ kbifControlGetPCIEInfo_IMPL
         {
             if (_doesBoardHaveMultipleGpusAndSwitch(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1412);
                 if (clPcieReadPortConfigReg(pGpu, pCl,
                                             &pGpu->gpuClData.boardUpstreamPort,
                                             CL_PCIE_LINK_CAP, &data) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1413);
                     data = 0;
                 }
             }
@@ -853,10 +931,12 @@ kbifControlGetPCIEInfo_IMPL
 
             if (_doesBoardHaveMultipleGpusAndSwitch(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1414);
                 if (clPcieReadPortConfigReg(pGpu, pCl,
                                             &pGpu->gpuClData.boardUpstreamPort,
                                             CL_PCIE_LINK_CTRL_STATUS, &temp) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1415);
                     data = 0;
                     break;
                 }
@@ -865,26 +945,31 @@ kbifControlGetPCIEInfo_IMPL
                     temp = REF_VAL(NV2080_CTRL_BUS_INFO_PCIE_LINK_CTRL_STATUS_LINK_SPEED, temp);
                     if (temp == NV2080_CTRL_BUS_INFO_PCIE_LINK_CTRL_STATUS_LINK_SPEED_64000MBPS)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1416);
                         data = FLD_SET_DRF(2080, _CTRL_BUS_INFO_PCIE_LINK_CAP,
                                            _CURR_LEVEL, _GEN6, data);
                     }
                     else if (temp == NV2080_CTRL_BUS_INFO_PCIE_LINK_CTRL_STATUS_LINK_SPEED_32000MBPS)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1417);
                         data = FLD_SET_DRF(2080, _CTRL_BUS_INFO_PCIE_LINK_CAP,
                                            _CURR_LEVEL, _GEN5, data);
                     }
                     else if (temp == NV2080_CTRL_BUS_INFO_PCIE_LINK_CTRL_STATUS_LINK_SPEED_16000MBPS)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1418);
                         data = FLD_SET_DRF(2080, _CTRL_BUS_INFO_PCIE_LINK_CAP,
                                            _CURR_LEVEL, _GEN4, data);
                     }
                     else if (temp == NV2080_CTRL_BUS_INFO_PCIE_LINK_CTRL_STATUS_LINK_SPEED_8000MBPS)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1419);
                         data = FLD_SET_DRF(2080, _CTRL_BUS_INFO_PCIE_LINK_CAP,
                                            _CURR_LEVEL, _GEN3, data);
                     }
                     else if (temp == NV2080_CTRL_BUS_INFO_PCIE_LINK_CTRL_STATUS_LINK_SPEED_5000MBPS)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1420);
                         data = FLD_SET_DRF(2080, _CTRL_BUS_INFO_PCIE_LINK_CAP,
                                            _CURR_LEVEL, _GEN2, data);
                     }
@@ -899,6 +984,7 @@ kbifControlGetPCIEInfo_IMPL
                                             &pGpu->gpuClData.boardUpstreamPort,
                                             CL_PCIE_LINK_CAP, &temp) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1421);
                     data = 0;
                     break;
                 }
@@ -907,26 +993,31 @@ kbifControlGetPCIEInfo_IMPL
                     temp = REF_VAL(NV2080_CTRL_BUS_INFO_PCIE_LINK_CAP_MAX_SPEED, temp);
                     if (temp == NV2080_CTRL_BUS_INFO_PCIE_LINK_CAP_MAX_SPEED_64000MBPS)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1422);
                         data = FLD_SET_DRF(2080, _CTRL_BUS_INFO_PCIE_LINK_CAP,
                                            _GEN, _GEN6, data);
                     }
                     else if (temp == NV2080_CTRL_BUS_INFO_PCIE_LINK_CAP_MAX_SPEED_32000MBPS)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1423);
                         data = FLD_SET_DRF(2080, _CTRL_BUS_INFO_PCIE_LINK_CAP,
                                            _GEN, _GEN5, data);
                     }
                     else if (temp == NV2080_CTRL_BUS_INFO_PCIE_LINK_CAP_MAX_SPEED_16000MBPS)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1424);
                         data = FLD_SET_DRF(2080, _CTRL_BUS_INFO_PCIE_LINK_CAP,
                                            _GEN, _GEN4, data);
                     }
                     else if (temp == NV2080_CTRL_BUS_INFO_PCIE_LINK_CAP_MAX_SPEED_8000MBPS)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1425);
                         data = FLD_SET_DRF(2080, _CTRL_BUS_INFO_PCIE_LINK_CAP,
                                            _GEN, _GEN3, data);
                     }
                     else if (temp == NV2080_CTRL_BUS_INFO_PCIE_LINK_CAP_MAX_SPEED_5000MBPS)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1426);
                         data = FLD_SET_DRF(2080, _CTRL_BUS_INFO_PCIE_LINK_CAP,
                                            _GEN, _GEN2, data);
                     }
@@ -941,6 +1032,7 @@ kbifControlGetPCIEInfo_IMPL
             {
                 if (IS_VIRTUAL(pGpu) || IS_GSP_CLIENT(pGpu))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1427);
                     NV2080_CTRL_BUS_INFO busInfo = {0};
                     NV_STATUS rmStatus = NV_OK;
 
@@ -948,6 +1040,7 @@ kbifControlGetPCIEInfo_IMPL
 
                     if ((rmStatus = kbusSendBusInfo(pGpu, GPU_GET_KERNEL_BUS(pGpu), &busInfo)) != NV_OK)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1428);
                         NV_PRINTF(LEVEL_INFO, "Squashing rmStatus: %x \n", rmStatus);
                         rmStatus = NV_OK;
                         busInfo.data = 0;
@@ -963,6 +1056,7 @@ kbifControlGetPCIEInfo_IMPL
                                         &pGpu->gpuClData.rootPort,
                                         CL_PCIE_LINK_CAP, &data) != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1429);
                 data = 0;
             }
             break;
@@ -972,10 +1066,12 @@ kbifControlGetPCIEInfo_IMPL
             if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_BR03_PRESENT) ||
                 pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_BR04_PRESENT))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1430);
                 if (clPcieReadPortConfigReg(pGpu, pCl,
                                             &pGpu->gpuClData.boardDownstreamPort,
                                             CL_PCIE_LINK_CAP, &data) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1431);
                     data = 0;
                 }
             }
@@ -986,6 +1082,7 @@ kbifControlGetPCIEInfo_IMPL
                                             &pGpu->gpuClData.rootPort,
                                             CL_PCIE_LINK_CAP, &data) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1432);
                     data = 0;
                 }
             }
@@ -1001,10 +1098,12 @@ kbifControlGetPCIEInfo_IMPL
         {
             if (_doesBoardHaveMultipleGpusAndSwitch(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1433);
                 if (clPcieReadPortConfigReg(pGpu, pCl,
                                             &pGpu->gpuClData.boardUpstreamPort,
                                             CL_PCIE_LINK_CTRL_STATUS, &data) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1434);
                     data = 0;
                 }
             }
@@ -1021,6 +1120,7 @@ kbifControlGetPCIEInfo_IMPL
                                         CL_PCIE_LINK_CTRL_STATUS,
                                         &data) != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1435);
                 data = 0;
             }
             break;
@@ -1030,10 +1130,12 @@ kbifControlGetPCIEInfo_IMPL
             if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_BR03_PRESENT) ||
                 pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_BR04_PRESENT))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1436);
                 if (clPcieReadPortConfigReg(pGpu, pCl,
                                             &pGpu->gpuClData.boardDownstreamPort,
                                             CL_PCIE_LINK_CTRL_STATUS, &data) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1437);
                     data = 0;
                 }
             }
@@ -1045,6 +1147,7 @@ kbifControlGetPCIEInfo_IMPL
                                             CL_PCIE_LINK_CTRL_STATUS,
                                             &data) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1438);
                     data = 0;
                 }
             }
@@ -1056,13 +1159,16 @@ kbifControlGetPCIEInfo_IMPL
 
             if (pKernelBif != NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1439);
                 if (kbifGetXveStatusBits_HAL(pGpu, pKernelBif, &data, &xveStatus) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1440);
                     data = 0;
                     break;
                 }
                 if (kbifClearXveStatus_HAL(pGpu, pKernelBif, &xveStatus) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1441);
                     data = 0;
                 }
             }
@@ -1074,11 +1180,13 @@ kbifControlGetPCIEInfo_IMPL
 
             if (clPcieReadDevCtrlStatus(pGpu, pCl, &data, &clStatus) != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1442);
                 data = 0;
                 break;
             }
             if (clPcieClearDevCtrlStatus(pGpu, pCl, &clStatus) != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1443);
                 data = 0;
             }
             break;
@@ -1087,13 +1195,16 @@ kbifControlGetPCIEInfo_IMPL
         {
             if (pKernelBif != NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1444);
                 if (kbifGetXveAerBits_HAL(pGpu, pKernelBif, &data) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1445);
                     data = 0;
                     break;
                 }
                 if (kbifClearXveAer_HAL(pGpu, pKernelBif, data) != NV_OK)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1446);
                     data = 0;
                 }
             }
@@ -1103,6 +1214,7 @@ kbifControlGetPCIEInfo_IMPL
         {
             if (kbifIsMSIEnabledInHW_HAL(pGpu, pKernelBif))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1447);
                 data = FLD_SET_DRF(2080, _CTRL_BUS_INFO_MSI,
                                    _STATUS, _ENABLED, data);
             }
@@ -1138,6 +1250,7 @@ kbifPollDeviceOnBus_IMPL
     KernelBif  *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1448);
     RMTIMEOUT timeout;
 
     gpuSetTimeout(pGpu, GPU_TIMEOUT_DEFAULT, &timeout, 0);
@@ -1146,8 +1259,10 @@ kbifPollDeviceOnBus_IMPL
                            gpuGetBus(pGpu),
                            gpuGetDevice(pGpu), 0, NULL, NULL) == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1449);
         if (gpuCheckTimeout(pGpu, &timeout) == NV_ERR_TIMEOUT)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1450);
             NV_PRINTF(LEVEL_ERROR, "Timeout polling GPU back on bus\n");
             DBG_BREAKPOINT();
             return NV_ERR_TIMEOUT;

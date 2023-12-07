@@ -47,18 +47,21 @@ kbifPreOsGlobalErotGrantRequest_AD102
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1204);
     NV_STATUS status = NV_OK;
     NvU32 reg = GPU_REG_RD32(pGpu, NV_PBUS_SW_GLOBAL_EROT_GRANT);
 
     // Invalid value suggests that there is no ERoT
     if (FLD_TEST_DRF(_PBUS, _SW_GLOBAL_EROT_GRANT, _VALID, _NO, reg))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1205);
         return status;
     }
 
     // Check if grant has already been allowed
     if (_kbifPreOsCheckErotGrantAllowed_AD102(pGpu, NULL))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1206);
         return status;
     }
 
@@ -68,6 +71,7 @@ kbifPreOsGlobalErotGrantRequest_AD102
     status = gpuTimeoutCondWait(pGpu, _kbifPreOsCheckErotGrantAllowed_AD102, NULL, NULL);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1207);
         NV_PRINTF(LEVEL_ERROR, "Timed out waiting for preOs to grant access to EEPROM\n");
     }
 
@@ -81,6 +85,7 @@ _kbifPreOsCheckErotGrantAllowed_AD102
     void   *pVoid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1208);
     NvU32 reg = GPU_REG_RD32(pGpu, NV_PBUS_SW_GLOBAL_EROT_GRANT);
 
     return FLD_TEST_DRF(_PBUS, _SW_GLOBAL_EROT_GRANT, _ALLOW, _YES, reg);

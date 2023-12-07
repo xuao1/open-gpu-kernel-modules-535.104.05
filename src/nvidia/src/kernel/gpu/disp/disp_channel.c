@@ -57,6 +57,7 @@ dispchnParseAllocParams
     NvBool      *pConnectPbAtGrab
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3477);
     NV50VAIO_CHANNELDMA_ALLOCATION_PARAMETERS *pDmaChannelAllocParams = NULL;
     NV50VAIO_CHANNELPIO_ALLOCATION_PARAMETERS *pPioChannelAllocParams = NULL;
 
@@ -65,6 +66,7 @@ dispchnParseAllocParams
 
     if (pDispChannel->bIsDma)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3478);
         pDmaChannelAllocParams = pAllocParams;
         *pChannelInstance      = pDmaChannelAllocParams->channelInstance;
         *pHObjectBuffer        = pDmaChannelAllocParams->hObjectBuffer;
@@ -74,11 +76,13 @@ dispchnParseAllocParams
                          _CONNECT_PB_AT_GRAB, _YES,
                          pDmaChannelAllocParams->flags))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3479);
             *pConnectPbAtGrab = NV_TRUE;
         }
 
         if (pDmaChannelAllocParams->hObjectNotify != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3480);
             NV_PRINTF(LEVEL_WARNING, "Error notifier parameter is not used in Display channel allocation.\n");
         }
     }
@@ -91,6 +95,7 @@ dispchnParseAllocParams
 
         if (pPioChannelAllocParams->hObjectNotify != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3481);
             NV_PRINTF(LEVEL_WARNING, "Error notifier parameter is not used in Display channel allocation.\n");
         }
     }
@@ -105,6 +110,7 @@ dispchnConstruct_IMPL
     NvU32                         isDma
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3482);
     OBJGPU         *pGpu = GPU_RES_GET_GPU(pDispChannel);
     KernelDisplay  *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NV_STATUS       rmStatus = NV_OK;
@@ -125,6 +131,7 @@ dispchnConstruct_IMPL
 
     if (pParams->pSecInfo->privLevel < RS_PRIV_LEVEL_USER_ROOT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3483);
         NV_PRINTF(LEVEL_ERROR,
                   "Failure allocating display class 0x%08x: Only root(admin)/kernel clients are allowed\n",
                   pParams->externalClassId);
@@ -146,6 +153,7 @@ dispchnConstruct_IMPL
     //
     if (!gpuIsClassSupported(pGpu, RES_GET_EXT_CLASS_ID(pDispChannel)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3484);
         NV_PRINTF(LEVEL_ERROR, "Unsupported class in\n");
         return NV_ERR_INVALID_CLASS;
     }
@@ -168,6 +176,7 @@ dispchnConstruct_IMPL
 
     if (internalDispChnClass == dispChnClass_Any)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3485);
         //
         // Any channel is kernel only channel, Physical RM doesn't need ANY channel information.
         // return from here as ANY channel is constructed.
@@ -180,6 +189,7 @@ dispchnConstruct_IMPL
     API_GPU_FULL_POWER_SANITY_CHECK(pGpu, NV_TRUE, NV_FALSE);
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY);
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3486);
         rmStatus = kdispSetPushBufferParamsToPhysical_HAL(pGpu,
                                             pKernelDisplay,
                                             pDispChannel,
@@ -203,6 +213,7 @@ dispchnConstruct_IMPL
                                              connectPbAtGrab);
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3487);
         NV_PRINTF(LEVEL_ERROR,
                   "disp channel[0x%x] alloc failed. Return status = 0x%x\n",
                   channelInstance, rmStatus);
@@ -221,6 +232,7 @@ dispchnConstruct_IMPL
     // setup to return pControl to client
     if (pDispChannel->bIsDma)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3488);
         NV50VAIO_CHANNELDMA_ALLOCATION_PARAMETERS *pDmaChannelAllocParams = pAllocParams;
         pDmaChannelAllocParams->pControl = pDispChannel->pControl;
     }
@@ -251,6 +263,7 @@ dispchnGrabChannel_IMPL
     void        *pAllocParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3489);
     NV_STATUS          rmStatus = NV_OK;
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pDispChannel);
     KernelDisplay     *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
@@ -264,6 +277,7 @@ dispchnGrabChannel_IMPL
 
     if (RES_GET_PARENT_HANDLE(pDispChannel) != hParent)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3490);
         NV_PRINTF(LEVEL_ERROR,
                   "disp channel grab failed because of bad display parent 0x%x\n",
                   hParent);
@@ -286,6 +300,7 @@ dispchnGrabChannel_IMPL
     if (RES_GET_EXT_CLASS_ID(pDispChannel) != hClass                ||
         pDispChannel->InstanceNumber       != channelInstance)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3491);
         NV_PRINTF(LEVEL_ERROR,
                   "Information supplied for handle 0x%x doesn't match that in RM's client DB\n",
                   hChannel);
@@ -299,6 +314,7 @@ dispchnGrabChannel_IMPL
     API_GPU_FULL_POWER_SANITY_CHECK(pGpu, NV_TRUE, NV_FALSE);
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY);
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3492);
       rmStatus = kdispSetPushBufferParamsToPhysical_HAL(pGpu,
                                            pKernelDisplay,
                                            pDispChannel,
@@ -324,6 +340,7 @@ dispchnGrabChannel_IMPL
     // setup to return pControl to client
     if (pDispChannel->bIsDma)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3493);
         NV50VAIO_CHANNELDMA_ALLOCATION_PARAMETERS *pDmaChannelAllocParams = pAllocParams;
         pDmaChannelAllocParams->pControl = pDispChannel->pControl;
     }
@@ -345,6 +362,7 @@ dispchnGetRegBaseOffsetAndSize_IMPL
     NvU32 *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3494);
     if (pOffset)
         *pOffset = pDispChannel->ControlOffset;
 
@@ -361,6 +379,7 @@ dispchnSetRegBaseOffsetAndSize_IMPL
     OBJGPU      *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3495);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
 
     (void)kdispGetDisplayChannelUserBaseAndSize_HAL(pGpu, pKernelDisplay,
@@ -383,6 +402,7 @@ kdispMapDispChannel_IMPL
     DispChannel   *pDispChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3496);
     NV_STATUS       rmStatus;
     OBJGPU         *pGpu        = GPU_RES_GET_GPU(pDispChannel);
     RsClient       *pClient     = RES_GET_CLIENT(pDispChannel);
@@ -402,6 +422,7 @@ kdispMapDispChannel_IMPL
                        &pDispChannel->pPriv);
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3497);
         NV_PRINTF(LEVEL_ERROR,
                   "disp channel[0x%x] mapping failed. Return status = 0x%x\n",
                   pDispChannel->InstanceNumber, rmStatus);
@@ -425,6 +446,7 @@ void kdispUnbindUnmapDispChannel_IMPL
     DispChannel *pDispChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3498);
     OBJGPU             *pGpu        = GPU_RES_GET_GPU(pDispChannel);
     RsClient           *pClient     = RES_GET_CLIENT(pDispChannel);
     RmClient           *pRmClient   = dynamicCast(pClient, RmClient);
@@ -444,6 +466,7 @@ dispchnDestruct_IMPL
     DispChannel *pDispChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3499);
     NV_STATUS           rmStatus  = NV_OK;
     OBJGPU             *pGpu      = GPU_RES_GET_GPU(pDispChannel);
     KernelDisplay      *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
@@ -461,6 +484,7 @@ dispchnDestruct_IMPL
     if ((pDispChannel->DispClass == dispChnClass_Core) &&
         pKernelDisplay->bWarPurgeSatellitesOnCoreFree)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3500);
         RmClient     **ppClient;
         RmClient      *pClient;
         RsClient      *pRsClient;
@@ -475,6 +499,7 @@ dispchnDestruct_IMPL
              ppClient;
              ppClient = serverutilGetNextClientUnderLock(ppClient))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3501);
             pClient = *ppClient;
             pRsClient = staticCast(pClient, RsClient);
 
@@ -482,6 +507,7 @@ dispchnDestruct_IMPL
 
             while (clientRefIterNext(it.pClient, &it))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3502);
                 RS_ITERATOR    dispIt;
                 RsResourceRef *pResourceRef;
                 DispObject    *pDispObject;
@@ -502,16 +528,19 @@ dispchnDestruct_IMPL
 
                 while (clientRefIterNext(dispIt.pClient, &dispIt))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3503);
                     pTmpDispChannel = dynamicCast(dispIt.pResourceRef->pResource, DispChannel);
 
                     if (pTmpDispChannel->DispClass != dispChnClass_Core)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3504);
                         rmStatus = pRmApi->Free(pRmApi,
                                                 RES_GET_CLIENT_HANDLE(pTmpDispChannel),
                                                 RES_GET_HANDLE(pTmpDispChannel));
 
                         if (rmStatus == NV_OK)
                         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3505);
                             // Client's resource map has been modified, re-snap iterators
                             it = clientRefIter(pRsClient, NULL, classId(Device), RS_ITERATE_CHILDREN, NV_TRUE);
                             dispIt = clientRefIter(pRsClient, it.pResourceRef, classId(DispChannel), RS_ITERATE_DESCENDANTS, NV_FALSE);
@@ -537,6 +566,7 @@ dispchnDestruct_IMPL
 
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3506);
         // Try to avoid returning error codes on free under new resource server design
         NV_ASSERT(0);
     }
@@ -550,6 +580,7 @@ dispchnpioConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3507);
     return NV_OK;
 }
 
@@ -561,6 +592,7 @@ dispchndmaConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3508);
     return NV_OK;
 }
 
@@ -572,6 +604,7 @@ dispchnGetByHandle_IMPL
     DispChannel **ppDispChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3509);
     RsResourceRef  *pResourceRef;
     NV_STATUS       status;
 
@@ -597,6 +630,7 @@ dispchnBindCtx_IMPL
     NvHandle     hChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3510);
     RsClient     *pClient = RES_GET_CLIENT(pContextDma);
     DispChannel  *pDispChannel = NULL;
     NV_STATUS rmStatus = NV_OK;
@@ -621,6 +655,7 @@ dispchnBindCtx_IMPL
     //
     if (pContextDma->pMemDesc->PteAdjust != 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3511);
         NV_PRINTF(LEVEL_ERROR,
                   "ISO ctx dmas must be 4K aligned. PteAdjust = 0x%x\n",
                   pContextDma->pMemDesc->PteAdjust);
@@ -634,6 +669,7 @@ dispchnBindCtx_IMPL
     rmStatus = instmemBindContextDma(pGpu, pInstMem, pContextDma, pDispChannel);
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3512);
         SLI_LOOP_RETURN(rmStatus);
     }
 
@@ -650,6 +686,7 @@ dispchnUnbindCtx_IMPL
     NvHandle     hChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3513);
     RsClient     *pClient = RES_GET_CLIENT(pContextDma);
     DispChannel  *pDispChannel = NULL;
     NV_STATUS  rmStatus = NV_OK;
@@ -672,6 +709,7 @@ dispchnUnbindCtx_IMPL
     rmStatus = instmemUnbindContextDma(pGpu, pInstMem, pContextDma, pDispChannel);
     if (rmStatus == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3514);
         bFound = NV_TRUE;
     }
 
@@ -690,6 +728,7 @@ dispchnUnbindAllCtx_IMPL
     DispChannel *pDispChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3515);
     KernelDisplay *pKernelDisplay;
     DisplayInstanceMemory *pInstMem;
 
@@ -712,6 +751,7 @@ dispchnUnbindCtxFromAllChannels_IMPL
     ContextDma  *pContextDma
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3516);
     KernelDisplay *pKernelDisplay;
     DisplayInstanceMemory *pInstMem;
 
@@ -737,6 +777,7 @@ kdispSetPushBufferParamsToPhysical_IMPL
     DISPCHNCLASS    internalDispChnClass
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3517);
     RsClient       *pClient  = RES_GET_CLIENT(pDispChannel);
     RM_API         *pRmApi   = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS       rmStatus = NV_OK;
@@ -746,6 +787,7 @@ kdispSetPushBufferParamsToPhysical_IMPL
     rmStatus = kdispGetChannelNum_HAL(pKernelDisplay, internalDispChnClass, channelInstance, &dispChannelNum);
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3518);
         return rmStatus;
     }
 
@@ -754,9 +796,11 @@ kdispSetPushBufferParamsToPhysical_IMPL
 
     if (pDispChannel->bIsDma)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3519);
         rmStatus = ctxdmaGetByHandle(pClient, hObjectBuffer, &pBufferContextDma);
         if (rmStatus != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3520);
             NV_PRINTF(LEVEL_ERROR,
                       "disp channel[0x%x] didn't have valid ctxdma 0x%x\n",
                       channelInstance, hObjectBuffer);
@@ -767,6 +811,7 @@ kdispSetPushBufferParamsToPhysical_IMPL
         pushBufferParams.addressSpace = memdescGetAddressSpace(pBufferContextDma->pMemDesc);
         if ((pushBufferParams.addressSpace != ADDR_SYSMEM) && (pushBufferParams.addressSpace != ADDR_FBMEM))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3521);
             DBG_BREAKPOINT();
             return NV_ERR_GENERIC;
         }

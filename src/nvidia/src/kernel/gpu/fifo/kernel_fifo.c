@@ -73,6 +73,7 @@ NvU32 kfifoGetNumEschedDrivenEngines_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5604);
     const ENGINE_INFO *pEngineInfo;
     NV_ASSERT(kfifoGetNumEngines_HAL(ENG_GET_GPU(pKernelFifo), pKernelFifo) >
               0);
@@ -88,6 +89,7 @@ kfifoChidMgrConstruct_IMPL
     KernelFifo  *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5605);
     NV_STATUS status = NV_OK;
     NvU32     i;
     NvU32     numEngines;
@@ -99,6 +101,7 @@ kfifoChidMgrConstruct_IMPL
     //
     if (kfifoIsPerRunlistChramEnabled(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5606);
         //
         // Construct the engine list if it isn't already constructed (internally
         // checks if it was already constructed)
@@ -111,6 +114,7 @@ kfifoChidMgrConstruct_IMPL
 
     if (pKernelFifo->numChidMgrs > MAX_NUM_RUNLISTS)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5607);
         //
         // This only currently defines the size of our bitvector
         // pKernelFifo->chidMgrValid. Catch this case if HW expands beyond this so we
@@ -125,6 +129,7 @@ kfifoChidMgrConstruct_IMPL
     pKernelFifo->ppChidMgr = portMemAllocNonPaged(sizeof(CHID_MGR *) * pKernelFifo->numChidMgrs);
     if (pKernelFifo->ppChidMgr == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5608);
         status = NV_ERR_NO_MEMORY;
         pKernelFifo->ppChidMgr = NULL;
         NV_PRINTF(LEVEL_ERROR, "Failed to allocate pFifo->pChidMgr\n");
@@ -136,9 +141,11 @@ kfifoChidMgrConstruct_IMPL
     // Initialize the valid mask
     if (kfifoIsPerRunlistChramEnabled(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5609);
         numEngines = kfifoGetNumEngines_HAL(pGpu, pKernelFifo);
         for (i = 0; i < numEngines; i++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5610);
             NvU32 runlistId;
             status = kfifoEngineInfoXlate_HAL(pGpu, pKernelFifo,
                                               ENGINE_INFO_TYPE_INVALID, i,
@@ -161,12 +168,14 @@ kfifoChidMgrConstruct_IMPL
     // Allocate memory for each CHID_MGR and its members (only the valid ones)
     for (i = 0; i < pKernelFifo->numChidMgrs; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5611);
         if (!bitVectorTest(&pKernelFifo->chidMgrValid, i))
             continue;
 
         pKernelFifo->ppChidMgr[i] = portMemAllocNonPaged(sizeof(CHID_MGR));
         if (pKernelFifo->ppChidMgr[i] == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5612);
             status = NV_ERR_NO_MEMORY;
             NV_PRINTF(LEVEL_ERROR, "Failed to allocate pFifo->pChidMgr[%d]\n", i);
             DBG_BREAKPOINT();
@@ -182,6 +191,7 @@ kfifoChidMgrConstruct_IMPL
         status = _kfifoChidMgrAllocChidHeaps(pGpu, pKernelFifo, pKernelFifo->ppChidMgr[i]);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5613);
             NV_PRINTF(LEVEL_ERROR, "Error allocating FifoDataHeap in "
                 "pChidMgr. Status = %s (0x%x)\n",
                 nvstatusToString(status), status);
@@ -208,12 +218,15 @@ kfifoChidMgrDestruct_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5614);
     NvU32 i;
 
     for (i = 0; i < pKernelFifo->numChidMgrs; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5615);
         if (pKernelFifo->ppChidMgr[i] != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5616);
             mapDestroy(pKernelFifo->ppChidMgr[i]->pChanGrpTree);
             portMemFree(pKernelFifo->ppChidMgr[i]->pChanGrpTree);
             _kfifoChidMgrDestroyChidHeaps(pKernelFifo->ppChidMgr[i]);
@@ -239,16 +252,19 @@ _kfifoChidMgrAllocVChidHeapPointers
     CHID_MGR   *pChidMgr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5617);
     NV_STATUS status = NV_OK;
     NvU32 i;
 
     if (IS_VIRTUAL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5618);
         return NV_OK;
     }
 
     if (gpuIsSriovEnabled(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5619);
         //
         // For Virtual Channel Heap
         // Allocate Memory for Heap Object pointers
@@ -256,6 +272,7 @@ _kfifoChidMgrAllocVChidHeapPointers
         pChidMgr->ppVirtualChIDHeap = portMemAllocNonPaged(sizeof(OBJEHEAP *) * (VMMU_MAX_GFID));
         if (pChidMgr->ppVirtualChIDHeap == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5620);
             NV_PRINTF(LEVEL_ERROR,
                       "Error allocating memory for virtual channel heap pointers\n");
             return NV_ERR_NO_MEMORY;
@@ -264,6 +281,7 @@ _kfifoChidMgrAllocVChidHeapPointers
         // initialize
         for (i = 0; i < VMMU_MAX_GFID; i++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5621);
             pChidMgr->ppVirtualChIDHeap[i] = NULL;
         }
     }
@@ -282,12 +300,15 @@ _kfifoChidMgrAllocChidHeaps
     CHID_MGR    *pChidMgr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5622);
     NV_STATUS status = NV_OK;
 
     if (pChidMgr->numChannels == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5623);
         if (kfifoChidMgrGetNumChannels(pGpu, pKernelFifo, pChidMgr) == 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5624);
             NV_PRINTF(LEVEL_ERROR, "pChidMgr->numChannels is 0\n");
             DBG_BREAKPOINT();
             return NV_ERR_INVALID_STATE;
@@ -297,6 +318,7 @@ _kfifoChidMgrAllocChidHeaps
     pChidMgr->pFifoDataHeap = portMemAllocNonPaged(sizeof(*pChidMgr->pFifoDataHeap));
     if (pChidMgr->pFifoDataHeap == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5625);
         status = NV_ERR_NO_MEMORY;
         NV_PRINTF(LEVEL_ERROR,
                   "Error in Allocating memory for pFifoDataHeap! Status = %s (0x%x)\n",
@@ -308,6 +330,7 @@ _kfifoChidMgrAllocChidHeaps
 
     if (kfifoIsChidHeapEnabled(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5626);
         NvU32 userdBar1Size;
         NvU32 numChannels         = kfifoChidMgrGetNumChannels(pGpu, pKernelFifo, pChidMgr);
         NvU32 subProcessIsolation = 1;
@@ -315,6 +338,7 @@ _kfifoChidMgrAllocChidHeaps
         pChidMgr->pGlobalChIDHeap = portMemAllocNonPaged(sizeof(OBJEHEAP));
         if (pChidMgr->pGlobalChIDHeap == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5627);
             NV_PRINTF(LEVEL_ERROR,
                       "Error in Allocating memory for global ChID heap!\n");
             return NV_ERR_NO_MEMORY;
@@ -337,11 +361,13 @@ _kfifoChidMgrAllocChidHeaps
             // In this case subProcessIsolation is always 0
             if (IS_GSP_CLIENT(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5628);
                 subProcessIsolation = 0;
             }
         }
         if (!subProcessIsolation)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5629);
             pChidMgr->pGlobalChIDHeap->eheapSetOwnerIsolation(
                                             pChidMgr->pGlobalChIDHeap,
                                             NV_FALSE,
@@ -364,14 +390,17 @@ _kfifoChidMgrDestroyChidHeaps
     CHID_MGR     *pChidMgr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5630);
     if (pChidMgr->pFifoDataHeap != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5631);
         pChidMgr->pFifoDataHeap->eheapDestruct(pChidMgr->pFifoDataHeap);
         portMemFree(pChidMgr->pFifoDataHeap);
         pChidMgr->pFifoDataHeap = NULL;
     }
     if (pChidMgr->pGlobalChIDHeap != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5632);
         pChidMgr->pGlobalChIDHeap->eheapDestruct(pChidMgr->pGlobalChIDHeap);
         portMemFree(pChidMgr->pGlobalChIDHeap);
         pChidMgr->pGlobalChIDHeap = NULL;
@@ -389,6 +418,7 @@ _kfifoChidMgrInitChannelGroupMgr
     CHID_MGR   *pChidMgr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5633);
     KernelFifo *pKernelFifo      = GPU_GET_KERNEL_FIFO(pGpu);
     FIFO_HW_ID *pFifoHwID        = &pChidMgr->channelGrpMgr;
     NvU32       allocSize;
@@ -396,6 +426,7 @@ _kfifoChidMgrInitChannelGroupMgr
 
     if (numChannelGroups == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5634);
         return NV_OK;
     }
 
@@ -418,6 +449,7 @@ _kfifoChidMgrInitChannelGroupMgr
     //
     if (numChannelGroups % 32 != 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5635);
         pFifoHwID->pHwIdInUse[numChannelGroups/32] |= ~ ((1<<(numChannelGroups%32))-1);
     }
 
@@ -430,8 +462,10 @@ _kfifoChidMgrDestroyChannelGroupMgr
     CHID_MGR *pChidMgr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5636);
     if (pChidMgr->channelGrpMgr.pHwIdInUse)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5637);
         portMemFree(pChidMgr->channelGrpMgr.pHwIdInUse);
         pChidMgr->channelGrpMgr.pHwIdInUse = NULL;
         pChidMgr->channelGrpMgr.hwIdInUseSz = 0;
@@ -445,6 +479,7 @@ _kfifoChidMgrFreeIsolationId
     NvU32       ChID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5638);
     EMEMBLOCK  *pIsolationIdBlock = pChidMgr->pGlobalChIDHeap->eheapGetBlock(
         pChidMgr->pGlobalChIDHeap,
         ChID,
@@ -475,6 +510,7 @@ _kfifoUserdOwnerComparator
     void *pIsolationID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5639);
     PFIFO_ISOLATIONID pAllocID = (PFIFO_ISOLATIONID)pRequesterID;
     PFIFO_ISOLATIONID pBlockID = (PFIFO_ISOLATIONID)pIsolationID;
 
@@ -491,6 +527,7 @@ _kfifoUserdOwnerComparator
         (pAllocID->processID    != pBlockID->processID) ||
         (pAllocID->subProcessID != pBlockID->subProcessID))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5640);
         return NV_FALSE;
     }
     else
@@ -514,10 +551,12 @@ _kfifoGetVgpuPluginChannelsCount
     NvU32 *pNumPluginChannels
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5641);
     NV_ASSERT_OR_RETURN(pNumPluginChannels != NULL, NV_ERR_INVALID_ARGUMENT);
 
     if (!RMCFG_FEATURE_PLATFORM_GSP)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5642);
         KERNEL_HOST_VGPU_DEVICE *pKernelHostVgpuDevice = NULL;
 
         NV_ASSERT_OK_OR_RETURN(vgpuGetCallingContextKernelHostVgpuDevice(pGpu, &pKernelHostVgpuDevice));
@@ -564,6 +603,7 @@ kfifoChidMgrAllocChid_IMPL
     KernelChannel           *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5643);
     NvU64             chSize;
     NvU32             chFlag                = chIdFlag;
     NvU64             ChID64                = 0;
@@ -583,6 +623,7 @@ kfifoChidMgrAllocChid_IMPL
 
     switch (chIdFlag)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5644);
         case CHANNEL_HW_ID_ALLOC_MODE_GROW_DOWN:
             chFlag = NVOS32_ALLOC_FLAGS_FORCE_MEM_GROWS_DOWN;
             break;
@@ -606,6 +647,7 @@ kfifoChidMgrAllocChid_IMPL
     pClient = serverutilGetClientUnderLock(hClient);
     if (pClient == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5645);
         NV_PRINTF(LEVEL_ERROR, "Invalid client handle %ux\n", hClient);
         DBG_BREAKPOINT();
         return NV_ERR_INVALID_CLIENT;
@@ -617,6 +659,7 @@ kfifoChidMgrAllocChid_IMPL
     //        In guest RM context allocate the same chid as guest
     if (IS_GFID_VF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5646);
         NvU32             numPluginChannels;
         NvU64             rangeLo, rangeHi, base, size;
 
@@ -641,6 +684,7 @@ kfifoChidMgrAllocChid_IMPL
         if (pKernelChannel->pKernelChannelGroupApi->pKernelChannelGroup->bIsCallingContextVgpuPlugin &&
             numPluginChannels > 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5647);
             rangeLo = rangeHi - numPluginChannels + 1;
         }
         else
@@ -657,6 +701,7 @@ kfifoChidMgrAllocChid_IMPL
 
         if (bForceUserdPage)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5648);
             NV_ASSERT_OR_RETURN(!bForceInternalIdx, NV_ERR_INVALID_STATE);
             ChID64 = ((NvU64)userdPageIdx) *
                          pChidMgr->ppVirtualChIDHeap[gfid]->ownerGranularity +
@@ -665,6 +710,7 @@ kfifoChidMgrAllocChid_IMPL
         }
         else if (bForceInternalIdx)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5649);
             chFlag |= NVOS32_ALLOC_FLAGS_FORCE_INTERNAL_INDEX;
             offsetAlign = internalIdx;
         }
@@ -688,6 +734,7 @@ kfifoChidMgrAllocChid_IMPL
         );
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5650);
             NV_PRINTF(LEVEL_ERROR,
                       "Failed to allocate Channel ID 0x%llx %d on heap \n",
                       ChID64,
@@ -715,6 +762,7 @@ kfifoChidMgrAllocChid_IMPL
 
         if (RMCFG_FEATURE_PLATFORM_GSP || kchannelCheckIsKernel(pKernelChannel))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5651);
             //
             // If not GSPFW: Allocation request is from host RM kernel
             // If GSPFW: ChID has already been chosen by CPU-RM, but pClient
@@ -727,11 +775,13 @@ kfifoChidMgrAllocChid_IMPL
         {
             if (0x0 != subProcessID)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5652);
                 //
                 // Allocation request is from the guest RM
                 //
                 if (KERNEL_PID == subProcessID)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5653);
                     pIsolationID->domain = GUEST_KERNEL;
                 }
                 else
@@ -753,6 +803,7 @@ kfifoChidMgrAllocChid_IMPL
         //
         if ((subProcessID != 0x0) && (bIsSubProcessDisabled))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5654);
             pIsolationID->domain       = GUEST_INSECURE;
             pIsolationID->subProcessID = KERNEL_PID;
         }
@@ -760,6 +811,7 @@ kfifoChidMgrAllocChid_IMPL
         /* Channel USERD manipuliation only supported without GFID */
         if (bForceUserdPage)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5655);
             NV_ASSERT_OR_RETURN(!bForceInternalIdx, NV_ERR_INVALID_STATE);
             ChID64 = ((NvU64)userdPageIdx) *
                          pChidMgr->pGlobalChIDHeap->ownerGranularity +
@@ -768,6 +820,7 @@ kfifoChidMgrAllocChid_IMPL
         }
         else if (bForceInternalIdx)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5656);
             chFlag |= NVOS32_ALLOC_FLAGS_FORCE_INTERNAL_INDEX;
             offsetAlign = internalIdx;
         }
@@ -787,6 +840,7 @@ kfifoChidMgrAllocChid_IMPL
 
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5657);
             NV_PRINTF(LEVEL_ERROR, "Failed to allocate Channel ID on heap\n");
             DBG_BREAKPOINT();
             goto fail;
@@ -813,6 +867,7 @@ kfifoChidMgrAllocChid_IMPL
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5658);
         //
         // Should never happen since we're mirroring the global chid heap, or
         // pre-reserving space on the global chid heap for SR-IOV capable
@@ -826,6 +881,7 @@ kfifoChidMgrAllocChid_IMPL
 
     if (ChID < numChannels)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5659);
         PEMEMBLOCK pFifoDataBlock = pChidMgr->pFifoDataHeap->eheapGetBlock(
             pChidMgr->pFifoDataHeap,
             ChID,
@@ -870,6 +926,7 @@ kfifoChidMgrRetainChid_IMPL
     NvU32       ChID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5660);
     NvU32       gfid;
     PEMEMBLOCK  pFifoDataBlock = NULL;
 
@@ -877,6 +934,7 @@ kfifoChidMgrRetainChid_IMPL
 
     if (IS_GFID_VF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5661);
         NV_ASSERT_OR_RETURN(pChidMgr->ppVirtualChIDHeap[gfid] != NULL,
                             NV_ERR_INVALID_STATE);
         PEMEMBLOCK  pVirtChIdBlock = pChidMgr->ppVirtualChIDHeap[gfid]->eheapGetBlock(
@@ -924,12 +982,14 @@ kfifoChidMgrReleaseChid_IMPL
     NvU32       ChID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5662);
     NvU32 gfid;
 
     NV_ASSERT_OK_OR_RETURN(vgpuGetCallingContextGfid(pGpu, &gfid));
 
     if (IS_GFID_VF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5663);
         NV_ASSERT_OR_RETURN(pChidMgr->ppVirtualChIDHeap[gfid] != NULL, NV_ERR_INVALID_STATE);
         NV_ASSERT_OK(pChidMgr->ppVirtualChIDHeap[gfid]->eheapFree(pChidMgr->ppVirtualChIDHeap[gfid], ChID));
     }
@@ -959,6 +1019,7 @@ kfifoChidMgrFreeChid_IMPL
     NvU32         ChID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5664);
     EMEMBLOCK *pFifoDataBlock;
     NV_STATUS  status;
     NvU32 gfid;
@@ -979,6 +1040,7 @@ kfifoChidMgrFreeChid_IMPL
 
     if (IS_GFID_PF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5665);
         //
         // This marks the channel ID as orphaned and causes it to be ignored for
         // isolation purposes. This only matters if there will still be a reference
@@ -987,6 +1049,7 @@ kfifoChidMgrFreeChid_IMPL
         status = _kfifoChidMgrFreeIsolationId(pChidMgr, ChID);
         if(status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5666);
             NV_PRINTF(LEVEL_ERROR,
                 "Failed to free IsolationId. Status = 0x%x\n", status);
             DBG_BREAKPOINT();
@@ -1024,6 +1087,7 @@ kfifoChidMgrReserveSystemChids_IMPL
     FIFO_ENGINE_LIST *pEngineFifoList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5667);
     NV_STATUS         status              = NV_OK;
     NvU64             chSize;
     NvU64             offset              = 0;
@@ -1033,6 +1097,7 @@ kfifoChidMgrReserveSystemChids_IMPL
 
     if (IS_VIRTUAL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5668);
         // Not supported on guest or when SRIOV is disabled
         return NV_ERR_NOT_SUPPORTED;
     }
@@ -1058,6 +1123,7 @@ kfifoChidMgrReserveSystemChids_IMPL
 
     if(status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5669);
         NV_PRINTF(LEVEL_ERROR, "Failed to reserve channel IDs. Status = 0x%x\n", status);
         DBG_BREAKPOINT();
 
@@ -1075,6 +1141,7 @@ kfifoChidMgrReserveSystemChids_IMPL
         NV_FALSE);
     if (pIsolationIdBlock == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5670);
         // Something bad happened. This should not fail if allocation succeeded
         NV_PRINTF(LEVEL_ERROR, "Could not fetch block from eheap\n");
         DBG_BREAKPOINT();
@@ -1088,6 +1155,7 @@ kfifoChidMgrReserveSystemChids_IMPL
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5671);
         NV_PRINTF(LEVEL_ERROR,
             "Failed to program the CHID table\n");
         goto cleanup;
@@ -1096,6 +1164,7 @@ kfifoChidMgrReserveSystemChids_IMPL
     pChidMgr->ppVirtualChIDHeap[gfid] = portMemAllocNonPaged(sizeof(OBJEHEAP));
     if (pChidMgr->ppVirtualChIDHeap[gfid] == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5672);
         status = NV_ERR_NO_MEMORY;
         NV_PRINTF(LEVEL_ERROR, "Error allocating memory for virtual "
             "channel ID heap\n");
@@ -1145,11 +1214,13 @@ kfifoChidMgrFreeSystemChids_IMPL
     FIFO_ENGINE_LIST *pEngineFifoList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5673);
     NV_STATUS status, tmpStatus;
     NvU64     chId;
 
     if (IS_VIRTUAL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5674);
         // Not supported on guest or when SRIOV is disabled
         return NV_ERR_NOT_SUPPORTED;
     }
@@ -1162,6 +1233,7 @@ kfifoChidMgrFreeSystemChids_IMPL
     status = _kfifoChidMgrFreeIsolationId(pChidMgr, (NvU32)chId);
     if(status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5675);
         NV_PRINTF(LEVEL_ERROR,
             "Failed to free IsolationId. Status = 0x%x\n",
             status);
@@ -1172,6 +1244,7 @@ kfifoChidMgrFreeSystemChids_IMPL
     status = pChidMgr->pGlobalChIDHeap->eheapFree(pChidMgr->pGlobalChIDHeap, chId);
     if(status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5676);
         NV_PRINTF(LEVEL_ERROR,
             "Failed to free channel IDs. Status = 0x%x\n",
             status);
@@ -1188,6 +1261,7 @@ kfifoChidMgrFreeSystemChids_IMPL
                                    engineFifoListNumEntries, pEngineFifoList);
     if (tmpStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5677);
         NV_PRINTF(LEVEL_ERROR,
             "Failed to program the CHID table\n");
         DBG_BREAKPOINT();
@@ -1209,14 +1283,17 @@ kfifoChidMgrGetNumChannels_IMPL
     CHID_MGR *pChidMgr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5678);
     // Cache ChidMgr's numChannels if not set
     if (pChidMgr->numChannels == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5679);
         NvU32 numChannels = kfifoRunlistQueryNumChannels_HAL(pGpu, pKernelFifo,
                                                              pChidMgr->runlistId);
 
         if (pKernelFifo->bNumChannelsOverride)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5680);
             pChidMgr->numChannels = NV_MIN(pKernelFifo->numChannelsOverride, numChannels);
         }
         else
@@ -1239,12 +1316,14 @@ kfifoRunlistQueryNumChannels_KERNEL
     NvU32 runlistId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5681);
     NvU32 numChannels = 0;
     NvU32 status;
 
     // Do internal control call and set numChannels
     if (IS_GSP_CLIENT(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5682);
         RM_API  *pRmApi   = GPU_GET_PHYSICAL_RMAPI(pGpu);
         NV2080_CTRL_INTERNAL_FIFO_GET_NUM_CHANNELS_PARAMS numChannelsParams = {0};
 
@@ -1258,6 +1337,7 @@ kfifoRunlistQueryNumChannels_KERNEL
                                  sizeof(NV2080_CTRL_INTERNAL_FIFO_GET_NUM_CHANNELS_PARAMS));
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5683);
             DBG_BREAKPOINT();
             return 0;
         }
@@ -1292,6 +1372,7 @@ kfifoChidMgrAllocChannelGroupHwID_IMPL
     NvU32      *pChGrpID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5684);
     NvU32 maxChannelGroups;
 
     if (pChGrpID == NULL)
@@ -1300,6 +1381,7 @@ kfifoChidMgrAllocChannelGroupHwID_IMPL
     maxChannelGroups = kfifoChidMgrGetNumChannels(pGpu, pKernelFifo, pChidMgr);
     if (maxChannelGroups == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5685);
         NV_PRINTF(LEVEL_ERROR, "Zero max channel groups!!!\n");
         return NV_ERR_INVALID_ARGUMENT;
     }
@@ -1310,6 +1392,7 @@ kfifoChidMgrAllocChannelGroupHwID_IMPL
 
     if (*pChGrpID < maxChannelGroups)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5686);
         nvBitFieldSet(pChidMgr->channelGrpMgr.pHwIdInUse,
                       pChidMgr->channelGrpMgr.hwIdInUseSz, *pChGrpID, NV_TRUE);
     }
@@ -1345,11 +1428,13 @@ kfifoChidMgrFreeChannelGroupHwID_IMPL
     NvU32       chGrpID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5687);
     NvU32 maxChannelGroups;
 
     maxChannelGroups = kfifoChidMgrGetNumChannels(pGpu, pKernelFifo, pChidMgr);
     if (maxChannelGroups == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5688);
         NV_PRINTF(LEVEL_ERROR, "Zero max channel groups!!!\n");
         return NV_ERR_INVALID_ARGUMENT;
     }
@@ -1375,13 +1460,16 @@ kfifoGetChidMgr_IMPL
     NvU32        runlistId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5689);
     if (!kfifoIsPerRunlistChramEnabled(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5690);
         // We only have 1 chidmgr when we don't have a per-runlist channel RAM
         if ((pKernelFifo->numChidMgrs != 1) ||
             (pKernelFifo->ppChidMgr == NULL) ||
             !bitVectorTest(&pKernelFifo->chidMgrValid, 0))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5691);
             return NULL;
         }
         return pKernelFifo->ppChidMgr[0];
@@ -1390,6 +1478,7 @@ kfifoGetChidMgr_IMPL
     {
         if (runlistId >= pKernelFifo->numChidMgrs)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5692);
             return NULL;
         }
         //
@@ -1413,6 +1502,7 @@ kfifoGetChidMgrFromType_IMPL
     CHID_MGR  **ppChidMgr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5693);
     NV_STATUS status = NV_OK;
     NvU32     runlistId;
 
@@ -1453,6 +1543,7 @@ kfifoChidMgrGetKernelChannel_IMPL
     NvU32       ChID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5694);
     EMEMBLOCK  *pFifoDataBlock;
     NvU32       numChannels;
 
@@ -1463,6 +1554,7 @@ kfifoChidMgrGetKernelChannel_IMPL
     numChannels = kfifoChidMgrGetNumChannels(pGpu, pKernelFifo, pChidMgr);
     if (ChID >= numChannels)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5695);
         return NULL;
     }
 
@@ -1472,6 +1564,7 @@ kfifoChidMgrGetKernelChannel_IMPL
         NV_FALSE);
     if (pFifoDataBlock != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5696);
         return (KernelChannel *)pFifoDataBlock->pData;
     }
 
@@ -1488,11 +1581,13 @@ kfifoChidMgrGetKernelChannelGroup_IMPL
     NvU32       grpID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5697);
     KernelChannelGroup *pKernelChannelGroup = NULL;
 
     pKernelChannelGroup = mapFind(pChidMgr->pChanGrpTree, grpID);
     if (pKernelChannelGroup == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5698);
         NV_PRINTF(LEVEL_INFO, "Can't find channel group %d\n", grpID);
     }
 
@@ -1521,6 +1616,7 @@ kfifoGetChannelGroup_IMPL
     NvU32       runlistID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5699);
     CHID_MGR *pChidMgr = kfifoGetChidMgr(pGpu, pKernelFifo, runlistID);
 
     return kfifoChidMgrGetKernelChannelGroup(pGpu, pKernelFifo, pChidMgr, grpID);
@@ -1534,23 +1630,28 @@ kfifoGetChannelGroupsInUse_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5700);
     NvU32    numChannelGroups      = 0;
     NvU32    numChannelGroupsInUse = 0;
     NvU32    chGrpID, i;
 
     for (i = 0; i < pKernelFifo->numChidMgrs; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5701);
         if (pKernelFifo->ppChidMgr[i] != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5702);
             numChannelGroups = kfifoChidMgrGetNumChannels(pGpu, pKernelFifo,
                                                       pKernelFifo->ppChidMgr[i]);
 
             for (chGrpID = 0; chGrpID < numChannelGroups; chGrpID++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5703);
                 if (nvBitFieldTest(pKernelFifo->ppChidMgr[i]->channelGrpMgr.pHwIdInUse,
                                    pKernelFifo->ppChidMgr[i]->channelGrpMgr.hwIdInUseSz,
                                    chGrpID))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5704);
                     numChannelGroupsInUse++;
                 }
             }
@@ -1568,6 +1669,7 @@ kfifoGetRunlistChannelGroupsInUse_IMPL
     NvU32       runlistId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5705);
     NvU32      numChannelGroups      = 0;
     NvU32      numChannelGroupsInUse = 0;
     NvU32      chGrpID;
@@ -1576,10 +1678,12 @@ kfifoGetRunlistChannelGroupsInUse_IMPL
     numChannelGroups = kfifoChidMgrGetNumChannels(pGpu, pKernelFifo, pChidMgr);
     for (chGrpID = 0; chGrpID < numChannelGroups; chGrpID++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5706);
         if (nvBitFieldTest(pChidMgr->channelGrpMgr.pHwIdInUse,
                            pChidMgr->channelGrpMgr.hwIdInUseSz,
                            chGrpID))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5707);
             numChannelGroupsInUse++;
         }
     }
@@ -1601,6 +1705,7 @@ kfifoChannelGroupSetTimeslice_IMPL
     NvBool              bSkipSubmit
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5708);
     NV_STATUS status = NV_OK;
 
     NV_PRINTF(LEVEL_INFO, "Setting TSG %d Timeslice to %lldus\n",
@@ -1608,6 +1713,7 @@ kfifoChannelGroupSetTimeslice_IMPL
 
     if (timesliceUs < kfifoRunlistGetMinTimeSlice_HAL(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5709);
         NV_PRINTF(LEVEL_ERROR,
                   "Setting Timeslice to %lldus not allowed. Min value is %lldus\n",
                   timesliceUs, kfifoRunlistGetMinTimeSlice_HAL(pKernelFifo));
@@ -1633,8 +1739,10 @@ kfifoFillMemInfo_IMPL
     NV2080_CTRL_FIFO_MEM_INFO *pMemory
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5710);
     if (pMemDesc == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5711);
         pMemory->aperture = NV2080_CTRL_CMD_FIFO_GET_CHANNEL_MEM_APERTURE_INVALID;
         NV_PRINTF(LEVEL_ERROR, "kfifoFillMemInfo: pMemDesc = NULL\n");
     }
@@ -1642,16 +1750,20 @@ kfifoFillMemInfo_IMPL
     {
         if (memdescGetAddressSpace(pMemDesc) == ADDR_FBMEM)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5712);
             pMemory->aperture = NV2080_CTRL_CMD_FIFO_GET_CHANNEL_MEM_APERTURE_VIDMEM;
         }
         else if (memdescGetAddressSpace(pMemDesc) == ADDR_SYSMEM)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5713);
             if (memdescGetCpuCacheAttrib(pMemDesc) == NV_MEMORY_CACHED)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5714);
                 pMemory->aperture = NV2080_CTRL_CMD_FIFO_GET_CHANNEL_MEM_APERTURE_SYSMEM_COH;
             }
             else if (memdescGetCpuCacheAttrib(pMemDesc) == NV_MEMORY_UNCACHED)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5715);
                 pMemory->aperture = NV2080_CTRL_CMD_FIFO_GET_CHANNEL_MEM_APERTURE_SYSMEM_NCOH;
             }
             else
@@ -1674,6 +1786,7 @@ kfifoGetChannelIterator_IMPL
     CHANNEL_ITERATOR *pIt
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5716);
     portMemSet(pIt, 0, sizeof(*pIt));
     pIt->physicalChannelID = 0;
     pIt->pFifoDataBlock    = NULL;
@@ -1681,6 +1794,7 @@ kfifoGetChannelIterator_IMPL
     pIt->numRunlists       = 1;
     if (kfifoIsPerRunlistChramEnabled(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5717);
         pIt->numRunlists = kfifoGetMaxNumRunlists_HAL(pGpu, pKernelFifo);
     }
 }
@@ -1708,6 +1822,7 @@ NV_STATUS kfifoGetNextKernelChannel_IMPL
     KernelChannel      **ppKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5718);
     KernelChannel *pKernelChannel;
 
     if (ppKernelChannel == NULL)
@@ -1717,10 +1832,12 @@ NV_STATUS kfifoGetNextKernelChannel_IMPL
 
     while (pIt->runlistId < pIt->numRunlists)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5719);
         CHID_MGR *pChidMgr = kfifoGetChidMgr(pGpu, pKernelFifo, pIt->runlistId);
 
         if (pChidMgr == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5720);
             pIt->runlistId++;
             continue;
         }
@@ -1729,6 +1846,7 @@ NV_STATUS kfifoGetNextKernelChannel_IMPL
 
         if (pIt->pFifoDataBlock == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5721);
             pIt->pFifoDataBlock = pChidMgr->pFifoDataHeap->eheapGetBlock(
                 pChidMgr->pFifoDataHeap,
                 pIt->physicalChannelID,
@@ -1737,8 +1855,10 @@ NV_STATUS kfifoGetNextKernelChannel_IMPL
 
         while (pIt->physicalChannelID < pIt->numChannels)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5722);
             if (pIt->pFifoDataBlock->owner == NVOS32_BLOCK_TYPE_FREE)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5723);
                 pIt->physicalChannelID = pIt->pFifoDataBlock->end + 1;
             }
             else
@@ -1754,6 +1874,7 @@ NV_STATUS kfifoGetNextKernelChannel_IMPL
                 //
                 if (pKernelChannel != NULL && kchannelIsValid_HAL(pKernelChannel))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5724);
                     // Prepare iterator to check next block in pChidMgr->pFifoDataHeap
                     pIt->pFifoDataBlock = pIt->pFifoDataBlock->next;
                     *ppKernelChannel = pKernelChannel;
@@ -1797,6 +1918,7 @@ _kfifoLocalizeGuestEngineData
     ENGINE_INFO *pEngineInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5725);
     const FIFO_GUEST_ENGINE_TABLE *guestEngineTable;
     NvU32 guestEngineTableSz;
     NvU32 nv2080EngineType;
@@ -1813,6 +1935,7 @@ _kfifoLocalizeGuestEngineData
 
     for (engineIdx = 0; engineIdx < pEngineInfo->engineInfoListSize; engineIdx++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5726);
         FIFO_ENGINE_LIST *pEngine = &pEngineInfo->engineInfoList[engineIdx];
 
         // The actual data in engineData[ENGINE_INFO_TYPE_RM_ENGINE_TYPE] is NV2080 ENGINE TYPE.
@@ -1820,6 +1943,7 @@ _kfifoLocalizeGuestEngineData
 
         for (guestTableIdx = 0; guestTableIdx < guestEngineTableSz; guestTableIdx++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5727);
             // Find the engine type supported by the guest
             if (guestEngineTable[guestTableIdx].nv2080EngineType == nv2080EngineType)
                 break;
@@ -1827,6 +1951,7 @@ _kfifoLocalizeGuestEngineData
 
         if (guestTableIdx < guestEngineTableSz)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5728);
             // Update the MC for the guest
             pEngine->engineData[ENGINE_INFO_TYPE_MC] = guestEngineTable[guestTableIdx].mcIdx;
 
@@ -1835,6 +1960,7 @@ _kfifoLocalizeGuestEngineData
 
             if (newEngineIdx != engineIdx)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5729);
                 //
                 // Move the engine info up to make sure the engine info table only contains data for
                 // guest supported engine types.
@@ -1876,6 +2002,7 @@ kfifoGetHostDeviceInfoTable_KERNEL
     NvHandle     hMigClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5730);
     NV_STATUS status = NV_OK;
     NvHandle hClient = NV01_NULL_OBJECT;
     NvHandle hObject = NV01_NULL_OBJECT;
@@ -1900,8 +2027,10 @@ kfifoGetHostDeviceInfoTable_KERNEL
     // RPC call for GSP will throw INVALID_CLIENT error with NULL handles
     if (IS_GSP_CLIENT(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5731);
         if (!IS_MIG_IN_USE(pGpu))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5732);
             hClient = pGpu->hInternalClient;
             hObject = pGpu->hInternalSubdevice;
         }
@@ -1939,6 +2068,7 @@ kfifoGetHostDeviceInfoTable_KERNEL
          device < NV2080_CTRL_FIFO_GET_DEVICE_INFO_TABLE_MAX_DEVICES;
          device += NV2080_CTRL_FIFO_GET_DEVICE_INFO_TABLE_MAX_ENTRIES)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5733);
         portMemSet(pParams, 0x0, sizeof(*pParams));
         pParams->baseIndex = device;
 
@@ -1957,6 +2087,7 @@ kfifoGetHostDeviceInfoTable_KERNEL
         if (pParams->numEntries >
             NV2080_CTRL_FIFO_GET_DEVICE_INFO_TABLE_MAX_ENTRIES)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5734);
             DBG_BREAKPOINT();
             status = NV_ERR_INVALID_STATE;
             goto cleanup;
@@ -1971,6 +2102,7 @@ kfifoGetHostDeviceInfoTable_KERNEL
 
         if (!pParams->bMore)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5735);
             break;
         }
     }
@@ -1980,6 +2112,7 @@ kfifoGetHostDeviceInfoTable_KERNEL
                                                        pEngineInfo->engineInfoListSize);
     if (pEngineInfo->engineInfoList == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5736);
         NV_CHECK(LEVEL_ERROR, pEngineInfo->engineInfoList != NULL);
         status = NV_ERR_NO_MEMORY;
         goto cleanup;
@@ -1991,6 +2124,7 @@ kfifoGetHostDeviceInfoTable_KERNEL
     maxPbdmaId = 0;
     for (entry = 0; entry < numEntries; ++entry)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5737);
         FIFO_ENGINE_LIST *pLocalEntry = &pEngineInfo->engineInfoList[entry];
         NV2080_CTRL_FIFO_DEVICE_ENTRY *pFetchedEntry = &pFetchedTable[entry];
 
@@ -2028,6 +2162,7 @@ kfifoGetHostDeviceInfoTable_KERNEL
 
         if (pLocalEntry->engineData[ENGINE_INFO_TYPE_IS_HOST_DRIVEN_ENGINE] != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5738);
             numRunlists++;
         }
         maxRunlistId = NV_MAX(maxRunlistId,
@@ -2035,6 +2170,7 @@ kfifoGetHostDeviceInfoTable_KERNEL
 
         for (i = 0; i < pLocalEntry->numPbdmas; i++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5739);
             maxPbdmaId = NV_MAX(maxPbdmaId, pLocalEntry->pbdmaIds[i]);
 
             //
@@ -2043,6 +2179,7 @@ kfifoGetHostDeviceInfoTable_KERNEL
             //
             if (pLocalEntry->engineData[ENGINE_INFO_TYPE_ENG_DESC] != ENG_SW)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5740);
                 bitVectorSet(&pEngineInfo->validEngineIdsForPbdmas, pLocalEntry->pbdmaFaultIds[i]);
             }
         }
@@ -2056,6 +2193,7 @@ kfifoGetHostDeviceInfoTable_KERNEL
 
     if (IS_VIRTUAL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5741);
         _kfifoLocalizeGuestEngineData(pGpu, pKernelFifo, pEngineInfo);
     }
 
@@ -2085,6 +2223,7 @@ kfifoConstructEngineList_KERNEL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5742);
     ENGINE_INFO *pEngineInfo = &pKernelFifo->engineInfo;
 
     // Return early if EngineList is already constructed
@@ -2093,6 +2232,7 @@ kfifoConstructEngineList_KERNEL
 
     if (IS_GSP_CLIENT(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5743);
         NV_ASSERT_OK_OR_RETURN(gpuConstructDeviceInfoTable_HAL(pGpu));
     }
 
@@ -2116,6 +2256,7 @@ kfifoChannelListCreate_IMPL
     CHANNEL_LIST **ppList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5744);
     if (!ppList)
         return NV_ERR_INVALID_ARGUMENT;
 
@@ -2146,6 +2287,7 @@ kfifoChannelListAppend_IMPL
     CHANNEL_LIST *pList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5745);
     PCHANNEL_NODE pNewNode = NULL;
 
     if (!pKernelChannel || !pList)
@@ -2162,6 +2304,7 @@ kfifoChannelListAppend_IMPL
     // Searching based on the ChID
     if (pList->pTail)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5746);
         pList->pTail->pNext = pNewNode;
         pList->pTail = pNewNode;
     }
@@ -2192,6 +2335,7 @@ kfifoChannelListRemove_IMPL
     CHANNEL_LIST *pList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5747);
     PCHANNEL_NODE pNewNode   = NULL;
     PCHANNEL_NODE pPrevNode  = NULL;
     PCHANNEL_NODE pTempNode  = NULL;
@@ -2209,9 +2353,11 @@ kfifoChannelListRemove_IMPL
 
     while (pNewNode)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5748);
 
         if (pKernelChannel != pNewNode->pKernelChannel)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5749);
             pPrevNode = pNewNode;
             pNewNode  = pNewNode->pNext;
             continue;
@@ -2220,18 +2366,21 @@ kfifoChannelListRemove_IMPL
         // Deleting first node
         if (pList->pHead == pNewNode)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5750);
             pList->pHead = pNewNode->pNext;
         }
 
         // Deleting tail node
         if (pList->pTail == pNewNode)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5751);
             pList->pTail =  pPrevNode;
         }
 
         // First node does not have previous node.
         if (pPrevNode)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5752);
             pPrevNode->pNext = pNewNode->pNext;
         }
 
@@ -2243,6 +2392,7 @@ kfifoChannelListRemove_IMPL
 
         if (0 == pKernelChannel->refCount)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5753);
             NV_PRINTF(LEVEL_ERROR, "RefCount for channel is not right!!!\n");
             DBG_BREAKPOINT();
             status = NV_ERR_GENERIC;
@@ -2255,6 +2405,7 @@ kfifoChannelListRemove_IMPL
 
     if (!bFoundOnce)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5754);
         NV_PRINTF(LEVEL_INFO,
                   "Can't find channel in channelGroupList (Normal during RC Recovery on "
                   "GK110+ or if software scheduling is enabled).\n");
@@ -2280,6 +2431,7 @@ kfifoChannelListDestroy_IMPL
     CHANNEL_LIST *pList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5755);
     PCHANNEL_NODE pTempNode;
 
     if (!pList)
@@ -2287,6 +2439,7 @@ kfifoChannelListDestroy_IMPL
 
     while (pList->pHead)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5756);
         pTempNode = pList->pHead;
 
         NV_ASSERT_OR_RETURN(pTempNode->pKernelChannel && pTempNode->pKernelChannel->refCount, NV_ERR_INVALID_STATE);
@@ -2321,6 +2474,7 @@ kfifoEngineListHasChannel_IMPL
     NvU32       engineCount
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5757);
     KernelChannel *pKernelChannel;
     CHANNEL_ITERATOR it;
     NvU32 i;
@@ -2331,15 +2485,19 @@ kfifoEngineListHasChannel_IMPL
     kfifoGetChannelIterator(pGpu, pKernelFifo, &it);
     while (kchannelGetNextKernelChannel(pGpu, &it, &pKernelChannel) == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5758);
         NV_ASSERT_OR_ELSE(pKernelChannel != NULL, continue);
 
         // If the client supplied the engine type, directly check it
         if (RM_ENGINE_TYPE_IS_VALID(kchannelGetEngineType(pKernelChannel)))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5759);
             for (i = 0; i < engineCount; ++i)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5760);
                 if (kchannelGetEngineType(pKernelChannel) == pEngines[i])
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5761);
                     NV_PRINTF(LEVEL_ERROR,
                         "Found channel on engine 0x%x owned by 0x%x\n",
                          kchannelGetEngineType(pKernelChannel), RES_GET_CLIENT_HANDLE(pKernelChannel));
@@ -2362,13 +2520,16 @@ kfifoEngineListHasChannel_IMPL
             //
             if (kchannelIsRunlistSet(pGpu, pKernelChannel))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5762);
                 for (i = 0; i < engineCount; ++i)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5763);
                     NV_ASSERT_OR_RETURN((kfifoEngineInfoXlate_HAL(pGpu, pKernelFifo,
                                            ENGINE_INFO_TYPE_RM_ENGINE_TYPE, (NvU32)pEngines[i],
                                            ENGINE_INFO_TYPE_RUNLIST, &runlistId) == NV_OK), NV_TRUE);
                     if (kchannelGetRunlistId(pKernelChannel) == runlistId)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5764);
                         NV_PRINTF(LEVEL_ERROR,
                             "Found channel on runlistId 0x%x owned by 0x%x\n",
                              kchannelGetRunlistId(pKernelChannel), RES_GET_CLIENT_HANDLE(pKernelChannel));
@@ -2402,6 +2563,7 @@ kfifoGetRunlistBufPool_IMPL
     RM_ENGINE_TYPE rmEngineType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5765);
     return pKernelFifo->pRunlistBufPool[rmEngineType];
 }
 
@@ -2428,6 +2590,7 @@ kfifoGetRunlistBufInfo_IMPL
     NvU64        *pAlignment
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5766);
     NvU32           runlistEntrySize = 0;
     NvU32           maxRunlistEntriesSupported = 0;
     CHID_MGR       *pChidMgr = kfifoGetChidMgr(pGpu, pKernelFifo, runlistId);
@@ -2437,6 +2600,7 @@ kfifoGetRunlistBufInfo_IMPL
 
     if (kfifoIsPerRunlistChramEnabled(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5767);
         NV_ASSERT_OR_RETURN(pChidMgr != NULL, NV_ERR_INVALID_ARGUMENT);
         //
         // We assume worst case of one TSG wrapper per channel, and
@@ -2457,6 +2621,7 @@ kfifoGetRunlistBufInfo_IMPL
 
     if (maxRunlistEntries == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5768);
         maxRunlistEntries = maxRunlistEntriesSupported;
     }
 
@@ -2477,13 +2642,16 @@ kfifoGetMaxChannelsInSystem_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5769);
     NvU32 numChannels = 0;
     NvU32 i;
 
     for (i = 0; i < pKernelFifo->numChidMgrs; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5770);
         if (pKernelFifo->ppChidMgr[i] != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5771);
             numChannels += kfifoChidMgrGetNumChannels(pGpu, pKernelFifo, pKernelFifo->ppChidMgr[i]);
         }
     }
@@ -2500,6 +2668,7 @@ kfifoGetMaxChannelGroupsInSystem_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5772);
     // Max channel groups is the same as max channels
     return kfifoGetMaxChannelsInSystem(pGpu, pKernelFifo);
 }
@@ -2521,6 +2690,7 @@ kfifoRunlistGetBufAllocParams_IMPL
     NvU64            *pAllocFlags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5773);
     *pAperture = ADDR_FBMEM;
     *pAttr = NV_MEMORY_WRITECOMBINED;
 
@@ -2560,6 +2730,7 @@ kfifoRunlistAllocBuffers_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5774);
     NV_STATUS status        = NV_OK;
     NvU64     runlistSz     = 0;
     NvU64     runlistAlign  = 0;
@@ -2569,6 +2740,7 @@ kfifoRunlistAllocBuffers_IMPL
         maxRunlistEntries, &runlistSz, &runlistAlign);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5775);
         NV_PRINTF(LEVEL_ERROR, "failed to get runlist buffer info 0x%08x\n",
                   status);
         DBG_BREAKPOINT();
@@ -2577,12 +2749,14 @@ kfifoRunlistAllocBuffers_IMPL
 
     for (counter = 0; counter < NUM_BUFFERS_PER_RUNLIST; ++counter)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5776);
         ppMemDesc[counter] = NULL;
 
         status = memdescCreate(&ppMemDesc[counter], pGpu, runlistSz, runlistAlign,
                                NV_TRUE, aperture, attr, allocFlags);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5777);
             NV_PRINTF(LEVEL_ERROR,
                       "Runlist buffer memdesc create failed 0x%08x\n", status);
             DBG_BREAKPOINT();
@@ -2592,12 +2766,14 @@ kfifoRunlistAllocBuffers_IMPL
         // If flag is set then allocate runlist from ctx buf pool
         if (allocFlags & MEMDESC_FLAGS_OWNED_BY_CTX_BUF_POOL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5778);
             RM_ENGINE_TYPE rmEngineType;
             CTX_BUF_POOL_INFO *pCtxBufPool = NULL;
             status = kfifoEngineInfoXlate_HAL(pGpu, pKernelFifo, ENGINE_INFO_TYPE_RUNLIST,
                 runlistId, ENGINE_INFO_TYPE_RM_ENGINE_TYPE, (NvU32 *)&rmEngineType);
             if (status != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5779);
                 NV_PRINTF(LEVEL_ERROR,
                           "Failed to translate runlistId 0x%x to NV2080 engine type\n", runlistId);
                 DBG_BREAKPOINT();
@@ -2606,6 +2782,7 @@ kfifoRunlistAllocBuffers_IMPL
             status = ctxBufPoolGetGlobalPool(pGpu, CTX_BUF_ID_RUNLIST, rmEngineType, &pCtxBufPool);
             if (status != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5780);
                 NV_PRINTF(LEVEL_ERROR,
                           "Failed to get ctx buf pool for engine type 0x%x (0x%x)\n",
                           gpuGetNv2080EngineType(rmEngineType), rmEngineType);
@@ -2615,6 +2792,7 @@ kfifoRunlistAllocBuffers_IMPL
             status = memdescSetCtxBufPool(ppMemDesc[counter], pCtxBufPool);
             if (status != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5781);
                 NV_PRINTF(LEVEL_ERROR,
                           "Failed to set ctx buf pool for runlistId 0x%x\n", runlistId);
                 DBG_BREAKPOINT();
@@ -2625,6 +2803,7 @@ kfifoRunlistAllocBuffers_IMPL
         status = memdescAlloc(ppMemDesc[counter]);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5782);
             NV_PRINTF(LEVEL_ERROR, "Runlist buffer mem alloc failed 0x%08x\n",
                       status);
             DBG_BREAKPOINT();
@@ -2637,8 +2816,10 @@ kfifoRunlistAllocBuffers_IMPL
 failed:
     for (counter = 0; counter < NUM_BUFFERS_PER_RUNLIST; counter++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5783);
         if (ppMemDesc[counter])
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5784);
             memdescFree(ppMemDesc[counter]);
             memdescDestroy(ppMemDesc[counter]);
             ppMemDesc[counter] = NULL;
@@ -2654,6 +2835,7 @@ kfifoGetMaxSubcontextFromGr_KERNEL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5785);
     KernelGraphicsManager *pKernelGraphicsManager = GPU_GET_KERNEL_GRAPHICS_MANAGER(pGpu);
 
     NV_ASSERT_OR_RETURN(pKernelGraphicsManager != NULL, 0);
@@ -2670,6 +2852,7 @@ kfifoReturnPushbufferCaps_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5786);
     NvU32 kfifoBitMask = 0;
 
     // PCI is always supported
@@ -2677,6 +2860,7 @@ kfifoReturnPushbufferCaps_IMPL
 
     if (!gpuIsUnifiedMemorySpaceEnabled(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5787);
         kfifoBitMask |= VID_PB_ALLOWED;
     }
 
@@ -2700,6 +2884,7 @@ void kfifoGetDeviceCaps_IMPL
     NvBool      bCapsInitialized
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5788);
     NvU8        tempCaps[NV0080_CTRL_FIFO_CAPS_TBL_SIZE];
     NvU8        temp;
     NvU32       kfifoBitMask;
@@ -2737,6 +2922,7 @@ void kfifoGetDeviceCaps_IMPL
     // if this is the first GPU in the device, then start with it's caps
     if (bCapsInitialized == NV_FALSE)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5789);
         portMemCopy(pKfifoCaps, NV0080_CTRL_FIFO_CAPS_TBL_SIZE,
                     tempCaps, NV0080_CTRL_FIFO_CAPS_TBL_SIZE);
         return;
@@ -2788,6 +2974,7 @@ kfifoAddSchedulingHandler_IMPL
     void                   *pPreSchedulingDisableHandlerData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5790);
     FifoSchedulingHandlerEntry *pEntry;
     NvBool bPostHandlerAlreadyPresent = NV_FALSE;
     NvBool bPreHandlerAlreadyPresent = NV_FALSE;
@@ -2802,13 +2989,16 @@ kfifoAddSchedulingHandler_IMPL
     // Check for already installed handler if non-NULL
     if (pPostSchedulingEnableHandler != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5791);
         for (pEntry = listHead(&pKernelFifo->postSchedulingEnableHandlerList);
              pEntry != NULL;
              pEntry = listNext(&pKernelFifo->postSchedulingEnableHandlerList, pEntry))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5792);
             if (pEntry->pCallback == pPostSchedulingEnableHandler &&
                 pEntry->pCallbackParam == pPostSchedulingEnableHandlerData)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5793);
                 bPostHandlerAlreadyPresent = NV_TRUE;
                 break;
             }
@@ -2818,13 +3008,16 @@ kfifoAddSchedulingHandler_IMPL
     // Check for already installed handler if non-NULL
     if (pPreSchedulingDisableHandler != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5794);
         for (pEntry = listHead(&pKernelFifo->preSchedulingDisableHandlerList);
              pEntry != NULL;
              pEntry = listNext(&pKernelFifo->preSchedulingDisableHandlerList, pEntry))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5795);
             if (pEntry->pCallback == pPreSchedulingDisableHandler &&
                 pEntry->pCallbackParam == pPreSchedulingDisableHandlerData)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5796);
                 bPreHandlerAlreadyPresent = NV_TRUE;
                 break;
             }
@@ -2837,6 +3030,7 @@ kfifoAddSchedulingHandler_IMPL
     //
     if ((pPostSchedulingEnableHandler != NULL) && (pPreSchedulingDisableHandler != NULL))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5797);
         NV_ASSERT_OR_RETURN(!(bPostHandlerAlreadyPresent ^ bPreHandlerAlreadyPresent),
                             NV_ERR_INVALID_STATE);
     }
@@ -2849,6 +3043,7 @@ kfifoAddSchedulingHandler_IMPL
     // Add handler entry to list unless NULL
     if (pPostSchedulingEnableHandler != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5798);
         postEntry.pCallback = pPostSchedulingEnableHandler;
         postEntry.pCallbackParam = pPostSchedulingEnableHandlerData;
         postEntry.bHandled = NV_FALSE;
@@ -2859,6 +3054,7 @@ kfifoAddSchedulingHandler_IMPL
     // Add handler entry to list unless NULL
     if (pPreSchedulingDisableHandler != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5799);
         preEntry.pCallback = pPreSchedulingDisableHandler;
         preEntry.pCallbackParam = pPreSchedulingDisableHandlerData;
         preEntry.bHandled = NV_FALSE;
@@ -2892,6 +3088,7 @@ kfifoRemoveSchedulingHandler_IMPL
     void                   *pPreSchedulingDisableHandlerData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5800);
     FifoSchedulingHandlerEntry *pEntry;
     FifoSchedulingHandlerEntry *pTemp;
 
@@ -2899,11 +3096,13 @@ kfifoRemoveSchedulingHandler_IMPL
     pEntry = listHead(&pKernelFifo->postSchedulingEnableHandlerList);
     while (pEntry != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5801);
         pTemp = listNext(&pKernelFifo->postSchedulingEnableHandlerList, pEntry);
 
         if (pEntry->pCallback == pPostSchedulingEnableHandler &&
             pEntry->pCallbackParam == pPostSchedulingEnableHandlerData)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5802);
             listRemove(&pKernelFifo->postSchedulingEnableHandlerList, pEntry);
         }
 
@@ -2914,11 +3113,13 @@ kfifoRemoveSchedulingHandler_IMPL
     pEntry = listHead(&pKernelFifo->preSchedulingDisableHandlerList);
     while (pEntry != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5803);
         pTemp = listNext(&pKernelFifo->preSchedulingDisableHandlerList, pEntry);
 
         if (pEntry->pCallback == pPreSchedulingDisableHandler &&
             pEntry->pCallbackParam == pPreSchedulingDisableHandlerData)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5804);
             listRemove(&pKernelFifo->preSchedulingDisableHandlerList, pEntry);
         }
 
@@ -2942,6 +3143,7 @@ kfifoTriggerPostSchedulingEnableCallback_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5805);
     NV_STATUS status = NV_OK;
     FifoSchedulingHandlerEntry *pEntry;
     NvBool bRetry = NV_FALSE;
@@ -2950,6 +3152,7 @@ kfifoTriggerPostSchedulingEnableCallback_IMPL
          pEntry != NULL;
          pEntry = listNext(&pKernelFifo->postSchedulingEnableHandlerList, pEntry))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5806);
         NV_ASSERT_OR_ELSE(pEntry->pCallback != NULL,
             status = NV_ERR_INVALID_STATE; break;);
 
@@ -2979,6 +3182,7 @@ kfifoTriggerPostSchedulingEnableCallback_IMPL
          pEntry != NULL;
          pEntry = listNext(&pKernelFifo->postSchedulingEnableHandlerList, pEntry))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5807);
         NV_ASSERT_OR_ELSE(pEntry->pCallback != NULL,
             status = NV_ERR_INVALID_STATE; break;);
 
@@ -3010,6 +3214,7 @@ kfifoTriggerPreSchedulingDisableCallback_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5808);
     NV_STATUS status = NV_OK;
     FifoSchedulingHandlerEntry *pEntry;
     NvBool bRetry = NV_FALSE;
@@ -3019,6 +3224,7 @@ kfifoTriggerPreSchedulingDisableCallback_IMPL
          pEntry != NULL;
          pEntry = listNext(&pKernelFifo->preSchedulingDisableHandlerList, pEntry))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5809);
         NV_ASSERT_OR_ELSE(pEntry->pCallback != NULL,
             status = NV_ERR_INVALID_STATE; break;);
 
@@ -3048,6 +3254,7 @@ kfifoTriggerPreSchedulingDisableCallback_IMPL
          pEntry != NULL;
          pEntry = listNext(&pKernelFifo->preSchedulingDisableHandlerList, pEntry))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5810);
         NV_ASSERT_OR_ELSE(pEntry->pCallback != NULL,
             status = NV_ERR_INVALID_STATE; break;);
 
@@ -3077,6 +3284,7 @@ kfifoGetVChIdForSChId_FWCLIENT
     NvU32      *pVChid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5811);
     KERNEL_HOST_VGPU_DEVICE *pKernelHostVgpuDevice = NULL;
 
     NV_ASSERT_OR_RETURN(pVChid != NULL, NV_ERR_INVALID_ARGUMENT);
@@ -3115,6 +3323,7 @@ kfifoSetChidOffset_IMPL
     FIFO_ENGINE_LIST *pEngineFifoList
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5812);
     NV_STATUS status = NV_OK;
     RM_ENGINE_TYPE *pEngineIds = NULL;
     NvU32 maxEngines = kfifoGetNumEngines_HAL(pGpu, pKernelFifo);
@@ -3131,6 +3340,7 @@ kfifoSetChidOffset_IMPL
 
     for (i = 0; i < numEngines; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5813);
         NV_ASSERT_OR_ELSE(NV2080_ENGINE_TYPE_IS_VALID(pEngineIds[i]), status = NV_ERR_INVALID_STATE; goto cleanup);
         pChidOffset[pEngineIds[i]] = offset;
         pChannelCount[pEngineIds[i]] = numChannels;
@@ -3163,6 +3373,7 @@ kfifoGetEngineListForRunlist_IMPL
     NvU32      *pNumEngines
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5814);
     NV_STATUS  status      = NV_OK;
     NvU32      numEngines  = kfifoGetNumEngines_HAL(pGpu, pKernelFifo);
     NvU32      i;
@@ -3176,6 +3387,7 @@ kfifoGetEngineListForRunlist_IMPL
 
     for (i = 0; i < numEngines; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5815);
         RM_ENGINE_TYPE rmEngineType;
         NvU32 thisRunlistId;
 
@@ -3187,6 +3399,7 @@ kfifoGetEngineListForRunlist_IMPL
                                                      &thisRunlistId), done);
         if (runlistId == thisRunlistId)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5816);
             NV_ASSERT_OK_OR_GOTO(status,
                                  kfifoEngineInfoXlate_HAL(pGpu, pKernelFifo,
                                                          ENGINE_INFO_TYPE_INVALID,
@@ -3203,6 +3416,7 @@ kfifoGetEngineListForRunlist_IMPL
 done:
     if ((status != NV_OK) && (*pNumEngines != 0))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5817);
         portMemSet(pOutEngineIds, 0, sizeof(NvU32) * (*pNumEngines));
         *pNumEngines = 0;
     }
@@ -3225,6 +3439,7 @@ kfifoGetAllocatedChannelMask_IMPL
     NvLength    bitMaskSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5818);
     CHID_MGR *pChidMgr;
     NvU32     chId;
     NvU32     numChannels;
@@ -3237,8 +3452,10 @@ kfifoGetAllocatedChannelMask_IMPL
 
     if (!kfifoIsPerRunlistChramEnabled(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5819);
         if (runlistId > 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5820);
             return NV_ERR_OUT_OF_RANGE;
         }
         else
@@ -3250,6 +3467,7 @@ kfifoGetAllocatedChannelMask_IMPL
     {
         if (!(runlistId < kfifoGetMaxNumRunlists_HAL(pGpu, pKernelFifo)))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5821);
             return NV_ERR_OUT_OF_RANGE;
         }
     }
@@ -3257,6 +3475,7 @@ kfifoGetAllocatedChannelMask_IMPL
     pChidMgr = kfifoGetChidMgr(pGpu, pKernelFifo, runlistId);
     if (pChidMgr == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5822);
         //
         // This runlist is not valid. This is not an error since it might be
         // possible for some runlists between [0, maxRunlists) to be invalid.
@@ -3272,17 +3491,20 @@ kfifoGetAllocatedChannelMask_IMPL
 
     if (((numChannels + 7) / 8) > bitMaskSize)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5823);
         return NV_ERR_BUFFER_TOO_SMALL;
     }
 
     for (chId = 0; chId < numChannels; chId++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5824);
         KernelChannel *pKernelChannel;
         pKernelChannel = kfifoChidMgrGetKernelChannel(pGpu, pKernelFifo,
                                                       pChidMgr,
                                                       chId);
         if (pKernelChannel != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5825);
             NV_BITMASK32_SET(pBitMask, chId);
         }
     }
@@ -3300,6 +3522,7 @@ kfifoGetChannelClassId_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5826);
     NvU32 numClasses;
     NvU32 *pClassList = NULL;
     CLI_CHANNEL_CLASS_INFO classInfo;
@@ -3313,10 +3536,13 @@ kfifoGetChannelClassId_IMPL
 
     if (NV_OK == gpuGetClassList(pGpu, &numClasses, pClassList, ENG_KERNEL_FIFO))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5827);
         for (i = 0; i < numClasses; i++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5828);
             if (pClassList[i] == PHYSICAL_CHANNEL_GPFIFO)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5829);
                 // Skip the physical channel class
                 continue;
             }
@@ -3345,6 +3571,7 @@ kfifoGetGuestEngineLookupTable_IMPL
     NvU32 *pEngLookupTblSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5830);
     //
     // This table is used for a guest RM to reconstruct the engine list data
     // received from the host RM. The host and guest RM can be running on
@@ -3421,6 +3648,7 @@ kfifoGetMaxSecureChannels_KERNEL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5831);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_INTERNAL_FIFO_GET_NUM_SECURE_CHANNELS_PARAMS numSecureChannelsParams = {0};
 

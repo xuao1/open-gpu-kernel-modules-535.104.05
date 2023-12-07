@@ -45,6 +45,7 @@ dispcmnCtrlCmdSpecificSetAcpiIdMapping_IMPL
     NV0073_CTRL_SPECIFIC_SET_ACPI_ID_MAPPING_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3522);
     OBJGPU     *pGpu = DISPAPI_GET_GPU(pDispCommon);
     OBJGPU     *pOrigGpu = pGpu;
     OBJSYS     *pSys = SYS_GET_INSTANCE();
@@ -57,6 +58,7 @@ dispcmnCtrlCmdSpecificSetAcpiIdMapping_IMPL
     index = 0;
     for (acpiIdx = 0; acpiIdx < NV0073_CTRL_SPECIFIC_MAX_ACPI_DEVICES; ++acpiIdx)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3523);
         // client gave us a subdevice number: get right pGpu for it
         status = dispapiSetUnicastAndSynchronize_HAL(
                                staticCast(pDispCommon, DisplayApi),
@@ -70,6 +72,7 @@ dispcmnCtrlCmdSpecificSetAcpiIdMapping_IMPL
         if ((pParams->mapTable[acpiIdx].displayId) &&
                 !((pParams->mapTable[acpiIdx].displayId) & (pParams->mapTable[acpiIdx].displayId - 1)))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3524);
             // update the mapping table
             pfmUpdateAcpiIdMapping(pPfm,
                                    pGpu,
@@ -88,6 +91,7 @@ dispcmnCtrlCmdSpecificSetAcpiIdMapping_IMPL
 
     if (gpumgrGetBcEnabledStatus(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3525);
         // Grab the parent ...
         pGpu  = gpumgrGetDisplayParent(pGpu);
     }
@@ -105,6 +109,7 @@ dispcmnCtrlCmdSystemAcpiSubsystemActivated_IMPL
     NV0073_CTRL_SYSTEM_ACPI_SUBSYSTEM_ACTIVATED_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3526);
     OBJGPU    *pGpu   = DISPAPI_GET_GPU(pDispCommon);
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     OBJOS     *pOs    = NULL;
@@ -119,6 +124,7 @@ dispcmnCtrlCmdSystemAcpiSubsystemActivated_IMPL
                                pParams->subDeviceInstance);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3527);
         return status;
     }
 
@@ -132,6 +138,7 @@ dispcmnCtrlCmdSystemAcpiSubsystemActivated_IMPL
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3528);
         NV_PRINTF(LEVEL_INFO,
                   "ERROR: NV0073_CTRL_SYSTEM_ACPI_SUBSYSTEM_ACTIVATED control call failed. "
                   "Should be rmapi ctrl call which is failed");
@@ -151,6 +158,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
     NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_PARAMS *pAcpiMethodParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3529);
     OBJGPU *pGpu          = DISPAPI_GET_GPU(pDispCommon);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     OBJSYS *pSys          = SYS_GET_INSTANCE();
@@ -182,6 +190,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         (pAcpiMethodParams->inData == NvP64_NULL) ||
         (pAcpiMethodParams->outData == NvP64_NULL))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3530);
         NV_PRINTF(LEVEL_ERROR,
                   "ERROR: NV0073_CTRL_CMD_SYSTEM_EXECUTE_ACPI_METHOD: Parameter "
                   "validation failed: outDataSize=%d  inDataSize=%ud  method = %ud\n",
@@ -194,6 +203,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
     pInOutData = portMemAllocNonPaged(inOutDataSize);
     if (pInOutData == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3531);
         status = NV_ERR_NO_MEMORY;
         NV_PRINTF(LEVEL_ERROR,
                   "ERROR: NV0073_CTRL_CMD_SYSTEM_EXECUTE_ACPI_METHOD: mem alloc failed\n");
@@ -202,16 +212,19 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
 
     if (inDataSize)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3532);
         portMemCopy(pInOutData, inDataSize, NvP64_VALUE(pAcpiMethodParams->inData), inDataSize);
     }
 
     // jump to the method to be executed
     switch (method)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3533);
         case NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_MXMX:
         {
             if (inOutDataSize < (NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_MXMX_DISP_MASK_OFFSET + sizeof(NvU32)))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3534);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -238,6 +251,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < sizeof(NvU32))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3535);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -250,6 +264,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < sizeof(NvU32))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3536);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -262,6 +277,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < sizeof(NvU32))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3537);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -274,6 +290,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < (NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_MXDS_DISP_MASK_OFFSET + sizeof(NvU32)))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3538);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -297,6 +314,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < (NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_NBCI_MXDS_DISP_MASK_OFFSET + sizeof(NvU32)))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3539);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -320,6 +338,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < (NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_NBCI_MXDM_DISP_MASK_OFFSET + sizeof(NvU32)))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3540);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -343,6 +362,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < (NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_NBCI_MXID_DISP_MASK_OFFSET + sizeof(NvU32)))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3541);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -361,6 +381,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < (NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_NBCI_LRST_DISP_MASK_OFFSET + sizeof(NvU32)))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3542);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -378,6 +399,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < (NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_DDC_EDID_DISP_MASK_OFFSET + sizeof(NvU32)))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3543);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -397,6 +419,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < (NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_NVHG_MXMX_DISP_MASK_OFFSET + sizeof(NvU32)))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3544);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -423,6 +446,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < (NV0073_CTRL_SYSTEM_EXECUTE_ACPI_METHOD_DOS_DISP_MASK_OFFSET + sizeof(NvU32)))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3545);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -449,6 +473,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
             NvU32 *pBuffer = (NvU32*) pInOutData;
             if ((inOutDataSize < (2 * sizeof(NvU32))) || (inOutDataSize < pBuffer[1]))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3546);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -461,6 +486,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (inOutDataSize < sizeof(NvU32))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3547);
                 outStatus = NV_ERR_INVALID_ARGUMENT;
                 break;
             }
@@ -621,6 +647,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
         {
             if (outDataSize >= sizeof(pGpu->acpi.dsmCurrentFuncSupport))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3548);
                 outDataSize = sizeof(pGpu->acpi.dsmCurrentFuncSupport);
                 portMemCopy(pInOutData, outDataSize, &pGpu->acpi.dsmCurrentFuncSupport, outDataSize);
                 outStatus = NV_OK;
@@ -744,6 +771,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
 
     if (outStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3549);
         NV_PRINTF(LEVEL_INFO,
                   "ERROR: NV0073_CTRL_CMD_SYSTEM_EXECUTE_ACPI_METHOD: Execution failed "
                   "for method: 0x%x, status=0x%x\n", method, outStatus);
@@ -760,6 +788,7 @@ dispcmnCtrlCmdSystemExecuteAcpiMethod_IMPL
     // NOTE: 'outDataSize' may have changed above.
     if (outDataSize > pAcpiMethodParams->outDataSize)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3550);
         NV_PRINTF(LEVEL_ERROR,
                   "ERROR: NV0073_CTRL_CMD_SYSTEM_EXECUTE_ACPI_METHOD: output buffer is "
                   "smaller then expected!\n");
@@ -778,6 +807,7 @@ done:
     // pass data out to client's output buffer
     if (bDoCopyOut)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3551);
         pAcpiMethodParams->outDataSize = outDataSize;
 
         portMemCopy(NvP64_VALUE(pAcpiMethodParams->outData), outDataSize, pInOutData, outDataSize);

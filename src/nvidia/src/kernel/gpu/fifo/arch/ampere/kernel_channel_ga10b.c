@@ -35,6 +35,7 @@ kchannelCreateUserMemDesc_GA10B
     KernelChannel *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4874);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelFifo    *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);
     NV_STATUS status;

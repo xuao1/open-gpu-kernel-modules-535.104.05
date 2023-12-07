@@ -40,6 +40,7 @@ kchangrpAllocFaultMethodBuffers_GV100
     KernelChannelGroup          *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5073);
     NV_STATUS                    status         = NV_OK;
     NvU32                        bufSizeInBytes = 0;
     KernelFifo                  *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);
@@ -66,6 +67,7 @@ kchangrpAllocFaultMethodBuffers_GV100
         IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||               // legacy vgpu
         IS_SRIOV_HEAVY_GUEST(pGpu))                     // SRIOV-heavy guest
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5074);
         return NV_OK;
     }
 
@@ -78,6 +80,7 @@ kchangrpAllocFaultMethodBuffers_GV100
 
     if (IS_SRIOV_HEAVY_HOST(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5075);
         //
         // In case of SRIOV heavy mode host RM is allocating fault method buffers
         // on behalf of guest. As VF channels cannot use sysmem allocated in the
@@ -101,6 +104,7 @@ kchangrpAllocFaultMethodBuffers_GV100
     // Allocate buffer for each runqueue
     for (index = 0; index < runQueues; index++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5076);
         pFaultMthdBuf = &(pKernelChannelGroup->pMthdBuffers[index]);
 
         // Allocate and initialize MEMDESC
@@ -108,6 +112,7 @@ kchangrpAllocFaultMethodBuffers_GV100
                                NV_TRUE, faultBufApert, faultBufAttr, memDescFlags);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5077);
             DBG_BREAKPOINT();
             goto fail;
         }
@@ -115,6 +120,7 @@ kchangrpAllocFaultMethodBuffers_GV100
         status = memdescAlloc(pFaultMthdBuf->pMemDesc);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5078);
             DBG_BREAKPOINT();
             memdescDestroy(pFaultMthdBuf->pMemDesc);
             pFaultMthdBuf->pMemDesc = NULL;
@@ -150,6 +156,7 @@ kchangrpFreeFaultMethodBuffers_GV100
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5079);
     NV_STATUS                   status         = NV_OK;
     HW_ENG_FAULT_METHOD_BUFFER *pFaultMthdBuf  = NULL;
     KernelFifo                 *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);
@@ -172,6 +179,7 @@ kchangrpFreeFaultMethodBuffers_GV100
         IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||               // legacy vgpu
         IS_SRIOV_HEAVY_GUEST(pGpu))                     // SRIOV-heavy guest
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5080);
         return NV_OK;
     }
 
@@ -180,9 +188,11 @@ kchangrpFreeFaultMethodBuffers_GV100
     // Free method buffer memdesc if allocated
     for (index = 0; index < runQueues; index++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5081);
         pFaultMthdBuf = &((pKernelChannelGroup->pMthdBuffers)[index]);
         if ((pFaultMthdBuf != NULL) && (pFaultMthdBuf->pMemDesc != NULL))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5082);
             // Free the memory
             memdescFree(pFaultMthdBuf->pMemDesc);
             memdescDestroy(pFaultMthdBuf->pMemDesc);
@@ -204,6 +214,7 @@ kchangrpMapFaultMethodBuffers_GV100
     NvU32                        runqueue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5083);
     NvU32                        gfid           = pKernelChannelGroup->gfid;
     MemoryManager               *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelFifo                  *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);
@@ -224,6 +235,7 @@ kchangrpMapFaultMethodBuffers_GV100
         IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||               // legacy vgpu
         IS_SRIOV_HEAVY_GUEST(pGpu))                     // SRIOV-heavy guest
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5084);
         return NV_OK;
     }
 
@@ -237,6 +249,7 @@ kchangrpMapFaultMethodBuffers_GV100
     // Skip mapping if memdesc not allocated or if bar2 mapping has already been done
     if ((pFaultMthdBuf->pMemDesc == NULL) || (pFaultMthdBuf->bar2Addr != 0))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5085);
         return NV_OK;
     }
 
@@ -271,6 +284,7 @@ kchangrpUnmapFaultMethodBuffers_GV100
     NvU32               runqueue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5086);
     NvU32                       gfid           = pKernelChannelGroup->gfid;
     KernelBus                  *pKernelBus     = GPU_GET_KERNEL_BUS(pGpu);
     KernelFifo                 *pKernelFifo    = GPU_GET_KERNEL_FIFO(pGpu);
@@ -290,6 +304,7 @@ kchangrpUnmapFaultMethodBuffers_GV100
         IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||                // legacy vgpu
         IS_SRIOV_HEAVY_GUEST(pGpu))                      // SRIOV-heavy guest
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5087);
         return NV_OK;
     }
 
@@ -307,6 +322,7 @@ kchangrpUnmapFaultMethodBuffers_GV100
     // Unmap method buffer from bar2 invisible region and reset bar2addr
     if (pFaultMthdBuf->bar2Addr != 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5088);
         kbusUnmapCpuInvisibleBar2Aperture_HAL(pGpu, pKernelBus, pFaultMthdBuf->pMemDesc,
                                               pFaultMthdBuf->bar2Addr, gfid);
         pFaultMthdBuf->bar2Addr = 0;

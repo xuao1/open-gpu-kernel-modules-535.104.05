@@ -76,6 +76,7 @@ static NvU32 getKeyspaceSize(NvU16 keyspace);
 NV_STATUS
 confComputeKeyStoreInit_GH100(ConfidentialCompute *pConfCompute)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3052);
     NvU32          index;
     cryptoBundle_t (*pKeyStore)[];
 
@@ -85,6 +86,7 @@ confComputeKeyStoreInit_GH100(ConfidentialCompute *pConfCompute)
 
     if (pConfCompute->m_keySlot == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3053);
         return NV_ERR_NO_MEMORY;
     }
 
@@ -95,6 +97,7 @@ confComputeKeyStoreInit_GH100(ConfidentialCompute *pConfCompute)
     // GSP key slots don't have a channel counter.
     for (index = 0; index < CC_KEYSPACE_GSP_SIZE; index++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3054);
         (*pKeyStore)[index].type = NO_CHAN_COUNTER;
     }
 
@@ -109,6 +112,7 @@ confComputeKeyStoreInit_GH100(ConfidentialCompute *pConfCompute)
     // The remaining LCE key slots are all encryption / decryption with channel counter.
     for (; index < CC_KEYSPACE_TOTAL_SIZE; index++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3055);
         (*pKeyStore)[index].type = CRYPT_COUNTER;
     }
 
@@ -118,10 +122,12 @@ confComputeKeyStoreInit_GH100(ConfidentialCompute *pConfCompute)
 void
 confComputeKeyStoreDeinit_GH100(ConfidentialCompute *pConfCompute)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3056);
     NV_PRINTF(LEVEL_INFO, "Deinitializing keystore.\n");
 
     if (pConfCompute->m_keySlot != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3057);
         portMemSet(pConfCompute->m_keySlot, 0, (NvLength) sizeof(keySlot_t));
         confComputeKeyStoreClearExportMasterKey_HAL(pConfCompute);
         portMemFree(pConfCompute->m_keySlot);
@@ -134,12 +140,14 @@ void
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3058);
     return pConfCompute->m_exportMasterKey;
 }
 
 NV_STATUS
 confComputeKeyStoreDeriveKey_GH100(ConfidentialCompute *pConfCompute, NvU32 globalKeyId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3059);
     const NvU32    slotIndex = getKeySlotFromGlobalKeyId(globalKeyId);
     cryptoBundle_t (*pKeyStore)[];
 
@@ -151,10 +159,12 @@ confComputeKeyStoreDeriveKey_GH100(ConfidentialCompute *pConfCompute, NvU32 glob
     if ((globalKeyId == CC_GKEYID_GEN(CC_KEYSPACE_SEC2, CC_LKEYID_CPU_SEC2_HMAC_USER)) ||
         (globalKeyId == CC_GKEYID_GEN(CC_KEYSPACE_SEC2, CC_LKEYID_CPU_SEC2_HMAC_KERN)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3060);
         NvU32 sourceSlotIndex = 0;
 
         switch (CC_GKEYID_GET_LKEYID(globalKeyId))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3061);
             case CC_LKEYID_CPU_SEC2_HMAC_USER:
                 sourceSlotIndex = getKeySlotFromGlobalKeyId(
                     CC_GKEYID_GEN(CC_KEYSPACE_SEC2, CC_LKEYID_CPU_SEC2_DATA_USER));
@@ -169,6 +179,7 @@ confComputeKeyStoreDeriveKey_GH100(ConfidentialCompute *pConfCompute, NvU32 glob
                                      sizeof((*pKeyStore)[sourceSlotIndex].cryptBundle.key),
                                      (uint8_t *)(*pKeyStore)[slotIndex].hmacBundle.key))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3062);
             return NV_ERR_FATAL_ERROR;
         }
     }
@@ -181,6 +192,7 @@ confComputeKeyStoreDeriveKey_GH100(ConfidentialCompute *pConfCompute, NvU32 glob
                                         (uint8_t *)(*pKeyStore)[slotIndex].cryptBundle.key,
                                         sizeof((*pKeyStore)[slotIndex].cryptBundle.key)))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3063);
             return NV_ERR_FATAL_ERROR;
         }
     }
@@ -189,10 +201,13 @@ confComputeKeyStoreDeriveKey_GH100(ConfidentialCompute *pConfCompute, NvU32 glob
     if ((CC_GKEYID_GET_KEYSPACE(globalKeyId) >= CC_KEYSPACE_LCE0) &&
         (CC_GKEYID_GET_KEYSPACE(globalKeyId) <= CC_KEYSPACE_LCE7))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3064);
         for (NvU32 index = 0; index < CC_AES_256_GCM_KEY_SIZE_DWORD; index++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3065);
             if ((*pKeyStore)[slotIndex].cryptBundle.key[index] != 0)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3066);
                 return NV_OK;
             }
         }
@@ -211,6 +226,7 @@ confComputeKeyStoreDepositIvMask_GH100
     void                *ivMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3067);
     NvU32 slotNumber = getKeySlotFromGlobalKeyId(globalKeyId);
     cryptoBundle_t (*pKeyStore)[];
 
@@ -226,6 +242,7 @@ confComputeKeyStoreDepositIvMask_GH100
 void
 confComputeKeyStoreClearExportMasterKey_GH100(ConfidentialCompute *pConfCompute)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3068);
     NV_PRINTF(LEVEL_INFO, "Clearing the Export Master Key.\n");
 
     portMemSet(pConfCompute->m_exportMasterKey, 0, (NvLength) sizeof(pConfCompute->m_exportMasterKey));
@@ -241,20 +258,24 @@ confComputeKeyStoreRetrieveViaChannel_GH100
     CC_KMB              *keyMaterialBundle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3069);
     NvU32 globalKeyId;
     NvU16 keyId;
 
     if (RM_ENGINE_TYPE_IS_COPY(kchannelGetEngineType(pKernelChannel)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3070);
         NvU16 keyspace;
 
         if (getKeyspaceLce(pKernelChannel, &keyspace) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3071);
             return NV_ERR_INVALID_PARAMETER;
         }
 
         if (getKeyIdLce(pKernelChannel, rotateOperation, &keyId) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3072);
             return NV_ERR_INVALID_PARAMETER;
         }
 
@@ -262,8 +283,10 @@ confComputeKeyStoreRetrieveViaChannel_GH100
     }
     else if (kchannelGetEngineType(pKernelChannel) == RM_ENGINE_TYPE_SEC2)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3073);
         if (getKeyIdSec2(pKernelChannel, rotateOperation, &keyId) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3074);
             return NV_ERR_INVALID_PARAMETER;
         }
 
@@ -288,6 +311,7 @@ confComputeKeyStoreRetrieveViaKeyId_GH100
     CC_KMB              *keyMaterialBundle
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3075);
     NvU32          slotNumber = getKeySlotFromGlobalKeyId(globalKeyId);
     cryptoBundle_t (*pKeyStore)[];
 
@@ -298,13 +322,16 @@ confComputeKeyStoreRetrieveViaKeyId_GH100
 
     if ((slotNumber % 2) == 1)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3076);
         slotNumber--;
     }
 
     if ((rotateOperation == ROTATE_IV_ENCRYPT) || (rotateOperation == ROTATE_IV_ALL_VALID))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3077);
         if (checkSlot(pConfCompute, slotNumber) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3078);
             // Right now returns error to caller. Depending on how the re-keying flow is designed
             // this may initiate re-keying.
             return NV_ERR_INSUFFICIENT_RESOURCES;
@@ -314,8 +341,10 @@ confComputeKeyStoreRetrieveViaKeyId_GH100
     if ((rotateOperation == ROTATE_IV_DECRYPT) || (rotateOperation == ROTATE_IV_ALL_VALID) ||
         (rotateOperation == ROTATE_IV_HMAC))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3079);
         if (checkSlot(pConfCompute, slotNumber + 1) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3080);
             // Right now returns error to caller. Depending on how the re-keying flow is designed
             // this may initiate re-keying.
             return NV_ERR_INSUFFICIENT_RESOURCES;
@@ -324,10 +353,12 @@ confComputeKeyStoreRetrieveViaKeyId_GH100
 
     if ((rotateOperation == ROTATE_IV_ENCRYPT) || (rotateOperation == ROTATE_IV_ALL_VALID))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3081);
         incrementChannelCounter(pConfCompute, slotNumber);
 
         if (includeSecrets)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3082);
             keyMaterialBundle->encryptBundle = (*pKeyStore)[slotNumber].cryptBundle;
         }
         else
@@ -340,14 +371,17 @@ confComputeKeyStoreRetrieveViaKeyId_GH100
     if ((rotateOperation == ROTATE_IV_DECRYPT) || (rotateOperation == ROTATE_IV_ALL_VALID) ||
         (rotateOperation == ROTATE_IV_HMAC))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3083);
         incrementChannelCounter(pConfCompute, slotNumber + 1);
 
         switch ((*pKeyStore)[slotNumber + 1].type)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3084);
             case NO_CHAN_COUNTER:
             case CRYPT_COUNTER:
                 if (includeSecrets)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3085);
                     keyMaterialBundle->decryptBundle = (*pKeyStore)[slotNumber + 1].cryptBundle;
                 }
                 else
@@ -360,6 +394,7 @@ confComputeKeyStoreRetrieveViaKeyId_GH100
             case HMAC_COUNTER:
                 if (includeSecrets)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3086);
                     keyMaterialBundle->hmacBundle = (*pKeyStore)[slotNumber + 1].hmacBundle;
                 }
                 else
@@ -378,6 +413,7 @@ confComputeKeyStoreRetrieveViaKeyId_GH100
 NV_STATUS
 confComputeKeyStoreUpdateKey_GH100(ConfidentialCompute *pConfCompute, NvU32 globalKeyId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3087);
     return NV_ERR_NOT_SUPPORTED;
 }
 
@@ -394,10 +430,13 @@ getKeyIdLce
     NvU16          *keyId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3088);
     if (kchannelCheckIsUserMode(pKernelChannel))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3089);
         if ((rotateOperation == ROTATE_IV_ENCRYPT) || (rotateOperation == ROTATE_IV_ALL_VALID))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3090);
             *keyId = CC_LKEYID_LCE_H2D_USER;
         }
         else
@@ -409,8 +448,10 @@ getKeyIdLce
     }
     else if (kchannelCheckIsKernel(pKernelChannel))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3091);
         if ((rotateOperation == ROTATE_IV_ENCRYPT) || (rotateOperation == ROTATE_IV_ALL_VALID))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3092);
             *keyId = CC_LKEYID_LCE_H2D_KERN;
         }
         else
@@ -437,10 +478,13 @@ getKeyIdSec2
     NvU16          *keyId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3093);
     if (kchannelCheckIsUserMode(pKernelChannel))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3094);
         if ((rotateOperation == ROTATE_IV_ENCRYPT) || (rotateOperation == ROTATE_IV_ALL_VALID))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3095);
             *keyId = CC_LKEYID_CPU_SEC2_DATA_USER;
         }
         else
@@ -452,8 +496,10 @@ getKeyIdSec2
     }
     else if (kchannelCheckIsKernel(pKernelChannel))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3096);
         if ((rotateOperation == ROTATE_IV_ENCRYPT) || (rotateOperation == ROTATE_IV_ALL_VALID))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3097);
             *keyId = CC_LKEYID_CPU_SEC2_DATA_KERN;
         }
         else
@@ -474,9 +520,11 @@ getKeyspaceLce
     NvU16         *keyspace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3098);
     // The actual copy engine (2 through 9) is normalized to start at 0.
     switch (kchannelGetEngineType(pKernelChannel))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3099);
         case RM_ENGINE_TYPE_COPY2:
             *keyspace = CC_KEYSPACE_LCE0;
             break;
@@ -514,13 +562,16 @@ getKeySlotFromGlobalKeyId
     NvU32 globalKeyId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3100);
     NvU16 keyspace = CC_GKEYID_GET_KEYSPACE(globalKeyId);
     NvU32 keySlotIndex = 0;
 
     for (NvU16 index = 0; index < CC_KEYSPACE_SIZE; index++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3101);
         if (index == keyspace)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3102);
             break;
         }
         else
@@ -539,8 +590,10 @@ checkSlot
     NvU32                slotNumber
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3103);
     if (getChannelCounter(pConfCompute, slotNumber) == NV_U64_MAX)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3104);
         return NV_ERR_GENERIC;
     }
 
@@ -554,6 +607,7 @@ incrementChannelCounter
     NvU32                slotNumber
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3105);
     NvU64          channelCounter = getChannelCounter(pConfCompute, slotNumber);
     cryptoBundle_t (*pKeyStore)[];
 
@@ -563,6 +617,7 @@ incrementChannelCounter
 
     switch ((*pKeyStore)[slotNumber].type)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3106);
         case NO_CHAN_COUNTER:
             break;
         case CRYPT_COUNTER:
@@ -582,8 +637,10 @@ getKeyspaceSize
     NvU16 keyspace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3107);
     switch (keyspace)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3108);
         case CC_KEYSPACE_GSP:
             return CC_KEYSPACE_GSP_SIZE;
         case CC_KEYSPACE_SEC2:
@@ -609,12 +666,14 @@ getChannelCounter
     NvU32                slotNumber
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3109);
     cryptoBundle_t (*pKeyStore)[];
 
     pKeyStore = pConfCompute->m_keySlot;
 
     switch ((*pKeyStore)[slotNumber].type)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3110);
         case NO_CHAN_COUNTER:
             return 0;
         case CRYPT_COUNTER:

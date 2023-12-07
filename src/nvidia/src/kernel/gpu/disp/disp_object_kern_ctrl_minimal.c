@@ -41,6 +41,7 @@ dispobjCtrlCmdEventSetTrigger_IMPL
     DispObject *pDispObject
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3571);
     OBJGPU        *pGpu = DISPAPI_GET_GPU(pDispObject);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
 
@@ -56,6 +57,7 @@ dispobjCtrlCmdEventSetMemoryNotifies_IMPL
     NV5070_CTRL_EVENT_SET_MEMORY_NOTIFIES_PARAMS *pSetMemoryNotifiesParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3572);
     OBJGPU        *pGpu = DISPAPI_GET_GPU(pDispObject);
     DisplayApi    *pDisplayApi = staticCast(pDispObject, DisplayApi);
     RsClient      *pClient = RES_GET_CLIENT(pDispObject);
@@ -65,6 +67,7 @@ dispobjCtrlCmdEventSetMemoryNotifies_IMPL
     // error check subDeviceInstance
     if (pSetMemoryNotifiesParams->subDeviceInstance >= gpumgrGetSubDeviceCountFromGpu(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3573);
         NV_PRINTF(LEVEL_INFO, "bad subDeviceInstance 0x%x\n",
                   pSetMemoryNotifiesParams->subDeviceInstance);
         return NV_ERR_INVALID_ARGUMENT;
@@ -75,14 +78,17 @@ dispobjCtrlCmdEventSetMemoryNotifies_IMPL
     // ensure there's no pending notifications
     for (i = 0; i < pDisplayApi->numNotifiers; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3574);
         if (pNotifyActions[i] != NV5070_CTRL_EVENT_SET_NOTIFICATION_ACTION_DISABLE)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3575);
             return NV_ERR_STATE_IN_USE;
         }
     }
 
     if (pSetMemoryNotifiesParams->hMemory == NV01_NULL_OBJECT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3576);
         pDisplayApi->hNotifierMemory = pSetMemoryNotifiesParams->hMemory;
         pDisplayApi->pNotifierMemory = NULL;
         return NV_OK;
@@ -93,6 +99,7 @@ dispobjCtrlCmdEventSetMemoryNotifies_IMPL
 
     if (pMemory->pMemDesc->Size < sizeof(NvNotification) * pDisplayApi->numNotifiers)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3577);
         return NV_ERR_INVALID_LIMIT;
     }
 
@@ -107,6 +114,7 @@ static NV_STATUS getRgConnectedLockpin(OBJGPU *pGpu,
     OBJGPU *pPeerGpu, NvU32 peerHead,
     NvU32 *pMasterScanLock, NvU32 *pSlaveScanLock)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3578);
     NvBool bMasterScanLock, bSlaveScanLock;
     NvU32 masterScanLockPin, slaveScanLockPin;
 
@@ -125,6 +133,7 @@ static NV_STATUS getRgConnectedLockpin(OBJGPU *pGpu,
 
     if (bMasterScanLock)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3579);
         *pMasterScanLock =
             FLD_SET_DRF(5070, _CTRL_CMD_GET_RG_CONNECTED_LOCKPIN_STATELESS,
                         _MASTER_SCAN_LOCK_CONNECTED, _YES, *pMasterScanLock);
@@ -143,6 +152,7 @@ static NV_STATUS getRgConnectedLockpin(OBJGPU *pGpu,
 
     if (bSlaveScanLock)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3580);
         *pSlaveScanLock =
             FLD_SET_DRF(5070, _CTRL_CMD_GET_RG_CONNECTED_LOCKPIN_STATELESS,
                         _SLAVE_SCAN_LOCK_CONNECTED, _YES, *pSlaveScanLock);
@@ -169,6 +179,7 @@ dispobjCtrlCmdGetRgConnectedLockpinStateless_IMPL
     NV5070_CTRL_GET_RG_CONNECTED_LOCKPIN_STATELESS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3581);
     OBJGPU         *pGpu = DISPAPI_GET_GPU(pDispObject);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     NvHandle        hClient = RES_GET_CLIENT_HANDLE(pDispObject);
@@ -180,6 +191,7 @@ dispobjCtrlCmdGetRgConnectedLockpinStateless_IMPL
     if (!CliGetDispInfo(hClient, pParams->peer.hDisplay, &pDisplayApi) &&
         !CliGetDispCommonInfo(hClient, pParams->peer.hDisplay, &pDisplayApi))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3582);
         return NV_ERR_INVALID_OBJECT_HANDLE;
     }
 

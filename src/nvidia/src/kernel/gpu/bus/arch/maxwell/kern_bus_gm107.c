@@ -83,12 +83,14 @@ static const NvU32 peerNumberTable_GM107[8][8] =
 MEMORY_DESCRIPTOR*
 kbusCreateStagingMemdesc(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1727);
     return NULL;
 }
 
 NV_STATUS
 kbusConstructHal_GM107(OBJGPU *pGpu, KernelBus *pKernelBus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1728);
 
     NV_PRINTF(LEVEL_INFO, "Entered \n");
 
@@ -106,6 +108,7 @@ kbusConstructHal_GM107(OBJGPU *pGpu, KernelBus *pKernelBus)
     if (pGpu->getProperty(pGpu, PDB_PROP_GPU_BROKEN_FB) &&
         !pGpu->getProperty(pGpu, PDB_PROP_GPU_ZERO_FB))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1729);
         pKernelBus->bFbFlushDisabled = NV_TRUE;
     }
 
@@ -119,6 +122,7 @@ kbusConstructHal_GM107(OBJGPU *pGpu, KernelBus *pKernelBus)
         kbusIsFbFlushDisabled(pKernelBus) ||
         RMCFG_FEATURE_PLATFORM_GSP)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1730);
         pKernelBus->bReadCpuPointerToFlush = NV_FALSE;
     }
 
@@ -145,11 +149,13 @@ kbusStatePreInitLocked_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1731);
     NV_PRINTF(LEVEL_INFO, "gpu:%d\n", pGpu->gpuInstance);
 
     // kbusInitBarsSize_HAL for VGPU is called in early phase
     if (! IS_VIRTUAL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1732);
         NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
             kbusInitBarsSize_HAL(pGpu, pKernelBus));
     }
@@ -162,6 +168,7 @@ kbusStatePreInitLocked_GM107
 
     if (NV_OK != kbusConstructVirtualBar2_HAL(pGpu, pKernelBus, GPU_GFID_PF))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1733);
         return NV_ERR_INSUFFICIENT_RESOURCES;
     }
 
@@ -173,6 +180,7 @@ kbusStatePreInitLocked_GM107
  */
 static NV_STATUS nullEHeapFree(OBJEHEAP *thisHeap, NvU64 offset)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1734);
     return NV_OK;
 }
 
@@ -186,6 +194,7 @@ kbusSetupDefaultBar0Window
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1735);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     const MEMORY_SYSTEM_STATIC_CONFIG *pMemorySystemConfig =
         kmemsysGetStaticConfig(pGpu, GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu));
@@ -200,6 +209,7 @@ kbusSetupDefaultBar0Window
     //
     if (pMemorySystemConfig->bReservedMemAtBottom)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1736);
         offsetBar0 = memmgrGetRsvdMemoryBase(pMemoryManager);
     }
     else
@@ -217,8 +227,10 @@ kbusSetupDefaultBar0Window
     if (gpuIsCacheOnlyModeEnabled(pGpu) ||
         !(pMemorySystemConfig->bFbpaPresent))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1737);
         if (pMemorySystemConfig->l2CacheSize < DRF_SIZE(NV_PRAMIN))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1738);
             // L2 Cache size is < BAR0 window size so just set it offset to 0
             offsetBar0 = 0;
         }
@@ -234,6 +246,7 @@ kbusSetupDefaultBar0Window
 
     if (!IS_VIRTUAL_WITH_SRIOV(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1739);
         DEVICE_MAPPING *pDeviceMapping = gpuGetDeviceMapping(pGpu, DEVICE_INDEX_GPU, 0);
         pKernelBus->pUncachedBar0Window = (NvU8*) &pDeviceMapping->gpuNvAddr->Reg008[DRF_BASE(NV_PRAMIN)];
         pKernelBus->pDefaultBar0Pointer = pKernelBus->pUncachedBar0Window;
@@ -254,6 +267,7 @@ kbusStateInitLockedKernel_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1740);
     KernelBif        *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
     VirtMemAllocator *pDma       = GPU_GET_DMA(pGpu);
     NvU32             data;
@@ -261,8 +275,10 @@ kbusStateInitLockedKernel_GM107
     if ((pKernelBif != NULL) && (!pKernelBif->getProperty(pKernelBif, PDB_PROP_KBIF_P2P_READS_DISABLED) ||
                                  !pKernelBif->getProperty(pKernelBif, PDB_PROP_KBIF_P2P_WRITES_DISABLED)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1741);
         if (osReadRegistryDword(pGpu, NV_REG_STR_RM_MAP_P2P_PEER_ID, &data) == NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1742);
             pKernelBus->p2pMapSpecifyId = NV_TRUE;
             pKernelBus->p2pMapPeerId = data;
         }
@@ -273,9 +289,11 @@ kbusStateInitLockedKernel_GM107
 
         if (gpumgrGetGpuLinkCount(pGpu->gpuInstance) > 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1743);
             if (!kbusIsP2pInitialized(pKernelBus) &&
                 !kbusIsP2pMailboxClientAllocated(pKernelBus))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1744);
                 _kbusInitP2P_GM107(pGpu, pKernelBus);
             }
         }
@@ -287,6 +305,7 @@ kbusStateInitLockedKernel_GM107
 
     if (!KBUS_BAR0_PRAMIN_DISABLED(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1745);
         kbusSetupDefaultBar0Window(pGpu, pKernelBus);
     }
 
@@ -297,6 +316,7 @@ kbusStateInitLockedKernel_GM107
     //
     if (IS_GSP_CLIENT(pGpu) && KBUS_CPU_VISIBLE_BAR12_DISABLED(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1746);
         NV_PRINTF(LEVEL_INFO, "For GSP client with C2C enabled, skip BAR2 init\n");
     }
     else
@@ -306,11 +326,13 @@ kbusStateInitLockedKernel_GM107
 
     if (IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pGpu) && IS_VIRTUAL_WITH_SRIOV(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1747);
         vgpuGspSetupBuffers(pGpu);
     }
 
     if (!pGpu->getProperty(pGpu, PDB_PROP_GPU_COHERENT_CPU_MAPPING))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1748);
         // Verify that BAR2 and the MMU actually works
         NV_ASSERT_OK_OR_RETURN(kbusVerifyBar2_HAL(pGpu, pKernelBus, NULL, NULL, 0, 0));
     }
@@ -321,6 +343,7 @@ kbusStateInitLockedKernel_GM107
     //
     if (pDma->getProperty(pDma, PDB_PROP_DMA_MMU_INVALIDATE_DISABLE))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1749);
         pKernelBus->virtualBar2[GPU_GFID_PF].vAlignment = 16 * RM_PAGE_SIZE;
         pKernelBus->virtualBar2[GPU_GFID_PF].pVASpaceHeap->eheapFree = nullEHeapFree;
     }
@@ -331,9 +354,11 @@ kbusStateInitLockedKernel_GM107
 NV_STATUS
 kbusStateInitLocked_IMPL(OBJGPU *pGpu, KernelBus *pKernelBus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1750);
     // Nothing to be done in guest for the paravirtualization case.
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1751);
         return NV_OK;
     }
 
@@ -342,6 +367,7 @@ kbusStateInitLocked_IMPL(OBJGPU *pGpu, KernelBus *pKernelBus)
     if (IS_GSP_CLIENT(pGpu) && (pConfCompute != NULL) && 
         !(pConfCompute->ccStaticInfo.bIsBar1Trusted && pConfCompute->ccStaticInfo.bIsPcieTrusted))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1752);
         pKernelBus->bBarAccessBlocked = NV_TRUE;
         pKernelBus->bBar2TestSkipped = NV_TRUE;
         NV_PRINTF(LEVEL_INFO, "BARs will be blocked for CC\n");
@@ -357,6 +383,7 @@ kbusStateInitLocked_IMPL(OBJGPU *pGpu, KernelBus *pKernelBus)
 
     if (KBUS_CPU_VISIBLE_BAR12_DISABLED(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1753);
         NV_PRINTF(LEVEL_INFO, "C2C is being used, so disable CPU visible BAR1/2 now before they are setup\n");
 
         pKernelBus->pciBarSizes[BUS_BAR_1] = 0;
@@ -377,6 +404,7 @@ kbusStateInitLocked_IMPL(OBJGPU *pGpu, KernelBus *pKernelBus)
         //
         if (!RMCFG_FEATURE_PLATFORM_GSP) // contiguous BAR2
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1754);
             NV_PRINTF(LEVEL_INFO, "C2C is being used (contiguous/MONOLITHIC), update BAR2 cpuInvisibleBase: 0x%llX to 0, and cpuInvisibleLimit: 0x%llX to 0x%llX. Setting cpuVisibleLimit: 0x%llX to 0\n",
                       pKernelBus->bar2[GPU_GFID_PF].cpuInvisibleBase,
                       pKernelBus->bar2[GPU_GFID_PF].cpuInvisibleLimit,
@@ -394,6 +422,7 @@ kbusStateInitLocked_IMPL(OBJGPU *pGpu, KernelBus *pKernelBus)
 
     if (RMCFG_FEATURE_PLATFORM_GSP)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1755);
         NV_ASSERT_OK_OR_RETURN(kbusInitBar2_HAL(pGpu, pKernelBus, GPU_GFID_PF));
     }
 
@@ -412,16 +441,20 @@ kbusStateLoad_GM107
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1756);
 
     if (flags & GPU_STATE_FLAGS_PRESERVING)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1757);
         MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
 
         // FB address space may not be available on Tegra (see fbInitFbRegions)
         if (pMemoryManager->Ram.fbAddrSpaceSizeMb != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1758);
             if (!KBUS_BAR0_PRAMIN_DISABLED(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1759);
                 // Bind the BAR0 window to its default location
                 // note: we can't move the window for all intents and purposes since VBIOS
                 //       will also use the window at arbitrary locations (eg during an SMI event
@@ -436,9 +469,11 @@ kbusStateLoad_GM107
 
         if (!(flags & GPU_STATE_FLAGS_GC6_TRANSITION))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1760);
             if (NULL == pKernelBus->virtualBar2[GPU_GFID_PF].pCpuMapping &&
                  !KBUS_CPU_VISIBLE_BAR12_DISABLED(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1761);
                 NV_ASSERT_OK_OR_RETURN(kbusSetupBar2CpuAperture_HAL(pGpu, pKernelBus, GPU_GFID_PF));
             }
         }
@@ -453,6 +488,7 @@ kbusStateLoad_GM107
         if (!pGpu->getProperty(pGpu, PDB_PROP_GPU_COHERENT_CPU_MAPPING) &&
             !(IS_GPU_GC6_STATE_EXITING(pGpu) && pKernelBus->bSkipBar2TestOnGc6Exit))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1762);
             // Verify that BAR2 and the MMU actually works
             NV_ASSERT_OK_OR_RETURN(kbusVerifyBar2_HAL(pGpu, pKernelBus, NULL, NULL, 0, 0));
 
@@ -471,15 +507,18 @@ kbusStatePostLoad_GM107
     NvU32 flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1763);
     NV_STATUS  status     = NV_OK;
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
 
     if ( ! IS_GPU_GC6_STATE_EXITING(pGpu) &&
          !KBUS_CPU_VISIBLE_BAR12_DISABLED(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1764);
         // Bar1 is created once per Gpu on each Gpu call to kbusStatePostLoad_GM107
         if ((status = kbusInitBar1_HAL(pGpu, pKernelBus, GPU_GFID_PF)) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1765);
             return status;
         }
     }
@@ -496,6 +535,7 @@ kbusStatePostLoad_GM107
         &&
         !gpuIsSelfHosted(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1766);
         _kbusLinkP2P_GM107(pGpu, pKernelBus);
     }
 
@@ -512,9 +552,11 @@ kbusStatePreUnload_GM107
     NvU32      flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1767);
     if (!((flags & GPU_STATE_FLAGS_PRESERVING) ||
           IS_GPU_GC6_STATE_ENTERING(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1768);
         //
         // Get rid of the bars if this is not PM. There were/are issues with user-mode
         // OGL on XP not knowing that the system has enter suspend and so continuing to
@@ -535,6 +577,7 @@ kbusStateUnload_GM107
     NvU32      flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1769);
     NV_STATUS          status     = NV_OK;
     KernelBif         *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
 
@@ -552,16 +595,20 @@ kbusStateUnload_GM107
          (flags & GPU_STATE_FLAGS_PM_TRANSITION))
         && !gpuIsSelfHosted(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1770);
         kbusUnlinkP2P_HAL(pGpu, pKernelBus);
     }
 
     if (flags & GPU_STATE_FLAGS_PRESERVING)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1771);
         if (!IS_GPU_GC6_STATE_ENTERING(pGpu))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1772);
 			status = kbusTeardownBar2CpuAperture_HAL(pGpu, pKernelBus, GPU_GFID_PF);
 			if (!IS_VIRTUAL_WITH_SRIOV(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1773);
                 // Do not use BAR2 physical mode for bootstrapping BAR2 across S/R.
                 pKernelBus->bUsePhysicalBar2InitPagetable = NV_FALSE;
             }
@@ -595,6 +642,7 @@ kbusStateUnload_GM107
 NV_STATUS
 kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1774);
     OBJEHEAP         *pVASpaceHeap              = NULL;
     NV_STATUS         rmStatus                  = NV_OK;
     NvU64             apertureVirtAddr, apertureVirtLength;
@@ -617,6 +665,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
     //
     if (pKernelBus->bar1[gfid].pVAS != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1775);
         return rmStatus;
     }
 
@@ -645,6 +694,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 
 #if defined(DEVELOP) || defined(DEBUG) || RMCFG_FEATURE_MODS_FEATURES
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1776);
         NvU32 data32 = 0;
         //
         // The BAR1 page size can be only configured for mods verification.
@@ -655,9 +705,11 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
         if (osReadRegistryDword(pGpu,
                     NV_REG_STR_RM_SET_BAR1_ADDRESS_SPACE_BIG_PAGE_SIZE, &data32) == NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1777);
             KernelGmmu *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
             if (kgmmuIsPerVaspaceBigPageEn(pKernelGmmu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1778);
                 vaSpaceBigPageSize = data32;
             }
             else
@@ -673,6 +725,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 
     switch (vaSpaceBigPageSize)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1779);
         case FERMI_BIG_PAGESIZE_64K:
             vaflags |= DRF_DEF(_VASPACE, _FLAGS, _BIG_PAGE_SIZE, _64K);
             break;
@@ -691,6 +744,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
     //
     if (kbusIsP2pMailboxClientAllocated(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1780);
         // KMD requires smooth transition to have a reverse BAR1 VA space
         if (bSmoothTransitionEnabled)
             vaflags |= VASPACE_FLAGS_REVERSE;
@@ -704,6 +758,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
         //
         if (bSmoothTransitionEnabled && (IsMobile(pGpu) || (vaRangeMax < NV_U32_MAX)))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1781);
             //
             // If UEFI scanoutsurface size is configured to be non-zero,
             // we are going to move all BAR1 vaspace requests to not
@@ -734,6 +789,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 
     if (IS_GFID_VF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1782);
         vaflags |= VASPACE_FLAGS_ALLOW_PAGES_IN_PHYS_MEM_SUBALLOCATOR;
     }
 
@@ -744,6 +800,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
                                 vaflags, &pKernelBus->bar1[gfid].pVAS);
     if (NV_OK != rmStatus)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1783);
         NV_PRINTF(LEVEL_ERROR,
                     "Could not construct BAR1 VA space object.\n");
         pKernelBus->bar1[gfid].pVAS = NULL;
@@ -764,6 +821,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
                                                 0, vaRangeMax);
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1784);
         NV_PRINTF(LEVEL_ERROR,
                     "Unable to set BAR1 alloc range to aperture size!\n");
         goto kbusInitBar1_failed;
@@ -784,6 +842,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
     if (IS_GFID_PF(gfid) &&
         (kbusIsPreserveBar1ConsoleEnabled(pKernelBus) || bSmoothTransitionEnabled))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1785);
         MemoryManager     *pMemoryManager  = GPU_GET_MEMORY_MANAGER(pGpu);
         NvU64              bar1VAOffset    = 0;
         NvU64              fbPhysOffset    = 0;
@@ -793,6 +852,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 
         if (bSmoothTransitionEnabled)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1786);
             //
             // Smooth transition - The physical fb offset 0 to uefiScanoutSurfaceSize(InMB) should be identity mapped.
             // The lower FB region at offset 0 is owned by PMA and OS in wddm and hence RM will not reserve the physical
@@ -805,11 +865,13 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
         }
         else if (kbusIsPreserveBar1ConsoleEnabled(pKernelBus))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1787);
             pConsoleMemDesc = memmgrGetReservedConsoleMemDesc(pGpu, pMemoryManager);
         }
 
         if (pConsoleMemDesc)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1788);
             consoleSize = memdescGetSize(pConsoleMemDesc);
 
             NV_PRINTF(LEVEL_INFO,
@@ -822,6 +884,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
                                              NULL);
             if (rmStatus != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1789);
                 NV_PRINTF(LEVEL_ERROR,
                             "cannot preserve console mapping in BAR1 (0x%llx, 0x%x)\n",
                             consoleSize, rmStatus);
@@ -836,6 +899,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
             //
             if (bar1VAOffset != 0)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1790);
                 NV_PRINTF(LEVEL_ERROR,
                             "expected console @ BAR1 offset 0 (0x%llx, 0x%x)\n",
                             bar1VAOffset, rmStatus);
@@ -860,6 +924,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 
     if (kbusNeedStaticBar1Mapping_HAL(pGpu, pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1791);
         // Enable the static BAR1 mapping for the BAR1 P2P
         NV_ASSERT_OK_OR_GOTO(rmStatus,
                              kbusEnableStaticBar1Mapping_HAL(pGpu, pKernelBus, bar1ReservedSize, gfid),
@@ -875,10 +940,12 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
             &&
             !kbusIsP2pMailboxClientAllocated(pKernelBus))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1792);
             rmStatus = kbusAllocP2PMailboxBar1_HAL(pGpu, pKernelBus, gfid, vaRangeMax);
 
             if (NV_OK != rmStatus)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1793);
                 goto kbusInitBar1_failed;
             }
         }
@@ -897,6 +964,7 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 
     if (NV_OK != rmStatus)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1794);
         goto kbusInitBar1_failed;
     }
 
@@ -920,8 +988,10 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
     if (gpumgrIsParentGPU(pGpu) &&
         !kbusIsP2pMailboxClientAllocated(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1795);
         SLI_LOOP_START(SLI_LOOP_FLAGS_IGNORE_REENTRANCY)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1796);
             pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
             pKernelBus->p2pPcie.writeMailboxBar1Addr  = apertureVirtAddr;
             pKernelBus->p2pPcie.writeMailboxTotalSize = apertureVirtLength;
@@ -933,11 +1003,13 @@ kbusInitBar1_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 kbusInitBar1_failed:
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1797);
         kbusDestroyBar1_HAL(pGpu, pKernelBus, gfid);
     }
 
     if (!bSmoothTransitionEnabled || (rmStatus != NV_OK))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1798);
         pGpu->uefiScanoutSurfaceSizeInMB = 0;
     }
 
@@ -963,17 +1035,20 @@ kbusDestroyBar1_GM107
     NvU32        gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1799);
     NV_STATUS   status = NV_OK;
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJVMM     *pVmm = SYS_GET_VMM(pSys);
 
     if (pKernelBus->bar1[gfid].pVAS != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1800);
 
         // Remove the P2P write mailbox alloc, if it exists
         if ((pKernelBus->p2pPcie.writeMailboxBar1Addr != PCIE_P2P_INVALID_WRITE_MAILBOX_ADDR) &&
             IS_GFID_PF(gfid))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1801);
             if (!kbusIsP2pMailboxClientAllocated(pKernelBus))
                 vaspaceFree(pKernelBus->bar1[gfid].pVAS, pKernelBus->p2pPcie.writeMailboxBar1Addr);
             pKernelBus->p2pPcie.writeMailboxBar1Addr  = PCIE_P2P_INVALID_WRITE_MAILBOX_ADDR;
@@ -983,12 +1058,14 @@ kbusDestroyBar1_GM107
         // Remove the preserved BAR1 console mapping, if it exists
         if (pKernelBus->bBar1ConsolePreserved && IS_GFID_PF(gfid))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1802);
             MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
             PMEMORY_DESCRIPTOR pConsoleMemDesc =
                 memmgrGetReservedConsoleMemDesc(pGpu, pMemoryManager);
 
             if (pConsoleMemDesc != NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1803);
                 NvU64 consoleSize = memdescGetSize(pConsoleMemDesc);
 
                 kbusUnmapFbAperture_HAL(pGpu, pKernelBus, pConsoleMemDesc,
@@ -996,6 +1073,7 @@ kbusDestroyBar1_GM107
             }
             else if (pGpu->uefiScanoutSurfaceSizeInMB)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1804);
                 vaspaceFree(pKernelBus->bar1[gfid].pVAS, 0);
             }
             else
@@ -1008,6 +1086,7 @@ kbusDestroyBar1_GM107
 
         if (pKernelBus->bar1[gfid].bStaticBar1Enabled)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1805);
             status = kbusDisableStaticBar1Mapping_HAL(pGpu, pKernelBus, gfid);
         }
 
@@ -1018,6 +1097,7 @@ kbusDestroyBar1_GM107
 
     if (IS_GFID_VF(gfid) && (pKernelBus->bar1[gfid].pInstBlkMemDesc != NULL))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1806);
         memdescFree(pKernelBus->bar1[gfid].pInstBlkMemDesc);
         memdescDestroy(pKernelBus->bar1[gfid].pInstBlkMemDesc);
         pKernelBus->bar1[gfid].pInstBlkMemDesc = NULL;
@@ -1047,6 +1127,7 @@ kbusInitBar2_GM107
     NvU32        gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1807);
     NV_STATUS  status     = NV_OK;
 
     //
@@ -1056,11 +1137,13 @@ kbusInitBar2_GM107
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||
         (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1808);
         return NV_OK;
     }
 
     if (!KBUS_CPU_VISIBLE_BAR12_DISABLED(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1809);
         status = kbusSetupBar2CpuAperture_HAL(pGpu, pKernelBus, gfid);
         NV_ASSERT_OR_GOTO(status == NV_OK,  cleanup);
     }
@@ -1073,12 +1156,14 @@ kbusInitBar2_GM107
 
     if (IS_GFID_PF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1810);
         pKernelBus->bIsBar2Initialized = NV_TRUE;
     }
 
 cleanup:
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1811);
         kbusDestroyBar2_HAL(pGpu, pKernelBus, gfid);
     }
 
@@ -1099,10 +1184,12 @@ cleanup:
 NV_STATUS
 kbusDestroyBar2_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1812);
     NV_STATUS  status = NV_OK;
 
     if (IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pGpu) && IS_VIRTUAL_WITH_SRIOV(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1813);
         vgpuGspTeardownBuffers(pGpu);
     }
 
@@ -1113,24 +1200,29 @@ kbusDestroyBar2_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||
         (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1814);
         return NV_OK;
     }
 
     if (kbusTeardownBar2CpuAperture_HAL(pGpu, pKernelBus, gfid) != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1815);
         status = NV_ERR_GENERIC;
     }
 
     if (KBUS_BAR2_ENABLED(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1816);
         if (kbusTeardownBar2GpuVaSpace_HAL(pGpu, pKernelBus, gfid) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1817);
             status = NV_ERR_GENERIC;
         }
     }
 
     if (IS_GFID_PF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1818);
         pKernelBus->bIsBar2Initialized = NV_FALSE;
     }
 
@@ -1143,6 +1235,7 @@ kbusDestroyBar2_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
     if (gpuIsCacheOnlyModeEnabled(pGpu) &&
         !pGpu->getProperty(pGpu, PDB_PROP_GPU_BROKEN_FB))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1819);
         //
         // Send 2 explicit sysmembars. Bug 557124
         //
@@ -1167,23 +1260,27 @@ kbusDestroyBar2_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 NV_STATUS
 kbusSetupBar2CpuAperture_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1820);
     NV_STATUS         status  = NV_OK;
 
     // Nothing to be done in guest in the paravirtualization case.
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) || IS_GFID_VF(gfid) ||
         (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1821);
         return NV_OK;
     }
 
     if (pKernelBus->virtualBar2[gfid].pCpuMapping != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1822);
         NV_PRINTF(LEVEL_ERROR, "BAR2 already initialized!\n");
         return NV_ERR_GENERIC;
     }
 
     if (0 == pKernelBus->bar2[gfid].pteBase)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1823);
         NV_PRINTF(LEVEL_ERROR,
                   "BAR2 pteBase not initialized by fbPreInit_FERMI!\n");
         DBG_BREAKPOINT();
@@ -1193,12 +1290,14 @@ kbusSetupBar2CpuAperture_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
     if (pGpu->getProperty(pGpu, PDB_PROP_GPU_BROKEN_FB) &&
         !gpuIsCacheOnlyModeEnabled(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1824);
         pKernelBus->virtualBar2[gfid].pCpuMapping = NULL;
         return NV_OK;
     }
 
     if (KBUS_BAR2_TUNNELLED(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1825);
         //
         // Since GK20A doesn't support BAR2 accesses we tunnel all RM BAR2 accesses
         // through the BAR0 window. For this we register a callback function with the
@@ -1215,6 +1314,7 @@ kbusSetupBar2CpuAperture_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
         pKernelBus->virtualBar2[gfid].pCpuMapping = portMemAllocNonPaged(pKernelBus->bar2[gfid].rmApertureLimit + 1);
         if (pKernelBus->virtualBar2[gfid].pCpuMapping == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1826);
             NV_PRINTF(LEVEL_ERROR, "- Unable to map bar2!\n");
             DBG_BREAKPOINT();
             return NV_ERR_NO_MEMORY;
@@ -1231,6 +1331,7 @@ kbusSetupBar2CpuAperture_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
                                 (void *)pGpu);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1827);
             NV_PRINTF(LEVEL_ERROR,
                       "Cannot add os mem filter for bar2 tunneling\n");
             DBG_BREAKPOINT();
@@ -1249,6 +1350,7 @@ kbusSetupBar2CpuAperture_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
                                              (void**)&(pKernelBus->virtualBar2[gfid].pCpuMapping),
                                              NV_MEMORY_WRITECOMBINED))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1828);
             NV_PRINTF(LEVEL_ERROR, "- Unable to map bar2!\n");
             DBG_BREAKPOINT();
             return NV_ERR_GENERIC;
@@ -1265,6 +1367,7 @@ kbusSetupBar2CpuAperture_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 gfid)
 cleanup:
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1829);
         kbusTeardownBar2CpuAperture_HAL(pGpu, pKernelBus, gfid);
     }
 
@@ -1291,18 +1394,22 @@ kbusTeardownBar2CpuAperture_GM107
     NvU32      gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1830);
     // Nothing to be done in guest in the paravirtualization case.
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) || IS_GFID_VF(gfid) ||
         (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1831);
         return NV_OK;
     }
 
     if (KBUS_BAR2_TUNNELLED(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1832);
         // Unmap bar2 space
         if (pKernelBus->virtualBar2[gfid].pCpuMapping)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1833);
             // Remove the memory access filter
             osMemRemoveFilter((NvU64)((NvUPtr)(pKernelBus->virtualBar2[gfid].pCpuMapping)));
             portMemFree(pKernelBus->virtualBar2[gfid].pCpuMapping);
@@ -1313,6 +1420,7 @@ kbusTeardownBar2CpuAperture_GM107
     {
         if (pKernelBus->virtualBar2[gfid].pPageLevels)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1834);
             memmgrMemDescEndTransfer(GPU_GET_MEMORY_MANAGER(pGpu),
                          pKernelBus->virtualBar2[gfid].pPageLevelsMemDesc,
                          TRANSFER_FLAGS_NONE);
@@ -1325,6 +1433,7 @@ kbusTeardownBar2CpuAperture_GM107
 
         if (pKernelBus->virtualBar2[gfid].pCpuMapping)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1835);
             osUnmapPciMemoryKernelOld(pGpu, (void*)pKernelBus->virtualBar2[gfid].pCpuMapping);
             // Mark the BAR as un-initialized so that a later call
             // to initbar2 can succeed.
@@ -1341,6 +1450,7 @@ kbusTeardownBar2CpuAperture_GM107
         //
         if (!pGpu->getProperty(pGpu, PDB_PROP_GPU_BROKEN_FB))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1836);
             GPU_FLD_WR_DRF_DEF(pGpu, _PBUS, _BAR2_BLOCK, _MODE, _PHYSICAL);
             // bug 1738008: temporary fix to unblock -inst_in_sys argument
             // we tried to correct bar2 unbind sequence but didn't fix the real issue
@@ -1370,6 +1480,7 @@ kbusSetupBar2GpuVaSpace_GM107
     NvU32      gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1837);
     NV_STATUS               status             = NV_OK;
     MemoryManager          *pMemoryManager     = GPU_GET_MEMORY_MANAGER(pGpu);
     KernelGmmu             *pKernelGmmu        = GPU_GET_KERNEL_GMMU(pGpu);
@@ -1390,11 +1501,13 @@ kbusSetupBar2GpuVaSpace_GM107
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||
         (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1838);
         return NV_OK;
     }
 
     if (IS_GFID_VF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1839);
         //
         // VF BAR2 instance block cannot by in PF sysmem as the latter
         // is not mapped into VF's IOMMU domain
@@ -1410,6 +1523,7 @@ kbusSetupBar2GpuVaSpace_GM107
                                     pKernelBus->InstBlkAttr,
                                     MEMDESC_FLAGS_OWNED_BY_CURRENT_DEVICE)) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1840);
             NV_ASSERT_OR_RETURN(status == NV_OK, status);
         }
 
@@ -1432,6 +1546,7 @@ kbusSetupBar2GpuVaSpace_GM107
     if (IS_GFID_PF(gfid) &&
         !KBUS_BAR0_PRAMIN_DISABLED(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1841);
         // Setup BAR0 window for page directory/table updates during BAR2 bootstrap
         status = kbusSetupBar0WindowBeforeBar2Bootstrap_HAL(pGpu, pKernelBus, &origVidOffset);
         NV_ASSERT_OR_RETURN(NV_OK == status, status);
@@ -1449,9 +1564,11 @@ kbusSetupBar2GpuVaSpace_GM107
 
     if (pVASpaceHeap != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1842);
         if (pVASpaceHeap->eheapSetAllocRange(pVASpaceHeap, pKernelBus->bar2[gfid].rmApertureBase,
             pKernelBus->bar2[gfid].rmApertureLimit - FERMI_SMALL_PAGESIZE) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1843);
             DBG_BREAKPOINT();
         }
     }
@@ -1461,6 +1578,7 @@ kbusSetupBar2GpuVaSpace_GM107
 
     if (pKernelBus->PDEBAR2Aperture == ADDR_FBMEM)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1844);
         //
         // The page directories and page tables should all be within
         // the same type of memory.
@@ -1479,6 +1597,7 @@ kbusSetupBar2GpuVaSpace_GM107
 
         if (IS_GFID_VF(gfid))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1845);
             status = memdescAlloc(pPageLevelsMemDesc);
             NV_ASSERT_OR_GOTO(status == NV_OK, cleanup);
 
@@ -1506,12 +1625,15 @@ kbusSetupBar2GpuVaSpace_GM107
     //
     if (IS_GFID_PF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1846);
         switch (pKernelBus->PDEBAR2Aperture)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1847);
             default:
             case ADDR_FBMEM:
                 if (pPageLevelsMemDesc != NULL)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1848);
                     memdescDescribe(pPageLevelsMemDesc,
                                     pKernelBus->PDEBAR2Aperture,
                                     pKernelBus->bar2[gfid].pdeBase,
@@ -1533,6 +1655,7 @@ kbusSetupBar2GpuVaSpace_GM107
 
         if (KBUS_BAR0_PRAMIN_DISABLED(pGpu))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1849);
             NV_ASSERT_OK_OR_GOTO(status, kbusInitVirtualBar2_HAL(pGpu, pKernelBus), cleanup);
         }
     }
@@ -1551,6 +1674,7 @@ kbusSetupBar2GpuVaSpace_GM107
         pKernelBus->bar2[gfid].bBootstrap &&
         !RMCFG_FEATURE_PLATFORM_GSP)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1850);
         bUseStagingBuffer = NV_TRUE;
         pKernelBus->bar2[gfid].pWalkStagingBuffer = kbusCreateStagingMemdesc(pGpu);
     }
@@ -1580,6 +1704,7 @@ kbusSetupBar2GpuVaSpace_GM107
 
     if (pKernelBus->bar2[gfid].cpuVisibleLimit != 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1851);
         status = mmuWalkReserveEntries(pWalk, pLevelFmt, pKernelBus->bar2[gfid].cpuVisibleBase,
                                        pKernelBus->bar2[gfid].cpuVisibleLimit, NV_FALSE);
         NV_ASSERT_OR_GOTO(NV_OK == status, cleanup);
@@ -1592,6 +1717,7 @@ kbusSetupBar2GpuVaSpace_GM107
 
     if (pKernelBus->bar2[gfid].cpuInvisibleLimit != 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1852);
         status = mmuWalkReserveEntries(pWalk, pLevelFmt, pKernelBus->bar2[gfid].cpuInvisibleBase,
                                        pKernelBus->bar2[gfid].cpuInvisibleLimit, NV_FALSE);
         NV_ASSERT_OR_GOTO(NV_OK == status, cleanup);
@@ -1608,6 +1734,7 @@ kbusSetupBar2GpuVaSpace_GM107
 
     if (NULL != pKernelBus->bar2[gfid].pPDEMemDescForBootstrap)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1853);
         memdescSetPageSize(pKernelBus->bar2[gfid].pPDEMemDescForBootstrap, AT_GPU,
                        FERMI_SMALL_PAGESIZE);
         pKernelBus->virtualBar2[gfid].pPDB = pKernelBus->bar2[gfid].pPDEMemDescForBootstrap;
@@ -1627,6 +1754,7 @@ cleanup:
         (pKernelBus->virtualBar2[gfid].pPageLevels != NULL) &&
         (pKernelBus->virtualBar2[gfid].pPageLevelsMemDesc != NULL))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1854);
         kbusUnmapRmAperture_HAL(pGpu,
                                 pKernelBus->virtualBar2[gfid].pPageLevelsMemDesc,
                                 &pKernelBus->virtualBar2[gfid].pPageLevels, NV_TRUE);
@@ -1635,26 +1763,31 @@ cleanup:
 
     if (pWalk != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1855);
         mmuWalkSetUserCtx(pWalk, NULL);
     }
 
     if (!kbusIsPhysicalBar2InitPagetableEnabled(pKernelBus) && IS_GFID_PF(gfid) &&
         !KBUS_BAR0_PRAMIN_DISABLED(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1856);
         // Restore BAR0 window after BAR2 bootstrap
         kbusRestoreBar0WindowAfterBar2Bootstrap_HAL(pGpu, pKernelBus, origVidOffset);
     }
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1857);
         if (kbusTeardownBar2GpuVaSpace_HAL(pGpu, pKernelBus, gfid) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1858);
             DBG_BREAKPOINT();
         }
     }
 
     if (kbusIsPhysicalBar2InitPagetableEnabled(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1859);
         pKernelBus->bar2[gfid].bBootstrap = NV_FALSE;
     }
 
@@ -1679,6 +1812,7 @@ kbusTeardownBar2GpuVaSpace_GM107
     NvU32      gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1860);
     NV_STATUS         status  = NV_OK;
 
     //
@@ -1688,11 +1822,13 @@ kbusTeardownBar2GpuVaSpace_GM107
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||
         (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1861);
         return NV_OK;
     }
 
     if (NULL != pKernelBus->bar2[gfid].pWalk)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1862);
         const MMU_FMT_LEVEL *pLevelFmt     = NULL;
         MMU_WALK_USER_CTX    userCtx       = {0};
         NvU64                origVidOffset = 0;
@@ -1707,6 +1843,7 @@ kbusTeardownBar2GpuVaSpace_GM107
             IS_GFID_VF(gfid) ||
             KBUS_BAR0_PRAMIN_DISABLED(pGpu))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1863);
             mmuWalkLevelInstancesForceFree(pKernelBus->bar2[gfid].pWalk);
         }
         else
@@ -1716,6 +1853,7 @@ kbusTeardownBar2GpuVaSpace_GM107
 
             if (pKernelBus->bar2[gfid].cpuVisibleLimit != 0)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1864);
                 status = mmuWalkUnmap(pKernelBus->bar2[gfid].pWalk, pKernelBus->bar2[gfid].cpuVisibleBase, pKernelBus->bar2[gfid].cpuVisibleLimit);
                 NV_ASSERT(NV_OK == status);
                 mmuWalkReleaseEntries(pKernelBus->bar2[gfid].pWalk, pLevelFmt, pKernelBus->bar2[gfid].cpuVisibleBase, pKernelBus->bar2[gfid].cpuVisibleLimit);
@@ -1723,6 +1861,7 @@ kbusTeardownBar2GpuVaSpace_GM107
 
             if (pKernelBus->bar2[gfid].cpuInvisibleLimit != 0)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1865);
                 status = mmuWalkUnmap(pKernelBus->bar2[gfid].pWalk, pKernelBus->bar2[gfid].cpuInvisibleBase, pKernelBus->bar2[gfid].cpuInvisibleLimit);
                 NV_ASSERT(NV_OK == status);
                 mmuWalkReleaseEntries(pKernelBus->bar2[gfid].pWalk, pLevelFmt, pKernelBus->bar2[gfid].cpuInvisibleBase, pKernelBus->bar2[gfid].cpuInvisibleLimit);
@@ -1746,6 +1885,7 @@ kbusTeardownBar2GpuVaSpace_GM107
 
         if (IS_GFID_VF(gfid) && (pKernelBus->virtualBar2[gfid].pPageLevels != NULL))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1866);
             kbusUnmapRmAperture_HAL(pGpu,
                                     pKernelBus->virtualBar2[gfid].pPageLevelsMemDesc,
                                     &pKernelBus->virtualBar2[gfid].pPageLevels,
@@ -1756,6 +1896,7 @@ kbusTeardownBar2GpuVaSpace_GM107
         // Free the overall page levels memdesc.
         if (pKernelBus->virtualBar2[gfid].pPageLevelsMemDesc != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1867);
             memdescFree(pKernelBus->virtualBar2[gfid].pPageLevelsMemDesc);
             memdescDestroy(pKernelBus->virtualBar2[gfid].pPageLevelsMemDesc);
             pKernelBus->virtualBar2[gfid].pPageLevelsMemDesc = NULL;
@@ -1763,6 +1904,7 @@ kbusTeardownBar2GpuVaSpace_GM107
 
         if (IS_GSP_CLIENT(pGpu))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1868);
             //
             // Normally virtualBar2.pPDB (which equals to the memDesc
             // of BAR2 root directory) gets freed when BAR2 page table got
@@ -1773,6 +1915,7 @@ kbusTeardownBar2GpuVaSpace_GM107
             //
             if (pKernelBus->virtualBar2[gfid].pPDB != NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1869);
                 memdescFree(pKernelBus->virtualBar2[gfid].pPDB);
                 memdescDestroy(pKernelBus->virtualBar2[gfid].pPDB);
                 pKernelBus->virtualBar2[gfid].pPDB = NULL;
@@ -1788,6 +1931,7 @@ kbusTeardownBar2GpuVaSpace_GM107
 
         if (IS_GFID_VF(gfid) && (pKernelBus->bar2[gfid].pInstBlkMemDesc != NULL))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1870);
             memdescFree(pKernelBus->bar2[gfid].pInstBlkMemDesc);
             memdescDestroy(pKernelBus->bar2[gfid].pInstBlkMemDesc);
             pKernelBus->bar2[gfid].pInstBlkMemDesc = NULL;
@@ -1816,6 +1960,7 @@ kbusSetupBar0WindowBeforeBar2Bootstrap_GM107
     NvU64       *pOrigVidOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1871);
     NV_STATUS         status  = NV_OK;
 
     if (kbusIsBarAccessBlocked(pKernelBus))
@@ -1827,6 +1972,7 @@ kbusSetupBar0WindowBeforeBar2Bootstrap_GM107
     if (ADDR_FBMEM == pKernelBus->PDEBAR2Aperture ||
         ADDR_FBMEM == pKernelBus->PTEBAR2Aperture)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1872);
         // Right now, PDE needs to be in FBMEM for BAR0 window to work.
         NV_ASSERT_OR_RETURN(ADDR_FBMEM == pKernelBus->PDEBAR2Aperture, NV_ERR_NOT_SUPPORTED);
 
@@ -1868,6 +2014,7 @@ kbusRestoreBar0WindowAfterBar2Bootstrap_GM107
     NvU64        origVidOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1873);
     if (kbusIsBarAccessBlocked(pKernelBus))
         return;
 
@@ -1879,6 +2026,7 @@ kbusRestoreBar0WindowAfterBar2Bootstrap_GM107
     if (ADDR_FBMEM == pKernelBus->PDEBAR2Aperture ||
         ADDR_FBMEM == pKernelBus->PTEBAR2Aperture)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1874);
         NV_STATUS status;
         status = kbusSetBAR0WindowVidOffset_HAL(pGpu, pKernelBus, origVidOffset);
         NV_ASSERT(NV_OK == status);
@@ -1938,9 +2086,11 @@ _busWalkCBMapNextEntries_UpdatePhysAddr
     const NvU64       pageSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1875);
     // Update the PTE with the physical address.
     if (pIter->currIdx < pIter->pPageArray->count)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1876);
         pIter->physAddr = dmaPageArrayGetPhysAddr(pIter->pPageArray,
                                                   pIter->currIdx);
         pIter->physAddr = NV_ALIGN_DOWN64(pIter->physAddr, pageSize);
@@ -1984,6 +2134,7 @@ _kbusWalkCBMapNextEntries_RmAperture
     NvU32                    *pProgress
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1877);
     OBJGPU              *pGpu        = pUserCtx->pGpu;
     KernelBus           *pKernelBus  = GPU_GET_KERNEL_BUS(pGpu);
     MMU_MAP_ITERATOR    *pIter       = pTarget->pIter;
@@ -2013,8 +2164,10 @@ _kbusWalkCBMapNextEntries_RmAperture
 
     if (memdescGetAddressSpace(pMemDesc) == ADDR_FBMEM)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1878);
         if (kbusIsBarAccessBlocked(pKernelBus))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1879);
             MemoryManager    *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
             TRANSFER_SURFACE surf = {0};
             NvU32            sizeOfEntries;
@@ -2032,6 +2185,7 @@ _kbusWalkCBMapNextEntries_RmAperture
 
             for (entryIndex = entryIndexLo; entryIndex <= entryIndexHi; entryIndex++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1880);
                 // Update the PTE with the physical address.
                 _busWalkCBMapNextEntries_UpdatePhysAddr(pGpu,
                                                         &entryValue,
@@ -2048,12 +2202,14 @@ _kbusWalkCBMapNextEntries_RmAperture
         }
         else if (pKernelBus->virtualBar2[gfid].pPageLevels != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1881);
             //
             // Determine the start of the desired page level offset from
             // CPU mapping to the start of the BAR2 VAS page levels.
             //
             if (pKernelBus->bar2[gfid].bMigrating)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1882);
                 // In the migration phase. HW is using the page tables at bottom of FB.
                 NV_ASSERT_OR_RETURN_VOID(NULL != pKernelBus->virtualBar2[gfid].pPageLevelsForBootstrap);
                 pMap = memdescGetPhysAddr(pMemDesc, AT_GPU, 0) -
@@ -2070,6 +2226,7 @@ _kbusWalkCBMapNextEntries_RmAperture
 
             for (entryIndex = entryIndexLo; entryIndex <= entryIndexHi; entryIndex++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1883);
                 // Update the PTE with the physical address.
                 _busWalkCBMapNextEntries_UpdatePhysAddr(pGpu,
                                                        &entryValue,
@@ -2084,9 +2241,11 @@ _kbusWalkCBMapNextEntries_RmAperture
         }
         else if (pKernelBus->bar2[gfid].bBootstrap)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1884);
 
             for ( entryIndex = entryIndexLo; entryIndex <= entryIndexHi; entryIndex++ )
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1885);
                 // Update the PTE with the physical address.
                 _busWalkCBMapNextEntries_UpdatePhysAddr(pGpu,
                                                         &entryValue,
@@ -2097,6 +2256,7 @@ _kbusWalkCBMapNextEntries_RmAperture
 
                 if (kbusIsPhysicalBar2InitPagetableEnabled(pKernelBus))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1886);
                     pMap = kbusCpuOffsetInBar2WindowGet(pGpu, pKernelBus, pMemDesc);
                     NV_ASSERT_OR_RETURN_VOID(NULL != pMap);
                     portMemCopy(pMap + entryOffset,
@@ -2111,6 +2271,7 @@ _kbusWalkCBMapNextEntries_RmAperture
 
                     if (KBUS_BAR0_PRAMIN_DISABLED(pGpu))
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1887);
                         pMapping = kbusMapCoherentCpuMapping_HAL(pGpu, pKernelBus, pMemDesc);
                         NV_ASSERT_OR_RETURN_VOID(pMapping != NULL);
                         portMemCopy(pMapping + entryStart,
@@ -2124,6 +2285,7 @@ _kbusWalkCBMapNextEntries_RmAperture
                         NvU32 i;
                         for (i = 0; i < sizeInDWord; i++)
                         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1888);
                             // BAR0 write.
                             status = kbusMemAccessBar0Window_HAL(pGpu, pKernelBus,
                                                   (entryStart + (sizeof(NvU32) * i)),
@@ -2145,10 +2307,12 @@ _kbusWalkCBMapNextEntries_RmAperture
                 !kbusIsPhysicalBar2InitPagetableEnabled(pKernelBus) &&
                 !RMCFG_FEATURE_PLATFORM_GSP)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1889);
                 NvU32 data = 0;
                 NvU32 i;
                 for (i = 0; i < sizeInDWord; i++)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1890);
                     NV_ASSERT_OR_RETURN_VOID(kbusMemAccessBar0Window_HAL(pGpu, pKernelBus,
                                                         (entry + (sizeof(NvU32) * i)), &data, sizeof(NvU32),
                                                         NV_TRUE, ADDR_FBMEM) == NV_OK);
@@ -2171,6 +2335,7 @@ _kbusWalkCBMapNextEntries_RmAperture
 
             for (entryIndex = entryIndexLo; entryIndex <= entryIndexHi; entryIndex++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1891);
                 // Update the PTE with the physical address.
                 _busWalkCBMapNextEntries_UpdatePhysAddr(pGpu,
                                                         &entryValue,
@@ -2200,6 +2365,7 @@ _kbusWalkCBMapNextEntries_RmAperture
 
         for ( entryIndex = entryIndexLo; entryIndex <= entryIndexHi; entryIndex++ )
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1892);
             // Update the PTE with the physical address.
             _busWalkCBMapNextEntries_UpdatePhysAddr(pGpu,
                                                     &entryValue,
@@ -2244,6 +2410,7 @@ kbusUpdateRmAperture_GM107
     NvU32        flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1893);
     KernelGmmu         *pKernelGmmu  = GPU_GET_KERNEL_GMMU(pGpu);
     PMEMORY_DESCRIPTOR  pSubDevMemDesc;
     NV_STATUS           status      = NV_OK;
@@ -2270,6 +2437,7 @@ kbusUpdateRmAperture_GM107
     //
     if (!(flags & UPDATE_RM_APERTURE_FLAGS_CPU_INVISIBLE_RANGE))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1894);
         gfid = GPU_GFID_PF;
     }
     else
@@ -2278,6 +2446,7 @@ kbusUpdateRmAperture_GM107
         NV_ASSERT_OK_OR_RETURN(vgpuIsCallingContextPlugin(pGpu, &bCallingContextPlugin));
         if (bCallingContextPlugin)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1895);
             gfid = GPU_GFID_PF;
         }
     }
@@ -2285,6 +2454,7 @@ kbusUpdateRmAperture_GM107
     // Math below requires page-sized va.
     if (vaSize == 0 || vaSize & RM_PAGE_MASK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1896);
         NV_PRINTF(LEVEL_ERROR, "unsupported VA size (0x%llx)\n", vaSize);
         DBG_BREAKPOINT();
         return NV_ERR_INVALID_ARGUMENT;
@@ -2304,6 +2474,7 @@ kbusUpdateRmAperture_GM107
     //
     if (IS_GFID_PF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1897);
         addressTranslation = FORCE_VMMU_TRANSLATION(pSubDevMemDesc, AT_GPU);
     }
     else
@@ -2318,6 +2489,7 @@ kbusUpdateRmAperture_GM107
 
     if (bSparsify)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1898);
         NV_PRINTF(LEVEL_INFO,
                   "mmuWalkSparsify pwalk=%p, vaLo=%llx, vaHi = %llx\n",
                   pKernelBus->bar2[gfid].pWalk, vaLo, vaHi);
@@ -2325,6 +2497,7 @@ kbusUpdateRmAperture_GM107
         status = mmuWalkSparsify(pKernelBus->bar2[gfid].pWalk, vaLo, vaHi, NV_FALSE);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1899);
             NV_PRINTF(LEVEL_ERROR,
                       "mmuWalkSparsify status=%x pwalk=%p, vaLo=%llx, vaHi = %llx\n",
                       status, pKernelBus->bar2[gfid].pWalk, vaLo, vaHi);
@@ -2352,11 +2525,13 @@ kbusUpdateRmAperture_GM107
         nvFieldSetBool(&pFmt->pPte->fldValid, NV_TRUE, mapIter.pteTemplate.v8);
         if (pFmt->version == GMMU_FMT_VERSION_3)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1900);
             NvU32 ptePcfHw  = 0;
             NvU32 ptePcfSw  = 0;
 
             if (memdescGetVolatility(pMemDesc))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1901);
                 ptePcfSw = 1 << SW_MMU_PCF_UNCACHED_IDX;
             }
             else
@@ -2409,6 +2584,7 @@ kbusUpdateRmAperture_GM107
              !kbusIsPhysicalBar2InitPagetableEnabled(pKernelBus) &&
              pKernelBus->virtualBar2[gfid].pPageLevels == NULL && IS_GFID_PF(gfid))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1902);
             status = kbusSetupBar0WindowBeforeBar2Bootstrap_HAL(pGpu, pKernelBus, &origVidOffset);
             NV_ASSERT_OR_RETURN(NV_OK == status, status);
         }
@@ -2421,6 +2597,7 @@ kbusUpdateRmAperture_GM107
     if (pKernelBus->bar2[gfid].bBootstrap &&
         !kbusIsPhysicalBar2InitPagetableEnabled(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1903);
         kbusRestoreBar0WindowAfterBar2Bootstrap_HAL(pGpu, pKernelBus, origVidOffset);
     }
 
@@ -2430,11 +2607,13 @@ kbusUpdateRmAperture_GM107
     //
     if (bInvalidate)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1904);
         osFlushCpuWriteCombineBuffer();
 
         // PCIE_READ kbusFlush is more efficient and preferred.  When not ready, use kbusSendSysmembar().
         if (pKernelBus->pReadToFlush != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1905);
             NvU32 flushFlag = BUS_FLUSH_USE_PCIE_READ |
                               kbusGetFlushAperture(pKernelBus,
                                                    memdescGetAddressSpace(pKernelBus->virtualBar2[gfid].pPTEMemDesc));
@@ -2466,6 +2645,7 @@ kbusUpdateRmAperture_GM107
  */
 OBJVASPACE *kbusGetBar1VASpace_GM107(OBJGPU *pGpu, KernelBus *pKernelBus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1906);
     NvU32             gfid;
     NvBool            bCallingContextPlugin;
 
@@ -2473,6 +2653,7 @@ OBJVASPACE *kbusGetBar1VASpace_GM107(OBJGPU *pGpu, KernelBus *pKernelBus)
     NV_ASSERT_OR_RETURN(vgpuIsCallingContextPlugin(pGpu, &bCallingContextPlugin) == NV_OK, NULL);
     if (bCallingContextPlugin || !gpuIsWarBug200577889SriovHeavyEnabled(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1907);
         gfid = GPU_GFID_PF;
     }
 
@@ -2482,6 +2663,7 @@ OBJVASPACE *kbusGetBar1VASpace_GM107(OBJGPU *pGpu, KernelBus *pKernelBus)
 static NV_STATUS
 _kbusUpdateDebugStatistics(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1908);
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     OBJVASPACE *pBar1VAS;
     OBJEHEAP *pVASHeap;
@@ -2490,6 +2672,7 @@ _kbusUpdateDebugStatistics(OBJGPU *pGpu)
 
     if (!KBUS_CPU_VISIBLE_BAR12_DISABLED(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1909);
         pBar1VAS = kbusGetBar1VASpace_HAL(pGpu, pKernelBus);
         NV_ASSERT_OR_RETURN(pBar1VAS != NULL, NV_ERR_INVALID_STATE);
         pVASHeap = vaspaceGetHeap(pBar1VAS);
@@ -2500,6 +2683,7 @@ _kbusUpdateDebugStatistics(OBJGPU *pGpu)
 
         if (pVASHeap != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1910);
             NvU64 freeSize = 0;
 
             pVASHeap->eheapInfoForRange(pVASHeap, bar1VARange, NULL, NULL, NULL, &freeSize);
@@ -2531,6 +2715,7 @@ kbusMapFbAperture_GM107
     Device     *pDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1911);
     NvBool           bBcState = gpumgrGetBcEnabledStatus(pGpu);
     OBJVASPACE      *pVAS;
     NV_STATUS        rmStatus   = NV_OK;
@@ -2546,6 +2731,7 @@ kbusMapFbAperture_GM107
     if ((IsSLIEnabled(pGpu) && ((flags & BUS_MAP_FB_FLAGS_MAP_UNICAST) == 0)) &&
         ((flags & BUS_MAP_FB_FLAGS_PRE_INIT) == 0))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1912);
         gpumgrSetBcEnabledStatus(pGpu, NV_TRUE);
         flags |= BUS_MAP_FB_FLAGS_MAP_UNICAST;
     }
@@ -2557,12 +2743,14 @@ kbusMapFbAperture_GM107
     // Call _kbusMapAperture_GM107 multiple times in UC for BC mapping
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1913);
         pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
         pLoopGpu = pGpu;
 
         pVAS = kbusGetBar1VASpace_HAL(pGpu, pKernelBus);
         if (pVAS == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1914);
             rmStatus = NV_ERR_GENERIC;
             SLI_LOOP_BREAK;
         }
@@ -2583,6 +2771,7 @@ kbusMapFbAperture_GM107
         //
         if (gpuMappingSuccessMask == 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1915);
             newAperOffset = *pAperOffset;
             flags |= BUS_MAP_FB_FLAGS_MAP_OFFSET_FIXED;
         }
@@ -2593,6 +2782,7 @@ kbusMapFbAperture_GM107
 
         if (rmStatus != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1916);
             SLI_LOOP_BREAK;
         }
         gpuMappingSuccessMask |= pGpu->gpuInstance;
@@ -2603,6 +2793,7 @@ kbusMapFbAperture_GM107
 
     if (rmStatus == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1917);
         _kbusUpdateDebugStatistics(pGpu);
         return rmStatus;
     }
@@ -2614,8 +2805,10 @@ kbusMapFbAperture_GM107
     // Unmap mapped addresses after BC mapping failure in SLI
     SLI_LOOP_START(SLI_LOOP_FLAGS_NONE)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1918);
         if ((NVBIT(pGpu->gpuInstance) & gpuMappingSuccessMask) == 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1919);
             SLI_LOOP_CONTINUE;
         }
         pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
@@ -2626,6 +2819,7 @@ kbusMapFbAperture_GM107
         // Failure to unmap mapped address
         if (failStatus != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1920);
             NV_PRINTF(LEVEL_ERROR,
                       "[GPU%u] Could not unmap on failure to map Bar1\n",
                       pGpu->gpuInstance);
@@ -2647,6 +2841,7 @@ kbusUnmapFbAperture_GM107
     NvU32       flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1921);
     NV_STATUS       rmStatus    = NV_OK;
     NvBool          bBcState    = gpumgrGetBcEnabledStatus(pGpu);
     OBJVASPACE     *pVAS        = NULL;
@@ -2660,6 +2855,7 @@ kbusUnmapFbAperture_GM107
     if ((IsSLIEnabled(pGpu) && ((flags & BUS_MAP_FB_FLAGS_MAP_UNICAST) == 0)) &&
         ((flags & BUS_MAP_FB_FLAGS_PRE_INIT) == 0))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1922);
         gpumgrSetBcEnabledStatus(pGpu, NV_TRUE);
     }
     else
@@ -2670,12 +2866,14 @@ kbusUnmapFbAperture_GM107
     // Call _kbusUnmapAperture_GM107 in UC for each GPU when BC is called
     SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1923);
         pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
         pLoopGpu = pGpu;
         pVAS = kbusGetBar1VASpace_HAL(pGpu, pKernelBus);
 
         if (pVAS == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1924);
             rmStatus = NV_ERR_GENERIC;
             SLI_LOOP_BREAK;
         }
@@ -2684,6 +2882,7 @@ kbusUnmapFbAperture_GM107
 
         if (rmStatus != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1925);
             SLI_LOOP_BREAK;
         }
     }
@@ -2693,6 +2892,7 @@ kbusUnmapFbAperture_GM107
 
     if (rmStatus == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1926);
         NV_PRINTF(LEVEL_INFO,
                   "unmapped BAR1 offset 0x%llx\n",
                   aperOffset);
@@ -2727,6 +2927,7 @@ kbusFlushSingle_GM107
     NvU32        flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1927);
     NvBool  bCoherentCpuMapping = pGpu->getProperty(pGpu, PDB_PROP_GPU_COHERENT_CPU_MAPPING);
 
     //
@@ -2736,11 +2937,13 @@ kbusFlushSingle_GM107
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||
         (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1928);
         return NV_OK;
     }
 
     if (bCoherentCpuMapping)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1929);
         //
         // This function issues an HWSYNC. This is needed for synchronizing read/writes
         // with NVLINK mappings.
@@ -2751,12 +2954,14 @@ kbusFlushSingle_GM107
 
     if (flags & BUS_FLUSH_SYSTEM_MEMORY)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1930);
         portAtomicMemoryFenceFull();
     }
 
     if (API_GPU_IN_RESET_SANITY_CHECK(pGpu) || API_GPU_IN_RECOVERY_SANITY_CHECK(pGpu) ||
         !API_GPU_ATTACHED_SANITY_CHECK(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1931);
         //
         // When the GPU is in full chip reset or lost
         // We cannot expect to flush successfully so early return here
@@ -2766,12 +2971,14 @@ kbusFlushSingle_GM107
 
     if (kbusIsBarAccessBlocked(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1932);
         // If BAR has been blocked, there's nothing to flush for vidmem
         return NV_OK;
     }
 
     if (flags & BUS_FLUSH_VIDEO_MEMORY)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1933);
         //
         // Read the FB address 0 in order to trigger a flush.
         // This will not work with reflected mappings so only enable on VOLTA+
@@ -2784,15 +2991,18 @@ kbusFlushSingle_GM107
             (kbusIsReadCpuPointerToFlushEnabled(pKernelBus) &&
              (flags & BUS_FLUSH_USE_PCIE_READ)))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1934);
             volatile NvU32 data;
             NV_ASSERT(pKernelBus->pReadToFlush != NULL || pKernelBus->virtualBar2[GPU_GFID_PF].pCpuMapping != NULL);
 
             if (pKernelBus->pReadToFlush != NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1935);
                 data = MEM_RD32(pKernelBus->pReadToFlush);
             }
             else if (pKernelBus->virtualBar2[GPU_GFID_PF].pCpuMapping != NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1936);
                 //
                 // pReadToFlush is still not ready for use. So, use pCpuMapping
                 // instead which should already be mapped to FB addr 0 as
@@ -2807,6 +3017,7 @@ kbusFlushSingle_GM107
         {
             if (IS_GSP_CLIENT(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1937);
                 //
                 // on GSP client, we should use PCIE_READ to do video memory flush.
                 // A sysmembar flush that touches registers is done through RPC and has
@@ -2841,16 +3052,19 @@ kbusFlushSingle_GM107
 NV_STATUS
 kbusFlush_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1938);
     NV_STATUS           status  = NV_OK;
 
     // Nothing to be done in guest in the paravirtualization case.
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1939);
         return NV_OK;
     }
 
     if (kbusIsFbFlushDisabled(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1940);
         // Eliminate FB flushes, but keep mmu invalidates
         NV_PRINTF(LEVEL_INFO, "disable_fb_flush flag, skipping flush.\n");
         return status;
@@ -2861,6 +3075,7 @@ kbusFlush_GM107(OBJGPU *pGpu, KernelBus *pKernelBus, NvU32 flags)
         pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
         if (kbusFlushSingle_HAL(pGpu, pKernelBus, flags) == NV_ERR_TIMEOUT)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1941);
             status = NV_ERR_TIMEOUT;
         }
     SLI_LOOP_END;
@@ -2887,6 +3102,7 @@ _kbusMapAperture_GM107
     Device            *pDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1942);
     NV_STATUS           rmStatus = NV_ERR_GENERIC;
     VirtMemAllocator   *pDma;
     NvBool              bBcState = gpumgrGetBcEnabledStatus(pGpu);
@@ -2900,6 +3116,7 @@ _kbusMapAperture_GM107
     // Ensure that the BAR1 VA space is the same across all subdevices
     if (IsSLIEnabled(pGpu) && ((mapFlags & BUS_MAP_FB_FLAGS_MAP_UNICAST) == 0))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1943);
         pGpu  = gpumgrGetParentGPU(pGpu);
         gpumgrSetBcEnabledStatus(pGpu, NV_TRUE);
     }
@@ -2907,6 +3124,7 @@ _kbusMapAperture_GM107
     if (pKernelBus->bar1[gfid].bStaticBar1Enabled &&
         (memdescGetAddressSpace(pMemDesc) == ADDR_FBMEM))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1944);
         return kbusStaticMapFbAperture_HAL(pGpu, pKernelBus, pMemDesc,
                                            offset, pAperOffset,
                                            pLength, gfid);
@@ -2914,6 +3132,7 @@ _kbusMapAperture_GM107
 
     if (mapFlags & BUS_MAP_FB_FLAGS_MAP_OFFSET_FIXED)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1945);
         flags = FLD_SET_DRF(OS46, _FLAGS, _DMA_OFFSET_FIXED, _TRUE, flags);
     }
 
@@ -2921,8 +3140,10 @@ _kbusMapAperture_GM107
 
     if (IS_MIG_IN_USE(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1946);
         if (pDevice != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1947);
             MIG_INSTANCE_REF ref;
             KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
 
@@ -2933,14 +3154,17 @@ _kbusMapAperture_GM107
         }
         else if (pMemDesc->pHeap != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1948);
             KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
             KERNEL_MIG_GPU_INSTANCE *pCurrKernelMIGGPUInstance = NULL;
             KERNEL_MIG_GPU_INSTANCE *pKernelMIGGPUInstance = NULL;
 
             FOR_EACH_VALID_GPU_INSTANCE(pGpu, pKernelMIGManager, pCurrKernelMIGGPUInstance)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1949);
                 if (pCurrKernelMIGGPUInstance->pMemoryPartitionHeap == pMemDesc->pHeap)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1950);
                     pKernelMIGGPUInstance = pCurrKernelMIGGPUInstance;
                     break;
                 }
@@ -2954,17 +3178,20 @@ _kbusMapAperture_GM107
 
     if (memdescGetCpuCacheAttrib(pMemDesc) == NV_MEMORY_CACHED)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1951);
         flags = FLD_SET_DRF(OS46, _FLAGS, _CACHE_SNOOP, _ENABLE, flags);
     }
 
     if (mapFlags & BUS_MAP_FB_FLAGS_MAP_DOWNWARDS)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1952);
         flags = FLD_SET_DRF(OS46, _FLAGS, _DMA_OFFSET_GROWS, _DOWN, flags);
     }
 
     // Disable the encryption if DIRECT mapping is requested, currently it is just for testing purpose
     if (mapFlags & BUS_MAP_FB_FLAGS_DISABLE_ENCRYPTION)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1953);
         // !!!! Nasty hack
         //
         // NVOS46_FLAGS_PTE_COALESCE_LEVEL_CAP used to convey the encryption info to dmaAllocMapping_HAL().
@@ -2981,16 +3208,19 @@ _kbusMapAperture_GM107
                 (mapFlags & BUS_MAP_FB_FLAGS_WRITE_ONLY)));
     if (mapFlags & BUS_MAP_FB_FLAGS_READ_ONLY)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1954);
         flags = FLD_SET_DRF(OS46, _FLAGS, _ACCESS, _READ_ONLY, flags);
     }
     else if (mapFlags & BUS_MAP_FB_FLAGS_WRITE_ONLY)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1955);
         flags = FLD_SET_DRF(OS46, _FLAGS, _ACCESS, _WRITE_ONLY, flags);
     }
 
     rmStatus = memdescCreateSubMem(&pTempMemDesc, pMemDesc, pGpu, offset, *pLength);
     if (NV_OK == rmStatus)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1956);
         rmStatus = dmaAllocMapping_HAL(pGpu, pDma, pVAS, pTempMemDesc, pAperOffset, flags, NULL, swizzId);
         memdescFree(pTempMemDesc);
         memdescDestroy(pTempMemDesc);
@@ -3015,6 +3245,7 @@ _kbusUnmapAperture_GM107
     NvU64              aperOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1957);
     NV_STATUS           rmStatus = NV_OK;
     VirtMemAllocator   *pDma = GPU_GET_DMA(pGpu);
     NvU32               gfid;
@@ -3024,6 +3255,7 @@ _kbusUnmapAperture_GM107
     if (pKernelBus->bar1[gfid].bStaticBar1Enabled &&
         (memdescGetAddressSpace(pMemDesc) == ADDR_FBMEM))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1958);
         return kbusStaticUnmapFbAperture_HAL(pGpu, pKernelBus, pMemDesc, gfid);
     }
 
@@ -3039,6 +3271,7 @@ _kbusInitP2P_GM107
     KernelBus *pKernelBusUnused
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1959);
     NV_STATUS status = NV_OK;
     KernelBus *pLocalKernelBus;
     KernelBus *pRemoteKernelBus;
@@ -3055,6 +3288,7 @@ _kbusInitP2P_GM107
 
     if ((numSubdevices < 1) || (numSubdevices > P2P_MAX_NUM_PEERS))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1960);
         NV_PRINTF(LEVEL_ERROR,
                   "Fermi only supports P2P with up to 8 subdevices in SLI configuration.\n");
         return NV_ERR_GENERIC;
@@ -3067,6 +3301,7 @@ _kbusInitP2P_GM107
 
     while ((pLocalGpu = gpumgrGetNextGpu(gpuMask, &localGpuInstance)) != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1961);
         pLocalKernelBus = GPU_GET_KERNEL_BUS(pLocalGpu);
 
         remoteGpuInstance = localGpuInstance;
@@ -3075,6 +3310,7 @@ _kbusInitP2P_GM107
 
         while ((pRemoteGpu = gpumgrGetNextGpu(gpuMask, &remoteGpuInstance)) != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1962);
             NvU32 locPeerId;
             NvU32 remPeerId;
 
@@ -3122,6 +3358,7 @@ _kbusDestroyP2P_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1963);
     NV_STATUS status = NV_OK;
 
     OBJGPU *pRemoteGpu;
@@ -3132,8 +3369,10 @@ _kbusDestroyP2P_GM107
     // Clear all peer numbers.
     for (i = 0; i < NV_MAX_DEVICES; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1964);
         if (pKernelBus->p2pPcie.peerNumberMask[i] != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1965);
             NvU32 locPeerId, remPeerId, gpuInst;
 
             pRemoteGpu = gpumgrGetGpu(i);
@@ -3164,6 +3403,7 @@ _kbusDestroyP2P_GM107
         // Clear NVlink related data structures as well.
         if (kbusGetNvlinkPeerNumberMask_HAL(pGpu, pKernelBus, i) != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1966);
             NvU32 locPeerId, remPeerId, gpuInst;
 
             pRemoteGpu = gpumgrGetGpu(i);
@@ -3189,8 +3429,10 @@ _kbusDestroyP2P_GM107
 
     for (i = 0; i < P2P_MAX_NUM_PEERS; ++i)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1967);
         if (pKernelBus->p2pPcie.busPeer[i].refCount)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1968);
             NV_PRINTF(LEVEL_ERROR,
                       "non-zero peer refcount(%d) on GPU 0x%x peer %d\n",
                       pKernelBus->p2pPcie.busPeer[i].refCount, pGpu->gpuInstance, i);
@@ -3214,15 +3456,18 @@ _kbusLinkP2P_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1969);
     OBJGPU     *pRemoteGpu;
     NV_STATUS   status;
     NvU32       i;
 
     for ( i = 0; i < NV_MAX_DEVICES; ++i)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1970);
         if ((pKernelBus->p2pPcie.peerNumberMask[i] != 0) ||
             (kbusGetNvlinkPeerNumberMask_HAL(pGpu, pKernelBus, i) != 0))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1971);
             pRemoteGpu = gpumgrGetGpu(i);
             NV_ASSERT(pRemoteGpu != NULL);
 
@@ -3234,6 +3479,7 @@ _kbusLinkP2P_GM107
             if (gpuIsGpuFullPower(pRemoteGpu) ||
                     pRemoteGpu == pGpu)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1972);
                 KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
                 KernelNvlink *pRemoteKernelNvlink = GPU_GET_KERNEL_NVLINK(pRemoteGpu);
                 NvU32 locPeerId = kbusGetPeerId_HAL(pGpu, pKernelBus, pRemoteGpu);
@@ -3246,6 +3492,7 @@ _kbusLinkP2P_GM107
                 if ((pKernelNvlink != NULL) && (pRemoteKernelNvlink != NULL) &&
                     (knvlinkGetP2pConnectionStatus(pGpu, pKernelNvlink, pRemoteGpu) == NV_OK))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1973);
                     //
                     // These variables should only be updated for RM Managed P2P.
                     // And only once during RmInit, not during resume as while
@@ -3254,6 +3501,7 @@ _kbusLinkP2P_GM107
                     if (!kbusIsP2pMailboxClientAllocated(pKernelBus) &&
                         !pGpu->getProperty(pGpu, PDB_PROP_GPU_IN_PM_CODEPATH))
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1974);
                         KernelBus *pRemoteKernelBus = GPU_GET_KERNEL_BUS(pRemoteGpu);
 
                         pKernelBus->p2p.busNvlinkPeerNumberMask[pRemoteGpu->gpuInstance] |=
@@ -3269,6 +3517,7 @@ _kbusLinkP2P_GM107
                     // Train the links to ACTIVE
                     if ((knvlinkTrainP2pLinksToActive(pGpu, pRemoteGpu, pKernelNvlink)) != NV_OK)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1975);
                         NV_ASSERT(0);
                     }
 
@@ -3305,6 +3554,7 @@ _kbusLinkP2P_GM107
                                              sizeof(params));
                     if (status != NV_OK)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1976);
                         NV_PRINTF(LEVEL_ERROR, "Error in programming the local PEER_CONNECTION_CFG registers\n");
                     }
                     pRmApi = GPU_GET_PHYSICAL_RMAPI(pRemoteGpu);
@@ -3318,6 +3568,7 @@ _kbusLinkP2P_GM107
                                              sizeof(params));
                     if (status != NV_OK)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1977);
                         NV_PRINTF(LEVEL_ERROR, "Error in programming the remote PEER_CONNECTION_CFG registers\n");
                     }
                 }
@@ -3332,6 +3583,7 @@ kbusSendMemsysDisableNvlinkPeers
     OBJGPU    *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1978);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
     if (API_GPU_IN_RESET_SANITY_CHECK(pGpu))
@@ -3352,18 +3604,22 @@ kbusUnlinkP2P_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1979);
     KernelBus *pRemoteKernelBus;
     OBJGPU *pRemoteGpu;
     NvU32 i;
 
     for ( i = 0; i < NV_MAX_DEVICES; ++i)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1980);
         if ((pKernelBus->p2pPcie.peerNumberMask[i] != 0) ||
             (kbusGetNvlinkPeerNumberMask_HAL(pGpu, pKernelBus, i) != 0))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1981);
             pRemoteGpu = gpumgrGetGpu(i);
             if (pRemoteGpu == NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1982);
                 //
                 // There is a P2P mapping involving an unloaded GPU
                 // Has NV50_P2P been properly freed ?
@@ -3377,12 +3633,14 @@ kbusUnlinkP2P_GM107
             if (gpuIsGpuFullPower(pRemoteGpu) &&
                 kbusIsP2pInitialized(pRemoteKernelBus))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1983);
                 //
                 // NVLINK mappings are static and cannot be torn down, but make
                 // sure we tear down any PCIe P2P mappings created.
                 //
                 if (pKernelBus->p2pPcie.peerNumberMask[i] != 0)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1984);
                     NvU32 locPeerId = kbusGetPeerId_HAL(pGpu, pKernelBus, pRemoteGpu);
                     NvU32 remPeerId = kbusGetPeerId_HAL(pRemoteGpu, pRemoteKernelBus, pGpu);
 
@@ -3424,6 +3682,7 @@ kbusGetSizeOfBar2PageTables_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1985);
     KernelGmmu          *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     const GMMU_FMT      *pFmt  = NULL;
     NvU64                vaLimit;
@@ -3442,6 +3701,7 @@ kbusGetSizeOfBar2PageTables_GM107
     // Return 0 from the guest in the paravirtualization case.
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1986);
         return 0;
     }
 
@@ -3469,6 +3729,7 @@ kbusGetSizeOfBar2PageTables_GM107
     //
     if (0 == numPgTblsFloor)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1987);
         vaPerEntry = mmuFmtEntryVirtAddrMask(pPgTbl) + 1;
         numEntries = (NvU32)(NV_CEIL(vaLimit, vaPerEntry));
         pgTblSize  = numEntries * pPgTbl->entrySize;
@@ -3492,6 +3753,7 @@ kbusStateDestroy_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1988);
     KernelBif           *pKernelBif     = GPU_GET_KERNEL_BIF(pGpu);
     MemoryManager       *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvU64                offsetBar0;
@@ -3503,8 +3765,10 @@ kbusStateDestroy_GM107
     //       will also use the window at arbitrary locations (eg during an SMI event
     if (pMemoryManager->Ram.fbAddrSpaceSizeMb)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1989);
         if (!KBUS_BAR0_PRAMIN_DISABLED(pGpu))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1990);
             offsetBar0 = (pMemoryManager->Ram.fbAddrSpaceSizeMb << 20) - DRF_SIZE(NV_PRAMIN);
             (void)kbusSetBAR0WindowVidOffset_HAL(pGpu, pKernelBus, offsetBar0);
         }
@@ -3513,6 +3777,7 @@ kbusStateDestroy_GM107
     // Unmap BAR0 Writecombined Window
     if(pKernelBus->pWriteCombinedBar0Window != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1991);
         osUnmapPciMemoryKernelOld(pGpu, (void*)pKernelBus->pWriteCombinedBar0Window);
         pKernelBus->pWriteCombinedBar0Window = NULL;
         pKernelBus->pDefaultBar0Pointer = pKernelBus->pUncachedBar0Window;
@@ -3524,6 +3789,7 @@ kbusStateDestroy_GM107
     // if FLA supported & enabled FLA VAS
     if (IS_VIRTUAL(pGpu) && kbusIsFlaSupported(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1992);
         NV_PRINTF(LEVEL_INFO, "Trying to destroy FLA VAS\n");
         kbusDestroyFla_HAL(pGpu, pKernelBus);
     }
@@ -3538,6 +3804,7 @@ kbusStateDestroy_GM107
                                  (kbusIsP2pInitialized(pKernelBus))) && 
                                  !gpuIsSelfHosted(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1993);
         (void)_kbusDestroyP2P_GM107(pGpu, pKernelBus);
     }
 }
@@ -3561,6 +3828,7 @@ kbusVerifyBar2_GM107
     NvU64        size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1994);
     MEMORY_DESCRIPTOR memDesc, *pMemDesc = NULL;
     NvU8             *pOffset          = NULL;
     NvU32             index            = 0;
@@ -3586,6 +3854,7 @@ kbusVerifyBar2_GM107
     if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_ALL_INST_IN_SYSMEM) &&
         !IsTEGRA(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1995);
         return NV_OK;
     }
 
@@ -3594,6 +3863,7 @@ kbusVerifyBar2_GM107
         pGpu->getProperty(pGpu, PDB_PROP_GPU_BROKEN_FB) ||
         kbusIsBar2TestSkipped(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1996);
         return NV_OK;
     }
 
@@ -3603,13 +3873,16 @@ kbusVerifyBar2_GM107
                  NV2080_CTRL_INTERNAL_MEMSYS_L2_INVALIDATE_EVICT_FLAGS_CLEAN;
     if (kmemsysIsL2CleanFbPull(pKernelMemorySystem))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1997);
         flagsClean |= NV2080_CTRL_INTERNAL_MEMSYS_L2_INVALIDATE_EVICT_FLAGS_WAIT_FB_PULL;
     }
 
     if (pMemDescIn && pCpuPtrIn)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1998);
         if ((size + offset) > pMemDescIn->Size)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1999);
             NV_PRINTF(LEVEL_ERROR,
                       "input offset 0x%llx size 0x%llx exceeds surface size 0x%llx\n",
                       offset, size, pMemDescIn->Size);
@@ -3627,6 +3900,7 @@ kbusVerifyBar2_GM107
         // Allocate some memory to test virtual BAR2 with
         if (pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_ALL_INST_IN_SYSMEM))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2000);
             memdescCreateExisting(&memDesc, pGpu, size, ADDR_SYSMEM, pGpu->instCacheOverride, MEMDESC_FLAGS_NONE);
         }
         else
@@ -3636,6 +3910,7 @@ kbusVerifyBar2_GM107
         status = memdescAlloc(&memDesc);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2001);
             NV_PRINTF(LEVEL_ERROR,
                       "Could not allocate vidmem to test bar2 with\n");
             DBG_BREAKPOINT();
@@ -3646,6 +3921,7 @@ kbusVerifyBar2_GM107
         pOffset = kbusMapRmAperture_HAL(pGpu, &memDesc);
         if (pOffset == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2002);
             status = NV_ERR_INSUFFICIENT_RESOURCES;
             goto kbusVerifyBar2_failed;
         }
@@ -3671,6 +3947,7 @@ kbusVerifyBar2_GM107
 
     if (GPU_REG_RD32(pGpu, DRF_BASE(NV_PRAMIN) + NvU64_LO32(bar0TestAddr & 0xffff)) != SAMPLEDATA)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2003);
         //
         // Ideally, this should hit the L2 cache and even if memory is bad,
         // unless something in the path up to L2 is messed up, we should not
@@ -3692,18 +3969,21 @@ kbusVerifyBar2_GM107
     status = kmemsysSendL2InvalidateEvict(pGpu, pKernelMemorySystem, flagsClean);
     if (NV_OK != status)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2004);
         NV_PRINTF(LEVEL_ERROR, "L2 evict failed\n");
         goto kbusVerifyBar2_failed;
     }
 
     if (GPU_REG_RD32(pGpu, DRF_BASE(NV_PRAMIN) + NvU64_LO32(bar0TestAddr & 0xffff)) != SAMPLEDATA)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2005);
         NV_PRINTF(LEVEL_ERROR,
             "Post-L2 invalidate evict: Address 0x%llx programmed through the bar0 "
             "window with value 0x%x did not read back the last write\n",
             bar0TestAddr, SAMPLEDATA);
         if (IS_EMULATION(pGpu))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2006);
             NV_PRINTF(LEVEL_ERROR,
                       "Setup a trigger on write<Bar0+0x1700, 0x40> with a 3 quarters post "
                       "trigger capture\n");
@@ -3724,6 +4004,7 @@ kbusVerifyBar2_GM107
     if ((testAddrSpace == NV_MMU_PTE_APERTURE_SYSTEM_COHERENT_MEMORY) ||
         (testAddrSpace == NV_MMU_PTE_APERTURE_SYSTEM_NON_COHERENT_MEMORY))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2007);
         // Flush GPU write before proceeding to next test (otherwise it may stomp over following CPU writes)
         kbusFlush_HAL(pGpu, pKernelBus, BUS_FLUSH_VIDEO_MEMORY | BUS_FLUSH_USE_PCIE_READ);
     }
@@ -3743,6 +4024,7 @@ kbusVerifyBar2_GM107
                    testMemoryOffset);
     for(index = 0; index < testMemorySize; index += 4)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2008);
         MEM_WR32( pOffset + index, SAMPLEDATA );
     }
     // Flush the bar2 writes
@@ -3750,6 +4032,7 @@ kbusVerifyBar2_GM107
     if ((testAddrSpace == NV_MMU_PTE_APERTURE_SYSTEM_COHERENT_MEMORY) ||
         (testAddrSpace == NV_MMU_PTE_APERTURE_SYSTEM_NON_COHERENT_MEMORY))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2009);
         kbusFlush_HAL(pGpu, pKernelBus, BUS_FLUSH_VIDEO_MEMORY | BUS_FLUSH_USE_PCIE_READ);
     }
     osFlushCpuWriteCombineBuffer();
@@ -3757,6 +4040,7 @@ kbusVerifyBar2_GM107
     status = kmemsysSendL2InvalidateEvict(pGpu, pKernelMemorySystem, flagsClean);
     if (NV_OK != status)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2010);
         NV_PRINTF(LEVEL_ERROR, "L2 evict failed\n");
         goto kbusVerifyBar2_failed;
     }
@@ -3775,9 +4059,11 @@ kbusVerifyBar2_GM107
     temp = (DRF_BASE(NV_PRAMIN) + (NvU32)(testMemoryOffset & 0xffff));
     for(index = 0; index < testMemorySize; index += 4)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2011);
         NvU32 bar0WindowData = GPU_REG_RD32(pGpu, temp + index);
         if (bar0WindowData != SAMPLEDATA)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2012);
             NV_PRINTF(LEVEL_ERROR,
                       "MMUTest BAR0 window offset 0x%x returned garbage 0x%x\n",
                       temp + index, bar0WindowData);
@@ -3800,21 +4086,25 @@ kbusVerifyBar2_GM107
     // Bail now if we have encountered any error
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2013);
         goto kbusVerifyBar2_failed;
     }
 
     status = kmemsysSendL2InvalidateEvict(pGpu, pKernelMemorySystem, flagsClean);
     if (NV_OK != status)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2014);
         goto kbusVerifyBar2_failed;
     }
 
     // Verify BAR2 virtual reads
     for(index = 0; index < testMemorySize; index +=4)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2015);
         temp = MEM_RD32(pOffset + index);
         if (temp != (SAMPLEDATA + 0x10))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2016);
             NV_PRINTF(LEVEL_ERROR,
                       "MMUTest BAR2 Read of virtual addr 0x%x returned garbage 0x%x\n",
                       (NvU32)(pOffset - pKernelBus->virtualBar2[GPU_GFID_PF].pCpuMapping) + index,
@@ -3828,8 +4118,10 @@ kbusVerifyBar2_GM107
 kbusVerifyBar2_failed:
     if (bIsStandaloneTest)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2017);
         if (pOffset != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2018);
             kbusUnmapRmAperture_HAL(pGpu, pMemDesc, &pOffset, NV_TRUE);
         }
         memdescFree(pMemDesc);
@@ -3838,6 +4130,7 @@ kbusVerifyBar2_failed:
 
     if (status == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2019);
         NV_PRINTF_COND(IS_EMULATION(pGpu), LEVEL_NOTICE, LEVEL_INFO, "BAR2 virtual test passes\n");
     }
 
@@ -3855,6 +4148,7 @@ kbusInitBarsBaseInfo_GM107
     KernelBus  *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2020);
     // pKernelBus->pciBars[] should be initialized before the function gets called
     NV_ASSERT_OR_RETURN(pKernelBus->pciBars[BUS_BAR_1] != 0, NV_ERR_INVALID_STATE);
     NV_ASSERT_OR_RETURN(pKernelBus->pciBars[BUS_BAR_2] != 0, NV_ERR_INVALID_STATE);
@@ -3881,6 +4175,7 @@ NV_STATUS kbusSetBarsApertureSize_GM107
     NvU32      gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2021);
     NvU32 data32;
     NvU32 maxRmAddressibleBar2SizeMb = pKernelBus->bIsEntireBar2RegionVirtuallyAddressible ?
                                        BUS_BAR2_APERTURE_MB : BUS_BAR2_RM_APERTURE_MB;
@@ -3891,6 +4186,7 @@ NV_STATUS kbusSetBarsApertureSize_GM107
     //
     if (IS_GFID_VF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2022);
         kbusDetermineBar1ApertureLength(pKernelBus, gfid);
     }
 
@@ -3901,6 +4197,7 @@ NV_STATUS kbusSetBarsApertureSize_GM107
     if (((NV_OK == osReadRegistryDword(pGpu, NV_REG_STR_RM_BAR2_APERTURE_SIZE_MB,
                         &data32))) && data32 && data32 <= maxRmAddressibleBar2SizeMb)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2023);
         // Set the BAR2 aperture size based on the override
         pKernelBus->bar2[gfid].rmApertureLimit = (data32 << 20) - 1;
         //
@@ -3920,6 +4217,7 @@ NV_STATUS kbusSetBarsApertureSize_GM107
         //
         if ((IS_SIM_MODS(GPU_GET_OS(pGpu)) && IS_SILICON(pGpu) == 0) || (!RMCFG_FEATURE_MODS_FEATURES && IS_SIMULATION(pGpu)))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2024);
             // Temporarily increasing the RM aperture size to 16MB - Bug 3317956
             if (gpuIsCCFeatureEnabled(pGpu))
                 pKernelBus->bar2[gfid].rmApertureLimit = (BUS_BAR2_RM_APERTURE_MB << 20) - 1;  // 16MB
@@ -3954,6 +4252,7 @@ static NvU32 _kbusGetSizeOfBar2PageDir_GM107
     NvU32                entrySize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2025);
     NvU32              size;
     NvU32              numEntries;
     NvU64              vaBaseAligned;
@@ -3987,6 +4286,7 @@ NvU32 kbusGetSizeOfBar2PageDirs_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2026);
     KernelGmmu          *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     const GMMU_FMT      *pFmt   = NULL;
     NvU32                size   = 0;
@@ -4001,6 +4301,7 @@ NvU32 kbusGetSizeOfBar2PageDirs_GM107
     // Return 0 from the guest in the paravirtualization case.
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2027);
         return 0;
     }
 
@@ -4022,11 +4323,13 @@ NvU32 kbusGetSizeOfBar2PageDirs_GM107
 
     for (i = 0; (i < GMMU_FMT_MAX_LEVELS - 1); i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2028);
         NvU32 levelSize = 0;
         NvU64 vaPerEntry = mmuFmtEntryVirtAddrMask(pLevel) + 1;
 
         if (!bContiguous)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2029);
             //
             // Avoid double reserving size for page dir when visible and invisible bar2 share the same page directory
             // In this case we treat them as contiguous.
@@ -4034,6 +4337,7 @@ NvU32 kbusGetSizeOfBar2PageDirs_GM107
             if ((pKernelBus->bar2[gfid].cpuVisibleLimit  & ~(vaPerEntry - 1)) ==
                 (pKernelBus->bar2[gfid].cpuInvisibleBase & ~(vaPerEntry - 1)))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2030);
                 levelSize += _kbusGetSizeOfBar2PageDir_GM107(pKernelBus->bar2[gfid].cpuVisibleBase,
                                                              bar2VaLimit,
                                                              vaPerEntry,
@@ -4067,6 +4371,7 @@ NvU32 kbusGetSizeOfBar2PageDirs_GM107
         // If there's one sublevel choose that.
         if (1 == pLevel->numSubLevels)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2031);
             pLevel = &(pLevel->subLevels[0]);
         }
         else
@@ -4079,6 +4384,7 @@ NvU32 kbusGetSizeOfBar2PageDirs_GM107
         // Stop accumulating size if we've exhausted all Page Dirs.
         if (pLevel->bPageTable && (0 == pLevel->numSubLevels))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2032);
             break;
         }
     }
@@ -4115,6 +4421,7 @@ _kbusBar0TunnelCb_GM107
     NvBool          bRead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2033);
     OBJGPU     *pGpu     = reinterpretCast(pPrivData, OBJGPU *);
     KernelBus  *pKernelBus  = GPU_GET_KERNEL_BUS(pGpu);
     VirtualBar2MapListIter it;
@@ -4123,12 +4430,14 @@ _kbusBar0TunnelCb_GM107
     it = listIterAll(&pKernelBus->virtualBar2[GPU_GFID_PF].usedMapList);
     while (listIterNext(&it))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2034);
         VirtualBar2MapEntry *pMap = it.pValue;
 
         // Check if there is a valid mapping for the address passed-in
         if (addr >= (NvU64)((NvUPtr)pMap->pRtnPtr) &&
            (addr + size - 1) < ((NvU64)((NvUPtr)pMap->pRtnPtr) + pMap->pMemDesc->Size))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2035);
             // Re-direct the access through bar0 window
             offset = (NvU32)(addr - (NvU64)((NvUPtr)pMap->pRtnPtr));
             return kbusMemAccessBar0Window_HAL(
@@ -4151,6 +4460,7 @@ kbusGetBAR0WindowAddress_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2036);
     return NV_PRAMIN_DATA008(0);
 }
 
@@ -4170,13 +4480,16 @@ kbusGetUnusedPeerId_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2037);
     NvU32 peerId;
 
     for (peerId = 0; peerId < pKernelBus->numPeers; peerId++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2038);
         if ((pKernelBus->p2pPcie.busPeer[peerId].refCount == 0) &&
             (!pKernelBus->p2pPcie.busPeer[peerId].bReserved))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2039);
             return peerId;
         }
     }
@@ -4199,6 +4512,7 @@ kbusGetUnusedPciePeerId_GM107
     KernelBus* pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2040);
     return kbusGetUnusedPeerId_HAL(pGpu, pKernelBus);
 }
 
@@ -4220,11 +4534,13 @@ kbusGetPeerId_GM107
     OBJGPU    *pGpuPeer
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2041);
     NvU32 gpuPeerInst = gpuGetInstance(pGpuPeer);
     NvU32 peerId;
 
     if (pKernelBus->p2pPcie.peerNumberMask[gpuPeerInst] == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2042);
         return BUS_INVALID_PEER;
     }
 
@@ -4248,6 +4564,7 @@ kbusIsPeerIdValid_GM107
     NvU32      peerId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2043);
     NV_ASSERT_OR_RETURN(peerId < P2P_MAX_NUM_PEERS, NV_ERR_INVALID_INDEX);
     if (pKernelBus->p2pPcie.peerNumberMask[gpuGetInstance(pGpu)] & NVBIT(peerId))
         return NV_OK;
@@ -4267,6 +4584,7 @@ kbusGetBar2GmmuWalker_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2044);
     OBJGPU*   pGpu = ENG_GET_GPU(pKernelBus);
     NvU32     gfid;
 
@@ -4275,6 +4593,7 @@ kbusGetBar2GmmuWalker_GM107
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||
         (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2045);
         return NULL;
     }
     return pKernelBus->bar2[gfid].pWalk;
@@ -4293,6 +4612,7 @@ kbusGetBar2GmmuFmt_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2046);
     OBJGPU*   pGpu = ENG_GET_GPU(pKernelBus);
     NvU32     gfid;
 
@@ -4301,6 +4621,7 @@ kbusGetBar2GmmuFmt_GM107
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||
         (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2047);
         return NULL;
     }
     return pKernelBus->bar2[gfid].pFmt;
@@ -4326,9 +4647,11 @@ kbusGetPeerIdFromTable_GM107
     NvU32      remPeerIdx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2048);
     if (locPeerIdx >= P2P_MAX_NUM_PEERS ||
         remPeerIdx >= P2P_MAX_NUM_PEERS)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2049);
         NV_PRINTF(LEVEL_ERROR,
                   "Peer number table doesn't support >%u GPUs\n",
                   P2P_MAX_NUM_PEERS);
@@ -4349,6 +4672,7 @@ kbusInitPciBars_GM107
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2050);
     OBJGPU *pGpu = ENG_GET_GPU(pKernelBus);
 
     pKernelBus->pciBars[0] = pGpu->busInfo.gpuPhysAddr;
@@ -4357,6 +4681,7 @@ kbusInitPciBars_GM107
 
     if (! IsAMODEL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2051);
         // Classic dGPUs
         pKernelBus->totalPciBars = BUS_NUM_BARS;
         pKernelBus->pciBars[3] = pGpu->busInfo.gpuPhysIoAddr;
@@ -4376,6 +4701,7 @@ kbusSetBAR0WindowVidOffset_GM107
     NvU64        vidOffset
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2052);
     NV_ASSERT( (vidOffset & 0xffff)==0 );
     NV_ASSERT( (vidOffset >> 16) <= DRF_MASK(NV_PBUS_BAR0_WINDOW_BASE) );
 
@@ -4383,12 +4709,14 @@ kbusSetBAR0WindowVidOffset_GM107
     // current NV_PBUS_BAR0_WINDOW_BASE.
     if (pKernelBus->cachedBar0WindowVidOffset == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2053);
         pKernelBus->cachedBar0WindowVidOffset = ((NvU64) GPU_REG_RD_DRF(pGpu, _PBUS, _BAR0_WINDOW, _BASE)) << 16;
     }
 
     // Update only if the new offset is different from the cached value
     if (pKernelBus->cachedBar0WindowVidOffset != vidOffset)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2054);
         NV_PRINTF(LEVEL_INFO,
                   "mapping BAR0_WINDOW to VID:%x'%08x\n",
                   NvU64_HI32(vidOffset), NvU64_LO32(vidOffset));
@@ -4409,12 +4737,14 @@ kbusGetBAR0WindowVidOffset_GM107
     KernelBus   *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2055);
     NvU64 vidOffset;
 
     // RM initialises cachedBar0WindowVidOffset with 0. Refresh its value with
     // current NV_PBUS_BAR0_WINDOW_BASE.
     if (pKernelBus->cachedBar0WindowVidOffset == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2056);
         pKernelBus->cachedBar0WindowVidOffset = ((NvU64) GPU_REG_RD_DRF(pGpu, _PBUS, _BAR0_WINDOW, _BASE)) << 16;
     }
 
@@ -4449,6 +4779,7 @@ kbusMemAccessBar0Window_GM107
     NV_ADDRESS_SPACE        addrSpace
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2057);
     NvU64              bar0WindowOffset;
     NvU64              bar0WindowOrig;
     NvBool             bRestoreWindow = NV_FALSE;
@@ -4458,6 +4789,7 @@ kbusMemAccessBar0Window_GM107
 
     if (KBUS_BAR0_PRAMIN_DISABLED(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2058);
         NV_ASSERT_FAILED("kbusMemAccessBar0Window_HAL call in coherent path\n");
         return NV_ERR_INVALID_STATE;
     }
@@ -4467,6 +4799,7 @@ kbusMemAccessBar0Window_GM107
 
     if (bar0WindowOffset + accessSize > DRF_SIZE(NV_PRAMIN))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2059);
         kbusSetBAR0WindowVidOffset_HAL(pGpu, pKernelBus, (physAddr & ~0xffff));
         bar0WindowOffset = physAddr - kbusGetBAR0WindowVidOffset_HAL(pGpu, pKernelBus);
         bRestoreWindow = NV_TRUE;
@@ -4474,9 +4807,11 @@ kbusMemAccessBar0Window_GM107
 
     if (bRead)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2060);
         // Read access
         switch (accessSize)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2061);
             case 1:
                 *((NvU8  *)pData) = (NvU8)GPU_REG_RD08(pGpu, NV_PRAMIN_DATA008(bar0WindowOffset));
                 break;
@@ -4502,6 +4837,7 @@ kbusMemAccessBar0Window_GM107
         // Write access
         switch (accessSize)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2062);
             case 1:
                 GPU_REG_WR08(pGpu, NV_PRAMIN_DATA008(bar0WindowOffset), (NvU8)(*((NvU8 *)pData) & 0xff));
                 break;
@@ -4533,6 +4869,7 @@ kbusMemAccessBar0Window_GM107
     //
     if (bRestoreWindow && !pKernelBus->bar2[GPU_GFID_PF].bBootstrap)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2063);
         NV_ASSERT_OK_OR_RETURN(kbusSetBAR0WindowVidOffset_HAL(pGpu, pKernelBus, bar0WindowOrig));
     }
 
@@ -4562,6 +4899,7 @@ kbusMemCopyBar0Window_GM107
     NvBool                  bRead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2064);
     NvLength copied = 0;
     NvU8 *pSysmemBuf = pSysmem;
     NvU64 fbCopyOffset = physAddr;
@@ -4614,6 +4952,7 @@ kbusIsDirectMappingAllowed_GM107
     NvBool            *bDirectSysMappingAllowed
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2065);
     MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     NvBool bAllowReflectedMapping = NV_FALSE;
     NvU32  pteKind = memdescGetPteKind(pMemDesc);
@@ -4625,6 +4964,7 @@ kbusIsDirectMappingAllowed_GM107
     if (pKernelBus->bAllowReflectedMappingAccess &&
         memmgrIsKind_HAL(pMemoryManager, FB_IS_KIND_Z, pteKind))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2066);
         bAllowReflectedMapping = NV_TRUE;
     }
 
@@ -4687,6 +5027,7 @@ kbusUseDirectSysmemMap_GM107
     NvBool            *pbAllowDirectMap
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2067);
     *pbAllowDirectMap = NV_FALSE;
 
     if((memdescGetAddressSpace(pMemDesc) != ADDR_FBMEM) &&
@@ -4696,6 +5037,7 @@ kbusUseDirectSysmemMap_GM107
       memdescGetFlag(pMemDesc, MEMDESC_FLAGS_PEER_IO_MEM)) &&
      ((memdescGetGpuCacheAttrib(pMemDesc) == NV_MEMORY_UNCACHED) || IsTEGRA(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2068);
          *pbAllowDirectMap =  NV_TRUE;
     }
 
@@ -4712,6 +5054,7 @@ kbusBar1InstBlkVasUpdate_GM107
     KernelBus         *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2069);
     KernelGmmu          *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
     MemoryManager       *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
     OBJVASPACE          *pBar1VAS = kbusGetBar1VASpace_HAL(pGpu, pKernelBus);
@@ -4725,12 +5068,14 @@ kbusBar1InstBlkVasUpdate_GM107
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||
         (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2070);
         return NV_OK;
     }
 
     if (IS_GFID_VF(gfid) &&
         pKernelBus->bar1[gfid].pInstBlkMemDesc == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2071);
         //
         // VF BAR1 instance block cannot by in PF sysmem as the latter
         // is not mapped into VF's IOMMU domain
@@ -4746,6 +5091,7 @@ kbusBar1InstBlkVasUpdate_GM107
                                     pKernelBus->InstBlkAttr,
                                     MEMDESC_FLAGS_OWNED_BY_CURRENT_DEVICE)) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2072);
             NV_ASSERT_OR_RETURN(status == NV_OK, status);
         }
 

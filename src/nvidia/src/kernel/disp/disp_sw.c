@@ -48,6 +48,7 @@ dispswConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1101);
     OBJGPU   *pGpu = GPU_RES_GET_GPU(pDispSw);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
     RM_API *pRmApi   = GPU_GET_PHYSICAL_RMAPI(pGpu);
@@ -60,12 +61,14 @@ dispswConstruct_IMPL
 
     if (!pUserParams)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1102);
         NV_ASSERT(pUserParams);
         return (NV_ERR_INVALID_ARGUMENT);
     }
 
     if (!pKernelDisplay)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1103);
         NV_PRINTF(LEVEL_INFO, "Display is not enabled, can't create class\n");
         return (NV_ERR_INVALID_ARGUMENT);
     }
@@ -76,12 +79,14 @@ dispswConstruct_IMPL
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1104);
         NV_PRINTF(LEVEL_ERROR, "RPC error, can't get the displaymask and number of heads\n");
         return status;
     }
 
     if (pUserParams->logicalHeadId >= ctrlParams.numHeads)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1105);
         NV_PRINTF(LEVEL_ERROR, "invalid logical head number: %d\n",
                   pUserParams->logicalHeadId);
         return NV_ERR_INSUFFICIENT_RESOURCES;
@@ -89,8 +94,10 @@ dispswConstruct_IMPL
 
     if (pUserParams->displayMask)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1106);
         if (!(pUserParams->displayMask & ctrlParams.displayMask))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1107);
             NV_PRINTF(LEVEL_ERROR, "Device not active: 0x%08x, RM display mask: 0x%08x\n",
                       pUserParams->displayMask, ctrlParams.displayMask);
             return NV_ERR_INVALID_ARGUMENT;
@@ -109,6 +116,7 @@ dispswDestruct_IMPL
     DispSwObject *pDispSw
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1108);
     ChannelDescendant *pChannelDescendant = staticCast(pDispSw, ChannelDescendant);
     OBJGPU            *pGpu = GPU_RES_GET_GPU(pChannelDescendant);
     KernelDisplay *pKernelDisplay = GPU_GET_KERNEL_DISPLAY(pGpu);
@@ -138,12 +146,14 @@ NV_STATUS dispswReleaseSemaphoreAndNotifierFill
     NvHandle  hEvent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1109);
     CLI_DMA_MAPPING_INFO *pDmaMappingInfo;
     NvBool     bFound = NV_FALSE;
     NV_STATUS  status;
 
     if (flags & F_SEMAPHORE_ADDR_VALID)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1110);
         bFound = CliGetDmaMappingInfo(pClient,
                                       hEvent,
                                       vaSpace,
@@ -155,6 +165,7 @@ NV_STATUS dispswReleaseSemaphoreAndNotifierFill
     }
     else if (flags & F_SEMAPHORE_RELEASE)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1111);
         status =  semaphoreFillGPUVA(pGpu,
                                      pClient,
                                      vaSpace,
@@ -166,6 +177,7 @@ NV_STATUS dispswReleaseSemaphoreAndNotifierFill
     }
     else if (flags & F_NOTIFIER_FILL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1112);
         status = notifyFillNotifierGPUVA(pGpu,
                                          pClient,
                                          vaSpace,

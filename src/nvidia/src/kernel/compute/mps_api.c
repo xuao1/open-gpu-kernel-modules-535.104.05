@@ -39,6 +39,7 @@ mpsApiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 39);
     return NV_OK;
 }
 
@@ -48,5 +49,6 @@ mpsApiDestruct_IMPL
     MpsApi *pMpsApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 40);
     return;
 }

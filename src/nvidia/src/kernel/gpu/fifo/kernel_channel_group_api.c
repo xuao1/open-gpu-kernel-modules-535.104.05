@@ -49,6 +49,7 @@ kchangrpapiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5470);
     NvBool                                  bTsgAllocated       = NV_FALSE;
     RsResourceRef                          *pResourceRef        = pCallContext->pResourceRef;
     NV_STATUS                               rmStatus;
@@ -81,6 +82,7 @@ kchangrpapiConstruct_IMPL
 
     if (RS_IS_COPY_CTOR(pParams))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5471);
         NV_ASSERT_OK_OR_GOTO(rmStatus,
                              rmGpuLocksAcquire(GPUS_LOCK_FLAGS_NONE, RM_LOCK_MODULES_FIFO),
                              done);
@@ -98,6 +100,7 @@ kchangrpapiConstruct_IMPL
     //
     if (rmDeviceGpuLockIsOwner(pGpu->gpuInstance))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5472);
         NV_PRINTF(LEVEL_ERROR, "TSG alloc should be called without acquiring GPU lock\n");
         LOCK_ASSERT_AND_RETURN(0);
     }
@@ -105,6 +108,7 @@ kchangrpapiConstruct_IMPL
     bufInfoList = portMemAllocNonPaged(NV_ENUM_SIZE(GR_CTX_BUFFER) * sizeof(*bufInfoList));
     if (bufInfoList == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5473);
         return NV_ERR_NO_MEMORY;
     }
 
@@ -127,6 +131,7 @@ kchangrpapiConstruct_IMPL
 
     if (!gpuIsClassSupported(pGpu, pResourceRef->externalClassId))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5474);
         NV_PRINTF(LEVEL_ERROR, "class %x not supported\n",
                   pResourceRef->externalClassId);
         rmStatus = NV_ERR_NOT_SUPPORTED;
@@ -138,6 +143,7 @@ kchangrpapiConstruct_IMPL
     rmStatus = serverGetClientUnderLock(&g_resServ, pParams->hClient, &pClient);
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5475);
         NV_PRINTF(LEVEL_ERROR, "Invalid client handle!\n");
         rmStatus = NV_ERR_INVALID_ARGUMENT;
         goto failed;
@@ -146,6 +152,7 @@ kchangrpapiConstruct_IMPL
     rmStatus = deviceGetByHandle(pClient, pParams->hParent, &pDevice);
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5476);
         NV_PRINTF(LEVEL_ERROR, "Invalid parent/device handle!\n");
         rmStatus = NV_ERR_INVALID_ARGUMENT;
         goto failed;
@@ -158,8 +165,10 @@ kchangrpapiConstruct_IMPL
 
     if (kfifoIsPerRunlistChramSupportedInHw(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5477);
         if (!RM_ENGINE_TYPE_IS_VALID(rmEngineType))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5478);
             NV_PRINTF(LEVEL_NOTICE, "Valid engine Id must be specified while allocating TSGs or bare channels!\n");
             rmStatus = NV_ERR_INVALID_ARGUMENT;
             goto failed;
@@ -182,6 +191,7 @@ kchangrpapiConstruct_IMPL
     //
     if (bMIGInUse)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5479);
         // Engine type must be valid for MIG
         NV_CHECK_OR_ELSE(LEVEL_NOTICE, RM_ENGINE_TYPE_IS_VALID(pKernelChannelGroup->engineType),
                          rmStatus = NV_ERR_INVALID_STATE; goto failed);
@@ -210,6 +220,7 @@ kchangrpapiConstruct_IMPL
         // Only GR0 is allowed without MIG
         if ((RM_ENGINE_TYPE_IS_GR(rmEngineType)) && (rmEngineType != RM_ENGINE_TYPE_GR0))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5480);
             rmStatus = NV_ERR_INVALID_ARGUMENT;
             goto failed;
         }
@@ -217,12 +228,14 @@ kchangrpapiConstruct_IMPL
 
     if((pDevice->vaMode != NV_DEVICE_ALLOCATION_VAMODE_MULTIPLE_VASPACES) || (hVASpace != 0))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5481);
         NV_ASSERT_OK_OR_GOTO(rmStatus,
             vaspaceGetByHandleOrDeviceDefault(pClient, pParams->hParent, hVASpace, &pVAS),
             failed);
 
         if (pVAS == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5482);
             rmStatus = NV_ERR_INVALID_STATE;
             goto failed;
         }
@@ -242,6 +255,7 @@ kchangrpapiConstruct_IMPL
 
     if (!RMCFG_FEATURE_PLATFORM_GSP)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5483);
         NV_ASSERT_OK_OR_GOTO(rmStatus,
             ctxBufPoolInit(pGpu, pHeap, &pKernelChannelGroup->pCtxBufPool),
             failed);
@@ -261,6 +275,7 @@ kchangrpapiConstruct_IMPL
 
     if (hVASpace != 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5484);
         RsResourceRef *pVASpaceRef;
         rmStatus = clientGetResourceRef(pCallContext->pClient, hVASpace, &pVASpaceRef);
         NV_ASSERT(rmStatus == NV_OK);
@@ -283,13 +298,16 @@ kchangrpapiConstruct_IMPL
     if ((pConfCompute != NULL) &&
         (pConfCompute->getProperty(pCC, PDB_PROP_CONFCOMPUTE_CC_FEATURE_ENABLED)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5485);
         // TODO: jira CONFCOMP-1621: replace this with actual flag for TSG alloc that skips scrub
         if ((pMemoryManager->bScrubChannelSetupInProgress) &&
             (pKernelChannelGroup->pChannelBufPool != NULL) &&
             (pKernelChannelGroup->pCtxBufPool != NULL))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5486);
             if (pCallContext->secInfo.privLevel < RS_PRIV_LEVEL_KERNEL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5487);
                 rmStatus = NV_ERR_INVALID_ARGUMENT;
                 NV_PRINTF(LEVEL_ERROR, "Only kernel priv clients can skip scrubber\n");
                 goto failed;
@@ -315,9 +333,11 @@ kchangrpapiConstruct_IMPL
     if (pKernelChannelGroup->pCtxBufPool != NULL &&
         (!bMIGInUse || kmigmgrIsEngineInInstance(pGpu, pKernelMIGManager, pKernelChannelGroup->engineType, ref)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5488);
         // GR Buffers
         if (RM_ENGINE_TYPE_IS_GR(pKernelChannelGroup->engineType))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5489);
             KernelGraphics *pKernelGraphics = GPU_GET_KERNEL_GRAPHICS(pGpu, RM_ENGINE_TYPE_GR_IDX(pKernelChannelGroup->engineType));
             NvU32 bufId = 0;
             portMemSet(&bufInfoList[0], 0, sizeof(CTX_BUF_INFO) * NV_ENUM_SIZE(GR_CTX_BUFFER));
@@ -327,9 +347,11 @@ kchangrpapiConstruct_IMPL
 
             FOR_EACH_IN_ENUM(GR_CTX_BUFFER, bufId)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5490);
                 // TODO expose engine class capabilities to kernel RM
                 if (kgrmgrIsCtxBufSupported(bufId, NV_FALSE))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5491);
                     const CTX_BUF_INFO *pBufInfo = kgraphicsGetCtxBufferInfo(pGpu, pKernelGraphics, bufId);
                     bufInfoList[bufCount] = *pBufInfo;
                     NV_PRINTF(LEVEL_INFO, "Reserving 0x%llx bytes for GR ctx bufId = %d\n",
@@ -346,6 +368,7 @@ kchangrpapiConstruct_IMPL
             NvU32 ctxBufferSize;
             if (IS_GSP_CLIENT(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5492);
                 ENGDESCRIPTOR engDesc;
                 KernelFalcon *pKernelFalcon = NULL;
 
@@ -358,6 +381,7 @@ kchangrpapiConstruct_IMPL
                 pKernelFalcon = kflcnGetKernelFalconForEngine(pGpu, engDesc);
                 if (pKernelFalcon != NULL)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5493);
                     ctxBufferSize = pKernelFalcon->ctxBufferSize;
                     bReserveMem = NV_TRUE;
                 }
@@ -365,6 +389,7 @@ kchangrpapiConstruct_IMPL
 
             if (bReserveMem)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5494);
                 bufInfoList[0].size  = ctxBufferSize;
                 bufInfoList[0].align = RM_PAGE_SIZE;
                 bufInfoList[0].attr  = RM_ATTR_PAGE_SIZE_4KB;
@@ -386,6 +411,7 @@ kchangrpapiConstruct_IMPL
     if ((!bMIGInUse || RM_ENGINE_TYPE_IS_GR(pKernelChannelGroup->engineType))
         && !IsT234D(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5495);
         NV_ASSERT_OK_OR_GOTO(rmStatus,
             pRmApi->AllocWithSecInfo(pRmApi,
                 pParams->hClient,
@@ -406,6 +432,7 @@ kchangrpapiConstruct_IMPL
     if ((IS_VIRTUAL(pGpu) || IS_GSP_CLIENT(pGpu)) &&
         !(pParams->allocFlags & RMAPI_ALLOC_FLAGS_SKIP_RPC))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5496);
         NV_RM_RPC_ALLOC_OBJECT(pGpu,
                                pParams->hClient,
                                pParams->hParent,
@@ -423,6 +450,7 @@ kchangrpapiConstruct_IMPL
 
         if (rmStatus != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5497);
             NV_PRINTF(LEVEL_ERROR,
                       "KernelChannelGroupApi alloc RPC to vGpu Host failed\n");
             goto failed;
@@ -430,6 +458,7 @@ kchangrpapiConstruct_IMPL
 
         if (IS_VIRTUAL_WITH_FULL_SRIOV(pGpu) || IS_GSP_CLIENT(pGpu))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5498);
             NVA06C_CTRL_INTERNAL_PROMOTE_FAULT_METHOD_BUFFERS_PARAMS params = {
                 0};
             NvU32 runqueueIdx;
@@ -437,6 +466,7 @@ kchangrpapiConstruct_IMPL
 
             for (runqueueIdx = 0; runqueueIdx < maxRunqueues; ++runqueueIdx)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5499);
                 MEMORY_DESCRIPTOR          *pSrcMemDesc;
                 HW_ENG_FAULT_METHOD_BUFFER *pMthdBuffer;
                 pMthdBuffer = &pKernelChannelGroup->pMthdBuffers[runqueueIdx];
@@ -452,6 +482,7 @@ kchangrpapiConstruct_IMPL
 
                 if (IS_VIRTUAL_WITH_FULL_SRIOV(pGpu))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5500);
                     params.bar2Addr[runqueueIdx] = pMthdBuffer->bar2Addr;
                     params.methodBufferMemdesc[runqueueIdx].base = (
                         memdescGetPhysAddr(pSrcMemDesc, AT_CPU, 0));
@@ -478,6 +509,7 @@ kchangrpapiConstruct_IMPL
 
             if (rmStatus != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5501);
                 NV_PRINTF(LEVEL_ERROR,
                     "Control call to update method buffer memdesc failed\n");
                 goto failed;
@@ -487,6 +519,7 @@ kchangrpapiConstruct_IMPL
 
     if (kfifoIsZombieSubctxWarEnabled(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5502);
         kchangrpSetSubcontextZombieState_HAL(pGpu, pKernelChannelGroup, 0, NV_TRUE);
         kchangrpUpdateSubcontextMask_HAL(pGpu, pKernelChannelGroup, 0, NV_TRUE);
     }
@@ -496,6 +529,7 @@ kchangrpapiConstruct_IMPL
 
     if (listAppendValue(&pKernelChannelGroup->apiObjList, &pKernelChannelGroupApi) == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5503);
         rmStatus = NV_ERR_INSUFFICIENT_RESOURCES;
         listClear(&pKernelChannelGroup->apiObjList);
         goto failed;
@@ -504,14 +538,17 @@ kchangrpapiConstruct_IMPL
 failed:
     if (rmStatus != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5504);
         if (pKernelChannelGroupApi->hKernelGraphicsContext != NV01_NULL_OBJECT)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5505);
             pRmApi->Free(pRmApi, pParams->hClient,
                          pKernelChannelGroupApi->hKernelGraphicsContext);
         }
 
         if (pKernelChannelGroup != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5506);
             if (bTsgAllocated)
                 kchangrpDestroy(pGpu, pKernelChannelGroup);
 
@@ -534,6 +571,7 @@ done:
 
     if (bReserveMem)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5507);
         // GPU lock should not be held when reserving memory for ctxBufPool
         NV_ASSERT_OK_OR_CAPTURE_FIRST_ERROR(rmStatus,
             ctxBufPoolReserve(pGpu, pKernelChannelGroup->pCtxBufPool, bufInfoList, bufCount));
@@ -552,6 +590,7 @@ kchangrpapiControl_IMPL
     RS_RES_CONTROL_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5508);
     RsResourceRef *pResourceRef = RES_GET_REF(pKernelChannelGroupApi);
 
     (void)pResourceRef;
@@ -569,6 +608,7 @@ kchangrpapiDestruct_IMPL
     KernelChannelGroupApi *pKernelChannelGroupApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5509);
     CALL_CONTEXT           *pCallContext;
     RS_RES_FREE_PARAMS_INTERNAL *pParams;
     RsResourceRef          *pResourceRef;
@@ -591,6 +631,7 @@ kchangrpapiDestruct_IMPL
     // RS-TODO should still free channels?
     if (serverGetShareRefCount(&g_resServ, pShared) > 1)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5510);
         // Remove this kchangrpapi object from the list of owners in the shared object
         listRemoveFirstByValue(&pKernelChannelGroupApi->pKernelChannelGroup->apiObjList, &pKernelChannelGroupApi);
         goto done;
@@ -604,6 +645,7 @@ kchangrpapiDestruct_IMPL
     it = kchannelGetIter(pClient, pResourceRef);
     while (clientRefOrderedIterNext(pClient, &it))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5511);
         NV_STATUS tmpStatus;
 
         tmpStatus = pRmApi->Free(pRmApi, pClient->hClient, it.pResourceRef->hResource);
@@ -615,16 +657,19 @@ kchangrpapiDestruct_IMPL
 
     if (pKernelChannelGroup != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5512);
         kchangrpDestroy(pGpu, pKernelChannelGroup);
 
         if (pKernelChannelGroup->pCtxBufPool != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5513);
             ctxBufPoolRelease(pKernelChannelGroup->pCtxBufPool);
             ctxBufPoolDestroy(&pKernelChannelGroup->pCtxBufPool);
         }
 
         if (pKernelChannelGroup->pChannelBufPool != NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5514);
             ctxBufPoolRelease(pKernelChannelGroup->pChannelBufPool);
             ctxBufPoolDestroy(&pKernelChannelGroup->pChannelBufPool);
         }
@@ -646,6 +691,7 @@ kchangrpapiCopyConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5515);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     RsClient *pDstClient = pCallContext->pClient;
     RsResourceRef *pDstRef = pCallContext->pResourceRef;
@@ -670,6 +716,7 @@ kchangrpapiCopyConstruct_IMPL
     iter =  serverutilRefIter(pDstClient->hClient, pDstRef->pParentRef->hResource, classId(VaSpaceApi), RS_ITERATE_DESCENDANTS, NV_TRUE);
     while (clientRefIterNext(iter.pClient, &iter))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5516);
         pVaspaceRef = iter.pResourceRef;
         pVaspaceApi = dynamicCast(pVaspaceRef->pResource, VaSpaceApi);
         NV_ASSERT_OR_RETURN(pVaspaceApi != NULL, NV_ERR_INVALID_STATE);
@@ -677,6 +724,7 @@ kchangrpapiCopyConstruct_IMPL
         if (pVaspaceApi->pVASpace ==
             pKernelChannelGroupApi->pKernelChannelGroup->pVAS)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5517);
             refAddDependant(pVaspaceRef, pDstRef);
             break;
         }
@@ -684,6 +732,7 @@ kchangrpapiCopyConstruct_IMPL
 
     if (pChanGrpSrc->hKernelGraphicsContext != NV01_NULL_OBJECT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5518);
         NV_CHECK_OK_OR_GOTO(status, LEVEL_ERROR,
             pRmApi->DupObject(pRmApi,
                               pDstClient->hClient,
@@ -701,6 +750,7 @@ kchangrpapiCopyConstruct_IMPL
     //
     if (pChanGrpSrc->pKernelChannelGroup->bLegacyMode)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5519);
         NV_CHECK_OK_OR_GOTO(status, LEVEL_ERROR,
             pRmApi->DupObject(pRmApi,
                               pDstClient->hClient,
@@ -714,6 +764,7 @@ kchangrpapiCopyConstruct_IMPL
         // All chips have SYNC, Some chips won't have an ASYNC kctxshare
         if (pChanGrpSrc->hLegacykCtxShareAsync != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5520);
             NV_CHECK_OK_OR_GOTO(status, LEVEL_ERROR,
                 pRmApi->DupObject(pRmApi,
                                   pDstClient->hClient,
@@ -728,6 +779,7 @@ kchangrpapiCopyConstruct_IMPL
 
     if (IS_VIRTUAL(pGpu) || IS_GSP_CLIENT(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5521);
         NV_RM_RPC_DUP_OBJECT(pGpu, pDstClient->hClient, pDstRef->pParentRef->hResource, pDstRef->hResource,
                              pParams->pSrcClient->hClient, pSrcRef->hResource, 0,
                              NV_TRUE, // automatically issue RPC_FREE on object free
@@ -739,6 +791,7 @@ kchangrpapiCopyConstruct_IMPL
 
     if (listAppendValue(&pKernelChannelGroupApi->pKernelChannelGroup->apiObjList, &pKernelChannelGroupApi) == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5522);
         status = NV_ERR_INSUFFICIENT_RESOURCES;
         goto fail;
     }
@@ -748,16 +801,19 @@ kchangrpapiCopyConstruct_IMPL
 fail:
     if (pKernelChannelGroupApi->hLegacykCtxShareAsync != NV01_NULL_OBJECT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5523);
         pRmApi->Free(pRmApi, pDstClient->hClient,
                      pKernelChannelGroupApi->hLegacykCtxShareAsync);
     }
     if (pKernelChannelGroupApi->hLegacykCtxShareSync != NV01_NULL_OBJECT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5524);
         pRmApi->Free(pRmApi, pDstClient->hClient,
                      pKernelChannelGroupApi->hLegacykCtxShareSync);
     }
     if (pKernelChannelGroupApi->hKernelGraphicsContext != NV01_NULL_OBJECT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5525);
         pRmApi->Free(pRmApi, pDstClient->hClient,
                      pKernelChannelGroupApi->hKernelGraphicsContext);
     }
@@ -774,6 +830,7 @@ kchangrpapiCanCopy_IMPL
     KernelChannelGroupApi *pKernelChannelGroupApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5526);
     return NV_TRUE;
 }
 
@@ -786,6 +843,7 @@ CliGetChannelGroup
     NvHandle                *phDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5527);
     NV_STATUS status;
     RsClient *pRsClient;
     RsResourceRef *pResourceRef;
@@ -793,6 +851,7 @@ CliGetChannelGroup
 
     if (!ppChanGrpRef)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5528);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -811,6 +870,7 @@ CliGetChannelGroup
 
     if (phDevice)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5529);
         pParentRef = pResourceRef->pParentRef;
         *phDevice = pParentRef->hResource;
     }
@@ -856,6 +916,7 @@ kchangrpapiSetLegacyMode_IMPL
     NvHandle               hClient
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5530);
     KernelChannelGroup *pKernelChannelGroup = pKernelChannelGroupApi->pKernelChannelGroup;
     NvHandle hTsg = RES_GET_HANDLE(pKernelChannelGroupApi);
     NvHandle hkCtxShare = 0;
@@ -928,6 +989,7 @@ kchangrpapiSetLegacyMode_IMPL
 
     if(maxSubctx == 2)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5531);
         // Allocate ASYNC
         hkCtxShare = 0;
         kctxshareParams.hVASpace = 0;
@@ -968,6 +1030,7 @@ kchangrpapiSetLegacyMode_IMPL
     it = listIterAll(&pKernelChannelGroup->apiObjList);
     while (listIterNext(&it))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5532);
         KernelChannelGroupApi *pChanGrpDest = *it.pValue;
 
         if(pChanGrpDest == pKernelChannelGroupApi)
@@ -985,6 +1048,7 @@ kchangrpapiSetLegacyMode_IMPL
 
         if (maxSubctx == 2)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5533);
             NV_CHECK_OK_OR_GOTO(status, LEVEL_ERROR,
                 pRmApi->DupObject(pRmApi,
                                   RES_GET_CLIENT_HANDLE(pChanGrpDest),
@@ -1008,16 +1072,19 @@ fail:
 
     while (listIterNext(&it))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5534);
         KernelChannelGroupApi *pChanGrpIt = *it.pValue;
 
         if (pChanGrpIt->hLegacykCtxShareSync != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5535);
            pRmApi->Free(pRmApi, RES_GET_CLIENT_HANDLE(pChanGrpIt), pChanGrpIt->hLegacykCtxShareSync);
            pChanGrpIt->hLegacykCtxShareSync = 0;
         }
 
         if (pChanGrpIt->hLegacykCtxShareAsync != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5536);
            pRmApi->Free(pRmApi, RES_GET_CLIENT_HANDLE(pChanGrpIt), pChanGrpIt->hLegacykCtxShareAsync);
            pChanGrpIt->hLegacykCtxShareAsync = 0;
         }
@@ -1025,6 +1092,7 @@ fail:
 
     if(status == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5537);
         status = NV_ERR_INVALID_STATE;
     }
 
@@ -1038,6 +1106,7 @@ kchangrpapiCtrlCmdGpFifoSchedule_IMPL
     NVA06C_CTRL_GPFIFO_SCHEDULE_PARAMS *pSchedParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5538);
     OBJGPU              *pGpu         = GPU_RES_GET_GPU(pKernelChannelGroupApi);
     RsResourceRef       *pResourceRef = RES_GET_REF(pKernelChannelGroupApi);
     KernelChannelGroup  *pKernelChannelGroup = NULL;
@@ -1055,6 +1124,7 @@ kchangrpapiCtrlCmdGpFifoSchedule_IMPL
 
     if (gpuGetClassByClassId(pGpu, pResourceRef->externalClassId, &pClass) != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5539);
         NV_PRINTF(LEVEL_ERROR, "class %x not supported\n",
                   pResourceRef->externalClassId);
     }
@@ -1074,6 +1144,7 @@ kchangrpapiCtrlCmdGpFifoSchedule_IMPL
 
     for (pChanNode = pChanList->pHead; pChanNode; pChanNode = pChanNode->pNext)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5540);
         NV_CHECK_OR_RETURN(LEVEL_NOTICE, kchannelIsSchedulable_HAL(pGpu, pChanNode->pKernelChannel),
             NV_ERR_INVALID_STATE);
     }
@@ -1093,20 +1164,24 @@ kchangrpapiCtrlCmdGpFifoSchedule_IMPL
     runlistId = pKernelChannelGroup->runlistId; // Start with TSG runlistId
     for (pChanNode = pChanList->pHead; pChanNode; pChanNode = pChanNode->pNext)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5541);
         KernelChannel *pKernelChannel = pChanNode->pKernelChannel;
 
         NV_ASSERT_OR_ELSE(pKernelChannel != NULL, continue);
 
         if (kchannelIsRunlistSet(pGpu, pKernelChannel))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5542);
             if (runlistId == INVALID_RUNLIST_ID)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5543);
                 runlistId = kchannelGetRunlistId(pKernelChannel);
             }
             else // Catch if 2 channels in the same TSG have different runlistId
             {
                 if (runlistId != kchannelGetRunlistId(pKernelChannel))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5544);
                     NV_PRINTF(LEVEL_ERROR,
                         "Channels in TSG %d have different runlist IDs this should never happen!\n",
                         pKernelChannelGroup->grpID);
@@ -1119,6 +1194,7 @@ kchangrpapiCtrlCmdGpFifoSchedule_IMPL
     // If no channels have a runlist set, get the default and use it.
     if (runlistId == INVALID_RUNLIST_ID)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5545);
         runlistId = kfifoGetDefaultRunlist_HAL(pGpu, pKernelFifo,
             pKernelChannelGroup->engineType);
     }
@@ -1132,12 +1208,14 @@ kchangrpapiCtrlCmdGpFifoSchedule_IMPL
     //
     for (pChanNode = pChanList->pHead; pChanNode; pChanNode = pChanNode->pNext)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5546);
         KernelChannel *pKernelChannel = pChanNode->pKernelChannel;
 
         NV_ASSERT_OR_ELSE(pKernelChannel != NULL, continue);
 
         if (!kchannelIsRunlistSet(pGpu, pKernelChannel))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5547);
             kfifoRunlistSetId_HAL(pGpu, pKernelFifo, pKernelChannel, runlistId);
         }
     }
@@ -1145,6 +1223,7 @@ kchangrpapiCtrlCmdGpFifoSchedule_IMPL
 
     if (IS_VIRTUAL(pGpu) || IS_GSP_CLIENT(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5548);
         CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
         RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams;
         NvHandle hClient = RES_GET_CLIENT_HANDLE(pKernelChannelGroupApi);
@@ -1182,6 +1261,7 @@ kchangrpapiCtrlCmdBind_IMPL
     NVA06C_CTRL_BIND_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5549);
     NV_STATUS     rmStatus = NV_OK;
     OBJGPU       *pGpu     = GPU_RES_GET_GPU(pKernelChannelGroupApi);
     Device       *pDevice  = GPU_RES_GET_DEVICE(pKernelChannelGroupApi);
@@ -1197,6 +1277,7 @@ kchangrpapiCtrlCmdBind_IMPL
 
     if (bMIGInUse)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5550);
         KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
         MIG_INSTANCE_REF ref;
 
@@ -1231,12 +1312,14 @@ kchangrpapiCtrlCmdBind_IMPL
          pChanNode != NULL;
          pChanNode = pChanNode->pNext)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5551);
         NV_ASSERT_OK_OR_CAPTURE_FIRST_ERROR(rmStatus,
             kchannelBindToRunlist(pChanNode->pKernelChannel,
                                   localEngineType,
                                   engineDesc));
         if (rmStatus != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5552);
             break;
         }
     }
@@ -1251,6 +1334,7 @@ kchangrpapiCtrlCmdGetTimeslice_IMPL
     NVA06C_CTRL_TIMESLICE_PARAMS *pTsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5553);
     KernelChannelGroup *pKernelChannelGroup = NULL;
 
     if (pKernelChannelGroupApi->pKernelChannelGroup == NULL)
@@ -1269,6 +1353,7 @@ kchangrpapiCtrlCmdSetTimeslice_IMPL
     NVA06C_CTRL_TIMESLICE_PARAMS *pTsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5554);
     OBJGPU             *pGpu                = GPU_RES_GET_GPU(pKernelChannelGroupApi);
     RsResourceRef      *pResourceRef        = RES_GET_REF(pKernelChannelGroupApi);
     KernelChannelGroup *pKernelChannelGroup = NULL;
@@ -1282,6 +1367,7 @@ kchangrpapiCtrlCmdSetTimeslice_IMPL
 
     if (gpuGetClassByClassId(pGpu, pResourceRef->externalClassId, &pClass) != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5555);
         NV_PRINTF(LEVEL_ERROR, "class %x not supported\n",
                   pResourceRef->externalClassId);
     }
@@ -1289,6 +1375,7 @@ kchangrpapiCtrlCmdSetTimeslice_IMPL
 
     if (IS_VIRTUAL(pGpu) || IS_GSP_CLIENT(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5556);
         CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
         RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams;
         NvHandle hClient = RES_GET_CLIENT_HANDLE(pKernelChannelGroupApi);
@@ -1306,6 +1393,7 @@ kchangrpapiCtrlCmdSetTimeslice_IMPL
         // Update guest RM's internal bookkeeping with the timeslice.
         if (status == NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5557);
             pKernelChannelGroup->timesliceUs = pParams->timesliceUs;
         }
 
@@ -1333,6 +1421,7 @@ kchangrpapiCtrlCmdGetInfo_IMPL
     NVA06C_CTRL_GET_INFO_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5558);
     KernelChannelGroup *pKernelChannelGroup = NULL;
 
     if (pKernelChannelGroupApi->pKernelChannelGroup == NULL)
@@ -1351,6 +1440,7 @@ kchangrpapiCtrlCmdSetInterleaveLevel_IMPL
     NVA06C_CTRL_INTERLEAVE_LEVEL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5559);
     OBJGPU          *pGpu         = GPU_RES_GET_GPU(pKernelChannelGroupApi);
     RsResourceRef   *pResourceRef = RES_GET_REF(pKernelChannelGroupApi);
     KernelChannelGroup *pKernelChannelGroup =
@@ -1360,6 +1450,7 @@ kchangrpapiCtrlCmdSetInterleaveLevel_IMPL
 
     if (gpuGetClassByClassId(pGpu, pResourceRef->externalClassId, &pClass) != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5560);
         NV_PRINTF(LEVEL_ERROR, "class %x not supported\n",
                   pResourceRef->externalClassId);
     }
@@ -1367,6 +1458,7 @@ kchangrpapiCtrlCmdSetInterleaveLevel_IMPL
 
     if (IS_VIRTUAL(pGpu) || IS_GSP_CLIENT(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5561);
         CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
         RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams;
         NvHandle hClient = RES_GET_CLIENT_HANDLE(pKernelChannelGroupApi);
@@ -1394,6 +1486,7 @@ kchangrpapiCtrlCmdGetInterleaveLevel_IMPL
     NVA06C_CTRL_INTERLEAVE_LEVEL_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5562);
     KernelChannelGroup *pKernelChannelGroup = NULL;
     OBJGPU *pGpu = GPU_RES_GET_GPU(pKernelChannelGroupApi);
     NvU32 subdevInst = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
@@ -1419,6 +1512,7 @@ kchangrpapiCtrlCmdInternalPromoteFaultMethodBuffers_IMPL
     NVA06C_CTRL_INTERNAL_PROMOTE_FAULT_METHOD_BUFFERS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5563);
     NV_PRINTF(LEVEL_INFO,
         "bug 200691429: kchangrpapiCtrlCmdInternalPromoteFaultMethodBuffers_IMPL received\n");
     return NV_OK;

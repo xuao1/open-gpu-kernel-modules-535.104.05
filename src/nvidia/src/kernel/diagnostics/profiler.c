@@ -43,10 +43,12 @@ rmProfStart
     RM_PROF_STATS *pStats
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1088);
     NV_ASSERT_OR_RETURN_VOID(pStats != NULL);
 
     if (pStats->start_ns != 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1089);
         NV_PRINTF(LEVEL_ERROR,
                   "Starting time measurement that is already started\n");
         //
@@ -73,6 +75,7 @@ rmProfStop
     RM_PROF_STATS *pStats
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1090);
     NvU64 stop_ns;
 
     NV_ASSERT_OR_RETURN_VOID(pStats != NULL);
@@ -91,10 +94,12 @@ _rmProfStopTime
     NvU64          stop_ns
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1091);
     NV_ASSERT_OR_RETURN_VOID(pStats != NULL);
 
     if (pStats->start_ns == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1092);
         NV_PRINTF(LEVEL_ERROR,
                   "Stopping time measurement that is already stopped\n");
         DBG_BREAKPOINT();
@@ -123,14 +128,17 @@ rmProfRecord
     NvU64          time_ns
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1093);
     NV_ASSERT_OR_RETURN_VOID(pStats != NULL);
 
     if (pStats->count == 0 || time_ns < pStats->min_ns)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1094);
         pStats->min_ns = time_ns;
     }
     if (pStats->count == 0 || time_ns > pStats->max_ns)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1095);
         pStats->max_ns = time_ns;
     }
     pStats->total_ns += time_ns;
@@ -152,6 +160,7 @@ rmProfGroupStart
     RM_PROF_STATS *pFirst
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1096);
     NV_ASSERT_OR_RETURN_VOID(pGroup != NULL);
     NV_ASSERT_OR_RETURN_VOID(pFirst != NULL);
 
@@ -161,6 +170,7 @@ rmProfGroupStart
     // Reuse the first modules' start time for the total module.
     if (pTotal != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1097);
         pTotal->start_ns = pFirst->start_ns;
     }
 
@@ -182,6 +192,7 @@ rmProfGroupNext
     RM_PROF_STATS *pNext
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1098);
     NV_ASSERT_OR_RETURN_VOID(pGroup != NULL);
     NV_ASSERT_OR_RETURN_VOID(pGroup->pLast != NULL);
     NV_ASSERT_OR_RETURN_VOID(pNext != NULL);
@@ -207,6 +218,7 @@ rmProfGroupStop
     RM_PROF_GROUP *pGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1099);
     NvU64 stop_ns;
 
     NV_ASSERT_OR_RETURN_VOID(pGroup != NULL);
@@ -218,6 +230,7 @@ rmProfGroupStop
     _rmProfStopTime(pGroup->pLast, stop_ns);
     if (pGroup->pTotal != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1100);
         _rmProfStopTime(pGroup->pTotal, stop_ns);
     }
 

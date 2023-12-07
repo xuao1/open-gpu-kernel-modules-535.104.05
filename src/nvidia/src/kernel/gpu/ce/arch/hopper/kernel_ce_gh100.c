@@ -160,6 +160,7 @@ kceGetPce2lceConfigSize1_GH100
     KernelCE *pKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2875);
     return NV_CE_PCE2LCE_CONFIG__SIZE_1;
 }
 
@@ -174,8 +175,10 @@ kceGetNumPceRequired
     NvU32 numLinks
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2876);
     switch(numLinks)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2877);
         case 6:
             return 4;
         case 5:
@@ -216,6 +219,7 @@ kceGetAutoConfigTableEntry_GH100
     NvU32                   *pExposeCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2878);
     NvU32 i;
 
     //
@@ -228,17 +232,20 @@ kceGetAutoConfigTableEntry_GH100
     //
     if (!gpuIsSelfHosted(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2879);
         return NV_FALSE;
     }
 
     for (i = 0; i < autoConfigNumEntries; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2880);
         if ((pTable[i].sysmemLinks     == pCurrentTopo->sysmemLinks    ) &&
             (pTable[i].maxLinksPerPeer == pCurrentTopo->maxLinksPerPeer) &&
             (pTable[i].bSymmetric      == pCurrentTopo->bSymmetric     ) &&
             (pTable[i].bSwitchConfig   == pCurrentTopo->bSwitchConfig  ) &&
             (pTable[i].numPeers        == pCurrentTopo->numPeers       ))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2881);
             *pIdx = i;
             *pExposeCeMask = pTable[i].exposeCeMask;
             return NV_TRUE;
@@ -267,17 +274,20 @@ _ceGetAlgorithmPceIndex
     NvU8       *pHshubId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2882);
     NvU8 pHshubIdRequested;
     NvU32 i;
 
     if ((pceIndex != NULL) && *pceIndex >= kceGetPce2lceConfigSize1_HAL(pKCe))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2883);
         NV_PRINTF(LEVEL_ERROR, "Invalid PCE request. pceIndex = %d pceCnt = %d\n", *pceIndex, kceGetPce2lceConfigSize1_HAL(pKCe));
         return;
     }
 
     if (!(NVBIT32(*pceIndex) & pceAvailableMaskPerHshub[*pHshubId]))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2884);
         //
         // 1. We couldn't find an applicable strided PCE in given HSHUB
         // So, we'll assign the next consecutive PCE on the same HSHUB
@@ -285,6 +295,7 @@ _ceGetAlgorithmPceIndex
         *pceIndex = CE_GET_LOWEST_AVAILABLE_IDX(pceAvailableMaskPerHshub[*pHshubId]);
         if (!(NVBIT32(*pceIndex) & pceAvailableMaskPerHshub[*pHshubId]))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2885);
             // 2. If this is not a valid PCE on given HSHUB, assign PCE from alternative HSHUB
             pHshubIdRequested = *pHshubId;
             for (i = pHshubIdRequested + 1; i != pHshubIdRequested; i++) {
@@ -301,6 +312,7 @@ _ceGetAlgorithmPceIndex
 
             if (i == pHshubIdRequested)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2886);
                 // If we've reached this point, then we have no more available PCEs to assign
                 NV_PRINTF(LEVEL_ERROR, "No more available PCEs to assign!\n");
                 NV_ASSERT(0);
@@ -329,6 +341,7 @@ kceMapPceLceForC2C_GH100
     NvU32   *pLocalExposeCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2887);
     NV_STATUS status     = NV_OK;
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
     NvU32     pceIndex, i, hshubId, lceMask, lceIndex;
@@ -339,6 +352,7 @@ kceMapPceLceForC2C_GH100
     numNvLinkPeers = pKCe->nvlinkNumPeers;
     if (gpuIsCCFeatureEnabled(pGpu) || (c2cEnabled && numNvLinkPeers == 0 && IS_MIG_IN_USE(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2888);
         lceMask = NVBIT32(2) | NVBIT32(3);
         *pLocalExposeCeMask |= lceMask;
 
@@ -353,17 +367,21 @@ kceMapPceLceForC2C_GH100
     }
     else if (c2cEnabled && numNvLinkPeers == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2889);
         lceMask = NVBIT32(2);
         *pLocalExposeCeMask |= lceMask;
         lceIndex = CE_GET_LOWEST_AVAILABLE_IDX(lceMask);
 
         for (hshubId = 2; hshubId < NV_CE_MAX_HSHUBS; hshubId++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2890);
             for (i = 0; i < selectPcePerHshub; i++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2891);
                 pceIndex = CE_GET_LOWEST_AVAILABLE_IDX(pceAvailableMaskPerHshub[hshubId]);
                 if (pceIndex < kceGetPce2lceConfigSize1_HAL(pKCe))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2892);
                     pceAvailableMaskPerHshub[hshubId] &= (~(NVBIT32(pceIndex)));
                     pLocalPceLceMap[pceIndex] = lceIndex;
                 }
@@ -376,11 +394,14 @@ kceMapPceLceForC2C_GH100
 
         for (hshubId = 2; hshubId < NV_CE_MAX_HSHUBS; hshubId++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2893);
             for (i = 0; i < selectPcePerHshub; i++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2894);
                 pceIndex = CE_GET_LOWEST_AVAILABLE_IDX(pceAvailableMaskPerHshub[hshubId]);
                 if (pceIndex < kceGetPce2lceConfigSize1_HAL(pKCe))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2895);
                     pceAvailableMaskPerHshub[hshubId] &= (~(NVBIT32(pceIndex)));
                     pLocalPceLceMap[pceIndex] = lceIndex;
                 }
@@ -412,6 +433,7 @@ kceIsGenXorHigherSupported_GH100
     NvU32     checkGen
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2896);
     OBJSYS     *pSys = SYS_GET_INSTANCE();
     OBJCL      *pCl = SYS_GET_CL(pSys);
     NvU8       genSpeed = 0;
@@ -422,10 +444,12 @@ kceIsGenXorHigherSupported_GH100
     status = clPcieGetRootGenSpeed(pGpu, pCl, &genSpeed);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2897);
         NV_PRINTF(LEVEL_ERROR, "Could not get root gen speed - check for GPU gen speed!\n");
         // Check for GPU gen speed
         if (GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_LINK_CONTROL_STATUS, &busSpeed) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2898);
             NV_PRINTF(LEVEL_ERROR, "Unable to read NV_EP_PCFG_GPU_LINK_CONTROL_STATUS from config space.\n");
             return bIsGenXorHigher;
         }
@@ -435,6 +459,7 @@ kceIsGenXorHigherSupported_GH100
 
     if ((genSpeed >= checkGen))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2899);
         bIsGenXorHigher = NV_TRUE;
     }
 
@@ -464,6 +489,7 @@ kceMapPceLceForGRCE_GH100
     NvU32   fbPceMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2900);
     KernelBif *pKernelBif = GPU_GET_KERNEL_BIF(pGpu);
     NvU32     grceIdx, pceIndex, i;
     NvU32     lceIndex = 0;
@@ -477,13 +503,16 @@ kceMapPceLceForGRCE_GH100
 
     if (gpuIsCCFeatureEnabled(pGpu) || (c2cEnabled && numNvLinkPeers == 0))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2901);
         lceMask = NVBIT32(0) | NVBIT32(1);
         *pLocalExposeCeMask |= lceMask;
 
         for (grceIdx = 0; grceIdx < NV_CE_MAX_GRCE; grceIdx++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2902);
             for (i = 0; i < NV_CE_MAX_PCE_PER_GRCE; i++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2903);
                 pceIndex = grceMappings[grceIdx * 2 + i];
 
                 //
@@ -510,8 +539,10 @@ kceMapPceLceForGRCE_GH100
         *pLocalExposeCeMask |= lceMask;
         for (grceIdx = 0; grceIdx < NV_CE_MAX_GRCE; grceIdx++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2904);
             for (i = 0; i < NV_CE_MAX_PCE_PER_GRCE; i++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2905);
                 pceIndex = grceMappings[grceIdx * 2 + i];
 
                 // floorswept PCE or account for PCIe latency in Gen <= 4
@@ -532,8 +563,10 @@ kceMapPceLceForGRCE_GH100
 
         for (grceIdx = 0; grceIdx < NV_CE_MAX_GRCE; grceIdx++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2906);
             for (i = 0; i < NV_CE_MAX_PCE_PER_GRCE; i++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2907);
                 pceIndex = grceMappings[grceIdx * 2 + i];
                 fbPceMask &= (~(NVBIT32(pceIndex)));
 
@@ -544,6 +577,7 @@ kceMapPceLceForGRCE_GH100
                 // Sharing use case
                 if ((NVBIT32(pLocalPceLceMap[pceIndex])) & *pLocalExposeCeMask)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2908);
                     // GRCE is shared - set the status and shared LCE # in register field
                     lceIndex = pLocalPceLceMap[pceIndex];
                     pLocalGrceMap[grceIdx] = DRF_NUM(_CE, _GRCE_CONFIG, _SHARED, 1) |
@@ -591,6 +625,7 @@ kceMapPceLceForNvlinkPeers_GH100
     NvU32   *pLocalExposeCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2909);
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
     OBJSYS       *pSys          = SYS_GET_INSTANCE();
     NV_STATUS     status        = NV_OK;
@@ -610,6 +645,7 @@ kceMapPceLceForNvlinkPeers_GH100
 
     if (pKernelNvlink == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2910);
         return NV_WARN_NOTHING_TO_DO;
     }
 
@@ -618,6 +654,7 @@ kceMapPceLceForNvlinkPeers_GH100
 
     if (knvlinkIsGpuConnectedToNvswitch(pGpu, pKernelNvlink))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2911);
         //
         // On NVSwitch systems, we only create 1 aperture for all p2p connections.
         // For PCE2LCE mapping, we should only assign 1 LCE for this connection.
@@ -637,12 +674,14 @@ kceMapPceLceForNvlinkPeers_GH100
 
    while ((pRemoteGpu = gpumgrGetNextGpu(gpuMask, &gpuInstance)) != NULL)
    {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2912);
         NvU32 numLinksToPeer = knvlinkGetNumLinksToPeer(pGpu, pKernelNvlink,
                                                        pRemoteGpu);
         NvU32 maxLceCnt = NV_CE_MAX_LCE_MASK;
 
         if (numLinksToPeer == 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2913);
             continue;
         }
 
@@ -651,6 +690,7 @@ kceMapPceLceForNvlinkPeers_GH100
 
         if (peerAvailableLceMask == 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2914);
             //
             // peerAvailableLceMask is initialized to even async LCEs at the
             // top of the function.
@@ -666,6 +706,7 @@ kceMapPceLceForNvlinkPeers_GH100
         HIGHESTBITIDX_32(maxLceCnt);
         if (lceIndex < maxLceCnt)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2915);
             lceMask |= NVBIT32(lceIndex);
             // Clear out the chosen LCE
             peerAvailableLceMask &= (~(NVBIT32(lceIndex)));
@@ -676,6 +717,7 @@ kceMapPceLceForNvlinkPeers_GH100
         peerLinkMask = knvlinkGetLinkMaskToPeer(pGpu, pKernelNvlink, pRemoteGpu);
         if (peerLinkMask == 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2916);
             NV_PRINTF(LEVEL_INFO, "GPU%d has nvlink disabled. Skip programming\n", pRemoteGpu->gpuInstance);
             continue;
         }
@@ -693,6 +735,7 @@ kceMapPceLceForNvlinkPeers_GH100
 
         FOR_EACH_INDEX_IN_MASK(32, linkId, peerLinkMask)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2917);
             hshubId = params.hshubIds[linkId];
             // Update link count for this hshub
             linksPerHshub[hshubId]++;
@@ -701,6 +744,7 @@ kceMapPceLceForNvlinkPeers_GH100
 
         for (i = 0; i < NV_CE_MAX_HSHUBS; i++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2918);
             if (linksPerHshub[i] == 0)
                 continue;
 
@@ -709,6 +753,7 @@ kceMapPceLceForNvlinkPeers_GH100
 
             for (j = 0; j < numPcePerLink; j++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2919);
                 _ceGetAlgorithmPceIndex(pGpu, pKCe, pceAvailableMaskPerHshub, &pceIndex, &i);
                 pceMask |= NVBIT32(pceIndex);
                 // Clear out the assigned PCE
@@ -720,11 +765,13 @@ kceMapPceLceForNvlinkPeers_GH100
         // Now, assign the PCE-LCE association for the current peer
         if (pceMask != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2920);
             // We just need at least one peer to set this to TRUE
             bPeerAssigned = NV_TRUE;
 
             FOR_EACH_INDEX_IN_MASK(32, pceIndex, pceMask)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2921);
                 pLocalPceLceMap[pceIndex] = lceIndex;
                 NV_PRINTF(LEVEL_INFO, "GPU%d <-> GPU%d PCE Index: %d LCE Index: %d\n",
                         pGpu->gpuInstance, pRemoteGpu->gpuInstance, pceIndex, lceIndex);
@@ -747,6 +794,7 @@ kceMapPceLceForNvlinkPeers_GH100
         //
         if (pSys->getProperty(pSys, PDB_PROP_SYS_FABRIC_IS_EXTERNALLY_MANAGED))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2922);
             break;
         }
 
@@ -754,6 +802,7 @@ kceMapPceLceForNvlinkPeers_GH100
 
     if (bPeerAssigned == NV_FALSE)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2923);
         status = NV_WARN_NOTHING_TO_DO;
     }
 
@@ -783,6 +832,7 @@ kceMapAsyncLceDefault_GH100
     NvU32   numDefaultPces
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2924);
     NvU32 peerAvailableLceMask = NV_CE_LCE_MASK_INIT;
     NvU32 lceMask = 0;
     NvU32 pceMask = 0;
@@ -802,6 +852,7 @@ kceMapAsyncLceDefault_GH100
     HIGHESTBITIDX_32(maxLceCnt);
     if (lceIndex < maxLceCnt)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2925);
         lceMask |= NVBIT32(lceIndex);
         // Clear out the chosen LCE
         peerAvailableLceMask &= (~(NVBIT32(lceIndex)));
@@ -810,12 +861,14 @@ kceMapAsyncLceDefault_GH100
     // Assign PCEs to this LCE based on input request
     for (i = 0; i < numDefaultPces; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2926);
         if (i % NV_CE_PCE_PER_HSHUB == 0)
             hshubId++;
 
         pceIndex = CE_GET_LOWEST_AVAILABLE_IDX(pceAvailableMaskPerHshub[hshubId]);
         if (pceIndex < kceGetPce2lceConfigSize1_HAL(pKCe))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2927);
             pceMask |= NVBIT32(pceIndex);
             pceAvailableMaskPerHshub[hshubId] &= (~(NVBIT32(pceIndex)));
         }
@@ -823,6 +876,7 @@ kceMapAsyncLceDefault_GH100
 
     FOR_EACH_INDEX_IN_MASK(32, pceIndex, pceMask)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2928);
         pLocalPceLceMap[pceIndex] = lceIndex;
         NV_PRINTF(LEVEL_INFO, "GPU%d <-> GPU%d PCE Index: %d LCE Index: %d\n",
                 pGpu->gpuInstance, pGpu->gpuInstance, pceIndex, lceIndex);
@@ -847,6 +901,7 @@ kceGetMappings_GH100
     NvU32    *pExposeCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2929);
     NV_STATUS    status         = NV_OK;
     NV_STATUS    statusC2C      = NV_OK;
     KernelNvlink *pKernelNvlink = GPU_GET_KERNEL_NVLINK(pGpu);
@@ -864,18 +919,22 @@ kceGetMappings_GH100
     //
     if (gpuIsSelfHosted(pGpu) && !(pGpu->getProperty(pGpu, PDB_PROP_GPU_SKIP_TABLE_CE_MAP)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2930);
         bEntryExists = kceGetAutoConfigTableEntry_HAL(pGpu, pKCe, pTopoParams, nvLinkCeAutoConfigTable_GH100,
                                                       NV_ARRAY_ELEMENTS(nvLinkCeAutoConfigTable_GH100),
                                                       &topoIdx, pExposeCeMask);
         if (bEntryExists)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2931);
             // Since entry exists, fill local variables with the associated table entry
             for (pceIdx = 0; pceIdx < pce2lceConfigSize1; pceIdx++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2932);
                 pLocalPceLceMap[pceIdx] = nvLinkCeAutoConfigTable_GH100[topoIdx].pceLceMap[pceIdx];
             }
             for (grceIdx = 0; grceIdx < grceConfigSize1; grceIdx++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2933);
                 pLocalGrceMap[grceIdx] = nvLinkCeAutoConfigTable_GH100[topoIdx].grceConfig[grceIdx];
             }
 
@@ -897,6 +956,7 @@ kceGetMappings_GH100
     // Assign PCEs to "PEER"s if nvlink is enabled
     if (pKernelNvlink && !knvlinkIsForcedConfig(pGpu, pKernelNvlink))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2934);
         status = kceMapPceLceForNvlinkPeers_HAL(pGpu, pKCe,
                                                 pTopoParams->pceAvailableMaskPerHshub,
                                                 pLocalPceLceMap,
@@ -920,6 +980,7 @@ kceGetMappings_GH100
     if ((status == NV_WARN_NOTHING_TO_DO && statusC2C == NV_WARN_NOTHING_TO_DO) ||
         (status == NV_ERR_NOT_SUPPORTED && statusC2C == NV_ERR_NOT_SUPPORTED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2935);
         // If there's no NVLink peers available, still expose an additional async LCE
         status = kceMapAsyncLceDefault_HAL(pGpu, pKCe,
                                            pTopoParams->pceAvailableMaskPerHshub,

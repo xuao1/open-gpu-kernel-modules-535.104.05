@@ -32,12 +32,14 @@ static void _kchangrpFreeAllEngCtxDescs(OBJGPU *pGpu, KernelChannelGroup *pKerne
 NV_STATUS
 kchangrpConstruct_IMPL(KernelChannelGroup *pKernelChannelGroup)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5429);
     return NV_OK;
 }
 
 void
 kchangrpDestruct_IMPL(KernelChannelGroup *pKernelChannelGroup)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5430);
     return;
 }
 
@@ -49,6 +51,7 @@ kchangrpSetState_IMPL
     CHANNELGROUP_STATE  state
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5431);
     ct_assert(CHANNELGROUP_STATE_COUNT <= 8 * sizeof(NvU32));
     pKernelChannelGroup->pStateMask[subdevice] |= NVBIT(state);
 }
@@ -61,6 +64,7 @@ kchangrpClearState_IMPL
     CHANNELGROUP_STATE  state
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5432);
     ct_assert(CHANNELGROUP_STATE_COUNT <= 8 * sizeof(NvU32));
     pKernelChannelGroup->pStateMask[subdevice] &= ~NVBIT(state);
 }
@@ -73,6 +77,7 @@ kchangrpIsStateSet_IMPL
     CHANNELGROUP_STATE  state
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5433);
     ct_assert(CHANNELGROUP_STATE_COUNT <= 8 * sizeof(NvU32));
     return !!(pKernelChannelGroup->pStateMask[subdevice] & NVBIT(state));
 }
@@ -106,6 +111,7 @@ kchangrpInit_IMPL
     NvU32                  gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5434);
     NV_STATUS         status       = NV_OK;
     KernelFifo       *pKernelFifo  = GPU_GET_KERNEL_FIFO(pGpu);
     CHID_MGR         *pChidMgr     = NULL;
@@ -153,6 +159,7 @@ kchangrpInit_IMPL
 
     if (kfifoIsPerRunlistChramEnabled(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5435);
         //
         // pKernelChannelGroup->engineType should hold the valid engine type if
         // bUsePerRunlistChram is set. If it is not set,
@@ -190,6 +197,7 @@ kchangrpInit_IMPL
     pKernelChannelGroup->pSubctxIdHeap = portMemAllocNonPaged(sizeof(OBJEHEAP));
     if (pKernelChannelGroup->pSubctxIdHeap == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5436);
         NV_CHECK(LEVEL_ERROR, pKernelChannelGroup->pSubctxIdHeap != NULL);
         status = NV_ERR_NO_MEMORY;
         goto failed;
@@ -223,6 +231,7 @@ kchangrpInit_IMPL
         (sizeof(HW_ENG_FAULT_METHOD_BUFFER) * runQueues));
     if (pKernelChannelGroup->pMthdBuffers == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5437);
         NV_CHECK(LEVEL_ERROR, pKernelChannelGroup->pMthdBuffers != NULL);
         status = NV_ERR_NO_MEMORY;
         goto failed;
@@ -235,6 +244,7 @@ kchangrpInit_IMPL
     status = kchangrpAllocFaultMethodBuffers_HAL(pGpu, pKernelChannelGroup);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5438);
         NV_PRINTF(LEVEL_ERROR,
                   " Fault method buffer allocation failed for group ID 0x%0x with status 0x%0x\n",
                   grpID, status);
@@ -248,13 +258,16 @@ kchangrpInit_IMPL
     //
     if (!RMCFG_FEATURE_PLATFORM_GSP)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5439);
         bMapFaultMthdBuffers = NV_TRUE;
 
         for (index = 0; index < runQueues; index++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5440);
             status = kchangrpMapFaultMethodBuffers_HAL(pGpu, pKernelChannelGroup, index);
             if (status != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5441);
                 NV_PRINTF(LEVEL_ERROR,
                           " Fault method buffer BAR2 mapping failed for group ID 0x%0x with status 0x%0x\n",
                           grpID, status);
@@ -276,6 +289,7 @@ kchangrpInit_IMPL
     //
     if (mapInsertExisting(pChidMgr->pChanGrpTree, grpID, pKernelChannelGroup))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5442);
         status = NV_OK;
     }
     else
@@ -290,6 +304,7 @@ kchangrpInit_IMPL
 failed:
     if (pKernelChannelGroup->pSubctxIdHeap != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5443);
         pKernelChannelGroup->pSubctxIdHeap->eheapDestruct(
             pKernelChannelGroup->pSubctxIdHeap);
         portMemFree(pKernelChannelGroup->pSubctxIdHeap);
@@ -300,16 +315,20 @@ failed:
 
     if (pKernelChannelGroup->pChanList != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5444);
         kfifoChannelListDestroy(pGpu, pKernelFifo, pKernelChannelGroup->pChanList);
         pKernelChannelGroup->pChanList = NULL;
     }
 
     if (pKernelChannelGroup->pMthdBuffers != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5445);
         if (bMapFaultMthdBuffers)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5446);
             for (index = 0; index < runQueues; index++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5447);
                 kchangrpUnmapFaultMethodBuffers_HAL(pGpu, pKernelChannelGroup, index);
             }
         }
@@ -354,6 +373,7 @@ kchangrpDestroy_IMPL
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5448);
     NV_STATUS           status;
     KernelFifo         *pKernelFifo  = GPU_GET_KERNEL_FIFO(pGpu);
     CHID_MGR           *pChidMgr;
@@ -366,6 +386,7 @@ kchangrpDestroy_IMPL
 
     if (kfifoIsPerRunlistChramEnabled(pKernelFifo))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5449);
         //
         // pKernelChannelGroup->engineType should hold the valid engine type if
         // bUsePerRunlistChram is set. If it is not set,
@@ -423,6 +444,7 @@ kchangrpDestroy_IMPL
     pKernelChannelGroupTemp = mapFind(pChidMgr->pChanGrpTree, pKernelChannelGroup->grpID);
     if (pKernelChannelGroupTemp == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5450);
         NV_PRINTF(LEVEL_ERROR, "Could not find channel group %d\n",
                   pKernelChannelGroup->grpID);
         return NV_ERR_OBJECT_NOT_FOUND;
@@ -444,14 +466,17 @@ kchangrpDestroy_IMPL
          gpuIsWarBug200577889SriovHeavyEnabled(pGpu)) &&
         pKernelChannelGroup->pMthdBuffers)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5451);
         //
         // Unmap method buffer from invisible BAR2
         // Skipped for GSP since its done during fifoFree
         //
         if (!RMCFG_FEATURE_PLATFORM_GSP)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5452);
             for (index = 0; index < runQueues; index++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5453);
                 kchangrpUnmapFaultMethodBuffers_HAL(pGpu, pKernelChannelGroup, index);
             }
         }
@@ -490,6 +515,7 @@ kchangrpAddChannel_IMPL
     KernelChannel      *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5454);
     NV_STATUS       status;
     KernelFifo     *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
     NvU32           maxChanCount;
@@ -503,6 +529,7 @@ kchangrpAddChannel_IMPL
     maxChanCount = kfifoGetMaxChannelGroupSize_HAL(pKernelFifo);
     if (pKernelChannelGroup->chanCount == maxChanCount)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5455);
         NV_PRINTF(LEVEL_ERROR,
                   "There are already max %d channels in this group\n",
                   maxChanCount);
@@ -530,6 +557,7 @@ kchangrpAddChannel_IMPL
                                    pKernelChannelGroup->pChanList);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5456);
         NV_PRINTF(LEVEL_ERROR, "Could not add channel to channel list\n");
         return status;
     }
@@ -564,6 +592,7 @@ kchangrpRemoveChannel_IMPL
     KernelChannel      *pKernelChannel
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5457);
     NV_STATUS status = NV_OK;
 
     NV_ASSERT_OR_RETURN(pKernelChannelGroup != NULL, NV_ERR_INVALID_POINTER);
@@ -574,12 +603,14 @@ kchangrpRemoveChannel_IMPL
                                    pKernelChannelGroup->pChanList);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5458);
         NV_PRINTF(LEVEL_ERROR, "Could not remove channel from channel list\n");
         return status;
     }
 
     if (pKernelChannelGroup->chanCount == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5459);
         NV_PRINTF(LEVEL_ERROR, "Channelcount in channel group not right!!!\n");
         DBG_BREAKPOINT();
         return NV_ERR_INVALID_STATE;
@@ -589,6 +620,7 @@ kchangrpRemoveChannel_IMPL
 
     if (pKernelChannelGroup->chanCount == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5460);
         pKernelChannelGroup->bRunlistAssigned = NV_FALSE;
 
         //
@@ -597,12 +629,14 @@ kchangrpRemoveChannel_IMPL
         //
         if (pKernelChannelGroup->pMthdBuffers != NULL && RMCFG_FEATURE_PLATFORM_GSP)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5461);
             KernelFifo *pKernelFifo = GPU_GET_KERNEL_FIFO(pGpu);
             NvU32 runQueues = kfifoGetNumRunqueues_HAL(pGpu, pKernelFifo);
             NvU32 index;
 
             for (index = 0; index < runQueues; index++)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5462);
                 kchangrpUnmapFaultMethodBuffers_HAL(pGpu,
                     pKernelChannel->pKernelChannelGroupApi->pKernelChannelGroup,
                     index);
@@ -634,13 +668,16 @@ kchangrpSetInterleaveLevel_IMPL
     NvU32               value
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5463);
     switch (value)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5464);
         case NVA06C_CTRL_INTERLEAVE_LEVEL_LOW:
         case NVA06C_CTRL_INTERLEAVE_LEVEL_MEDIUM:
         case NVA06C_CTRL_INTERLEAVE_LEVEL_HIGH:
             SLI_LOOP_START(SLI_LOOP_FLAGS_BC_ONLY)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5465);
                 NvU32 subdevInst = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
                 pKernelChannelGroup->pInterleaveLevel[subdevInst] = value;
             }
@@ -664,6 +701,7 @@ _kchangrpFreeAllEngCtxDescs
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5466);
     ENGINE_CTX_DESCRIPTOR *pEngCtxDescriptor;
 
     // Nothing to do
@@ -676,6 +714,7 @@ _kchangrpFreeAllEngCtxDescs
     pEngCtxDescriptor = pKernelChannelGroup->ppEngCtxDesc[gpumgrGetSubDeviceInstanceFromGpu(pGpu)];
     if (pEngCtxDescriptor != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5467);
         vaListDestroy(&pEngCtxDescriptor->vaList);
     }
     portMemFree(pEngCtxDescriptor);
@@ -697,6 +736,7 @@ kchangrpAllocEngineContextDescriptor_IMPL
     KernelChannelGroup *pKernelChannelGroup
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5468);
     NvU32 subdeviceInstance = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
     NV_STATUS status;
 
@@ -723,6 +763,7 @@ kchangrpGetEngineContextMemDesc_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5469);
     ENGINE_CTX_DESCRIPTOR *pEngCtxDesc;
     NvU32                  subDevInst = gpumgrGetSubDeviceInstanceFromGpu(pGpu);
 

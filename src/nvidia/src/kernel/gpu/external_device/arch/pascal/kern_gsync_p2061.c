@@ -37,6 +37,7 @@ gsyncGetHouseSyncMode_P2061
     NvU8*              houseSyncMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4465);
     NvU8      regCtrl4;
     NV_STATUS status;
 
@@ -58,6 +59,7 @@ gsyncSetHouseSyncMode_P2061
     NvU8               houseSyncMode
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4466);
     NvU8      regStatus2;
     NvU8      regCtrl4;
     NV_STATUS status;
@@ -65,6 +67,7 @@ gsyncSetHouseSyncMode_P2061
     if (houseSyncMode != NV_P2061_CONTROL4_HOUSE_SYNC_MODE_INPUT &&
         houseSyncMode != NV_P2061_CONTROL4_HOUSE_SYNC_MODE_OUTPUT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4467);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -87,6 +90,7 @@ gsyncSetHouseSyncMode_P2061
         !FLD_TEST_DRF(_P2060, _STATUS2, _HS_DETECT, _NONE, regStatus2) &&
         houseSyncMode == NV_P2061_CONTROL4_HOUSE_SYNC_MODE_OUTPUT)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4468);
         return NV_ERR_INVALID_STATE;
     }
 
@@ -109,24 +113,28 @@ gsyncGetCplStatus_P2061
     NvU32 *pVal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4469);
     NV_STATUS status = NV_OK;
     NvU8 regStatus2;
     NvU8 regStatus6;
 
     switch (CplStatus)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4470);
         // p2061-specific cases
         case gsync_Status_bInternalSlave:
             status = readregu008_extdeviceTargeted(pGpu, pExtDev,
                      (NvU8)NV_P2060_STATUS2, &regStatus2);
             if (status != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4471);
                 break;
             }
             status = readregu008_extdeviceTargeted(pGpu, pExtDev,
                      (NvU8)NV_P2061_STATUS6, &regStatus6);
             if (status == NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4472);
                 *pVal = FLD_TEST_DRF(_P2060, _STATUS2, _PORT0, _OUTPUT, (NvU32)regStatus2) &&
                         FLD_TEST_DRF(_P2060, _STATUS2, _PORT1, _OUTPUT, (NvU32)regStatus2) &&
                         FLD_TEST_DRF(_P2061, _STATUS6, _INT_PORT_DIRECTION, _INPUT, (NvU32)regStatus6);
@@ -149,6 +157,7 @@ gsyncSetSyncSkew_P2061_V204
     NvU32              syncSkew
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4473);
     DACP2060EXTERNALDEVICE *pThis = (DACP2060EXTERNALDEVICE *)pExtDev;
     NvU64 temp;
 
@@ -198,6 +207,7 @@ gsyncGetSyncSkew_P2061_V204
     NvU32             *pSyncSkew
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4474);
     NvU8 data;
     NvU32 syncSkew;
     NvU64 temp;
@@ -243,11 +253,13 @@ gsyncGetSyncSkew_P2061_V204
     //
     if (pThis->lastUserSkewSent != NV_P2061_V204_SYNC_SKEW_INVALID)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4475);
         NvS32 difference;
 
         difference = syncSkew - pThis->lastUserSkewSent;
         if ((difference >= -2) && (difference <= 2))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4476);
             syncSkew = pThis->lastUserSkewSent;
         }
     }

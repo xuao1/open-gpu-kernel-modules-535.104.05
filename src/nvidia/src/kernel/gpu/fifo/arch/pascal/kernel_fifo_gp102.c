@@ -46,9 +46,11 @@ kfifoValidateSCGTypeAndRunqueue_GP102
     NvU32       runqueue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5054);
     if (scgType == NV_PPBDMA_SET_CHANNEL_INFO_SCG_TYPE_COMPUTE1 &&
         runqueue == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5055);
         NV_PRINTF(LEVEL_INFO,
                   "Invalid (SCG,runqueue) combination: (0x%x,0x%x)\n",
                   scgType, runqueue);
@@ -77,9 +79,11 @@ kfifoValidateEngineAndRunqueue_GP102
     NvU32       runqueue
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5056);
     NvBool bIsGrCe = NV_FALSE;
     switch (runqueue)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5057);
         case 0:
             // All engines can run on runqueue 0
             return NV_TRUE;
@@ -89,9 +93,11 @@ kfifoValidateEngineAndRunqueue_GP102
 
             if (IS_CE(engDesc))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5058);
                 bIsGrCe = _kfifoIsValidCETag_GP102(pGpu, pKernelFifo, engDesc);
                 if(!bIsGrCe)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5059);
                     NV_PRINTF(LEVEL_ERROR,
                               "Runqueue 1 only supports GR/GRCE\n");
                 }
@@ -135,9 +141,11 @@ kfifoValidateEngineAndSubctxType_GP102
     NvU32       subctxType
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5060);
     NvBool bIsGrCe = NV_FALSE;
     switch (subctxType)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5061);
         case 0:
             // All engines can run on SYNC subcontext
             return NV_TRUE;
@@ -147,9 +155,11 @@ kfifoValidateEngineAndSubctxType_GP102
 
             if (IS_CE(engDesc))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5062);
                 bIsGrCe = _kfifoIsValidCETag_GP102(pGpu, pKernelFifo, engDesc);
                 if(!bIsGrCe)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5063);
                     NV_PRINTF(LEVEL_ERROR,
                               "ASYNC Subcontext only supported on GR/GRCE\n");
                 }
@@ -183,6 +193,7 @@ _kfifoIsValidCETag_GP102
     NvU32 ceEngineTag
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5064);
     NvU32 ceRunlist    = 0;
     NvU32 *pCePbdmaIds;
     NvU32 numCePbdmaIds;
@@ -216,16 +227,20 @@ _kfifoIsValidCETag_GP102
 
     if (ceRunlist != srcRunlist)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5065);
         return NV_FALSE;
     }
 
     for (i = 0; i < numCePbdmaIds; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5066);
         NvU32 j;
         for (j = 0; j < numSrcPbdmaIds; j++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5067);
             if (pCePbdmaIds[i] == pSrcPbdmaIds[j])
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5068);
                 return NV_TRUE;
             }
         }

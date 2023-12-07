@@ -47,6 +47,7 @@ confComputeApiConstruct_IMPL
     RS_RES_ALLOC_PARAMS_INTERNAL *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3231);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
 
@@ -61,6 +62,7 @@ confComputeApiDestruct_IMPL
     ConfidentialComputeApi *pConfComputeApi
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3232);
 }
 
 NV_STATUS
@@ -70,6 +72,7 @@ confComputeApiCtrlCmdSystemGetCapabilities_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_SYSTEM_GET_CAPABILITIES_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3233);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     CONF_COMPUTE_CAPS *pCcCaps = pConfComputeApi->pCcCaps;
 
@@ -78,9 +81,11 @@ confComputeApiCtrlCmdSystemGetCapabilities_IMPL
     pParams->cpuCapability = NV_CONF_COMPUTE_SYSTEM_CPU_CAPABILITY_NONE;
     if ((sysGetStaticConfig(pSys))->bOsCCEnabled)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3234);
         pParams->cpuCapability = NV_CONF_COMPUTE_SYSTEM_CPU_CAPABILITY_AMD_SEV;
         if ((sysGetStaticConfig(pSys))->bOsCCTdxEnabled)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3235);
             pParams->cpuCapability = NV_CONF_COMPUTE_SYSTEM_CPU_CAPABILITY_INTEL_TDX;
         }
     }
@@ -92,32 +97,39 @@ confComputeApiCtrlCmdSystemGetCapabilities_IMPL
 
     if (pCcCaps->bApmFeatureCapable)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3236);
         pParams->gpusCapability = NV_CONF_COMPUTE_SYSTEM_GPUS_CAPABILITY_APM;
     }
     else if (pCcCaps->bHccFeatureCapable)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3237);
         pParams->gpusCapability = NV_CONF_COMPUTE_SYSTEM_GPUS_CAPABILITY_HCC;
     }
 
     if (pCcCaps->bCCFeatureEnabled)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3238);
         if (pCcCaps->bApmFeatureCapable)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3239);
             pParams->ccFeature = NV_CONF_COMPUTE_SYSTEM_FEATURE_APM_ENABLED;
         }
         else if (pCcCaps->bHccFeatureCapable)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3240);
             pParams->ccFeature = NV_CONF_COMPUTE_SYSTEM_FEATURE_HCC_ENABLED;
         }
     }
 
     if (pCcCaps->bDevToolsModeEnabled)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3241);
         pParams->devToolsMode = NV_CONF_COMPUTE_SYSTEM_DEVTOOLS_MODE_ENABLED;
     }
 
     if (pParams->ccFeature != NV_CONF_COMPUTE_SYSTEM_FEATURE_DISABLED)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3242);
         pParams->environment = NV_CONF_COMPUTE_SYSTEM_ENVIRONMENT_SIM;
     }
 
@@ -131,6 +143,7 @@ confComputeApiCtrlCmdSystemGetGpusState_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_SYSTEM_GET_GPUS_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3243);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
 
     pParams->bAcceptClientRequest = pConfComputeApi->pCcCaps->bAcceptClientRequest;
@@ -145,6 +158,7 @@ confComputeApiCtrlCmdSystemSetGpusState_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_SYSTEM_SET_GPUS_STATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3244);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
 
     pConfComputeApi->pCcCaps->bAcceptClientRequest = pParams->bAcceptClientRequest;
@@ -159,6 +173,7 @@ confComputeApiCtrlCmdGpuGetVidmemSize_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_GPU_GET_VIDMEM_SIZE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3245);
     Subdevice        *pSubdevice            = NULL;
     OBJGPU           *pGpu                  = NULL;
     Heap             *pHeap                 = NULL;
@@ -183,6 +198,7 @@ confComputeApiCtrlCmdGpuGetVidmemSize_IMPL
     //
     if (IS_MIG_IN_USE(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3246);
         NV_CHECK_OK_OR_RETURN(LEVEL_INFO,
             kmigmgrGetMemoryPartitionHeapFromDevice(pGpu, pKernelMIGManager,
                                                     GPU_RES_GET_DEVICE(pSubdevice),
@@ -211,6 +227,7 @@ confComputeApiCtrlCmdGpuSetVidmemSize_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_GPU_SET_VIDMEM_SIZE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3247);
     LOCK_ASSERT_AND_RETURN(rmapiLockIsOwner() && rmGpuLockIsOwner());
 
     return NV_OK;
@@ -223,6 +240,7 @@ confComputeApiCtrlCmdGetGpuCertificate_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_GET_GPU_CERTIFICATE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3248);
     Subdevice           *pSubdevice   = NULL;
     OBJGPU              *pGpu         = NULL;
     ConfidentialCompute *pConfCompute = NULL;
@@ -238,6 +256,7 @@ confComputeApiCtrlCmdGetGpuCertificate_IMPL
     if (pConfCompute != NULL && pConfCompute->pSpdm != NULL &&
         pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_SPDM_ENABLED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3249);
         // Set max size of certificate buffers before calling SPDM.
         pParams->certChainSize            = NV_CONF_COMPUTE_CERT_CHAIN_MAX_SIZE;
         pParams->attestationCertChainSize = NV_CONF_COMPUTE_ATTESTATION_CERT_CHAIN_MAX_SIZE;
@@ -260,6 +279,7 @@ confComputeApiCtrlCmdGetGpuAttestationReport_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_GET_GPU_ATTESTATION_REPORT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3250);
     Subdevice           *pSubdevice   = NULL;
     OBJGPU              *pGpu         = NULL;
     ConfidentialCompute *pConfCompute = NULL;
@@ -275,6 +295,7 @@ confComputeApiCtrlCmdGetGpuAttestationReport_IMPL
     if (pConfCompute != NULL && pConfCompute->pSpdm != NULL &&
         pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_SPDM_ENABLED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3251);
         // Set max size of report buffers before calling SPDM.
         pParams->attestationReportSize    = NV_CONF_COMPUTE_GPU_ATTESTATION_REPORT_MAX_SIZE;
         pParams->cecAttestationReportSize = NV_CONF_COMPUTE_GPU_CEC_ATTESTATION_REPORT_MAX_SIZE;
@@ -299,6 +320,7 @@ confComputeApiCtrlCmdGpuGetNumSecureChannels_IMPL
     NV_CONF_COMPUTE_CTRL_CMD_GPU_GET_NUM_SECURE_CHANNELS_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3252);
     Subdevice  *pSubdevice;
     OBJGPU     *pGpu;
     KernelFifo *pKernelFifo;

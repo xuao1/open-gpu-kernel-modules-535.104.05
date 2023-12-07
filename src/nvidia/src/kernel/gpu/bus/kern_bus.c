@@ -46,15 +46,18 @@ static NV_STATUS kbusInitRegistryOverrides(OBJGPU *pGpu, KernelBus *pKernelBus);
 NV_STATUS
 kbusConstructEngine_IMPL(OBJGPU *pGpu, KernelBus *pKernelBus, ENGDESCRIPTOR engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2220);
     NV_STATUS  status;
 
     if (IsAMPEREorBetter(pGpu) && pGpu->getProperty(pGpu, PDB_PROP_GPU_IS_ALL_INST_IN_SYSMEM))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2221);
         pKernelBus->bBar1PhysicalModeEnabled = NV_TRUE;
     }
 
     if (IS_VIRTUAL_WITH_SRIOV(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2222);
         pKernelBus->bUsePhysicalBar2InitPagetable = NV_TRUE;
     }
 
@@ -70,6 +73,7 @@ kbusConstructEngine_IMPL(OBJGPU *pGpu, KernelBus *pKernelBus, ENGDESCRIPTOR engD
     // Special handle for VGPU.  WAR for bug 3458057, bug 3458029
     if (IS_VIRTUAL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2223);
         NV_CHECK_OK_OR_RETURN(LEVEL_ERROR,
             kbusInitBarsSize_HAL(pGpu, pKernelBus));
     }
@@ -92,10 +96,12 @@ kbusConstructEngine_IMPL(OBJGPU *pGpu, KernelBus *pKernelBus, ENGDESCRIPTOR engD
 static NV_STATUS
 kbusInitRegistryOverrides(OBJGPU *pGpu, KernelBus *pKernelBus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2224);
     NvU32 data32;
 
     switch (DRF_VAL(_REG_STR_RM, _INST_LOC, _BAR_PTE, pGpu->instLocOverrides))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2225);
         default:
         case NV_REG_STR_RM_INST_LOC_BAR_PTE_DEFAULT:
             // Do not override on default..
@@ -108,6 +114,7 @@ kbusInitRegistryOverrides(OBJGPU *pGpu, KernelBus *pKernelBus)
         case NV_REG_STR_RM_INST_LOC_BAR_PTE_COH:
             if (gpuIsBarPteInSysmemSupported(pGpu) || !gpuIsRegUsesGlobalSurfaceOverridesEnabled(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2226);
                 pKernelBus->PTEBAR2Aperture = ADDR_SYSMEM;
                 pKernelBus->PTEBAR2Attr = NV_MEMORY_CACHED;
             }
@@ -126,6 +133,7 @@ kbusInitRegistryOverrides(OBJGPU *pGpu, KernelBus *pKernelBus)
         case NV_REG_STR_RM_INST_LOC_BAR_PTE_NCOH:
             if (gpuIsBarPteInSysmemSupported(pGpu) || !gpuIsRegUsesGlobalSurfaceOverridesEnabled(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2227);
                 pKernelBus->PTEBAR2Aperture = ADDR_SYSMEM;
                 pKernelBus->PTEBAR2Attr = NV_MEMORY_UNCACHED;
             }
@@ -143,6 +151,7 @@ kbusInitRegistryOverrides(OBJGPU *pGpu, KernelBus *pKernelBus)
 
     switch (DRF_VAL(_REG_STR_RM, _INST_LOC, _BAR_PDE, pGpu->instLocOverrides))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2228);
         default:
         case NV_REG_STR_RM_INST_LOC_BAR_PDE_DEFAULT:
             // Do not override on default.
@@ -155,6 +164,7 @@ kbusInitRegistryOverrides(OBJGPU *pGpu, KernelBus *pKernelBus)
         case NV_REG_STR_RM_INST_LOC_BAR_PDE_COH:
             if (gpuIsBarPteInSysmemSupported(pGpu) || !gpuIsRegUsesGlobalSurfaceOverridesEnabled(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2229);
                 pKernelBus->PDEBAR2Aperture = ADDR_SYSMEM;
                 pKernelBus->PDEBAR2Attr = NV_MEMORY_CACHED;
             }
@@ -169,6 +179,7 @@ kbusInitRegistryOverrides(OBJGPU *pGpu, KernelBus *pKernelBus)
         case NV_REG_STR_RM_INST_LOC_BAR_PDE_NCOH:
             if (gpuIsBarPteInSysmemSupported(pGpu) || !gpuIsRegUsesGlobalSurfaceOverridesEnabled(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2230);
                 pKernelBus->PDEBAR2Aperture = ADDR_SYSMEM;
                 pKernelBus->PDEBAR2Attr = NV_MEMORY_UNCACHED;
             }
@@ -183,6 +194,7 @@ kbusInitRegistryOverrides(OBJGPU *pGpu, KernelBus *pKernelBus)
 
     if (RMCFG_FEATURE_PLATFORM_WINDOWS_LDDM && !pGpu->getProperty(pGpu, PDB_PROP_GPU_IN_TCC_MODE))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2231);
         //
         // Aligns to unlinked SLI: Volta and up
         // Next: Plan for all GPUs after validation
@@ -193,6 +205,7 @@ kbusInitRegistryOverrides(OBJGPU *pGpu, KernelBus *pKernelBus)
 
     if (osReadRegistryDword(pGpu, NV_REG_STR_P2P_MAILBOX_CLIENT_ALLOCATED, &data32) == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2232);
         pKernelBus->bP2pMailboxClientAllocated = !!data32;
     }
 
@@ -211,6 +224,7 @@ kbusInitRegistryOverrides(OBJGPU *pGpu, KernelBus *pKernelBus)
 NV_STATUS
 kbusGetBar1VARangeForClient_IMPL(OBJGPU *pGpu, KernelBus *pKernelBus, NvHandle hClient, NV_RANGE *pBar1VARange)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2233);
     KernelMIGManager *pKernelMIGManager = GPU_GET_KERNEL_MIG_MANAGER(pGpu);
     OBJVASPACE       *pBar1VAS          = kbusGetBar1VASpace_HAL(pGpu, pKernelBus);
 
@@ -222,6 +236,7 @@ kbusGetBar1VARangeForClient_IMPL(OBJGPU *pGpu, KernelBus *pKernelBus, NvHandle h
         !rmclientIsCapableByHandle(hClient, NV_RM_CAP_SYS_SMC_MONITOR) &&
         !kmigmgrIsClientUsingDeviceProfiling(pGpu, pKernelMIGManager, hClient))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2234);
         MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
         KernelMemorySystem *pKernelMemorySystem = GPU_GET_KERNEL_MEMORY_SYSTEM(pGpu);
         MIG_INSTANCE_REF ref;
@@ -246,6 +261,7 @@ kbusSetupPeerBarAccess_IMPL
     PMEMORY_DESCRIPTOR *ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2235);
     NV_STATUS          status;
     MEMORY_DESCRIPTOR *pMemDesc = *ppMemDesc;
     IOVAMAPPING       *pIovaMapping;
@@ -254,6 +270,7 @@ kbusSetupPeerBarAccess_IMPL
 
     if (pMemDesc == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2236);
         status = memdescCreate(&pMemDesc, pLocalGpu, size, 0, NV_TRUE,
                                ADDR_SYSMEM, NV_MEMORY_UNCACHED,
                                MEMDESC_FLAGS_SKIP_RESOURCE_COMPUTE);
@@ -281,6 +298,7 @@ kbusSetupPeerBarAccess_IMPL
 
     if (pIovaMapping == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2237);
         NV_PRINTF(LEVEL_INFO,
                   "no IOVA mapping found for pre-existing P2P domain memdesc\n");
         return memdescGetPhysAddr(pMemDesc, AT_GPU, 0);
@@ -299,12 +317,14 @@ kbusSetupPeerBarAccess_IMPL
  */
 NvU32 kbusGetFlushAperture_IMPL(KernelBus *pKernelBus, NV_ADDRESS_SPACE addrSpace)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2238);
     return (addrSpace == ADDR_FBMEM) ? BUS_FLUSH_VIDEO_MEMORY : BUS_FLUSH_SYSTEM_MEMORY;
 }
 
 void
 kbusDestruct_IMPL(KernelBus *pKernelBus)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2239);
     OBJGPU *pGpu = ENG_GET_GPU(pKernelBus);
 
     //
@@ -324,16 +344,19 @@ kbusSendSysmembar_IMPL
     KernelBus   *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2240);
     NV_STATUS   status  = NV_OK;
 
     // Nothing to be done in guest in the paravirtualization case.
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2241);
         return NV_OK;
     }
 
     if (kbusIsFbFlushDisabled(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2242);
         // Eliminate FB flushes, but keep mmu invalidates
         NV_PRINTF(LEVEL_INFO, "disable_fb_flush flag, skipping flush.\n");
         return NV_OK;
@@ -344,6 +367,7 @@ kbusSendSysmembar_IMPL
         pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
         if (kbusSendSysmembarSingle_HAL(pGpu, pKernelBus) == NV_ERR_TIMEOUT)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2243);
             status = NV_ERR_TIMEOUT;
         }
     SLI_LOOP_END;
@@ -366,6 +390,7 @@ kbusSendSysmembarSingle_KERNEL
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2244);
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV_STATUS  status;
 
@@ -393,10 +418,12 @@ kbusCommitBar2_KERNEL
     NvU32      flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2245);
     if (!KBUS_BAR0_PRAMIN_DISABLED(pGpu) &&
         !kbusIsBarAccessBlocked(pKernelBus) &&
         !(flags & GPU_STATE_FLAGS_GC6_TRANSITION))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2246);
         // we will initialize bar2 to the default big page size of the system
         NV_ASSERT_OK_OR_RETURN(kbusInitVirtualBar2_HAL(pGpu, pKernelBus));
         NV_ASSERT_OK_OR_RETURN(kbusSetupCpuPointerForBusFlush_HAL(pGpu, pKernelBus));
@@ -408,8 +435,10 @@ kbusCommitBar2_KERNEL
 NvU64
 kbusGetPciBarSize_IMPL(KernelBus *pKernelBus, NvU32 index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2247);
     if (index >= pKernelBus->totalPciBars)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2248);
         NV_PRINTF(LEVEL_ERROR, "bad index 0x%x\n", index);
         return 0;
     }
@@ -420,10 +449,12 @@ kbusGetPciBarSize_IMPL(KernelBus *pKernelBus, NvU32 index)
 RmPhysAddr
 kbusGetPciBarOffset_IMPL(KernelBus *pKernelBus, NvU32 index)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2249);
     RmPhysAddr offset = 0x0;
 
     if (index < pKernelBus->totalPciBars)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2250);
         offset = pKernelBus->pciBars[index];
     }
     else
@@ -448,6 +479,7 @@ kbusDetermineBar1Force64KBMapping_IMPL
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2251);
     OBJGPU*   pGpu = ENG_GET_GPU(pKernelBus);
     NvU32     data;
 
@@ -456,8 +488,10 @@ kbusDetermineBar1Force64KBMapping_IMPL
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_64KB_BAR1_MAPPINGS,
                             &data) == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2252);
         if (data == NV_REG_STR_RM_64KB_BAR1_MAPPINGS_DISABLED)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2253);
             pKernelBus->bBar1Force64KBMapping = NV_FALSE;
         }
     }
@@ -468,6 +502,7 @@ kbusDetermineBar1Force64KBMapping_IMPL
 
         if (bar1SizeMB > 256)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2254);
             pKernelBus->bBar1Force64KBMapping = NV_FALSE;
         }
     }
@@ -487,11 +522,13 @@ kbusDetermineBar1ApertureLength_IMPL
     NvU32      gfid
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2255);
     OBJGPU   *pGpu = ENG_GET_GPU(pKernelBus);
     NvU32     data32;
 
     if (IS_GFID_VF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2256);
         pKernelBus->bar1[gfid].apertureLength = pGpu->sriovState.vfBarSize[1];
     }
     else
@@ -504,6 +541,7 @@ kbusDetermineBar1ApertureLength_IMPL
                         NV_REG_STR_RM_BAR1_APERTURE_SIZE_MB, &data32))) &&
             data32 && (((NvU64)data32 << 20) < pKernelBus->bar1[gfid].apertureLength))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2257);
         // Set BAR1 aperture length based on the override
         pKernelBus->bar1[gfid].apertureLength = (NvU64) data32 << 20;
     }
@@ -524,6 +562,7 @@ kbusInitBarsSize_KERNEL
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2258);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_BUS_GET_PCI_BAR_INFO_PARAMS params;
     NvU32 i;
@@ -537,6 +576,7 @@ kbusInitBarsSize_KERNEL
 
     for (i = 0; i< params.pciBarCount; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2259);
         pKernelBus->pciBarSizes[i] = params.pciBarInfo[i].barSizeBytes;
     }
 
@@ -564,6 +604,7 @@ kbusDestroyMailbox_IMPL
     NvU32        peerIdx
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2260);
     RM_API *pRmApi  = GPU_GET_PHYSICAL_RMAPI(pGpu0);
     NvBool  bNeedWarBug999673 = kbusNeedWarForBug999673_HAL(pGpu0, pKernelBus0, pGpu1) ||
                                 kbusNeedWarForBug999673_HAL(pGpu1, GPU_GET_KERNEL_BUS(pGpu1), pGpu0);
@@ -597,6 +638,7 @@ kbusCpuOffsetInBar2WindowGet_IMPL
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2261);
     NV_ASSERT_OR_RETURN(NULL != pKernelBus->virtualBar2[GPU_GFID_PF].pCpuMapping, NULL);
     NV_ASSERT_OR_RETURN(ADDR_FBMEM == pMemDesc->_addressSpace, NULL);
 
@@ -621,6 +663,7 @@ kbusGetVaLimitForBar2_KERNEL
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2262);
     NvU64 limit = pKernelBus->bar2[GPU_GFID_PF].cpuVisibleLimit;
 
     NV_PRINTF(LEVEL_INFO, "va limit: 0x%llx\n", limit);
@@ -651,6 +694,7 @@ kbusPatchBar1Pdb_GSPCLIENT
     KernelBus   *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2263);
     NV_STATUS            status    = NV_OK;
     OBJGVASPACE         *pGVAS     = dynamicCast(pKernelBus->bar1[GPU_GFID_PF].pVAS, OBJGVASPACE);
     KernelGmmu          *pKernelGmmu = GPU_GET_KERNEL_GMMU(pGpu);
@@ -685,6 +729,7 @@ kbusPatchBar1Pdb_GSPCLIENT
     gvaspaceWalkUserCtxRelease(pGVAS, &userCtx);
     if (NV_OK != status)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2264);
         NV_PRINTF(LEVEL_ERROR, "Failed to modify CPU-RM's BAR1 PDB to GSP-RM's BAR1 PDB.\n");
         return status;
     }
@@ -719,6 +764,7 @@ kbusPatchBar2Pdb_GSPCLIENT
     KernelBus   *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2265);
     NV_STATUS            status   = NV_OK;
     PMEMORY_DESCRIPTOR   pMemDesc;
     GspStaticConfigInfo *pGSCI    = GPU_GET_GSP_STATIC_INFO(pGpu);
@@ -744,6 +790,7 @@ kbusPatchBar2Pdb_GSPCLIENT
     //
     if (kbusIsBarAccessBlocked(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2266);
         MemoryManager *pMemoryManager = GPU_GET_MEMORY_MANAGER(pGpu);
         TRANSFER_SURFACE surf = {0};
 
@@ -797,6 +844,7 @@ kbusCheckEngine_KERNEL
     ENGDESCRIPTOR  engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2267);
     NvU32     rmEngineCaps[NVGPU_ENGINE_CAPS_MASK_ARRAY_MAX] = {0};
     NvU32     nv2080EngineCaps[NVGPU_ENGINE_CAPS_MASK_ARRAY_MAX] = {0};
     NvBool    bSupported;
@@ -807,11 +855,13 @@ kbusCheckEngine_KERNEL
         GspStaticConfigInfo *pGSCI = GPU_GET_GSP_STATIC_INFO(pGpu);
         if (pGSCI == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2268);
             return NV_FALSE;
         }
 
         for (i = 0; i < NVGPU_ENGINE_CAPS_MASK_ARRAY_MAX; i++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2269);
             nv2080EngineCaps[i] = pGSCI->engineCaps[i];
         }
     }
@@ -824,6 +874,7 @@ kbusCheckEngine_KERNEL
 
     switch (engDesc)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2270);
         case ENG_LSFM:
         case ENG_PMU:
         case ENG_CLK:
@@ -909,6 +960,7 @@ kbusCheckEngine_KERNEL
         case ENG_GR(6):
         case ENG_GR(7):
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2271);
             KernelFifo *pKernelFifo  = GPU_GET_KERNEL_FIFO(pGpu);
 
             NV_ASSERT_OR_RETURN(pKernelFifo != NULL, NV_FALSE);
@@ -934,6 +986,7 @@ kbusCheckEngine_KERNEL
 
             if (!bSupported)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2272);
                 NV_PRINTF(LEVEL_ERROR, "Unable to check engine ID: %d\n",
                           engDesc);
                 NV_ASSERT(bSupported);
@@ -960,6 +1013,7 @@ kbusGetDeviceCaps_IMPL
     NvBool     bCapsInitialized
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2273);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl  = SYS_GET_CL(pSys);
     NvU8 tempCaps[NV0080_CTRL_HOST_CAPS_TBL_SIZE], temp;
@@ -981,6 +1035,7 @@ kbusGetDeviceCaps_IMPL
          ((pCl->FHBBusInfo.deviceID >= NVIDIA_C73_CPU_PCI_0_DEVICE_ID_SLI2) &&
           (pCl->FHBBusInfo.deviceID <= NVIDIA_C73_CPU_PCI_0_DEVICE_ID_RESERVED_3))))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2274);
         RMCTRL_SET_CAP(tempCaps, NV0080_CTRL_HOST_CAPS, _CPU_WRITE_WAR_BUG_420495);
     }
 
@@ -990,6 +1045,7 @@ kbusGetDeviceCaps_IMPL
     // If we don't have existing caps with which to reconcile, then just return
     if (!bCapsInitialized)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2275);
         portMemCopy(pHostCaps, NV0080_CTRL_HOST_CAPS_TBL_SIZE, tempCaps, NV0080_CTRL_HOST_CAPS_TBL_SIZE);
         return;
     }
@@ -1045,6 +1101,7 @@ kbusMapFbApertureByHandle_IMPL
     Device    *pDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2276);
     NV_STATUS status;
     RsClient *pClient = NULL;
     RsResourceRef *pSrcMemoryRef = NULL;
@@ -1058,12 +1115,14 @@ kbusMapFbApertureByHandle_IMPL
     status = clientGetResourceRef(pClient, hMemory, &pSrcMemoryRef);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2277);
         return status;
     }
 
     pSrcMemory = dynamicCast(pSrcMemoryRef->pResource, Memory);
     if (pSrcMemory == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2278);
         return NV_ERR_INVALID_OBJECT;
     }
 
@@ -1071,6 +1130,7 @@ kbusMapFbApertureByHandle_IMPL
 
     if (memdescGetAddressSpace(pMemDesc) != ADDR_FBMEM)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2279);
         return NV_ERR_INVALID_ARGUMENT;
     }
 
@@ -1079,6 +1139,7 @@ kbusMapFbApertureByHandle_IMPL
                                    BUS_MAP_FB_FLAGS_MAP_UNICAST, pDevice);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2280);
         return status;
     }
 
@@ -1087,6 +1148,7 @@ kbusMapFbApertureByHandle_IMPL
     if ((!NV_IS_ALIGNED64(fbApertureOffset, osGetPageSize())) ||
         (!NV_IS_ALIGNED64(fbApertureLength, osGetPageSize())))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2281);
         status = NV_ERR_NOT_SUPPORTED;
         goto failed;
     }
@@ -1095,6 +1157,7 @@ kbusMapFbApertureByHandle_IMPL
 
     if (!NV_IS_ALIGNED64(*pBar1Va, osGetPageSize()))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2282);
         status = NV_ERR_INVALID_ADDRESS;
         goto failed;
     }
@@ -1120,6 +1183,7 @@ kbusUnmapFbApertureByHandle_IMPL
     NvU64      bar1Va
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2283);
     NV_STATUS status;
     RsClient *pClient = NULL;
     RsResourceRef *pSrcMemoryRef = NULL;
@@ -1131,12 +1195,14 @@ kbusUnmapFbApertureByHandle_IMPL
     status = clientGetResourceRef(pClient, hMemory, &pSrcMemoryRef);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2284);
         return status;
     }
 
     pSrcMemory = dynamicCast(pSrcMemoryRef->pResource, Memory);
     if (pSrcMemory == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2285);
         return NV_ERR_INVALID_OBJECT;
     }
 
@@ -1148,6 +1214,7 @@ kbusUnmapFbApertureByHandle_IMPL
                                      0, BUS_MAP_FB_FLAGS_MAP_UNICAST);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2286);
         return status;
     }
 
@@ -1172,6 +1239,7 @@ kbusSendBusInfo_IMPL
     NV2080_CTRL_BUS_INFO *pBusInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2287);
     NV_STATUS status = NV_OK;
     NV2080_CTRL_BUS_GET_INFO_V2_PARAMS busGetInfoParams = {0};
 
@@ -1212,9 +1280,11 @@ kbusGetNvlinkP2PPeerId_VGPU
     NvU32      flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2288);
     *nvlinkPeer = kbusGetPeerId_HAL(pGpu0, pKernelBus0, pGpu1);
     if (*nvlinkPeer != BUS_INVALID_PEER)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2289);
         return NV_OK;
     }
 
@@ -1223,6 +1293,7 @@ kbusGetNvlinkP2PPeerId_VGPU
     // If could not find a free peer ID, return error
     if (*nvlinkPeer == BUS_INVALID_PEER)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2290);
         NV_PRINTF(LEVEL_WARNING,
                   "GPU%d: peerID not available for NVLink P2P\n",
                   pGpu0->gpuInstance);
@@ -1246,6 +1317,7 @@ kbusIsGpuP2pAlive_IMPL
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2291);
     return (pKernelBus->totalP2pObjectsAliveRefCount > 0);
 }
 

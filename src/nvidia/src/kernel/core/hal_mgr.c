@@ -37,6 +37,7 @@ halmgrConstruct_IMPL
     OBJHALMGR *pHalMgr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 81);
     HAL_IMPLEMENTATION i;
 
     //
@@ -56,10 +57,12 @@ halmgrDestruct_IMPL
     OBJHALMGR *pHalMgr
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 82);
     NvU32 i;
 
     for (i = 0; i < HAL_IMPL_MAXIMUM; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 83);
         objDelete(pHalMgr->pHalList[i]);
         pHalMgr->pHalList[i] = NULL;
     }
@@ -72,6 +75,7 @@ halmgrCreateHal_IMPL
     NvU32      halImpl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 84);
     OBJHAL    *pHal;
     NV_STATUS  status;
 
@@ -94,6 +98,7 @@ halmgrGetHal_IMPL
     NvU32      halImpl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 85);
     if (halImpl < HAL_IMPL_MAXIMUM)
         return pHalMgr->pHalList[halImpl];
     else
@@ -107,6 +112,7 @@ _halmgrIsTegraSupported
     NvU32 socChipID
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 86);
     NvU32 chipid, majorRev;
 
     chipid = DRF_VAL(_PAPB_MISC, _GP_HIDREV, _CHIPID, socChipID);
@@ -115,6 +121,7 @@ _halmgrIsTegraSupported
     // WAR: The majorrev of t234 shows 0xa on fmodel instead of 0x4
     if ((chipid == 0x23) && (majorRev == 0xa))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 87);
         majorRev = 0x4;
     }
 
@@ -131,6 +138,7 @@ _halmgrIsChipSupported
     NvU32      pPmcBoot42
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 88);
     NvBool retVal = NV_FALSE;
 
     if (chipID[publicHalID].hidrev)
@@ -138,9 +146,11 @@ _halmgrIsChipSupported
 
     if (pPmcBoot42)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 89);
         if ((DRF_VAL(_PMC, _BOOT_42, _ARCHITECTURE, pPmcBoot42) == chipID[publicHalID].arch) &&
             (DRF_VAL(_PMC, _BOOT_42, _IMPLEMENTATION, pPmcBoot42) == chipID[publicHalID].impl))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 90);
             retVal = NV_TRUE;
         }
     }
@@ -162,11 +172,13 @@ halmgrGetHalForGpu_IMPL
     NvU32      *pHalImpl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 91);
     HAL_IMPLEMENTATION  halImpl;
     OBJHAL             *pHal;
 
     for (halImpl = 0; halImpl < HAL_IMPL_MAXIMUM; halImpl++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 92);
         pHal = pHalMgr->pHalList[halImpl];
 
         // skip impls that have no hal object
@@ -175,6 +187,7 @@ halmgrGetHalForGpu_IMPL
 
         if (_halmgrIsChipSupported(pHalMgr, halImpl, pPmcBoot0, pPmcBoot42))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 93);
             *pHalImpl = halImpl;
 
 #if NV_PRINTF_STRINGS_ALLOWED
@@ -206,6 +219,7 @@ _halmgrGetStringRepForHalImpl
     HAL_IMPLEMENTATION halImpl
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 94);
     const char *chipName = "UNKNOWN";
     static const struct
     {
@@ -216,8 +230,10 @@ _halmgrGetStringRepForHalImpl
 
     for (i = 0; i < NV_ARRAY_ELEMENTS(halImplNames); i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 95);
         if (halImplNames[i].halImpl == halImpl)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 96);
             chipName = halImplNames[i].name;
             break;
         }

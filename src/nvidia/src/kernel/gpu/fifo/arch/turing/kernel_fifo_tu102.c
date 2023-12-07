@@ -49,6 +49,7 @@ kfifoUpdateUsermodeDoorbell_TU102
     NvU32       runlistId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5069);
     NV_PRINTF(LEVEL_INFO, "Poking workSubmitToken 0x%x\n", workSubmitToken);
 
     GPU_VREG_WR32(pGpu, NV_VIRTUAL_FUNCTION_DOORBELL, workSubmitToken);
@@ -76,6 +77,7 @@ kfifoGenerateWorkSubmitToken_TU102
     NvBool         bUsedForHost
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5070);
     NvU32          chId;
     NvU32          gfid;
     NvU32          val = 0;
@@ -96,6 +98,7 @@ kfifoGenerateWorkSubmitToken_TU102
     //
     if (!bUsedForHost && IS_GFID_VF(gfid))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5071);
         NvU32 vChId;
 
         NV_ASSERT_OK_OR_RETURN(kfifoGetVChIdForSChId_HAL(pGpu, pKernelFifo,
@@ -107,6 +110,7 @@ kfifoGenerateWorkSubmitToken_TU102
 
     if (!kchannelIsRunlistSet(pGpu, pKernelChannel))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5072);
         NV_PRINTF(LEVEL_ERROR,
                   "FAILED Channel 0x%x is not assigned to runlist yet\n",
                   kchannelGetDebugTag(pKernelChannel));

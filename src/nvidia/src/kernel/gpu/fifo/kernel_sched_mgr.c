@@ -53,12 +53,14 @@ _kschedmgrGetSchedulerPolicy
     NvU32           *pSchedPolicy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5909);
     NvU32   schedPolicy         = SCHED_POLICY_DEFAULT;
 
     *pSchedPolicy = schedPolicy;
 
     switch (schedPolicy)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5910);
         case SCHED_POLICY_DEFAULT:
         default:
             // For baremetal and PT
@@ -73,6 +75,7 @@ void kschedmgrSetConfigPolicyFromUser_IMPL
     NvU32              schedSwPolicy
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5911);
     NvU32 schedSwPolicyLocal = SCHED_POLICY_DEFAULT;
     pKernelSchedMgr->configSchedPolicy = schedSwPolicyLocal;
     pKernelSchedMgr->bIsSchedSwEnabled = (schedSwPolicyLocal != SCHED_POLICY_DEFAULT);
@@ -88,6 +91,7 @@ kschedmgrConstructPolicy_IMPL
     OBJGPU             *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5912);
     const char         *schedPolicyName;
     NvU32               domain          = gpuGetDomain(pGpu);
     NvU32               bus             = gpuGetBus(pGpu);
@@ -98,6 +102,7 @@ kschedmgrConstructPolicy_IMPL
     // PVMRL is disabled when GPU is older than Pascal
     if (((RMCFG_FEATURE_PLATFORM_GSP && IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pGpu)) || hypervisorIsVgxHyper()) && IsPASCALorBetter(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5913);
         pKernelSchedMgr->bIsSchedSwEnabled = (pKernelSchedMgr->configSchedPolicy != SCHED_POLICY_DEFAULT);
 
         portDbgPrintf("NVRM: GPU at %04x:%02x:%02x.0 has software scheduler %s with policy %s.\n",
@@ -118,6 +123,7 @@ kschedmgrConstructPolicy_IMPL
     // Enabled SWRL Granular locking only if SWRL is enabled on hypervisor or VGPU_GSP_PLUGIN_OFFLOAD is enabled
     if (((RMCFG_FEATURE_PLATFORM_GSP && IS_VGPU_GSP_PLUGIN_OFFLOAD_ENABLED(pGpu)) || hypervisorIsVgxHyper()) && pKernelSchedMgr->bIsSchedSwEnabled)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5914);
         pGpu->setProperty(pGpu, PDB_PROP_GPU_SWRL_GRANULAR_LOCKING, NV_TRUE);
     }
 }

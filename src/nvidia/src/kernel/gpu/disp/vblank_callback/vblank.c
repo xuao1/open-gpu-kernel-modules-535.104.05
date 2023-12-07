@@ -38,6 +38,7 @@ kheadAddVblankCallback_IMPL
     VBLANKCALLBACK *pCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3856);
     NvBool           OktoAdd = NV_TRUE;
     VBLANKCALLBACK  *pCheck  = NULL;
     VBLANKCALLBACK  *pNext   = NULL;
@@ -53,6 +54,7 @@ kheadAddVblankCallback_IMPL
     //
     if (pCallback->Flags & VBLANK_CALLBACK_FLAG_GUARANTEE_SAFETY)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3857);
         pCallback->Flags |= VBLANK_CALLBACK_FLAG_PERSISTENT;
         pCallback->Flags |= VBLANK_CALLBACK_FLAG_LOW_LATENCY;
         pCallback->Flags |= VBLANK_CALLBACK_FLAG_PROMOTE_TO_FRONT;
@@ -61,6 +63,7 @@ kheadAddVblankCallback_IMPL
     // Cache the requested queue and its current vblank count
     if (pCallback->Flags & VBLANK_CALLBACK_FLAG_LOW_LATENCY)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3858);
         pList = pKernelHead->Vblank.Callback.pListLL;
         Count = pKernelHead->Vblank.Counters.LowLatency;
     }
@@ -90,6 +93,7 @@ kheadAddVblankCallback_IMPL
 
     if ( vblankIntrIsBeingGenerated || (pCallback->Flags & VBLANK_CALLBACK_FLAG_PERSISTENT) )
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3859);
         pCheck = pList;
 
         //
@@ -98,8 +102,10 @@ kheadAddVblankCallback_IMPL
         //
         while (NULL != pCheck)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3860);
             if (pCheck == pCallback)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3861);
                 //
                 // It is expected that we may try to add the same callback again, as we may not get a
                 // dacdisable (which deletes callbacks) between modesets and/or dacenables.
@@ -113,6 +119,7 @@ kheadAddVblankCallback_IMPL
 
         if (OktoAdd)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3862);
             //
             // Best-effort test to verify that this callback is not already part of any callback list
             // (the test won't detect callbacks added twice at the end of two lists)
@@ -121,16 +128,19 @@ kheadAddVblankCallback_IMPL
 
             if (pCallback->Flags & VBLANK_CALLBACK_FLAG_SPECIFIED_VBLANK_COUNT)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3863);
                 // We set the target to the one that the caller supplied.
                 Count = pCallback->VBlankCount;
             }
             else if (pCallback->Flags & VBLANK_CALLBACK_FLAG_SPECIFIED_TIMESTAMP)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3864);
                 // We don't know which vblank would correspond to the timestamp, so just add it to end of list.
                 Count = 0xFFFFFFFF;
             }
             else if (pCallback->Flags & VBLANK_CALLBACK_FLAG_SPECIFIED_VBLANK_OFFSET)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3865);
                 // We set the target to the current plus the offset that the caller supplied.
                 Count += pCallback->VBlankOffset;
                 pCallback->VBlankCount = Count;
@@ -138,12 +148,14 @@ kheadAddVblankCallback_IMPL
                 // If we are persistent, we should convert the vblank offset flag to a vblank count flag.
                 if (pCallback->Flags & VBLANK_CALLBACK_FLAG_PERSISTENT)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3866);
                     pCallback->Flags &= ~VBLANK_CALLBACK_FLAG_SPECIFIED_VBLANK_OFFSET;
                     pCallback->Flags |=  VBLANK_CALLBACK_FLAG_SPECIFIED_VBLANK_COUNT;
                 }
             }
             else if (pCallback->Flags & VBLANK_CALLBACK_FLAG_SPECIFIED_VBLANK_NEXT)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3867);
                 // We set the target to the current plus one (the next vblank)
                 Count += 1;
                 pCallback->VBlankCount = Count;
@@ -164,9 +176,11 @@ kheadAddVblankCallback_IMPL
 
             if (pCallback->Flags & VBLANK_CALLBACK_FLAG_PROMOTE_TO_FRONT)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3868);
                 // To the front of the group that shares the same 'VBlankCount' value
                 while ((NULL != pNext) && (Count > pNext->VBlankCount))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3869);
                     pPrev = pNext;
                     pNext = pNext->Next;
                 }
@@ -176,6 +190,7 @@ kheadAddVblankCallback_IMPL
                 // To the back of the group that shares the same 'VBlankCount' value
                 while ((NULL != pNext) && (Count >= pNext->VBlankCount))
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3870);
                     pPrev = pNext;
                     pNext = pNext->Next;
                 }
@@ -184,10 +199,12 @@ kheadAddVblankCallback_IMPL
             // Are we at the head?
             if (pPrev == NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3871);
                 pCallback->Next = pList;
 
                 if (pCallback->Flags & VBLANK_CALLBACK_FLAG_LOW_LATENCY)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3872);
                     pKernelHead->Vblank.Callback.pListLL = pCallback;
                 }
                 else
@@ -212,6 +229,7 @@ kheadAddVblankCallback_IMPL
         // call it now
         if (pCallback->Proc)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3873);
             NV_PRINTF(LEVEL_INFO,
                       "headAddVblankCallback: immediate invocation\n");
             pCallback->bImmediateCallback = NV_TRUE;
@@ -220,6 +238,7 @@ kheadAddVblankCallback_IMPL
             pCallback->VBlankCount = Count;
             if (pCallback->Flags & VBLANK_CALLBACK_FLAG_USER)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3874);
                 // This is a user call back, they don't get a pointer to our pDev or Object data structs.
                 pCallback->Proc(NULL,
                                 NULL,
@@ -248,11 +267,14 @@ kheadAddVblankCallback_IMPL
     // After all of that, if at least one callback is scheduled, head is enabled and the vblank is AVAILABLE, enable it now.
     if (vblankIntrIsBeingGenerated)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3875);
         if ( (pKernelHead->Vblank.Callback.pListLL) ||
              (pKernelHead->Vblank.Callback.pListNL) )
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3876);
             if (kheadReadVblankIntrState(pGpu, pKernelHead) != NV_HEAD_VBLANK_INTR_ENABLED)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3877);
                 kheadWriteVblankIntrState(pGpu, pKernelHead, NV_HEAD_VBLANK_INTR_ENABLED);
                 NV_PRINTF(LEVEL_INFO,
                           "headAddVblankCallback: Changed vblank stat to ENABLED\n");
@@ -269,6 +291,7 @@ kheadDeleteVblankCallback_IMPL
     VBLANKCALLBACK *pCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3878);
     VBLANKCALLBACK  *pList   = NULL;
     NvBool           enabled = NV_FALSE;
     NvU32            Count;
@@ -276,6 +299,7 @@ kheadDeleteVblankCallback_IMPL
     // Cache the requested queue and its current vblank count
     if (pCallback->Flags & VBLANK_CALLBACK_FLAG_LOW_LATENCY)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3879);
         pList = pKernelHead->Vblank.Callback.pListLL;
         Count = pKernelHead->Vblank.Counters.LowLatency;
     }
@@ -290,17 +314,20 @@ kheadDeleteVblankCallback_IMPL
 
     if (enabled)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3880);
         kheadWriteVblankIntrState(pGpu, pKernelHead, NV_HEAD_VBLANK_INTR_AVAILABLE);
     }
 
     // Search the list and remove this Callback entry
     if (pList == pCallback)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3881);
         //
         // Found it.
         // Unlink it now. If we call it, it may try to add itself again, and wont be able to.
         if (pCallback->Flags & VBLANK_CALLBACK_FLAG_LOW_LATENCY)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3882);
             pKernelHead->Vblank.Callback.pListLL = pCallback->Next;
         }
         else
@@ -315,12 +342,14 @@ kheadDeleteVblankCallback_IMPL
         if ( (pCallback->Proc) &&
              (pCallback->Flags & VBLANK_CALLBACK_FLAG_COMPLETE_ON_OBJECT_CLEANUP) )
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3883);
             // Force it to appear to be on the correct VBlankCount
             pCallback->VBlankCount = Count;
 
             // This is a user call back, they don't get a pointer to our pDev or Object data structs.
             if (pCallback->Flags & VBLANK_CALLBACK_FLAG_USER)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3884);
                 pCallback->Proc(NULL,
                                 NULL,
                                 pCallback->Param1,
@@ -343,8 +372,10 @@ kheadDeleteVblankCallback_IMPL
 
         while (pPrev)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3885);
             if (pPrev->Next == pCallback)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3886);
                 //
                 // Found it.
                 // Should the callback be executed as part of the object destroy?
@@ -353,12 +384,14 @@ kheadDeleteVblankCallback_IMPL
                 if ( (pCallback->Proc) &&
                      (pCallback->Flags & VBLANK_CALLBACK_FLAG_COMPLETE_ON_OBJECT_CLEANUP) )
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3887);
                     // Force it to appear to be on the correct VBlankCount
                     pCallback->VBlankCount = Count;
 
                     // This is a user call back, they don't get a pointer to our pDev or Object data structs.
                     if (pCallback->Flags & VBLANK_CALLBACK_FLAG_USER)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3888);
                         pCallback->Proc(NULL,
                                         NULL,
                                         pCallback->Param1,
@@ -387,6 +420,7 @@ kheadDeleteVblankCallback_IMPL
     if (!(pKernelHead->Vblank.Callback.pListLL) &&
         !(pKernelHead->Vblank.Callback.pListNL) )
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3889);
         //
         // Since there are no callbacks scheduled, then we don't need
         // to reenable anything.
@@ -397,6 +431,7 @@ kheadDeleteVblankCallback_IMPL
     // Restore VBlank enable
     if (enabled)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3890);
         kheadWriteVblankIntrState(pGpu, pKernelHead, NV_HEAD_VBLANK_INTR_ENABLED);
     }
 }
@@ -409,6 +444,7 @@ kheadProcessVblankCallbacks_IMPL
     NvU32     state
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3891);
     OBJTMR           *pTmr      = GPU_GET_TIMER(pGpu);
     VBLANKCALLBACK   *pCallback = NULL;
     VBLANKCALLBACK   *pNext     = NULL;
@@ -423,6 +459,7 @@ kheadProcessVblankCallbacks_IMPL
     // If the caller failed to spec which queue, figure they wanted all of them
     if ((state & VBLANK_STATE_PROCESS_ALL_CALLBACKS) == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3892);
         state |= VBLANK_STATE_PROCESS_ALL_CALLBACKS;
     }
 
@@ -432,9 +469,11 @@ kheadProcessVblankCallbacks_IMPL
     // We may have more then one queue to process, so this is the main loop.
     while (!done)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3893);
         // Select the next queue to process. Give priority to the low latency folks.
         if (newstate & VBLANK_STATE_PROCESS_LOW_LATENCY)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3894);
             // We dont want to come back here again.
             newstate &= ~VBLANK_STATE_PROCESS_LOW_LATENCY;
 
@@ -445,6 +484,7 @@ kheadProcessVblankCallbacks_IMPL
         }
         else if (newstate & VBLANK_STATE_PROCESS_NORMAL_LATENCY)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3895);
             // We dont want to come back here again.
             newstate &= ~VBLANK_STATE_PROCESS_NORMAL_LATENCY;
 
@@ -462,17 +502,21 @@ kheadProcessVblankCallbacks_IMPL
         // If we are not done, proces the next callback queue
         if (!done)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3896);
             while (pCallback)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3897);
                 pNext = pCallback->Next;
 
                 if (  (pCallback->Flags & VBLANK_CALLBACK_FLAG_LOW_LATENCY__ISR_ONLY) && !(state & VBLANK_STATE_PROCESS_CALLED_FROM_ISR)  )
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3898);
                     // someone doesn't want this low-latency callback being processed at DPC time.
                     ppPrev = &pCallback->Next;
                 }
                 else if (pCallback->Flags & VBLANK_CALLBACK_FLAG_SPECIFIED_TIMESTAMP)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3899);
                     //
                     // Time stamp based call backs don't have a valid vblank count
                     // Vblank might be delayed and we might see only one vblank instead of two.
@@ -484,11 +528,13 @@ kheadProcessVblankCallbacks_IMPL
                     // Only re-read the time if we don't already know the result
                     if (time < pCallback->TimeStamp)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3900);
                         tmrGetCurrentTime(pTmr, &time);
                     }
 
                     if (time >= pCallback->TimeStamp)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3901);
                         //
                         // Unlink it before we call it.  Otherwise, it may
                         // try to add itself again, and wont be able to.
@@ -517,6 +563,7 @@ kheadProcessVblankCallbacks_IMPL
                          ((pCallback->VBlankCount + 1)   == Count) ||
                          (VBLANK_STATE_PROCESS_IMMEDIATE == state) )
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3902);
                         pCallback->VBlankCount = Count;
 
                         removed = NV_FALSE;
@@ -527,6 +574,7 @@ kheadProcessVblankCallbacks_IMPL
                         //
                         if ( !(pCallback->Flags & VBLANK_CALLBACK_FLAG_PERSISTENT) )
                         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3903);
                             pCallback->Next = NULL;
                             *ppPrev  = pNext;
                             removed  = NV_TRUE;
@@ -535,8 +583,10 @@ kheadProcessVblankCallbacks_IMPL
                         // Call the function now
                         if (pCallback->Proc)
                         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3904);
                             if (pCallback->Flags & VBLANK_CALLBACK_FLAG_USER)
                             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3905);
                                 //
                                 // DON'T LOG USER CALLBACKS, not RM activity.  (plus the tracing system
                                 // requires a pDev ptr to find its own data structures)
@@ -569,6 +619,7 @@ kheadProcessVblankCallbacks_IMPL
                         // If this is a persistent callback make sure to updates its time to run if we are not multichip and not the last chip
                         if ( (pCallback->Flags & VBLANK_CALLBACK_FLAG_PERSISTENT) )
                         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3906);
                             //
                             // So, it appears there are those that like to update vblank counts and such within the callback.
                             // This is fine I suppose, but we dont promise that this order is sorted then.
@@ -577,6 +628,7 @@ kheadProcessVblankCallbacks_IMPL
                             //
                             if (pCallback->Flags & VBLANK_CALLBACK_FLAG_SPECIFIED_VBLANK_OFFSET)
                             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3907);
                                 // We set the target to the current plus the offset that the caller supplied.
                                 pCallback->VBlankCount = Count + pCallback->VBlankOffset;
 
@@ -591,6 +643,7 @@ kheadProcessVblankCallbacks_IMPL
                             //
                             if ( !(pCallback->Flags & VBLANK_CALLBACK_FLAG_SPECIFIED_VBLANK_COUNT) )
                             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3908);
                                 pCallback->VBlankCount = Count + 1;
                             }
 
@@ -601,6 +654,7 @@ kheadProcessVblankCallbacks_IMPL
                         {
                             if (!removed)
                             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3909);
                                 //
                                 // Yes, the proper way to terminate a persistent callback from within a callback is
                                 // to make it non-persistant.  This is what the cursor functions do, and so we should
@@ -632,6 +686,7 @@ kheadProcessVblankCallbacks_IMPL
 
     if (bQueueDpc)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3910);
         osQueueDpc(pGpu);
     }
 
@@ -639,8 +694,10 @@ kheadProcessVblankCallbacks_IMPL
     if (!(pKernelHead->Vblank.Callback.pListLL) &&
         !(pKernelHead->Vblank.Callback.pListNL) )
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3911);
         if (kheadReadVblankIntrState(pGpu, pKernelHead) == NV_HEAD_VBLANK_INTR_ENABLED)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3912);
             kheadWriteVblankIntrState(pGpu, pKernelHead, NV_HEAD_VBLANK_INTR_AVAILABLE);
 
             NV_PRINTF(LEVEL_INFO,

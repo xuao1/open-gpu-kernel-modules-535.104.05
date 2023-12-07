@@ -37,6 +37,7 @@
 void *
 getInfoPtr(PENG_INFO_LINK_NODE head, NvU32 dataId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 72);
     PENG_INFO_LINK_NODE curNode = head;
 
     while (curNode && (curNode->dataId != dataId))
@@ -56,6 +57,7 @@ getInfoPtr(PENG_INFO_LINK_NODE head, NvU32 dataId)
 NvBool
 testInfoPtr(PENG_INFO_LINK_NODE head, NvU32 dataId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 73);
     PENG_INFO_LINK_NODE curNode = head;
 
     while (curNode && (curNode->dataId != dataId))
@@ -75,12 +77,14 @@ testInfoPtr(PENG_INFO_LINK_NODE head, NvU32 dataId)
 static PENG_INFO_LINK_NODE
 createLinkNode(NvU32 dataId, NvU32 size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 74);
     PENG_INFO_LINK_NODE newNode;
     NV_STATUS rmStatus;
 
     newNode = portMemAllocNonPaged(sizeof(ENG_INFO_LINK_NODE));
     if (newNode == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 75);
         rmStatus = NV_ERR_NO_MEMORY;
         NV_ASSERT(rmStatus == NV_OK);
         return NULL;
@@ -91,6 +95,7 @@ createLinkNode(NvU32 dataId, NvU32 size)
     newNode->infoBlock = portMemAllocNonPaged(size);
     if (newNode->infoBlock == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 76);
         rmStatus = NV_ERR_NO_MEMORY;
         portMemFree(newNode);
         NV_ASSERT(rmStatus == NV_OK);
@@ -112,6 +117,7 @@ createLinkNode(NvU32 dataId, NvU32 size)
 void *
 addInfoPtr(PENG_INFO_LINK_NODE *head, NvU32 dataId, NvU32 size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 77);
     PENG_INFO_LINK_NODE curNode = *head;
     PENG_INFO_LINK_NODE newNode = createLinkNode(dataId, size);
 
@@ -137,6 +143,7 @@ addInfoPtr(PENG_INFO_LINK_NODE *head, NvU32 dataId, NvU32 size)
 void
 deleteInfoPtr(PENG_INFO_LINK_NODE *head, NvU32 dataId)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 78);
     PENG_INFO_LINK_NODE curNode = *head;
 
     if (!curNode)
@@ -145,6 +152,7 @@ deleteInfoPtr(PENG_INFO_LINK_NODE *head, NvU32 dataId)
     // check list head
     if (curNode->dataId == dataId)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 79);
         *head = curNode->next;
         NV_ASSERT(curNode->infoBlock);
         portMemFree(curNode->infoBlock);
@@ -158,6 +166,7 @@ deleteInfoPtr(PENG_INFO_LINK_NODE *head, NvU32 dataId)
 
     if (curNode->next)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 80);
         PENG_INFO_LINK_NODE delNode;
 
         delNode = curNode->next;

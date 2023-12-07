@@ -34,6 +34,7 @@
 
 NV_STATUS kceConstructEngine_IMPL(OBJGPU *pGpu, KernelCE *pKCe, ENGDESCRIPTOR engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2984);
     NV_ASSERT_OR_RETURN(!RMCFG_FEATURE_PLATFORM_GSP, NV_ERR_NOT_SUPPORTED);
 
     NvU32 thisPublicID = GET_CE_IDX(engDesc);
@@ -50,6 +51,7 @@ NV_STATUS kceConstructEngine_IMPL(OBJGPU *pGpu, KernelCE *pKCe, ENGDESCRIPTOR en
     if ((osReadRegistryDword(pGpu, NV_REG_STR_RM_CE_ENABLE_AUTO_CONFIG, &data32) == NV_OK) &&
         (data32 == NV_REG_STR_RM_CE_ENABLE_AUTO_CONFIG_FALSE))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2985);
         NV_PRINTF(LEVEL_INFO, "Disable CE Auto PCE-LCE Config\n");
         pKCe->bIsAutoConfigEnabled = NV_FALSE;
     }
@@ -57,6 +59,7 @@ NV_STATUS kceConstructEngine_IMPL(OBJGPU *pGpu, KernelCE *pKCe, ENGDESCRIPTOR en
     if ((osReadRegistryDword(pGpu, NV_REG_STR_RM_CE_USE_GEN4_MAPPING, &data32) == NV_OK) &&
         (data32 == NV_REG_STR_RM_CE_USE_GEN4_MAPPING_TRUE))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2986);
         NV_PRINTF(LEVEL_INFO, "GEN4 mapping will use a HSHUB PCE (if available) for PCIe!\n");
         pKCe->bUseGen4Mapping = NV_TRUE;
     }
@@ -69,6 +72,7 @@ NV_STATUS kceConstructEngine_IMPL(OBJGPU *pGpu, KernelCE *pKCe, ENGDESCRIPTOR en
 
 NvBool kceIsPresent_IMPL(OBJGPU *pGpu, KernelCE *pKCe)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2987);
     // Use bus/fifo to detemine if LCE(i) is present.
     KernelBus *pKernelBus = GPU_GET_KERNEL_BUS(pGpu);
     NvBool present = NV_FALSE;
@@ -84,11 +88,13 @@ NvBool kceIsPresent_IMPL(OBJGPU *pGpu, KernelCE *pKCe)
 
 NvBool kceIsNewMissingEngineRemovalSequenceEnabled_IMPL(OBJGPU *pGpu, KernelCE *pKCe)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2988);
     return NV_TRUE;
 }
 
 static void printCaps(OBJGPU *pGpu, KernelCE *pKCe, RM_ENGINE_TYPE rmEngineType, const NvU8 *capsTbl)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2989);
     NV_PRINTF(LEVEL_INFO, "LCE%d caps (engineType = %d (%d))\n", pKCe->publicID,
                            gpuGetNv2080EngineType(rmEngineType), rmEngineType);
 #define PRINT_CAP(cap) NV_PRINTF(LEVEL_INFO, #cap ":%d\n", (RMCTRL_GET_CAP(capsTbl, NV2080_CTRL_CE_CAPS, cap) != 0) ? 1 : 0)
@@ -109,6 +115,7 @@ static void printCaps(OBJGPU *pGpu, KernelCE *pKCe, RM_ENGINE_TYPE rmEngineType,
 
 void kceGetNvlinkCaps(OBJGPU *pGpu, KernelCE *pKCe, NvU8 *pKCeCaps)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2990);
     if (kceIsCeSysmemRead_HAL(pGpu, pKCe))
         RMCTRL_SET_CAP(pKCeCaps, NV2080_CTRL_CE_CAPS, _CE_SYSMEM_READ);
 
@@ -121,8 +128,10 @@ void kceGetNvlinkCaps(OBJGPU *pGpu, KernelCE *pKCe, NvU8 *pKCeCaps)
 
 NV_STATUS kceGetDeviceCaps_IMPL(OBJGPU *pGpu, KernelCE *pKCe, RM_ENGINE_TYPE rmEngineType, NvU8 *pKCeCaps)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2991);
     if (pKCe->bStubbed)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2992);
         NV_PRINTF(LEVEL_INFO, "Skipping stubbed CE %d\n", pKCe->publicID);
         return NV_ERR_NOT_SUPPORTED;
     }
@@ -136,6 +145,7 @@ NV_STATUS kceGetDeviceCaps_IMPL(OBJGPU *pGpu, KernelCE *pKCe, RM_ENGINE_TYPE rmE
     if ((pKernelNvlink != NULL) && !knvlinkIsForcedConfig(pGpu, pKernelNvlink) &&
          kmigmgrIsMIGNvlinkP2PSupported(pGpu, GPU_GET_KERNEL_MIG_MANAGER(pGpu)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2993);
         knvlinkCoreGetRemoteDeviceInfo(pGpu, pKernelNvlink);
     }
 
@@ -189,6 +199,7 @@ kceGetCeFromNvlinkConfig_IMPL
     NvU32    *nvlinkP2PCeMask
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2994);
     NV_STATUS  rmStatus;
     NvU32      gpuCount;
     NV2080_CTRL_CMD_NVLINK_GET_NVLINK_CAPS_PARAMS nvlinkCapsParams = {0};
@@ -205,6 +216,7 @@ kceGetCeFromNvlinkConfig_IMPL
     // Check if GPU supports NVLink
     if (NV2080_CTRL_NVLINK_GET_CAP(nvlinkCaps, NV2080_CTRL_NVLINK_CAPS_SUPPORTED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2995);
         // Check if GPU supports NVLink for SYSMEM
         if (NV2080_CTRL_NVLINK_GET_CAP(nvlinkCaps, NV2080_CTRL_NVLINK_CAPS_SYSMEM_ACCESS))
             kceGetSysmemRWLCEs(pKCe, pSysmemReadCE, pSysmemWriteCE);
@@ -219,6 +231,7 @@ kceGetCeFromNvlinkConfig_IMPL
 
 NV_STATUS kceUpdateClassDB_KERNEL(OBJGPU *pGpu, KernelCE *pKCe)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2996);
     RM_API *pRmApi     = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
     NV2080_CTRL_CE_UPDATE_CLASS_DB_PARAMS params = {0};
@@ -238,6 +251,7 @@ NV_STATUS kceUpdateClassDB_KERNEL(OBJGPU *pGpu, KernelCE *pKCe)
         // If this CE has no PCEs assigned, remove it from classDB
         if (stubbed)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2997);
             NV_PRINTF(LEVEL_INFO, "Stubbing CE %d\n", kceInst);
             pKCe->bStubbed = NV_TRUE;
 
@@ -269,6 +283,7 @@ kceRegisterIntrService_IMPL
     IntrServiceRecord pRecords[MC_ENGINE_IDX_MAX]
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2998);
     NvU16 engineIdx = MC_ENGINE_IDX_CE(pKCe->publicID);
 
     NV_ASSERT(pRecords[engineIdx].pNotificationService == NULL);
@@ -292,6 +307,7 @@ kceServiceNotificationInterrupt_IMPL
     IntrServiceServiceNotificationInterruptArguments *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2999);
     NV_ASSERT_OR_RETURN(pParams != NULL, NV_ERR_INVALID_ARGUMENT);
     NV_ASSERT_OR_RETURN(pParams->engineIdx == MC_ENGINE_IDX_CE(pKCe->publicID), NV_ERR_GENERIC);
 
@@ -309,6 +325,7 @@ kceServiceNotificationInterrupt_IMPL
 
 NV_STATUS kceTopLevelPceLceMappingsUpdate_IMPL(OBJGPU *pGpu, KernelCE *pKCe)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3000);
     NvU32        pceLceMap[NV2080_CTRL_MAX_PCES]    = {0};
     NvU32        grceConfig[NV2080_CTRL_MAX_GRCES]  = {0};
     NvU32        exposeCeMask        = 0;
@@ -338,10 +355,12 @@ NV_STATUS kceTopLevelPceLceMappingsUpdate_IMPL(OBJGPU *pGpu, KernelCE *pKCe)
 
     if (bUpdateNvlinkPceLce || IS_SILICON(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3001);
         status = kceGetNvlinkAutoConfigCeValues_HAL(pGpu, pKCe, pceLceMap,
                                                grceConfig, &exposeCeMask);
         if (status == NV_ERR_NOT_SUPPORTED)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3002);
             NV_PRINTF(LEVEL_INFO,
                 "CE AutoConfig is not supported. Skipping PCE2LCE update\n");
 
@@ -351,6 +370,7 @@ NV_STATUS kceTopLevelPceLceMappingsUpdate_IMPL(OBJGPU *pGpu, KernelCE *pKCe)
         {
             if (status != NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3003);
                 NV_PRINTF(LEVEL_ERROR,
                     "Failed to get auto-config PCE-LCE mappings. Return\n");
                 return status;
@@ -377,6 +397,7 @@ NV_STATUS kceTopLevelPceLceMappingsUpdate_IMPL(OBJGPU *pGpu, KernelCE *pKCe)
 
     if (bUpdateNvlinkPceLce)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3004);
         portMemCopy(params.pceLceMap,
                     sizeof(params.pceLceMap),
                     pceLceMap,
@@ -400,6 +421,7 @@ NV_STATUS kceTopLevelPceLceMappingsUpdate_IMPL(OBJGPU *pGpu, KernelCE *pKCe)
                              sizeof(params));
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3005);
         NV_PRINTF(LEVEL_ERROR,
             "Failed to update PCE-LCE mappings. Return\n");
         return status;
@@ -418,6 +440,7 @@ NV_STATUS kceTopLevelPceLceMappingsUpdate_IMPL(OBJGPU *pGpu, KernelCE *pKCe)
 
 NV_STATUS kceGetFaultMethodBufferSize_IMPL(OBJGPU *pGpu, NvU32 *size)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3006);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_CE_GET_FAULT_METHOD_BUFFER_SIZE_PARAMS params = {0};
 
@@ -444,6 +467,7 @@ kceGetAvailableHubPceMask_IMPL
     NVLINK_TOPOLOGY_PARAMS *pTopoParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3007);
     RM_API *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_CE_GET_HUB_PCE_MASK_PARAMS params = {0};
 
@@ -474,6 +498,7 @@ kceGetAvailableHubPceMask_IMPL
 NV_STATUS
 kceFindFirstInstance_IMPL(OBJGPU *pGpu, KernelCE **ppKCe)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3008);
     KernelCE *pKCe = NULL;
 
     KCE_ITER_ALL_BEGIN(pGpu, pKCe, 0)
@@ -495,11 +520,13 @@ kceFindShimOwner_IMPL
     KernelCE **ppShimKCe
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3009);
     KernelCE *pKCeLoop;
 
     KCE_ITER_ALL_BEGIN(pGpu, pKCeLoop, 0)
         if (pKCeLoop->bShimOwner)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3010);
             *ppShimKCe = pKCeLoop;
             return NV_OK;
         }

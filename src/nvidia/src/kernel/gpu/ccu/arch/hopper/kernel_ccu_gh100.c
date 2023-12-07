@@ -48,6 +48,7 @@ kccuMigShrBufHandler_GH100
     NvBool    bMigEnabled
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2699);
     NV_STATUS status = NV_OK;
 
     NV_PRINTF(LEVEL_INFO, "Create/delete CCU shared buffers for mig (migEnabled:%u)\n",
@@ -55,11 +56,14 @@ kccuMigShrBufHandler_GH100
 
     if (bMigEnabled)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2700);
         if (!pKernelCcu->bMigShrBufAllocated)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2701);
             status = kccuInitMigSharedBuffer(pGpu, pKernelCcu);
             if (status == NV_OK)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2702);
                 pKernelCcu->bMigShrBufAllocated = NV_TRUE;
                 kccuShrBufInfoToCcu(pGpu, pKernelCcu, CCU_MIG_SHRBUF_ID_START);
             }
@@ -70,6 +74,7 @@ kccuMigShrBufHandler_GH100
 
     if (pKernelCcu->bMigShrBufAllocated)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2703);
         NvU32 i = 0;
         NV2080_CTRL_INTERNAL_CCU_UNMAP_INFO_PARAMS params = { 0 };
 
@@ -85,14 +90,17 @@ kccuMigShrBufHandler_GH100
                                  sizeof(params));
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2704);
             NV_PRINTF(LEVEL_ERROR, "CCU mig memdesc unmap request failed with status: 0x%x\n", status);
         }
 
         // Free mig shared buffer
         for (i = CCU_MIG_SHRBUF_ID_START; i < CCU_SHRBUF_COUNT_MAX; i++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2705);
             if (pKernelCcu->pMemDesc[i] != NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2706);
                 kccuShrBufIdxCleanup(pGpu, pKernelCcu, i);
             }
         }

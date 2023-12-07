@@ -45,6 +45,7 @@ dispcmnCtrlCmdSystemGetHotplugUnplugState_IMPL
     NV0073_CTRL_SYSTEM_GET_HOTPLUG_UNPLUG_STATE_PARAMS *pHotplugParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3552);
     NvHandle   hDevice = RES_GET_PARENT_HANDLE(pDispCommon);
     RM_API    *pRmApi = GPU_GET_PHYSICAL_RMAPI(DISPAPI_GET_GPU(pDispCommon));
     NvU32      hotPlugMask   = 0;
@@ -65,11 +66,13 @@ dispcmnCtrlCmdSystemGetHotplugUnplugState_IMPL
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3553);
         return status;
     }
 
     if ((hotPlugMask != 0) || (hotUnplugMask != 0))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3554);
         RmClient **ppClient;
         RsClient  *pRsClient;
 
@@ -77,6 +80,7 @@ dispcmnCtrlCmdSystemGetHotplugUnplugState_IMPL
              ppClient;
              ppClient = serverutilGetNextClientUnderLock(ppClient))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3555);
             pRsClient = staticCast(*ppClient, RsClient);
             DispCommon *pDispCommonLoop;
 
@@ -107,6 +111,7 @@ dispcmnCtrlCmdSystemAllocateDisplayBandwidth_IMPL
     NV0073_CTRL_SYSTEM_ALLOCATE_DISPLAY_BANDWIDTH_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3556);
     OBJGPU        *pGpu;
     KernelDisplay *pKernelDisplay;
     NV_STATUS      status;
@@ -120,6 +125,7 @@ dispcmnCtrlCmdSystemAllocateDisplayBandwidth_IMPL
                                pParams->subDeviceInstance);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3557);
         return status;
     }
 
@@ -138,6 +144,7 @@ dispcmnCtrlCmdDpGenerateFakeInterrupt_IMPL
     NV0073_CTRL_CMD_DP_GENERATE_FAKE_INTERRUPT_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3558);
     OBJGPU *pGpu = DISPAPI_GET_GPU(pDispCommon);
     NvU32 displayId = pParams->displayId;
     NvU32 interruptType = pParams->interruptType;
@@ -152,6 +159,7 @@ dispcmnCtrlCmdDpGenerateFakeInterrupt_IMPL
                                pParams->subDeviceInstance);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3559);
         return status;
     }
 
@@ -161,6 +169,7 @@ dispcmnCtrlCmdDpGenerateFakeInterrupt_IMPL
     // Send a DP IRQ (short pulse) to a registered client.
     if (interruptType == NV0073_CTRL_CMD_DP_GENERATE_FAKE_INTERRUPT_IRQ)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3560);
         Nv2080DpIrqNotification params = {0};
         params.displayId = displayId;
 
@@ -179,6 +188,7 @@ dispcmnCtrlCmdDpGenerateFakeInterrupt_IMPL
 
         if (status == NV_OK && FLD_TEST_DRF(0073_CTRL_DP, _GET_EDP_DATA, _PANEL_POWER, _OFF, edpData.data))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3561);
             return NV_ERR_GENERIC;
         }
 
@@ -187,16 +197,19 @@ dispcmnCtrlCmdDpGenerateFakeInterrupt_IMPL
     else if (interruptType == NV0073_CTRL_CMD_DP_GENERATE_FAKE_INTERRUPT_PLUG ||
              interruptType == NV0073_CTRL_CMD_DP_GENERATE_FAKE_INTERRUPT_UNPLUG)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3562);
         Nv2080HotplugNotification hotplugNotificationParams;
         portMemSet(&hotplugNotificationParams, 0, sizeof(hotplugNotificationParams));
 
         if (interruptType == NV0073_CTRL_CMD_DP_GENERATE_FAKE_INTERRUPT_PLUG)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3563);
             hotplugNotificationParams.plugDisplayMask = displayId;
             hotplugNotificationParams.unplugDisplayMask = 0;
         }
         else if (interruptType == NV0073_CTRL_CMD_DP_GENERATE_FAKE_INTERRUPT_UNPLUG)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3564);
             hotplugNotificationParams.plugDisplayMask = 0;
             hotplugNotificationParams.unplugDisplayMask = displayId;
         }
@@ -217,6 +230,7 @@ NV_STATUS dispcmnCtrlCmdVRRSetRgLineActive_IMPL
     NV0073_CTRL_CMD_SYSTEM_VRR_SET_RGLINE_ACTIVE_PARAMS *pParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3565);
     POBJGPU   pGpu   = DISPAPI_GET_GPU(pDispCommon);
     NvHandle  hClient = RES_GET_CLIENT_HANDLE(pDispCommon);
     NvHandle  hParent = RES_GET_PARENT_HANDLE(pDispCommon);
@@ -233,14 +247,17 @@ NV_STATUS dispcmnCtrlCmdVRRSetRgLineActive_IMPL
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3566);
         return status;
     }
 
     if (pParams->bEnable)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3567);
         status = memdescRegisterToGSP(pGpu, hClient, hParent, pParams->hMemory);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3568);
             NV_PRINTF(LEVEL_ERROR, "memdescRegisterToGSP failed %d\n", status);
             return status;
         }
@@ -255,9 +272,11 @@ NV_STATUS dispcmnCtrlCmdVRRSetRgLineActive_IMPL
 
     if (!pParams->bEnable)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3569);
         status = memdescDeregisterFromGSP(pGpu, hClient, hParent, pParams->hMemory);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3570);
             NV_PRINTF(LEVEL_ERROR, "memdescDeRegisterFromGSP failed %d\n", status);
         }
     }

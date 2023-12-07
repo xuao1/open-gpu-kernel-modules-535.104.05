@@ -34,11 +34,14 @@ PDACEXTERNALDEVICE extdevGetExtDev
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4740);
     if (RMCFG_FEATURE_EXTDEV_GSYNC)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4741);
         OBJGSYNC *pGsync = gsyncmgrGetGsync(pGpu);
         if (pGsync)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4742);
             return pGsync->pExtDev;
         }
     }
@@ -52,11 +55,13 @@ PDACEXTERNALDEVICE extdevGetExtDev
 //
 void extdevDestroy_Base(OBJGPU *pGpu, PDACEXTERNALDEVICE pExternalDevice)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4743);
     portMemFree(pExternalDevice->pI);
 }
 
 static NvBool dacAttachExternalDevice_Base(OBJGPU *pGpu, PDACEXTERNALDEVICE *ppExtdevs)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4744);
     return NV_FALSE;
 }
 
@@ -67,6 +72,7 @@ extdevConstruct_Base
     PDACEXTERNALDEVICE  pThis
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4745);
     //
     // Alloc or find interface.
     // Not being able to do so is fatal.
@@ -75,6 +81,7 @@ extdevConstruct_Base
         pThis->pI = portMemAllocNonPaged(sizeof(DACEXTERNALDEVICEIFACE));
         if (pThis->pI == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4746);
             return 0;
         }
         portMemSet(pThis->pI, 0, sizeof(DACEXTERNALDEVICEIFACE));
@@ -84,6 +91,7 @@ extdevConstruct_Base
 
     // Setup interface(s)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4747);
         pThis->pI->Destroy = extdevDestroy_Base;
         pThis->pI->Attach  = dacAttachExternalDevice_Base;
 
@@ -107,17 +115,21 @@ extdevConstruct_Base
 void
 extdevDestroy(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4748);
     OBJGSYNC *pGsync = NULL;
 
     if (RMCFG_FEATURE_EXTDEV_GSYNC)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4749);
         // destroy gsync object if any
         pGsync = gsyncmgrGetGsync(pGpu);
         if (pGsync && pGsync->pExtDev)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4750);
             pGsync->pExtDev->pI->Destroy(pGpu, pGsync->pExtDev);
             if (pGsync->pExtDev->ReferenceCount == 0)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4751);
                 portMemFree(pGsync->pExtDev);
                 pGsync->pExtDev = NULL;
             }
@@ -132,12 +144,14 @@ NV_STATUS extdevScheduleWatchdog
     PDACEXTERNALDEVICE pExtDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4752);
     OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
     NV_STATUS rmStatus = NV_ERR_GENERIC;
 
     // make sure it isn't already scheduled
     if (!pExtDevice->WatchdogControl.Scheduled)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4753);
         pExtDevice->WatchdogControl.Scheduled = NV_TRUE;
 
         rmStatus = tmrScheduleCallbackRel(
@@ -150,6 +164,7 @@ NV_STATUS extdevScheduleWatchdog
 
         if (NV_OK != rmStatus)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4754);
             pExtDevice->WatchdogControl.Scheduled = NV_FALSE;
         }
     }
@@ -164,6 +179,7 @@ NV_STATUS extdevCancelWatchdog
     PDACEXTERNALDEVICE pExtDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4755);
     OBJTMR *pTmr = GPU_GET_TIMER(pGpu);
     NV_STATUS rmStatus;
 
@@ -184,6 +200,7 @@ NV_STATUS extdevServiceWatchdog
     void *_pComponent
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4756);
     PDACEXTERNALDEVICE pExtDevice = NULL;
     PDACEXTERNALDEVICEIFACE pdsif = NULL;
 
@@ -192,6 +209,7 @@ NV_STATUS extdevServiceWatchdog
     // No gsync and no gvo, return NV_ERR_GENERIC
     if (!pExtDevice)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4757);
         return NV_ERR_GENERIC;
     }
 
@@ -210,8 +228,10 @@ NvBool extdevValidate_Default
     PDACEXTERNALDEVICE pExtDevice
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4758);
     if (!pExtDevice)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4759);
         return NV_FALSE;
     }
 
@@ -227,6 +247,7 @@ writeregu008_extdevice
     NvU8               Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4760);
 
     NV_STATUS status = NV_ERR_GENERIC;
 
@@ -256,11 +277,13 @@ writeregu008_extdeviceTargeted
     NvU8                Data
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4761);
     NV_STATUS status = NV_ERR_GENERIC;
     NvBool bcState;
 
     if (!pGpu)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4762);
        return status;
     }
 
@@ -282,6 +305,7 @@ readregu008_extdevice
     NvU8               *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4763);
 
     NV_STATUS status = NV_ERR_GENERIC;
 
@@ -311,11 +335,13 @@ readregu008_extdeviceTargeted
     NvU8               *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4764);
     NV_STATUS status = NV_ERR_GENERIC;
     NvBool bcState;
 
     if (!pGpu)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4765);
        return status;
     }
 
@@ -338,6 +364,7 @@ extdevGsyncService
     NvBool              rmStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4766);
     PDACEXTERNALDEVICE pExtDevice = NULL;
     PDACEXTERNALDEVICEIFACE pdsif = NULL;
 
@@ -357,6 +384,7 @@ extdevGetBoundHeadsAndDisplayIds
     NvU32       *pDisplayId
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4767);
     RM_API   *pRmApi      = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NvU32     hClient     = pGpu->hInternalClient;
     NvU32     hSubdevice  = pGpu->hInternalSubdevice;
@@ -371,6 +399,7 @@ extdevGetBoundHeadsAndDisplayIds
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 4768);
         NV_PRINTF(LEVEL_ERROR, "Extdev getting display IDs have failed!\n");
     }
     else

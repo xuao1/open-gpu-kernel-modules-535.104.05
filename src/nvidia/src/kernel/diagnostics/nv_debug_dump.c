@@ -37,12 +37,14 @@ static NV_STATUS prbAppendSubMsg(PRB_ENCODER *pPrbEnc, NvU32 tag, NvU8 *buffer, 
 
 NV_STATUS nvdConstructEngine_IMPL(OBJGPU *pGpu, NvDebugDump *pNvd, ENGDESCRIPTOR engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1046);
     pNvd->pHeadDebugBuffer = NULL;
     return NV_OK;
 }
 
 void nvdDestruct_IMPL(NvDebugDump *pNvd)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1047);
     OBJGPU *pGpu = ENG_GET_GPU(pNvd);
 
     //
@@ -71,6 +73,7 @@ nvdEngineSignUp_IMPL
     void                *pvData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1048);
     NVD_ENGINE_CALLBACK *pEngineCallback;
     NVD_ENGINE_CALLBACK *pWalk;
     NVD_ENGINE_CALLBACK *pBack;
@@ -88,6 +91,7 @@ nvdEngineSignUp_IMPL
 
     if (pNvd->pCallbacks == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1049);
         pNvd->pCallbacks = pEngineCallback;
     }
     else
@@ -98,6 +102,7 @@ nvdEngineSignUp_IMPL
         // Insert in Priority Order
         while ((pWalk != NULL) && (REF_VAL(NVD_ENGINE_FLAGS_PRIORITY, pWalk->flags) >= priority))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1050);
             pBack = pWalk;
             pWalk = pWalk->pNext;
         }
@@ -105,6 +110,7 @@ nvdEngineSignUp_IMPL
         // At Head
         if (pBack == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1051);
             pEngineCallback->pNext = pNvd->pCallbacks;
             pNvd->pCallbacks = pEngineCallback;
         }
@@ -125,11 +131,13 @@ nvdEngineRelease_IMPL
     NvDebugDump         *pNvd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1052);
     NVD_ENGINE_CALLBACK *pEngineCallback;
     NVD_ENGINE_CALLBACK *pWalk;
 
     for (pWalk = pNvd->pCallbacks; pWalk != NULL;)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1053);
         pEngineCallback = pWalk;
         pWalk = pWalk->pNext;
         portMemFree(pEngineCallback);
@@ -147,6 +155,7 @@ nvdFindEngine_IMPL
     NVD_ENGINE_CALLBACK **ppEngineCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1054);
     NVD_ENGINE_CALLBACK *pEngineCallback;
     NV_STATUS            rmStatus = NV_ERR_MISSING_TABLE_ENTRY;
 
@@ -155,8 +164,10 @@ nvdFindEngine_IMPL
     for (pEngineCallback = pNvd->pCallbacks; pEngineCallback != NULL;
           pEngineCallback = pEngineCallback->pNext)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1055);
         if (pEngineCallback->engDesc == engDesc)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1056);
             *ppEngineCallback = pEngineCallback;
             rmStatus = NV_OK;
             break;
@@ -175,12 +186,14 @@ nvdEngineDumpCallbackHelper
     NVD_ENGINE_CALLBACK *pEngineCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1057);
     NV_STATUS   nvStatus      = NV_OK;
     NvU8        startingDepth = prbEncNestingLevel(pPrbEnc);
 
     if (!IS_GSP_CLIENT(pGpu) ||
         !FLD_TEST_REF(NVD_ENGINE_FLAGS_SOURCE, _GSP, pEngineCallback->flags))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1058);
         NV_CHECK_OK_OR_CAPTURE_FIRST_ERROR(nvStatus, LEVEL_ERROR,
             pEngineCallback->pDumpEngineFunc(pGpu, pPrbEnc,
                 pNvDumpState, pEngineCallback->pvData));
@@ -194,6 +207,7 @@ nvdEngineDumpCallbackHelper
     if (IS_GSP_CLIENT(pGpu) &&
         !FLD_TEST_REF(NVD_ENGINE_FLAGS_SOURCE, _CPU, pEngineCallback->flags))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1059);
             NV_RM_RPC_DUMP_PROTOBUF_COMPONENT(pGpu, nvStatus, pPrbEnc,
                 pNvDumpState, pEngineCallback->engDesc);
 
@@ -216,6 +230,7 @@ nvdDoEngineDump_IMPL
     NvU32        engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1060);
     NVD_ENGINE_CALLBACK *pEngineCallback;
     NV_STATUS            nvStatus = NV_OK;
 
@@ -231,6 +246,7 @@ nvdDoEngineDump_IMPL
 
     if (pEngineCallback != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1061);
         NV_CHECK_OK_OR_CAPTURE_FIRST_ERROR(nvStatus, LEVEL_ERROR,
             nvdEngineDumpCallbackHelper(pGpu, pPrbEnc, pNvDumpState, pEngineCallback));
     }
@@ -241,6 +257,7 @@ nvdDoEngineDump_IMPL
 
     if (pEngineCallback != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1062);
         NV_CHECK_OK_OR_CAPTURE_FIRST_ERROR(nvStatus, LEVEL_ERROR,
             nvdEngineDumpCallbackHelper(pGpu, pPrbEnc, pNvDumpState, pEngineCallback));
     }
@@ -259,6 +276,7 @@ nvdDumpAllEngines_IMPL
     NVD_STATE      *pNvDumpState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1063);
     NVD_ENGINE_CALLBACK    *pEngineCallback;
     NV_STATUS               nvStatus = NV_OK;
 
@@ -269,12 +287,14 @@ nvdDumpAllEngines_IMPL
         (prbEncBufLeft(pPrbEnc) > 0) && (pEngineCallback != NULL);
         pEngineCallback = pEngineCallback->pNext)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1064);
         NV_CHECK_OK_OR_CAPTURE_FIRST_ERROR(nvStatus, LEVEL_ERROR,
             nvdEngineDumpCallbackHelper(pGpu, pPrbEnc, pNvDumpState, pEngineCallback));
 
         // Check to see if GPU is inaccessible
         if (pGpu->getProperty(pGpu, PDB_PROP_GPU_INACCESSIBLE))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1065);
             pNvDumpState->bGpuAccessible = NV_FALSE;
         }
     }
@@ -310,6 +330,7 @@ nvdDumpComponent_IMPL
     PrbBufferCallback *pBufferCallback
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1066);
     OBJSYS      *pSys           = SYS_GET_INSTANCE();
     Journal     *pRcDB          = SYS_GET_RCDB(pSys);
     PRB_ENCODER  encoder;
@@ -341,6 +362,7 @@ nvdDumpComponent_IMPL
     // Start encoding protobuf dump message.
     switch (policy)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1067);
         case NVDUMP_BUFFER_PROVIDED:
             prbEncStart(&encoder, NVDEBUG_NVDUMP, NvP64_VALUE(pBuffer->address),
                         pBuffer->size, pBufferCallback);
@@ -360,6 +382,7 @@ nvdDumpComponent_IMPL
 
     switch (component)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1068);
         case NVDUMP_COMPONENT_DEBUG_BUFFERS:
         {
             status = nvdDumpDebugBuffers(pGpu, pNvd, &encoder);
@@ -442,6 +465,7 @@ nvdDumpDebugBuffers_IMPL
     PRB_ENCODER *pPrbEnc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1069);
     NVD_DEBUG_BUFFER *pCurrent = pNvd->pHeadDebugBuffer;
     NV_STATUS status = NV_OK;
     NV_STATUS endStatus = NV_OK;
@@ -456,6 +480,7 @@ nvdDumpDebugBuffers_IMPL
 
     while (pCurrent != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1070);
         bufSize = (NvU32)pCurrent->pMemDesc->Size;
 
         // Map DebugBuffer to a kernel address
@@ -467,6 +492,7 @@ nvdDumpDebugBuffers_IMPL
         dataBuffer = (NvU8 *) portMemAllocStackOrHeap(bufSize);
         if (dataBuffer == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1071);
             status = NV_ERR_NO_MEMORY;
             break;
         }
@@ -503,6 +529,7 @@ prbAppendSubMsg
     NvU32 size
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1072);
     NVDUMP_SUB_ALLOC_HEADER *header = NULL;
     NvU8 *pCurrent = buffer;
     NvU8 *subAlloc = NULL;
@@ -532,30 +559,35 @@ prbAppendSubMsg
 
     for (i = 0; i < NVDUMP_DEBUG_BUFFER_MAX_SUBALLOCATIONS; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1073);
         header = (NVDUMP_SUB_ALLOC_HEADER *)pCurrent;
         subAlloc = pCurrent + sizeof(NVDUMP_SUB_ALLOC_HEADER);
 
         // Check for out-of-bounds buffer access
         if (pCurrent < buffer || subAlloc > (buffer + size))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1074);
             status = NV_ERR_INVALID_ARGUMENT;
             goto done;
         }
 
         if (!portSafeSubU16(header->end, header->start, &subMsgLen))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1075);
             status = NV_ERR_INVALID_ARGUMENT;
             goto done;
         }
 
         if ((subAlloc + subMsgLen) >= (buffer + size))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1076);
             status = NV_ERR_INSUFFICIENT_RESOURCES;
             goto done;
         }
         // If valid, copy contents
         if (header->flags & NVDUMP_SUB_ALLOC_VALID)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1077);
             status = prbEncStubbedAddBytes(pPrbEnc, subAlloc, subMsgLen);
             if (status != NV_OK)
                 goto done;
@@ -595,8 +627,10 @@ _nvdDumpEngineFunc
     void        *pvData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1078);
     switch (DRF_VAL(_NVD, _ERROR_CODE, _MAJOR, pNvDumpState->internalCode))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1079);
     case NVD_GPU_GENERATED:
     case NVD_SKIP_ZERO:
         // don't report on these internal codes.
@@ -619,6 +653,7 @@ nvdStateInitLocked_IMPL
     NvDebugDump *pNvd
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1080);
 
     OBJSYS  *pSys  = SYS_GET_INSTANCE();
     Journal *pRcDB = SYS_GET_RCDB(pSys);
@@ -655,6 +690,7 @@ nvdAllocDebugBuffer_IMPL
     MEMORY_DESCRIPTOR **ppMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1081);
     MEMORY_DESCRIPTOR   *pMemDesc;
     NVD_DEBUG_BUFFER    *pNewDebugBuffer;
     NV_STATUS            status = NV_OK;
@@ -673,6 +709,7 @@ nvdAllocDebugBuffer_IMPL
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1082);
         NV_PRINTF(LEVEL_ERROR, "nvdAllocDebugBuffer - memdescCreate Failed: %x\n",
                   status);
         return status;
@@ -735,6 +772,7 @@ nvdFreeDebugBuffer_IMPL
     MEMORY_DESCRIPTOR *pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1083);
     NVD_DEBUG_BUFFER *pCurrDebugBuffer = pNvd->pHeadDebugBuffer;
     NVD_DEBUG_BUFFER *pPrevDebugBuffer = NULL;
 
@@ -786,16 +824,20 @@ nvDumpGetDumpBufferSizeEnum
     NVD_STATE  *pNvDumpState
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1084);
     if (pNvDumpState->nvDumpType == NVD_DUMP_TYPE_JOURNAL)   // Check Journal first
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1085);
         return NVD_DUMP_SIZE_JOURNAL_WRITE;
     }
     else if (pNvDumpState->initialbufferSize < 0x80000)      // Less than 512K, small MD
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1086);
         return  NVD_DUMP_SIZE_SMALL;
     }
     else if (pNvDumpState->initialbufferSize < 0x200000)     // Less than 2M, large MD
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1087);
         return  NVD_DUMP_SIZE_MEDIUM;
     }
     // else must be really large                             // > 2M = full dump

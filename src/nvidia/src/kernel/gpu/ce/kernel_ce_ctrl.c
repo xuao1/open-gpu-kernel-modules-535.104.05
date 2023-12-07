@@ -48,6 +48,7 @@ subdeviceCtrlCmdCeGetCaps_IMPL
     NV2080_CTRL_CE_GET_CAPS_PARAMS *pCeCapsParams
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3022);
     OBJGPU     *pGpu = GPU_RES_GET_GPU(pSubdevice);
     KernelCE    *pKCe;
     NvU32       ceNumber;
@@ -59,6 +60,7 @@ subdeviceCtrlCmdCeGetCaps_IMPL
     // sanity check array size
     if (pCeCapsParams->capsTblSize != NV2080_CTRL_CE_CAPS_TBL_SIZE)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3023);
         NV_PRINTF(LEVEL_ERROR, "size mismatch: client 0x%x rm 0x%x\n",
                   pCeCapsParams->capsTblSize, NV2080_CTRL_CE_CAPS_TBL_SIZE);
         return NV_ERR_INVALID_ARGUMENT;
@@ -68,6 +70,7 @@ subdeviceCtrlCmdCeGetCaps_IMPL
 
     if (!RM_ENGINE_TYPE_IS_COPY(rmEngineType))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3024);
         return NV_ERR_NOT_SUPPORTED;
     }
 
@@ -80,6 +83,7 @@ subdeviceCtrlCmdCeGetCaps_IMPL
     //
     if (IS_VIRTUAL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3025);
         CALL_CONTEXT *pCallContext = resservGetTlsCallContext();
         RmCtrlParams *pRmCtrlParams = pCallContext->pControlParams;
         NV2080_CTRL_CE_GET_CAPS_V2_PARAMS ceCapsv2Params = { 0 };
@@ -95,6 +99,7 @@ subdeviceCtrlCmdCeGetCaps_IMPL
 
         if (status == NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3026);
             portMemCopy(NvP64_VALUE(pCeCapsParams->capsTbl),
                         (sizeof(NvU8) * NV2080_CTRL_CE_CAPS_TBL_SIZE),
                         ceCapsv2Params.capsTbl,
@@ -112,6 +117,7 @@ subdeviceCtrlCmdCeGetCaps_IMPL
     // not supposed to be user visible and cannot be allocated anyway.
     if (!pKCe)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3027);
         return NV_ERR_NOT_SUPPORTED;
     }
 

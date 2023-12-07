@@ -48,9 +48,11 @@ NV_STATUS RmP2PValidateSubDevice
     OBJGPU **ppGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2417);
     OBJGPU *pGpu = GPU_RES_GET_GPU(pThirdPartyP2P->pSubdevice);
     if (pGpu == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2418);
         return NV_ERR_INVALID_OBJECT_HANDLE;
     }
 
@@ -69,6 +71,7 @@ void _freeMappingExtentInfo
     PCLI_THIRD_PARTY_P2P_MAPPING_EXTENT_INFO pExtentInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2419);
     if (pExtentInfo == NULL)
         return;
 
@@ -91,6 +94,7 @@ NV_STATUS _constructMappingExtentInfo
     PCLI_THIRD_PARTY_P2P_MAPPING_EXTENT_INFO *ppExtentInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2420);
     NV_STATUS status;
     PCLI_THIRD_PARTY_P2P_MAPPING_EXTENT_INFO pExtentInfo;
     MEMORY_DESCRIPTOR *pNewMemDesc;
@@ -104,6 +108,7 @@ NV_STATUS _constructMappingExtentInfo
         sizeof(CLI_THIRD_PARTY_P2P_MAPPING_EXTENT_INFO));
     if (pExtentInfo == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2421);
         status = NV_ERR_NO_MEMORY;
         goto out;
     }
@@ -111,6 +116,7 @@ NV_STATUS _constructMappingExtentInfo
     status = memdescCreateSubMem(&pNewMemDesc, pMemDesc, NULL, offset, length);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2422);
         goto out;
     }
 
@@ -151,6 +157,7 @@ NV_STATUS _createThirdPartyP2PMappingExtent
     NvU64      *pMappingLength
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2423);
     NvU64 fbApertureOffset = 0;
     NvU64 fbApertureMapLength = RM_ALIGN_UP(length, NVRM_P2P_PAGESIZE_BIG_64K);
     NV_STATUS status;
@@ -186,11 +193,13 @@ NV_STATUS _createThirdPartyP2PMappingExtent
                 fbApertureMapLength, 0, pMemDesc, ppExtentInfo);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2424);
         goto out;
     }
 
     if (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2425);
         NV_RM_RPC_MAP_MEMORY(pGpu, pClient->hClient,
                              RES_GET_HANDLE(pDevice),
                              pVidmemInfo->hMemory,
@@ -203,6 +212,7 @@ NV_STATUS _createThirdPartyP2PMappingExtent
     {
         if (!bGpuLockTaken)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2426);
             status = rmDeviceGpuLocksAcquire(pGpu, GPUS_LOCK_FLAGS_NONE,
                                              RM_LOCK_MODULES_P2P);
             NV_ASSERT_OR_GOTO(status == NV_OK, out);
@@ -217,11 +227,13 @@ NV_STATUS _createThirdPartyP2PMappingExtent
 
         if (!bGpuLockTaken)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2427);
             rmDeviceGpuLocksRelease(pGpu, GPUS_LOCK_FLAGS_NONE, NULL);
         }
     }
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2428);
         goto out;
     }
 
@@ -231,6 +243,7 @@ NV_STATUS _createThirdPartyP2PMappingExtent
          pExtentInfoTmp != NULL;
          pExtentInfoTmp = listNext(pList, pExtentInfoTmp))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2429);
        if (pExtentInfoTmp->address > address)
            break;
     }
@@ -247,12 +260,15 @@ NV_STATUS _createThirdPartyP2PMappingExtent
 out:
     if ((status != NV_OK) && (*ppExtentInfo != NULL))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2430);
         NV_STATUS tmpStatus = NV_OK;
 
         if (fbApertureMapLength != 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2431);
             if (IS_VIRTUAL(pGpu) && gpuIsWarBug200577889SriovHeavyEnabled(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2432);
                 NV_RM_RPC_UNMAP_MEMORY(pGpu, pClient->hClient,
                                        RES_GET_HANDLE(pDevice),
                                        pVidmemInfo->hMemory,
@@ -263,12 +279,14 @@ out:
             {
                 if (!bGpuLockTaken)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2433);
                     tmpStatus = rmDeviceGpuLocksAcquire(pGpu, GPUS_LOCK_FLAGS_NONE,
                                                         RM_LOCK_MODULES_P2P);
                     NV_ASSERT(tmpStatus == NV_OK);
 
                     if (tmpStatus != NV_OK)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2434);
                         goto cleanup;
                     }
                 }
@@ -281,6 +299,7 @@ out:
 
                 if (!bGpuLockTaken)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2435);
                     rmDeviceGpuLocksRelease(pGpu, GPUS_LOCK_FLAGS_NONE, NULL);
                 }
             }
@@ -313,6 +332,7 @@ NV_STATUS _reuseThirdPartyP2PMappingExtent
     NvU64      *pMappingLength
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2436);
     NvU64 mappingStart;
     NvU64 mappingLength;
     NV_STATUS status = NV_OK;
@@ -357,6 +377,7 @@ NV_STATUS RmThirdPartyP2PMappingFree
     PCLI_THIRD_PARTY_P2P_MAPPING_INFO pMappingInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2437);
     NV_STATUS status = NV_OK;
     KernelBus                          *pKernelBus;
     NvU64                               length;
@@ -391,6 +412,7 @@ NV_STATUS RmThirdPartyP2PMappingFree
 
     if (!bGpuLockTaken && !bVgpuRpc)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2438);
         status = rmDeviceGpuLocksAcquire(pGpu, GPUS_LOCK_FLAGS_NONE,
                                          RM_LOCK_MODULES_P2P);
         NV_ASSERT_OK_OR_RETURN(status);
@@ -399,6 +421,7 @@ NV_STATUS RmThirdPartyP2PMappingFree
     for(pExtentInfo = pMappingInfo->pStart; (pExtentInfo != NULL) && (length != 0);
         pExtentInfo = pExtentInfoNext)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2439);
         pExtentInfoNext = listNext(&pVidmemInfo->mappingExtentList, pExtentInfo);
         startOffset = address - pExtentInfo->address;
         mappingLength = NV_MIN(length, (pExtentInfo->length - startOffset));
@@ -408,8 +431,10 @@ NV_STATUS RmThirdPartyP2PMappingFree
         pExtentInfo->refCount--;
         if (pExtentInfo->refCount == 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2440);
             if (bVgpuRpc)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2441);
                 NV_RM_RPC_UNMAP_MEMORY(pGpu, pClient->hClient,
                                        RES_GET_HANDLE(pDevice),
                                        pVidmemInfo->hMemory,
@@ -435,6 +460,7 @@ NV_STATUS RmThirdPartyP2PMappingFree
 
     if (!bGpuLockTaken && !bVgpuRpc)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2442);
         rmDeviceGpuLocksRelease(pGpu, GPUS_LOCK_FLAGS_NONE, NULL);
     }
 
@@ -473,6 +499,7 @@ NV_STATUS RmThirdPartyP2PBAR1GetPages
     PCLI_THIRD_PARTY_P2P_INFO pThirdPartyP2PInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2443);
     NV_STATUS status = NV_OK;
     PCLI_THIRD_PARTY_P2P_MAPPING_EXTENT_INFO pExtentInfoLoop = NULL;
     PCLI_THIRD_PARTY_P2P_MAPPING_EXTENT_INFO pExtentInfo     = NULL;
@@ -505,25 +532,30 @@ NV_STATUS RmThirdPartyP2PBAR1GetPages
 
     while (length > 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2444);
         bFound = NV_FALSE;
         lengthReq = length;
         for(; pExtentInfoLoop != NULL; pExtentInfoLoop = listNext(&pVidmemInfo->mappingExtentList, pExtentInfoLoop))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2445);
            if ((address >= pExtentInfoLoop->address) &&
                (address <
                 (pExtentInfoLoop->address + pExtentInfoLoop->length)))
            {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2446);
                bFound = NV_TRUE;
                break;
            }
            else if (address < pExtentInfoLoop->address)
            {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2447);
                //
                // create new allocation for addresses that are not overlapping
                // with the next allocation.
                //
                if ((address + length) > pExtentInfoLoop->address)
                {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2448);
                    lengthReq = pExtentInfoLoop->address - address;
                }
                break;
@@ -534,9 +566,11 @@ NV_STATUS RmThirdPartyP2PBAR1GetPages
 
         if (!bFound)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2449);
             // Check if there is still space in BAR1 to map this length
             if (!_isSpaceAvailableForBar1P2PMapping(pGpu, pSubDevice, pClient, lengthReq))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2450);
                 NV_PRINTF(LEVEL_ERROR,
                           "no space for BAR1 mappings, length: 0x%llx \n", lengthReq);
 
@@ -553,6 +587,7 @@ NV_STATUS RmThirdPartyP2PBAR1GetPages
                         &mappingOffset, &mappingLength);
             if (NV_OK != status)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2451);
                 goto out;
             }
         }
@@ -564,6 +599,7 @@ NV_STATUS RmThirdPartyP2PBAR1GetPages
                         pGpu, pSubDevice, &pExtentInfo, &mappingOffset, &mappingLength);
             if (NV_OK != status)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2452);
                 goto out;
             }
         }
@@ -576,8 +612,10 @@ NV_STATUS RmThirdPartyP2PBAR1GetPages
         lastAddress = (address + mappingLength - 1);
         while (address < lastAddress)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2453);
             if (ppWreqMbH != NULL && ppRreqMbH != NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2454);
                 (*ppWreqMbH)[entries] = 0;
                 (*ppRreqMbH)[entries] = 0;
             }
@@ -601,6 +639,7 @@ NV_STATUS RmThirdPartyP2PBAR1GetPages
 out:
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2455);
         RmThirdPartyP2PMappingFree(pClient, pGpu, pVidmemInfo, pThirdPartyP2PInfo,
                                    pSubDevice, pMappingInfo);
     }
@@ -624,6 +663,7 @@ NV_STATUS RmThirdPartyP2PNVLinkGetPages
     NvU32             *pEntries
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2456);
     NvU64 lastAddress;
     NvU32 entries = 0;
     RmPhysAddr physAddr;
@@ -636,10 +676,12 @@ NV_STATUS RmThirdPartyP2PNVLinkGetPages
     lastAddress = (address + length - 1);
     while (address < lastAddress)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2457);
         physAddr = memdescGetPhysAddr(pMemDesc, AT_CPU, offset);
 
         if ((ppWreqMbH != NULL) && (ppRreqMbH != NULL))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2458);
             (*ppWreqMbH)[entries] = 0;
             (*ppRreqMbH)[entries] = 0;
         }
@@ -680,6 +722,7 @@ NV_STATUS RmP2PGetPagesUsingVidmemInfo
     CLI_THIRD_PARTY_P2P_VIDMEM_INFO  *pVidmemInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2459);
     NV_STATUS status;
     MEMORY_DESCRIPTOR *pMemDesc;
     RsClient *pClient = RES_GET_CLIENT(pThirdPartyP2P);
@@ -691,16 +734,19 @@ NV_STATUS RmP2PGetPagesUsingVidmemInfo
                 pVidmemInfo->hMemory, pPlatformData, &pMappingInfo);
     if (status == NV_ERR_OBJECT_NOT_FOUND)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2460);
         status = CliAddThirdPartyP2PMappingInfo(pThirdPartyP2P, pVidmemInfo->hMemory,
                 pPlatformData, pFreeCallback, pData, &pMappingInfo);
     }
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2461);
         return status;
     }
 
     switch(pThirdPartyP2PInfo->type)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2462);
         case CLI_THIRD_PARTY_P2P_TYPE_BAR1:
             status = RmThirdPartyP2PBAR1GetPages(address, length, offset, pClient,
                                                  pVidmemInfo, ppPhysicalAddresses,
@@ -747,6 +793,7 @@ NV_STATUS RmP2PValidateAddressRangeOrGetPages
     PCLI_THIRD_PARTY_P2P_INFO pThirdPartyP2PInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2463);
     CLI_THIRD_PARTY_P2P_VIDMEM_INFO *pVidmemInfo;
     NV_STATUS status;
     NvU64 offset;
@@ -755,12 +802,14 @@ NV_STATUS RmP2PValidateAddressRangeOrGetPages
                 address, length, &offset, &pVidmemInfo);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2464);
         return status;
     }
 
     // Range validation is done at this point, so return if only validation was requested
     if (ppPhysicalAddresses == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2465);
         return NV_OK;
     }
 
@@ -771,6 +820,7 @@ NV_STATUS RmP2PValidateAddressRangeOrGetPages
                                           pThirdPartyP2PInfo, pVidmemInfo);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2466);
         return status;
     }
 
@@ -789,6 +839,7 @@ NV_STATUS RmP2PGetVASpaceInfoWithoutToken
     PCLI_THIRD_PARTY_P2P_VASPACE_INFO *ppVASpaceInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2467);
     NV_STATUS status;
     PCLI_THIRD_PARTY_P2P_VASPACE_INFO pVASpaceInfo = NULL;
     NvBool bFound = NV_FALSE;
@@ -800,22 +851,27 @@ NV_STATUS RmP2PGetVASpaceInfoWithoutToken
     status = RmP2PValidateSubDevice(pThirdPartyP2P, &pGpu);
     if (NV_OK != status)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2468);
         return status;
     }
 
     if ((pThirdPartyP2P->type == CLI_THIRD_PARTY_P2P_TYPE_PROPRIETARY) &&
         !(pThirdPartyP2P->flags & CLI_THIRD_PARTY_P2P_FLAGS_INITIALIZED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2469);
         return NV_ERR_INVALID_STATE;
     }
 
     while (1)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2470);
         status = thirdpartyp2pGetNextVASpaceInfo(pThirdPartyP2P, &pVASpaceInfo);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2471);
             if (bFound)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2472);
                 status = NV_OK;
             }
             return status;
@@ -832,15 +888,18 @@ NV_STATUS RmP2PGetVASpaceInfoWithoutToken
                                                      pVASpaceInfo, pThirdPartyP2P);
         if ((NV_OK == status) && bFound)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2473);
             return NV_ERR_GENERIC;
         }
         else if (NV_OK == status)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2474);
             bFound = NV_TRUE;
         }
 
         if (NULL != ppVASpaceInfo)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2475);
             *ppVASpaceInfo = pVASpaceInfo;
         }
     }
@@ -859,6 +918,7 @@ NV_STATUS RmP2PGetInfoWithoutToken
     OBJGPU *pGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2476);
     NV_STATUS status;
     PCLI_THIRD_PARTY_P2P_INFO pThirdPartyP2PInfo = NULL;
     PCLI_THIRD_PARTY_P2P_VASPACE_INFO pVASpaceInfo = NULL;
@@ -867,6 +927,7 @@ NV_STATUS RmP2PGetInfoWithoutToken
 
     while (1)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2477);
         RmClient *pClient;
         status = CliNextThirdPartyP2PInfoWithPid(pGpu,
                                                  processId,
@@ -875,8 +936,10 @@ NV_STATUS RmP2PGetInfoWithoutToken
                                                  &pThirdPartyP2PInfo);
         if (NV_OK != status)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2478);
             if (bFound)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2479);
                 status = NV_OK;
             }
             break;
@@ -885,12 +948,14 @@ NV_STATUS RmP2PGetInfoWithoutToken
         if ((pThirdPartyP2PInfo->type == CLI_THIRD_PARTY_P2P_TYPE_PROPRIETARY) &&
             !(pThirdPartyP2PInfo->flags & CLI_THIRD_PARTY_P2P_FLAGS_INITIALIZED))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2480);
             status = NV_ERR_INVALID_STATE;
             continue;
         }
 
         if (0 == length)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2481);
             // PutPages
             status = CliGetThirdPartyP2PPlatformData(pThirdPartyP2PInfo,
                                                      pPlatformData);
@@ -907,14 +972,17 @@ NV_STATUS RmP2PGetInfoWithoutToken
                                               &pVASpaceInfo);
             if (NV_OK == status)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2482);
                 *ppVASpaceInfo = pVASpaceInfo;
             }
         }
 
         if (NV_OK == status)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2483);
             if (bFound)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2484);
                 status = NV_ERR_GENERIC;
                 break;
             }
@@ -923,6 +991,7 @@ NV_STATUS RmP2PGetInfoWithoutToken
                 bFound = NV_TRUE;
                 if (NULL != ppThirdPartyP2PInfo)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2485);
                     *ppThirdPartyP2PInfo = pThirdPartyP2PInfo;
                 }
             }
@@ -939,6 +1008,7 @@ static NvBool _isSpaceAvailableForBar1P2PMapping(
     NvU64      length
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2486);
     NvU64 bar1SizeBytes;
     NvU64 fbAvailableBytes;
     GETBAR1INFO bar1Info;
@@ -956,6 +1026,7 @@ static NvBool _isSpaceAvailableForBar1P2PMapping(
 
     if (bar1SizeBytes <  pSubDevice->P2PfbMappedBytes)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2487);
         DBG_BREAKPOINT();
         return NV_FALSE;
     }
@@ -979,6 +1050,7 @@ static NV_STATUS _rmP2PGetPages(
     void       *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2488);
     NV_STATUS status;
     OBJGPU *pGpu;
     ThirdPartyP2P *pThirdPartyP2P;
@@ -987,6 +1059,7 @@ static NV_STATUS _rmP2PGetPages(
 
     if (address & (NVRM_P2P_PAGESIZE_BIG_64K - 1))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2489);
         NV_PRINTF(LEVEL_ERROR,
                   "invalid argument in RmP2PGetPages, address=%llx is not aligned\n",
                   address);
@@ -995,6 +1068,7 @@ static NV_STATUS _rmP2PGetPages(
 
     if (0 != p2pToken)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2490);
         status = CliGetThirdPartyP2PInfoFromToken(p2pToken,
                                                   &pThirdPartyP2P);
     }
@@ -1010,6 +1084,7 @@ static NV_STATUS _rmP2PGetPages(
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2491);
         return status;
     }
 
@@ -1018,6 +1093,7 @@ static NV_STATUS _rmP2PGetPages(
     if ((pThirdPartyP2P->type == CLI_THIRD_PARTY_P2P_TYPE_PROPRIETARY) &&
         !(pThirdPartyP2P->flags & CLI_THIRD_PARTY_P2P_FLAGS_INITIALIZED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2492);
         status = NV_ERR_INVALID_STATE;
         goto failed;
     }
@@ -1025,20 +1101,24 @@ static NV_STATUS _rmP2PGetPages(
     status = RmP2PValidateSubDevice(pThirdPartyP2P, &pGpu);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2493);
         goto failed;
     }
 
     if (0 != vaSpaceToken)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2494);
         status = thirdpartyp2pGetVASpaceInfoFromToken(pThirdPartyP2P, vaSpaceToken, &pVASpaceInfo);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2495);
             goto failed;
         }
     }
 
     if (pVASpaceInfo == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2496);
         status = NV_ERR_INVALID_STATE;
         goto failed;
     }
@@ -1050,11 +1130,13 @@ static NV_STATUS _rmP2PGetPages(
                                                  pVASpaceInfo, pThirdPartyP2P);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2497);
         goto failed;
     }
 
     if (ppGpu != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2498);
         *ppGpu = pGpu;
     }
 
@@ -1076,6 +1158,7 @@ CLI_THIRD_PARTY_P2P_VIDMEM_INFO* _createOrReuseVidmemInfoPersistent
     ThirdPartyP2P  *pThirdPartyP2PInternal
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2499);
     RM_API *pRmApi = rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
     CLI_THIRD_PARTY_P2P_VIDMEM_INFO *pVidmemInfo = NULL;
     CLI_THIRD_PARTY_P2P_VIDMEM_INFO *pVidmemInfoInternal = NULL;
@@ -1107,6 +1190,7 @@ CLI_THIRD_PARTY_P2P_VIDMEM_INFO* _createOrReuseVidmemInfoPersistent
                                                       &pVidmemInfo);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2500);
         goto failed;
     }
 
@@ -1124,10 +1208,12 @@ CLI_THIRD_PARTY_P2P_VIDMEM_INFO* _createOrReuseVidmemInfoPersistent
                                                  &pVidmemInfoInternal);
     if (status == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2501);
         return pVidmemInfoInternal;
     }
     else if (status != NV_ERR_OBJECT_NOT_FOUND)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2502);
         goto failed;
     }
 
@@ -1136,6 +1222,7 @@ CLI_THIRD_PARTY_P2P_VIDMEM_INFO* _createOrReuseVidmemInfoPersistent
     status = deviceGetByGpu(pClientInternal, pGpu, NV_TRUE, &pDevice);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2503);
         goto failed;
     }
 
@@ -1149,6 +1236,7 @@ CLI_THIRD_PARTY_P2P_VIDMEM_INFO* _createOrReuseVidmemInfoPersistent
                                0);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2504);
         goto failed;
     }
 
@@ -1160,6 +1248,7 @@ CLI_THIRD_PARTY_P2P_VIDMEM_INFO* _createOrReuseVidmemInfoPersistent
                                      &pMemoryInternal);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2505);
         goto failed;
     }
 
@@ -1176,6 +1265,7 @@ CLI_THIRD_PARTY_P2P_VIDMEM_INFO* _createOrReuseVidmemInfoPersistent
                                            pMemoryInternal);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2506);
         goto failed;
     }
 
@@ -1185,6 +1275,7 @@ CLI_THIRD_PARTY_P2P_VIDMEM_INFO* _createOrReuseVidmemInfoPersistent
                                                  &pVidmemInfoInternal);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2507);
         goto failed;
     }
 
@@ -1193,6 +1284,7 @@ CLI_THIRD_PARTY_P2P_VIDMEM_INFO* _createOrReuseVidmemInfoPersistent
 failed:
     if (bMemDuped)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2508);
         pRmApi->Free(pRmApi, pMemoryManager->hClient, hMemoryDuped);
     }
 
@@ -1209,6 +1301,7 @@ NV_STATUS RmP2PGetPagesPersistent(
     void       *pGpuInfo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2509);
     RsResourceRef *pResourceRef;
     OBJGPU *pGpu = (OBJGPU *) pGpuInfo;
     ThirdPartyP2P *pThirdPartyP2P = NULL;
@@ -1223,6 +1316,7 @@ NV_STATUS RmP2PGetPagesPersistent(
                                       &pThirdPartyP2P, &pVASpaceInfo, pGpu);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2510);
         return status;
     }
 
@@ -1231,6 +1325,7 @@ NV_STATUS RmP2PGetPagesPersistent(
                                       &pResourceRef);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2511);
         return status;
     }
 
@@ -1238,6 +1333,7 @@ NV_STATUS RmP2PGetPagesPersistent(
 
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2512);
         return NV_ERR_INVALID_OBJECT_HANDLE;
     }
 
@@ -1246,6 +1342,7 @@ NV_STATUS RmP2PGetPagesPersistent(
                                                      pThirdPartyP2PInternal);
     if (pVidmemInfo == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2513);
         return NV_ERR_INVALID_STATE;
     }
 
@@ -1257,6 +1354,7 @@ NV_STATUS RmP2PGetPagesPersistent(
                                           NULL, pThirdPartyP2PInternal, pVidmemInfo);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2514);
         // Cleanup MappingInfo if it was allocated
         thirdpartyp2pDelMappingInfoByKey(pThirdPartyP2PInternal, pPlatformData, NV_FALSE);
 
@@ -1296,8 +1394,10 @@ NV_STATUS RmP2PGetPages(
     void       *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2515);
     if (pFreeCallback == NULL || pData == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2516);
         NV_PRINTF(LEVEL_ERROR,
                   "invalid argument(s) in RmP2PGetPages, pFreeCallback=%p pData=%p\n",
                   pFreeCallback, pData);
@@ -1323,6 +1423,7 @@ NV_STATUS RmP2PGetPagesWithoutCallbackRegistration(
     void       *pPlatformData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2517);
     return _rmP2PGetPages(p2pToken, vaSpaceToken, address, length,
                           pPhysicalAddresses, pWreqMbH, pRreqMbH,
                           pEntries, ppGpu, pPlatformData,
@@ -1335,6 +1436,7 @@ NV_STATUS RmP2PGetGpuByAddress(
     OBJGPU   **ppGpu
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2518);
     ThirdPartyP2P *pThirdPartyP2P = NULL;
     CLI_THIRD_PARTY_P2P_VASPACE_INFO *pVASpaceInfo = NULL;
     OBJGPU *pGpu = NULL;
@@ -1345,12 +1447,14 @@ NV_STATUS RmP2PGetGpuByAddress(
                                       &pThirdPartyP2P, &pVASpaceInfo, NULL);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2519);
         return status;
     }
 
     status = RmP2PValidateSubDevice(pThirdPartyP2P, &pGpu);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2520);
         return status;
     }
 
@@ -1363,6 +1467,7 @@ NV_STATUS RmP2PGetGpuByAddress(
         NVCPU_IS_PPC64LE ||
         pMemoryManager->hThirdPartyP2P == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2521);
         return NV_ERR_NOT_SUPPORTED;
     }
 
@@ -1380,6 +1485,7 @@ NV_STATUS RmP2PRegisterCallback(
     void       *pData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2522);
     NV_STATUS status;
     ThirdPartyP2P *pThirdPartyP2P;
     PCLI_THIRD_PARTY_P2P_VASPACE_INFO pVASpaceInfo = NULL;
@@ -1388,6 +1494,7 @@ NV_STATUS RmP2PRegisterCallback(
 
     if (0 != p2pToken)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2523);
         status = CliGetThirdPartyP2PInfoFromToken(p2pToken,
                                                   &pThirdPartyP2P);
     }
@@ -1402,6 +1509,7 @@ NV_STATUS RmP2PRegisterCallback(
     }
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2524);
         return status;
     }
 
@@ -1409,6 +1517,7 @@ NV_STATUS RmP2PRegisterCallback(
                                                       length, &offset, &pVidmemInfo);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2525);
         return status;
     }
 
@@ -1423,6 +1532,7 @@ NV_STATUS RmP2PPutPagesPersistent(
     void       *pPlatformData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2526);
     NV_STATUS status;
     ThirdPartyP2P *pThirdPartyP2P = NULL;
 
@@ -1431,6 +1541,7 @@ NV_STATUS RmP2PPutPagesPersistent(
     if ((pThirdPartyP2P->type == CLI_THIRD_PARTY_P2P_TYPE_PROPRIETARY) &&
         !(pThirdPartyP2P->flags & CLI_THIRD_PARTY_P2P_FLAGS_INITIALIZED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2527);
         return NV_ERR_INVALID_STATE;
     }
 
@@ -1448,11 +1559,13 @@ NV_STATUS RmP2PPutPages(
     void       *pPlatformData
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2528);
     NV_STATUS status;
     ThirdPartyP2P *pThirdPartyP2P;
 
     if (0 != p2pToken)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2529);
         status = CliGetThirdPartyP2PInfoFromToken(p2pToken,
                                                   &pThirdPartyP2P);
     }
@@ -1466,12 +1579,14 @@ NV_STATUS RmP2PPutPages(
     }
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2530);
         return status;
     }
 
     if ((pThirdPartyP2P->type == CLI_THIRD_PARTY_P2P_TYPE_PROPRIETARY) &&
         !(pThirdPartyP2P->flags & CLI_THIRD_PARTY_P2P_FLAGS_INITIALIZED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2531);
         return NV_ERR_INVALID_STATE;
     }
 

@@ -26,6 +26,7 @@
 
 void kheadResetPendingVblank_KERNEL(OBJGPU *pGpu, KernelHead *pKernelHead, THREAD_STATE_NODE *pThreadState)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3637);
     NvU32  writeIntr   = GPU_REG_RD32(pGpu, NV_PDISP_FE_EVT_STAT_HEAD_TIMING(pKernelHead->PublicId));
 
     writeIntr = DRF_DEF(_PDISP, _FE_EVT_STAT_HEAD_TIMING, _LAST_DATA, _RESET);
@@ -35,10 +36,12 @@ void kheadResetPendingVblank_KERNEL(OBJGPU *pGpu, KernelHead *pKernelHead, THREA
 
 NvBool kheadReadPendingVblank_KERNEL(OBJGPU *pGpu, KernelHead *pKernelHead, NvU32 *pCachedIntr, THREAD_STATE_NODE *pThreadState)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3638);
     NvU32    intr = GPU_REG_RD32(pGpu, NV_PDISP_FE_RM_INTR_DISPATCH);
 
     if (!FLD_IDX_TEST_DRF(_PDISP, _FE_RM_INTR_DISPATCH, _HEAD_TIMING, pKernelHead->PublicId, _PENDING, intr))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3639);
         return NV_FALSE;
     }
 
@@ -46,6 +49,7 @@ NvBool kheadReadPendingVblank_KERNEL(OBJGPU *pGpu, KernelHead *pKernelHead, NvU3
 
     if (FLD_TEST_DRF(_PDISP, _FE_EVT_STAT_HEAD_TIMING, _LAST_DATA, _PENDING, intr))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3640);
         return NV_TRUE;
     }
 
@@ -58,10 +62,12 @@ NvBool kheadGetDisplayInitialized_KERNEL
     KernelHead *pKernelHead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3641);
     NvU32 intr = GPU_REG_RD32(pGpu, NV_PDISP_FE_CORE_HEAD_STATE(pKernelHead->PublicId));
 
     if (DRF_VAL(_PDISP, _FE_CORE_HEAD_STATE, _OPERATING_MODE, intr))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3642);
          return NV_TRUE;
     }
 
@@ -74,9 +80,11 @@ NvBool kheadReadVblankIntrEnable_KERNEL
     KernelHead *pKernelHead
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3643);
     NvU32 intr = GPU_REG_RD32(pGpu, NV_PDISP_FE_RM_INTR_EN_HEAD_TIMING(pKernelHead->PublicId));
     if (FLD_TEST_DRF(_PDISP, _FE_RM_INTR_EN_HEAD_TIMING, _LAST_DATA, _ENABLE, intr))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3644);
          return NV_TRUE;
     }
 
@@ -90,12 +98,14 @@ void kheadWriteVblankIntrEnable_KERNEL
     NvBool  bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3645);
     NvU32 intrEn = GPU_REG_RD32(pGpu, NV_PDISP_FE_RM_INTR_EN_HEAD_TIMING(pKernelHead->PublicId));
 
     kheadResetPendingVblank_HAL(pGpu, pKernelHead, NULL);
 
     if (bEnable)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3646);
          intrEn = FLD_SET_DRF(_PDISP, _FE_RM_INTR_EN_HEAD_TIMING, _LAST_DATA, _ENABLE, intrEn);
     }
     else

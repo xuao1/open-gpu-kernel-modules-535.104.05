@@ -52,11 +52,13 @@ kbifIsMSIEnabledInHW_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1212);
     NvU32 data32;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_MSI_64_HEADER,
                              &data32) != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1213);
         NV_PRINTF(LEVEL_ERROR,
                   "unable to read NV_EP_PCFG_GPU_MSI_64_HEADER\n");
     }
@@ -80,10 +82,12 @@ kbifIsMSIXEnabledInHW_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1214);
     NvU32 data32;
 
     if (IS_VIRTUAL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1215);
         // SR-IOV guests only support MSI-X
         return IS_VIRTUAL_WITH_SRIOV(pGpu);
     }
@@ -92,6 +96,7 @@ kbifIsMSIXEnabledInHW_GH100
         if (GPU_BUS_CFG_CYCLE_RD32(pGpu,
                 NV_EP_PCFG_GPU_MSIX_CAP_HEADER, &data32) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1216);
             NV_ASSERT_FAILED("Unable to read NV_EP_PCFG_GPU_MSIX_CAP_HEADER\n");
             return NV_FALSE;
         }
@@ -115,13 +120,16 @@ kbifIsPciIoAccessEnabled_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1217);
     NvU32   data = 0;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu,
                              NV_EP_PCFG_GPU_CTRL_CMD_AND_STATUS, &data) == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1218);
         if (FLD_TEST_DRF(_EP_PCFG_GPU, _CTRL_CMD_AND_STATUS, _CMD_IO_SPACE, _ENABLE, data))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1219);
             return NV_TRUE;
         }
     }
@@ -144,13 +152,16 @@ kbifIs3dController_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1220);
     NvU32   data = 0;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu,
                              NV_EP_PCFG_GPU_REVISION_ID_AND_CLASSCODE, &data) == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1221);
         if (FLD_TEST_DRF(_EP_PCFG_GPU, _REVISION_ID_AND_CLASSCODE, _BASE_CLASSCODE, _3D, data))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1222);
             return NV_TRUE;
         }
     }
@@ -172,6 +183,7 @@ kbifEnableExtendedTagSupport_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1223);
     NvU32   reg;
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl  = SYS_GET_CL(pSys);
@@ -179,6 +191,7 @@ kbifEnableExtendedTagSupport_GH100
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_DEVICE_CAPABILITIES,
                              &reg) != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1224);
         NV_PRINTF(LEVEL_ERROR,
                   "Unable to read NV_EP_PCFG_GPU_DEVICE_CAPABILITIES\n");
         goto _kbifEnableExtendedTagSupport_GH100_exit;
@@ -189,9 +202,11 @@ kbifEnableExtendedTagSupport_GH100
     if ((reg != 0) &&
         !pCl->getProperty(pCl, PDB_PROP_CL_EXTENDED_TAG_FIELD_NOT_CAPABLE))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1225);
         if (GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS,
                                  &reg) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1226);
             NV_PRINTF(LEVEL_ERROR,
                       "Unable to read NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS\n");
             goto _kbifEnableExtendedTagSupport_GH100_exit;
@@ -202,6 +217,7 @@ kbifEnableExtendedTagSupport_GH100
         if (GPU_BUS_CFG_CYCLE_WR32(pGpu, NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS,
                                  reg) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1227);
             NV_PRINTF(LEVEL_ERROR,
                       "Unable to write NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS\n");
             goto _kbifEnableExtendedTagSupport_GH100_exit;
@@ -229,6 +245,7 @@ kbifEnableNoSnoop_GH100
     NvBool     bEnable
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1228);
     NvU8  fieldVal;
     NvU32 regVal;
     NvU32 status = NV_OK;
@@ -237,6 +254,7 @@ kbifEnableNoSnoop_GH100
                 NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS, &regVal);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1229);
         NV_PRINTF(LEVEL_ERROR,
             "Failed to read NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS.\n");
         goto _kbifEnableNoSnoop_GH100_exit;
@@ -249,6 +267,7 @@ kbifEnableNoSnoop_GH100
                                     NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS, regVal);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1230);
         NV_PRINTF(LEVEL_ERROR,
             "Failed to write NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS.\n");
         goto _kbifEnableNoSnoop_GH100_exit;
@@ -271,12 +290,14 @@ kbifPcieConfigEnableRelaxedOrdering_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1231);
     NvU32 xveDevCtrlStatus;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu,
                              NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS,
                              &xveDevCtrlStatus) == NV_ERR_GENERIC)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1232);
         NV_PRINTF(LEVEL_ERROR,
                   "Unable to read NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS!\n");
     }
@@ -300,11 +321,13 @@ kbifPcieConfigDisableRelaxedOrdering_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1233);
     NvU32 xtlDevCtrlStatus;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS,
                              &xtlDevCtrlStatus) == NV_ERR_GENERIC)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1234);
         NV_PRINTF(LEVEL_ERROR,
                   "Unable to read NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS!\n");
     }
@@ -337,6 +360,7 @@ kbifGetXveStatusBits_GH100
     NvU32     *pStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1235);
     // control/status reg 0x68
     NvU32 xtlDevCtrlStatus;
 
@@ -344,6 +368,7 @@ kbifGetXveStatusBits_GH100
                              NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS,
                              &xtlDevCtrlStatus) != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1236);
         NV_PRINTF(LEVEL_ERROR,
                   "Unable to read NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS!\n");
     }
@@ -355,8 +380,10 @@ kbifGetXveStatusBits_GH100
     // The register read above returns garbage on fmodel, so just return.
     if (IS_FMODEL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1237);
         if (pStatus)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1238);
             *pStatus = 0;
         }
         return NV_OK;
@@ -365,32 +392,38 @@ kbifGetXveStatusBits_GH100
     // Optionally return full status
     if (pStatus)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1239);
         *pStatus = xtlDevCtrlStatus;
     }
 
     if (xtlDevCtrlStatus & DRF_NUM(_EP_PCFG_GPU, _DEVICE_CONTROL_STATUS,
                                    _CORR_ERROR_DETECTED, 1))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1240);
         *pBits |= NV2080_CTRL_BUS_INFO_PCIE_LINK_ERRORS_CORR_ERROR;
     }
     if (xtlDevCtrlStatus & DRF_NUM(_EP_PCFG_GPU, _DEVICE_CONTROL_STATUS,
                                    _NON_FATAL_ERROR_DETECTED, 1))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1241);
         *pBits |= NV2080_CTRL_BUS_INFO_PCIE_LINK_ERRORS_NON_FATAL_ERROR;
     }
     if (xtlDevCtrlStatus & DRF_NUM(_EP_PCFG_GPU, _DEVICE_CONTROL_STATUS,
                                    _FATAL_ERROR_DETECTED, 1))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1242);
         *pBits |= NV2080_CTRL_BUS_INFO_PCIE_LINK_ERRORS_FATAL_ERROR;
     }
     if (xtlDevCtrlStatus & DRF_NUM(_EP_PCFG_GPU, _DEVICE_CONTROL_STATUS,
                                    _UNSUPP_REQUEST_DETECTED, 1))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1243);
         *pBits |= NV2080_CTRL_BUS_INFO_PCIE_LINK_ERRORS_UNSUPP_REQUEST;
     }
 
     if (pKernelBif->EnteredRecoverySinceErrorsLastChecked)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1244);
         pKernelBif->EnteredRecoverySinceErrorsLastChecked = NV_FALSE;
         *pBits |= NV2080_CTRL_BUS_INFO_PCIE_LINK_ERRORS_ENTERED_RECOVERY;
     }
@@ -416,13 +449,16 @@ kbifClearXveStatus_GH100
     NvU32     *pStatus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1245);
     NvU32 xtlDevCtrlStatus;
 
     if (pStatus)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1246);
         xtlDevCtrlStatus = *pStatus;
         if (xtlDevCtrlStatus == 0)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1247);
             return NV_OK;
         }
     }
@@ -431,6 +467,7 @@ kbifClearXveStatus_GH100
         if (GPU_BUS_CFG_CYCLE_RD32(pGpu,
                 NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS, &xtlDevCtrlStatus) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1248);
             NV_PRINTF(LEVEL_ERROR,
                       "Unable to read NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS!\n");
         }
@@ -458,6 +495,7 @@ kbifGetXveAerBits_GH100
     NvU32     *pBits
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1249);
     NvU32 xtlAerUncorr;
     NvU32 xtlAerCorr;
 
@@ -467,6 +505,7 @@ kbifGetXveAerBits_GH100
     // The register read below returns garbage on fmodel, so just return.
     if (IS_FMODEL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1250);
         return NV_OK;
     }
 
@@ -475,12 +514,14 @@ kbifGetXveAerBits_GH100
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_UNCORRECTABLE_ERROR_STATUS,
                              &xtlAerUncorr) != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1251);
         NV_PRINTF(LEVEL_ERROR, "Unable to read NV_EP_PCFG_GPU_UNCORRECTABLE_ERROR_STATUS\n");
         return NV_ERR_GENERIC;
     }
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_CORRECTABLE_ERROR_STATUS,
                              &xtlAerCorr) != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1252);
         NV_PRINTF(LEVEL_ERROR, "Unable to read NV_EP_PCFG_GPU_CORRECTABLE_ERROR_STATUS\n");
         return NV_ERR_GENERIC;
     }
@@ -533,6 +574,7 @@ kbifClearXveAer_GH100
     NvU32      bits
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1253);
     NvU32 xtlAerUncorr = 0;
     NvU32 xtlAerCorr   = 0;
 
@@ -576,10 +618,12 @@ kbifClearXveAer_GH100
 
     if (xtlAerUncorr != 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1254);
         GPU_BUS_CFG_CYCLE_WR32(pGpu, NV_EP_PCFG_GPU_UNCORRECTABLE_ERROR_STATUS, xtlAerUncorr);
     }
     if (xtlAerCorr != 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1255);
         GPU_BUS_CFG_CYCLE_WR32(pGpu, NV_EP_PCFG_GPU_CORRECTABLE_ERROR_STATUS, xtlAerCorr);
     }
 
@@ -605,6 +649,7 @@ kbifGetPciConfigSpacePriMirror_GH100
     NvU32     *pSize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1256);
     *pBase = DEVICE_BASE(NV_EP_PCFGM);
     *pSize = DEVICE_EXTENT(NV_EP_PCFGM) - DEVICE_BASE(NV_EP_PCFGM) + 1;
     return NV_OK;
@@ -630,12 +675,14 @@ kbifProbePcieReqAtomicCaps_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1257);
     NvU32   osAtomicsMask    = 0;
     OBJSYS *pSys = SYS_GET_INSTANCE();
     OBJCL  *pCl  = SYS_GET_CL(pSys);
 
     if (!pCl->getProperty(pCl, PDB_PROP_CL_BUG_3562968_WAR_ALLOW_PCIE_ATOMICS))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1258);
         NV_PRINTF(LEVEL_INFO, "PCIe atomics not supported in this platform!\n");
         return;
     }
@@ -643,6 +690,7 @@ kbifProbePcieReqAtomicCaps_GH100
     if (osConfigurePcieReqAtomics(pGpu->pOsGpuInfo, &osAtomicsMask) != NV_OK ||
         osAtomicsMask == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1259);
         NV_PRINTF(LEVEL_INFO, "PCIe requester atomics not enabled since "
                   "completer is not capable!\n");
         return;
@@ -670,10 +718,12 @@ kbifEnablePcieAtomics_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1260);
     NvU32 regVal;
 
     if (GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS_2, &regVal) != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1261);
         NV_PRINTF(LEVEL_INFO, "Read of NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS_2 failed.\n");
         return;
     }
@@ -682,6 +732,7 @@ kbifEnablePcieAtomics_GH100
 
     if (GPU_BUS_CFG_CYCLE_WR32(pGpu, NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS_2, regVal) != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1262);
         NV_PRINTF(LEVEL_INFO, "Write of NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS_2 failed.\n");
         return;
     }
@@ -710,10 +761,12 @@ kbifGetBusOptionsAddr_GH100
     NvU32      *pAddrReg
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1263);
     NV_STATUS  status = NV_OK;
 
     switch (options)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1264);
         case BUS_OPTIONS_DEV_CONTROL_STATUS:
             *pAddrReg = NV_EP_PCFG_GPU_DEVICE_CONTROL_STATUS;
             break;
@@ -753,6 +806,7 @@ _kbifGetBarInfo_GH100
     NvBool    *pIs64BitBar
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1265);
     NV_STATUS status         = NV_OK;
     NvBool    barIs64Bit     = NV_FALSE;
     NvU32     barAddrLow     = 0;
@@ -764,8 +818,10 @@ _kbifGetBarInfo_GH100
 
     for (i = 0; i <= barIndex; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1266);
         if ((status = GPU_BUS_CFG_CYCLE_RD32(pGpu, barRegCSOffset, &barAddrLow)) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1267);
             return status;
         }
 
@@ -777,10 +833,12 @@ _kbifGetBarInfo_GH100
 
         if (i != barIndex)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1268);
             barRegCSOffset += (barIs64Bit ? 8 : 4);
 
             if (barRegCSOffset >= barRegCSLimit)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1269);
                 return NV_ERR_INVALID_INDEX;
             }
         }
@@ -788,10 +846,12 @@ _kbifGetBarInfo_GH100
 
     if (pBarBaseAddress != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1270);
         // Get the BAR address
         barBaseAddr = barAddrLow & 0xFFFFFFF0;
         if (barIs64Bit)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1271);
             // Read and save the bar high address
             status = GPU_BUS_CFG_CYCLE_RD32(pGpu, barRegCSOffset + 4, &barAddrHigh);
             NV_ASSERT_OR_RETURN((status == NV_OK), status);
@@ -804,6 +864,7 @@ _kbifGetBarInfo_GH100
 
     if (pIs64BitBar != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1272);
         *pIs64BitBar = barIs64Bit;
     }
 
@@ -823,6 +884,7 @@ kbifCacheVFInfo_GH100
     KernelBif *pKernelBif
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1273);
     NV_STATUS status     = NV_OK;
     NvU32     regVal     = 0;
     NvU64     barAddr    = 0;
@@ -832,6 +894,7 @@ kbifCacheVFInfo_GH100
     status = GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_SRIOV_INIT_TOT_VF, &regVal);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1274);
         NV_PRINTF(LEVEL_ERROR, "Unable to read NV_EP_PCFG_GPU_SRIOV_INIT_TOT_VF\n");
         return;
     }
@@ -842,6 +905,7 @@ kbifCacheVFInfo_GH100
     status = GPU_BUS_CFG_CYCLE_RD32(pGpu, NV_EP_PCFG_GPU_SRIOV_FIRST_VF_STRIDE, &regVal);
     if (status != NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1275);
         NV_PRINTF(LEVEL_ERROR, "Unable to read NV_EP_PCFG_GPU_SRIOV_FIRST_VF_STRIDE\n");
         return;
     }

@@ -61,9 +61,11 @@ enum {
 NvBool osDbgBreakpointEnabled(void);
 NvBool nvDbgBreakpointEnabled(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 951);
     OBJSYS *pSys = SYS_GET_INSTANCE();
     if (pSys != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 952);
         if (pSys->getProperty(pSys, PDB_PROP_SYS_DEBUGGER_DISABLED))
             return NV_FALSE;
     }
@@ -80,8 +82,10 @@ static char   _nv_dbg_string[MAX_ERROR_STRING];
 NvBool
 nvDbgInit(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 953);
     if (NULL != _nv_dbg_lock)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 954);
         // already initialized
         return NV_TRUE;
     }
@@ -101,8 +105,10 @@ nvDbgInit(void)
 void
 nvDbgDestroy(void)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 955);
     if (NULL != _nv_dbg_lock)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 956);
         portSyncSpinlockDestroy(_nv_dbg_lock);
         _nv_dbg_lock = NULL;
         portShutdown();
@@ -131,6 +137,7 @@ nvDbg_PrintMsg
     NvU32      *pPrefix
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 957);
     NvU32       rc;
     int debuglevel_min;
 
@@ -144,6 +151,7 @@ nvDbg_PrintMsg
 
     if ((NULL == pSys) || (pSys->getProperty(pSys, PDB_PROP_SYS_DEBUGGER_DISABLED)))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 958);
         return NV_FALSE;
     }
 
@@ -153,6 +161,7 @@ nvDbg_PrintMsg
     rc = nvDbgRmMsgCheck(filename, linenumber, (char *)function, debuglevel, printf_format, pPrefix);
     switch (rc)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 959);
         case NVRM_MSG_HIDE:
             // Hide this error message
             return NV_FALSE;
@@ -166,6 +175,7 @@ nvDbg_PrintMsg
         default:
             if (debuglevel >= debuglevel_min)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 960);
                 return NV_TRUE;
             }
             break;
@@ -183,6 +193,7 @@ void nvDbg_Printf
     ...
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 961);
     va_list     arglist;
     va_start(arglist, printf_format);
     nvDbg_vPrintf(filename, linenumber, function, debuglevel, printf_format, arglist);
@@ -204,6 +215,7 @@ _nvDbgPrepareString
     va_list    arglist
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 962);
     NvU32 len = 0;
 
     //
@@ -212,6 +224,7 @@ _nvDbgPrepareString
     //
     if (portStringCompare(fmt, NV_PRINTF_PREFIX, sizeof(NV_PRINTF_PREFIX) - 1) == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 963);
         len = RmMsgPrefix(prefix, file, line, func, _nv_dbg_string, MAX_ERROR_STRING);
         fmt += sizeof(NV_PRINTF_PREFIX) - 1;
     }
@@ -225,6 +238,7 @@ _nvDbgPrepareString
 #if PORT_IS_FUNC_SUPPORTED(portDbgExPrintfLevel)
 static NvU32 _nvDbgLevelToPlatformLevel(NvBool bForce,  NvU32 level)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 964);
     return bForce ? LEVEL_FATAL : level;
 }
 #endif
@@ -243,11 +257,13 @@ void nvDbg_vPrintf
     va_list    arglist
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 965);
     NvBool  force = NV_FALSE;
     NvU32 prefix = 0;
 
     if (nvDbg_PrintMsg(filename, linenumber, function, debuglevel, printf_format, &force, &prefix))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 966);
         portSyncSpinlockAcquire(_nv_dbg_lock);
           _nvDbgPrepareString(filename, linenumber, function, printf_format, prefix, arglist);
 #if PORT_IS_FUNC_SUPPORTED(portDbgExPrintfLevel)
@@ -273,16 +289,20 @@ void nvDbg_PrintBuf
     NvU32      bufsize
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 967);
     NvU32 i, j;
     nvDbg_Printf(file, line, function, dbglevel, NV_PRINTF_ADD_PREFIX("printBuf [BEGIN]"));
     for (i = 0; i < bufsize; i += 16)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 968);
         nvDbg_Printf(file, line, function, dbglevel, "\n");
         nvDbg_Printf(file, line, function, dbglevel, NV_PRINTF_ADD_PREFIX("printBuf 0x%p  "), buffer + i);
         for (j = 0; j < 16; j++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 969);
             if ((i + j) < bufsize)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 970);
                 nvDbg_Printf(file, line, function, dbglevel, "%02x", *(buffer + i + j));
             }
             else
@@ -293,8 +313,10 @@ void nvDbg_PrintBuf
         nvDbg_Printf(file, line, function, dbglevel, " ");
         for (j = 0; j < 16; j++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 971);
             if ((i + j) < bufsize)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 972);
                 nvDbg_Printf(file, line, function, dbglevel, "%c", IS_PRINT(*(buffer + i + j))? *(buffer + i + j) : '.');
             }
             else
@@ -317,6 +339,7 @@ void nvDbg_PrintBuf
 //======================================================================================
 int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 973);
     int ch, precision, flags;
     NvU32 fieldwidth;
     int   longlong;
@@ -336,6 +359,7 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
 
     if (dest == NULL || destSize == 0)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 974);
         return(0);  // If we don't have a destination, we didn't do any characters
     }
 
@@ -346,10 +370,13 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
 
     while ((ch = *f++) != '\0')
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 975);
         if (ch != '%')
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 976);
             if (d < destLimit)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 977);
                 *d++ = (NvU8)ch;
             }
             continue;
@@ -364,6 +391,7 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
         if (ch == '%') {
             if (d < destLimit)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 978);
                 *d++ = (NvU8)ch;
             }
             continue;
@@ -435,6 +463,7 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
             u32val = va_arg(args, int);
             if (d < destLimit)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 979);
                 *d++ = (NvU8) u32val;
             }
             break;
@@ -442,10 +471,12 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
             flags |= UNSIGNED_F;
             if (fieldwidth > TMPBUF_SIZE)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 980);
                 fieldwidth = TMPBUF_SIZE;
             }
             if ( longlong )  // long long specifier "llu" or "lld"
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 981);
                 u64val = va_arg(args, unsigned long long);
                 // Format the number, increment the dest pointer by the characters copied
                 tmpSize = inttodecfmtstr(u64val, tmpBuf, fieldwidth, flags);
@@ -458,6 +489,7 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
             }
             if (d < destLimit)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 982);
                 tmpSize = (d + tmpSize) < destLimit ? tmpSize : (NvU32)(destLimit - d);
                 portMemCopy(d, tmpSize, tmpBuf, tmpSize);
                 d += tmpSize;
@@ -466,10 +498,12 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
         case 'd':   // Copy a formatted, signed decimal number
             if (fieldwidth > TMPBUF_SIZE)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 983);
                 fieldwidth = TMPBUF_SIZE;
             }
             if ( longlong )  // long long specifier "llu" or "lld"
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 984);
                 s64val = va_arg(args, long long);
                 // Format the number, increment the dest pointer by the characters copied
                 tmpSize = inttodecfmtstr(s64val, tmpBuf, fieldwidth, flags);
@@ -482,6 +516,7 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
             }
             if (d < destLimit)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 985);
                 tmpSize = (d + tmpSize) < destLimit ? tmpSize : (NvU32)(destLimit - d);
                 portMemCopy(d, tmpSize, tmpBuf, tmpSize);
                 d += tmpSize;
@@ -492,10 +527,12 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
         case 'X':   // Copy a formatted, upper-case hexadecimal number
             if (fieldwidth > TMPBUF_SIZE)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 986);
                 fieldwidth = TMPBUF_SIZE;
             }
             if ( longlong )   // long long specifier "llx" or "llX"
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 987);
                 u64val = va_arg(args, long long);
                 // Format the number, increment the dest pointer by the characters copied
                 tmpSize = uinttohexfmtstr(u64val, tmpBuf, fieldwidth, flags);
@@ -508,6 +545,7 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
             }
             if (d < destLimit)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 988);
                 tmpSize = (d + tmpSize) < destLimit ? tmpSize : (NvU32)(destLimit - d);
                 portMemCopy(d, tmpSize, tmpBuf, tmpSize);
                 d += tmpSize;
@@ -516,12 +554,14 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
         case 'p':   // Copy a formatted pointer value
             if (fieldwidth > TMPBUF_SIZE)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 989);
                 fieldwidth = TMPBUF_SIZE;
             }
             pval = va_arg(args, void *);
             tmpSize = uinttohexfmtstr((NvU64)((NvUPtr)pval), tmpBuf, fieldwidth, flags);
             if (d < destLimit)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 990);
                 tmpSize = (d + tmpSize) < destLimit ? tmpSize : (NvU32)(destLimit - d);
                 portMemCopy(d, tmpSize, tmpBuf, tmpSize);
                 d += tmpSize;
@@ -536,14 +576,17 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
         default:    // Unexpected conversion operator, so just echo to the destination
             while (specptr < f)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 991);
                 if (d < destLimit)
                 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 992);
                     *d++ = *specptr;
                 }
                 specptr++;
             }
             if (ch == 0)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 993);
                 goto stringdone;
             }
             break;
@@ -553,6 +596,7 @@ int nvDbgVsnprintf(char *dest, NvU32 destSize, const char *fmt, va_list args)
 stringdone:
     if (d <= destLimit)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 994);
         *d = '\0'; // Null-terminate the string
     }
     return((int)(d - dest));   // Return the number of characters we [might] transferred
@@ -560,6 +604,7 @@ stringdone:
 
 int nvDbgSnprintf(char *dest, NvU32 destSize, const char *fmt, ...)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 995);
     va_list arglist;
     int len;
 
@@ -590,6 +635,7 @@ enum {  // Padding option definitions
 //======================================================================================
 static int inttodecfmtstr(NvS64 sval, char *dest, int fieldwidth, int flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 996);
     int i, digitcount, destcount;
     int sign, signchar;
     int fillcount;
@@ -689,6 +735,7 @@ static int inttodecfmtstr(NvS64 sval, char *dest, int fieldwidth, int flags)
 //======================================================================================
 static int uinttohexfmtstr(NvU64 uval,  char *dest, int fieldwidth, int flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 997);
     int i, digitcount, destcount;
     int c, hexadjust;
     int fillcount;
@@ -769,6 +816,7 @@ static int uinttohexfmtstr(NvU64 uval,  char *dest, int fieldwidth, int flags)
 //======================================================================================
 static int float64todecfmtstr(F064 f64val, NvU8 *dest, int fieldwidth, int precision, int flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 998);
     int i, firstcount, destcount;
     int sign, signchar, decpt;
     int fillcount;
@@ -954,6 +1002,7 @@ checktrailing:
 //======================================================================================
 static int strtofmtstr(const char *src, char *dest, char *destLimit, int fieldwidth, int precision, int flags)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 999);
     int i, srclen;
     int fillcount;
     char fillchar = ' ';
@@ -964,6 +1013,7 @@ static int strtofmtstr(const char *src, char *dest, char *destLimit, int fieldwi
     // Make sure we have a source string to work with
     if (src == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1000);
         src = "";
     }
 
@@ -999,10 +1049,13 @@ static int strtofmtstr(const char *src, char *dest, char *destLimit, int fieldwi
     // Copy any leading zeros or spaces
     if (pad_options & (PREZERO_O | PRESPACE_O))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1001);
         for (i = 0; i < fillcount; i++) // Copy the pad character(s)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1002);
             if (d < destLimit)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1003);
                 *d++ = fillchar;
             }
         }
@@ -1010,8 +1063,10 @@ static int strtofmtstr(const char *src, char *dest, char *destLimit, int fieldwi
     // Copy the characters from the source string
     for (i = 0; i < srclen; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1004);
         if (d < destLimit)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1005);
             *d++ = *s++;
         }
     }
@@ -1019,10 +1074,13 @@ static int strtofmtstr(const char *src, char *dest, char *destLimit, int fieldwi
     // Copy any trailing spaces
     if (pad_options & POSTSPACE_O)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1006);
         for (i = 0; i < fillcount; i++) // Copy the pad character(s)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1007);
             if (d < destLimit)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1008);
                 *d++ = fillchar;
             }
         }
@@ -1047,25 +1105,30 @@ static const char *nv_strnstr
     int  patlen
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1009);
     int len;
 
     // Should be NULL, but this makes noun optional
     if (pat == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1010);
         return str;
     }
 
     while (*str)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1011);
         len = 0;
         while (len < patlen)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1012);
             if (str[len] != pat[len])
                 break;
             len++;
         }
         if  (len == patlen)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1013);
             return str;
         }
         str++;
@@ -1113,6 +1176,7 @@ nvDbgRmMsgCheck
     NvU32      * pPrefix
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1014);
     enum { NOUN, STARTLINE, ENDLINE, LEVEL, PREFIX } state;
     int  status = NVRM_MSG_NORMAL;
     int  inc;
@@ -1128,6 +1192,7 @@ nvDbgRmMsgCheck
     // Handle the normal case quickly.
     if (RmMsg[0] == '\0')
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1015);
         goto done;
     }
 
@@ -1135,6 +1200,7 @@ nvDbgRmMsgCheck
 
     while (*p != '\0')
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1016);
         // Initial default state for this rule
         inc = 1;
         noun = NULL;
@@ -1147,40 +1213,48 @@ nvDbgRmMsgCheck
 
         for (; *p != '\0' && *p != ','; p++)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1017);
             if (*p == ':')
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1018);
                 state = STARTLINE;
                 continue;
             }
             else if (*p == '-')
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1019);
                 state = ENDLINE;
                 endline = 0;
                 continue;
             }
             else if (*p == '!' && !noun)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1020);
                 state = NOUN;
                 inc = 0;
                 continue;
             }
             else if (*p == '@')
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1021);
                 state = LEVEL;
                 level = 0;
                 continue;
             }
             else if (*p == '^')
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1022);
                 state = PREFIX;
                 tempPrefix = NVRM_MSG_PREFIX_NVRM | NVRM_MSG_PREFIX_FUNCTION;
                 continue;
             }
             switch (state)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1023);
                 case NOUN:
                     if (noun == NULL)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1024);
                         noun = p;
                     }
                     nounlen++;
@@ -1188,6 +1262,7 @@ nvDbgRmMsgCheck
                 case STARTLINE:
                     if ((*p >= '0') && (*p <= '9'))
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1025);
                         startline *= 10;
                         startline += *p - '0';
                         endline = startline;            // only one line
@@ -1196,6 +1271,7 @@ nvDbgRmMsgCheck
                 case ENDLINE:
                     if ((*p >= '0') && (*p <= '9'))
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1026);
                         endline *= 10;
                         endline += *p - '0';
                     }
@@ -1203,6 +1279,7 @@ nvDbgRmMsgCheck
                 case LEVEL:
                     if ((*p >= '0') && (*p <= '9'))
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1027);
                         level *= 10;
                         level += *p - '0';
                     }
@@ -1210,6 +1287,7 @@ nvDbgRmMsgCheck
                 case PREFIX:
                     switch (*p)
                     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1028);
                         case '*':
                             tempPrefix = NVRM_MSG_PREFIX_NVRM | NVRM_MSG_PREFIX_FILE |
                                          NVRM_MSG_PREFIX_LINE | NVRM_MSG_PREFIX_FUNCTION |
@@ -1259,12 +1337,14 @@ nvDbgRmMsgCheck
             (linenumber <= endline) &&
             (debuglevel >= level))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1029);
             status = inc ? NVRM_MSG_PRINT : NVRM_MSG_HIDE;
             prefix = tempPrefix;
         }
 
         if (*p == '\0')
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1030);
             break;
         }
         p++;
@@ -1273,6 +1353,7 @@ nvDbgRmMsgCheck
 done:
     if (pPrefix != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1031);
         *pPrefix = prefix;
     }
 
@@ -1296,6 +1377,7 @@ RmMsgPrefix
     NvU32 totalLen
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1032);
     const char *space = "";
     NvU32 len = 0;
     NvU32 sec, usec;
@@ -1304,6 +1386,7 @@ RmMsgPrefix
 
     if (prefix & NVRM_MSG_PREFIX_NVRM)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1033);
         portStringCopy(str + len, totalLen - len, NV_PRINTF_PREFIX, sizeof(NV_PRINTF_PREFIX));
         len += sizeof(NV_PRINTF_PREFIX) - 1;
         space = " ";
@@ -1311,24 +1394,28 @@ RmMsgPrefix
 
     if (prefix & NVRM_MSG_PREFIX_FILE)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1034);
         len += nvDbgSnprintf(str + len, totalLen - len, "%s%s", space, filename);
         space = " ";
     }
 
     if (prefix & NVRM_MSG_PREFIX_LINE)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1035);
         len += nvDbgSnprintf(str + len, totalLen - len, "%s%d", space, linenumber);
         space = " ";
     }
 
     if (prefix & NVRM_MSG_PREFIX_FUNCTION)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1036);
         len += nvDbgSnprintf(str + len, totalLen - len, "%s%s", space, function);
         space = " ";
     }
 
     if (prefix & NVRM_MSG_PREFIX_OSTIMESTAMP)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1037);
         osGetCurrentTime(&sec, &usec);
 
         len += nvDbgSnprintf(str + len, totalLen - len, "%s%d.%06d", space, sec, usec);
@@ -1344,13 +1431,16 @@ RmMsgPrefix
 //
 void nvDbgInitRmMsg(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1038);
     NvU32 len = NV0000_CTRL_SYSTEM_DEBUG_RMMSG_SIZE;
 
     if (RmMsg[0] == '\0')
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1039);
         if (osReadRegistryString(pGpu, NV_REG_STR_RM_MSG,
                     (NvU8*)RmMsg, &len) != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1040);
             len = NV0000_CTRL_SYSTEM_DEBUG_RMMSG_SIZE;
         }
     }
@@ -1360,6 +1450,7 @@ void nvDbgInitRmMsg(OBJGPU *pGpu)
 
 void nvDbgInitRmMsg(OBJGPU *pGpu)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1041);
 }
 
 NvU32
@@ -1373,6 +1464,7 @@ nvDbgRmMsgCheck
     NvU32      * pPrefix
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1042);
     return NVRM_MSG_HIDE;
 }
 
@@ -1391,6 +1483,7 @@ nvDbgDumpBufferBytes
     NvU32 length
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1043);
     NvU8   *s              =  (NvU8 *)pBuffer;
     NvU32   remainingBytes = length % 16;
     NvU32   i;
@@ -1400,6 +1493,7 @@ nvDbgDumpBufferBytes
 
     for (i = 0; i < (length / 16); i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1044);
 
         NV_PRINTF(LEVEL_ERROR,
                   "%p  %02x  %02x  %02x  %02x  %02x  %02x  %02x  %02x    %02x  %02x  %02x  %02x  %02x  %02x  %02x  %02x\n",
@@ -1414,6 +1508,7 @@ nvDbgDumpBufferBytes
      */
     switch (remainingBytes)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 1045);
     case 0:
     default:
         break;

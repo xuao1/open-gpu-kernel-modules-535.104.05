@@ -42,6 +42,7 @@ kfifoConstructEngine_IMPL
     ENGDESCRIPTOR  engDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5877);
     NvU32 i;
 
     _kfifoPreConstructRegistryOverrides(pGpu, pKernelFifo);
@@ -52,6 +53,7 @@ kfifoConstructEngine_IMPL
 
     for (i = 0; i < RM_ENGINE_TYPE_LAST; i++)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5878);
         pKernelFifo->pRunlistBufPool[i] = NULL;
     }
 
@@ -75,12 +77,14 @@ _kfifoPreConstructRegistryOverrides
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5879);
     NvU32 data32;
 
     pKernelFifo->bNumChannelsOverride = 0;
     if (osReadRegistryDword(pGpu, NV_REG_STR_RM_NUM_FIFOS,
                             &pKernelFifo->numChannelsOverride) == NV_OK)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5880);
         pKernelFifo->bNumChannelsOverride = 1;
     }
 
@@ -89,6 +93,7 @@ _kfifoPreConstructRegistryOverrides
     if ((osReadRegistryDword(pGpu, NV_REG_STR_RM_SUPPORT_USERD_MAP_DMA,
                             &data32) == NV_OK) && data32)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5881);
         NV_PRINTF(LEVEL_ERROR, "Enabling MapMemoryDma of USERD\n");
         pKernelFifo->bUserdMapDmaSupported = NV_TRUE;
     }
@@ -102,6 +107,7 @@ kfifoDestruct_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5882);
     ENGINE_INFO *pEngineInfo = &pKernelFifo->engineInfo;
 
     // Free all outstanding callback entries
@@ -124,12 +130,14 @@ kfifoStateInitLocked_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5883);
     KernelRc *pKernelRc = GPU_GET_KERNEL_RC(pGpu);
 
     // Check if per runlist channel ram should be enabled
     if (kfifoIsPerRunlistChramSupportedInHw(pKernelFifo) &&
         !pKernelFifo->bPerRunlistChramOverride)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5884);
         //
         // On production platforms. SRIOV gets enabled
         // only on host RM for SR-IOV capable SKUs (See gpuInitRegistryOverrides).
@@ -138,6 +146,7 @@ kfifoStateInitLocked_IMPL
         {
             if (gpuIsSriovEnabled(pGpu))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5885);
                 NV_PRINTF(LEVEL_INFO, "Enabling per runlist channel RAM on host RM\n");
                 pKernelFifo->bUsePerRunlistChram = NV_TRUE;
             }
@@ -150,6 +159,7 @@ kfifoStateInitLocked_IMPL
 
     if (pKernelRc != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5886);
         krcInitRegistryOverridesDelayed(pGpu, pKernelRc);
     }
 
@@ -166,6 +176,7 @@ kfifoStateDestroy_IMPL
     KernelFifo *pKernelFifo
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5887);
     KernelChannel *pKernelChannel;
     CHANNEL_ITERATOR chanIt;
 
@@ -175,12 +186,14 @@ kfifoStateDestroy_IMPL
     kfifoGetChannelIterator(pGpu, pKernelFifo, &chanIt);
     while ((kfifoGetNextKernelChannel(pGpu, pKernelFifo, &chanIt, &pKernelChannel) == NV_OK))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5888);
         RM_ENGINE_TYPE rmEngineType;
 
         rmEngineType = kchannelGetEngineType(pKernelChannel);
 
         if (RM_ENGINE_TYPE_IS_GR(rmEngineType))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5889);
             MEMORY_DESCRIPTOR *grCtxBufferMemDesc = NULL;
             NvU32 grIdx = RM_ENGINE_TYPE_GR_IDX(rmEngineType);
 
@@ -191,6 +204,7 @@ kfifoStateDestroy_IMPL
 
             if (grCtxBufferMemDesc != NULL)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 5890);
                 memdescFree(grCtxBufferMemDesc);
                 memdescDestroy(grCtxBufferMemDesc);
 

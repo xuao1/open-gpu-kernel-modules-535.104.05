@@ -51,6 +51,7 @@ confComputeConstructEngine_IMPL(OBJGPU                  *pGpu,
                                 ConfidentialCompute     *pConfCompute,
                                 ENGDESCRIPTOR           engDesc)
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3185);
     pConfCompute->pSpdm = NULL;
     portMemSet(&pConfCompute->ccStaticInfo, 0, sizeof(pConfCompute->ccStaticInfo));
     pConfCompute->gspProxyRegkeys = 0;
@@ -62,11 +63,13 @@ confComputeConstructEngine_IMPL(OBJGPU                  *pGpu,
 
     if (gpuIsCCEnabledInHw_HAL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3186);
         pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENABLED, NV_TRUE);
     }
 
     if (gpuIsDevModeEnabledInHw_HAL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3187);
         pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_DEVTOOLS_MODE_ENABLED, NV_TRUE);
     }
 
@@ -74,10 +77,12 @@ confComputeConstructEngine_IMPL(OBJGPU                  *pGpu,
 
     if (pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENABLED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3188);
         NV_CHECK_OR_RETURN(LEVEL_ERROR, confComputeIsGpuCcCapable_HAL(pGpu, pConfCompute), NV_ERR_INVALID_OPERATION);
 
         if (pGpu->getProperty(pGpu, PDB_PROP_GPU_APM_FEATURE_CAPABLE))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3189);
             pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_APM_FEATURE_ENABLED, NV_TRUE);
 
             // Forcing DEV_MODE to False for APM
@@ -87,6 +92,7 @@ confComputeConstructEngine_IMPL(OBJGPU                  *pGpu,
         }
         else if (pGpu->getProperty(pGpu, PDB_PROP_GPU_CC_FEATURE_CAPABLE))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3190);
             pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_CC_FEATURE_ENABLED, NV_TRUE);
             pGpu->setProperty(pGpu, PDB_PROP_GPU_FASTPATH_SEQ_ENABLED, NV_TRUE);
         }
@@ -114,23 +120,27 @@ _confComputeInitRegistryOverrides
     ConfidentialCompute   *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3191);
     NvU32 data = 0;
 
     if ((osReadRegistryDword(pGpu, NV_REG_STR_RM_CONFIDENTIAL_COMPUTE, &data) == NV_OK) &&
          FLD_TEST_DRF(_REG_STR, _RM_CONFIDENTIAL_COMPUTE, _ENABLED, _YES, data))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3192);
         NV_PRINTF(LEVEL_INFO, "Confidential Compute enabled via regkey override.\n");
         pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENABLED, NV_TRUE);
         pConfCompute->gspProxyRegkeys |= DRF_DEF(GSP, _PROXY_REG, _CONFIDENTIAL_COMPUTE, _ENABLE);
 
         if (FLD_TEST_DRF(_REG_STR, _RM_CONFIDENTIAL_COMPUTE, _GPUS_READY_CHECK, _DISABLED, data))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3193);
             pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_GPUS_READY_CHECK_ENABLED, NV_FALSE);
         }
 
         if ((osReadRegistryDword(pGpu, NV_REG_STR_RM_CONF_COMPUTE_EARLY_INIT, &data)
             == NV_OK) && (data == NV_REG_STR_RM_CONF_COMPUTE_EARLY_INIT_ENABLED))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3194);
             NV_PRINTF(LEVEL_INFO, "Confidential Compute early init enabled via regkey override.\n");
             pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENABLE_EARLY_INIT, NV_TRUE);
             pConfCompute->gspProxyRegkeys |= DRF_DEF(GSP, _PROXY_REG, _CONF_COMPUTE_EARLY_INIT, _ENABLE);
@@ -138,6 +148,7 @@ _confComputeInitRegistryOverrides
 
         if (FLD_TEST_DRF(_REG_STR, _RM_CONFIDENTIAL_COMPUTE, _DEV_MODE_ENABLED, _YES, data))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3195);
             NV_PRINTF(LEVEL_INFO, "Confidential Compute dev mode enabled via regkey override.\n");
             pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_DEVTOOLS_MODE_ENABLED, NV_TRUE);
             pConfCompute->gspProxyRegkeys |= DRF_DEF(GSP, _PROXY_REG, _CONF_COMPUTE_DEV_MODE, _ENABLE);
@@ -146,8 +157,10 @@ _confComputeInitRegistryOverrides
 
     if (pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENABLED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3196);
         if (confComputeIsSpdmEnabled(pGpu, pConfCompute))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3197);
             NV_PRINTF(LEVEL_INFO, "SPDM is enabled by default.\n");
             pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_SPDM_ENABLED, NV_TRUE);
         }
@@ -155,13 +168,16 @@ _confComputeInitRegistryOverrides
         // Allow override of whatever default settings are.
         if (osReadRegistryDword(pGpu, NV_REG_STR_RM_CONF_COMPUTE_SPDM_POLICY, &data) == NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3198);
             if (FLD_TEST_DRF(_REG_STR, _RM_CONF_COMPUTE_SPDM_POLICY, _ENABLED, _YES, data))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3199);
                 NV_PRINTF(LEVEL_INFO, "Confidential Compute SPDM enabled via regkey override.\n");
                 pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_SPDM_ENABLED, NV_TRUE);
             }
             else if (FLD_TEST_DRF(_REG_STR, _RM_CONF_COMPUTE_SPDM_POLICY, _ENABLED, _NO, data))
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3200);
                 // OPENRM-TODO: Always enable SPDM for debug.
                 NV_PRINTF(LEVEL_INFO, "Confidential Compute SPDM disabled via regkey override.\n");
                 pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_SPDM_ENABLED, NV_FALSE);
@@ -171,14 +187,17 @@ _confComputeInitRegistryOverrides
 
     if (pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENABLED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3201);
         if (osReadRegistryDword(pGpu, NV_REG_STR_RM_GSP_OWNED_FAULT_BUFFERS_ENABLE, &data) == NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3202);
             pGpu->bIsGspOwnedFaultBuffersEnabled = data;
         }
         else
         {
             if (IS_GSP_CLIENT(pGpu) || RMCFG_FEATURE_PLATFORM_GSP)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3203);
                 pGpu->bIsGspOwnedFaultBuffersEnabled = NV_REG_STR_RM_GSP_OWNED_FAULT_BUFFERS_ENABLE_YES;
             }
             else
@@ -210,10 +229,12 @@ confComputeEstablishSpdmSessionAndKeys_KERNEL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3204);
     NV_STATUS status = NV_OK;
 
     if (IS_FMODEL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3205);
         // Skip SPDM support on fmodel due to bugs 3553627 and 3556621.
         return NV_OK;
     }
@@ -224,9 +245,11 @@ confComputeEstablishSpdmSessionAndKeys_KERNEL
     //
     if (pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_SPDM_ENABLED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3206);
         status = objCreate(&pConfCompute->pSpdm, pConfCompute, Spdm);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3207);
             return status;
         }
 
@@ -264,6 +287,7 @@ confComputeEstablishSpdmSessionAndKeys_KERNEL
         status = confComputeStartEncryption_HAL(pGpu, pConfCompute);
         if (status != NV_OK)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3208);
             NV_PRINTF(LEVEL_ERROR, "ConfCompute : Failed enabling encryption!");
             return status;
         }
@@ -292,10 +316,12 @@ _confComputeDeinitSpdmSession
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3209);
     NV_STATUS status = NV_OK;
 
     if (IS_FMODEL(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3210);
         // Skip SPDM support on fmodel due to bugs 3553627 and 3556621.
         return NV_OK;
     }
@@ -306,8 +332,10 @@ _confComputeDeinitSpdmSession
     //
     if (pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_SPDM_ENABLED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3211);
         if (pConfCompute->pSpdm == NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3212);
             //
             // If SPDM object doesn't exist, we must have failed earlier.
             // Alert in logs and move on.
@@ -339,6 +367,7 @@ confComputeStatePreInitLocked_IMPL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3213);
     return confComputeEstablishSpdmSessionAndKeys_HAL(pGpu, pConfCompute);
 }
 
@@ -357,6 +386,7 @@ confComputeStatePostLoad_IMPL
     NvU32                flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3214);
     NV_STATUS status = NV_OK;
     RM_API   *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
 
@@ -369,6 +399,7 @@ confComputeStatePostLoad_IMPL
 
     if (!IS_GSP_CLIENT(pGpu) && !RMCFG_FEATURE_PLATFORM_GSP)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3215);
         NV_PRINTF(LEVEL_INFO, "Performing late SPDM initialization!\n");
         status = confComputeEstablishSpdmSessionAndKeys_HAL(pGpu, pConfCompute);
     }
@@ -391,6 +422,7 @@ confComputeStatePreUnload_IMPL
     NvU32                flags
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3216);
     NV_PRINTF(LEVEL_INFO, "Performing SPDM deinitialization in Pre Unload!\n");
     return _confComputeDeinitSpdmSession(pGpu, pConfCompute);
 }
@@ -402,11 +434,13 @@ confComputeAcceptClientRequest_IMPL
     ConfidentialCompute   *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3217);
     OBJSYS    *pSys = SYS_GET_INSTANCE();
     OBJGPUMGR *pGpuMgr = SYS_GET_GPUMGR(pSys);
 
     if (pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_GPUS_READY_CHECK_ENABLED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3218);
         return pGpuMgr->ccCaps.bAcceptClientRequest;
     }
     else
@@ -422,6 +456,7 @@ confComputeStateInitLocked_IMPL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3219);
     RM_API *pRmApi = IS_GSP_CLIENT(pGpu) ? GPU_GET_PHYSICAL_RMAPI(pGpu) :
                                            rmapiGetInterface(RMAPI_GPU_LOCK_INTERNAL);
 
@@ -445,18 +480,21 @@ confComputeStartEncryption_KERNEL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3220);
     NV_STATUS                                                        status = NV_OK;
     RM_API                                                          *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_CMD_INTERNAL_CONF_COMPUTE_ENCRYPTION_CONTROL_PARAMS  params;
 
     if (!IS_GSP_CLIENT(pGpu))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3221);
         return NV_ERR_INVALID_STATE;
     }
 
     if ((pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENCRYPT_READY) ==  NV_FALSE) &&
         (pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENCRYPT_ENABLED) ==  NV_FALSE))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3222);
         NV_PRINTF(LEVEL_INFO, "ConfCompute: Enabling encryption on Kernel-RM!\n");
 
         pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENCRYPT_READY,   NV_TRUE);
@@ -505,19 +543,23 @@ confComputeStopEncryption_KERNEL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3223);
     RM_API                                                         *pRmApi = GPU_GET_PHYSICAL_RMAPI(pGpu);
     NV2080_CTRL_CMD_INTERNAL_CONF_COMPUTE_ENCRYPTION_CONTROL_PARAMS params;
     NV_STATUS                                                       status = NV_OK;
 
     if (pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_SPDM_ENABLED))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3224);
         if (!IS_GSP_CLIENT(pGpu))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3225);
             return NV_ERR_INVALID_STATE;
         }
 
         if (pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENCRYPT_READY))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3226);
             NV_PRINTF(LEVEL_INFO, "ConfCompute: Turning off receive encryption on Kernel-RM!\n");
             pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENCRYPT_READY, NV_FALSE);
         }
@@ -539,6 +581,7 @@ confComputeStopEncryption_KERNEL
         // Regardless of response, be sure to disable and clear all encryption secrets from kernel side.
         if (pConfCompute->getProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENCRYPT_ENABLED))
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3227);
             NV_PRINTF(LEVEL_INFO, "ConfCompute: Turning off send encryption on Kernel-RM!\n");
             pConfCompute->setProperty(pConfCompute, PDB_PROP_CONFCOMPUTE_ENCRYPT_ENABLED, NV_FALSE);
         }
@@ -577,17 +620,20 @@ confComputeStateDestroy_IMPL
     ConfidentialCompute *pConfCompute
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3228);
     NV_STATUS status = NV_OK;
 
     status = _confComputeDeinitSpdmSession(pGpu, pConfCompute);
     if (status != NV_OK) 
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3229);
         NV_PRINTF(LEVEL_ERROR, "ConfCompute: Failed deinitializing SPDM: 0x%x!\n", status);
     }
 
     status = confComputeStopEncryption_HAL(pGpu, pConfCompute);
     if (status != NV_OK) 
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 3230);
         NV_PRINTF(LEVEL_ERROR, "ConfCompute: Failed disabling encryption: 0x%x!\n", status);
     }
 

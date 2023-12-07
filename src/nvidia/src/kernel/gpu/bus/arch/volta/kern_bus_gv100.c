@@ -48,12 +48,14 @@ kbusSetupCpuPointerForBusFlush_GV100
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2202);
     NV_STATUS status = NV_OK;
 
     // Nothing to be done in paravirtualized guest (or CC) or if we don't want to do CPU reads for flushing.
     if (IS_VIRTUAL_WITHOUT_SRIOV(pGpu) ||
         !kbusIsReadCpuPointerToFlushEnabled(pKernelBus))
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2203);
         return NV_OK;
     }
 
@@ -81,6 +83,7 @@ kbusSetupCpuPointerForBusFlush_GV100
                                                   TRANSFER_FLAGS_PERSISTENT_CPU_MAPPING);
     if (pKernelBus->pReadToFlush == NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2204);
         status = NV_ERR_INSUFFICIENT_RESOURCES;
         NV_ASSERT_OR_GOTO(pKernelBus->pReadToFlush != NULL, cleanup);
     }
@@ -107,8 +110,10 @@ kbusDestroyCpuPointerForBusFlush_GV100
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2205);
     if (pKernelBus->pReadToFlush != NULL)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2206);
         memdescUnmapInternal(pGpu,
                              pKernelBus->pFlushMemDesc,
                              TRANSFER_FLAGS_DEFER_FLUSH);
@@ -138,6 +143,7 @@ kbusMapCoherentCpuMapping_GV100
     PMEMORY_DESCRIPTOR     pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2207);
     RmPhysAddr startAddr = memdescGetPhysAddr(pMemDesc, FORCE_VMMU_TRANSLATION(pMemDesc, AT_GPU), 0);
     NvU64      size = memdescGetSize(pMemDesc);
     RmPhysAddr endAddr = startAddr + size - 1;
@@ -148,6 +154,7 @@ kbusMapCoherentCpuMapping_GV100
 
     for (i = COHERENT_CPU_MAPPING_REGION_0; i < pKernelBus->coherentCpuMapping.nrMapping; ++i)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2208);
         // Check if requested mem in the mappings.
         rangeStart = pKernelBus->coherentCpuMapping.physAddr[i];
         rangeEnd = pKernelBus->coherentCpuMapping.physAddr[i] + pKernelBus->coherentCpuMapping.size[i] - 1;
@@ -155,6 +162,7 @@ kbusMapCoherentCpuMapping_GV100
 
         if (rangeStart <= startAddr && endAddr <= rangeEnd)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2209);
             NV_ASSERT_OR_RETURN(
                 pKernelBus->coherentCpuMapping.pCpuMapping[i] != NvP64_NULL, NvP64_NULL);
 
@@ -188,6 +196,7 @@ kbusUnmapCoherentCpuMapping_GV100
     PMEMORY_DESCRIPTOR   pMemDesc
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2210);
     RmPhysAddr startAddr = memdescGetPhysAddr(pMemDesc, FORCE_VMMU_TRANSLATION(pMemDesc, AT_GPU), 0);
     NvU64      size = memdescGetSize(pMemDesc);
     RmPhysAddr endAddr = startAddr + size - 1;
@@ -197,11 +206,13 @@ kbusUnmapCoherentCpuMapping_GV100
 
     for (i = COHERENT_CPU_MAPPING_REGION_0; i < pKernelBus->coherentCpuMapping.nrMapping; ++i)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2211);
         RmPhysAddr rangeStart = pKernelBus->coherentCpuMapping.physAddr[i];
         RmPhysAddr rangeEnd = pKernelBus->coherentCpuMapping.physAddr[i] +
             pKernelBus->coherentCpuMapping.size[i] - 1;
         if (rangeStart <= startAddr && endAddr <= rangeEnd)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2212);
             NV_ASSERT_OR_RETURN_VOID(pKernelBus->coherentCpuMapping.refcnt[i] != 0);
             pKernelBus->coherentCpuMapping.refcnt[i]--;
             break;
@@ -210,6 +221,7 @@ kbusUnmapCoherentCpuMapping_GV100
 
     if (i == pKernelBus->coherentCpuMapping.nrMapping)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2213);
         NV_ASSERT_FAILED("No mappings found");
     }
 
@@ -236,8 +248,10 @@ void kbusTeardownCoherentCpuMappingAcr_GV100
     KernelBus *pKernelBus
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2214);
     if (pKernelBus->coherentCpuMapping.bCoherentCpuMapping)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2215);
         NV_ASSERT_OR_RETURN_VOID(pGpu->getProperty(pGpu, PDB_PROP_GPU_COHERENT_CPU_MAPPING));
         NV_ASSERT_OR_RETURN_VOID( pKernelBus->coherentCpuMapping.refcnt[COHERENT_CPU_MAPPING_WPR] == 0);
 
@@ -268,6 +282,7 @@ kbusTeardownCoherentCpuMapping_GV100
     NvBool    bFlush
 )
 {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2216);
     NvU32 i = 0;
 
     if (!pKernelBus->coherentCpuMapping.bCoherentCpuMapping)
@@ -275,12 +290,15 @@ kbusTeardownCoherentCpuMapping_GV100
 
     for (i = COHERENT_CPU_MAPPING_REGION_0; i < pKernelBus->coherentCpuMapping.nrMapping; ++i)
     {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2217);
         NV_ASSERT_OR_RETURN_VOID(pKernelBus->coherentCpuMapping.refcnt[i] == 0);
 
         if (pKernelBus->coherentCpuMapping.pCpuMapping[i] != NvP64_NULL)
         {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2218);
             if (bFlush)
             {
+    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2219);
                 osFlushGpuCoherentCpuCacheRange(pGpu->pOsGpuInfo,
                                                 (NvUPtr)pKernelBus->coherentCpuMapping.pCpuMapping[i],
                                                 pKernelBus->coherentCpuMapping.size[i]);
