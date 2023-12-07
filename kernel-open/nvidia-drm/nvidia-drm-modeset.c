@@ -50,11 +50,13 @@ struct nv_drm_atomic_state {
 static inline struct nv_drm_atomic_state *to_nv_atomic_state(
     struct drm_atomic_state *state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 176);
     return container_of(state, struct nv_drm_atomic_state, base);
 }
 
 struct drm_atomic_state *nv_drm_atomic_state_alloc(struct drm_device *dev)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 177);
     struct nv_drm_atomic_state *nv_state =
             nv_drm_calloc(1, sizeof(*nv_state));
 
@@ -68,11 +70,13 @@ struct drm_atomic_state *nv_drm_atomic_state_alloc(struct drm_device *dev)
 
 void nv_drm_atomic_state_clear(struct drm_atomic_state *state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 178);
     drm_atomic_state_default_clear(state);
 }
 
 void nv_drm_atomic_state_free(struct drm_atomic_state *state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 179);
     struct nv_drm_atomic_state *nv_state =
                     to_nv_atomic_state(state);
     drm_atomic_state_default_release(state);
@@ -88,6 +92,7 @@ void nv_drm_atomic_state_free(struct drm_atomic_state *state)
 static bool __will_generate_flip_event(struct drm_crtc *crtc,
                                        struct drm_crtc_state *old_crtc_state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 180);
     struct drm_crtc_state *new_crtc_state = crtc->state;
     struct nv_drm_crtc_state *nv_new_crtc_state =
         to_nv_crtc_state(new_crtc_state);
@@ -130,6 +135,7 @@ static int __nv_drm_put_back_post_fence_fd(
     struct nv_drm_plane_state *plane_state,
     const struct NvKmsKapiLayerReplyConfig *layer_reply_config)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 181);
     int fd = layer_reply_config->postSyncptFd;
     int ret = 0;
 
@@ -153,6 +159,7 @@ static int __nv_drm_get_syncpt_data(
     struct NvKmsKapiRequestedModeSetConfig *requested_config,
     struct NvKmsKapiModeSetReplyConfig *reply_config)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 182);
     struct nv_drm_crtc *nv_crtc = to_nv_crtc(crtc);
     struct NvKmsKapiHeadReplyConfig *head_reply_config;
     struct nv_drm_plane_state *plane_state;
@@ -228,6 +235,7 @@ nv_drm_atomic_apply_modeset_config(struct drm_device *dev,
                                    struct drm_atomic_state *state,
                                    bool commit)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 183);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct NvKmsKapiRequestedModeSetConfig *requested_config =
         &(to_nv_atomic_state(state)->config);
@@ -312,6 +320,7 @@ nv_drm_atomic_apply_modeset_config(struct drm_device *dev,
 int nv_drm_atomic_check(struct drm_device *dev,
                         struct drm_atomic_state *state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 184);
     int ret = 0;
 
     if ((ret = drm_atomic_helper_check(dev, state)) != 0) {
@@ -334,6 +343,7 @@ done:
  */
 static void __nv_drm_handle_flip_event(struct nv_drm_crtc *nv_crtc)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 185);
     struct drm_device *dev = nv_crtc->base.dev;
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct nv_drm_flip *nv_flip;
@@ -380,6 +390,7 @@ int nv_drm_atomic_commit(struct drm_device *dev,
                          struct drm_atomic_state *state,
                          bool nonblock)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 186);
     int ret = -EBUSY;
 
     int i;
@@ -568,6 +579,7 @@ done:
 void nv_drm_handle_flip_occurred(struct nv_drm_device *nv_dev,
                                  NvU32 head, NvU32 plane)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 187);
     struct nv_drm_crtc *nv_crtc = nv_drm_crtc_lookup(nv_dev, head);
 
     if (NV_DRM_WARN(nv_crtc == NULL)) {

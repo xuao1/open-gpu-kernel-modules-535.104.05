@@ -89,6 +89,7 @@ static struct nv_drm_device *dev_list = NULL;
 static const char* nv_get_input_colorspace_name(
     enum NvKmsInputColorSpace colorSpace)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 43);
     switch (colorSpace) {
         case NVKMS_INPUT_COLORSPACE_NONE:
             return "None";
@@ -107,6 +108,7 @@ static const char* nv_get_input_colorspace_name(
 
 static void nv_drm_output_poll_changed(struct drm_device *dev)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 44);
     struct drm_connector *connector = NULL;
     struct drm_mode_config *config = &dev->mode_config;
 #if defined(NV_DRM_CONNECTOR_LIST_ITER_PRESENT)
@@ -159,6 +161,7 @@ static struct drm_framebuffer *nv_drm_framebuffer_create(
     #endif
 )
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 45);
     struct drm_mode_fb_cmd2 local_cmd;
     struct drm_framebuffer *fb;
 
@@ -190,6 +193,7 @@ static const struct drm_mode_config_funcs nv_mode_config_funcs = {
 
 static void nv_drm_event_callback(const struct NvKmsKapiEvent *event)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 46);
     struct nv_drm_device *nv_dev = event->privateData;
 
     mutex_lock(&nv_dev->lock);
@@ -233,6 +237,7 @@ static void
 nv_drm_init_mode_config(struct nv_drm_device *nv_dev,
                         const struct NvKmsKapiDeviceResourcesInfo *pResInfo)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 47);
     struct drm_device *dev = nv_dev->dev;
 
     drm_mode_config_init(dev);
@@ -287,6 +292,7 @@ static void nv_drm_enumerate_encoders_and_connectors
     struct nv_drm_device *nv_dev
 )
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 48);
     struct drm_device *dev = nv_dev->dev;
     NvU32 nDisplays = 0;
 
@@ -345,6 +351,7 @@ static void nv_drm_enumerate_encoders_and_connectors
  */
 static int nv_drm_create_properties(struct nv_drm_device *nv_dev)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 49);
     struct drm_prop_enum_list enum_list[3] = { };
     int i, len = 0;
 
@@ -389,6 +396,7 @@ static int nv_drm_create_properties(struct nv_drm_device *nv_dev)
 
 static int nv_drm_load(struct drm_device *dev, unsigned long flags)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 50);
 #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
     struct NvKmsKapiDevice *pDevice;
 
@@ -530,6 +538,7 @@ static int nv_drm_load(struct drm_device *dev, unsigned long flags)
 
 static void __nv_drm_unload(struct drm_device *dev)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 51);
 #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
     struct NvKmsKapiDevice *pDevice = NULL;
 #endif
@@ -577,6 +586,7 @@ static void __nv_drm_unload(struct drm_device *dev)
 #if defined(NV_DRM_DRIVER_UNLOAD_HAS_INT_RETURN_TYPE)
 static int nv_drm_unload(struct drm_device *dev)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 52);
     __nv_drm_unload(dev);
 
     return 0;
@@ -584,6 +594,7 @@ static int nv_drm_unload(struct drm_device *dev)
 #else
 static void nv_drm_unload(struct drm_device *dev)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 53);
     __nv_drm_unload(dev);
 }
 #endif
@@ -593,6 +604,7 @@ static void nv_drm_unload(struct drm_device *dev)
 static int __nv_drm_master_set(struct drm_device *dev,
                                struct drm_file *file_priv, bool from_open)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 54);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
 
     if (!nvKms->grabOwnership(nv_dev->pDevice)) {
@@ -606,12 +618,14 @@ static int __nv_drm_master_set(struct drm_device *dev,
 static int nv_drm_master_set(struct drm_device *dev,
                              struct drm_file *file_priv, bool from_open)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 55);
     return __nv_drm_master_set(dev, file_priv, from_open);
 }
 #else
 static void nv_drm_master_set(struct drm_device *dev,
                               struct drm_file *file_priv, bool from_open)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 56);
     if (__nv_drm_master_set(dev, file_priv, from_open) != 0) {
         NV_DRM_DEV_LOG_ERR(to_nv_device(dev), "Failed to grab modeset ownership");
     }
@@ -663,6 +677,7 @@ void nv_drm_master_drop(struct drm_device *dev, struct drm_file *file_priv)
 static int nv_drm_pci_set_busid(struct drm_device *dev,
                                 struct drm_master *master)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 57);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
 
     master->unique = nv_drm_asprintf("pci:%04x:%02x:%02x.%d",
@@ -684,6 +699,7 @@ static int nv_drm_pci_set_busid(struct drm_device *dev,
 static int nv_drm_get_dev_info_ioctl(struct drm_device *dev,
                                      void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 58);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct drm_nvidia_get_dev_info_params *params = data;
 
@@ -709,6 +725,7 @@ static int nv_drm_get_dev_info_ioctl(struct drm_device *dev,
 static int nv_drm_dmabuf_supported_ioctl(struct drm_device *dev,
                                          void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 59);
     /* check the pDevice since this only gets set if modeset = 1
      * which is a requirement for the dma_buf extension to work
      */
@@ -720,6 +737,7 @@ static
 int nv_drm_get_client_capability_ioctl(struct drm_device *dev,
                                        void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 60);
     struct drm_nvidia_get_client_capability_params *params = data;
 
     switch (params->capability) {
@@ -749,6 +767,7 @@ int nv_drm_get_client_capability_ioctl(struct drm_device *dev,
 static bool nv_drm_connector_is_dpy_id(struct drm_connector *connector,
                                        NvU32 dpyId)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 61);
     struct nv_drm_connector *nv_connector = to_nv_connector(connector);
     return nv_connector->nv_detected_encoder &&
            nv_connector->nv_detected_encoder->hDisplay == dpyId;
@@ -758,6 +777,7 @@ static int nv_drm_get_dpy_id_for_connector_id_ioctl(struct drm_device *dev,
                                                     void *data,
                                                     struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 62);
     struct drm_nvidia_get_dpy_id_for_connector_id_params *params = data;
     // Importantly, drm_connector_lookup (with filep) will only return the
     // connector if we are master, a lessee with the connector, or not master at
@@ -793,6 +813,7 @@ static int nv_drm_get_connector_id_for_dpy_id_ioctl(struct drm_device *dev,
                                                     void *data,
                                                     struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 63);
     struct drm_nvidia_get_connector_id_for_dpy_id_params *params = data;
     struct drm_connector *connector;
     int ret = -EINVAL;
@@ -818,6 +839,7 @@ static int nv_drm_get_connector_id_for_dpy_id_ioctl(struct drm_device *dev,
 
 static NvU32 nv_drm_get_head_bit_from_connector(struct drm_connector *connector)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 64);
     struct nv_drm_connector *nv_connector = to_nv_connector(connector);
 
     if (connector->state && connector->state->crtc) {
@@ -836,6 +858,7 @@ static NvU32 nv_drm_get_head_bit_from_connector(struct drm_connector *connector)
 static int nv_drm_grant_permission_ioctl(struct drm_device *dev, void *data,
                                          struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 65);
     struct drm_nvidia_grant_permissions_params *params = data;
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct nv_drm_connector *target_nv_connector = NULL;
@@ -961,6 +984,7 @@ done:
 static bool nv_drm_revoke_connector(struct nv_drm_device *nv_dev,
                                     struct nv_drm_connector *nv_connector)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 66);
     bool ret = true;
     if (nv_connector->modeset_permission_crtc) {
         if (nv_connector->nv_detected_encoder) {
@@ -978,6 +1002,7 @@ static bool nv_drm_revoke_connector(struct nv_drm_device *nv_dev,
 static int nv_drm_revoke_permission(struct drm_device *dev,
                                     struct drm_file *filep, NvU32 dpyId)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 67);
     struct drm_connector *connector;
     struct drm_crtc *crtc;
     int ret = 0;
@@ -1032,6 +1057,7 @@ static int nv_drm_revoke_permission(struct drm_device *dev,
 static int nv_drm_revoke_permission_ioctl(struct drm_device *dev, void *data,
                                           struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 68);
     struct drm_nvidia_revoke_permissions_params *params = data;
     if (!params->dpyId) {
         return -EINVAL;
@@ -1041,6 +1067,7 @@ static int nv_drm_revoke_permission_ioctl(struct drm_device *dev, void *data,
 
 static void nv_drm_postclose(struct drm_device *dev, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 69);
     /*
      * Some systems like android can reach here without initializing the
      * device, so check for that.
@@ -1060,6 +1087,7 @@ static void nv_drm_postclose(struct drm_device *dev, struct drm_file *filep)
 static struct drm_master *nv_drm_find_lessee(struct drm_master *master,
                                              int lessee_id)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 70);
     int object;
     void *entry;
 
@@ -1069,6 +1097,7 @@ static struct drm_master *nv_drm_find_lessee(struct drm_master *master,
 
     idr_for_each_entry(&master->lessee_idr, entry, object)
     {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 71);
         if (object == lessee_id) {
             return entry;
         }
@@ -1082,6 +1111,7 @@ static void nv_drm_get_revoked_objects(struct drm_device *dev,
                                        unsigned long arg, int **objects,
                                        int *objects_count)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 72);
     unsigned int ioc_size;
     struct drm_mode_revoke_lease revoke_lease;
     struct drm_master *lessor, *lessee;
@@ -1137,6 +1167,7 @@ done:
 
 static bool nv_drm_is_in_objects(int object, int *objects, int objects_count)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 73);
     int i;
     for (i = 0; i < objects_count; ++i) {
         if (objects[i] == object) {
@@ -1150,6 +1181,7 @@ static void nv_drm_finish_revoking_objects(struct drm_device *dev,
                                            struct drm_file *filep, int *objects,
                                            int objects_count)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 74);
     struct drm_connector *connector;
     struct drm_crtc *crtc;
 #if defined(NV_DRM_CONNECTOR_LIST_ITER_PRESENT)
@@ -1199,6 +1231,7 @@ static void nv_drm_finish_revoking_objects(struct drm_device *dev,
 #if defined(NV_DRM_BUS_HAS_GET_IRQ)
 static int nv_drm_bus_get_irq(struct drm_device *dev)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 75);
     return 0;
 }
 #endif
@@ -1206,6 +1239,7 @@ static int nv_drm_bus_get_irq(struct drm_device *dev)
 #if defined(NV_DRM_BUS_HAS_GET_NAME)
 static const char *nv_drm_bus_get_name(struct drm_device *dev)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 76);
     return "nvidia-drm";
 }
 #endif
@@ -1232,6 +1266,7 @@ static struct drm_bus nv_drm_bus = {
  */
 static long nv_drm_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 77);
     long retcode;
 
 #if defined(NV_DRM_MASTER_HAS_LEASES)
@@ -1438,6 +1473,7 @@ static struct drm_driver nv_drm_driver = {
  */
 static void nv_drm_update_drm_driver_features(void)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 78);
 #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
 
     if (!nv_drm_modeset_module_param) {
@@ -1464,6 +1500,7 @@ static void nv_drm_update_drm_driver_features(void)
  */
 static void nv_drm_register_drm_device(const nv_gpu_info_t *gpu_info)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 79);
     struct nv_drm_device *nv_dev = NULL;
     struct drm_device *dev = NULL;
     struct device *device = gpu_info->os_device_ptr;
@@ -1534,6 +1571,7 @@ failed_drm_alloc:
  */
 int nv_drm_probe_devices(void)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 80);
     nv_gpu_info_t *gpu_info = NULL;
     NvU32 gpu_count = 0;
     NvU32 i;
@@ -1580,6 +1618,7 @@ done:
  */
 void nv_drm_remove_devices(void)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 81);
     while (dev_list != NULL) {
         struct nv_drm_device *next = dev_list->next;
 

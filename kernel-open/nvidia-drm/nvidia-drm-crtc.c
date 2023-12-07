@@ -55,6 +55,7 @@ nv_drm_atomic_replace_property_blob_from_id(struct drm_device *dev,
                                             uint64_t blob_id,
                                             ssize_t expected_size)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 12);
     struct drm_property_blob *new_blob = NULL;
 
     if (blob_id != 0) {
@@ -79,6 +80,7 @@ nv_drm_atomic_replace_property_blob_from_id(struct drm_device *dev,
 
 static void nv_drm_plane_destroy(struct drm_plane *plane)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 13);
     struct nv_drm_plane *nv_plane = to_nv_plane(plane);
 
     /* plane->state gets freed here */
@@ -90,6 +92,7 @@ static void nv_drm_plane_destroy(struct drm_plane *plane)
 static inline void
 plane_req_config_disable(struct NvKmsKapiLayerRequestedConfig *req_config)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 14);
     /* Clear layer config */
     memset(&req_config->config, 0, sizeof(req_config->config));
 
@@ -104,6 +107,7 @@ plane_req_config_disable(struct NvKmsKapiLayerRequestedConfig *req_config)
 static inline void
 cursor_req_config_disable(struct NvKmsKapiCursorRequestedConfig *req_config)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 15);
     req_config->surface = NULL;
     req_config->flags.surfaceChanged = NV_TRUE;
 }
@@ -113,6 +117,7 @@ cursor_plane_req_config_update(struct drm_plane *plane,
                                struct drm_plane_state *plane_state,
                                struct NvKmsKapiCursorRequestedConfig *req_config)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 16);
     struct nv_drm_plane *nv_plane = to_nv_plane(plane);
     struct NvKmsKapiCursorRequestedConfig old_config = *req_config;
 
@@ -209,6 +214,7 @@ plane_req_config_update(struct drm_plane *plane,
                         struct drm_plane_state *plane_state,
                         struct NvKmsKapiLayerRequestedConfig *req_config)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 17);
     struct nv_drm_plane *nv_plane = to_nv_plane(plane);
     struct NvKmsKapiLayerConfig old_config = req_config->config;
     struct nv_drm_device *nv_dev = to_nv_device(plane->dev);
@@ -476,6 +482,7 @@ plane_req_config_update(struct drm_plane *plane,
 static bool __is_async_flip_requested(const struct drm_plane *plane,
                                       const struct drm_crtc_state *crtc_state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 18);
     if (plane->type == DRM_PLANE_TYPE_PRIMARY) {
 #if defined(NV_DRM_CRTC_STATE_HAS_ASYNC_FLIP)
         return crtc_state->async_flip;
@@ -490,6 +497,7 @@ static bool __is_async_flip_requested(const struct drm_plane *plane,
 static int __nv_drm_cursor_atomic_check(struct drm_plane *plane,
                                         struct drm_plane_state *plane_state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 19);
     struct nv_drm_plane *nv_plane = to_nv_plane(plane);
     int i;
     struct drm_crtc *crtc;
@@ -587,6 +595,7 @@ static bool nv_drm_plane_format_mod_supported(struct drm_plane *plane,
                                               uint32_t format,
                                               uint64_t modifier)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 20);
     /* All supported modifiers are compatible with all supported formats */
     return true;
 }
@@ -599,6 +608,7 @@ static int nv_drm_plane_atomic_set_property(
     struct drm_property *property,
     uint64_t val)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 21);
     struct nv_drm_device *nv_dev = to_nv_device(plane->dev);
     struct nv_drm_plane_state *nv_drm_plane_state =
         to_nv_drm_plane_state(state);
@@ -631,6 +641,7 @@ static int nv_drm_plane_atomic_get_property(
     struct drm_property *property,
     uint64_t *val)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 22);
     struct nv_drm_device *nv_dev = to_nv_device(plane->dev);
     const struct nv_drm_plane_state *nv_drm_plane_state =
         to_nv_drm_plane_state_const(state);
@@ -657,6 +668,7 @@ static int nv_drm_plane_atomic_get_property(
 static struct drm_plane_state *
 nv_drm_plane_atomic_duplicate_state(struct drm_plane *plane)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 23);
     struct nv_drm_plane_state *nv_old_plane_state =
         to_nv_drm_plane_state(plane->state);
     struct nv_drm_plane_state *nv_plane_state =
@@ -685,6 +697,7 @@ static inline void __nv_drm_plane_atomic_destroy_state(
     struct drm_plane *plane,
     struct drm_plane_state *state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 24);
 #if defined(NV_DRM_ATOMIC_HELPER_PLANE_DESTROY_STATE_HAS_PLANE_ARG)
     __drm_atomic_helper_plane_destroy_state(plane, state);
 #else
@@ -702,6 +715,7 @@ static void nv_drm_plane_atomic_destroy_state(
     struct drm_plane *plane,
     struct drm_plane_state *state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 25);
     __nv_drm_plane_atomic_destroy_state(plane, state);
 
     nv_drm_free(to_nv_drm_plane_state(state));
@@ -727,6 +741,7 @@ static const struct drm_plane_helper_funcs nv_plane_helper_funcs = {
 
 static void nv_drm_crtc_destroy(struct drm_crtc *crtc)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 26);
     struct nv_drm_crtc *nv_crtc = to_nv_crtc(crtc);
 
     drm_crtc_cleanup(crtc);
@@ -738,6 +753,7 @@ static inline void
 __nv_drm_atomic_helper_crtc_destroy_state(struct drm_crtc *crtc,
                                           struct drm_crtc_state *crtc_state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 27);
 #if defined(NV_DRM_ATOMIC_HELPER_CRTC_DESTROY_STATE_HAS_CRTC_ARG)
     __drm_atomic_helper_crtc_destroy_state(crtc, crtc_state);
 #else
@@ -749,6 +765,7 @@ static inline void nv_drm_crtc_duplicate_req_head_modeset_config(
     const struct NvKmsKapiHeadRequestedConfig *old,
     struct NvKmsKapiHeadRequestedConfig *new)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 28);
     uint32_t i;
 
     /*
@@ -779,6 +796,7 @@ static inline void nv_drm_crtc_duplicate_req_head_modeset_config(
 static struct drm_crtc_state*
 nv_drm_atomic_crtc_duplicate_state(struct drm_crtc *crtc)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 29);
     struct nv_drm_crtc_state *nv_state = nv_drm_calloc(1, sizeof(*nv_state));
 
     if (nv_state == NULL) {
@@ -814,6 +832,7 @@ nv_drm_atomic_crtc_duplicate_state(struct drm_crtc *crtc)
 static void nv_drm_atomic_crtc_destroy_state(struct drm_crtc *crtc,
                                              struct drm_crtc_state *state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 30);
     struct nv_drm_crtc_state *nv_state = to_nv_crtc_state(state);
 
     if (nv_state->nv_flip != NULL) {
@@ -843,6 +862,7 @@ static struct drm_crtc_funcs nv_crtc_funcs = {
 static inline bool
 nv_drm_crtc_state_connectors_changed(struct drm_crtc_state *crtc_state)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 31);
 #if defined(NV_DRM_CRTC_STATE_HAS_CONNECTORS_CHANGED)
     return crtc_state->connectors_changed;
 #else
@@ -854,6 +874,7 @@ static int head_modeset_config_attach_connector(
     struct nv_drm_connector *nv_connector,
     struct NvKmsKapiHeadModeSetConfig *head_modeset_config)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 32);
     struct nv_drm_encoder *nv_encoder = nv_connector->nv_detected_encoder;
 
     if (NV_DRM_WARN(nv_encoder == NULL ||
@@ -933,6 +954,7 @@ nv_drm_crtc_mode_fixup(struct drm_crtc *crtc,
                        const struct drm_display_mode *mode,
                        struct drm_display_mode *adjusted_mode)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 33);
     return true;
 }
 
@@ -945,6 +967,7 @@ static void nv_drm_plane_install_properties(
     struct drm_plane *plane,
     NvBool supportsHDR)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 34);
     struct nv_drm_device *nv_dev = to_nv_device(plane->dev);
 
     if (nv_dev->nv_out_fence_property) {
@@ -970,6 +993,7 @@ static void
 __nv_drm_plane_create_alpha_blending_properties(struct drm_plane *plane,
                                                  NvU32 validCompModes)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 35);
 #if defined(NV_DRM_ALPHA_BLENDING_AVAILABLE)
     if ((validCompModes &
          NVBIT(NVKMS_COMPOSITION_BLENDING_MODE_PREMULT_SURFACE_ALPHA)) != 0x0 &&
@@ -996,6 +1020,7 @@ static void
 __nv_drm_plane_create_rotation_property(struct drm_plane *plane,
                                         NvU16 validLayerRRTransforms)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 36);
 #if defined(NV_DRM_ROTATION_AVAILABLE)
     enum NvKmsRotation curRotation;
     NvU32 supported_rotations = 0;
@@ -1055,6 +1080,7 @@ nv_drm_plane_create(struct drm_device *dev,
                     NvU32 head,
                     const struct NvKmsKapiDeviceResourcesInfo *pResInfo)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 37);
 #if defined(NV_DRM_UNIVERSAL_PLANE_INIT_HAS_FORMAT_MODIFIERS_ARG)
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     const NvU64 linear_modifiers[] = {
@@ -1179,6 +1205,7 @@ static struct drm_crtc *__nv_drm_crtc_create(struct nv_drm_device *nv_dev,
                                              struct drm_plane *cursor_plane,
                                              unsigned int head)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 38);
     struct nv_drm_crtc *nv_crtc = NULL;
     struct nv_drm_crtc_state *nv_state = NULL;
     int ret = -ENOMEM;
@@ -1236,6 +1263,7 @@ void nv_drm_enumerate_crtcs_and_planes(
     struct nv_drm_device *nv_dev,
     const struct NvKmsKapiDeviceResourcesInfo *pResInfo)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 39);
     unsigned int i;
 
     for (i = 0; i < pResInfo->numHeads; i++) {
@@ -1326,6 +1354,7 @@ void nv_drm_enumerate_crtcs_and_planes(
 static void NvKmsKapiCrcsToDrm(const struct NvKmsKapiCrcs *crcs,
                                struct drm_nvidia_crtc_crc32_v2_out *drmCrcs)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 40);
     drmCrcs->outputCrc32.value = crcs->outputCrc32.value;
     drmCrcs->outputCrc32.supported = crcs->outputCrc32.supported;
     drmCrcs->rasterGeneratorCrc32.value = crcs->rasterGeneratorCrc32.value;
@@ -1337,6 +1366,7 @@ static void NvKmsKapiCrcsToDrm(const struct NvKmsKapiCrcs *crcs,
 int nv_drm_get_crtc_crc32_v2_ioctl(struct drm_device *dev,
                                    void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 41);
     struct drm_nvidia_get_crtc_crc32_v2_params *params = data;
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct drm_crtc *crtc = NULL;
@@ -1365,6 +1395,7 @@ int nv_drm_get_crtc_crc32_v2_ioctl(struct drm_device *dev,
 int nv_drm_get_crtc_crc32_ioctl(struct drm_device *dev,
                                 void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 42);
     struct drm_nvidia_get_crtc_crc32_params *params = data;
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct drm_crtc *crtc = NULL;

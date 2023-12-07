@@ -42,6 +42,7 @@ struct NvKmsKapiConnectorInfo*
 nvkms_get_connector_info(struct NvKmsKapiDevice *pDevice,
                          NvKmsKapiConnector hConnector)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 188);
     struct NvKmsKapiConnectorInfo *connectorInfo =
                            nv_drm_calloc(1, sizeof(*connectorInfo));
 
@@ -61,6 +62,7 @@ nvkms_get_connector_info(struct NvKmsKapiDevice *pDevice,
 int
 nvkms_connector_signal_to_drm_encoder_signal(NvKmsConnectorSignalFormat format)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 189);
     switch (format) {
         default:
         case NVKMS_CONNECTOR_SIGNAL_FORMAT_UNKNOWN:
@@ -80,6 +82,7 @@ nvkms_connector_signal_to_drm_encoder_signal(NvKmsConnectorSignalFormat format)
 int nvkms_connector_type_to_drm_connector_type(NvKmsConnectorType type,
                                                NvBool internal)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 190);
     switch (type) {
         default:
         case NVKMS_CONNECTOR_TYPE_UNKNOWN:
@@ -109,6 +112,7 @@ void
 nvkms_display_mode_to_drm_mode(const struct NvKmsKapiDisplayMode *displayMode,
                                struct drm_display_mode *mode)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 191);
 #if defined(NV_DRM_DISPLAY_MODE_HAS_VREFRESH)
     mode->vrefresh    = (displayMode->timings.refreshRate + 500) / 1000; /* In Hz */
 #endif
@@ -167,6 +171,7 @@ nvkms_display_mode_to_drm_mode(const struct NvKmsKapiDisplayMode *displayMode,
 void drm_mode_to_nvkms_display_mode(const struct drm_display_mode *src,
                                     struct NvKmsKapiDisplayMode *dst)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 192);
 #if defined(NV_DRM_DISPLAY_MODE_HAS_VREFRESH)
     dst->timings.refreshRate  = src->vrefresh * 1000;
 #else

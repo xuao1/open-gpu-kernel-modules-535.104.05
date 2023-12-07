@@ -36,6 +36,7 @@
 
 static void __nv_drm_framebuffer_free(struct nv_drm_framebuffer *nv_fb)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 93);
     uint32_t i;
 
     /* Unreference gem object */
@@ -51,6 +52,7 @@ static void __nv_drm_framebuffer_free(struct nv_drm_framebuffer *nv_fb)
 
 static void nv_drm_framebuffer_destroy(struct drm_framebuffer *fb)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 94);
     struct nv_drm_device *nv_dev = to_nv_device(fb->dev);
     struct nv_drm_framebuffer *nv_fb = to_nv_framebuffer(fb);
 
@@ -69,6 +71,7 @@ static int
 nv_drm_framebuffer_create_handle(struct drm_framebuffer *fb,
                                  struct drm_file *file, unsigned int *handle)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 95);
     struct nv_drm_framebuffer *nv_fb = to_nv_framebuffer(fb);
 
     return nv_drm_gem_handle_create(file,
@@ -86,6 +89,7 @@ static struct nv_drm_framebuffer *nv_drm_framebuffer_alloc(
     struct drm_file *file,
     struct drm_mode_fb_cmd2 *cmd)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 96);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct nv_drm_framebuffer *nv_fb;
     const int num_planes = nv_drm_format_num_planes(cmd->pixel_format);
@@ -133,6 +137,7 @@ static int nv_drm_framebuffer_init(struct drm_device *dev,
                                    bool have_modifier,
                                    uint64_t modifier)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 97);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct NvKmsKapiCreateSurfaceParams params = { };
     uint32_t i;
@@ -208,6 +213,7 @@ struct drm_framebuffer *nv_drm_internal_framebuffer_create(
     struct drm_file *file,
     struct drm_mode_fb_cmd2 *cmd)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 98);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct nv_drm_framebuffer *nv_fb;
     uint64_t modifier = 0;

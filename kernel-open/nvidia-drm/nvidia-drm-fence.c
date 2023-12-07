@@ -86,29 +86,34 @@ struct nv_drm_prime_fence {
 static inline
 struct nv_drm_prime_fence *to_nv_drm_prime_fence(nv_dma_fence_t *fence)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 99);
     return container_of(fence, struct nv_drm_prime_fence, base);
 }
 
 static const char*
 nv_drm_gem_fence_op_get_driver_name(nv_dma_fence_t *fence)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 100);
     return "NVIDIA";
 }
 
 static const char*
 nv_drm_gem_prime_fence_op_get_timeline_name(nv_dma_fence_t *fence)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 101);
     return "nvidia.prime";
 }
 
 static bool nv_drm_gem_prime_fence_op_enable_signaling(nv_dma_fence_t *fence)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 102);
     // DO NOTHING
     return true;
 }
 
 static void nv_drm_gem_prime_fence_op_release(nv_dma_fence_t *fence)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 103);
     struct nv_drm_prime_fence *nv_fence = to_nv_drm_prime_fence(fence);
     nv_drm_free(nv_fence);
 }
@@ -117,6 +122,7 @@ static signed long
 nv_drm_gem_prime_fence_op_wait(nv_dma_fence_t *fence,
                                bool intr, signed long timeout)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 104);
     /*
      * If the waiter requests to wait with no timeout, force a timeout to ensure
      * that it won't get stuck forever in the kernel if something were to go
@@ -143,6 +149,7 @@ static const nv_dma_fence_ops_t nv_drm_gem_prime_fence_ops = {
 static inline void
 __nv_drm_prime_fence_signal(struct nv_drm_prime_fence *nv_fence)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 105);
     list_del(&nv_fence->list_entry);
     nv_dma_fence_signal(&nv_fence->base);
     nv_dma_fence_put(&nv_fence->base);
@@ -151,6 +158,7 @@ __nv_drm_prime_fence_signal(struct nv_drm_prime_fence *nv_fence)
 static void nv_drm_gem_prime_force_fence_signal(
     struct nv_drm_prime_fence_context *nv_fence_context)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 106);
     WARN_ON(!spin_is_locked(&nv_fence_context->lock));
 
     while (!list_empty(&nv_fence_context->pending)) {
@@ -169,6 +177,7 @@ static void nv_drm_gem_prime_fence_event
     NvU32 dataU32
 )
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 107);
     struct nv_drm_prime_fence_context *nv_fence_context = dataPtr;
 
     spin_lock(&nv_fence_context->lock);
@@ -206,6 +215,7 @@ to_prime_fence_context(struct nv_drm_fence_context *nv_fence_context) {
 static void __nv_drm_prime_fence_context_destroy(
     struct nv_drm_fence_context *nv_fence_context)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 108);
     struct nv_drm_device *nv_dev = nv_fence_context->nv_dev;
     struct nv_drm_prime_fence_context *nv_prime_fence_context =
         to_prime_fence_context(nv_fence_context);
@@ -244,6 +254,7 @@ __nv_drm_prime_fence_context_new(
     struct nv_drm_device *nv_dev,
     struct drm_nvidia_prime_fence_context_create_params *p)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 109);
     struct nv_drm_prime_fence_context *nv_prime_fence_context;
     struct NvKmsKapiMemory *pSemSurface;
     NvU32 *pLinearAddress;
@@ -345,6 +356,7 @@ static nv_dma_fence_t *__nv_drm_prime_fence_context_create_fence(
     struct nv_drm_prime_fence_context *nv_prime_fence_context,
     unsigned int seqno)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 110);
     struct nv_drm_prime_fence *nv_fence;
     int ret = 0;
 
@@ -387,6 +399,7 @@ out:
 int nv_drm_fence_supported_ioctl(struct drm_device *dev,
                                  void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 111);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     return nv_dev->pDevice ? 0 : -EINVAL;
 }
@@ -399,6 +412,7 @@ struct nv_drm_gem_fence_context {
 static inline struct nv_drm_gem_fence_context *to_gem_fence_context(
     struct nv_drm_gem_object *nv_gem)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 112);
     if (nv_gem != NULL) {
         return container_of(nv_gem, struct nv_drm_gem_fence_context, base);
     }
@@ -415,6 +429,7 @@ static inline struct nv_drm_gem_fence_context *to_gem_fence_context(
 static void
 __nv_drm_gem_fence_context_free(struct nv_drm_gem_object *nv_gem)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 113);
     struct nv_drm_gem_fence_context *nv_gem_fence_context =
         to_gem_fence_context(nv_gem);
     struct nv_drm_fence_context *nv_fence_context =
@@ -436,6 +451,7 @@ __nv_drm_gem_object_fence_context_lookup(
     struct drm_file *filp,
     u32 handle)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 114);
     struct nv_drm_gem_object *nv_gem =
             nv_drm_gem_object_lookup(dev, filp, handle);
 
@@ -453,6 +469,7 @@ __nv_drm_gem_fence_context_create(struct drm_device *dev,
                                   u32 *handle,
                                   struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 115);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct nv_drm_gem_fence_context *nv_gem_fence_context = NULL;
 
@@ -481,6 +498,7 @@ done:
 int nv_drm_prime_fence_context_create_ioctl(struct drm_device *dev,
                                             void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 116);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct drm_nvidia_prime_fence_context_create_params *p = data;
     struct nv_drm_prime_fence_context *nv_prime_fence_context =
@@ -508,6 +526,7 @@ done:
 int nv_drm_gem_prime_fence_attach_ioctl(struct drm_device *dev,
                                         void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 117);
     int ret = -EINVAL;
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct drm_nvidia_gem_prime_fence_attach_params *p = data;

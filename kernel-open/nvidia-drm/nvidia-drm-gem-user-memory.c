@@ -39,6 +39,7 @@
 static inline
 void __nv_drm_gem_user_memory_free(struct nv_drm_gem_object *nv_gem)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 140);
     struct nv_drm_gem_user_memory *nv_user_memory = to_nv_user_memory(nv_gem);
 
     nv_drm_unlock_user_pages(nv_user_memory->pages_count,
@@ -50,6 +51,7 @@ void __nv_drm_gem_user_memory_free(struct nv_drm_gem_object *nv_gem)
 static struct sg_table *__nv_drm_gem_user_memory_prime_get_sg_table(
     struct nv_drm_gem_object *nv_gem)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 141);
     struct nv_drm_gem_user_memory *nv_user_memory = to_nv_user_memory(nv_gem);
     struct drm_gem_object *gem = &nv_gem->base;
 
@@ -61,6 +63,7 @@ static struct sg_table *__nv_drm_gem_user_memory_prime_get_sg_table(
 static void *__nv_drm_gem_user_memory_prime_vmap(
     struct nv_drm_gem_object *nv_gem)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 142);
     struct nv_drm_gem_user_memory *nv_user_memory = to_nv_user_memory(nv_gem);
 
     return nv_drm_vmap(nv_user_memory->pages,
@@ -71,12 +74,14 @@ static void __nv_drm_gem_user_memory_prime_vunmap(
     struct nv_drm_gem_object *gem,
     void *address)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 143);
     nv_drm_vunmap(address);
 }
 
 static int __nv_drm_gem_user_memory_mmap(struct nv_drm_gem_object *nv_gem,
                                          struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 144);
     int ret = drm_gem_mmap_obj(&nv_gem->base,
                 drm_vma_node_size(&nv_gem->base.vma_node) << PAGE_SHIFT, vma);
 
@@ -104,6 +109,7 @@ static vm_fault_t __nv_drm_gem_user_memory_handle_vma_fault(
     struct vm_area_struct *vma,
     struct vm_fault *vmf)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 145);
     struct nv_drm_gem_user_memory *nv_user_memory = to_nv_user_memory(nv_gem);
     unsigned long address = nv_page_fault_va(vmf);
     struct drm_gem_object *gem = vma->vm_private_data;
@@ -140,6 +146,7 @@ static int __nv_drm_gem_user_create_mmap_offset(
     struct nv_drm_gem_object *nv_gem,
     uint64_t *offset)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 146);
     (void)nv_dev;
     return nv_drm_gem_create_mmap_offset(nv_gem, offset);
 }
@@ -157,6 +164,7 @@ const struct nv_drm_gem_object_funcs __nv_gem_user_memory_ops = {
 int nv_drm_gem_import_userspace_memory_ioctl(struct drm_device *dev,
                                              void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 147);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
 
     struct drm_nvidia_gem_import_userspace_memory_params *params = data;

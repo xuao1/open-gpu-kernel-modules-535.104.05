@@ -47,12 +47,14 @@ module_param_named(modeset, nv_drm_modeset_module_param, bool, 0400);
 
 void *nv_drm_calloc(size_t nmemb, size_t size)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 165);
     size_t total_size = nmemb * size;
     //
     // Check for overflow.
     //
     if ((nmemb != 0) && ((total_size / nmemb) != size))
     {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 166);
         return NULL;
     }
     return kzalloc(nmemb * size, GFP_KERNEL);
@@ -60,6 +62,7 @@ void *nv_drm_calloc(size_t nmemb, size_t size)
 
 void nv_drm_free(void *ptr)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 167);
     if (IS_ERR(ptr)) {
         return;
     }
@@ -69,6 +72,7 @@ void nv_drm_free(void *ptr)
 
 char *nv_drm_asprintf(const char *fmt, ...)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 168);
     va_list ap;
     char *p;
 
@@ -93,12 +97,14 @@ char *nv_drm_asprintf(const char *fmt, ...)
 
 void nv_drm_write_combine_flush(void)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 169);
     WRITE_COMBINE_FLUSH();
 }
 
 int nv_drm_lock_user_pages(unsigned long address,
                            unsigned long pages_count, struct page ***pages)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 170);
     struct mm_struct *mm = current->mm;
     struct page **user_pages;
     int pages_pinned;
@@ -140,6 +146,7 @@ failed:
 
 void nv_drm_unlock_user_pages(unsigned long  pages_count, struct page **pages)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 171);
     unsigned long i;
 
     for (i = 0; i < pages_count; i++) {
@@ -152,11 +159,13 @@ void nv_drm_unlock_user_pages(unsigned long  pages_count, struct page **pages)
 
 void *nv_drm_vmap(struct page **pages, unsigned long pages_count)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 172);
     return vmap(pages, pages_count, VM_USERMAP, PAGE_KERNEL);
 }
 
 void nv_drm_vunmap(void *address)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 173);
     vunmap(address);
 }
 
@@ -168,11 +177,13 @@ void nv_drm_vunmap(void *address)
 
 static int __init nv_linux_drm_init(void)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 174);
     return nv_drm_init();
 }
 
 static void __exit nv_linux_drm_exit(void)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 175);
     nv_drm_exit();
 }
 

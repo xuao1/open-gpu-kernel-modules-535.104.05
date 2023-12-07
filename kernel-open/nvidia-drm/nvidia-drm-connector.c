@@ -47,6 +47,7 @@
 
 static void nv_drm_connector_destroy(struct drm_connector *connector)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 1);
     struct nv_drm_connector *nv_connector = to_nv_connector(connector);
 
     drm_connector_unregister(connector);
@@ -65,6 +66,7 @@ __nv_drm_detect_encoder(struct NvKmsKapiDynamicDisplayParams *pDetectParams,
                         struct drm_connector *connector,
                         struct drm_encoder *encoder)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 2);
     struct nv_drm_connector *nv_connector = to_nv_connector(connector);
     struct drm_device *dev = connector->dev;
     struct nv_drm_device *nv_dev = to_nv_device(dev);
@@ -153,6 +155,7 @@ __nv_drm_detect_encoder(struct NvKmsKapiDynamicDisplayParams *pDetectParams,
 static enum drm_connector_status __nv_drm_connector_detect_internal(
     struct drm_connector *connector)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 3);
     struct drm_device *dev = connector->dev;
     struct nv_drm_connector *nv_connector = to_nv_connector(connector);
 
@@ -218,12 +221,14 @@ done:
 
 static void __nv_drm_connector_force(struct drm_connector *connector)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 4);
     __nv_drm_connector_detect_internal(connector);
 }
 
 static enum drm_connector_status
 nv_drm_connector_detect(struct drm_connector *connector, bool force)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 5);
     return __nv_drm_connector_detect_internal(connector);
 }
 
@@ -242,6 +247,7 @@ static struct drm_connector_funcs nv_connector_funcs = {
 
 static int nv_drm_connector_get_modes(struct drm_connector *connector)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 6);
     struct drm_device *dev = connector->dev;
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct nv_drm_connector *nv_connector = to_nv_connector(connector);
@@ -316,6 +322,7 @@ static int nv_drm_connector_get_modes(struct drm_connector *connector)
 static int nv_drm_connector_mode_valid(struct drm_connector    *connector,
                                        struct drm_display_mode *mode)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 7);
     struct drm_device *dev = connector->dev;
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct nv_drm_encoder *nv_detected_encoder =
@@ -340,6 +347,7 @@ static int nv_drm_connector_mode_valid(struct drm_connector    *connector,
 static struct drm_encoder*
 nv_drm_connector_best_encoder(struct drm_connector *connector)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 8);
     struct nv_drm_connector *nv_connector = to_nv_connector(connector);
 
     if (nv_connector->nv_detected_encoder != NULL) {
@@ -361,6 +369,7 @@ nv_drm_connector_new(struct drm_device *dev,
                      NvBool internal,
                      char dpAddress[NVKMS_DP_ADDRESS_STRING_LENGTH])
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 9);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct nv_drm_connector *nv_connector = NULL;
     int ret = -ENOMEM;
@@ -442,6 +451,7 @@ nv_drm_get_connector(struct drm_device *dev,
                      NvBool internal,
                      char dpAddress[NVKMS_DP_ADDRESS_STRING_LENGTH])
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 10);
     struct drm_connector *connector = NULL;
 #if defined(NV_DRM_CONNECTOR_LIST_ITER_PRESENT)
     struct drm_connector_list_iter conn_iter;
@@ -488,6 +498,7 @@ done:
 bool nv_drm_connector_revoke_permissions(struct drm_device *dev,
                                          struct nv_drm_connector* nv_connector)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 11);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     bool ret = true;
 

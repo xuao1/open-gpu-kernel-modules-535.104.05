@@ -44,6 +44,7 @@
 static inline
 void __nv_drm_gem_dma_buf_free(struct nv_drm_gem_object *nv_gem)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 120);
     struct nv_drm_device *nv_dev = nv_gem->nv_dev;
     struct nv_drm_gem_dma_buf *nv_dma_buf = to_nv_dma_buf(nv_gem);
 
@@ -64,6 +65,7 @@ static int __nv_drm_gem_dma_buf_create_mmap_offset(
     struct nv_drm_gem_object *nv_gem,
     uint64_t *offset)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 121);
     (void)nv_dev;
     return nv_drm_gem_create_mmap_offset(nv_gem, offset);
 }
@@ -71,6 +73,7 @@ static int __nv_drm_gem_dma_buf_create_mmap_offset(
 static int __nv_drm_gem_dma_buf_mmap(struct nv_drm_gem_object *nv_gem,
                                      struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 122);
     struct dma_buf_attachment *attach = nv_gem->base.import_attach;
     struct dma_buf *dma_buf = attach->dmabuf;
     struct file *old_file;
@@ -111,6 +114,7 @@ nv_drm_gem_prime_import_sg_table(struct drm_device *dev,
                                  struct dma_buf_attachment *attach,
                                  struct sg_table *sgt)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 123);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct dma_buf *dma_buf = attach->dmabuf;
     struct nv_drm_gem_dma_buf *nv_dma_buf;
@@ -144,6 +148,7 @@ nv_drm_gem_prime_import_sg_table(struct drm_device *dev,
 int nv_drm_gem_export_dmabuf_memory_ioctl(struct drm_device *dev,
                                           void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 124);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct drm_nvidia_gem_export_dmabuf_memory_params *p = data;
     struct nv_drm_gem_dma_buf *nv_dma_buf = NULL;

@@ -37,6 +37,7 @@ const struct NvKmsKapiFunctionsTable* const nvKms = &nvKmsFuncsTable;
 
 int nv_drm_init(void)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 193);
 #if defined(NV_DRM_AVAILABLE)
     if (!nvKmsKapiGetFunctionsTable(&nvKmsFuncsTable)) {
         NV_DRM_LOG_ERR(
@@ -53,6 +54,7 @@ int nv_drm_init(void)
 
 void nv_drm_exit(void)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 194);
 #if defined(NV_DRM_AVAILABLE)
     nv_drm_remove_devices();
 #endif

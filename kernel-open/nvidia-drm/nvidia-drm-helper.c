@@ -58,6 +58,7 @@
 
 static void __nv_drm_framebuffer_put(struct drm_framebuffer *fb)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 163);
 #if defined(NV_DRM_FRAMEBUFFER_GET_PRESENT)
     drm_framebuffer_put(fb);
 #else
@@ -112,6 +113,7 @@ static void __nv_drm_framebuffer_put(struct drm_framebuffer *fb)
 int nv_drm_atomic_helper_disable_all(struct drm_device *dev,
                                      struct drm_modeset_acquire_ctx *ctx)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 164);
     struct drm_atomic_state *state;
     struct drm_connector_state *conn_state;
     struct drm_connector *conn;

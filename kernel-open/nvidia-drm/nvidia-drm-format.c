@@ -112,6 +112,7 @@ static const u32  nvkms_to_drm_format[] = {
 bool nv_drm_format_to_nvkms_format(u32 format,
                                    enum NvKmsSurfaceMemoryFormat *nvkms_format)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 118);
     enum NvKmsSurfaceMemoryFormat i;
     for (i = 0; i < ARRAY_SIZE(nvkms_to_drm_format); i++) {
         /*
@@ -131,6 +132,7 @@ uint32_t *nv_drm_format_array_alloc(
     unsigned int *count,
     const long unsigned int nvkms_format_mask)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 119);
     enum NvKmsSurfaceMemoryFormat i;
     unsigned int max_count = hweight64(nvkms_format_mask);
     uint32_t *array = nv_drm_calloc(1, sizeof(uint32_t) * max_count);

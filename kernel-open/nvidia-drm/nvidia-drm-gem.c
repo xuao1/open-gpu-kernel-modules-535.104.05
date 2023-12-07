@@ -53,6 +53,7 @@
 
 void nv_drm_gem_free(struct drm_gem_object *gem)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 148);
     struct nv_drm_gem_object *nv_gem = to_nv_gem_object(gem);
 
     /* Cleanup core gem object */
@@ -81,6 +82,7 @@ typedef struct dma_buf_map nv_sysio_map_t;
 static int nv_drm_gem_vmap(struct drm_gem_object *gem,
                            nv_sysio_map_t *map)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 149);
     void *vaddr = nv_drm_gem_prime_vmap(gem);
     if (vaddr == NULL) {
         return -ENOMEM;
@@ -95,6 +97,7 @@ static int nv_drm_gem_vmap(struct drm_gem_object *gem,
 static void nv_drm_gem_vunmap(struct drm_gem_object *gem,
                               nv_sysio_map_t *map)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 150);
     nv_drm_gem_prime_vunmap(gem, map->vaddr);
     map->vaddr = NULL;
 }
@@ -126,6 +129,7 @@ void nv_drm_gem_object_init(struct nv_drm_device *nv_dev,
                             size_t size,
                             struct NvKmsKapiMemory *pMemory)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 151);
     struct drm_device *dev = nv_dev->dev;
 
     nv_gem->nv_dev = nv_dev;
@@ -149,6 +153,7 @@ void nv_drm_gem_object_init(struct nv_drm_device *nv_dev,
 struct drm_gem_object *nv_drm_gem_prime_import(struct drm_device *dev,
                                                struct dma_buf *dma_buf)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 152);
 #if defined(NV_DMA_BUF_OWNER_PRESENT)
     struct drm_gem_object *gem_dst;
     struct nv_drm_gem_object *nv_gem_src;
@@ -177,6 +182,7 @@ struct drm_gem_object *nv_drm_gem_prime_import(struct drm_device *dev,
 
 struct sg_table *nv_drm_gem_prime_get_sg_table(struct drm_gem_object *gem)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 153);
     struct nv_drm_gem_object *nv_gem = to_nv_gem_object(gem);
 
     if (nv_gem->ops->prime_get_sg_table != NULL) {
@@ -188,6 +194,7 @@ struct sg_table *nv_drm_gem_prime_get_sg_table(struct drm_gem_object *gem)
 
 void *nv_drm_gem_prime_vmap(struct drm_gem_object *gem)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 154);
     struct nv_drm_gem_object *nv_gem = to_nv_gem_object(gem);
 
     if (nv_gem->ops->prime_vmap != NULL) {
@@ -199,6 +206,7 @@ void *nv_drm_gem_prime_vmap(struct drm_gem_object *gem)
 
 void nv_drm_gem_prime_vunmap(struct drm_gem_object *gem, void *address)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 155);
     struct nv_drm_gem_object *nv_gem = to_nv_gem_object(gem);
 
     if (nv_gem->ops->prime_vunmap != NULL) {
@@ -209,6 +217,7 @@ void nv_drm_gem_prime_vunmap(struct drm_gem_object *gem, void *address)
 #if defined(NV_DRM_DRIVER_HAS_GEM_PRIME_RES_OBJ)
 nv_dma_resv_t* nv_drm_gem_prime_res_obj(struct drm_gem_object *obj)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 156);
     struct nv_drm_gem_object *nv_gem = to_nv_gem_object(obj);
     return nv_drm_gem_res_obj(nv_gem);
 }
@@ -217,6 +226,7 @@ nv_dma_resv_t* nv_drm_gem_prime_res_obj(struct drm_gem_object *obj)
 int nv_drm_gem_map_offset_ioctl(struct drm_device *dev,
                                 void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 157);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
     struct drm_nvidia_gem_map_offset_params *params = data;
     struct nv_drm_gem_object *nv_gem;
@@ -250,6 +260,7 @@ int nv_drm_gem_map_offset_ioctl(struct drm_device *dev,
 #if defined(NV_DRM_ATOMIC_MODESET_AVAILABLE)
 int nv_drm_mmap(struct file *file, struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 158);
     struct drm_file *priv = file->private_data;
     struct drm_device *dev = priv->minor->dev;
     struct drm_gem_object *obj = NULL;
@@ -312,6 +323,7 @@ done:
 int nv_drm_gem_identify_object_ioctl(struct drm_device *dev,
                                      void *data, struct drm_file *filep)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 159);
     struct drm_nvidia_gem_identify_object_params *p = data;
     struct nv_drm_gem_dma_buf *nv_dma_buf;
     struct nv_drm_gem_nvkms_memory *nv_nvkms_memory;
@@ -359,6 +371,7 @@ done:
 static vm_fault_t __nv_drm_vma_fault(struct vm_area_struct *vma,
                               struct vm_fault *vmf)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 160);
     struct drm_gem_object *gem = vma->vm_private_data;
     struct nv_drm_gem_object *nv_gem = to_nv_gem_object(gem);
 
@@ -377,12 +390,14 @@ static vm_fault_t __nv_drm_vma_fault(struct vm_area_struct *vma,
 #if defined(NV_VM_OPS_FAULT_REMOVED_VMA_ARG)
 static vm_fault_t nv_drm_vma_fault(struct vm_fault *vmf)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 161);
     return __nv_drm_vma_fault(vmf->vma, vmf);
 }
 #else
 static vm_fault_t nv_drm_vma_fault(struct vm_area_struct *vma,
                                 struct vm_fault *vmf)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 162);
     return __nv_drm_vma_fault(vma, vmf);
 }
 #endif

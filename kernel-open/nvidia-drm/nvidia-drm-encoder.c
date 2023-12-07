@@ -48,6 +48,7 @@
 
 static void nv_drm_encoder_destroy(struct drm_encoder *encoder)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 82);
     struct nv_drm_encoder *nv_encoder = to_nv_encoder(encoder);
 
     drm_encoder_cleanup(encoder);
@@ -63,16 +64,19 @@ static bool nv_drm_encoder_mode_fixup(struct drm_encoder *encoder,
                                       const struct drm_display_mode *mode,
                                       struct drm_display_mode *adjusted_mode)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 83);
     return true;
 }
 
 static void nv_drm_encoder_prepare(struct drm_encoder *encoder)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 84);
 
 }
 
 static void nv_drm_encoder_commit(struct drm_encoder *encoder)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 85);
 
 }
 
@@ -80,6 +84,7 @@ static void nv_drm_encoder_mode_set(struct drm_encoder *encoder,
                                     struct drm_display_mode *mode,
                                     struct drm_display_mode *adjusted_mode)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 86);
 
 }
 
@@ -92,6 +97,7 @@ static const struct drm_encoder_helper_funcs nv_encoder_helper_funcs = {
 
 static uint32_t get_crtc_mask(struct drm_device *dev, uint32_t headMask)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 87);
     struct drm_crtc *crtc = NULL;
     uint32_t crtc_mask = 0x0;
 
@@ -116,6 +122,7 @@ nv_drm_encoder_new(struct drm_device *dev,
                    NvKmsConnectorSignalFormat format,
                    unsigned int crtc_mask)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 88);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
 
     struct nv_drm_encoder *nv_encoder = NULL;
@@ -168,6 +175,7 @@ nv_drm_encoder_new(struct drm_device *dev,
 struct drm_encoder*
 nv_drm_add_encoder(struct drm_device *dev, NvKmsKapiDisplay hDisplay)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 89);
     struct nv_drm_device *nv_dev = to_nv_device(dev);
 
     struct NvKmsKapiStaticDisplayInfo *displayInfo = NULL;
@@ -269,6 +277,7 @@ static inline struct nv_drm_encoder*
 get_nv_encoder_from_nvkms_display(struct drm_device *dev,
                                   NvKmsKapiDisplay hDisplay)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 90);
     struct drm_encoder *encoder;
 
     nv_drm_for_each_encoder(encoder, dev) {
@@ -285,6 +294,7 @@ get_nv_encoder_from_nvkms_display(struct drm_device *dev,
 void nv_drm_handle_display_change(struct nv_drm_device *nv_dev,
                                   NvKmsKapiDisplay hDisplay)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 91);
     struct drm_device *dev = nv_dev->dev;
     struct nv_drm_encoder *nv_encoder = NULL;
 
@@ -306,6 +316,7 @@ void nv_drm_handle_display_change(struct nv_drm_device *nv_dev,
 void nv_drm_handle_dynamic_display_connected(struct nv_drm_device *nv_dev,
                                              NvKmsKapiDisplay hDisplay)
 {
+    printk(KERN_ERR "nvidia-drm =====================================   %d\n", 92);
     struct drm_device *dev = nv_dev->dev;
 
     struct drm_encoder *encoder = NULL;
