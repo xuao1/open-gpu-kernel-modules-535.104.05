@@ -91,6 +91,7 @@ struct nv_mem_context {
 
 static void nv_get_p2p_free_callback(void *data)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 1);
     int ret = 0;
     struct nv_mem_context *nv_mem_context = (struct nv_mem_context *)data;
     struct nvidia_p2p_page_table *page_table = NULL;
@@ -143,6 +144,7 @@ out:
 /* At that function we don't call IB core - no ticket exists */
 static void nv_mem_dummy_callback(void *data)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 2);
     struct nv_mem_context *nv_mem_context = (struct nv_mem_context *)data;
     int ret = 0;
 
@@ -160,6 +162,7 @@ static void nv_mem_dummy_callback(void *data)
 static int nv_mem_acquire(unsigned long addr, size_t size, void *peer_mem_private_data,
                           char *peer_mem_name, void **client_context)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 3);
 
     int ret = 0;
     struct nv_mem_context *nv_mem_context;
@@ -205,6 +208,7 @@ static int nv_dma_map(struct sg_table *sg_head, void *context,
                       struct device *dma_device, int dmasync,
                       int *nmap)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 4);
     int i, ret;
     struct scatterlist *sg;
     struct nv_mem_context *nv_mem_context =
@@ -261,6 +265,7 @@ static int nv_dma_map(struct sg_table *sg_head, void *context,
 static int nv_dma_unmap(struct sg_table *sg_head, void *context,
                struct device  *dma_device)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 5);
     struct pci_dev *pdev = to_pci_dev(dma_device);
     struct nv_mem_context *nv_mem_context =
         (struct nv_mem_context *)context;
@@ -288,6 +293,7 @@ static void nv_mem_put_pages_common(int nc,
                                     struct sg_table *sg_head,
                                     void *context)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 6);
     int ret = 0;
     struct nv_mem_context *nv_mem_context =
         (struct nv_mem_context *) context;
@@ -326,16 +332,19 @@ static void nv_mem_put_pages_common(int nc,
 
 static void nv_mem_put_pages(struct sg_table *sg_head, void *context)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 7);
     nv_mem_put_pages_common(0, sg_head, context);
 }
 
 static void nv_mem_put_pages_nc(struct sg_table *sg_head, void *context)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 8);
     nv_mem_put_pages_common(1, sg_head, context);
 }
 
 static void nv_mem_release(void *context)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 9);
     struct nv_mem_context *nv_mem_context =
         (struct nv_mem_context *) context;
     if (nv_mem_context->sg_allocated) {
@@ -353,6 +362,7 @@ static int nv_mem_get_pages(unsigned long addr,
                             void *client_context,
                             u64 core_context)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 10);
     int ret;
     struct nv_mem_context *nv_mem_context;
 
@@ -379,6 +389,7 @@ static int nv_mem_get_pages(unsigned long addr,
 
 static unsigned long nv_mem_get_page_size(void *context)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 11);
     struct nv_mem_context *nv_mem_context =
                 (struct nv_mem_context *)context;
 
@@ -402,6 +413,7 @@ static int nv_mem_get_pages_nc(unsigned long addr,
                             void *client_context,
                             u64 core_context)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 12);
     int ret;
     struct nv_mem_context *nv_mem_context;
 
@@ -437,6 +449,7 @@ static struct peer_memory_client nv_mem_client_nc = {
 
 static int nv_mem_param_conf_check(void)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 13);
     int rc = 0;
     switch (peerdirect_support) {
     case NV_MEM_PEERDIRECT_SUPPORT_DEFAULT:
@@ -452,6 +465,7 @@ static int nv_mem_param_conf_check(void)
 
 static int __init nv_mem_client_init(void)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 14);
     int rc;
     rc = nv_mem_param_conf_check();
     if (rc) {
@@ -524,6 +538,7 @@ out:
 
 static void __exit nv_mem_client_cleanup(void)
 {
+    printk(KERN_ERR "nvidia-peermem =====================================   %d\n", 15);
 #if defined (NV_MLNX_IB_PEER_MEM_SYMBOLS_PRESENT)
     if (reg_handle)
         ib_unregister_peer_memory_client(reg_handle);

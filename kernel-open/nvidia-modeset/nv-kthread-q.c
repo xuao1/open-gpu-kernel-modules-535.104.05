@@ -74,6 +74,7 @@
 
 static int _main_loop(void *args)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 1);
     nv_kthread_q_t *q = (nv_kthread_q_t *)args;
     nv_kthread_q_item_t *q_item = NULL;
     unsigned long flags;
@@ -123,6 +124,7 @@ static int _main_loop(void *args)
 
 void nv_kthread_q_stop(nv_kthread_q_t *q)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 2);
     // check if queue has been properly initialized
     if (unlikely(!q->q_kthread))
         return;
@@ -174,6 +176,7 @@ static struct task_struct *thread_create_on_node(int (*threadfn)(void *data),
                                                  int preferred_node,
                                                  const char *q_name)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 3);
 
     unsigned i, j;
     const static unsigned attempts = 3;
@@ -219,6 +222,7 @@ static struct task_struct *thread_create_on_node(int (*threadfn)(void *data),
 
 int nv_kthread_q_init_on_node(nv_kthread_q_t *q, const char *q_name, int preferred_node)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 4);
     memset(q, 0, sizeof(*q));
 
     INIT_LIST_HEAD(&q->q_list_head);
@@ -251,6 +255,7 @@ int nv_kthread_q_init_on_node(nv_kthread_q_t *q, const char *q_name, int preferr
 // item was already pending in a queue.
 static int _raw_q_schedule(nv_kthread_q_t *q, nv_kthread_q_item_t *q_item)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 5);
     unsigned long flags;
     int ret = 1;
 
@@ -273,6 +278,7 @@ void nv_kthread_q_item_init(nv_kthread_q_item_t *q_item,
                             nv_q_func_t function_to_run,
                             void *function_args)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 6);
     INIT_LIST_HEAD(&q_item->q_list_node);
     q_item->function_to_run = function_to_run;
     q_item->function_args   = function_args;
@@ -282,6 +288,7 @@ void nv_kthread_q_item_init(nv_kthread_q_item_t *q_item,
 int nv_kthread_q_schedule_q_item(nv_kthread_q_t *q,
                                  nv_kthread_q_item_t *q_item)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 7);
     if (unlikely(atomic_read(&q->main_loop_should_exit))) {
         NVQ_WARN("Not allowed: nv_kthread_q_schedule_q_item was "
                    "called with a non-alive q: 0x%p\n", q);
@@ -293,6 +300,7 @@ int nv_kthread_q_schedule_q_item(nv_kthread_q_t *q,
 
 static void _q_flush_function(void *args)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 8);
     struct completion *completion = (struct completion *)args;
     complete(completion);
 }
@@ -300,6 +308,7 @@ static void _q_flush_function(void *args)
 
 static void _raw_q_flush(nv_kthread_q_t *q)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 9);
     nv_kthread_q_item_t q_item;
     DECLARE_COMPLETION_ONSTACK(completion);
 
@@ -315,6 +324,7 @@ static void _raw_q_flush(nv_kthread_q_t *q)
 
 void nv_kthread_q_flush(nv_kthread_q_t *q)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 10);
     if (unlikely(atomic_read(&q->main_loop_should_exit))) {
         NVQ_WARN("Not allowed: nv_kthread_q_flush was called after "
                    "nv_kthread_q_stop. q: 0x%p\n", q);

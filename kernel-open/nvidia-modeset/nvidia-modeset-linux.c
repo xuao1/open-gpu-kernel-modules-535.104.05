@@ -91,11 +91,13 @@ static atomic_t nvkms_alloc_called_count;
 
 NvBool nvkms_output_rounding_fix(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 11);
     return output_rounding_fix;
 }
 
 NvBool nvkms_disable_vrr_memclk_switch(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 12);
     return disable_vrr_memclk_switch;
 }
 
@@ -111,6 +113,7 @@ NvBool nvkms_syncpt_op(
     enum NvKmsSyncPtOp op,
     NvKmsSyncPtOpParams *params)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 13);
     return NV_FALSE;
 }
 #endif
@@ -127,6 +130,7 @@ NvBool nvkms_syncpt_op(
  */
 static inline unsigned long NVKMS_USECS_TO_JIFFIES(NvU64 usec)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 14);
     unsigned long result = usec * HZ;
     do_div(result, 1000000);
     return result;
@@ -195,11 +199,13 @@ struct nvkms_per_open {
 
 static inline int nvkms_read_trylock_pm_lock(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 15);
     return !down_read_trylock(&nvkms_pm_lock);
 }
 
 static inline void nvkms_read_lock_pm_lock(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 16);
     while (!down_read_trylock(&nvkms_pm_lock)) {
         try_to_freeze();
         cond_resched();
@@ -208,16 +214,19 @@ static inline void nvkms_read_lock_pm_lock(void)
 
 static inline void nvkms_read_unlock_pm_lock(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 17);
     up_read(&nvkms_pm_lock);
 }
 
 static inline void nvkms_write_lock_pm_lock(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 18);
     down_write(&nvkms_pm_lock);
 }
 
 static inline void nvkms_write_unlock_pm_lock(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 19);
     up_write(&nvkms_pm_lock);
 }
 
@@ -231,6 +240,7 @@ static inline void nvkms_write_unlock_pm_lock(void)
 
 void* nvkms_alloc(size_t size, NvBool zero)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 20);
     void *p;
 
     if (malloc_verbose || fail_malloc_num >= 0) {
@@ -257,6 +267,7 @@ void* nvkms_alloc(size_t size, NvBool zero)
 
 void nvkms_free(void *ptr, size_t size)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 21);
     if (size <= KMALLOC_LIMIT) {
         kfree(ptr);
     } else {
@@ -266,41 +277,49 @@ void nvkms_free(void *ptr, size_t size)
 
 void* nvkms_memset(void *ptr, NvU8 c, size_t size)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 22);
     return memset(ptr, c, size);
 }
 
 void* nvkms_memcpy(void *dest, const void *src, size_t n)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 23);
     return memcpy(dest, src, n);
 }
 
 void* nvkms_memmove(void *dest, const void *src, size_t n)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 24);
     return memmove(dest, src, n);
 }
 
 int nvkms_memcmp(const void *s1, const void *s2, size_t n)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 25);
     return memcmp(s1, s2, n);
 }
 
 size_t nvkms_strlen(const char *s)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 26);
     return strlen(s);
 }
 
 int nvkms_strcmp(const char *s1, const char *s2)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 27);
     return strcmp(s1, s2);
 }
 
 char* nvkms_strncpy(char *dest, const char *src, size_t n)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 28);
     return strncpy(dest, src, n);
 }
 
 void nvkms_usleep(NvU64 usec)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 29);
     if (usec < 1000) {
         /*
          * If the period to wait is less than one millisecond, sleep
@@ -332,6 +351,7 @@ void nvkms_usleep(NvU64 usec)
 
 NvU64 nvkms_get_usec(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 30);
     struct timespec64 ts;
     NvU64 ns;
 
@@ -343,6 +363,7 @@ NvU64 nvkms_get_usec(void)
 
 int nvkms_copyin(void *kptr, NvU64 uaddr, size_t n)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 31);
     if (!nvKmsNvU64AddressIsSafe(uaddr)) {
         return -EINVAL;
     }
@@ -356,6 +377,7 @@ int nvkms_copyin(void *kptr, NvU64 uaddr, size_t n)
 
 int nvkms_copyout(NvU64 uaddr, const void *kptr, size_t n)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 32);
     if (!nvKmsNvU64AddressIsSafe(uaddr)) {
         return -EINVAL;
     }
@@ -369,16 +391,19 @@ int nvkms_copyout(NvU64 uaddr, const void *kptr, size_t n)
 
 void nvkms_yield(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 33);
     schedule();
 }
 
 void nvkms_dump_stack(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 34);
     dump_stack();
 }
 
 int nvkms_snprintf(char *str, size_t size, const char *format, ...)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 35);
     int ret;
     va_list ap;
 
@@ -391,11 +416,13 @@ int nvkms_snprintf(char *str, size_t size, const char *format, ...)
 
 int nvkms_vsnprintf(char *str, size_t size, const char *format, va_list ap)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 36);
     return vsnprintf(str, size, format, ap);
 }
 
 void nvkms_log(const int level, const char *gpuPrefix, const char *msg)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 37);
     const char *levelString;
     const char *levelPrefix;
 
@@ -423,6 +450,7 @@ void
 nvkms_event_queue_changed(nvkms_per_open_handle_t *pOpenKernel,
                           NvBool eventsAvailable)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 38);
     struct nvkms_per_open *popen = pOpenKernel;
 
     switch (popen->type) {
@@ -449,6 +477,7 @@ nvkms_event_queue_changed(nvkms_per_open_handle_t *pOpenKernel,
 
 static void nvkms_suspend(NvU32 gpuId)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 39);
     if (gpuId == 0) {
         nvkms_write_lock_pm_lock();
     }
@@ -460,6 +489,7 @@ static void nvkms_suspend(NvU32 gpuId)
 
 static void nvkms_resume(NvU32 gpuId)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 40);
     down(&nvkms_lock);
     nvKmsResume(gpuId);
     up(&nvkms_lock);
@@ -482,6 +512,7 @@ static nvidia_modeset_callbacks_t nvkms_rm_callbacks = {
 
 static int nvkms_alloc_rm(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 41);
     NV_STATUS nvstatus;
     int ret;
 
@@ -507,11 +538,13 @@ static int nvkms_alloc_rm(void)
 
 static void nvkms_free_rm(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 42);
     __rm_ops.set_callbacks(NULL);
 }
 
 void nvkms_call_rm(void *ops)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 43);
     nvidia_modeset_stack_ptr stack = NULL;
 
     if (__rm_ops.alloc_stack(&stack) != 0) {
@@ -535,6 +568,7 @@ struct nvkms_ref_ptr {
 
 struct nvkms_ref_ptr* nvkms_alloc_ref_ptr(void *ptr)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 44);
     struct nvkms_ref_ptr *ref_ptr = nvkms_alloc(sizeof(*ref_ptr), NV_FALSE);
     if (ref_ptr) {
         // The ref_ptr owner counts as a reference on the ref_ptr itself.
@@ -546,6 +580,7 @@ struct nvkms_ref_ptr* nvkms_alloc_ref_ptr(void *ptr)
 
 void nvkms_free_ref_ptr(struct nvkms_ref_ptr *ref_ptr)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 45);
     if (ref_ptr) {
         ref_ptr->ptr = NULL;
         // Release the owner's reference of the ref_ptr.
@@ -555,11 +590,13 @@ void nvkms_free_ref_ptr(struct nvkms_ref_ptr *ref_ptr)
 
 void nvkms_inc_ref(struct nvkms_ref_ptr *ref_ptr)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 46);
     nv_kref_get(&ref_ptr->refcnt);
 }
 
 static void ref_ptr_free(nv_kref_t *ref)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 47);
     struct nvkms_ref_ptr *ref_ptr = container_of(ref, struct nvkms_ref_ptr,
                                                  refcnt);
     nvkms_free(ref_ptr, sizeof(*ref_ptr));
@@ -567,6 +604,7 @@ static void ref_ptr_free(nv_kref_t *ref)
 
 void* nvkms_dec_ref(struct nvkms_ref_ptr *ref_ptr)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 48);
     void *ptr = ref_ptr->ptr;
     nv_kref_put(&ref_ptr->refcnt, ref_ptr_free);
     return ptr;
@@ -607,6 +645,7 @@ static struct {
 
 static void nvkms_kthread_q_callback(void *arg)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 49);
     struct nvkms_timer_t *timer = arg;
     void *dataPtr;
     unsigned long flags = 0;
@@ -667,6 +706,7 @@ static void nvkms_kthread_q_callback(void *arg)
 
 static void nvkms_queue_work(nv_kthread_q_t *q, nv_kthread_q_item_t *q_item)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 50);
     int ret = nv_kthread_q_schedule_q_item(q, q_item);
     /*
      * nv_kthread_q_schedule_q_item should only fail (which it indicates by
@@ -678,6 +718,7 @@ static void nvkms_queue_work(nv_kthread_q_t *q, nv_kthread_q_item_t *q_item)
 
 static void _nvkms_timer_callback_internal(struct nvkms_timer_t *nvkms_timer)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 51);
     /* In softirq context, so schedule nvkms_kthread_q_callback(). */
     nvkms_queue_work(&nvkms_kthread_q, &nvkms_timer->nv_kthread_q_item);
 }
@@ -690,6 +731,7 @@ static void _nvkms_timer_callback_internal(struct nvkms_timer_t *nvkms_timer)
  */
 inline static void nvkms_timer_callback_typed_data(struct timer_list *timer)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 52);
     struct nvkms_timer_t *nvkms_timer =
             container_of(timer, struct nvkms_timer_t, kernel_timer);
 
@@ -698,6 +740,7 @@ inline static void nvkms_timer_callback_typed_data(struct timer_list *timer)
 
 inline static void nvkms_timer_callback_anon_data(unsigned long arg)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 53);
     struct nvkms_timer_t *nvkms_timer = (struct nvkms_timer_t *) arg;
     _nvkms_timer_callback_internal(nvkms_timer);
 }
@@ -706,6 +749,7 @@ static void
 nvkms_init_timer(struct nvkms_timer_t *timer, nvkms_timer_proc_t *proc,
                  void *dataPtr, NvU32 dataU32, NvBool isRefPtr, NvU64 usec)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 54);
     unsigned long flags = 0;
 
     memset(timer, 0, sizeof(*timer));
@@ -753,6 +797,7 @@ nvkms_alloc_timer(nvkms_timer_proc_t *proc,
                   void *dataPtr, NvU32 dataU32,
                   NvU64 usec)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 55);
     // nvkms_alloc_timer cannot be called from an interrupt context.
     struct nvkms_timer_t *timer = nvkms_alloc(sizeof(*timer), NV_FALSE);
     if (timer) {
@@ -766,6 +811,7 @@ nvkms_alloc_timer_with_ref_ptr(nvkms_timer_proc_t *proc,
                                struct nvkms_ref_ptr *ref_ptr,
                                NvU32 dataU32, NvU64 usec)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 56);
     // nvkms_alloc_timer_with_ref_ptr is called from an interrupt bottom half
     // handler, which runs in a tasklet (i.e. atomic) context.
     struct nvkms_timer_t *timer = kmalloc(sizeof(*timer), GFP_ATOMIC);
@@ -781,6 +827,7 @@ nvkms_alloc_timer_with_ref_ptr(nvkms_timer_proc_t *proc,
 
 void nvkms_free_timer(nvkms_timer_handle_t *handle)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 57);
     struct nvkms_timer_t *timer = handle;
 
     if (timer == NULL) {
@@ -797,6 +844,7 @@ void nvkms_free_timer(nvkms_timer_handle_t *handle)
 
 void* nvkms_get_per_open_data(int fd)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 58);
     struct file *filp = fget(fd);
     struct nvkms_per_open *popen = NULL;
     dev_t rdev = 0;
@@ -840,6 +888,7 @@ done:
 
 NvBool nvkms_fd_is_nvidia_chardev(int fd)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 59);
     struct file *filp = fget(fd);
     dev_t rdev = 0;
     NvBool ret = NV_FALSE;
@@ -865,6 +914,7 @@ done:
 
 NvBool nvkms_open_gpu(NvU32 gpuId)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 60);
     nvidia_modeset_stack_ptr stack = NULL;
     NvBool ret;
 
@@ -881,6 +931,7 @@ NvBool nvkms_open_gpu(NvU32 gpuId)
 
 void nvkms_close_gpu(NvU32 gpuId)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 61);
     nvidia_modeset_stack_ptr stack = NULL;
 
     if (__rm_ops.alloc_stack(&stack) != 0) {
@@ -894,11 +945,13 @@ void nvkms_close_gpu(NvU32 gpuId)
 
 NvU32 nvkms_enumerate_gpus(nv_gpu_info_t *gpu_info)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 62);
     return __rm_ops.enumerate_gpus(gpu_info);
 }
 
 NvBool nvkms_allow_write_combining(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 63);
     return __rm_ops.system_info.allow_write_combining;
 }
 
@@ -918,6 +971,7 @@ struct nvkms_backlight_device {
 
 static int nvkms_update_backlight_status(struct backlight_device *bd)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 64);
     struct nvkms_backlight_device *nvkms_bd = bl_get_data(bd);
     NvBool status;
     int ret;
@@ -938,6 +992,7 @@ static int nvkms_update_backlight_status(struct backlight_device *bd)
 
 static int nvkms_get_backlight_brightness(struct backlight_device *bd)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 65);
     struct nvkms_backlight_device *nvkms_bd = bl_get_data(bd);
     NvU32 brightness = 0;
     NvBool status;
@@ -967,6 +1022,7 @@ struct nvkms_backlight_device*
 nvkms_register_backlight(NvU32 gpu_id, NvU32 display_id, void *drv_priv,
                          NvU32 current_brightness)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 66);
 #if IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
     char name[18];
     struct backlight_properties props = {
@@ -1035,6 +1091,7 @@ done:
 
 void nvkms_unregister_backlight(struct nvkms_backlight_device *nvkms_bd)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 67);
 #if IS_ENABLED(CONFIG_BACKLIGHT_CLASS_DEVICE)
     if (nvkms_bd->dev) {
         backlight_device_unregister(nvkms_bd->dev);
@@ -1050,6 +1107,7 @@ void nvkms_unregister_backlight(struct nvkms_backlight_device *nvkms_bd)
 
 static void nvkms_kapi_event_kthread_q_callback(void *arg)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 68);
     struct NvKmsKapiDevice *device = arg;
 
     nvKmsKapiHandleEventQueueChange(device);
@@ -1059,6 +1117,7 @@ struct nvkms_per_open *nvkms_open_common(enum NvKmsClientType type,
                                          struct NvKmsKapiDevice *device,
                                          int *status)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 69);
     struct nvkms_per_open *popen = NULL;
 
     popen = nvkms_alloc(sizeof(*popen), NV_TRUE);
@@ -1109,6 +1168,7 @@ failed:
 
 void nvkms_close_pm_locked(struct nvkms_per_open *popen)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 70);
     /*
      * Don't use down_interruptible(): we need to free resources
      * during close, so we have no choice but to wait to take the
@@ -1147,6 +1207,7 @@ void nvkms_close_pm_locked(struct nvkms_per_open *popen)
 
 static void nvkms_close_pm_unlocked(void *data)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 71);
     struct nvkms_per_open *popen = data;
 
     nvkms_read_lock_pm_lock();
@@ -1158,6 +1219,7 @@ static void nvkms_close_pm_unlocked(void *data)
 
 static void nvkms_close_popen(struct nvkms_per_open *popen)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 72);
     if (nvkms_read_trylock_pm_lock() == 0) {
         nvkms_close_pm_locked(popen);
         nvkms_read_unlock_pm_lock();
@@ -1176,6 +1238,7 @@ int nvkms_ioctl_common
     NvU32 cmd, NvU64 address, const size_t size
 )
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 73);
     int status;
     NvBool ret;
 
@@ -1204,6 +1267,7 @@ struct nvkms_per_open* nvkms_open_from_kapi
     struct NvKmsKapiDevice *device
 )
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 74);
     int status = 0;
     struct nvkms_per_open *ret;
 
@@ -1216,6 +1280,7 @@ struct nvkms_per_open* nvkms_open_from_kapi
 
 void nvkms_close_from_kapi(struct nvkms_per_open *popen)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 75);
     nvkms_close_pm_unlocked(popen);
 }
 
@@ -1225,6 +1290,7 @@ NvBool nvkms_ioctl_from_kapi
     NvU32 cmd, void *params_address, const size_t param_size
 )
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 76);
     NvBool ret;
 
     nvkms_read_lock_pm_lock();
@@ -1246,6 +1312,7 @@ struct nvkms_sema_t {
 
 nvkms_sema_handle_t* nvkms_sema_alloc(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 77);
     nvkms_sema_handle_t *sema = nvkms_alloc(sizeof(*sema), NV_TRUE);
 
     if (sema != NULL) {
@@ -1257,16 +1324,19 @@ nvkms_sema_handle_t* nvkms_sema_alloc(void)
 
 void nvkms_sema_free(nvkms_sema_handle_t *sema)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 78);
     nvkms_free(sema, sizeof(*sema));
 }
 
 void nvkms_sema_down(nvkms_sema_handle_t *sema)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 79);
     down(&sema->os_sema);
 }
 
 void nvkms_sema_up(nvkms_sema_handle_t *sema)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 80);
     up(&sema->os_sema);
 }
 
@@ -1285,6 +1355,7 @@ struct proc_dir_entry *nvkms_proc_dir;
 
 static void nv_procfs_out_string(void *data, const char *str)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 81);
     struct seq_file *s = data;
 
     seq_puts(s, str);
@@ -1292,6 +1363,7 @@ static void nv_procfs_out_string(void *data, const char *str)
 
 static int nv_procfs_read_nvkms_proc(struct seq_file *s, void *arg)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 82);
     char *buffer;
     nvkms_procfs_proc_t *func;
 
@@ -1327,6 +1399,7 @@ NV_DEFINE_SINGLE_NVKMS_PROCFS_FILE(nvkms_proc);
 static NvBool
 nvkms_add_proc_file(const nvkms_procfs_file_t *file)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 83);
     struct proc_dir_entry *new_proc_dir;
 
     if (nvkms_proc_dir == NULL) {
@@ -1342,6 +1415,7 @@ nvkms_add_proc_file(const nvkms_procfs_file_t *file)
 
 static void nvkms_proc_init(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 84);
 #if defined(CONFIG_PROC_FS)
     const nvkms_procfs_file_t *file;
 
@@ -1370,6 +1444,7 @@ static void nvkms_proc_init(void)
 
 static void nvkms_proc_exit(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 85);
 #if defined(CONFIG_PROC_FS)
     if (nvkms_proc_dir == NULL) {
         return;
@@ -1384,6 +1459,7 @@ static void nvkms_proc_exit(void)
  ************************************************************************/
 static NvBool nvkms_fs_mounted(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 86);
     return current->fs != NULL;
 }
 
@@ -1393,6 +1469,7 @@ static size_t nvkms_config_file_open
     char ** const buff
 )
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 87);
     int i = 0;
     struct file *file;
     struct inode *file_inode;
@@ -1468,6 +1545,7 @@ done:
 /* must be called with nvkms_lock locked */
 static void nvkms_read_config_file_locked(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 88);
     char *buffer = NULL;
     size_t buf_size = 0;
 
@@ -1499,6 +1577,7 @@ NvBool nvKmsKapiGetFunctionsTable
     struct NvKmsKapiFunctionsTable *funcsTable
 )
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 89);
     return nvKmsKapiGetFunctionsTableInternal(funcsTable);
 }
 EXPORT_SYMBOL(nvKmsKapiGetFunctionsTable);
@@ -1509,6 +1588,7 @@ EXPORT_SYMBOL(nvKmsKapiGetFunctionsTable);
 
 static int nvkms_open(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 90);
     int status;
 
     status = nv_down_read_interruptible(&nvkms_pm_lock);
@@ -1526,6 +1606,7 @@ static int nvkms_open(struct inode *inode, struct file *filp)
 
 static int nvkms_close(struct inode *inode, struct file *filp)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 91);
     struct nvkms_per_open *popen = filp->private_data;
 
     if (popen == NULL) {
@@ -1538,12 +1619,14 @@ static int nvkms_close(struct inode *inode, struct file *filp)
 
 static int nvkms_mmap(struct file *filp, struct vm_area_struct *vma)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 92);
     return -EPERM;
 }
 
 static int nvkms_ioctl(struct inode *inode, struct file *filp,
                            unsigned int cmd, unsigned long arg)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 93);
     size_t size;
     unsigned int nr;
     int status;
@@ -1585,6 +1668,7 @@ static int nvkms_ioctl(struct inode *inode, struct file *filp,
 
 static unsigned int nvkms_poll(struct file *filp, poll_table *wait)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 94);
     unsigned int mask = 0;
     struct nvkms_per_open *popen = filp->private_data;
 
@@ -1623,6 +1707,7 @@ static nvidia_module_t nvidia_modeset_module = {
 
 static int __init nvkms_init(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 95);
     int ret;
 
     atomic_set(&nvkms_alloc_called_count, 0);
@@ -1686,6 +1771,7 @@ fail_kthread:
 
 static void __exit nvkms_exit(void)
 {
+    printk(KERN_ERR "nvidia-modeset =====================================   %d\n", 96);
     struct nvkms_timer_t *timer, *tmp_timer;
     unsigned long flags = 0;
 
