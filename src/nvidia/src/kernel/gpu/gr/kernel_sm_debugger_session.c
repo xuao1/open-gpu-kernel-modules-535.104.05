@@ -431,7 +431,6 @@ ksmdbgssnDestruct_IMPL
     KernelSMDebuggerSession *pKernelSMDebuggerSession
 )
 {}
-    NV_PRINTF(LEVEL_ERROR, "############### src/nvidia/src/kernel %d\n", 2189);
 
 //
 // The free callback will always be invoked before the destructor for either the KernelSMDebuggerSession
